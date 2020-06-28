@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# This script makes sure everything is installed, then calls auto-dev
+echo
+
+
+echo ----------------------------
+debug_here "auto-dev completed successfully"
+
+
+# exit 0
