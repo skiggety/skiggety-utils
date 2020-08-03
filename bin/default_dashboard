@@ -9,17 +9,16 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 # TODO TODO: call the "todo" program
 
 # TODO: avoid scanning large non-text files:
-echo "--------"
-grep -Rn "TODO" .                                                                                                       | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
-grep -Rn "TODO TODO" .                                         | grep -v "TODO"                                         | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
-grep -Rn "TODO TODO TODO" .                                    | grep -v "TODO TODO"                                    | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
-grep -Rn "TODO TODO TODO TODO" .                               | grep -v "TODO TODO TODO"                               | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
-grep -Rn "TODO TODO TODO TODO TODO" .                          | grep -v "TODO TODO TODO TODO"                          | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
-grep -Rn "TODO TODO TODO TODO TODO TODO" .                     | grep -v "TODO TODO TODO TODO TODO"                     | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
-grep -Rn "TODO TODO TODO TODO TODO TODO TODO" .                | grep -v "TODO TODO TODO TODO TODO TODO"                | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
-grep -Rn "TODO TODO TODO TODO TODO TODO TODO TODO" .           | grep -v "TODO TODO TODO TODO TODO TODO TODO"           | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
-grep -Rn "TODO TODO TODO TODO TODO TODO TODO TODO TODO" .      | grep -v "TODO TODO TODO TODO TODO TODO TODO TODO"      | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
-grep -Rn "TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO" . | grep -v "TODO TODO TODO TODO TODO TODO TODO TODO TODO" | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -Rn "TODO" .                                              | grep -v "TODO TODO"                                              | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -Rn "TODO TODO" .                                         | grep -v "TODO TODO TODO"                                         | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -Rn "TODO TODO TODO" .                                    | grep -v "TODO TODO TODO TODO"                                    | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -Rn "TODO TODO TODO TODO" .                               | grep -v "TODO TODO TODO TODO TODO"                               | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -Rn "TODO TODO TODO TODO TODO" .                          | grep -v "TODO TODO TODO TODO TODO TODO"                          | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -Rn "TODO TODO TODO TODO TODO TODO" .                     | grep -v "TODO TODO TODO TODO TODO TODO TODO"                     | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -Rn "TODO TODO TODO TODO TODO TODO TODO" .                | grep -v "TODO TODO TODO TODO TODO TODO TODO TODO"                | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -Rn "TODO TODO TODO TODO TODO TODO TODO TODO" .           | grep -v "TODO TODO TODO TODO TODO TODO TODO TODO TODO"           | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -Rn "TODO TODO TODO TODO TODO TODO TODO TODO TODO" .      | grep -v "TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO"      | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -Rn "TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO" . | grep -v "TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO" | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
 
 # TODO: only do this stuff if it's a git repository
 echo "--------"
