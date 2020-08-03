@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
+. $THIS_DIR/../lib/skiggety-utils.bash || exit 1
+
+# TODO TODO TODO: Rewrite this in ruby or python...we need to do some smart
+# TODO TODO TODO: things to handle inter-installer dependencies, retrying only
+# TODO TODO TODO: as many times as will be helpful, etc. For now, I'll do a
+# TODO TODO TODO: dummy version that will speed through a few of them.
+
+# TODO: install-skigg-utils || exit_with_error "TODO"
+# TODO: setup-computer || exit_with_error "TODO"
+    # TODO: including bashrc, bash prompt, etc.
+    # TODO TODO: make sure path to skigg_utils bin is in your .bashrc
+    # TODO: reload bashrc
+# TODO: install and configure 3rd party programs
+    # TODO: install pocket
+
+# this function runs the installer, checks the exit code, prints context/formatting around it, perhaps remembers if it has already succeeded.
+function use_installer {
+    installer="$1"
+
+    # TODO: DELETE this temporary special-case crap as soon as I can, probably when this gets rewritten in a real language:
+    if [[ "$installer" =~ /homebrew$ ]]; then
+        debug_here "skipping \"$installer\" installer for now..."; return 0
+    elif [[ "$installer" =~ /skiggety.bash$ ]]; then
+        debug_here "skipping \"$installer\" installer for now..."; return 0
+    elif [[ "$installer" =~ /spectacle$ ]]; then
+        debug_here "skipping \"$installer\" installer for now..."; return 0
+    elif [[ "$installer" =~ /synergy$ ]]; then
+        debug_here "skipping \"$installer\" installer for now..."; return 0
+    elif [[ "$installer" =~ /uhk$ ]]; then
+        debug_here "skipping \"$installer\" installer for now..."; return 0
+    elif [[ "$installer" =~ /vim$ ]]; then
+        debug_here "skipping \"$installer\" installer for now..."; return 0
+        # TODO: get showing line numbers into your vimrc
+        # TODO TODO: get highlighting search results into your vimrc
+    else
+        echo "Running installer \"$installer\":"
+        $installer || exit_with_error "$installer failed"
+    fi
+}
+
+INSTALLERS_DIR="$THIS_DIR/../installers"
+
+for installer in "$INSTALLERS_DIR"/* # TODO: files only
+do
+    if [ -f "$installer" ]; then
+        
+        use_installer "$installer" || exit_with_error "installer \"$installer\" failed at $BASH_SOURCE:$LINENO"
+        # configure "installer.config/" || exit_with_error "TODO" #  TODO: shoulcn't this be part of the installer?
+        # TODO: make sure apps get configured properly, too, such as synergy, vim (incl vimrc), etc.
+    fi
+done
+

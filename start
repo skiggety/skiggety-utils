@@ -1,11 +1,38 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # This script makes sure everything is installed, then calls auto-dev
+
+echo "starting at $(date) ..."
+
+THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
+. $THIS_DIR/lib/include_in_bashrc || exit 1
+. $THIS_DIR/lib/skiggety-utils.bash || exit 1
+
+debug_here "utils successfully included" # TODO: use a flag to turn debug messages on or off
+
+# TODO are "debug_here" and "echo_debug" redundant?
+
+debug_here "let's try running install:"
+debug_here "--------------------------"
+
+loop_until 10 ./PWD_BIN/install || exit_with_error "Could not run \"./PWD_BIN/install" # TODO: don't use relative path # TODO TODO: move most things into install, including any interactive stuff # TODO: use review_until, instead of loop_until
+
+debug_here "install completed successfully"; echo
+
+# echo_debug "$(echo_here), $(echo_eval PWD)" # TODO: MOVE this functionality elsewhere
+
+# TODO: I'm not even sure this is a good idea, but maybe reload ~/.bashrc and stuff now that it's been updated by ./install ? :       . ./lib/reload_env || exit_with_error "could not source \"./lib/reload_env\"" # TODO: don't use relative path
+# debug_here
+# TODO: this is something similar that I'm also not sure is a good idea: ./bin/start_in_env.bash || exit_with_error "Could not run \"./bin/start_in_env.bash\"" # TODO: don't use relative path # TODO TODO: move most things in here, including any interactive stuff
+
+debug_here "let's try running auto-dev:"
+debug_here "---------------------------"
+
+$THIS_DIR/bin/auto-dev || exit_with_error "failed to run auto-dev" #TODO: since this is in ./PWD_BIN/, I shouldn't need to use a relative path
+
 echo
+debug_here "auto-dev completed successfully"; echo
+debug_here "exiting..."
+exit 0
 
-
-echo ----------------------------
-debug_here "auto-dev completed successfully"
-
-
-# exit 0
+# exit_with_error "MOVABLE BREAKPOINT"

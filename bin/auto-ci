@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# This script checks out fresh code and tries it out
+
+THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
+. $THIS_DIR/../lib/include_in_bashrc || exit 1
+. $THIS_DIR/../lib/skiggety-utils.bash || exit 1
+
+function get_latest_code {
+  # TODO: deal with any local changes...delete them?
+  echo TODO TODO TODO TODO checkout fresh code, default to one branch
+}
+
+while sleep 60
+do
+    get_latest_code && $install && $dashboard && echo "auto-ci is SUCCEEDING!" || echo "auto-ci is failing!"
+done
+

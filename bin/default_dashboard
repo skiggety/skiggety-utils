@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# TODO: consider #!/usr/bin/env python3 OR #!/usr/bin/env ruby
+
+# This script provides a general purpose status report that is sensitive to the current directory. If you are in a git repo for a coding project, it'll give you an idea of høw tests are doing, what's left to do/commit, etc. It will usuually be called from that directory's ./PWD_BIN/dashboard script to form the bulk of the output
+
+THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
+. $THIS_DIR/../lib/skiggety-utils.bash || exit 1
+
+# TODO TODO: call the "todo" program
+
+# TODO: avoid scanning large non-text files:
+echo "--------"
+grep -Rn "TODO" .                                                                                                       | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -Rn "TODO TODO" .                                         | grep -v "TODO"                                         | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -Rn "TODO TODO TODO" .                                    | grep -v "TODO TODO"                                    | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -Rn "TODO TODO TODO TODO" .                               | grep -v "TODO TODO TODO"                               | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -Rn "TODO TODO TODO TODO TODO" .                          | grep -v "TODO TODO TODO TODO"                          | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -Rn "TODO TODO TODO TODO TODO TODO" .                     | grep -v "TODO TODO TODO TODO TODO"                     | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -Rn "TODO TODO TODO TODO TODO TODO TODO" .                | grep -v "TODO TODO TODO TODO TODO TODO"                | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -Rn "TODO TODO TODO TODO TODO TODO TODO TODO" .           | grep -v "TODO TODO TODO TODO TODO TODO TODO"           | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -Rn "TODO TODO TODO TODO TODO TODO TODO TODO TODO" .      | grep -v "TODO TODO TODO TODO TODO TODO TODO TODO"      | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -Rn "TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO" . | grep -v "TODO TODO TODO TODO TODO TODO TODO TODO TODO" | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+
+# TODO: only do this stuff if it's a git repository
+echo "--------"
+git -c color.ui=always --no-pager diff | head -n 20 # TODO: not sure if I should use head
+echo "--------"
+git -c color.ui=always --no-pager status -ss | head -n 15 # TODO: not sure if I should use head

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# This script continually displays and refreshes the dashboard
+# TODO: rename this script?
+
+THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
+. $THIS_DIR/../lib/skiggety-utils.bash || exit 1
+
+dashboard_to_use=$(which dashboard || which default_dashboard)
+loop_while 20 $dashboard_to_use # TODO TODO: loop_while -g -t 20 $dashboard_to_use # TODO: review_while ./PWD_BIN/dashboard || review_while $THIS_DIR/default_dashboard
+
+# TODO: get donor code from old script "dashboard", but run make sure install works first (run git pull, and install first)
+
+# # TODO: API spec (name changes): 
+#   # TODO: "auto-dev" will replace what was called "dashboard" when I worked at TBI. It basically runs "review dashboard"
+#   # TODO: if you enter the command "review dashboard" you get the dashboard, continually updated on your screen.
+#   # TODO: "review" will replace "loop"
+#   # TODO: "dashboard" will replace "summarize_status". It displays a snapshot of current status
+#   # TODO: "./PWD_BIN/local_status" will replace ./status

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# TODO: skiggety-utils/bin/dashboard should be in the path after PWD_BIN/dashboard, and just run the default dashboard
+
+# this script prints a summary of the status of development (or whatever) in the current directory, including information about git, todo's, tests, etc. it can often simply call default_dashboard from the path
+
+THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
+. $THIS_DIR/../lib/skiggety-utils.bash || exit 1
+
+./PWD_BIN/install || exit_with_error "Could not run \"./PWD_BIN/install" # TODO:DELETE --This is only here temporarily so we can continuously debug install on a short cycle
+
+# TODO: make a template of this script
+
+# Less important than the output of default_dashboard:
+# echo "--------"
+# grep -Rn "# This script" .
+# pretty_sleep 10 || sleep 10
+
+bin/default_dashboard
+
+# More important than the output of default_dashboard:
