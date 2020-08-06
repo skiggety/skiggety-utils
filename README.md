@@ -7,4 +7,5 @@ This is top-down programming from the very top. The first thing I do on a new co
 Core Design Decisions:
 ======================
 
-  - ./PWD_BIN is in the PATH
+  - "./PWD_BIN" is in the PATH, which allows you to cd into a directory and run commands with simple technology-agnostic names, like "dashboard", "unit-test", "run", etc. Of course, this is scary because the meaning of these commands is changind depending on what local directory you're in, and you could run something you don't expect. To mitigate this concern, this will be configured with confirmation from the user, and PWD_BIN is a name chosen to conspicuously convey it's purpose.
+
