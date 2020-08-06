@@ -1,5 +1,8 @@
 # TODO: . $THIS_DIR/shelper.bash || exit 1      # TODO include shelper.bash which checks bash version
 
+newline='
+'
+
 function exit_with_error {
     echo "exiting $(basename $0) on ERROR: $* ( $(echo_callsite) )" >&2
     exit 1

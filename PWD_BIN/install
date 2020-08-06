@@ -23,6 +23,8 @@ function use_installer {
     # TODO: DELETE this temporary special-case crap as soon as I can, probably when this gets rewritten in a real language:
     if [[ "$installer" =~ /homebrew$ ]]; then
         debug_here "skipping \"$installer\" installer for now..."; return 0
+    elif [[ "$installer" =~ /local-backup$ ]]; then
+        debug_here "skipping \"$installer\" installer for now..."; return 0
     elif [[ "$installer" =~ /skiggety.bash$ ]]; then
         debug_here "skipping \"$installer\" installer for now..."; return 0
     elif [[ "$installer" =~ /spectacle$ ]]; then

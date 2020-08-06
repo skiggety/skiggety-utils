@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
+. $THIS_DIR/../lib/skiggety-utils.bash || exit 1
+
+function main {
+    # TODO: maybe install git? at this point we're assuming it's already installed and just going ahead with configuration
+    git-set-global-default 'credential.helper' 'cache --timeout=2592000'
+    # git push || exit_with_error "git push failed"
+}
+
+function git-set-global-default {
+    local key="$1"
+    local value="$2"
+    # TODO: local reason="$3"
+
+    previous_value=$(git config --global --get $key)
+    if [ "$value" != "$previous_value" ]; then
+        echo -n "Would you like to change the global git config value of '$key'${newline}    FROM '$previous_value'${newline}      TO '$value'${newline}       ? [Y/n]${newline}"
+        read -n1 answer
+        echo
+        if [[ "${answer}" =~ ^[Yy] ]]; then
+            git config --global "$key" "$value"
+        fi
+    fi
+}
+
+main "$@"
