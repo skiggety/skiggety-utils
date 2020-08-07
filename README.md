@@ -8,12 +8,35 @@ How to get started:
 ===================
 
 - Open a terminal
-- cd to this directory
+- cd to this directory (where you checked out or downloaded this project)
 - run "./start"
 
 Core Design Decisions and Questions:
 ======================
 
+  - This project uses, and helps the user use, several programming languages
+  - This project uses and enables TODO's in code, ranked so that "TODO TODO" is equal to "TODO^2" and outranks "TODO". This way you can easily add a vote when something becomes and impediment or whatever, and the cream will rise to the top. The "todo" program is a key part of this and is shown in the "default_dashboard". You can also put "IGNORE_TODO" on the same line as "TODO" if you want to mention "TODO" without it being on the list (like this).
   - "./PWD_BIN" should be in the user's in the PATH, which allows you to cd into a directory and run commands with simple technology-agnostic names, like "dashboard", "build", "precommit", "unit-test", "run", etc. Of course, this is scary because the meaning of these commands is changind depending on what local directory you're in, and you could run something you don't expect. To mitigate this concern, this will be configured with confirmation from the user, and PWD_BIN is a name chosen to conspicuously convey it's purpose.
     - (?) How can I make this safer? Put ./users_safeword/../PWD_BIN" in the path instead? make everything in PWD a subcommand of some other command? Come up with some handy way to add/remove it from the path quickly (or add it temporarily)?
+
+Cool Programs you'll find in here:
+==================================
+
+- duh
+- gol
+- review
+- todo
+- grim
+- vimwhich
+
+misc TODO's:: (run  todo or dashboard for the full sorted list) (IGNORE_TODO)
+===============================================================
+
+# TODO: install other stuff (start automating installer in skigg-utils)
+  # TODO: setup backups
+# TODO: systematized config (automate the configuration I always want anyway)
+    # TODO: terminal profiles
+        # TODO TODO: commit/sync/install mac terminal profiles?
+        # TODO: ... and linux ones too
+# TODO TODO: commit initial skigg-utils, to get to parity with what I already like to use
 

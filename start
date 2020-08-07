@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# This script makes sure everything is installed, then calls auto-dev
+# This script makes sure everything is installed, familiarizes you with what's here, and maybe even displays the dashboard
 
 echo "starting at $(date) ..."
 
@@ -25,6 +25,7 @@ debug_here "install completed successfully"; echo
 # debug_here
 # TODO: this is something similar that I'm also not sure is a good idea: ./bin/start_in_env.bash || exit_with_error "Could not run \"./bin/start_in_env.bash\"" # TODO: don't use relative path # TODO TODO: move most things in here, including any interactive stuff
 
+# TODO: DELETE  calls to auto-dev, as that's really not what this script is for..
 debug_here "let's try running auto-dev:"
 debug_here "---------------------------"
 
@@ -33,6 +34,7 @@ $THIS_DIR/bin/auto-dev || exit_with_error "failed to run auto-dev" #TODO: since 
 echo
 debug_here "auto-dev completed successfully"; echo
 debug_here "exiting..."
+help # TODO: test/implement
 exit 0
 
 # exit_with_error "MOVABLE BREAKPOINT"
