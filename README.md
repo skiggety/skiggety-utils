@@ -32,11 +32,11 @@ Cool Programs you'll find in here:
 misc TODO's:: (run  todo or dashboard for the full sorted list) (IGNORE_TODO)
 ===============================================================
 
-# TODO: install other stuff (start automating installer in skigg-utils)
-  # TODO: setup backups
-# TODO: systematized config (automate the configuration I always want anyway)
-    # TODO: terminal profiles
-        # TODO TODO: commit/sync/install mac terminal profiles?
-        # TODO: ... and linux ones too
-# TODO TODO: commit initial skigg-utils, to get to parity with what I already like to use
+- TODO: install other stuff (start automating installer in skigg-utils)
+    - TODO: setup backups
+- TODO: systematized config (automate the configuration I always want anyway)
+    - TODO: terminal profiles
+        - TODO TODO: commit/sync/install mac terminal profiles?
+        - TODO: ... and linux ones too
+- TODO TODO: commit initial skigg-utils, to get to parity with what I already like to use
 
