@@ -7,7 +7,7 @@
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
-./PWD_BIN/install || exit_with_error "Could not run \"./PWD_BIN/install" # TODO:DELETE --This is only here temporarily so we can continuously debug install on a short cycle
+# ./PWD_BIN/install || exit_with_error "Could not run \"./PWD_BIN/install" # TODO:DELETE --This is only here temporarily so we can continuously debug install on a short cycle
 
 # TODO: make a template of this script
 
