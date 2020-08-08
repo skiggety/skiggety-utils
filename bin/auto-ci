@@ -6,16 +6,17 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/include_in_bashrc || exit 1
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
+    #review ci # TODO TODO TODO TODO: this should take care of the refresh interval, etc, without further input
+
 function get_latest_code {
   # TODO: deal with any local changes...delete them?
-  echo TODO TODO TODO TODO checkout fresh code, default to one branch
+  git pull # TODO checkout fresh code, default to one branch
 }
 
-while sleep 60
+while sleep 60 # TODO TODO TODO: DELETE & replace with calling review on a function or command that does multiple things
 do
     get_latest_code && $install && $dashboard && echo "auto-ci is SUCCEEDING!" || echo "auto-ci is failing!"
 
-dashboard_to_use=$(which dashboard || which default_dashboard)
-    review dashboard # TODO TODO TODO TODO: this should take care of the refresh interval, etc, without further input
+    dashboard
 done
 
