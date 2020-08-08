@@ -1,0 +1,7 @@
+# This should be included into the user's .bashrc file)
+
+export SKIGGETY_UTILS_PATH="$HOME/code/skiggety-utils" # TODO: UN-HARDCODE path to skiggety-utils
+
+export PATH="$PATH:$SKIGGETY_UTILS_PATH/bin:./PWD_BIN"
+
+# TODO: ssh-agent # TODO run in background?

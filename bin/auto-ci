@@ -14,5 +14,8 @@ function get_latest_code {
 while sleep 60
 do
     get_latest_code && $install && $dashboard && echo "auto-ci is SUCCEEDING!" || echo "auto-ci is failing!"
+
+dashboard_to_use=$(which dashboard || which default_dashboard)
+    review dashboard # TODO TODO TODO TODO: this should take care of the refresh interval, etc, without further input
 done
 
