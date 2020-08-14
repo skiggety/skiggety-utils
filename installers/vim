@@ -1,7 +1,5 @@
 #!/usr/bin/ruby
 
-# TODO TODO TODO TODO: respect the --non-interactive argument # TODO: extract to SkiggetyUtilsInstaller
-
 class VimInstaller
 
 # TODO TODO: write tests for SkiggetyUtilsInstaller
