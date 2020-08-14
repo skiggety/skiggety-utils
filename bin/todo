@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# TODO: non-interactive [read-only] mode should be the default when this is called from a script (output is not a tty)
+# TODO: when called from a terminal, this program should interactively check with the user if they want to do replacements like "TODO TODO TODO"-->"TODO^3" before displaying sorted output
+# TODO: there should also be a "force" mode with a "-f/--force" flag that can do the replacements without asking
+# TODO: highlight TODO's
+
+# TODO: avoid scanning large non-text files:
+
+# TODO: re-implement without it being such a hack. Probably use ruby:
+grep -Rn "TODO" .                                              | grep -v "TODO TODO"                                              | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -Rn "TODO TODO" .                                         | grep -v "TODO TODO TODO"                                         | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -Rn "TODO TODO TODO" .                                    | grep -v "TODO TODO TODO TODO"                                    | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -Rn "TODO TODO TODO TODO" .                               | grep -v "TODO TODO TODO TODO TODO"                               | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -Rn "TODO TODO TODO TODO TODO" .                          | grep -v "TODO TODO TODO TODO TODO TODO"                          | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -Rn "TODO TODO TODO TODO TODO TODO" .                     | grep -v "TODO TODO TODO TODO TODO TODO TODO"                     | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -Rn "TODO TODO TODO TODO TODO TODO TODO" .                | grep -v "TODO TODO TODO TODO TODO TODO TODO TODO"                | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -Rn "TODO TODO TODO TODO TODO TODO TODO TODO" .           | grep -v "TODO TODO TODO TODO TODO TODO TODO TODO TODO"           | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -Rn "TODO TODO TODO TODO TODO TODO TODO TODO TODO" .      | grep -v "TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO"      | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -Rn "TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO" . | grep -v "TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO" | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+
+exit 0

@@ -1,0 +1,44 @@
+#!/usr/bin/ruby
+
+# TODO TODO TODO TODO: respect the --non-interactive argument # TODO: extract to SkiggetyUtilsInstaller
+
+class VimInstaller
+
+# TODO TODO: write tests for SkiggetyUtilsInstaller
+# TODO: include SkiggetyUtilsInstaller
+
+  def self.run
+    self.new.run
+  end
+
+  def run # TODO: extract to SkiggetyUtilsInstaller
+      $interactive = ! ARGV.delete('--non-interactive')
+    # TODO: if not already installed (by checking for hash-stamped files # TODO: extract to SkiggetyUtilsInstaller
+      # TODO: if not already installed (using test function  # TODO: extract to SkiggetyUtilsInstaller
+        install # TODO: catch exception and wrap in: raise "install command failed for #{self.class}"
+        # TODO: mark it installed with hash codes
+      #end
+    #end
+  end
+
+  # TODO: move to SkiggetyUtilsInstaller: def install
+  # TODO: move to SkiggetyUtilsInstaller:   raise "not implemented"
+  # TODO: move to SkiggetyUtilsInstaller: end
+
+  def install
+
+    if $interactive
+      system("ask_user_to 'make sure vim is installed'")
+      unless ( $?.exitstatus == 0 )
+        raise "user failed to install vim"
+      end
+
+      system("vim -do ~/.vimrc #{__FILE__}.config/vimrc") # TODO: extract path to config dir to SkiggetyUtilsInstaller
+    else
+      raise "skipping interactive vim install/config"
+    end
+  end
+
+end
+
+VimInstaller.run

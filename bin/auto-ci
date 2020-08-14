@@ -17,6 +17,7 @@ while sleep 60 # TODO TODO TODO: DELETE & replace with calling review on a funct
 do
     get_latest_code && $install && $dashboard && echo "auto-ci is SUCCEEDING!" || echo "auto-ci is failing!"
 
+    test_all
     dashboard
 done
 

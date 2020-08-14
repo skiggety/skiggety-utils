@@ -1,0 +1,6 @@
+# TODO TODO TODO TODO
+# TODO TODO: set tabstop in vimrc
+set nocp
+set ru
+set hlsearch
+syntax enable
