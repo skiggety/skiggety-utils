@@ -4,7 +4,31 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
 function main {
+    for arg in "$@"
+    do
+        shift
+        case "$arg" in
+            --non-interactive) set -- "$@" "-n" ;;
+            *)                 set -- "$@" "$arg" ;;
+        esac
+    done
+
+    # defaults
+    interactive=true
+
+    OPTIND=1
+    while getopts ":inhi?" opt
+    do
+        case "$opt" in
+            "i") interactive=true ;;
+            "n") interactive=false ;;
+            "h") exit_with_error "TODO: print usage" ;;
+            "?") exit_with_error "TODO: print usage" ;;
+            *) ;;
+        esac
+    done
     # TODO: maybe install git? at this point we're assuming it's already installed and just going ahead with configuration
+
     git-set-global-default 'credential.helper' 'cache --timeout=2592000'
     # git push || exit_with_error "git push failed"
 }
@@ -15,12 +39,19 @@ function git-set-global-default {
     # TODO: local reason="$3"
 
     previous_value=$(git config --global --get $key)
-    if [ "$value" != "$previous_value" ]; then
-        echo -n "Would you like to change the global git config value of '$key'${newline}    FROM '$previous_value'${newline}      TO '$value'${newline}       ? [Y/n]${newline}"
-        read -n1 answer
-        echo
-        if [[ "${answer}" =~ ^[Yy] ]]; then
-            git config --global "$key" "$value"
+
+    if [ "$value" != "$previous_value" ]
+    then
+        if $interactive
+        then
+            echo -n "Would you like to change the global git config value of '$key'${newline}    FROM '$previous_value'${newline}      TO '$value'${newline}       ? [Y/n]${newline}"
+            read -n1 answer
+            echo
+            if [[ "${answer}" =~ ^[Yy] ]]; then
+                git config --global "$key" "$value"
+            fi
+        else
+            exit_with_error "failed to change global default git config \"$key\" to \"$value\"."
         fi
     fi
 }

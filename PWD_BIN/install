@@ -90,6 +90,7 @@ function use_installer {
         debug_here "skipping \"$installer\" installer for now..."; return 0
     # elif [[ "$installer" == "vim" ]]; then
     #     debug_here "skipping \"$installer\" installer for now..."; return 0
+        # TODO TODO TODO: get really into editable vim macros (and/or emacs, just to try it)
     else
         echo "Running installer \"$installer\":"
         $installer_path $INSTALLER_ARGS || exit_with_error "$installer failed"
