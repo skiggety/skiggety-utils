@@ -62,6 +62,7 @@ function main {
     do
         if [ -f "$installer" ]; then
 
+            # TODO: instead of exiting on error, note it and move on. $cumulative_exit_code might be handy
             use_installer "$installer" $INSTALLER_ARGS || exit_with_error "installer \"$installer\" failed at $BASH_SOURCE:$LINENO"
             # configure "installer.config/" || exit_with_error "TODO" #  TODO: shoulcn't this be part of the installer?
             # TODO: make sure apps get configured properly, too, such as synergy, vim (incl vimrc), etc.

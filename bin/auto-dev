@@ -7,6 +7,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
 while sleep 20 ;do
+    clear
     ./PWD_BIN/test_all || echo_error "test FAILED" # TODO: add to $cumulative_exit_status
     dashboard # TODO TODO: loop_while -g -t 20 $dashboard # TODO: review_while ./PWD_BIN/dashboard || review_while $THIS_DIR/default_dashboard
 done
