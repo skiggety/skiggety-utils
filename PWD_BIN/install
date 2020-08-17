@@ -77,21 +77,17 @@ function use_installer {
     installer="$(basename $installer_path)"
 
     # TODO: DELETE this temporary special-case crap as soon as I can, probably when this gets rewritten in a real language:
-    if [[ "$installer" == "homebrew" ]]; then
+    if [[ "$installer" == "gimp" ||
+          "$installer" == "homebrew" ]]; then
         debug_here "skipping \"$installer\" installer for now..."; return 0
     elif [[ "$installer" == "local-backup" ]]; then
         debug_here "skipping \"$installer\" installer for now..."; return 0
-    elif [[ "$installer" == "skiggety.bash" ]]; then
-        debug_here "skipping \"$installer\" installer for now..."; return 0 # TODO: implement the installation of bashrc, etc.
     elif [[ "$installer" == "spectacle" ]]; then
         debug_here "skipping \"$installer\" installer for now..."; return 0
     elif [[ "$installer" == "synergy" ]]; then
         debug_here "skipping \"$installer\" installer for now..."; return 0
     elif [[ "$installer" == "uhk" ]]; then
         debug_here "skipping \"$installer\" installer for now..."; return 0
-    # elif [[ "$installer" == "vim" ]]; then
-    #     debug_here "skipping \"$installer\" installer for now..."; return 0
-        # TODO TODO TODO: get really into editable vim macros (and/or emacs, just to try it)
     else
         echo "Running installer \"$installer\":"
         $installer_path $INSTALLER_ARGS || exit_with_error "$installer failed" # TODO TODO TODO: if installer fails, count it as a failure in a variable "$cumulative_exit_status" and exit on error later, with a suggestion to re-run "install" manually

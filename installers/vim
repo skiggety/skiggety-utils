@@ -11,8 +11,9 @@ class VimInstaller
 
   def run # TODO: extract to SkiggetyUtilsInstaller
       $interactive = ! ARGV.delete('--non-interactive')
+
     # TODO: if not already installed (by checking for hash-stamped files # TODO: extract to SkiggetyUtilsInstaller
-      # TODO: if not already installed (using test function  # TODO: extract to SkiggetyUtilsInstaller
+      # TODO TODO: if not already installed by running 'vim --version' (using test function  # TODO: extract this if statement to SkiggetyUtilsInstaller
         install # TODO: catch exception and wrap in: raise "install command failed for #{self.class}"
         # TODO: mark it installed with hash codes
       #end
@@ -26,7 +27,7 @@ class VimInstaller
   def install
 
     if $interactive
-      system("ask_user_to 'make sure vim is installed'")
+      system("#{__dir__}/../bin/ask_user_to 'make sure vim is installed'")
       unless ( $?.exitstatus == 0 )
         raise "user failed to install vim"
       end
