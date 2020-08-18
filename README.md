@@ -24,10 +24,10 @@ Cool Programs you'll find in here:
 ==================================
 
 - duh
+- [grim](bin/grim)
 - gol
 - review
 - todo
-- grim
 - vimwhich
 
 misc TODO's:: (run  todo or dashboard for the full sorted list) (IGNORE_TODO)
