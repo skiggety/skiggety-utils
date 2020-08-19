@@ -6,7 +6,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/include_in_bashrc || exit 1
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
-    #review ci # TODO TODO TODO TODO: this should take care of the refresh interval, etc, without further input
+    #review ci # TODO TODO TODO TODO TODO: this should take care of the refresh interval, etc, without further input
 
 function get_latest_code {
   # TODO: deal with any local changes...delete them?

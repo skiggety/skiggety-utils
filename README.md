@@ -27,7 +27,7 @@ Cool Programs you'll find in here:
 - [grim](bin/grim)
 - gol
 - review
-- todo
+- [todo](bin/todo)
 - vimwhich
 
 misc TODO's:: (run  todo or dashboard for the full sorted list) (IGNORE_TODO)
