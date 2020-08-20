@@ -63,11 +63,14 @@ function main {
         if [ -f "$installer" ]; then
 
             # TODO: instead of exiting on error, note it and move on. $cumulative_exit_code might be handy
-            use_installer "$installer" $INSTALLER_ARGS || exit_with_error "installer \"$installer\" failed at $BASH_SOURCE:$LINENO"
+            use_installer "$installer" $INSTALLER_ARGS || accumulate_error "use_installer \"$installer\" FAILED ($(echo_here))"
+
             # configure "installer.config/" || exit_with_error "TODO" #  TODO: shoulcn't this be part of the installer?
             # TODO: make sure apps get configured properly, too, such as synergy, vim (incl vimrc), etc.
         fi
     done
+
+    exit_with_any_accumulated_errors
 }
 
 # this function runs the installer, checks the exit code, prints context/formatting around it, perhaps remembers if it has already succeeded.
@@ -80,8 +83,6 @@ function use_installer {
     if [[ "$installer" == "gimp" ||
           "$installer" == "homebrew" ]]; then
         debug_here "skipping \"$installer\" installer for now..."; return 0
-    elif [[ "$installer" == "local-backup" ]]; then
-        debug_here "skipping \"$installer\" installer for now..."; return 0
     elif [[ "$installer" == "spectacle" ]]; then
         debug_here "skipping \"$installer\" installer for now..."; return 0
     elif [[ "$installer" == "synergy" ]]; then
@@ -90,7 +91,8 @@ function use_installer {
         debug_here "skipping \"$installer\" installer for now..."; return 0
     else
         echo "Running installer \"$installer\":"
-        $installer_path $INSTALLER_ARGS || exit_with_error "$installer failed" # TODO TODO TODO: if installer fails, count it as a failure in a variable "$cumulative_exit_status" and exit on error later, with a suggestion to re-run "install" manually
+        $installer_path $INSTALLER_ARGS || { echo_error_here "installer \"$installer\" FAILED"; return 1; }
+        # TODO TODO TODO TODO: if installer fails, count it as a failure in a variable "$cumulative_exit_status" and exit on error later, with a suggestion to re-run "install" manually
     fi
 }
 

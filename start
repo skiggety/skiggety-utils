@@ -15,7 +15,7 @@ debug_here "utils successfully included" # TODO: use a flag to turn debug messag
 debug_here "let's try running install:"
 debug_here "--------------------------"
 
-./PWD_BIN/install || echo_error "Could not run \"./PWD_BIN/install"
+./PWD_BIN/install || echo_error_here "Could not run \"./PWD_BIN/install"
 # loop_until 10 ./PWD_BIN/install || exit_with_error "Could not run \"./PWD_BIN/install" # TODO: don't use relative path # TODO TODO: move most things into install, including any interactive stuff # TODO: use review_until, instead of loop_until
 
 debug_here "install completed successfully"; echo
@@ -29,7 +29,7 @@ debug_here "install completed successfully"; echo
 # TODO: DELETE  calls to auto-dev, as that's really not what this script is for..
 debug_here "let's try running auto-dev:"
 debug_here "---------------------------"
-$THIS_DIR/bin/auto-dev || exit_with_error "failed to run auto-dev" #TODO: since this is in ./PWD_BIN/, I shouldn't need to use a relative path
+$THIS_DIR/bin/auto-dev || exit_with_error "FAILED to run auto-dev" #TODO: since this is in ./PWD_BIN/, I shouldn't need to use a relative path
 
 echo
 exit_with_error "Technically FAILED, but if you got here, that's good."

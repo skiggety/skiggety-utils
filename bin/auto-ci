@@ -6,8 +6,6 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/include_in_bashrc || exit 1
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
-    #review ci # TODO TODO TODO TODO TODO: this should take care of the refresh interval, etc, without further input
-
 function get_latest_code {
   # TODO: deal with any local changes...delete them?
   git pull # TODO checkout fresh code, default to one branch
@@ -18,7 +16,9 @@ do
     clear
     get_latest_code && $install && $dashboard && echo "auto-ci is SUCCEEDING!" || echo "auto-ci is failing!"
 
-    test_all
+    #review ci # TODO TODO TODO TODO: this should take care of the refresh interval, etc, without further input
+
+    ./PWD_BIN/test_all && echo "test_all SUCCEEDED" || accumulate_error "test_all FAILED"
     dashboard
 done
 

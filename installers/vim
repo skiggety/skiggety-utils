@@ -1,38 +1,49 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
+
+require_relative '../lib/installable_skiggety_util.rb'
 
 class VimInstaller
 
-# TODO TODO: write tests for SkiggetyUtilsInstaller
-# TODO: include SkiggetyUtilsInstaller
+  include InstallableSkiggetyUtil
 
-  def self.run
+  def self.run # TODO: extract to InstallableSkiggetyUtil
     self.new.run
   end
 
-  def run # TODO: extract to SkiggetyUtilsInstaller
-      $interactive = ! ARGV.delete('--non-interactive')
+  def marked_done?          # TODO TODO TODO TODO: DELETE
+    return false            # TODO TODO TODO TODO: DELETE
+    raise "TODO: Implement" # TODO TODO TODO TODO: DELETE
+  end                       # TODO TODO TODO TODO: DELETE
 
-    # TODO: if not already installed (by checking for hash-stamped files # TODO: extract to SkiggetyUtilsInstaller
-      # TODO TODO: if not already installed by running 'vim --version' (using test function  # TODO: extract this if statement to SkiggetyUtilsInstaller
-        install # TODO: catch exception and wrap in: raise "install command failed for #{self.class}"
-        # TODO: mark it installed with hash codes
-      #end
-    #end
+  def installed?
+      # TODO TODO: if not already installed by running 'vim --version' (using test function  # TODO: extract this if statement to InstallableSkiggetyUtil
+    return false            # TODO TODO TODO TODO: DELETE
+    raise "TODO: Implement"
   end
 
-  # TODO: move to SkiggetyUtilsInstaller: def install
-  # TODO: move to SkiggetyUtilsInstaller:   raise "not implemented"
-  # TODO: move to SkiggetyUtilsInstaller: end
+  def configured?
+    return false            # TODO TODO TODO TODO: DELETE
+    raise "TODO: Implement"
+  end
+
+  # TODO: move to InstallableSkiggetyUtil: def install
+  # TODO: move to InstallableSkiggetyUtil:   raise "not implemented"
+  # TODO: move to InstallableSkiggetyUtil: end
 
   def install
-
     if $interactive
       system("#{__dir__}/../bin/ask_user_to 'make sure vim is installed'")
       unless ( $?.exitstatus == 0 )
         raise "user failed to install vim"
       end
+    else
+      raise "skipping interactive vim install/config"
+    end
+  end
 
-      system("vim -do ~/.vimrc #{__FILE__}.config/vimrc") # TODO: extract path to config dir to SkiggetyUtilsInstaller
+  def configure
+    if $interactive
+      system("vim -do ~/.vimrc #{__FILE__}.config/vimrc") # TODO: extract path to config dir to InstallableSkiggetyUtil
     else
       raise "skipping interactive vim install/config"
     end

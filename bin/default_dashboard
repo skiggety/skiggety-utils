@@ -6,6 +6,8 @@
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
+# TODO TODO: highlight TODO's and ERRORS
+
 echo "--------"
 $THIS_DIR/todo | tail -n 5 || exit_with_error "todo FAILED"
 

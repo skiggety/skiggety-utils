@@ -8,7 +8,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 
 while sleep 20 ;do
     clear
-    ./PWD_BIN/test_all || echo_error "test FAILED" # TODO: add to $cumulative_exit_status
+    ./PWD_BIN/test_all && echo "test_all SUCCEEDED" || accumulate_error "test_all FAILED"
     dashboard # TODO TODO: loop_while -g -t 20 $dashboard # TODO: review_while ./PWD_BIN/dashboard || review_while $THIS_DIR/default_dashboard
 done
 

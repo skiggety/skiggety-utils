@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# TODO: skiggety-utils/bin/dashboard should be in the path after PWD_BIN/dashboard, and just run the default dashboard
-
 # this script prints a summary of the status of development (or whatever) in the current directory, including information about git, todo's, tests, etc. it can often simply call default_dashboard from the path
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
@@ -28,6 +26,6 @@ fi
 
 bin/default_dashboard
 
-echo --------; echo ...shown at $(date) # TODO: this functionality should really be part of "review"
+echo "-------- ...shown at $(date)" # TODO: this functionality should really be part of "review"
 
 # More important than the output of default_dashboard:

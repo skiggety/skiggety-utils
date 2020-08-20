@@ -25,10 +25,11 @@ Cool Programs you'll find in here:
 
 - duh
 - [grim](bin/grim)
-- gol
-- review
+- [review](bin/review)
 - [todo](bin/todo)
+- dashboard
 - vimwhich
+- gol
 
 misc TODO's:: (run  todo or dashboard for the full sorted list) (IGNORE_TODO)
 ===============================================================
@@ -41,4 +42,9 @@ misc TODO's:: (run  todo or dashboard for the full sorted list) (IGNORE_TODO)
     - TODO: terminal profiles
         - TODO TODO: commit/sync/install mac terminal profiles?
         - TODO: ... and linux ones too
+
+- TODO: help set up home data center?
+  - TODO: set up router
+    - TODO: help set up local dns
+  - TODO: set up NAS
 

@@ -40,7 +40,7 @@ function main {
     done
 
     # set up bashrc
-    if grep "^PATH_TO_SKIGGETY_UTILS=" ~/.bashrc
+    if grep "^PATH_TO_SKIGGETY_UTILS=" ~/.bashrc > /dev/null
     # TOOD TODO: if contains_all_lines_in ~/.bashrc $TMP_BASHRC_SECTION # TODO: implement this function, which can use cat, sort, and uniq, and see if the linecount goes up
     then
         . ~/.bashrc
@@ -58,9 +58,9 @@ function main {
             ask_user_to "vimdiff ~/.bashrc $TMP_BASHRC" || exit_with_error "User did not complete bashrc install"
             rm $TMP_BASHRC
         else
-            echo_error "diff needed:"
-            echo_error "\$ diff ~/.bashrc $TMP_BASHRC"
-                           diff ~/.bashrc $TMP_BASHRC
+            echo_error_here "diff needed:"
+            echo_error_here "\$ diff ~/.bashrc $TMP_BASHRC"
+                                diff ~/.bashrc $TMP_BASHRC
             rm $TMP_BASHRC
             exit_with_error "Failed to modify ~/.bashrc because this is non-interactive mode. Please Re-run \"$THIS_DIR/../PWD_BIN/install\"."
         fi
@@ -69,16 +69,16 @@ function main {
     # set up bash_profile for macs
     if uname -a | grep Darwin > /dev/null
     then
-        if ! grep bashrc ~/.bash_profile
+        if ! grep bashrc ~/.bash_profile > /dev/null
         then
             MAC_BASH_PROFILE="$THIS_DIR/CONFIG/mac_bash_profile.bash"
             if $interactive
             then
                 ask_user_to "vimdiff ~/.bash_profile $MAC_BASH_PROFILE" || exit_with_error "User did not complete bashrc install"
             else
-                echo_error "diff needed:"
-                echo_error "\$ diff ~/.bash_profile $MAC_BASH_PROFILE"
-                               diff ~/.bash_profile $MAC_BASH_PROFILE
+                echo_error_here "diff needed:"
+                echo_error_here "\$ diff ~/.bash_profile $MAC_BASH_PROFILE"
+                                    diff ~/.bash_profile $MAC_BASH_PROFILE
                 exit_with_error "Failed to modify ~/.bash_profile because this is non-interactive mode. Please Re-run \"$THIS_DIR/../PWD_BIN/install\"."
             fi
         fi

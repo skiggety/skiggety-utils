@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+default_dashboard
+
+echo --------; echo ...shown at $(date) # TODO: this functionality should really be part of "review"

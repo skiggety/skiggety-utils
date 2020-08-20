@@ -1,2 +1,15 @@
+#!/usr/bin/env ruby
 
-# TODO TODO TODO TODO
+require_relative '../lib/installable_skiggety_util.rb'
+
+class LocalBackupSetterUpper
+
+  include InstallableSkiggetyUtil
+
+  def self.run # TODO: extract to InstallableSkiggetyUtil
+    self.new.run
+  end
+
+end
+
+LocalBackupSetterUpper.run
