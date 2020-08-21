@@ -1,1 +1,4 @@
 .*.swp
+
+# ignore the mac finder droppings:
+.DS_Store
