@@ -62,7 +62,7 @@ function main {
             echo_error_here "\$ diff ~/.bashrc $TMP_BASHRC"
                                 diff ~/.bashrc $TMP_BASHRC
             rm $TMP_BASHRC
-            exit_with_error "Failed to modify ~/.bashrc because this is non-interactive mode. Please Re-run \"$THIS_DIR/../PWD_BIN/install\"."
+            exit_with_error "Failed to modify ~/.bashrc because this is non-interactive mode. Please Re-run \"$THIS_DIR/../PWD_BIN/install_me\"."
         fi
     fi
 
@@ -79,7 +79,7 @@ function main {
                 echo_error_here "diff needed:"
                 echo_error_here "\$ diff ~/.bash_profile $MAC_BASH_PROFILE"
                                     diff ~/.bash_profile $MAC_BASH_PROFILE
-                exit_with_error "Failed to modify ~/.bash_profile because this is non-interactive mode. Please Re-run \"$THIS_DIR/../PWD_BIN/install\"."
+                exit_with_error "Failed to modify ~/.bash_profile because this is non-interactive mode. Please Re-run \"$THIS_DIR/../PWD_BIN/install_me\"."
             fi
         fi
     fi

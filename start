@@ -12,17 +12,17 @@ debug_here "utils successfully included" # TODO: use a flag to turn debug messag
 
 # TODO are "debug_here" and "echo_debug" redundant?
 
-debug_here "let's try running install:"
+debug_here "let's try running install_me:"
 debug_here "--------------------------"
 
-./PWD_BIN/install || echo_error_here "Could not run \"./PWD_BIN/install"
-# loop_until 10 ./PWD_BIN/install || exit_with_error "Could not run \"./PWD_BIN/install" # TODO: don't use relative path # TODO TODO: move most things into install, including any interactive stuff # TODO: use review_until, instead of loop_until
+./PWD_BIN/install_me || echo_error_here "Could not run \"./PWD_BIN/install_me"
+# loop_until 10 ./PWD_BIN/install_me || exit_with_error "Could not run \"./PWD_BIN/install_me" # TODO: don't use relative path # TODO TODO: move most things into install_me, including any interactive stuff # TODO: use review_until, instead of loop_until
 
-debug_here "install completed successfully"; echo
+debug_here "install_me completed successfully"; echo
 
 # echo_debug "$(echo_here), $(echo_eval PWD)" # TODO: MOVE this functionality elsewhere
 
-# TODO: I'm not even sure this is a good idea, but maybe reload ~/.bashrc and stuff now that it's been updated by ./install ? :       . ./lib/reload_env || exit_with_error "could not source \"./lib/reload_env\"" # TODO: don't use relative path
+# TODO: I'm not even sure this is a good idea, but maybe reload ~/.bashrc and stuff now that it's been updated by ./install_me ? :       . ./lib/reload_env || exit_with_error "could not source \"./lib/reload_env\"" # TODO: don't use relative path
 # debug_here
 # TODO: this is something similar that I'm also not sure is a good idea: ./bin/start_in_env.bash || exit_with_error "Could not run \"./bin/start_in_env.bash\"" # TODO: don't use relative path # TODO TODO: move most things in here, including any interactive stuff
 

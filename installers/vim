@@ -10,25 +10,15 @@ class VimInstaller
     self.new.run
   end
 
-  def marked_done?          # TODO TODO TODO TODO: DELETE
-    return false            # TODO TODO TODO TODO: DELETE
-    raise "TODO: Implement" # TODO TODO TODO TODO: DELETE
-  end                       # TODO TODO TODO TODO: DELETE
-
-  def installed?
-      # TODO TODO: if not already installed by running 'vim --version' (using test function  # TODO: extract this if statement to InstallableSkiggetyUtil
-    return false            # TODO TODO TODO TODO: DELETE
-    raise "TODO: Implement"
+  def apparently_installed?
+    vim_version = `vim --version | head -n 1`
+    return (vim_version =~ /8\.0/ ).is_a?(Numeric) # TODO: update desired vim version and make sure it includes the gui version, too
   end
 
-  def configured?
-    return false            # TODO TODO TODO TODO: DELETE
-    raise "TODO: Implement"
+  # err on the side of returning false...if these files don't match perfectly the user will have a chance to make sure it's set up right.
+  def apparently_configured?
+    FileUtils.compare_file(user_vimrc_path, template_vimrc_path)
   end
-
-  # TODO: move to InstallableSkiggetyUtil: def install
-  # TODO: move to InstallableSkiggetyUtil:   raise "not implemented"
-  # TODO: move to InstallableSkiggetyUtil: end
 
   def install
     if $interactive
@@ -43,10 +33,18 @@ class VimInstaller
 
   def configure
     if $interactive
-      system("vim -do ~/.vimrc #{__FILE__}.config/vimrc") # TODO: extract path to config dir to InstallableSkiggetyUtil
+      system("vim -do #{user_vimrc_path} #{__FILE__}.config/vimrc") # TODO: extract path to config dir to InstallableSkiggetyUtil
     else
       raise "skipping interactive vim install/config"
     end
+  end
+
+  def user_vimrc_path
+    File.expand_path('~/.vimrc')
+  end
+
+  def template_vimrc_path
+    File.join(config_dir_path,'vimrc')
   end
 
 end
