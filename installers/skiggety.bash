@@ -40,7 +40,7 @@ function main {
     done
 
     # set up bashrc
-    if grep "^PATH_TO_SKIGGETY_UTILS=" ~/.bashrc > /dev/null
+    if grep "^export PATH_TO_SKIGGETY_UTILS=" ~/.bashrc > /dev/null
     # TOOD TODO: if contains_all_lines_in ~/.bashrc $TMP_BASHRC_SECTION # TODO: implement this function, which can use cat, sort, and uniq, and see if the linecount goes up
     then
         . ~/.bashrc

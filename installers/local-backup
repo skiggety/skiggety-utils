@@ -10,6 +10,41 @@ class LocalBackupSetterUpper
     self.new.run
   end
 
+  def apparently_installed?
+    tmutil_version = `tmutil --version `
+    return (tmutil_version =~ / 4\.0\.0 / ).is_a?(Numeric) # TODO: update desired vim version and make sure it includes the gui version, too
+  end
+
+  def apparently_configured?
+    backup_done_indicator = `tmutil status|grep Percent`
+    return (backup_done_indicator =~ /Percent = 1;/ ).is_a?(Numeric).to_s
+  end
+
+  def install
+    # TODO TODO TODO TODO TODO TODO: if on Mac:
+    if $interactive
+      system("#{__dir__}/../bin/ask_user_to 'figure out how to get time machine installed'")
+      unless ( $?.exitstatus == 0 )
+        raise "user failed to install Time Machine"
+      end
+    else
+      raise "skipping interactive Time Machine install"
+    end
+  end
+
+  def configure
+    # TODO TODO TODO TODO TODO TODO: if on Mac:
+    if $interactive
+      system("open /System/Library/PreferencePanes/TimeMachine.prefPane")
+      system("#{__dir__}/../bin/ask_user_to 'set up time machine to make backups using the window that just opened automatically'")
+      unless ( $?.exitstatus == 0 )
+        raise "user failed to configure time machine"
+      end
+    else
+      raise "skipping interactive Time Machine config"
+    end
+  end
+
 end
 
 LocalBackupSetterUpper.run

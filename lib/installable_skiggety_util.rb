@@ -16,15 +16,13 @@ module InstallableSkiggetyUtil
       end
       mark_installed
     end
-    if config_exist?
-      if ! marked_configured?
-        if apparently_configured?
-          puts "#{self.class} can skip configuration this time, because it's done already" # TODO: debug only
-        else
-          configure
-        end
-        mark_configured
+    if ! marked_configured?
+      if apparently_configured?
+        puts "#{self.class} can skip configuration this time, because it's done already" # TODO: debug only
+      else
+        configure
       end
+      mark_configured
     end
   end
 
@@ -40,10 +38,6 @@ module InstallableSkiggetyUtil
 
   def marked_installed?
     File.exist?(current_install_marker_file_path)
-  end
-
-  def config_exist?
-    Dir.exist?(config_dir_path)
   end
 
   def marked_configured?
@@ -79,10 +73,18 @@ module InstallableSkiggetyUtil
   end
 
   def config_tree_hash
-    if ( '' != `git status -s #{config_dir_path}`)
-      raise "There are uncommitted changes in #{config_dir_path}, so #{self.class} will not do any configuration"
+    if config_exist?
+      if ( '' != `git status -s #{config_dir_path}`)
+        raise "There are uncommitted changes in #{config_dir_path}, so #{self.class} will not do any configuration"
+      end
+      return `git ls-tree HEAD -- #{config_dir_path}`.split(' ')[2]
+    else
+      return 'no_hash'
     end
-    return `git ls-tree HEAD -- #{config_dir_path}`.split(' ')[2]
+  end
+
+  def config_exist?
+    Dir.exist?(config_dir_path)
   end
 
   def config_dir_path

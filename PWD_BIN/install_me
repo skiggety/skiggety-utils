@@ -81,14 +81,14 @@ function use_installer {
 
     # TODO: DELETE this temporary special-case crap as soon as I can, probably when this gets rewritten in a real language:
     if [[ "$installer" == "gimp" ||
-          "$installer" == "homebrew" ]]; then
-        debug_here "skipping \"$installer\" installer for now..."; return 0
-    elif [[ "$installer" == "spectacle" ]]; then
-        debug_here "skipping \"$installer\" installer for now..."; return 0
-    elif [[ "$installer" == "synergy" ]]; then
-        debug_here "skipping \"$installer\" installer for now..."; return 0
-    elif [[ "$installer" == "uhk" ]]; then
-        debug_here "skipping \"$installer\" installer for now..."; return 0
+          "$installer" == "homebrew" ||
+          "$installer" == "rvm" ||
+          "$installer" == "spectacle" ||
+          "$installer" == "ssh-agent" ||
+          "$installer" == "synergy" ||
+          "$installer" == "uhk" ]]; then
+        # TODO?: debug_here "skipping \"$installer\" installer for now..."
+        return 0
     else
         echo "Running installer \"$installer\":"
         $installer_path $INSTALLER_ARGS || { echo_error_here "installer \"$installer\" FAILED"; return 1; }

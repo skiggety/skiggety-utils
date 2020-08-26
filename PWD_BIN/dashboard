@@ -13,13 +13,12 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 # pretty_sleep 10 || sleep 10
 
 # show diff with old mac files:
-# TODO TODO TODO: on mac, make sure .bash_profile is installed and calls .bashrc
 if ! [ -z "$SKIGGETY_UTILS_DONOR_DIR" ]
 then
-    echo --------
-    git diff --color=always --diff-filter=d -- $THIS_DIR/.. $SKIGGETY_UTILS_DONOR_DIR | head -n 10
-    echo --------
-    git diff --color=always --diff-filter=d --dirstat -- $THIS_DIR/.. $SKIGGETY_UTILS_DONOR_DIR | head -n 10
+    echo "-------- diff with $SKIGGETY_UTILS_DONOR_DIR :"
+    git diff --color=always --diff-filter=d -- $THIS_DIR/.. $SKIGGETY_UTILS_DONOR_DIR | head -n 3
+    echo "-------- diff summary for $SKIGGETY_UTILS_DONOR_DIR :"
+    git diff --color=always --diff-filter=d --dirstat -- $THIS_DIR/.. $SKIGGETY_UTILS_DONOR_DIR | head -n 3
 fi
 
 bin/default_dashboard

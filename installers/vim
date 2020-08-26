@@ -12,7 +12,7 @@ class VimInstaller
 
   def apparently_installed?
     vim_version = `vim --version | head -n 1`
-    return (vim_version =~ /8\.0/ ).is_a?(Numeric) # TODO: update desired vim version and make sure it includes the gui version, too
+    return (vim_version =~ / 8\.0 / ).is_a?(Numeric) # TODO: update desired vim version and make sure it includes the gui version, too
   end
 
   # err on the side of returning false...if these files don't match perfectly the user will have a chance to make sure it's set up right.
@@ -27,7 +27,7 @@ class VimInstaller
         raise "user failed to install vim"
       end
     else
-      raise "skipping interactive vim install/config"
+      raise "skipping interactive vim install"
     end
   end
 
