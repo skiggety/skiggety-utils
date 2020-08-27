@@ -91,5 +91,14 @@ module InstallableSkiggetyUtil
     installer_file_path + ".config"
   end
 
+  def on_mac_os?
+    systemtrue?("uname -a | grep Darwin > /dev/null").to_s
+  end
+
+  def systemtrue?(command)
+    system(command)
+    return ( $?.exitstatus == 0 )
+  end
+
 end
 
