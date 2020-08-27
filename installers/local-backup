@@ -29,7 +29,6 @@ class LocalBackupSetterUpper
   end
 
   def install
-    # TODO TODO TODO TODO TODO TODO: if on Mac:
     if on_mac_os?
       if $interactive
         system("#{__dir__}/../bin/ask_user_to 'figure out how to get time machine installed'")
