@@ -4,7 +4,7 @@ require 'fileutils'
 
 module InstallableSkiggetyUtil
 
-  def run # TODO: extract to InstallableSkiggetyUtil
+  def run
     $interactive = ! ARGV.delete('--non-interactive')
 
     # TODO TODO TODO TODO TODO TODO: put a begin/?? block around this. Exceptions should cause us to give up and move on. Exceptions should be thrown if the install cannot complete
@@ -24,6 +24,7 @@ module InstallableSkiggetyUtil
       end
       mark_configured
     end
+
   end
 
   def mark_installed

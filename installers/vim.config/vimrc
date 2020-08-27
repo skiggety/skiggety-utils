@@ -1,5 +1,30 @@
-# TODO TODO: set tabstop in vimrc
 set nocp
-set ru
 set hlsearch
 syntax enable
+
+"status bar
+set laststatus=2
+set ruler
+
+filetype plugin indent on
+
+highlight KeywordForComments ctermbg=yellow guibg=yellow
+au BufWinEnter * call matchadd("KeywordForComments", '\<\(TODO\|\(UN-\)\|HARDCODE\|DELETE\|UNCOMMENT\|COMMENT\|MAYBE\|ISSUE\|MOVE\|DEBUG\|byebug\)\>')
+
+highlight TrailingWhiteSpace ctermbg=red guibg=red
+au BufWinEnter * call matchadd("TrailingWhiteSpace", '\s\+$')
+
+highlight LeadingTabs ctermbg=darkgreen guibg=darkgreen
+au BufWinEnter * call matchadd("LeadingTabs", '\(^\s*\)\@<=\t')
+
+set expandtab	"Don't actually put tab characters in files!!
+set sw=4
+set ts=8
+
+autocmd Filetype sh set softtabstop=4
+autocmd Filetype sh set sw=4
+
+autocmd Filetype html set softtabstop=2
+autocmd Filetype html set sw=2
+autocmd Filetype ruby set softtabstop=2
+autocmd Filetype ruby set sw=2
