@@ -2,4 +2,6 @@
 
 default_dashboard
 
-echo --------; echo ...shown at $(date) # TODO: this functionality should really be part of "review"
+THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
+. $THIS_DIR/../lib/skiggety-utils.bash || exit 1
+echo_divider_with_text "#" "...shown at $(date)" # TODO: this functionality should really be part of "review"

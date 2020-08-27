@@ -8,21 +8,21 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 # TODO: make a template of this script
 
 # Less important than the output of default_dashboard:
-# echo "--------"
+# echo_divider "-"
 # grep -Rn "# This script" .
 # pretty_sleep 10 || sleep 10
 
 # show diff with old mac files:
 if ! [ -z "$SKIGGETY_UTILS_DONOR_DIR" ]
 then
-    echo "-------- diff with $SKIGGETY_UTILS_DONOR_DIR :"
+    echo_divider_with_text "-" "diff with \"$SKIGGETY_UTILS_DONOR_DIR\":"
     git diff --color=always --diff-filter=d -- $THIS_DIR/.. $SKIGGETY_UTILS_DONOR_DIR | head -n 3
-    echo "-------- diff summary for $SKIGGETY_UTILS_DONOR_DIR :"
+    echo_divider_with_text "-" "diff summary for \"$SKIGGETY_UTILS_DONOR_DIR\":"
     git diff --color=always --diff-filter=d --dirstat -- $THIS_DIR/.. $SKIGGETY_UTILS_DONOR_DIR | head -n 3
 fi
 
 bin/default_dashboard
 
-echo "-------- ...shown at $(date)" # TODO: this functionality should really be part of "review"
+echo_divider_with_text "#" "...shown at $(date)" # TODO: this functionality should really be part of "review"
 
 # More important than the output of default_dashboard:

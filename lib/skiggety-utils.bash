@@ -70,5 +70,31 @@ function echo_error {
     echo "ERROR: $*" >&2
 }
 
+function echo_divider_with_text {
+    char="$1"
+    text="$2"
+    echo_divider_without_newline "$char"
+    echo -ne "\r"
+    echo_char_n_times "$char" 8
+    echo " $text "
+}
+
+function echo_divider {
+    char="$1"
+    echo_divider_without_newline "$char"
+    echo
+}
+
+function echo_divider_without_newline {
+    char="$1"
+    echo_char_n_times "$char" 80 # TODO: sense terminal width or default to 80
+}
+
+function echo_char_n_times {
+    char="$1"
+    n="$2"
+    for ((i=1;i<=$n; i++)); do echo -n "$char"; done
+}
+
 # debug_eval_here "PATH"
 # which dashboard
