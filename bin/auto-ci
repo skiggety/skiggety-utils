@@ -16,7 +16,7 @@ do
     clear
     get_latest_code
 
-    #review ci # TODO TODO TODO TODO: this should take care of the refresh interval, etc, without further input
+    #review ci # TODO TODO TODO TODO TODO: this should take care of the refresh interval, etc, without further input
 
     ./PWD_BIN/test_all && echo "test_all SUCCEEDED" || accumulate_error "test_all FAILED"
     dashboard

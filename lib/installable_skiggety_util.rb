@@ -7,7 +7,7 @@ module InstallableSkiggetyUtil
   def run
     $interactive = ! ARGV.delete('--non-interactive')
 
-    # TODO TODO TODO TODO TODO TODO: put a begin/?? block around this. Exceptions should cause us to give up and move on. Exceptions should be thrown if the install cannot complete
+    # TODO: REFACTOR:
     if ! marked_installed?
       if apparently_installed?
         puts "#{self.class} can skip installation this time, because it's done already" # TODO: debug only
@@ -76,7 +76,7 @@ module InstallableSkiggetyUtil
   def config_tree_hash
     if config_exist?
       if ( '' != `git status -s #{config_dir_path}`)
-        raise "There are uncommitted changes in #{config_dir_path}, so #{self.class} will not do any configuration"
+        raise "There are uncommitted changes in #{config_dir_path}, so #{self.class} will not do any configuration" # TODO: we could return something random so it's different each time, not sure...
       end
       return `git ls-tree HEAD -- #{config_dir_path}`.split(' ')[2]
     else
