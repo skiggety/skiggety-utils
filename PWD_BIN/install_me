@@ -19,7 +19,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
     # TODO: install pocket
 
 # TODO TODO: RECOVER/INSTALL: .bashrc
-# TODO TODO TODO: install spectacle
+# TODO TODO TODO: install rectangle
 
 function main {
     for arg in "$@"
@@ -82,8 +82,8 @@ function use_installer {
     # TODO: DELETE this temporary special-case crap as soon as I can, probably when this gets rewritten in a real language:
     if [[ "$installer" == "gimp" ||
           "$installer" == "homebrew" ||
+          "$installer" == "rectangle" ||
           "$installer" == "rvm" ||
-          "$installer" == "spectacle" ||
           "$installer" == "ssh-agent" ||
           "$installer" == "synergy" ||
           "$installer" == "uhk" ]]; then
