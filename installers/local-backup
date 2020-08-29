@@ -19,6 +19,7 @@ class LocalBackupSetterUpper
     end
   end
 
+  # TODO: make sure there was a backup in the last week?
   def apparently_configured?
     if on_mac_os?
       backup_done_indicator = `tmutil status|grep Percent`

@@ -2,5 +2,5 @@
 
 # NOTE: using https://github.com/rxhanson/Rectangle because Spectacle is going to be unmaintained:  https://github.com/eczarny/spectacle#important-note
 
-raise "TODO TODO TODO: implement"
+raise "TODO TODO TODO TODO: implement"
 # I'll probably use homebrew for the install, which means I need to install homebrew as a dependency, only if on a mac though.
