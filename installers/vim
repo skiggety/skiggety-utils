@@ -19,7 +19,7 @@ class VimInstaller
   def apparently_configured?
     if ( ! File.exist?(user_vimrc_path) )
       return false
-    )
+    end
     FileUtils.compare_file(user_vimrc_path, template_vimrc_path)
   end
 
