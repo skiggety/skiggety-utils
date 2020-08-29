@@ -17,6 +17,9 @@ class VimInstaller
 
   # err on the side of returning false...if these files don't match perfectly the user will have a chance to make sure it's set up right.
   def apparently_configured?
+    if ( ! File.exist?(user_vimrc_path) )
+      return false
+    )
     FileUtils.compare_file(user_vimrc_path, template_vimrc_path)
   end
 
