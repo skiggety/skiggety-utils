@@ -2,3 +2,6 @@
 
 # ignore the mac finder droppings:
 .DS_Store
+
+/installers/.*.installed_with_version.*
+/installers/.*.configured_with_version.*
