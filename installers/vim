@@ -36,9 +36,9 @@ class VimInstaller
 
   def configure
     if $interactive
-      system("vim -do #{user_vimrc_path} #{__FILE__}.config/vimrc") # TODO: extract path to config dir to InstallableSkiggetyUtil
+      system("vim -do #{user_vimrc_path} #{template_vimrc_path}")
     else
-      raise "skipping interactive vim install/config"
+      raise "skipping interactive vim config"
     end
   end
 

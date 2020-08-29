@@ -7,6 +7,8 @@ module InstallableSkiggetyUtil
   def run
     $interactive = ! ARGV.delete('--non-interactive')
 
+    # TODO: if install happens, config should happen even if it's marked done
+
     # TODO: REFACTOR:
     if ! marked_installed?
       if apparently_installed?
@@ -28,12 +30,16 @@ module InstallableSkiggetyUtil
   end
 
   def mark_installed
-    # TODO: delete any past_install_marker_file_paths, and ignore them all in .gitignore
+    past_install_marker_file_paths.each do |path_to_delete|
+      File.delete(path_to_delete)
+    end
     FileUtils.touch(current_install_marker_file_path)
   end
 
   def mark_configured
-    # TODO: delete any past_config_marker_file_paths, and ignore them all in .gitignore
+    past_config_marker_file_paths.each do |path_to_delete|
+      File.delete(path_to_delete)
+    end
     FileUtils.touch(current_config_marker_file_path)
   end
 
@@ -45,8 +51,20 @@ module InstallableSkiggetyUtil
     File.exist?(current_config_marker_file_path)
   end
 
+  def past_install_marker_file_paths
+    result = Dir.glob(File.join(installer_directory_path, install_marker_file_name_prefix + "*"))
+    result.delete(current_install_marker_file_path)
+    return result
+  end
+
   def current_install_marker_file_path
     File.join(installer_directory_path, current_install_marker_file_name)
+  end
+
+  def past_config_marker_file_paths
+    result = Dir.glob(File.join(installer_directory_path, config_marker_file_name_prefix + "*"))
+    result.delete(current_config_marker_file_path)
+    return result
   end
 
   def current_config_marker_file_path
@@ -54,11 +72,19 @@ module InstallableSkiggetyUtil
   end
 
   def current_install_marker_file_name
-    "." + File.basename(installer_file_path) + ".installed_with_version." + installer_file_hash
+     install_marker_file_name_prefix + installer_file_hash
+  end
+
+  def install_marker_file_name_prefix
+    "." + File.basename(installer_file_path) + ".installed_with_version."
   end
 
   def current_config_marker_file_name
-    "." + File.basename(config_dir_path) + "ured_with_version." + config_tree_hash
+    config_marker_file_name_prefix + config_tree_hash
+  end
+
+  def config_marker_file_name_prefix
+    "." + File.basename(config_dir_path) + "ured_with_version."
   end
 
   def installer_directory_path
