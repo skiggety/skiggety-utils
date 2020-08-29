@@ -93,7 +93,11 @@ module InstallableSkiggetyUtil
   end
 
   def on_mac_os?
-    systemtrue?("uname -a | grep Darwin > /dev/null").to_s
+    @on_mac_os ||= calc_on_mac_os?
+  end
+
+  def calc_on_mac_os?
+    return systemtrue?("uname -a | grep Darwin > /dev/null")
   end
 
   def systemtrue?(command)
