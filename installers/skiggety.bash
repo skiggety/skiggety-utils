@@ -55,7 +55,7 @@ function main {
 
         if $interactive
         then
-            ask_user_to "vimdiff ~/.bashrc $TMP_BASHRC" || exit_with_error "User did not complete bashrc install"
+            $THIS_DIR/../bin/ask_user_to "vimdiff ~/.bashrc $TMP_BASHRC" || exit_with_error "User did not complete bashrc install"
             rm $TMP_BASHRC
         else
             echo_error_here "diff needed:"
