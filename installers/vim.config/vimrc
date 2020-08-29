@@ -9,7 +9,7 @@ set ruler
 filetype plugin indent on
 
 highlight KeywordForComments ctermbg=yellow guibg=yellow
-au BufWinEnter * call matchadd("KeywordForComments", '\<\(TODO\|\(UN-\)\|HARDCODE\|DELETE\|UNCOMMENT\|COMMENT\|MAYBE\|ISSUE\|MOVE\|DEBUG\|byebug\)\>')
+au BufWinEnter * call matchadd("KeywordForComments", '\<\(TODO\|\(UN-\)\|HARDCODE\|DELETE\|UNCOMMENT\|COMMENT\|MAYBE\|ISSUE\|MOVE\|DEBUG\|REFACTOR\|byebug\)\>')
 
 highlight TrailingWhiteSpace ctermbg=red guibg=red
 au BufWinEnter * call matchadd("TrailingWhiteSpace", '\s\+$')
