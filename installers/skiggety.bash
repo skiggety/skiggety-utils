@@ -74,7 +74,7 @@ function main {
             MAC_BASH_PROFILE="$THIS_DIR/CONFIG/mac_bash_profile.bash"
             if $interactive
             then
-                ask_user_to "vimdiff ~/.bash_profile $MAC_BASH_PROFILE" || exit_with_error "User did not complete bashrc install"
+                $THIS_DIR/../bin/ask_user_to "vimdiff ~/.bash_profile $MAC_BASH_PROFILE" || exit_with_error "User did not complete bashrc install"
             else
                 echo_error_here "diff needed:"
                 echo_error_here "\$ diff ~/.bash_profile $MAC_BASH_PROFILE"
