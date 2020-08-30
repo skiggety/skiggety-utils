@@ -2,6 +2,7 @@
 
 # This script continually displays and refreshes the dashboard
 # TODO: rename this script?
+# TODO TODO TODO: maybe extract "dev" out of auto-dev like this was extracted out of auto-dev, since you can use review and get dynamic sleep time
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
@@ -10,6 +11,7 @@ while sleep 20 ;do
     clear
     ./PWD_BIN/test_all && echo "test_all SUCCEEDED" || accumulate_error "test_all FAILED"
     dashboard # TODO TODO: loop_while -g -t 20 $dashboard # TODO: review_while ./PWD_BIN/dashboard || review_while $THIS_DIR/default_dashboard
+    echo_divider_with_text "#" "...shown at $(date)" # TODO: use "review so you can DELETE this line
 done
 
 # TODO: get donor code from old script "dashboard", but run make sure install works first (run git pull, and install first)
