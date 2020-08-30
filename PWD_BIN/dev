@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# This script ... (TODO)
+
+THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
+. $THIS_DIR/../lib/skiggety-utils.bash || exit 1
+
+./PWD_BIN/test_all && echo "test_all SUCCEEDED" || accumulate_error "test_all FAILED"
+dashboard
