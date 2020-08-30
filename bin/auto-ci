@@ -1,12 +1,4 @@
 #!/usr/bin/env bash
 
 # This script checks out fresh code and tries it out
-
-#review ci # TODO TODO TODO TODO TODO: this should take care of the refresh interval, etc, without further input
-
-ci
-while sleep 60 # TODO TODO TODO: DELETE & replace with calling review on a function or command that does multiple things
-do
-    ci
-done
-
+review ci

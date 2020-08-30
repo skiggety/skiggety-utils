@@ -23,6 +23,4 @@ fi
 
 bin/default_dashboard
 
-echo_divider_with_text "#" "...shown at $(date)" # TODO: this functionality should really be part of "review"
-
 # More important than the output of default_dashboard:

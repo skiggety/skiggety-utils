@@ -25,7 +25,7 @@ Cool Programs you'll find in here:
 
 - duh
 - [grim](bin/grim)
-- [review](bin/review)
+- [review](bin/review) - A program that displays output of other programs and refreshes.
 - [todo](bin/todo)
 - dashboard
 - vimwhich

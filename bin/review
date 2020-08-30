@@ -1,0 +1,52 @@
+#!/usr/bin/env ruby
+
+# TODO TODO: capture all args (after flags) as a command to run repeatedly
+
+class ReviewProgram
+
+  def self.run
+    self.new.run
+  end
+
+  def run
+    $interactive = ! ARGV.delete('--non-interactive')
+
+    command = ARGV.join(' ') # TODO: make sure I can deal with more complex quoting in my commands
+
+    delay = 1
+    system(command)
+    show_time
+    last_output = output = ''
+    puts "sleeping for #{delay} seconds, the first time..."
+    while system("sleep #{delay}") # TODO: pretty_sleep
+      last_output = output
+      non_interactive_command = "script -q /dev/null \"#{command}\" 2>&1"
+      output = `#{non_interactive_command}`
+      puts output
+      show_time
+      change_detected = true
+      if ( output == last_output )
+        change_detected = false
+      end
+      delay = adjust_delay(delay,change_detected)
+      puts "sleeping for #{delay} seconds..."
+    end
+
+  end
+
+  def adjust_delay(delay,change_detected)
+    if change_detected
+      result = 1
+    else
+      result = delay + 1
+    end
+    return result
+  end
+
+  def show_time
+    system("echo_divider_with_text \"#\" \"...shown at $(date)\"")
+  end
+
+end
+
+ReviewProgram.run

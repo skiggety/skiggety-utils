@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
+. $THIS_DIR/../lib/skiggety-utils.bash || exit 1
+
+echo_divider_with_text "$@"
