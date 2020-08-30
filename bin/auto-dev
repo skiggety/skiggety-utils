@@ -11,7 +11,7 @@ review dev
 
 # TODO: get donor code from old script "dashboard", but run make sure install works first (run git pull, and install first)
 
-# # TODO: API spec (name changes): 
+# # TODO: API spec (name changes):
 #   # TODO: "auto-dev" will replace what was called "dashboard" when I worked at TBI. It basically runs "review dashboard"
 #   # TODO: if you enter the command "review dashboard" you get the dashboard, continually updated on your screen.
 #   # TODO: "review" will replace "loop"

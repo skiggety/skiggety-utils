@@ -10,6 +10,10 @@ class VimInstaller
     self.new.run
   end
 
+  def name # TODO: EXTRACT InstallableSkiggetyUtil
+    File.basename(__FILE__)
+  end
+
   def apparently_installed?
     vim_version = `vim --version | head -n 1`
     return (vim_version =~ / 8\.0 / ).is_a?(Numeric) # TODO: update desired vim version and make sure it includes the gui version, too

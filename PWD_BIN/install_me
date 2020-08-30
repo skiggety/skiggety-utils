@@ -90,7 +90,6 @@ function use_installer {
         # TODO?: debug_here "skipping \"$installer\" installer for now..."
         return 0
     else
-        echo "Running installer \"$installer\":"
         $installer_path $INSTALLER_ARGS || { echo_error_here "installer \"$installer\" FAILED"; return 1; }
         # TODO TODO TODO TODO: if installer fails, count it as a failure in a variable "$cumulative_exit_status" and exit on error later, with a suggestion to re-run "install" manually
     fi

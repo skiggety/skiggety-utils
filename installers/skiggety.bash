@@ -15,6 +15,8 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 
 
 function main {
+    echo "Installing $(basename $0)"
+
     for arg in "$@"
     do
         shift
