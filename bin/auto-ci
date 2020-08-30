@@ -2,6 +2,7 @@
 
 # This script checks out fresh code and tries it out
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
+PATH_TO_SKIGGETY_UTILS="$(cd "$(dirname $THIS_DIR)";pwd)"
 . $THIS_DIR/../lib/include_in_bashrc || exit 1
 
 review ci

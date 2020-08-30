@@ -5,8 +5,6 @@
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
-# TODO: make a template of this script
-
 # Less important than the output of default_dashboard:
 # echo_divider "-"
 # grep -Rn "# This script" .
