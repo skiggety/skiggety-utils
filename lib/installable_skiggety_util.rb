@@ -10,8 +10,8 @@ module InstallableSkiggetyUtil
     # TODO: if install happens, config should happen even if it's marked done
 
     # TODO: REFACTOR:
-    puts "Installing #{name}"
     if ! marked_installed?
+      puts "Installing #{name}"
       if apparently_installed?
         puts "#{self.class} can skip installation this time, because it's done already" # TODO: debug only
       else
@@ -20,6 +20,7 @@ module InstallableSkiggetyUtil
       mark_installed
     end
     if ! marked_configured?
+      puts "Configuring #{name}"
       if apparently_configured?
         puts "#{self.class} can skip configuration this time, because it's done already" # TODO: debug only
       else

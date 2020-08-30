@@ -1,6 +1,45 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 
 # NOTE: using https://github.com/rxhanson/Rectangle because Spectacle is going to be unmaintained:  https://github.com/eczarny/spectacle#important-note
 
-raise "TODO TODO TODO TODO: implement"
-# I'll probably use homebrew for the install, which means I need to install homebrew as a dependency, only if on a mac though.
+require_relative '../lib/installable_skiggety_util.rb'
+
+class RectangleInstaller
+
+  include InstallableSkiggetyUtil
+
+  def self.run # TODO: extract to InstallableSkiggetyUtil
+    self.new.run
+  end
+
+  def name # TODO: EXTRACT InstallableSkiggetyUtil
+    File.basename(__FILE__)
+  end
+
+  def apparently_installed?
+    return false # TODO: DELETE
+    raise "TODO"
+  end
+
+  def install
+    if on_mac_os?
+      # Using homebrew for the install, which means I need to install homebrew as a dependency, only if on a mac though.
+
+      # TODO: method extract call_peer_installer:
+      homebrew_install_command = File.join(File.dirname(__FILE__),"homebrew")
+      unless $interactive
+        homebrew_install_command = homebrew_install_command + " --non-interactive"
+      end
+      system(homebrew_install_command)
+      raise "Cannot install rectangle, because homebrew install failed" unless ($? == 0 )
+
+      system("echo TOOD install rectangle with homebrew")
+      raise "rectangle install failed" unless ($? == 0 )
+      raise "TODO TODO TODO TODO TODO"
+    end
+
+  end
+
+end
+
+RectangleInstaller.run

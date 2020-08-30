@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/installable_skiggety_util.rb'
+
+class HomebrewInstaller
+
+  include InstallableSkiggetyUtil
+
+  def self.run # TODO: extract to InstallableSkiggetyUtil
+    self.new.run
+  end
+
+  def name # TODO: EXTRACT InstallableSkiggetyUtil
+    File.basename(__FILE__)
+  end
+
+  def apparently_installed?
+    return false # TODO: DELETE
+    raise "TODO"
+
+  end
+
+  def install
+    if on_mac_os?
+      if $interactive
+        raise "TODO"
+      else
+        raise "Cannot install homebrew in non-interactive mode, user should run \"install_me\" or \"#{__FILE__}\"."
+      end
+    end
+  end
+
+end
+
+HomebrewInstaller.run

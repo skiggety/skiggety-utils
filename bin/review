@@ -15,7 +15,6 @@ class ReviewProgram
 
     delay = 1
 
-    system('clear')
     system(command)
     show_time
 
