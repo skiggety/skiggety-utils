@@ -34,7 +34,7 @@ class VimInstaller
         raise "user failed to install vim"
       end
     else
-      raise "skipping interactive vim install"
+      raise "Cannot install vim in non-interactive mode, user should run \"install_me\" or \"#{__FILE__}\"."
     end
   end
 
@@ -42,7 +42,7 @@ class VimInstaller
     if $interactive
       system("vim -do #{user_vimrc_path} #{template_vimrc_path}")
     else
-      raise "skipping interactive vim config"
+      raise "Cannot configure vim in non-interactive mode, user should run \"install_me\" or \"#{__FILE__}\"."
     end
   end
 

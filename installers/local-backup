@@ -41,7 +41,7 @@ class LocalBackupSetterUpper
           raise "user failed to install Time Machine"
         end
       else
-        raise "skipping interactive Time Machine install"
+        raise "Cannot install Time Machine in non-interactive mode, user should run \"install_me\" or \"#{__FILE__}\"."
       end
     else
       raise NotImplementedError, "TODO: implement this for this OS"
@@ -57,7 +57,7 @@ class LocalBackupSetterUpper
           raise "user failed to configure time machine"
         end
       else
-        raise "skipping interactive Time Machine config"
+        raise "Cannot configure Time Machine in non-interactive mode, user should run \"install_me\" or \"#{__FILE__}\"."
       end
     else
       raise NotImplementedError, "TODO: implement this for this OS"

@@ -15,19 +15,27 @@ class HomebrewInstaller
   end
 
   def apparently_installed?
-    return false # TODO: DELETE
-    raise "TODO"
-
+    if on_mac_os?
+      homebrew_version = `brew --version `
+      return (homebrew_version =~ / 2\.4/ ).is_a?(Numeric) # TODO: update desired version and make sure it includes the gui version, too
+    else
+      return true
+    end
   end
 
   def install
     if on_mac_os?
       if $interactive
-        raise "TODO"
+        system('/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"')
+        raise "failed to install homebrew, please check http://brew.sh" unless ($? == 0 )
       else
         raise "Cannot install homebrew in non-interactive mode, user should run \"install_me\" or \"#{__FILE__}\"."
       end
     end
+  end
+
+  def apparently_configured?
+    true
   end
 
 end

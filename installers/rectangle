@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-# NOTE: using https://github.com/rxhanson/Rectangle because Spectacle is going to be unmaintained:  https://github.com/eczarny/spectacle#important-note
+# NOTE: using https://github.com/rxhanson/Rectangle because Spectacle is going to be unmaintained: https://github.com/eczarny/spectacle#important-note
 
 require_relative '../lib/installable_skiggety_util.rb'
 
@@ -17,6 +17,14 @@ class RectangleInstaller
   end
 
   def apparently_installed?
+    if on_mac_os?
+      return File.exist?("/Applications/Rectangle.app")
+    else
+      return true
+    end
+  end
+
+  def apparently_configured?
     return false # TODO: DELETE
     raise "TODO"
   end
@@ -33,11 +41,23 @@ class RectangleInstaller
       system(homebrew_install_command)
       raise "Cannot install rectangle, because homebrew install failed" unless ($? == 0 )
 
-      system("echo TOOD install rectangle with homebrew")
+      system("brew cask install rectangle")
       raise "rectangle install failed" unless ($? == 0 )
-      raise "TODO TODO TODO TODO TODO"
     end
+  end
 
+  def configure
+    if on_mac_os?
+      if $interactive
+        system("open /Applications/Rectangle.app")
+        system("#{__dir__}/../bin/ask_user_to 'set up Rectangle'")
+        unless ( $?.exitstatus == 0 )
+          raise "user failed to configure #{name}"
+        end
+      else
+        raise "Cannot configure rectangle in non-interactive mode, user should run \"install_me\" or \"#{__FILE__}\"."
+      end
+    end
   end
 
 end
