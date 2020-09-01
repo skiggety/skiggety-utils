@@ -36,12 +36,16 @@ misc TODO's:: (run  todo or dashboard for the full sorted list) (IGNORE_TODO)
 
 - TODO TODO: commit initial skigg-utils, to get to parity with what I already like to use
 - TODO: install other stuff (start automating installer in skigg-utils)
-    - TODO TODO: setup backups
+- TODO TODO: music rotator thingy
 - TODO: mini-project: raspberry pi backup machine, and the software to run it.
+- TODO: "playbot", a program that tunes in youtube livestreams, video meetings, watch later, podcasts and your personal dashboards, automatically. Great as an information radiator.
+- TODO: inforad (chrome extension?) information radiator
+- TODO: collect data on email inbox, etc. and auto-generate graphs for the dashboard
 - TODO: systematized config (automate the configuration I always want anyway)
     - TODO: terminal profiles
         - TODO TODO: commit/sync/install mac terminal profiles?
         - TODO: ... and linux ones too
+    - TODO TODO: hook up to google drive
 
 - TODO: help set up home data center?
   - TODO: set up router

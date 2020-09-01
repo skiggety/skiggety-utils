@@ -21,4 +21,7 @@ fi
 
 bin/default_dashboard
 
+# TODO?: tell you what command to run to commit changes or whatever
+# TODO?: graph score over time
+
 # More important than the output of default_dashboard:

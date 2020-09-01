@@ -9,7 +9,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 # TODO TODO: highlight TODO's and ERRORS
 
 echo_divider_with_text "-" "TODO's:"
-$THIS_DIR/todo | tail -n 5 || exit_with_error "todo FAILED" # TODO: summarize_result -n 5 todo
+$THIS_DIR/todo | tail -n 10 || exit_with_error "todo FAILED" # TODO: summarize_result -n 5 todo
 
 # TODO: only do this stuff if it's a git repository
 # echo_divider_with_text "-" "git diff of unstaged files:"

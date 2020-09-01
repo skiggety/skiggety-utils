@@ -2,9 +2,10 @@
 
 # This script continually displays and refreshes the dashboard
 # TODO: rename this script?
-# TODO TODO TODO: maybe extract "dev" out of auto-dev like this was extracted out of auto-dev, since you can use review and get dynamic sleep time
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
+PATH_TO_SKIGGETY_UTILS="$(cd "$(dirname $THIS_DIR)";pwd)"
+. $THIS_DIR/../lib/include_in_bashrc || exit 1
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
 review dev

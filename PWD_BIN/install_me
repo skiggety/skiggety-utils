@@ -3,23 +3,13 @@
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
-# TODO TODO TODO: Rewrite this in ruby or python...we need to do some smart
+# TODO TODO: Rewrite this in ruby or python...we need to do some smart (...TODO?)
 
-# TODO TODO: things to handle inter-installer dependencies, retrying only
-# TODO TODO: as many times as will be helpful, etc. For now, I'll do a
-# TODO TODO: dummy version that will speed through a few of them.
-    # TODO: when an installer succeeds, hash the file contents, and save out a file (ignored_by_git) with the hash in it's name. That means that version of the file need not be run again.
-
-# TODO: install-skigg-utils || exit_with_error "TODO"
-# TODO: setup-computer || exit_with_error "TODO"
-    # TODO: including bashrc, bash prompt, etc.
-    # TODO TODO: make sure path to skigg_utils bin is in your .bashrc
-    # TODO: reload bashrc
 # TODO: install and configure 3rd party programs
     # TODO: install pocket
-
-# TODO TODO: RECOVER/INSTALL: .bashrc
-# TODO TODO TODO: install rectangle
+    # TODO TODO: install custom list app (opens dedicated browser window "as an app") (huh?)
+    # TODO TODO: install a music player of some sort
+    # TODO: install/config chrome tab scheduler and/or other stuff to enable a some kind of dashboard in a web browswer
 
 function main {
     for arg in "$@"
@@ -90,7 +80,6 @@ function use_installer {
         return 0
     else
         $installer_path $INSTALLER_ARGS || { echo_error_here "installer \"$installer\" FAILED"; return 1; }
-        # TODO TODO TODO TODO: if installer fails, count it as a failure in a variable "$cumulative_exit_status" and exit on error later, with a suggestion to re-run "install" manually
     fi
 }
 

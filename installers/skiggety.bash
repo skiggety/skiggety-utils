@@ -1,21 +1,15 @@
 #!/usr/bin/env bash
 
-# This script (... TODO TODO TODO explain )
+# This script sets up my bash environment the way I like it.
+
+# TODO TODO: use "duh" output as bash prompt
+# TODO?: reload bashrc after setting it up?
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
-# TODO TODO: install custom list app (opens dedicated browser window "as an app") (huh?)
-# TODO TODO: hook up to google drive
-# TODO: collect data on email inbox, etc. and auto-generate graphs for the dashboard
-# TODO TODO TODO: music rotator thingy
-# TODO TODO: (and a music player of some sort)
-# TODO: "playbot", a program that tunes in youtube livestreams, video meetings, watch later, podcasts and your personal dashboards, automatically. Great as an information radiator.
-# TODO: install/config chrome tab scheduler and/or other stuff to enable a some kind of dashboard in a web browswer
-
-
 function main {
-    echo "Installing $(basename $0)"
+    echo "Setting up $(basename $0)"
 
     for arg in "$@"
     do

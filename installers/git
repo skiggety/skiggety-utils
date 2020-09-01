@@ -4,8 +4,6 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
 function main {
-    echo "Installing $(basename $0)"
-
     for arg in "$@"
     do
         shift
@@ -31,6 +29,9 @@ function main {
     done
     # TODO: maybe install git? at this point we're assuming it's already installed and just going ahead with configuration
 
+    # TODO: Install git?: echo "Installing $(basename $0)"
+
+    echo "Configuring $(basename $0)"
     git-set-global-default 'credential.helper' 'cache --timeout=2592000'
     # git push || exit_with_error "git push failed"
 }
