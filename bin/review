@@ -1,6 +1,14 @@
 #!/usr/bin/env ruby
 
-# This program that displays output of other programs and refreshes.
+# This program displays output of other programs and refreshes.
+
+# For example, lets say you want to grep your text files for trailing spaces,
+# you could do so with the command 'grep -RI " $" .', but it might be nice to
+# keep running that command and updating a terminal with fresh output while you
+# eliminate the trailing spaces in another terminal. In that case, prepend
+# "review" to the command to get 'review grep -RI " $" .'. The grep will run
+# repeatedly you stop it, waiting a few seconds in between each run (this time
+# will adjust automatically.
 
 class ReviewProgram
 
