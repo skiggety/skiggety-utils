@@ -18,6 +18,7 @@ then
     echo_divider_with_text "-" "diff summary for \"$SKIGGETY_UTILS_DONOR_DIR\":"
     git diff --color=always --diff-filter=d --dirstat -- $THIS_DIR/.. $SKIGGETY_UTILS_DONOR_DIR | head -n 3
 fi
+echo_divider "-"
 
 bin/default_dashboard
 

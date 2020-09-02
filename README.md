@@ -23,7 +23,7 @@ Core Design Decisions and Questions:
 Cool Programs you'll find in here:
 ==================================
 
-- duh
+- [duh](bin/duh) - Show Directory, Username, and Hostname  (in scp format). Useful in prompts
 - [grim](bin/grim)
 - [review](bin/review) - A program that displays output of other programs and refreshes.
 - [todo](bin/todo)

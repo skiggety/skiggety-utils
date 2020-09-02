@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+PWD_PRETTY=${PWD/#$HOME/\~}
+
+COLOR1=''
+COLOR2=''
+COLOR3=''
+
+if [ $CLICOLOR == 'xterm-color' ] # TODO: look at other things that should enable color, CLICOLOR is for mac
+then
+    COLOR1='\033[1;33m'
+    COLOR2='\033[1;35m'
+    COLOR3='\033[1;36m'
+    NO_COLOR='\033[0m'
+fi
+
+echo -e ${COLOR1}$USER${NO_COLOR}@${COLOR2}$HOSTNAME${NO_COLOR}:${COLOR3}$PWD_PRETTY${NO_COLOR}
+
