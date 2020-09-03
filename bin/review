@@ -51,7 +51,7 @@ class ReviewProgram
     if change_detected
       result = 1
     else
-      result = delay + 1
+      result = ( 1.02 * delay).floor + 1
     end
     return result
   end
