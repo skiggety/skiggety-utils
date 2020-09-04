@@ -1,4 +1,4 @@
-# TODO: . $THIS_DIR/shelper.bash || exit 1      # TODO include shelper.bash which checks bash version
+# TODO: . $THIS_DIR/shelper.bash || exit 1 # TODO?: extract & include shelper.bash which checks bash version
 
 newline='
 '
@@ -53,7 +53,6 @@ function debug_eval_here {
 
 function debug_here {
     echo_debug "$* at \"${BASH_SOURCE[1]}\":${BASH_LINENO[0]}"
-    # TODO: echo_debug "$* $(echo_callsite)
 }
 
 function echo_eval {

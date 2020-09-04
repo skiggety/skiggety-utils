@@ -9,5 +9,5 @@ banner='########################################################################
 # ding
 tput bel
 
-bash --rcfile <(cat ~/.bashrc; echo "PS1=\"${newline}$banner${newline}# TODO:${newline}# 1.) $TASK_DESCRIPTION${newline}# 2.) Run \\\"exit 0\\\" for success, \\\"exit 1\\\" to give up and fail.${newline}$banner${newline}\$PS1\"") -
+bash --rcfile <(cat ~/.bashrc; echo "PS1=\"${newline}$banner${newline}# TODO:${newline}# 1.) $TASK_DESCRIPTION${newline}# 2.) Run \\\"exit 0\\\" for success, \\\"exit 1\\\" to give up and fail.${newline}$banner${newline}\$PS1\"") - # IGNORE_TODO
 exit $?

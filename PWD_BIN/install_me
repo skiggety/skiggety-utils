@@ -3,6 +3,8 @@
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
+# This script ... (TODO)
+
 # TODO TODO: Rewrite this in ruby or python...we need to do some smart (...TODO?)
 
 # TODO: install and configure 3rd party programs

@@ -6,7 +6,7 @@ export PATH="$PATH:./PWD_BIN:$PATH_TO_SKIGGETY_UTILS/bin"
 export PS1="\$(duh)
 $ "
 
-# TODO: ssh-agent # TODO run in background?
+# TODO run 'ssh-agent' in background?
 
 export CLICOLOR='xterm-color' # colorize ls output and such in mac xterm
 

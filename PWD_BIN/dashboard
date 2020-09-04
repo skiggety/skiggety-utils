@@ -10,8 +10,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 # grep -Rn "# This script" .
 # pretty_sleep 10 || sleep 10
 
-# TODO TODO: work on this diff:
-# show diff with old mac files:
+# show diff with old mac files: # TODO TODO: work on this diff:
 if ! [ -z "$SKIGGETY_UTILS_DONOR_DIR" ]
 then
     echo_divider_with_text "-" "diff summary for \"$SKIGGETY_UTILS_DONOR_DIR\":"
@@ -22,6 +21,6 @@ echo_divider "-"
 bin/default_dashboard
 
 # TODO?: tell you what command to run to commit changes or whatever
-# TODO?: graph score over time
+# TODO?: graph score over time (see program "progress")
 
 # More important than the output of default_dashboard:

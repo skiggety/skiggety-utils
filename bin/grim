@@ -6,7 +6,9 @@
 # location with vim. For example, if you run "grim gobbledygooklkajsdfoine", it
 # should bring you right here.
 
-#TODO?: VIM_OPTIONS=""
+# TODO TODO: make sure not to open duplicate files
+
+# TODO?: VIM_OPTIONS=""
 GREP_OPTIONS="-Rl"
 VIM_SEARCH_STRING_SUFFIX=""
 
@@ -39,7 +41,7 @@ if ! [ -z "$*" ]; then
 fi
 echo GRIM_TARGET_STRING is: $GRIM_TARGET_STRING
 
-# TODO TODO: don't open vim swap files, in fact, maybe no hidden files at all
+# don't open vim swap files
 GRIM_FILES=`grep $GREP_OPTIONS "$GRIM_TARGET_STRING" .|grep -v .swp\$`
 echo GRIM_FILES are: $GRIM_FILES
 

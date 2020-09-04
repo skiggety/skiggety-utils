@@ -31,7 +31,7 @@ Cool Programs you'll find in here:
 - vimwhich
 - gol
 
-misc TODO's:: (run  todo or dashboard for the full sorted list) (IGNORE_TODO)
+misc TODO's:: (run 'todo' or 'dashboard' for the full sorted list) <!-- (IGNORE_TODO) -->
 ===============================================================
 
 - TODO TODO: commit initial skigg-utils, to get to parity with what I already like to use

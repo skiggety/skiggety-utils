@@ -17,4 +17,4 @@ review dev
 #   # TODO: if you enter the command "review dashboard" you get the dashboard, continually updated on your screen.
 #   # TODO: "review" will replace "loop"
 #   # TODO: "dashboard" will replace "summarize_status". It displays a snapshot of current status
-#   # TODO: "./PWD_BIN/local_status" will replace ./status
+#   # TODO?: "./PWD_BIN/local_status" will replace ./status

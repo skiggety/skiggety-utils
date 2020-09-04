@@ -8,7 +8,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/lib/include_in_bashrc || exit 1
 . $THIS_DIR/lib/skiggety-utils.bash || exit 1
 
-debug_here "utils successfully included" # TODO: use a flag to turn debug messages on or off
+debug_here "utils successfully included" # TODO TODO: use a flag to turn debug messages on or off
 
 # TODO are "debug_here" and "echo_debug" redundant?
 
