@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# This script ... (TODO)
+# This script performs one development cycle, whatever that means in any individual project. For this project, it means running test_all and showing the dashboard.
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1

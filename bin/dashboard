@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# This script allows 'default_dashboard' to be called as 'dashboard' if '$PWD/PWD_BIN/dashboard' is not present.
+
 default_dashboard
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"

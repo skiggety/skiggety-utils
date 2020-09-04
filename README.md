@@ -23,19 +23,19 @@ Core Design Decisions and Questions:
 Cool Programs you'll find in here:
 ==================================
 
-- [duh](bin/duh) - Show Directory, Username, and Hostname  (in scp format). Useful in prompts
-- [grim](bin/grim)
+- [duh](bin/duh) - Show Directory, Username, and Hostname (in scp format). Useful in prompts.
+- [grim](bin/grim) - GRep for string and open in vIM.
 - [review](bin/review) - A program that displays output of other programs and refreshes.
 - [todo](bin/todo)
 - dashboard
-- vimwhich
+- vimwhich - (TODO TODO TODO TODO TODO ...)
 - gol
 
 misc TODO's:: (run 'todo' or 'dashboard' for the full sorted list) <!-- (IGNORE_TODO) -->
 ===============================================================
 
 - TODO TODO: commit initial skigg-utils, to get to parity with what I already like to use
-- TODO: install other stuff (start automating installer in skigg-utils)
+- TODO TODO: write a program to abbreviate output for use in the dashboard. You should be able to specify a maximum number of lines and pipe output through it, and it will do something like "head" or "tail" if necessary, but also display information about how many lines were removed/kept/found-in-total
 - TODO TODO: music rotator thingy
 - TODO: mini-project: raspberry pi backup machine, and the software to run it.
 - TODO: "playbot", a program that tunes in youtube livestreams, video meetings, watch later, podcasts and your personal dashboards, automatically. Great as an information radiator.
@@ -46,7 +46,6 @@ misc TODO's:: (run 'todo' or 'dashboard' for the full sorted list) <!-- (IGNORE_
         - TODO TODO: commit/sync/install mac terminal profiles?
         - TODO: ... and linux ones too
     - TODO TODO: hook up to google drive
-
 - TODO: help set up home data center?
   - TODO: set up router
     - TODO: help set up local dns

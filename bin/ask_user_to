@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# This script asks the user to do the task described and report status back. It is a great way of stubbing out functionality.
+
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 

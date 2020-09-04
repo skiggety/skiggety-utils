@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 
+# This script runs tests this project as much as possible, and exits with an error if it fails.
+
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
 $THIS_DIR/install_me --non-interactive || exit_with_error "could not run installers for skiggety-utils"
+
 # TODO: run ruby unit tests
+
+exit 0

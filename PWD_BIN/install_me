@@ -3,7 +3,7 @@
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
-# This script ... (TODO)
+# This script installs skiggety-utils, and does all setup necessary to set up a workstation the way skiggety likes it. Some of this is automatic, and some of this will be delegated back to the user to do manually with guidance.
 
 # TODO TODO: Rewrite this in ruby or python...we need to do some smart (...TODO?)
 

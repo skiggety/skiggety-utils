@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# This script sleeps for a specified number of seconds, displaying progress as
+# it goes.
+
 # TODO?: show a clock, optionally
 # TODO?: integrate into a banner
 

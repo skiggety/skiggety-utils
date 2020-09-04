@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 # TODO: make this a printable help message:
-# "grim" is GRep into vIM. It is a handy way to find instances of a keyword
-# (with grep) across a directory tree, and then open those files at the right
-# location with vim. For example, if you run "grim gobbledygooklkajsdfoine", it
-# should bring you right here.
+# This script, "grim" is GRep into vIM. It is a handy way to find instances of
+# a keyword (with grep) across a directory tree, and then open those files at
+# the right location with vim. For example, if you run "grim
+# gobbledygooklkajsdfoine", it should bring you right here.
 
 # TODO TODO: make sure not to open duplicate files
 

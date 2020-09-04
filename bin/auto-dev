@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# This script continually displays and refreshes the dashboard
+# This script continuously displays and refreshes the dashboard
 # TODO: rename this script?
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"

@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 
-# This program displays output of other programs and refreshes.
+# This program displays output of a given command and refreshes periodically.
+# By default, the delay is dynamic so you don't use up too many resources when
+# nothing is changing but it is responsive when the output is changing.
 
 # For example, lets say you want to grep your text files for trailing spaces,
 # you could do so with the command 'grep -RI " $" .', but it might be nice to
