@@ -27,8 +27,7 @@ class ReviewProgram
     show_time
 
     last_output = output = ''
-    puts "sleeping for #{delay} seconds, the first time..."
-    while system("sleep #{delay}") # TODO: pretty_sleep
+    while system("pretty_sleep #{delay}")
       last_output = output
       non_interactive_command = "script -q /dev/null #{command} 2>&1"
       output = `#{non_interactive_command}`
@@ -42,7 +41,6 @@ class ReviewProgram
         change_detected = false
       end
       delay = adjust_delay(delay,change_detected)
-      puts "sleeping for #{delay} seconds..."
     end
 
   end

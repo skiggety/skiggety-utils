@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# TODO?: show a clock, optionally
+# TODO?: integrate into a banner
+
+function main {
+    delay="$1"
+
+    delay_remaining="$delay"
+
+    while [ "$delay_remaining" -gt 0 ]
+    do
+        echo -ne "  sleeping for $delay_remaining/$delay seconds\033[0K\r"
+        sleep 1
+        ((delay_remaining--))
+    done
+
+    echo
+}
+main "$@"
