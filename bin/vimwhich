@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+# This script is a very fancy version of running "vim `which NAME`". You can edit a number of scripts whether they exist in the path, at the path given, or need to be created new (in which case it starts from a template).
+
+# NOTE: where do you want new scripts to be created, and what template file would you like to start with? Set the values of these variables in your ~/.bashrc file:
+DEFAULT_SCRIPT_LOCATION=${DEFAULT_SCRIPT_LOCATION:-"$PATH_TO_SKIGGETY_UTILS/bin"}
+# TODO: DEFAULT_SCRIPT_TEMPLATE=${DEFAULT_SCRIPT_TEMPLATE:-"$PATH_TO_SKIGGETY_UTILS/lib/templates/blank.rb"}
+
+THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
+. $THIS_DIR/../lib/skiggety-utils.bash || exit 1
+
+destinations=()
+for target in "$@";do
+    destination="$(which $target)"
+
+    if [ -z "$destination" ]
+    then
+        destination_dir="$(dirname $target 2>/dev/null)"
+        if [ -z "$destination_dir" ]
+        then
+            destination_dir="$DEFAULT_SCRIPT_LOCATION"
+            destination="$destination_dir/$target"
+        else
+            destination="$target"
+        fi
+        mkdir -p "$destination_dir"
+    fi
+    destinations+=( "$destination" ) #TODO: make debug_eval work for arrays
+
+    # TODO: create $destination file from template if it doesn't exist and mark it executable
+
+done
+vim -o "${destinations[@]}"

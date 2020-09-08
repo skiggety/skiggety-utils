@@ -25,10 +25,10 @@ Cool Programs you'll find in here:
 
 - [duh](bin/duh) - Show Directory, Username, and Hostname (in scp format). Useful in prompts.
 - [grim](bin/grim) - GRep for string and open in vIM.
+- [vimwhich](bin/vimwhich) - quickly edit files that are in your path (and new files)
+- [todo](bin/todo) - ( TODO ... )
 - [review](bin/review) - A program that displays output of other programs and refreshes.
-- [todo](bin/todo)
-- dashboard
-- vimwhich - (TODO TODO TODO TODO TODO ...)
+- [dashboard](PWD_BIN/dashboard) A overrideable program that summarizes the overall status for one directory location.
 - gol
 
 misc TODO's:: (run 'todo' or 'dashboard' for the full sorted list) <!-- (IGNORE_TODO) -->
