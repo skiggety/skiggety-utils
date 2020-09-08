@@ -6,6 +6,4 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 PATH_TO_SKIGGETY_UTILS="$(cd "$(dirname $THIS_DIR)";pwd)"
 . $THIS_DIR/../lib/include_in_bashrc || exit 1
 
-# TODO TODO TODO TODO TODO: DEBUG this for my linux box
-
 review ci
