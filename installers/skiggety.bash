@@ -54,8 +54,7 @@ function main {
             rm $TMP_BASHRC
         else
             echo
-            echo_error_here "diff needed:"
-            echo_error_here "\$ diff ~/.bashrc $TMP_BASHRC"
+            echo_error_here "diff needed for '~/.bashrc':"
                                 diff ~/.bashrc $TMP_BASHRC
             echo
             rm $TMP_BASHRC
