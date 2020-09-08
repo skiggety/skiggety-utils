@@ -31,8 +31,7 @@ class ReviewProgram
     last_output = output = ''
     while system("pretty_sleep #{delay}") # TODO TODO TODO TODO: pretty_sleep should not display a newline
       last_output = output
-      non_interactive_command = "script -q /dev/null #{command} 2>&1"
-      output = `#{non_interactive_command}`
+      output = `#{command}`
 
       system('clear')
       puts output
