@@ -6,18 +6,25 @@
 # TODO?: show a clock, optionally
 # TODO?: integrate into a banner
 
+PRINT_NEWLINE=true
+if [ "$1" == "-n" ];then
+    PRINT_NEWLINE=false
+    shift
+fi
+
 function main {
     delay="$1"
 
     delay_remaining="$delay"
 
-    while [ "$delay_remaining" -gt 0 ]
-    do
+    while [ "$delay_remaining" -gt 0 ]; do
         echo -ne "  sleeping for $delay_remaining/$delay seconds\033[0K\r"
         sleep 1
-        ((delay_remaining--))
+        : $((delay_remaining--))
     done
 
-    echo
+    if $PRINT_NEWLINE; then
+        echo
+    fi
 }
 main "$@"
