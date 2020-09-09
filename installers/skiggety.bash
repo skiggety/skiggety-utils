@@ -33,17 +33,19 @@ function main {
     done
 
     # set up bashrc
-    if grep "^export PATH_TO_SKIGGETY_UTILS=" ~/.bashrc > /dev/null
-    # TODO TODO TODO TODO TODO: if contains_all_lines_in ~/.bashrc $TMP_BASHRC_SECTION # TODO: implement this function, which can use cat, sort, and uniq, and see if the linecount goes up
-    then
+    NEW_BASHRC_SECTION="$THIS_DIR/CONFIG/bashrc_section.bash"
+    expected_bashrc_uniq_lines=$(( 1 + $(sort < ~/.bashrc | uniq | wc -l) )) # adding one because one HARDCODED value will be changed
+    projected_bashrc_uniq_lines=$(( $(cat ~/.bashrc $NEW_BASHRC_SECTION | sort | uniq | wc -l)  ))
+    if [ $expected_bashrc_uniq_lines == $projected_bashrc_uniq_lines ]; then
         . ~/.bashrc
     else
         TMP_BASHRC="/tmp/bashrc.example.generated_by_SKIGGETY_UTILS.pid_$$"
-        cat ~/.bashrc > $TMP_BASHRC # $TMP_BASHRC < ~/.bashrc
+        grep -v FROM_SKIGGETY_UTILS ~/.bashrc > $TMP_BASHRC # $TMP_BASHRC < ~/.bashrc
         PATH_TO_SKIGGETY_UTILS="$(cd "$(dirname $THIS_DIR)";pwd)"
+        PATH_TO_SKIGGETY_UTILS="${PATH_TO_SKIGGETY_UTILS/$HOME/\$HOME}"
         ESCAPED_PATH_TO_SKIGGETY_UTILS="$(echo $PATH_TO_SKIGGETY_UTILS | sed 's/\//\\\//g')"
 
-        sed "s/\$HARDCODED_PATH_TO_SKIGGETY_UTILS/$ESCAPED_PATH_TO_SKIGGETY_UTILS/g"< $THIS_DIR/CONFIG/bashrc_section.bash >> $TMP_BASHRC
+        sed "s/\$HARDCODED_PATH_TO_SKIGGETY_UTILS/$ESCAPED_PATH_TO_SKIGGETY_UTILS/g"< "$NEW_BASHRC_SECTION" >> $TMP_BASHRC
         . $TMP_BASHRC
 
         if $interactive; then

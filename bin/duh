@@ -2,7 +2,7 @@
 
 # This script shows Directory, Username, and Hostname (in scp format). Useful in prompts.
 
-PWD_PRETTY=${PWD/#$HOME/\~}
+PWD_PRETTY="${PWD/#$HOME/\~}"
 
 COLOR1=''
 COLOR2=''
