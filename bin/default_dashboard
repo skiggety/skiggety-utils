@@ -17,7 +17,7 @@ $THIS_DIR/todo | tail -n 10 || exit_with_error "todo FAILED" # TODO: summarize_r
 # echo_divider_with_text "-" "git diff of unstaged files:"
 # for next in $( git ls-files --others --exclude-standard ) ; do git -c color.ui=always --no-pager diff --no-index /dev/null $next; done | head -n 15  # git diff for files not checked in yet only?
 echo_divider_with_text "-" "git diff:"
-git -c color.ui=always --no-pager diff | head -n 13 # TODO: not sure if I should use head
+git -c color.ui=always --no-pager diff -U1 | head -n 17 # TODO: not sure if I should use head
 
 echo_divider_with_text "-" "git status:"
 git -c color.ui=always --no-pager status -ss | head -n 8 # TODO: not sure if I should use head
