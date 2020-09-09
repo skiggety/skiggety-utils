@@ -36,7 +36,7 @@ function main {
 
     # set up bashrc
     if grep "^export PATH_TO_SKIGGETY_UTILS=" ~/.bashrc > /dev/null
-    # TODO TODO TODO: if contains_all_lines_in ~/.bashrc $TMP_BASHRC_SECTION # TODO: implement this function, which can use cat, sort, and uniq, and see if the linecount goes up
+    # TODO TODO TODO TODO TODO: if contains_all_lines_in ~/.bashrc $TMP_BASHRC_SECTION # TODO: implement this function, which can use cat, sort, and uniq, and see if the linecount goes up
     then
         . ~/.bashrc
     else

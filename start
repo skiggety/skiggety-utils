@@ -16,17 +16,14 @@ debug_here "let's try running install_me:"
 debug_here "--------------------------"
 
 ./PWD_BIN/install_me || echo_error_here "Could not run \"./PWD_BIN/install_me"
-# loop_until 10 ./PWD_BIN/install_me || exit_with_error "Could not run \"./PWD_BIN/install_me" # TODO: don't use relative path # TODO TODO: move most things into install_me, including any interactive stuff # TODO: use review_until, instead of loop_until
 
 debug_here "install_me completed successfully"; echo
-
-# echo_debug "$(echo_here), $(echo_eval PWD)" # TODO: MOVE this functionality elsewhere
 
 # TODO: I'm not even sure this is a good idea, but maybe reload ~/.bashrc and stuff now that it's been updated by ./install_me ? :       . ./lib/reload_env || exit_with_error "could not source \"./lib/reload_env\"" # TODO: don't use relative path
 # debug_here
 # TODO: this is something similar that I'm also not sure is a good idea: ./bin/start_in_env.bash || exit_with_error "Could not run \"./bin/start_in_env.bash\"" # TODO: don't use relative path # TODO TODO: move most things in here, including any interactive stuff
 
-# TODO: DELETE  calls to auto-dev, as that's really not what this script is for..
+# TODO TODO: make auto-dev optional, or maybe DELETE  calls to it, as that's not what necessarily what this script is for..
 debug_here "let's try running auto-dev:"
 debug_here "---------------------------"
 $THIS_DIR/bin/auto-dev || exit_with_error "FAILED to run auto-dev" #TODO: since this is in ./PWD_BIN/, I shouldn't need to use a relative path

@@ -1,4 +1,4 @@
-# TODO TODO: write tests
+# TODO TODO TODO: write tests
 
 require 'fileutils'
 
@@ -7,7 +7,7 @@ module InstallableSkiggetyUtil
   def run
     $interactive = ! ARGV.delete('--non-interactive')
 
-    # TODO TODO: if install happens, config should happen even if it's marked done
+    # TODO TODO TODO: if install happens, config should happen even if it's marked done
 
     # TODO: REFACTOR:
     if ! marked_installed?

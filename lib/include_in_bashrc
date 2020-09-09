@@ -10,4 +10,4 @@ $ "
 
 export CLICOLOR='xterm-color' # colorize ls output and such in mac xterm
 
-# TODO TODO TODO: use stuff from older bashrc files I've used
+# TODO TODO TODO TODO: use stuff from older bashrc files I've used
