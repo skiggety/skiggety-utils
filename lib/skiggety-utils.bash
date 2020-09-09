@@ -43,12 +43,12 @@ function echo_debug {
     echo "DEBUG: $*" >&2
 }
 
-function debug_eval {
-    echo_debug "$(echo_eval $*)"
-}
-
 function debug_eval_here {
     echo_debug "$(echo_eval $*)" "$(echo_callsite)"
+}
+
+function debug_eval {
+    echo_debug "$(echo_eval $*)"
 }
 
 function debug_here {
