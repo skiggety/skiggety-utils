@@ -14,8 +14,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
     # TODO: install/config chrome tab scheduler and/or other stuff to enable a some kind of dashboard in a web browswer
 
 function main {
-    for arg in "$@"
-    do
+    for arg in "$@"; do
         shift
         case "$arg" in
             --non-interactive) set -- "$@" "-n" ;;
@@ -27,8 +26,7 @@ function main {
     interactive=true
 
     OPTIND=1
-    while getopts ":inhi?" opt
-    do
+    while getopts ":inhi?" opt; do
         case "$opt" in
             "i") interactive=true ;;
             "n") interactive=false ;;
@@ -41,8 +39,7 @@ function main {
     # TODO: get latest code (git pull)?
 
     local INSTALLER_ARGS=""
-    if $interactive
-    then
+    if $interactive; then
         INSTALLER_ARGS=""
     else
         INSTALLER_ARGS="--non-interactive"
@@ -50,8 +47,7 @@ function main {
 
     INSTALLERS_DIR="$THIS_DIR/../installers"
 
-    for installer in "$INSTALLERS_DIR"/* # TODO: files only
-    do
+    for installer in "$INSTALLERS_DIR"/*; do # TODO: files only
         if [ -f "$installer" ]; then
 
             # TODO: instead of exiting on error, note it and move on. $cumulative_exit_code might be handy

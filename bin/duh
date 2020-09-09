@@ -8,8 +8,7 @@ COLOR1=''
 COLOR2=''
 COLOR3=''
 
-if [ $CLICOLOR == 'xterm-color' ] # TODO: look at other things that should enable color, CLICOLOR is for mac
-then
+if [ $CLICOLOR == 'xterm-color' ]; then # TODO: look at other things that should enable color, CLICOLOR is for mac
     COLOR1='\033[1;33m'
     COLOR2='\033[1;35m'
     COLOR3='\033[1;36m'

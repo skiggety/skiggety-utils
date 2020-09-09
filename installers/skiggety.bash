@@ -10,8 +10,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 function main {
     echo "Setting up $(basename $0)"
 
-    for arg in "$@"
-    do
+    for arg in "$@"; do
         shift
         case "$arg" in
             --non-interactive) set -- "$@" "-n" ;;
@@ -23,8 +22,7 @@ function main {
     interactive=true
 
     OPTIND=1
-    while getopts ":inhi?" opt
-    do
+    while getopts ":inhi?" opt; do
         case "$opt" in
             "i") interactive=true ;;
             "n") interactive=false ;;
@@ -48,9 +46,8 @@ function main {
         sed "s/\$HARDCODED_PATH_TO_SKIGGETY_UTILS/$ESCAPED_PATH_TO_SKIGGETY_UTILS/g"< $THIS_DIR/CONFIG/bashrc_section.bash >> $TMP_BASHRC
         . $TMP_BASHRC
 
-        if $interactive
-        then
-            $THIS_DIR/../bin/ask_user_to "vimdiff ~/.bashrc $TMP_BASHRC" || exit_with_error "User did not complete bashrc install"
+        if $interactive; then
+            $THIS_DIR/../bin/ask_user_to "Make suggested .bashrc edits, using a command such as: \"vimdiff -o ~/.bashrc $TMP_BASHRC\"" || exit_with_error "User did not complete bashrc install"
             rm $TMP_BASHRC
         else
             echo
@@ -63,13 +60,10 @@ function main {
     fi
 
     # set up bash_profile for macs
-    if uname -a | grep Darwin > /dev/null
-    then
-        if ! grep bashrc ~/.bash_profile > /dev/null
-        then
+    if uname -a | grep Darwin > /dev/null; then
+        if ! grep bashrc ~/.bash_profile > /dev/null; then
             MAC_BASH_PROFILE="$THIS_DIR/CONFIG/mac_bash_profile.bash"
-            if $interactive
-            then
+            if $interactive; then
                 $THIS_DIR/../bin/ask_user_to "vimdiff ~/.bash_profile $MAC_BASH_PROFILE" || exit_with_error "User did not complete bashrc install"
             else
                 echo_error_here "diff needed:"

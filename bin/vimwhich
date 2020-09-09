@@ -13,11 +13,9 @@ destinations=()
 for target in "$@";do
     destination="$(which $target)"
 
-    if [ -z "$destination" ]
-    then
+    if [ -z "$destination" ]; then
         destination_dir="$(dirname $target 2>/dev/null)"
-        if [ -z "$destination_dir" ]
-        then
+        if [ -z "$destination_dir" ]; then
             destination_dir="$DEFAULT_SCRIPT_LOCATION"
             destination="$destination_dir/$target"
         else
