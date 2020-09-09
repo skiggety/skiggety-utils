@@ -7,8 +7,6 @@ module InstallableSkiggetyUtil
   def run
     $interactive = ! ARGV.delete('--non-interactive')
 
-    # TODO TODO TODO: if install happens, config should happen even if it's marked done
-
     # TODO: REFACTOR:
     if ! marked_installed?
       puts "Installing #{name}"
@@ -36,21 +34,37 @@ module InstallableSkiggetyUtil
       File.delete(path_to_delete)
     end
     FileUtils.touch(current_install_marker_file_path)
+    delete_all_config_markers # if install happens, config should happen too--even if it's marked done
+  end
+
+  def delete_all_config_markers
+    config_marker_file_paths.each do |path_to_delete|
+      File.delete(path_to_delete)
+    end
   end
 
   def mark_configured
     past_config_marker_file_paths.each do |path_to_delete|
       File.delete(path_to_delete)
     end
-    FileUtils.touch(current_config_marker_file_path)
+    begin
+      FileUtils.touch(current_config_marker_file_path)
+    rescue RuntimeError => error
+      puts "ERROR: #{error}"
+    end
+  end
+
+  def marked_configured?
+    begin
+      return File.exist?(current_config_marker_file_path)
+    rescue RuntimeError => error
+      puts "ERROR: cannot determine current config marker file, assuming configuration is needed. Original error was: \"#{error.inspect}\""
+      return false
+    end
   end
 
   def marked_installed?
     File.exist?(current_install_marker_file_path)
-  end
-
-  def marked_configured?
-    File.exist?(current_config_marker_file_path)
   end
 
   def past_install_marker_file_paths
@@ -64,9 +78,17 @@ module InstallableSkiggetyUtil
   end
 
   def past_config_marker_file_paths
-    result = Dir.glob(File.join(installer_directory_path, config_marker_file_name_prefix + "*"))
-    result.delete(current_config_marker_file_path)
+    result = config_marker_file_paths
+    begin
+      result.delete(current_config_marker_file_path)
+    rescue RuntimeError => error
+      puts "ERROR: #{error}"
+    end
     return result
+  end
+
+  def config_marker_file_paths
+    Dir.glob(File.join(installer_directory_path, config_marker_file_name_prefix + "*"))
   end
 
   def current_config_marker_file_path
@@ -104,7 +126,7 @@ module InstallableSkiggetyUtil
   def config_tree_hash
     if config_exist?
       if ( '' != `git status -s #{config_dir_path}`)
-        raise "There are uncommitted changes in #{config_dir_path}, so #{self.class} will not do any configuration" # TODO: we could return something random so it's different each time, not sure...
+        raise "There are uncommitted changes in #{config_dir_path}, so #{self.class} will not bother computing a hash to identify it." # TODO: we could return something random so it's different each time, not sure...
       end
       return `git ls-tree HEAD -- #{config_dir_path}`.split(' ')[2]
     else
