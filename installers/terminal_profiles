@@ -10,7 +10,12 @@ class TerminalProfileConfigurer
     self.new.run
   end
 
-  raise "TODO TODO TODO TODO: IMPLEMENT"
+  def name # TODO TODO TODO: EXTRACT to InstallableSkiggetyUtil and base it off of installer_file_path
+    File.basename(__FILE__)
+  end
+
+  # raise "TODO TODO TODO TODO: IMPLEMENT"
+
   # TODO TODO TODO TODO: commit/sync/install mac terminal profiles?
   # TODO: ... and linux ones too
 

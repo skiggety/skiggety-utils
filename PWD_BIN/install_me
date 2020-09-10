@@ -75,7 +75,6 @@ function use_installer {
           "$installer" == "rvm" ||
           "$installer" == "ssh-agent" ||
           "$installer" == "synergy" ||
-          "$installer" == "terminal_profiles" ||
           "$installer" == "uhk" ]]; then
         # TODO?: debug_here "skipping \"$installer\" installer for now..."
         return 0
