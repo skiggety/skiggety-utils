@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+echo TODO TODO: IMPLEMENT $0
+exit 1

@@ -11,7 +11,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 duh
 
 echo_divider_with_text "-" "TODO's:"
-$THIS_DIR/todo | tail -n 10 || exit_with_error "todo FAILED" # TODO: summarize_result -n 5 todo
+$THIS_DIR/todo | tail -n 5 || exit_with_error "todo FAILED" # TODO: summarize_result -n 5 todo
 
 # TODO: only do this stuff if it's a git repository
 # echo_divider_with_text "-" "git diff of unstaged files:"
@@ -20,7 +20,7 @@ echo_divider_with_text "-" "git diff:"
 git -c color.ui=always --no-pager diff -U1 | head -n 17 # TODO: not sure if I should use head
 
 echo_divider_with_text "-" "git status:"
-git -c color.ui=always --no-pager status -ss | head -n 8 # TODO: not sure if I should use head
+git -c color.ui=always --no-pager status -ss | head -n 10 # TODO: not sure if I should use head
 
 echo_divider_with_text "-" "git log:"
 git -c color.ui=always --no-pager log --oneline --decorate=short origin/HEAD~..HEAD -n 5
