@@ -19,7 +19,9 @@ function exit_with_error {
 function accumulate_error {
     local error_message="$*"
 
-    echo_error "$error_message"
+    if [ "$error_message" != "" ]; then
+        echo_error "$error_message"
+    fi
     cumulative_error_count=${cumulative_error_count:-0}
     cumulative_error_count=$(($cumulative_error_count+1))
 }

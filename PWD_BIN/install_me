@@ -53,7 +53,7 @@ function main {
         if [ -f "$installer" ]; then
 
             # TODO: instead of exiting on error, note it and move on. $cumulative_exit_code might be handy
-            use_installer "$installer" $INSTALLER_ARGS || accumulate_error "use_installer \"$installer\" FAILED ($(echo_here))"
+            use_installer "$installer" $INSTALLER_ARGS || accumulate_error
 
             # configure "installer.config/" || exit_with_error "TODO" #  TODO: shoulcn't this be part of the installer?
         fi
