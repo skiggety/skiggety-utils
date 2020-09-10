@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/installable_skiggety_util.rb'
+
+class TerminalProfileConfigurer
+
+  include InstallableSkiggetyUtil
+
+  def self.run # TODO TODO: EXTRACT to InstallableSkiggetyUtil
+    self.new.run
+  end
+
+  raise "TODO TODO TODO TODO: IMPLEMENT"
+  # TODO TODO TODO TODO: commit/sync/install mac terminal profiles?
+  # TODO: ... and linux ones too
+
+end
+
+TerminalProfileConfigurer.run
+

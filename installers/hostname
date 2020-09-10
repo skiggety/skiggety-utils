@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/installable_skiggety_util.rb'
+
+class HostnameChooser
+
+  include InstallableSkiggetyUtil
+
+  raise "TODO TODO: IMPLEMENT"
+  # TODO: perhaps require installers/hostname.config/localhost.gitignore.txt
+
+end
+
+HostnameChooser.run

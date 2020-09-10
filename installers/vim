@@ -6,11 +6,11 @@ class VimInstaller
 
   include InstallableSkiggetyUtil
 
-  def self.run # TODO: EXTRACT to InstallableSkiggetyUtil
+  def self.run # TODO TODO: EXTRACT to InstallableSkiggetyUtil
     self.new.run
   end
 
-  def name # TODO: EXTRACT to InstallableSkiggetyUtil
+  def name # TODO TODO: EXTRACT to InstallableSkiggetyUtil and base it off of installer_file_path
     File.basename(__FILE__)
   end
 

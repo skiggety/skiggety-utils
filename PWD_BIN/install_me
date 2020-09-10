@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO TODO?: rename to 'install_skiggety_utils' or 'setup_skiggety_utils'?
+
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
@@ -54,7 +56,6 @@ function main {
             use_installer "$installer" $INSTALLER_ARGS || accumulate_error "use_installer \"$installer\" FAILED ($(echo_here))"
 
             # configure "installer.config/" || exit_with_error "TODO" #  TODO: shoulcn't this be part of the installer?
-            # TODO: make sure apps get configured properly, too, such as synergy, vim (incl vimrc), etc.
         fi
     done
 
@@ -74,6 +75,7 @@ function use_installer {
           "$installer" == "rvm" ||
           "$installer" == "ssh-agent" ||
           "$installer" == "synergy" ||
+          "$installer" == "terminal_profiles" ||
           "$installer" == "uhk" ]]; then
         # TODO?: debug_here "skipping \"$installer\" installer for now..."
         return 0

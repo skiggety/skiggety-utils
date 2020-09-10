@@ -44,9 +44,6 @@ misc TODO's:: (run 'todo' or 'dashboard' for the full sorted list) <!-- (IGNORE_
 - TODO: inforad (chrome extension?) information radiator
 - TODO TODO: collect data on email inbox, etc. and auto-generate graphs for the dashboard
 - TODO: systematized config (automate the configuration I always want anyway)
-    - TODO TODO TODO TODO: terminal profiles
-        - TODO TODO: commit/sync/install mac terminal profiles?
-        - TODO: ... and linux ones too
     - TODO TODO: hook up to google drive
 - TODO: help set up home data center?
   - TODO: set up router

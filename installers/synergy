@@ -1,3 +1,13 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 
-raise "not implemented" # TODO TODO TODO TODO
+require_relative '../lib/installable_skiggety_util.rb'
+
+class SynergyInstaller
+
+  include InstallableSkiggetyUtil
+
+  raise "TODO TODO TODO TODO: IMPLEMENT"
+
+end
+
+SynergyInstaller.run
