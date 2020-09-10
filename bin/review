@@ -26,7 +26,7 @@ class ReviewProgram
     delay = 1
 
     system(command)
-    show_time
+    show_footer
 
     last_output = output = ''
     while system("pretty_sleep -n #{delay}")
@@ -36,7 +36,7 @@ class ReviewProgram
 
       system('clear')
       puts output
-      show_time
+      show_footer
 
       change_detected = true
       if ( output == last_output )
@@ -56,7 +56,7 @@ class ReviewProgram
     return result
   end
 
-  def show_time
+  def show_footer # TODO: show whether the command failed
     system("echo_divider_with_text \"#\" \"...shown at $(date)\"")
   end
 

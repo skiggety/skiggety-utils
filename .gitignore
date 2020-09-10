@@ -1,3 +1,6 @@
+# This is for if you want files to be ignored
+*.gitignore.*
+
 .*.swp
 
 # ignore the mac finder droppings:
