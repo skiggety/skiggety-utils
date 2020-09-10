@@ -15,15 +15,15 @@ class TerminalProfileConfigurer
   end
 
   def apparently_configured?
-    false # TODO TODO TODO TODO: IMPLEMENT
+    false # TODO TODO TODO TODO TODO: IMPLEMENT
   end
 
   def configure
-    raise "TODO TODO TODO TODO: IMPLEMENT"
+    raise "TODO TODO TODO TODO TODO: IMPLEMENT" # (this is going to look a bit like vim.config, but mac-specific with ~/Library/Preferences/com.apple.Terminal.plist and I'm going to have to run 'defaults read com.apple.Terminal' afterwards, per https://superuser.com/questions/204686/how-can-i-export-all-my-terminal-app-settings-from-one-mac-to-another
   end
 
-  # TODO TODO TODO TODO: commit/sync/install mac terminal profiles?
-  # TODO: ... and linux ones too
+  # TODO TODO TODO TODO TODO: commit/sync/install mac terminal profiles?
+  # TODO: commit/sync/install linux terminal profiles?
 
 end
 

@@ -2,12 +2,12 @@
 
 require_relative '../lib/installable_skiggety_util.rb'
 
-class GimpInstaller
+class JigglerInstaller
 
   include InstallableSkiggetyUtil
 
-  raise "TODO TODO: IMPLEMENT"
+  raise "TODO: IMPLEMENT"
 
 end
 
-GimpInstaller.run
+JigglerInstaller.run

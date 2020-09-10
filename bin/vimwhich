@@ -3,8 +3,8 @@
 # This script is a very fancy version of running "vim `which NAME`". You can edit a number of scripts whether they exist in the path, at the path given, or need to be created new (in which case it starts from a template).
 
 # NOTE: where do you want new scripts to be created, and what template file would you like to start with? Set the values of these variables in your ~/.bashrc file:
-DEFAULT_SCRIPT_LOCATION=${DEFAULT_SCRIPT_LOCATION:-"$PATH_TO_SKIGGETY_UTILS/bin"}
-# TODO: DEFAULT_SCRIPT_TEMPLATE=${DEFAULT_SCRIPT_TEMPLATE:-"$PATH_TO_SKIGGETY_UTILS/lib/templates/blank.rb"}
+DEFAULT_SCRIPT_LOCATION=${DEFAULT_SCRIPT_LOCATION:-"$SKIGGETY_UTILS_PATH/bin"}
+# TODO: DEFAULT_SCRIPT_TEMPLATE=${DEFAULT_SCRIPT_TEMPLATE:-"$SKIGGETY_UTILS_PATH/lib/templates/blank.rb"}
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1

@@ -33,7 +33,7 @@ function main {
     done
 
     # set up bashrc
-    NEW_BASHRC_SECTION="$THIS_DIR/CONFIG/bashrc_section.bash"
+    NEW_BASHRC_SECTION="$THIS_DIR/skiggety.bash.config/bashrc_section.bash"
     expected_bashrc_uniq_lines=$(( 1 + $(sort < ~/.bashrc | uniq | wc -l) )) # adding one because one HARDCODED value will be changed
     projected_bashrc_uniq_lines=$(( $(cat ~/.bashrc $NEW_BASHRC_SECTION | sort | uniq | wc -l)  ))
     if [ $expected_bashrc_uniq_lines == $projected_bashrc_uniq_lines ]; then
@@ -41,11 +41,11 @@ function main {
     else
         TMP_BASHRC="/tmp/bashrc.example.generated_by_SKIGGETY_UTILS.pid_$$"
         grep -v FROM_SKIGGETY_UTILS ~/.bashrc > $TMP_BASHRC # $TMP_BASHRC < ~/.bashrc
-        PATH_TO_SKIGGETY_UTILS="$(cd "$(dirname $THIS_DIR)";pwd)"
-        PATH_TO_SKIGGETY_UTILS="${PATH_TO_SKIGGETY_UTILS/$HOME/\$HOME}"
-        ESCAPED_PATH_TO_SKIGGETY_UTILS="$(echo $PATH_TO_SKIGGETY_UTILS | sed 's/\//\\\//g')"
+        SKIGGETY_UTILS_PATH="$(cd "$(dirname $THIS_DIR)";pwd)"
+        SKIGGETY_UTILS_PATH="${SKIGGETY_UTILS_PATH/$HOME/\$HOME}"
+        ESCAPED_SKIGGETY_UTILS_PATH="$(echo $SKIGGETY_UTILS_PATH | sed 's/\//\\\//g')"
 
-        sed "s/\$HARDCODED_PATH_TO_SKIGGETY_UTILS/$ESCAPED_PATH_TO_SKIGGETY_UTILS/g"< "$NEW_BASHRC_SECTION" >> $TMP_BASHRC
+        sed "s/\$HARDCODED_SKIGGETY_UTILS_PATH/$ESCAPED_SKIGGETY_UTILS_PATH/g"< "$NEW_BASHRC_SECTION" >> $TMP_BASHRC
         . $TMP_BASHRC
 
         if $interactive; then
@@ -64,7 +64,7 @@ function main {
     # set up bash_profile for macs
     if uname -a | grep Darwin > /dev/null; then
         if ! grep bashrc ~/.bash_profile > /dev/null; then
-            MAC_BASH_PROFILE="$THIS_DIR/CONFIG/mac_bash_profile.bash"
+            MAC_BASH_PROFILE="$THIS_DIR/skiggety.bash.config/mac_bash_profile.bash"
             if $interactive; then
                 $THIS_DIR/../bin/ask_user_to "vimdiff ~/.bash_profile $MAC_BASH_PROFILE" || exit_with_error "User did not complete bashrc install"
             else
