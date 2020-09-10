@@ -8,7 +8,7 @@ module InstallableSkiggetyUtil
     $interactive = ! ARGV.delete('--non-interactive')
 
     # TODO: REFACTOR:
-    if ! marked_installed?
+    unless marked_installed?
       puts "Installing #{name}"
       if apparently_installed?
         puts "#{self.class} can skip installation this time, because it's done already" # TODO: debug only
@@ -17,7 +17,7 @@ module InstallableSkiggetyUtil
       end
       mark_installed
     end
-    if ! marked_configured?
+    unless marked_configured?
       puts "Configuring #{name}"
       if apparently_configured?
         puts "#{self.class} can skip configuration this time, because it's done already" # TODO: debug only
@@ -27,6 +27,10 @@ module InstallableSkiggetyUtil
       mark_configured
     end
 
+  end
+
+  def name
+    File.basename(installer_file_path)
   end
 
   def mark_installed
@@ -120,7 +124,7 @@ module InstallableSkiggetyUtil
   end
 
   def installer_file_path
-    File.expand_path(self.class.instance_method(:install).source_location[0])
+    File.expand_path(self.class.instance_method(:apparently_installed?).source_location[0])
   end
 
   def config_tree_hash

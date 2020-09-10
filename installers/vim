@@ -10,10 +10,6 @@ class VimInstaller
     self.new.run
   end
 
-  def name # TODO TODO TODO: EXTRACT to InstallableSkiggetyUtil and base it off of installer_file_path
-    File.basename(__FILE__)
-  end
-
   def apparently_installed?
     vim_version = `vim --version | head -n 1`
     return (vim_version =~ / 8\.0 / ).is_a?(Numeric) # TODO: update desired vim version and make sure it includes the gui version, too
@@ -34,7 +30,7 @@ class VimInstaller
         raise "user failed to install vim"
       end
     else
-      raise "Cannot install vim in non-interactive mode, user should run \"install_me\" or \"#{__FILE__}\"."
+      raise "Cannot install vim in non-interactive mode, user should run \"install_me\" or \"#{__FILE__}\"." # TODO: EXTRACT to InstallableSkiggetyUtil module
     end
   end
 
@@ -42,7 +38,7 @@ class VimInstaller
     if $interactive
       system("vim -do #{user_vimrc_path} #{template_vimrc_path}")
     else
-      raise "Cannot configure vim in non-interactive mode, user should run \"install_me\" or \"#{__FILE__}\"."
+      raise "Cannot configure vim in non-interactive mode, user should run \"install_me\" or \"#{__FILE__}\"." # TODO: EXTRACT to InstallableSkiggetyUtil module
     end
   end
 

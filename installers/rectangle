@@ -12,10 +12,6 @@ class RectangleInstaller
     self.new.run
   end
 
-  def name # TODO: EXTRACT InstallableSkiggetyUtil
-    File.basename(__FILE__)
-  end
-
   def apparently_installed?
     if on_mac_os?
       return File.exist?("/Applications/Rectangle.app")
