@@ -22,7 +22,7 @@ function main {
         sleep 1
         : $((delay_remaining--))
     done
-    echo -ne "  done sleeping with $(basename $0)\033[0K\r"
+    echo -ne "  DONE! ($(basename $0) slept for $delay seconds)\033[0K\r"
 
     if $PRINT_NEWLINE; then
         echo

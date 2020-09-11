@@ -12,4 +12,4 @@ export CLICOLOR='xterm-color' # colorize ls output and such in mac xterm
 
 # TODO: use more stuff from older bashrc files I've used
 
-trap 'if [ "login" == "$(ps -o comm= $PPID)" ];then echo holding the window open for a short interval;pretty_sleep 60;fi' EXIT
+trap 'if [ "login" == "$(ps -o comm= $PPID)" ];then echo holding the window open for a short interval;pretty_sleep 15;fi' EXIT
