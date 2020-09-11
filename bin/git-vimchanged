@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+files=$(git status --porcelain=2 -u|sed 's/.* //g')
+vim -o $files $@ || exit 1
