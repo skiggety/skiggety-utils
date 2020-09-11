@@ -15,15 +15,34 @@ class TerminalProfileConfigurer
   end
 
   def apparently_configured?
-    false # TODO TODO TODO TODO TODO: IMPLEMENT
+    if on_mac_os?
+      return false # just assume it's needed if the marker file isn't there
+    else
+      return false # TODO: IMPLEMENT
+      # TODO: commit/sync/install linux terminal profiles?
+    end
   end
 
   def configure
-    raise "TODO TODO TODO TODO TODO: IMPLEMENT" # (this is going to look a bit like vim.config, but mac-specific with ~/Library/Preferences/com.apple.Terminal.plist and I'm going to have to run 'defaults read com.apple.Terminal' afterwards, per https://superuser.com/questions/204686/how-can-i-export-all-my-terminal-app-settings-from-one-mac-to-another
+    if on_mac_os?
+      if $interactive
+        # TODO: deal with the extra clutter of profiles like "skiggterm 1", "skiggterm 2", etc. that pile up sometimes. I'm not sure how much of a problem this is going to be in practice
+        system("open #{skiggterm_profile_path}")
+        ask_user_to 'confirm that a terminal window just opened and has skiggterm in the title (you may close that window)'
+        system('defaults write com.apple.Terminal "Default Window Settings" skiggterm')
+        system('defaults read com.apple.Terminal "Default Window Settings"') # this is an attempt to get this setting to stick after the terminal restarts
+        ask_user_to 'Make sure skiggterm is the default, especially when the terminal is restarted --you can quit this installer by running exit 1 and restart if you need to'
+      else
+        raise_configure_non_interactive
+      end
+    else
+      raise "TODO: IMPLEMENT"
+    end
   end
 
-  # TODO TODO TODO TODO TODO: commit/sync/install mac terminal profiles?
-  # TODO: commit/sync/install linux terminal profiles?
+  def skiggterm_profile_path
+    @skiggterm_profile_path ||= self_config_path('skiggterm.terminal')
+  end
 
 end
 

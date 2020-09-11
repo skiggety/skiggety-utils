@@ -51,7 +51,7 @@ class RectangleInstaller
           raise "user failed to configure #{name}"
         end
       else
-        raise "Cannot configure rectangle in non-interactive mode, user should run \"install_me\" or \"#{__FILE__}\"."
+        raise_configure_non_interactive
       end
     end
   end

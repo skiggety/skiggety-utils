@@ -71,6 +71,15 @@ module InstallableSkiggetyUtil
     File.exist?(current_install_marker_file_path)
   end
 
+  # TODO TODO TODO TODO: split into delegate_to_user which calls ask_user_to and raises an exception if it returns false, then use them both as much as possible
+  def ask_user_to(request_text)
+    # TODO TODO TODO TODO TODO TODO: make sure request_text is safely escaped for the shell, or maybe just don't allow certain characters
+    system("#{installer_directory_path}/../bin/ask_user_to '#{request_text}'")
+    unless ( $?.exitstatus == 0 )
+      raise "user failed to: '#{request_text}"
+    end
+  end
+
   def past_install_marker_file_paths
     result = Dir.glob(File.join(installer_directory_path, install_marker_file_name_prefix + "*"))
     result.delete(current_install_marker_file_path)
@@ -127,6 +136,18 @@ module InstallableSkiggetyUtil
     File.expand_path(self.class.instance_method(:apparently_installed?).source_location[0])
   end
 
+  def raise_configure_non_interactive
+    raise_action_non_interactive('configure')
+  end
+
+  def raise_install_non_interactive
+    raise_action_non_interactive('install')
+  end
+
+  def raise_action_non_interactive(action)
+    raise "Cannot #{action} #{name} in non-interactive mode, user should run \"install_me\" or \"#{installer_file_path}\"."
+  end
+
   def config_tree_hash
     if config_exist?
       if ( '' != `git status -s #{config_dir_path}`)
@@ -157,6 +178,10 @@ module InstallableSkiggetyUtil
   def systemtrue?(command)
     system(command)
     return ( $?.exitstatus == 0 )
+  end
+
+  def self_config_path(file_name)
+    File.join(config_dir_path,file_name)
   end
 
 end

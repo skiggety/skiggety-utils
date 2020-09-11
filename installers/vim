@@ -30,7 +30,7 @@ class VimInstaller
         raise "user failed to install vim"
       end
     else
-      raise "Cannot install vim in non-interactive mode, user should run \"install_me\" or \"#{__FILE__}\"." # TODO: EXTRACT to InstallableSkiggetyUtil module
+      raise_install_non_interactive
     end
   end
 
@@ -38,16 +38,16 @@ class VimInstaller
     if $interactive
       system("vim -do #{user_vimrc_path} #{template_vimrc_path}")
     else
-      raise "Cannot configure vim in non-interactive mode, user should run \"install_me\" or \"#{__FILE__}\"." # TODO: EXTRACT to InstallableSkiggetyUtil module
+      raise_configure_non_interactive
     end
   end
 
   def user_vimrc_path
-    File.expand_path('~/.vimrc')
+    @user_vimrc_path ||= File.expand_path('~/.vimrc')
   end
 
   def template_vimrc_path
-    File.join(config_dir_path,'vimrc')
+    self_config_path('vimrc')
   end
 
 end
