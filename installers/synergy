@@ -6,6 +6,10 @@ class SynergyInstaller
 
   include InstallableSkiggetyUtil
 
+  def self.run # TODO TODO: EXTRACT to InstallableSkiggetyUtil
+    self.new.run
+  end
+
   raise "TODO TODO TODO TODO: IMPLEMENT"
 
 end

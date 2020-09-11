@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# TODO TODO?: rename to 'install_skiggety_utils' or 'setup_skiggety_utils'?
+# TODO TODO TODO TODO?: rename to 'install_skiggety_utils' or 'setup_skiggety_utils'?
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1

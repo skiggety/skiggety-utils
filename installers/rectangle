@@ -46,10 +46,7 @@ class RectangleInstaller
     if on_mac_os?
       if $interactive
         system("open /Applications/Rectangle.app")
-        system("#{__dir__}/../bin/ask_user_to 'set up Rectangle'")
-        unless ( $?.exitstatus == 0 )
-          raise "user failed to configure #{name}"
-        end
+        delegate_to_user "configure #{name}"
       else
         raise_configure_non_interactive
       end

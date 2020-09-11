@@ -32,10 +32,7 @@ class LocalBackupSetterUpper
   def install
     if on_mac_os?
       if $interactive
-        system("#{__dir__}/../bin/ask_user_to 'figure out how to get time machine installed'")
-        unless ( $?.exitstatus == 0 )
-          raise "user failed to install Time Machine"
-        end
+        delegate_to_user 'make sure Time Machine is installed'
       else
         raise "Cannot install Time Machine in non-interactive mode, user should run \"install_me\" or \"#{__FILE__}\"."
       end
@@ -48,10 +45,7 @@ class LocalBackupSetterUpper
     if on_mac_os?
       if $interactive
         system("open /System/Library/PreferencePanes/TimeMachine.prefPane")
-        system("#{__dir__}/../bin/ask_user_to 'set up time machine to make backups using the window that just opened automatically'")
-        unless ( $?.exitstatus == 0 )
-          raise "user failed to configure time machine"
-        end
+        delegate_to_user 'set up time machine to make backups using the window that just opened automatically'
       else
         raise "Cannot configure Time Machine in non-interactive mode, user should run \"install_me\" or \"#{__FILE__}\"."
       end

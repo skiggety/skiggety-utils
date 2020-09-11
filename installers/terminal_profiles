@@ -28,10 +28,10 @@ class TerminalProfileConfigurer
       if $interactive
         # TODO: deal with the extra clutter of profiles like "skiggterm 1", "skiggterm 2", etc. that pile up sometimes. I'm not sure how much of a problem this is going to be in practice
         system("open #{skiggterm_profile_path}")
-        ask_user_to 'confirm that a terminal window just opened and has skiggterm in the title (you may close that window)'
+        delegate_to_user 'confirm that a terminal window just opened and has skiggterm in the title (you may close that window)'
         system('defaults write com.apple.Terminal "Default Window Settings" skiggterm')
         system('defaults read com.apple.Terminal "Default Window Settings"') # this is an attempt to get this setting to stick after the terminal restarts
-        ask_user_to 'Make sure skiggterm is the default, especially when the terminal is restarted --you can quit this installer by running exit 1 and restart if you need to'
+        delegate_to_user 'Make sure skiggterm is the default, especially when the terminal is restarted --you can quit this installer by running exit 1 and restart if you need to'
       else
         raise_configure_non_interactive
       end

@@ -71,13 +71,15 @@ module InstallableSkiggetyUtil
     File.exist?(current_install_marker_file_path)
   end
 
-  # TODO TODO TODO TODO: split into delegate_to_user which calls ask_user_to and raises an exception if it returns false, then use them both as much as possible
-  def ask_user_to(request_text)
-    # TODO TODO TODO TODO TODO TODO: make sure request_text is safely escaped for the shell, or maybe just don't allow certain characters
-    system("#{installer_directory_path}/../bin/ask_user_to '#{request_text}'")
-    unless ( $?.exitstatus == 0 )
+  def delegate_to_user(request_text)
+    unless ask_user(request_text)
       raise "user failed to: '#{request_text}"
     end
+  end
+
+  def ask_user(request_text)
+    system("#{installer_directory_path}/../bin/ask_user '#{request_text}'")
+    return ( $?.exitstatus == 0 )
   end
 
   def past_install_marker_file_paths

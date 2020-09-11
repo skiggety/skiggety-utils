@@ -49,7 +49,7 @@ function main {
         . $TMP_BASHRC
 
         if $interactive; then
-            $THIS_DIR/../bin/ask_user_to "Make suggested .bashrc edits, using a command such as: \"vimdiff -o ~/.bashrc $TMP_BASHRC\"" || exit_with_error "User did not complete bashrc install"
+            $THIS_DIR/../bin/ask_user "Make suggested .bashrc edits, using a command such as: \"vimdiff -o ~/.bashrc $TMP_BASHRC\"" || exit_with_error "User did not complete bashrc install"
             rm $TMP_BASHRC
         else
             echo
@@ -66,7 +66,7 @@ function main {
         if ! grep bashrc ~/.bash_profile > /dev/null; then
             MAC_BASH_PROFILE="$THIS_DIR/skiggety.bash.config/mac_bash_profile.bash"
             if $interactive; then
-                $THIS_DIR/../bin/ask_user_to "vimdiff ~/.bash_profile $MAC_BASH_PROFILE" || exit_with_error "User did not complete bashrc install"
+                $THIS_DIR/../bin/ask_user "vimdiff ~/.bash_profile $MAC_BASH_PROFILE" || exit_with_error "User did not complete bashrc install"
             else
                 echo_error_here "diff needed:"
                 echo_error_here "\$ diff ~/.bash_profile $MAC_BASH_PROFILE"

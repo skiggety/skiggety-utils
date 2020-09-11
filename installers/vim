@@ -25,10 +25,7 @@ class VimInstaller
 
   def install
     if $interactive
-      system("#{__dir__}/../bin/ask_user_to 'make sure vim is installed'")
-      unless ( $?.exitstatus == 0 )
-        raise "user failed to install vim"
-      end
+      delegate_to_user 'make sure vim is installed'
     else
       raise_install_non_interactive
     end
