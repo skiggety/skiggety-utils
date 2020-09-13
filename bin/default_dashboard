@@ -24,5 +24,5 @@ git -c color.ui=always --no-pager diff -U1 | head -n 17 # TODO: not sure if I sh
 echo_divider_with_text "-" "git status:"
 git -c color.ui=always --no-pager status -ss
 
-echo_divider_with_text "-" "git log:"
+echo_divider_with_text "-" "git log: (most recent commit and un-pushed commits)"
 git -c color.ui=always --no-pager log --oneline --decorate=short origin/HEAD~..HEAD -n 5
