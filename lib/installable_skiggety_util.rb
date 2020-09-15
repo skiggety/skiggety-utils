@@ -9,19 +9,19 @@ module InstallableSkiggetyUtil
 
     # TODO: REFACTOR:
     unless marked_installed?
-      puts "Installing #{name}"
       if apparently_installed?
         puts "#{self.class} can skip installation this time, because it's done already" # TODO: debug only
       else
+        puts "Installing #{name}"
         install # TODO: catch exception and wrap in: raise "install command failed for #{self.class}"
       end
       mark_installed
     end
     unless marked_configured?
-      puts "Configuring #{name}"
       if apparently_configured?
         puts "#{self.class} can skip configuration this time, because it's done already" # TODO: debug only
       else
+        puts "Configuring #{name}"
         configure
       end
       mark_configured
@@ -71,6 +71,7 @@ module InstallableSkiggetyUtil
     File.exist?(current_install_marker_file_path)
   end
 
+  # TODO: extract delegate_to_user and ask_user to another library
   def delegate_to_user(request_text)
     unless ask_user(request_text)
       raise "user failed to: '#{request_text}"
@@ -78,8 +79,12 @@ module InstallableSkiggetyUtil
   end
 
   def ask_user(request_text)
-    system("#{installer_directory_path}/../bin/ask_user '#{request_text}'")
-    return ( $?.exitstatus == 0 )
+    if $interactive
+      system("#{installer_directory_path}/../bin/ask_user '#{request_text}'")
+      return ( $?.exitstatus == 0 )
+    else
+      raise "Cannot ask user to do the following without being in interactive mode: '#{request_text}'"
+    end
   end
 
   def past_install_marker_file_paths
@@ -138,16 +143,25 @@ module InstallableSkiggetyUtil
     File.expand_path(self.class.instance_method(:apparently_installed?).source_location[0])
   end
 
-  def raise_configure_non_interactive
-    raise_action_non_interactive('configure')
+  def raise_interactive_only_configuration
+    raise_interactive_only_action('configure')
   end
 
-  def raise_install_non_interactive
-    raise_action_non_interactive('install')
+  def raise_interactive_only_install
+    raise_interactive_only_action('install')
   end
 
-  def raise_action_non_interactive(action)
+  def raise_interactive_only_action(action)
     raise "Cannot #{action} #{name} in non-interactive mode, user should run \"install_me\" or \"#{installer_file_path}\"."
+  end
+
+  def call_peer_installer(name)
+    install_command = File.join(installer_directory_path,name)
+    unless $interactive
+      install_command = install_command + " --non-interactive"
+    end
+    system(install_command)
+    raise "Cannot install rectangle, because homebrew install failed" unless ($? == 0 )
   end
 
   def config_tree_hash
@@ -187,4 +201,3 @@ module InstallableSkiggetyUtil
   end
 
 end
-

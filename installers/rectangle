@@ -8,34 +8,26 @@ class RectangleInstaller
 
   include InstallableSkiggetyUtil
 
-  def self.run # TODO: extract to InstallableSkiggetyUtil
+  def self.run # TODO TODO: EXTRACT to InstallableSkiggetyUtil
     self.new.run
   end
 
   def apparently_installed?
     if on_mac_os?
-      return File.exist?("/Applications/Rectangle.app")
+      return Dir.exist?("/Applications/Rectangle.app")
     else
-      return true
+      return true # rectangle not available for other OS'es, I think # TODO: but maybe install some equivalent
     end
   end
 
   def apparently_configured?
-    return false # TODO: DELETE
-    raise "TODO"
+    return false # assume it needs configuration if there isn't a maker
   end
 
   def install
     if on_mac_os?
       # Using homebrew for the install, which means I need to install homebrew as a dependency, only if on a mac though.
-
-      # TODO: method extract call_peer_installer:
-      homebrew_install_command = File.join(File.dirname(__FILE__),"homebrew")
-      unless $interactive
-        homebrew_install_command = homebrew_install_command + " --non-interactive"
-      end
-      system(homebrew_install_command)
-      raise "Cannot install rectangle, because homebrew install failed" unless ($? == 0 )
+      call_peer_installer('homebrew')
 
       system("brew cask install rectangle")
       raise "rectangle install failed" unless ($? == 0 )
@@ -46,9 +38,9 @@ class RectangleInstaller
     if on_mac_os?
       if $interactive
         system("open /Applications/Rectangle.app")
-        delegate_to_user "configure #{name}"
+        delegate_to_user "Configure #{name}"
       else
-        raise_configure_non_interactive
+        raise_interactive_only_configuration
       end
     end
   end

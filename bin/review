@@ -13,7 +13,7 @@
 # will adjust automatically.
 
 # TODO TODO: accept --minimum-delay or -m (e.g. auto-ci might want to call this with "-m 30")
-# TODO: accept --maximum-delay or -M
+# TODO TODO: accept --maximum-delay or -M (e.g. auto-ci might want to call this with "-M $(( 60 * 60 * 6 ))")
 
 class ReviewProgram
 

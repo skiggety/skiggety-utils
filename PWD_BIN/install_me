@@ -74,7 +74,6 @@ function use_installer {
           "$installer" == "jiggler" ||
           "$installer" == "rvm" ||
           "$installer" == "ssh-agent" ||
-          "$installer" == "synergy" ||
           "$installer" == "uhk" ]]; then
         # TODO?: debug_here "skipping \"$installer\" installer for now..."
         return 0

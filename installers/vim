@@ -27,7 +27,7 @@ class VimInstaller
     if $interactive
       delegate_to_user 'make sure vim is installed'
     else
-      raise_install_non_interactive
+      raise_interactive_only_install
     end
   end
 
@@ -35,7 +35,7 @@ class VimInstaller
     if $interactive
       system("vim -do #{user_vimrc_path} #{template_vimrc_path}")
     else
-      raise_configure_non_interactive
+      raise_interactive_only_configuration
     end
   end
 

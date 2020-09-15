@@ -13,7 +13,7 @@ class HomebrewInstaller
   def apparently_installed?
     if on_mac_os?
       homebrew_version = `brew --version `
-      return (homebrew_version =~ / 2\.4/ ).is_a?(Numeric) # TODO: update desired version and make sure it includes the gui version, too
+      return (homebrew_version =~ / 2\./ ).is_a?(Numeric) # TODO: update desired version and make sure it includes the gui version, too
     else
       return true
     end
@@ -25,7 +25,7 @@ class HomebrewInstaller
         system('/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"')
         raise "failed to install homebrew, please check http://brew.sh" unless ($? == 0 )
       else
-        raise_install_non_interactive
+        raise_interactive_only_install
       end
     end
   end
