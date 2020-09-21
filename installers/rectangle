@@ -21,7 +21,15 @@ class RectangleInstaller
   end
 
   def apparently_configured?
-    return false # assume it needs configuration if there isn't a maker
+    # TODO: method/module extract?
+    if $interactive
+      ask_user "Is #{name} set up the way you want?"
+    else
+      # In non-interactive mode, assume config is needed to make sure the user
+      # has a chance, since I can't think of a way to check if the current
+      # config is the desired version:
+      return false
+    end
   end
 
   def install

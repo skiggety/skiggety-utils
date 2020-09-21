@@ -22,7 +22,11 @@ class SynergyInstaller
 
   def apparently_configured?
     if $interactive
-      ask_user 'Is Synergy set up the way you want?'
+      if `ps aux | grep #{ENV['USER']} | grep synergy[sc]` == '' # synergy server or client must be running
+        return false
+      else
+        return ask_user "Is #{name} set up the way you want?"
+      end
     else
       # In non-interactive mode, assume config is needed to make sure the user
       # has a chance, since I can't think of a way to check if the current
@@ -40,6 +44,7 @@ class SynergyInstaller
         raise "TODO: IMPLEMENT"
       end
       delegate_to_user('Download/install Synergy manually. The download page should have just opened.')
+      # TODO TODO TODO TODO: should I specifically remind the user to keep synergy in the dock or have it start on startup? Should some of this be mac only?
     else
       raise_interactive_only_install
     end
@@ -52,7 +57,7 @@ class SynergyInstaller
       else
         raise "TODO: IMPLEMENT"
       end
-      delegate_to_user("Configure #{name} manually in the other window that should have opened, and make sure it works.")
+      delegate_to_user("Configure #{name} manually (it should be open), and make sure it works.")
     else
       raise_interactive_only_configuration
     end
