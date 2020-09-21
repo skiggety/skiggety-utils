@@ -16,22 +16,22 @@ class SynergyInstaller
     if on_mac_os?
       return Dir.exist?("/Applications/Synergy.app") # TODO TODO TODO TODO: test this, it's only a stab in the dark right now. Checking the version would be a better approach if possible, I guess.
     else
-      raise "TODO TODO TODO: IMPLEMENT"
+      raise "TODO TODO TODO TODO: IMPLEMENT"
     end
   end
 
   def apparently_configured?
-    if $interactive
-      if `ps aux | grep #{ENV['USER']} | grep synergy[sc]` == '' # synergy server or client must be running
-        return false
-      else
-        return ask_user "Is #{name} set up the way you want?"
-      end
-    else
-      # In non-interactive mode, assume config is needed to make sure the user
-      # has a chance, since I can't think of a way to check if the current
-      # config is the desired version:
+    if `ps aux | grep #{ENV['USER']} | grep synergy[sc]` == '' # synergy server or client must be running
       return false
+    else
+      if $interactive
+        return ask_user "Is #{name} set up the way you want?"
+      else
+        # In non-interactive mode, assume config is needed to make sure the user
+        # has a chance, since I can't think of a way to check if the current
+        # config is the desired version:
+        return false
+      end
     end
   end
 
