@@ -15,8 +15,11 @@ class SynergyInstaller
   def apparently_installed?
     if on_mac_os?
       return Dir.exist?("/Applications/Synergy.app") # TODO TODO TODO TODO: test this, it's only a stab in the dark right now. Checking the version would be a better approach if possible, I guess.
-    else
+    elsif on_linux_os?
+      return false # TODO TODO TODO TODO TODO: DELETE
       raise "TODO TODO TODO TODO: IMPLEMENT"
+    else
+      raise "TODO: IMPLEMENT"
     end
   end
 
@@ -38,11 +41,7 @@ class SynergyInstaller
   def install
     download_url = 'https://members.symless.com/download'
     if $interactive
-      if on_mac_os?
-        system("open #{download_url}")
-      else
-        raise "TODO: IMPLEMENT"
-      end
+      open_in_browser(download_url)
       delegate_to_user('Download/install Synergy manually. The download page should have just opened.')
       # TODO TODO TODO TODO: should I specifically remind the user to keep synergy in the dock or have it start on startup? Should some of this be mac only?
     else

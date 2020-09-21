@@ -183,12 +183,30 @@ module InstallableSkiggetyUtil
     installer_file_path + ".config"
   end
 
+  def open_in_browser(url)
+    if on_mac_os?
+      system("open #{url}")
+    elsif on_linux_os?
+      systemtrue?("browse #{url}") or raise "Failed to open \"#{url}\" in browser"
+    else
+      raise "TODO: IMPLEMENT"
+    end
+  end
+
   def on_mac_os?
     @on_mac_os ||= calc_on_mac_os?
   end
 
   def calc_on_mac_os?
     return systemtrue?("uname -a | grep Darwin > /dev/null")
+  end
+
+  def on_linux_os?
+    @on_linux_os ||= calc_on_linux_os?
+  end
+
+  def calc_on_linux_os?
+    return systemtrue?("uname -a | grep Linux > /dev/null")
   end
 
   def systemtrue?(command)
