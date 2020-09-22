@@ -12,8 +12,7 @@ class HomebrewInstaller
 
   def apparently_installed?
     if on_mac_os?
-      homebrew_version = `brew --version `
-      return (homebrew_version =~ / 2\./ ).is_a?(Numeric) # TODO: update desired version and make sure it includes the gui version, too
+      return program_version_option_output_matches?('brew', / 2\./) # TODO: update desired version
     else
       return true
     end

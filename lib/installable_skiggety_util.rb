@@ -187,7 +187,7 @@ module InstallableSkiggetyUtil
     if on_mac_os?
       system("open #{url}")
     elsif on_linux_os?
-      systemtrue?("browse #{url}") or raise "Failed to open \"#{url}\" in browser"
+      systemtrue?("browse #{url} 2>/dev/null") or raise "Failed to open \"#{url}\" in browser"
     else
       raise "TODO: IMPLEMENT"
     end
@@ -216,6 +216,11 @@ module InstallableSkiggetyUtil
 
   def self_config_path(file_name)
     File.join(config_dir_path,file_name)
+  end
+
+  def program_version_option_output_matches?(program, version_regex) # TODO: rename?
+    version_output = `#{program} --version | head -n 1`
+    return (version_output =~ version_regex ).is_a?(Numeric) # TODO: update desired vim version and make sure it includes the gui version, too
   end
 
 end

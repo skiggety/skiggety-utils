@@ -11,8 +11,7 @@ class VimInstaller
   end
 
   def apparently_installed?
-    vim_version = `vim --version | head -n 1`
-    return (vim_version =~ / 8\.0 / ).is_a?(Numeric) # TODO: update desired vim version and make sure it includes the gui version, too
+    return program_version_option_output_matches?('vim', / 8\.0 /)
   end
 
   # err on the side of returning false...if these files don't match perfectly the user will have a chance to make sure it's set up right.

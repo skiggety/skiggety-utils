@@ -12,8 +12,7 @@ class LocalBackupSetterUpper
 
   def apparently_installed?
     if on_mac_os?
-      tmutil_version = `tmutil --version `
-      return (tmutil_version =~ / 4\.0\.0 / ).is_a?(Numeric) # TODO: update desired vim version and make sure it includes the gui version, too
+      return program_version_option_output_matches?('tmutil', / 4\.0\.0 /) # TODO: update desired version
     else
       raise NotImplementedError
     end
