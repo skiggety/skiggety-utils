@@ -11,18 +11,22 @@ module InstallableSkiggetyUtil
     # TODO: REFACTOR:
     unless marked_installed?
       if apparently_installed?
-        puts "#{self.class} can skip installation this time, because it's done already" # TODO: debug only
+        puts "#{name} installation is already done" # TODO: debug only
+        STDOUT.flush
       else
         puts "Installing #{name}"
+        STDOUT.flush
         install # TODO: catch exception and wrap in: raise "install command failed for #{self.class}"
       end
       mark_installed
     end
     unless marked_configured?
       if apparently_configured?
-        puts "#{self.class} can skip configuration this time, because it's done already" # TODO: debug only
+        puts "#{name} configurattion is already done" # TODO: debug only
+        STDOUT.flush
       else
         puts "Configuring #{name}"
+        STDOUT.flush
         configure
       end
       mark_configured

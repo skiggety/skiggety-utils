@@ -71,7 +71,6 @@ function use_installer {
 
     # TODO: DELETE this temporary special-case crap as soon as I can, probably when this gets rewritten in a real language:
     if [[ "$installer" == "gimp" ||
-          "$installer" == "hostname" ||
           "$installer" == "jiggler" ||
           "$installer" == "rvm" ||
           "$installer" == "ssh-agent" ||

@@ -8,7 +8,7 @@ class SynergyInstaller
 
   include InstallableSkiggetyUtil
 
-  def self.run # TODO TODO: EXTRACT to InstallableSkiggetyUtil
+  def self.run # TODO TODO TODO: EXTRACT to InstallableSkiggetyUtil
     self.new.run
   end
 
@@ -50,6 +50,7 @@ class SynergyInstaller
   end
 
   def configure
+    call_peer_installer('hostname')
     if $interactive
       if on_mac_os?
         system("open /Applications/Synergy.app")

@@ -2,14 +2,30 @@
 
 require_relative '../lib/installable_skiggety_util.rb'
 
-class HostnameChooser
+class HostnameSetup
 
-  include InstallableSkiggetyUtil
-
-  raise "TODO TODO TODO TODO: IMPLEMENT"
   # TODO: perhaps require installers/hostname.config/localhost.gitignore.txt
   # TODO: perhaps require dns server config (check with nslookup or an equivalent library) --this might help with synergy config, etc.
 
+  include InstallableSkiggetyUtil
+
+  def self.run # TODO TODO TODO: EXTRACT to InstallableSkiggetyUtil
+    self.new.run
+  end
+
+  def apparently_installed?
+    true # nothing to install
+  end
+
+  def apparently_configured?
+    return false # TODO TODO TODO: DELETE
+    raise "TODO TODO TODO TODO: IMPLEMENT"
+  end
+
+  def configure
+    raise "TODO TODO TODO TODO: IMPLEMENT"
+  end
+
 end
 
-HostnameChooser.run
+HostnameSetup.run
