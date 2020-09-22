@@ -6,9 +6,9 @@ class HostnameChooser
 
   include InstallableSkiggetyUtil
 
-  raise "TODO TODO TODO: IMPLEMENT"
+  raise "TODO TODO TODO TODO: IMPLEMENT"
   # TODO: perhaps require installers/hostname.config/localhost.gitignore.txt
-  # TODO: perhaps require dns server config (check with nslookup or an equivalent library)
+  # TODO: perhaps require dns server config (check with nslookup or an equivalent library) --this might help with synergy config, etc.
 
 end
 

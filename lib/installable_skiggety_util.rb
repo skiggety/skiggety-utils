@@ -5,6 +5,7 @@ require 'fileutils'
 module InstallableSkiggetyUtil
 
   def run
+    # TODO: should we catch exceptions and print them without a full stack trace?
     $interactive = ! ARGV.delete('--non-interactive')
 
     # TODO: REFACTOR:
@@ -156,12 +157,13 @@ module InstallableSkiggetyUtil
   end
 
   def call_peer_installer(name)
+    # TODO: perhaps if the installer contains 'include InstallableSkiggetyUtil', we should call it in the same process
     install_command = File.join(installer_directory_path,name)
     unless $interactive
       install_command = install_command + " --non-interactive"
     end
     system(install_command)
-    raise "Cannot install rectangle, because homebrew install failed" unless ($? == 0 )
+    raise "Failed to set up \"#{name}\", which is blocking \"#{self.name}\"." unless ($? == 0 )
   end
 
   def config_tree_hash

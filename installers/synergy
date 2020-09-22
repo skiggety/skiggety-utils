@@ -43,7 +43,7 @@ class SynergyInstaller
     if $interactive
       open_in_browser(download_url)
       delegate_to_user('Download/install Synergy manually. The download page should be open now.')
-      # TODO TODO TODO TODO: should I specifically remind the user to keep synergy in the dock or have it start on startup? Should some of this be mac only?
+      # TODO TODO TODO TODO: should I specifically remind the user to have synergy start on startup or keep it in the dock? Should some of this be mac only?
     else
       raise_interactive_only_install
     end
@@ -53,6 +53,8 @@ class SynergyInstaller
     if $interactive
       if on_mac_os?
         system("open /Applications/Synergy.app")
+      elsif on_linux_os?
+        raise "TODO TODO TODO TODO: IMPLEMENT"
       else
         raise "TODO: IMPLEMENT"
       end
