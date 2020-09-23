@@ -76,7 +76,7 @@ function echo_divider_with_text {
     text="$2"
     echo_divider_without_newline "$char"
     echo -ne "\r"
-    echo_char_n_times "$char" 8
+    echo_char_n_times "$char" 4
     echo " $text "
 }
 

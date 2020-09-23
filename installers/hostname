@@ -6,6 +6,7 @@ class HostnameSetup
 
   # TODO: perhaps require installers/hostname.config/localhost.gitignore.txt
   # TODO: perhaps require dns server config (check with nslookup or an equivalent library) --this might help with synergy config, etc.
+    # TODO: To systematize this you could find the ip address of the local gatteway and pop it up in a browser
 
   include InstallableSkiggetyUtil
 

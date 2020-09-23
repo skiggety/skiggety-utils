@@ -75,7 +75,7 @@ function use_installer {
           "$installer" == "rvm" ||
           "$installer" == "ssh-agent" ||
           "$installer" == "uhk" ]]; then
-        # TODO?: debug_here "skipping \"$installer\" installer for now..."
+        # TODO: debug_here "skipping \"$installer\" installer for now..."
         return 0
     else
         $installer_path $INSTALLER_ARGS || { echo_error_here "installer \"$installer\" FAILED"; return 1; }
