@@ -12,14 +12,14 @@ debug_here "utils successfully included" # TODO TODO: use a flag to turn debug m
 
 # TODO are "debug_here" and "echo_debug" redundant?
 
-debug_here "let's try running install_me:"
+debug_here "let's try running install-skiggety-utils:"
 debug_here "--------------------------"
 
-./PWD_BIN/install_me || echo_error_here "Could not run \"./PWD_BIN/install_me"
+./PWD_BIN/install-skiggety-utils || echo_error_here "Could not run \"./PWD_BIN/install-skiggety-utils"
 
-debug_here "install_me completed successfully"; echo
+debug_here "install-skiggety-utils completed successfully"; echo
 
-# TODO: I'm not even sure this is a good idea, but maybe reload ~/.bashrc and stuff now that it's been updated by ./install_me ? :       . ./lib/reload_env || exit_with_error "could not source \"./lib/reload_env\"" # TODO: don't use relative path
+# TODO: I'm not even sure this is a good idea, but maybe reload ~/.bashrc and stuff now that it's been updated by ./install-skiggety-utils ? :       . ./lib/reload_env || exit_with_error "could not source \"./lib/reload_env\"" # TODO: don't use relative path
 # debug_here
 # TODO: this is something similar that I'm also not sure is a good idea: ./bin/start_in_env.bash || exit_with_error "Could not run \"./bin/start_in_env.bash\"" # TODO: don't use relative path # TODO TODO: move most things in here, including any interactive stuff
 

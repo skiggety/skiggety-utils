@@ -5,7 +5,7 @@
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
-$THIS_DIR/install_me --non-interactive || exit_with_error "could not run installers for skiggety-utils"
+$THIS_DIR/install-skiggety-utils --non-interactive || exit_with_error "could not run installers for skiggety-utils"
 echo_divider "_"
 
 # TODO: run ruby unit tests

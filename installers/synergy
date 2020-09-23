@@ -19,7 +19,7 @@ class SynergyInstaller
       return false # TODO TODO TODO: DELETE
       raise "TODO TODO: IMPLEMENT"
     else
-      raise "TODO: IMPLEMENT"
+      raise NotImplementedError, "TODO: implement this for this OS"
     end
   end
 
@@ -57,7 +57,7 @@ class SynergyInstaller
       elsif on_linux_os?
         raise "TODO TODO: IMPLEMENT"
       else
-        raise "TODO: IMPLEMENT"
+        raise NotImplementedError, "TODO: implement this for this OS"
       end
       delegate_to_user("Configure #{name} manually (it should be open), and make sure it works.")
     else

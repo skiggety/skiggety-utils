@@ -33,7 +33,7 @@ class LocalBackupSetterUpper
       if $interactive
         delegate_to_user 'make sure Time Machine is installed'
       else
-        raise "Cannot install Time Machine in non-interactive mode, user should run \"install_me\" or \"#{__FILE__}\"."
+        raise "Cannot install Time Machine in non-interactive mode, user should run \"install-skiggety-utils\" or \"#{__FILE__}\"."
       end
     else
       raise NotImplementedError, "TODO: implement this for this OS"
@@ -46,7 +46,7 @@ class LocalBackupSetterUpper
         system("open /System/Library/PreferencePanes/TimeMachine.prefPane")
         delegate_to_user 'set up time machine to make backups using the window that just opened automatically'
       else
-        raise "Cannot configure Time Machine in non-interactive mode, user should run \"install_me\" or \"#{__FILE__}\"."
+        raise "Cannot configure Time Machine in non-interactive mode, user should run \"install-skiggety-utils\" or \"#{__FILE__}\"."
       end
     else
       raise NotImplementedError, "TODO: implement this for this OS"

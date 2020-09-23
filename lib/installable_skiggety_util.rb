@@ -157,7 +157,7 @@ module InstallableSkiggetyUtil
   end
 
   def raise_interactive_only_action(action)
-    raise "Cannot #{action} #{name} in non-interactive mode, user should run \"install_me\" or \"#{installer_file_path}\"."
+    raise "Cannot #{action} #{name} in non-interactive mode, user should run \"install-skiggety-utils\" or \"#{installer_file_path}\"."
   end
 
   def call_peer_installer(name)
