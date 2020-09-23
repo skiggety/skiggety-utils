@@ -50,7 +50,7 @@ function git-set-global-default {
                 git config --global "$key" "$value"
             fi
         else
-            exit_with_error "failed to change global default git config \"$key\" to \"$value\"."
+            exit_with_error "Failed to change global default git config \"$key\" to \"$value\"."
         fi
     fi
 }

@@ -20,11 +20,11 @@ class HostnameSetup
 
   def apparently_configured?
     return false # TODO TODO TODO: DELETE
-    raise "TODO TODO TODO TODO: IMPLEMENT"
+    raise "TODO TODO TODO: IMPLEMENT"
   end
 
   def configure
-    raise "TODO TODO TODO TODO: IMPLEMENT"
+    raise "TODO TODO TODO: IMPLEMENT"
   end
 
 end
