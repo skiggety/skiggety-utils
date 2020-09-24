@@ -10,10 +10,6 @@ class HostnameSetup
 
   include InstallableSkiggetyUtil
 
-  def self.run # TODO TODO TODO: EXTRACT to InstallableSkiggetyUtil
-    self.new.run
-  end
-
   def apparently_installed?
     true # nothing to install
   end

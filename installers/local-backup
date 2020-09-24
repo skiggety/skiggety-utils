@@ -6,10 +6,6 @@ class LocalBackupSetterUpper
 
   include InstallableSkiggetyUtil
 
-  def self.run # TODO: extract to InstallableSkiggetyUtil
-    self.new.run
-  end
-
   def apparently_installed?
     if on_mac_os?
       return program_version_option_output_matches?('tmutil', / 4\.0\.0 /) # TODO: update desired version

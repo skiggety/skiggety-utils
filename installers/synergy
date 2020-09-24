@@ -8,10 +8,6 @@ class SynergyInstaller
 
   include InstallableSkiggetyUtil
 
-  def self.run # TODO TODO TODO: EXTRACT to InstallableSkiggetyUtil
-    self.new.run
-  end
-
   def apparently_installed?
     if on_mac_os?
       return Dir.exist?("/Applications/Synergy.app") # TODO: Checking the version would be a better approach if possible, I guess.

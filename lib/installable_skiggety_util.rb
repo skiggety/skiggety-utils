@@ -4,6 +4,16 @@ require 'fileutils'
 
 module InstallableSkiggetyUtil
 
+  def self.included base
+    base.class_eval do
+
+      def self.run
+        self.new.run
+      end
+
+    end
+  end
+
   def run
     # TODO: should we catch exceptions and print them without a full stack trace?
     $interactive = ! ARGV.delete('--non-interactive')

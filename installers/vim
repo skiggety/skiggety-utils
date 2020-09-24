@@ -6,10 +6,6 @@ class VimInstaller
 
   include InstallableSkiggetyUtil
 
-  def self.run # TODO TODO: EXTRACT to InstallableSkiggetyUtil
-    self.new.run
-  end
-
   def apparently_installed?
     return program_version_option_output_matches?('vim', / 8\.0 /)
   end

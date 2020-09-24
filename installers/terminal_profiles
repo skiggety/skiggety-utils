@@ -6,10 +6,6 @@ class TerminalProfileConfigurer
 
   include InstallableSkiggetyUtil
 
-  def self.run # TODO TODO: EXTRACT to InstallableSkiggetyUtil
-    self.new.run
-  end
-
   def apparently_installed?
     true # this is configuration only
   end
