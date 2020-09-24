@@ -21,7 +21,7 @@ while [[ "$1" == -* ]]; do
         shift
     else
         echo "ERROR: option not supported: $1" >&2
-        echo "TODO: IMPLEMENT" >&2; exit 1
+        echo "TODO: IMPLEMENT more passthrough options for vim or grep?" >&2; exit 1
     fi
 done
 

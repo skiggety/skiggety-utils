@@ -8,6 +8,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 $THIS_DIR/install-skiggety-utils --non-interactive || exit_with_error "could not run installers for skiggety-utils"
 echo_divider "_"
 
-# TODO: run ruby unit tests
+# TODO TODO: run ruby unit tests
+  # TODO: show coverage results (perhaps ratchet towards 100%, or make sure it clears a predefined minimum threshold)
 
 exit 0

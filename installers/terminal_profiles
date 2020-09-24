@@ -32,7 +32,7 @@ class TerminalProfileConfigurer
         raise_interactive_only_configuration
       end
     else
-      raise "TODO: IMPLEMENT"
+      raise NotImplementedError, "TODO: implement this for this OS"
     end
   end
 

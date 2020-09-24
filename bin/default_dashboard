@@ -8,10 +8,10 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 
 # TODO TODO: highlight ERRORS
 
-echo_divider_with_text "-" "TODO's:"
-$THIS_DIR/todo | tail -n 5 || exit_with_error "todo FAILED" # TODO: summarize_result -n 5 todo
+echo_divider_with_text "-" "TODO's:" # IGNORE_TODO
+$THIS_DIR/todo | tail -n 5 || exit_with_error "todo FAILED" # TODO TODO: abbreviate -n 5 todo
 
-# TODO TODO: put test output right here if tests failed so todo's are the thing to scroll off the top of the screen instead of this.
+# TODO TODO TODO: put test output right here if tests failed so todo's are the thing to scroll off the top of the screen instead of this.
 
 # TODO: only do this stuff if it's a git repository
 # echo_divider_with_text "-" "git diff of unstaged files:"

@@ -27,7 +27,7 @@ Cool Programs you'll find in here:
 - [duh](bin/duh) - Show Directory, Username, and Hostname (in scp format). Useful in prompts.
 - [grim](bin/grim) - GRep for string and open in vIM.
 - [vimwhich](bin/vimwhich) - quickly edit files that are in your path (and new files)
-- [todo](bin/todo) - ( TODO ... )
+- [todo](bin/todo) - ( TODO TODO ... )
 - [review](bin/review) - A program that displays output of other programs and refreshes.
 - [dashboard](PWD_BIN/dashboard) A overrideable program that summarizes the overall status for one directory location.
 - gol
@@ -35,9 +35,9 @@ Cool Programs you'll find in here:
 misc TODO's:: (run 'todo' or 'dashboard' for the full sorted list) <!-- (IGNORE_TODO) -->
 ===============================================================
 
-- TODO TODO: output license summary in interactive programs??
-- TODO TODO: commit initial skigg-utils, to get to parity with what I already like to use
-- TODO TODO: write a program to abbreviate output for use in the dashboard. You should be able to specify a maximum number of lines and pipe output through it, and it will do something like "head" or "tail" if necessary, but also display information about how many lines were removed/kept/found-in-total
+- TODO TODO TODO: output license summary in interactive programs (like you're supposed to)??
+- TODO TODO TODO: commit initial skigg-utils, to get to parity with what I already like to use
+- TODO TODO TODO: write a program to abbreviate output for use in the dashboard. You should be able to specify a maximum number of lines and pipe output through it, and it will do something like "head" or "tail" if necessary, but also display information about how many lines were removed/kept/found-in-total
 - TODO TODO: music rotator thingy
 - TODO: mini-project: raspberry pi backup machine, and the software to run it.
 - TODO: "playbot", a program that tunes in youtube livestreams, video meetings, watch later, podcasts and your personal dashboards, automatically. Great as an information radiator.
@@ -54,6 +54,6 @@ misc TODO's:: (run 'todo' or 'dashboard' for the full sorted list) <!-- (IGNORE_
 - TODO: put a directory in skigg-utils that contains reference/demo code that shows you how to do certain things
 - TODO: implement ratcheting that can be used for code coverage, number of intstances of a string, number of lint failures, etc. It should be usable as part of a pre-merge hook for git and/or blocking a github pull request
 - TODO: have a way to open the github webpage from inside a git repo from the command line. You can use "open <URL>" on a mac, for example, and scripts like what you use for automatic git pushing can use it to help you get PR's going fast.
-- TODO: is there a way to commit TODO's somewhere other than local, but not show them publicly on github?
+- TODO: is there a way to commit TODO's somewhere other than local, but not show them publicly on github (I have gitignore files available, but a branching convention might be ghood for keepingt hem in code)?
 - TODO: An [opinionated] tool for automatically seeding/templating new projects
-- TODO: utility for this: https://serverfault.com/questions/310098/how-to-add-a-timestamp-to-bash-script-log
+- TODO: utility for timestamping [log] output like this: https://serverfault.com/questions/310098/how-to-add-a-timestamp-to-bash-script-log

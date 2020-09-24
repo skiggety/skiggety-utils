@@ -1,4 +1,4 @@
-# TODO TODO TODO: write tests
+# TODO TODO TODO TODO: write tests
 
 require 'fileutils'
 
@@ -15,24 +15,24 @@ module InstallableSkiggetyUtil
   end
 
   def run
-    # TODO: should we catch exceptions and print them without a full stack trace?
+    # TODO TODO: should we catch exceptions and print them without a full stack trace?
     $interactive = ! ARGV.delete('--non-interactive')
 
     # TODO: REFACTOR:
     unless marked_installed?
       if apparently_installed?
-        puts "#{name} installation is already done" # TODO: debug only
+        puts "#{name} installation is already done" # TODO TODO: debug only
         STDOUT.flush
       else
         puts "Installing #{name}"
         STDOUT.flush
-        install # TODO: catch exception and wrap in: raise "install command failed for #{self.class}"
+        install # TODO TODO: catch exception and wrap in: raise "install command failed for #{self.class}"
       end
       mark_installed
     end
     unless marked_configured?
       if apparently_configured?
-        puts "#{name} configurattion is already done" # TODO: debug only
+        puts "#{name} configuration is already done" # TODO: debug only
         STDOUT.flush
       else
         puts "Configuring #{name}"
@@ -171,7 +171,7 @@ module InstallableSkiggetyUtil
   end
 
   def call_peer_installer(name)
-    # TODO: perhaps if the installer contains 'include InstallableSkiggetyUtil', we should call it in the same process
+    # TODO TODO: perhaps if the installer contains 'include InstallableSkiggetyUtil', we should call it in the same process
     install_command = File.join(installer_directory_path,name)
     unless $interactive
       install_command = install_command + " --non-interactive"
@@ -183,7 +183,7 @@ module InstallableSkiggetyUtil
   def config_tree_hash
     if config_exist?
       if ( '' != `git status -s #{config_dir_path}`)
-        raise "There are uncommitted changes in #{config_dir_path}, so #{self.class} will not bother computing a hash to identify it." # TODO: we could return something random so it's different each time, not sure...
+        raise "There are uncommitted changes in #{config_dir_path}, so #{self.class} will not bother computing a hash to identify it." # TODO: we could return something random so it's different each time, or maybe bite the bullet and calculate what the tree hash would be from scratch, not sure...
       end
       return `git ls-tree HEAD -- #{config_dir_path}`.split(' ')[2]
     else
@@ -205,7 +205,7 @@ module InstallableSkiggetyUtil
     elsif on_linux_os?
       systemtrue?("browse #{url} 2>/dev/null") or raise "Failed to open \"#{url}\" in browser"
     else
-      raise "TODO: IMPLEMENT"
+      raise NotImplementedError, "TODO: implement this for this OS"
     end
   end
 

@@ -13,7 +13,7 @@
 # will adjust automatically.
 
 # TODO TODO: accept --minimum-delay or -m (e.g. auto-ci might want to call this with "-m 30")
-# TODO TODO: accept --maximum-delay or -M (e.g. auto-ci might want to call this with "-M $(( 60 * 60 * 6 ))")
+# TODO TODO TODO: accept --maximum-delay or -M (e.g. auto-ci might want to call this with "-M $(( 60 * 60 * 6 ))")
 
 class ReviewProgram
 
@@ -59,7 +59,7 @@ class ReviewProgram
     return result
   end
 
-  def show_footer # TODO: show whether the command failed
+  def show_footer # TODO TODO: show whether the command failed
     system("echo_divider_with_text \"#\" \"...shown at $(date)\"")
   end
 

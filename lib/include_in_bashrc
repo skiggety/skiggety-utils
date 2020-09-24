@@ -1,9 +1,11 @@
 # This should be included into the user's .bashrc file)
 
+# TODO TODO TODO TODO: make sure your environment does the right thing with bash history in multiple terminals
+
 # ./PWD_BIN comes before $SKIGGETY_UTILS_PATH/bin so that you can override scripts like "dashboard"
 export PATH="$PATH:./PWD_BIN:$SKIGGETY_UTILS_PATH/bin"
 
-# TODO: add colors:
+# TODO: add colors (besides duh):
 export PS1="\$(duh)\$(git branch 2>/dev/null|grep '^*'|sed 's/^\\*/ \\*/') - \D{%F %T}\n\$ "
 
 # TODO run 'ssh-agent' in background?

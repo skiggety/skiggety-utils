@@ -2,7 +2,7 @@
 
 # This script sets up my bash environment the way I like it.
 
-# TODO?: reload bashrc after setting it up?
+# TODO TODO?: reload bashrc after setting it up?
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1

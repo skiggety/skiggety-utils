@@ -1,4 +1,4 @@
-# TODO: . $THIS_DIR/shelper.bash || exit 1 # TODO?: extract & include shelper.bash which checks bash version
+# TODO TODO: . $THIS_DIR/shelper.bash || exit 1 # TODO: extract & include shelper.bash which checks bash version
 
 newline='
 '
@@ -88,7 +88,7 @@ function echo_divider {
 
 function echo_divider_without_newline {
     char="$1"
-    echo_char_n_times "$char" 80 # TODO: sense terminal width or default to 80
+    echo_char_n_times "$char" 80 # TODO TODO TODO: sense terminal width or default to 80
 }
 
 function echo_char_n_times {

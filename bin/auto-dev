@@ -10,12 +10,3 @@ SKIGGETY_UTILS_PATH="$(cd "$(dirname $THIS_DIR)";pwd)"
 
 review dev
 
-# TODO: get donor code from old script "dashboard", but run make sure install works first (run git pull, and install first)
-
-# # TODO: API spec (name changes):
-#   # TODO: "auto-dev" will replace what was called "dashboard" when I worked at TBI. It basically runs "review dashboard"
-#   # TODO: if you enter the command "review dashboard" you get the dashboard, continually updated on your screen.
-#   # TODO: "review" will replace "loop"
-#   # TODO: "dashboard" will replace "summarize_status". It displays a snapshot of current status
-#   # TODO: ./bin/todo should draw from the old ./PWD_BIN/status.
-#   # TODO?: "./PWD_BIN/local_status" will replace ./status

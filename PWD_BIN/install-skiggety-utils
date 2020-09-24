@@ -67,7 +67,7 @@ function use_installer {
     local INSTALLER_ARGS="$2"
     installer="$(basename $installer_path)"
 
-    # TODO: DELETE this temporary special-case crap as soon as I can, probably when this gets rewritten in a real language:
+    # TODO TODO: DELETE this temporary special-case cruft as soon as I can, probably when this gets rewritten in a real language:
     if [[ "$installer" == "gimp" ||
           "$installer" == "hostname" ||
           "$installer" == "jiggler" ||

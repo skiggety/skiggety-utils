@@ -2,13 +2,23 @@
 
 # This script makes sure everything is installed, familiarizes you with what's here, and maybe even displays the dashboard
 
+# TODO TODO: get donor code from old script "dashboard"
+
+# # TODO: API spec (name changes):
+#   # TODO: "auto-dev" will replace what was called "dashboard" when I worked at TBI. It basically runs "review dashboard"
+#   # DONE: if you enter the command "review dashboard" you get the dashboard, continually updated on your screen.
+#   # TODO TODO: "review" will replace "loop" (same for review_while and review_until)
+#   # TODO: "dashboard" will replace "summarize_status". It displays a snapshot of current status
+#   # TODO: ./bin/todo should draw from the old ./PWD_BIN/status.
+#   # TODO?: "./PWD_BIN/local_status" will replace ./status
+
 echo "starting at $(date) ..."
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/lib/include_in_bashrc || exit 1
 . $THIS_DIR/lib/skiggety-utils.bash || exit 1
 
-debug_here "utils successfully included" # TODO TODO: use a flag to turn debug messages on or off
+debug_here "utils successfully included" # TODO TODO TODO: use a flag to turn debug messages on or off
 
 # TODO are "debug_here" and "echo_debug" redundant?
 
@@ -33,6 +43,6 @@ exit_with_error "Technically FAILED, but if you got here, that's good."
 # exit_with_error "MOVABLE BREAKPOINT"
 debug_here "auto-dev completed successfully"; echo
 debug_here "exiting..."
-help # TODO: test/implement
+help # TODO TODO: test/implement
 exit 0
 
