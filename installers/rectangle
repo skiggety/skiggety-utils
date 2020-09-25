@@ -35,6 +35,8 @@ class RectangleInstaller
 
       system("brew cask install rectangle")
       raise "rectangle install failed" unless ($? == 0 )
+    else
+      raise NotImplementedError, "TODO: implement this for this OS"
     end
   end
 
