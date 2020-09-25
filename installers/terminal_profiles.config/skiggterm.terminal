@@ -21,11 +21,11 @@
 	AAAAAADM
 	</data>
 	<key>BackgroundAlphaInactive</key>
-	<real>0.3966085621387283</real>
+	<real>0.5</real>
 	<key>BackgroundBlur</key>
-	<real>0.049245845375722547</real>
+	<real>0.043736452312138727</real>
 	<key>BackgroundBlurInactive</key>
-	<real>0.0</real>
+	<real>0.012125180635838151</real>
 	<key>BackgroundColor</key>
 	<data>
 	YnBsaXN0MDDUAQIDBAUGKyxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3AS
