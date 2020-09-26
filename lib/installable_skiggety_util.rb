@@ -1,4 +1,5 @@
 # TODO TODO TODO TODO: write tests
+# TODO: assert ruby version # puts "DEBUG: in #{name} installer, RUBY_VERSION is \"#{RUBY_VERSION}\"."
 
 require 'fileutils'
 

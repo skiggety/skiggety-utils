@@ -17,8 +17,7 @@ class HomebrewInstaller
   def install
     if on_mac_os?
       if $interactive
-        system('/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"')
-        raise "failed to install homebrew, please check http://brew.sh" unless ($? == 0 )
+        systemtrue?('brew update') or systemtrue?('/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"') or raise "failed to install homebrew, please check http://brew.sh"
       else
         raise_interactive_only_install
       end

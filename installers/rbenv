@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby
+
+# TODO TODO TODO: Think about how to deal with this bootstrapping problem: I need skiggety.bash and homebrew for rbenv, and I need rbenv for the latest ruby, and I need the a known recent ruby to test/write/run the rest of the installers. Maybe I should just write one shell script to get us up to the point of having a recent ruby. If I were to do that, I'd have to deal with checking which OS I'm on, making sure we don't re-run to many steps without the use of marker files, etc.
+  # TODO: install ruby ("rbenv install `cat $SKIGGETY_UTILS_PATH/.ruby-version`")
+  # TODO?: in the same script that installs ruby, set the global ruby version (maybe this is better left undone, or only done on install, or done in the ruby install script)
+
+require_relative '../lib/installable_skiggety_util.rb'
+
+class RVMInstaller
+
+# TODO: should I do this before getting ruby tests going? should I implement this one in shell?
+
+# some rbenv reading material:
+### https://medium.com/@namangupta01/replacing-rvm-with-rbenv-in-os-x-9dea622bd639#:~:text=Both%20rbenv%20and%20RVM%20are,lightweight%20Ruby%20version%20management%20tool.
+### https://github.com/rbenv/rbenv/issues/1100
+### https://javierjulio.com/rbenv/#section_3.2
+
+# TODO: make sure rvm is not installed, since it's incompatible with rbenv
+# TODO: if I implement this in ruby, maybe other ruby installers should depend on it, and maybe it should throw an exception to force a retry if any installation or version switching even happens
+
+  include InstallableSkiggetyUtil
+
+  def apparently_installed?
+    return program_version_option_output_matches?('rbenv', / 1\.1/)
+  end
+
+  def apparently_configured?
+    true # nothing to do
+  end
+
+  def install
+    if on_mac_os?
+      call_peer_installer('skiggety.bash') # TODO?
+      call_peer_installer('homebrew')
+      systemtrue?("rbenv --version") or systemtrue?("brew install rbenv") or raise "FAILED to install rbenv"
+      raise "configured rbenv, so any skiggety_utils installation that's going on needs to be restarted to get the new environment" # TODO?: wipe out marker files to force reinstall? # TODO: MOVE to config method?
+      #TODO: I might install rbenv manually, then just count on "install" never being called
+    else
+      raise NotImplementedError, "TODO: implement this for this OS"
+    end
+  end
+
+end
+
+RVMInstaller.run

@@ -1,5 +1,6 @@
 # This should be included into the user's .bashrc file)
 
+# TODO: rename $SKIGGETY_UTILS_PATH so it's not confused with $PATH
 # TODO TODO TODO TODO: make sure your environment does the right thing with bash history in multiple terminals
 
 # ./PWD_BIN comes before $SKIGGETY_UTILS_PATH/bin so that you can override scripts like "dashboard"
@@ -15,3 +16,8 @@ export CLICOLOR='xterm-color' # colorize ls output and such in mac xterm
 # TODO: use more stuff from older bashrc files I've used
 
 trap 'if [ "login" == "$(ps -o comm= $PPID)" ];then echo holding the window open for a short interval;pretty_sleep 15;fi' EXIT
+
+# rbenv stuff (should be at the bottom of this file):
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
