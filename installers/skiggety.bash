@@ -41,11 +41,11 @@ function main {
     else
         TMP_BASHRC="/tmp/bashrc.example.generated_by_SKIGGETY_UTILS.pid_$$"
         grep -v FROM_SKIGGETY_UTILS ~/.bashrc > $TMP_BASHRC # $TMP_BASHRC < ~/.bashrc
-        SKIGGETY_UTILS_PATH="$(cd "$(dirname $THIS_DIR)";pwd)"
-        SKIGGETY_UTILS_PATH="${SKIGGETY_UTILS_PATH/$HOME/\$HOME}"
-        ESCAPED_SKIGGETY_UTILS_PATH="$(echo $SKIGGETY_UTILS_PATH | sed 's/\//\\\//g')"
+        SKIGGETY_UTILS_DIR="$(cd "$(dirname $THIS_DIR)";pwd)"
+        SKIGGETY_UTILS_DIR="${SKIGGETY_UTILS_DIR/$HOME/\$HOME}"
+        ESCAPED_SKIGGETY_UTILS_DIR="$(echo $SKIGGETY_UTILS_DIR | sed 's/\//\\\//g')"
 
-        sed "s/\$HARDCODED_SKIGGETY_UTILS_PATH/$ESCAPED_SKIGGETY_UTILS_PATH/g"< "$NEW_BASHRC_SECTION" >> $TMP_BASHRC
+        sed "s/\$HARDCODED_SKIGGETY_UTILS_DIR/$ESCAPED_SKIGGETY_UTILS_DIR/g"< "$NEW_BASHRC_SECTION" >> $TMP_BASHRC
         . $TMP_BASHRC
 
         if $interactive; then
