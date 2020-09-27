@@ -33,8 +33,7 @@ class RectangleInstaller
       # Using homebrew for the install, which means I need to install homebrew as a dependency, only if on a mac though.
       call_peer_installer('homebrew')
 
-      system("brew cask install rectangle")
-      raise "rectangle install failed" unless ($? == 0 )
+      assert_system("brew cask install rectangle")
     else
       raise NotImplementedError, "TODO: implement this for this OS"
     end
@@ -43,7 +42,7 @@ class RectangleInstaller
   def configure
     if on_mac_os?
       if $interactive
-        system("open /Applications/Rectangle.app")
+        assert_system("open /Applications/Rectangle.app")
         delegate_to_user "Configure #{name}"
       else
         raise_interactive_only_configuration

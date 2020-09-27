@@ -39,7 +39,7 @@ class LocalBackupSetterUpper
   def configure
     if on_mac_os?
       if $interactive
-        system("open /System/Library/PreferencePanes/TimeMachine.prefPane")
+        assert_system("open /System/Library/PreferencePanes/TimeMachine.prefPane")
         delegate_to_user 'set up time machine to make backups using the window that just opened automatically'
       else
         raise "Cannot configure Time Machine in non-interactive mode, user should run \"install-skiggety-utils\" or \"#{__FILE__}\"."

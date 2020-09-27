@@ -32,7 +32,7 @@ class RVMInstaller
     if on_mac_os?
       call_peer_installer('skiggety.bash') # TODO?
       call_peer_installer('homebrew')
-      systemtrue?("rbenv --version") or systemtrue?("brew install rbenv") or raise "FAILED to install rbenv"
+      systemtrue?("rbenv --version") or assert_system("brew install rbenv")
       raise "configured rbenv, so any skiggety_utils installation that's going on needs to be restarted to get the new environment" # TODO?: wipe out marker files to force reinstall? # TODO: MOVE to config method?
       #TODO: I might install rbenv manually, then just count on "install" never being called
     else

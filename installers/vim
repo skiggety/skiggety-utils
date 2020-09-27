@@ -28,7 +28,7 @@ class VimInstaller
 
   def configure
     if $interactive
-      system("vim -do #{user_vimrc_path} #{template_vimrc_path}")
+      assert_system("vim -do #{user_vimrc_path} #{template_vimrc_path}")
     else
       raise_interactive_only_configuration
     end

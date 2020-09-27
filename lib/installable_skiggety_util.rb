@@ -96,8 +96,7 @@ module InstallableSkiggetyUtil
 
   def ask_user(request_text)
     if $interactive
-      system("#{installer_directory_path}/../bin/ask_user '#{request_text}'")
-      return ( $?.exitstatus == 0 )
+      return systemtrue?("#{installer_directory_path}/../bin/ask_user '#{request_text}'")
     else
       raise "Cannot ask user to do the following without being in interactive mode: '#{request_text}'"
     end
@@ -202,9 +201,9 @@ module InstallableSkiggetyUtil
 
   def open_in_browser(url)
     if on_mac_os?
-      system("open #{url}")
+      assert_system("open #{url}")
     elsif on_linux_os?
-      systemtrue?("browse #{url} 2>/dev/null") or raise "Failed to open \"#{url}\" in browser"
+      assert_system("browse #{url} 2>/dev/null")
     else
       raise NotImplementedError, "TODO: implement this for this OS"
     end
@@ -224,6 +223,10 @@ module InstallableSkiggetyUtil
 
   def calc_on_linux_os?
     return systemtrue?("uname -a | grep Linux > /dev/null")
+  end
+
+  def assert_system(command)
+      systemtrue?(command) or raise "Failed to run command: \"#{command}\""
   end
 
   def systemtrue?(command)

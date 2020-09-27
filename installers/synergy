@@ -49,7 +49,7 @@ class SynergyInstaller
     call_peer_installer('hostname')
     if $interactive
       if on_mac_os?
-        system("open /Applications/Synergy.app")
+        assert_system("open /Applications/Synergy.app")
       elsif on_linux_os?
         raise "TODO: IMPLEMENT"
       else
