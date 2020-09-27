@@ -58,9 +58,25 @@ function debug_here {
 }
 
 function echo_eval {
-    expr="\$$1"
-    eval val=$expr
-    echo "$1='$val'"
+    if [[ $# -ne 1 ]]; then
+        echo_error_here 'echo_eval nothing to evaluate'
+    elif is_array_name $1; then
+        local expr="\$(printf \"'%s' \" \"\${$1[@]}\")" # based on "https://stackoverflow.com/a/12985353/1735179"
+        eval local val=$expr
+        echo "$1=($val)"
+    else
+        local expr="\$$1"
+        eval local val=$expr
+        echo "$1='$val'"
+    fi
+}
+
+# based on "https://stackoverflow.com/a/50938224/1735179":
+function is_array_name {
+    [[ $# -ne 1 ]] && return 2
+    local var="$1"
+    regex="^declare -[aA] ${var}(=|$)"
+    [[ $(declare -p "$var" 2> /dev/null) =~ $regex ]]
 }
 
 function echo_error_here {
@@ -96,6 +112,3 @@ function echo_char_n_times {
     n="$2"
     for ((i=1;i<=$n; i++)); do echo -n "$char"; done
 }
-
-# debug_eval_here "PATH"
-# which dashboard

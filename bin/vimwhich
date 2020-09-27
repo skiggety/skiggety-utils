@@ -25,7 +25,7 @@ for target in "$@";do
         fi
         mkdir -p "$destination_dir"
     fi
-    destinations+=( "$destination" ) #TODO: make debug_eval work for arrays
+    destinations+=( "$destination" ) #; debug_eval_here destinations; pretty_sleep 5
 
     # TODO: create $destination file from template if it doesn't exist and mark it executable
 

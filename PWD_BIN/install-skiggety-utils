@@ -48,7 +48,7 @@ function main {
         INSTALLER_ARGS="--non-interactive"
     fi
 
-    INSTALLERS_DIR="$THIS_DIR/../installers"
+    INSTALLERS_DIR="$(cd "$THIS_DIR/../installers";pwd)"
 
     for installer in "$INSTALLERS_DIR"/*; do # TODO: files only
         if [ -f "$installer" ]; then
