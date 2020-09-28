@@ -74,7 +74,6 @@ function use_installer {
               "$installer" == "basic_prerequisites" ||
               # TODO TODO: DELETE this temporary special-case cruft as soon as I can, probably when this gets rewritten in a real language:
               "$installer" == "gimp" ||
-              "$installer" == "hostname" ||
               "$installer" == "jiggler" ||
               "$installer" == "misc_utils" ||
               "$installer" == "ssh-agent" ||

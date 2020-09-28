@@ -16,12 +16,35 @@ class HostnameSetup
   end
 
   def apparently_configured?
-    return false # TODO TODO: DELETE
-    raise "TODO TODO: IMPLEMENT"
+    desired_hostname == `hostname`
   end
 
   def configure
-    raise "TODO TODO: IMPLEMENT"
+    if on_mac_os?
+      if $interactive
+        puts "Sudo password will be needed to set hostname:"
+        %w(LocalHostName ComputerName).each do |sc_name|
+          assert_system("sudo scutil --set #{sc_name} #{desired_hostname}")
+        end
+      else
+        raise_interactive_only_configuration
+      end
+    else
+      raise NotImplementedError, "TODO: implement this for this OS"
+    end
+  end
+
+  def desired_hostname
+    @desired_hostname ||= calc_desired_hostname
+  end
+
+  def calc_desired_hostname
+    desired_hostname_file = self_config_path('localhost.gitignore.txt')
+    if File.exist?(desired_hostname_file)
+      `cat #{desired_hostname_file}`
+    else
+      raise "Please put desired hostname in #{desired_hostname_file} and try again"
+    end
   end
 
 end
