@@ -32,6 +32,16 @@ function main {
         esac
     done
 
+    completed_marker="$THIS_DIR/.$(basename $0).completed"
+    if ! $interactive; then
+        if [ -f $completed_marker ]; then
+            if find $completed_marker -mtime -1 | grep $completed_marker >/dev/null; then
+                echo "$(basename $0) has already completed in the last day, skipping updates in non-interactive mode."
+                exit 0
+            fi
+        fi
+    fi
+
     # homebrew
     if uname -a | grep Darwin >/dev/null;then
         echo "Installing/Updating homebrew"
@@ -73,6 +83,7 @@ function main {
     echo n | rbenv install $(cat $SKIGGETY_UTILS_DIR/.ruby-version) # echoing n is to avoid reinstall
     rbenv versions
 
+    touch "$completed_marker"
 }
 
 main "$@"
