@@ -58,16 +58,15 @@ function main {
     if uname -a | grep Darwin >/dev/null;then
         brew upgrade rbenv || brew install rbenv
     else
-        if apt --version >/dev/null; then
-            if $interactive;then
-                sudo apt upgrade rbenv || sudo apt install rbenv
-            else
-                exit_with_error "must run $(basename $0) interactively to install rbenv"
-            fi
-        else
-            exit_with_error "TODO: implement rbenv installation for this OS"
+        local rbenv_dir="~/.rbenv"
+        if ! [ -d $rbenv_dir ]; then
+            git clone https://github.com/rbenv/rbenv.git $rbenv_dir
         fi
+        pushd $rbenv_dir
+        git pull
+        popd
     fi
+    # TODO: install rbenv-aliases?
 
     # ruby
     echo "Installing ruby"
