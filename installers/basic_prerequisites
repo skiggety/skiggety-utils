@@ -36,7 +36,8 @@ function main {
     if ! $interactive; then
         if [ -f $completed_marker ]; then
             if find $completed_marker -mtime -1 | grep $completed_marker >/dev/null; then
-                echo "$(basename $0) has already completed in the last day, skipping updates in non-interactive mode."
+                completed_marker_time="$(ls -l $completed_marker| awk '{print $6" "$7" "$8}')"
+                echo "$(basename $0) has already completed in the last day (at $completed_marker_time), skipping updates in non-interactive mode."
                 exit 0
             fi
         fi
