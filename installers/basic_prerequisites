@@ -58,7 +58,15 @@ function main {
     if uname -a | grep Darwin >/dev/null;then
         brew upgrade rbenv || brew install rbenv
     else
-        exit_with_error "TODO: implement rbenv installation for this OS"
+        if apt --version >/dev/null; then
+            if $interactive;then
+                sudo apt upgrade rbenv || sudo apt install rbenv
+            else
+                exit_with_error "must run $(basename $0) interactively to install rbenv"
+            fi
+        else
+            exit_with_error "TODO: implement rbenv installation for this OS"
+        fi
     fi
 
     # ruby
