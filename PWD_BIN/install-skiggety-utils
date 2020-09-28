@@ -50,14 +50,13 @@ function main {
 
     INSTALLERS_DIR="$(cd "$THIS_DIR/../installers";pwd)"
 
+    use_installer_unsafe "$INSTALLERS_DIR/skiggety.bash" $INSTALLER_ARGS || exit_with_error "failed to set up bash"
+    . ~/.bashrc # reload environment
+    use_installer_unsafe "$INSTALLERS_DIR/basic_prerequisites" $INSTALLER_ARGS || exit_with_error "failed to set up basic prerequisites for other installers to run"
+    . ~/.bashrc # reload environment
+
     for installer in "$INSTALLERS_DIR"/*; do # TODO: files only
-        if [ -f "$installer" ]; then
-
-            # TODO: instead of exiting on error, note it and move on. $cumulative_exit_code might be handy
-            use_installer "$installer" $INSTALLER_ARGS || accumulate_error
-
-            # configure "installer.config/" || exit_with_error "TODO" #  TODO: shoulcn't this be part of the installer?
-        fi
+        use_installer "$installer" $INSTALLER_ARGS || accumulate_error
     done
 
     exit_with_any_accumulated_errors
@@ -69,19 +68,33 @@ function use_installer {
     local INSTALLER_ARGS="$2"
     installer="$(basename $installer_path)"
 
-    # TODO TODO: DELETE this temporary special-case cruft as soon as I can, probably when this gets rewritten in a real language:
-    if [[ "$installer" == "gimp" ||
-          "$installer" == "hostname" ||
-          "$installer" == "jiggler" ||
-          "$installer" == "misc_utils" ||
-          "$installer" == "ssh-agent" ||
-          "$installer" == "synergy" ||
-          "$installer" == "uhk" ]]; then
-        # TODO: debug_here "skipping \"$installer\" installer for now..."
-        return 0
-    else
-        $installer_path $INSTALLER_ARGS || { echo_error_here "installer \"$installer\" FAILED"; return 1; }
+    if [ -f "$installer_path" ]; then
+
+        if [[ "$installer" == "skiggety.bash" ||
+              "$installer" == "basic_prerequisites" ||
+              # TODO TODO: DELETE this temporary special-case cruft as soon as I can, probably when this gets rewritten in a real language:
+              "$installer" == "gimp" ||
+              "$installer" == "hostname" ||
+              "$installer" == "jiggler" ||
+              "$installer" == "misc_utils" ||
+              "$installer" == "ssh-agent" ||
+              "$installer" == "synergy" ||
+              "$installer" == "uhk" ]]; then
+            # TODO: debug_here "skipping \"$installer\" installer for now..."
+            return 0
+        else
+            use_installer_unsafe "$@"
+            return $?
+        fi
     fi
+}
+
+function use_installer_unsafe {
+    local installer_path="$1"
+    local INSTALLER_ARGS="$2"
+    installer="$(basename $installer_path)"
+
+    $installer_path $INSTALLER_ARGS || { echo_error_here "installer \"$installer\" FAILED"; return 1; }
 }
 
 main "$@"
