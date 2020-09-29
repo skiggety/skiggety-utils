@@ -14,4 +14,7 @@ git pull # TODO checkout fresh code, default to one branch
 
 echo_divider_with_text "-" "test_all:"
 test_all && echo "test_all SUCCEEDED" || accumulate_error "test_all FAILED"
-dashboard
+
+dashboard || accumulate_error "dashboard FAILED"
+
+exit_with_any_accumulated_errors

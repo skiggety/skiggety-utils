@@ -5,10 +5,17 @@
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
-$THIS_DIR/install-skiggety-utils --non-interactive || exit_with_error "could not run installers for skiggety-utils"
-echo_divider "_"
+echo_divider_with_text "=" "test_all:"
 
-# TODO TODO: run ruby unit tests
-  # TODO: show coverage results (perhaps ratchet towards 100%, or make sure it clears a predefined minimum threshold)
+# install skiggety-utils
+echo_divider_with_text "-" "install-skiggety-utils --non-interactive"
+$THIS_DIR/install-skiggety-utils --non-interactive || accumulate_error "could not run installers for skiggety-utils"
 
-exit 0
+# run ruby unit tests
+echo_divider_with_text "-" "rake test"
+rake_test_output="$(rake test)" || accumulate_error "rake test FAILED"
+# trim blank space and anything non-deterministic out of test output:
+echo "$rake_test_output" | grep -v " --seed" | grep -v "Finished in" | grep -v "^$"
+# TODO: show coverage results (perhaps ratchet towards 100%, or make sure it clears a predefined minimum threshold)
+
+exit_with_any_accumulated_errors

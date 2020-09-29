@@ -17,13 +17,14 @@ function exit_with_error {
 }
 
 function accumulate_error {
+    local exit_status=$?
     local error_message="$*"
 
     if [ "$error_message" != "" ]; then
         echo_error "$error_message"
     fi
     cumulative_error_count=${cumulative_error_count:-0}
-    cumulative_error_count=$(($cumulative_error_count+1))
+    cumulative_error_count=$(($cumulative_error_count+$exit_status))
 }
 
 function exit_with_any_accumulated_errors {

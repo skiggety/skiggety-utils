@@ -26,20 +26,25 @@ class ReviewProgram
 
     command = ARGV.map{|a| "\"#{a}\""}.join(' ')
 
+    exit_val = "UNKNOWN"
     delay = 1
 
     system(command)
-    show_footer
+    exit_val = $?.exitstatus
+    exit_date = `date`.chomp
+    show_footer(command, exit_val, exit_date)
 
     last_output = output = ''
     while system("pretty_sleep -n #{delay}")
       last_output = output
       non_interactive_command = "#{command} 2>&1"
       output = `#{non_interactive_command}`
+      exit_val = $?.exitstatus
+      exit_date = `date`.chomp
 
       system('clear')
       puts output
-      show_footer
+      show_footer(command, exit_val, exit_date)
 
       change_detected = true
       if ( output == last_output )
@@ -59,8 +64,8 @@ class ReviewProgram
     return result
   end
 
-  def show_footer # TODO TODO: show whether the command failed
-    system("echo_divider_with_text \"#\" \"...shown at $(date)\"")
+  def show_footer(command, exit_val, exit_date) # TODO: colorize output, esp on failure
+    system("echo_divider_with_text \"#\" \"'#{command}' exited with #{exit_val} at #{exit_date}\"")
   end
 
 end

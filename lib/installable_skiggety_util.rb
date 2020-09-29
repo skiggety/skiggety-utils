@@ -1,4 +1,3 @@
-# TODO TODO TODO TODO: write tests
 # TODO: assert ruby version # puts "DEBUG: in #{name} installer, RUBY_VERSION is \"#{RUBY_VERSION}\"."
 
 require 'fileutils'
@@ -146,18 +145,6 @@ module InstallableSkiggetyUtil
     "." + File.basename(config_dir_path) + "ured_with_version."
   end
 
-  def installer_directory_path
-    File.dirname(installer_file_path)
-  end
-
-  def installer_file_hash
-    `git hash-object \"#{installer_file_path}\"`.chomp
-  end
-
-  def installer_file_path
-    File.expand_path(self.class.instance_method(:apparently_installed?).source_location[0])
-  end
-
   def raise_interactive_only_configuration
     raise_interactive_only_action('configure')
   end
@@ -199,6 +186,22 @@ module InstallableSkiggetyUtil
     installer_file_path + ".config"
   end
 
+  def self_config_path(file_name)
+    File.join(config_dir_path,file_name)
+  end
+
+  def installer_directory_path
+    File.dirname(installer_file_path)
+  end
+
+  def installer_file_hash
+    `git hash-object \"#{installer_file_path}\"`.chomp
+  end
+
+  def installer_file_path
+    File.expand_path(self.class.instance_method(:apparently_installed?).source_location[0])
+  end
+
   def open_in_browser(url)
     if on_mac_os?
       assert_system("open #{url}")
@@ -232,10 +235,6 @@ module InstallableSkiggetyUtil
   def systemtrue?(command)
     system(command)
     return ( $?.exitstatus == 0 )
-  end
-
-  def self_config_path(file_name)
-    File.join(config_dir_path,file_name)
   end
 
   def program_version_option_output_matches?(program, version_regex) # TODO: rename?
