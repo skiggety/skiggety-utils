@@ -12,7 +12,6 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 echo_divider_with_text "-" "git pull:"
 git pull # TODO checkout fresh code, default to one branch
 
-echo_divider_with_text "-" "test_all:"
 test_all && echo "test_all SUCCEEDED" || accumulate_error "test_all FAILED"
 
 dashboard || accumulate_error "dashboard FAILED"
