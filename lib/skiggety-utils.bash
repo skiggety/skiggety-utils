@@ -38,7 +38,7 @@ function exit_with_any_accumulated_errors {
 }
 
 function exit_with_accumulated_errors {
-    echo "exiting \"$(basename $0)\" because of $cumulative_error_count previously shown ERRORS"
+    echo "!!!! exiting \"$(basename $0)\" because of $cumulative_error_count previously shown ERRORS"
     exit $cumulative_error_count
 }
 
