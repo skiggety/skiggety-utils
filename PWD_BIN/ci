@@ -4,7 +4,7 @@
 # TODO TODO: possible script renaming--ci means continuos. This is just the integration part. "auto-ci" could become "ci" and this would become what? "i"? I dunno. Something to think about.
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
-. $THIS_DIR/../lib/include_in_bashrc || exit 1
+. $THIS_DIR/../lib/include_in_bashrc.bash || exit 1
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
 # TODO: deal with any local changes...delete them? ...error out?
