@@ -18,9 +18,11 @@ if ! [ -z "$SKIGGETY_UTILS_DONOR_DIR" ]; then
     diff -rq --exclude=.DS_Store --exclude=.git $THIS_DIR/.. $SKIGGETY_UTILS_DONOR_DIR | grep -v "^Only in $THIS_DIR/.." | head -n 5
 fi
 
-bin/default_dashboard
+bin/default_dashboard || accumulate_error
 
 # TODO?: tell you what command to run to commit changes or whatever
 # TODO?: graph score over time (see program "progress")
 
 # More important than the output of default_dashboard:
+
+exit_with_any_accumulated_errors

@@ -1,4 +1,4 @@
-require "minitest/autorun"
+require "test_helper"
 require_relative '../../lib/installable_skiggety_util.rb'
 
 class RawDummyInstaller
@@ -26,8 +26,8 @@ end
 
 class TestInstallableSkiggetyUtil < Minitest::Test
 
-  # TODO TODO TODO: write more tests
-  # TODO TODO TODO TODO: report coverage
+  # TODO TODO TODO TODO: write more tests
+  # TODO TODO TODO TODO TODO: report coverage
 
   def setup
     @raw_subject = RawDummyInstaller.new
