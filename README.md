@@ -37,7 +37,9 @@ misc TODO's:: (run 'todo' or 'dashboard' for the full sorted list) <!-- (IGNORE_
 
 - TODO TODO TODO: output license summary in interactive programs (like you're supposed to)??
 - TODO TODO TODO: commit initial skigg-utils, to get to parity with what I already like to use
+- TODO: document usage of commands
 - TODO TODO TODO: write a program to abbreviate output for use in the dashboard. You should be able to specify a maximum number of lines and pipe output through it, and it will do something like "head" or "tail" if necessary, but also display information about how many lines were removed/kept/found-in-total
+  - TODO: once we can abbreviate, maybe choose the linecounts for different things dynamically depending on the terminal size
 - TODO TODO: music rotator thingy
 - TODO: mini-project: raspberry pi backup machine, and the software to run it.
 - TODO: "playbot", a program that tunes in youtube livestreams, video meetings, watch later, podcasts and your personal dashboards, automatically. Great as an information radiator.

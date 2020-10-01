@@ -8,8 +8,6 @@ export PATH="$PATH:./PWD_BIN:$SKIGGETY_UTILS_DIR/bin"
 # TODO: add colors (besides duh):
 export PS1="\$(duh)\$(git branch 2>/dev/null|grep '^*'|sed 's/^\\*/ \\*/') - \D{%F %T}\n\$ "
 
-# TODO run 'ssh-agent' in background?
-
 export CLICOLOR='xterm-color' # colorize ls output and such in mac xterm
 
 # TODO: use more stuff from older bashrc files I've used
