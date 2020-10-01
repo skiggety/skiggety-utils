@@ -9,3 +9,5 @@
 /installers/.*.installed_with_version.*
 /installers/.*.configured_with_version.*
 /installers/.basic_prerequisites.completed
+
+/coverage/

@@ -32,6 +32,7 @@ function main {
         esac
     done
 
+    # TODO TODO: re-run if anything has changed, with a hash, like other installers
     completed_marker="$THIS_DIR/.$(basename $0).completed"
     if ! $interactive; then
         if [ -f $completed_marker ]; then
@@ -79,11 +80,14 @@ function main {
     fi
     # TODO: install rbenv-aliases?
 
+    # TODO TODO TODO TODO TODO TODO: why doesn't rbenv have an install command on linux? (read: "https://stackoverflow.com/questions/17618113/the-command-rbenv-install-is-missing")
+
     # ruby
     echo "Installing ruby"
     echo n | rbenv install $(cat $SKIGGETY_UTILS_DIR/.ruby-version) # echoing n is to avoid reinstall
     rbenv versions
 
+    # TODO TODO TODO TODO TODO: get this working on linux box:
     $THIS_DIR/../PWD_BIN/ruby_setup || exit_with_error "failed to set up prerequisites for my ruby code, such as gems"
 
     touch "$completed_marker"

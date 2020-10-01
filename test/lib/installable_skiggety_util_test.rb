@@ -27,7 +27,6 @@ end
 class TestInstallableSkiggetyUtil < Minitest::Test
 
   # TODO TODO TODO TODO: write more tests
-  # TODO TODO TODO TODO TODO: report coverage
 
   def setup
     @raw_subject = RawDummyInstaller.new
