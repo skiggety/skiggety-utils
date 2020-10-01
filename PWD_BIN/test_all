@@ -15,7 +15,7 @@ $THIS_DIR/install-skiggety-utils --non-interactive || accumulate_error "could no
 echo_divider_with_text "-" "rake test"
 rake_test_output="$(rake test)" || accumulate_error "rake test FAILED"
 # trim blank space and anything non-deterministic out of test output:
-echo "$rake_test_output" | grep -v " --seed" | grep -v "Finished tests in" | grep -v "^$"
+echo "$rake_test_output" | grep -v " --seed" | grep -v "^Finished" | grep -v "^$"
 # TODO TODO: perhaps ratchet coverage results towards 100%, or make sure it clears a predefined minimum threshold
 
 exit_with_any_accumulated_errors
