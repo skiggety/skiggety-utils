@@ -32,8 +32,10 @@ function main {
         esac
     done
 
-    # TODO TODO: re-run if anything has changed, with a hash, like other installers
-    completed_marker="$THIS_DIR/.$(basename $0).completed"
+    self_hash="$(git hash-object $0)" # TODO: perhaps use a hash that takes the Gemfile into account as well?
+    completed_markers_start_with="$THIS_DIR/.$(basename $0).updated_with_version."
+    completed_marker="$completed_markers_start_with$self_hash"
+
     if ! $interactive; then
         if [ -f $completed_marker ]; then
             if find $completed_marker -mtime -1 | grep $completed_marker >/dev/null; then
@@ -90,6 +92,7 @@ function main {
     # TODO TODO TODO TODO TODO: get this working on linux box:
     $THIS_DIR/../PWD_BIN/ruby_setup || exit_with_error "failed to set up prerequisites for my ruby code, such as gems"
 
+    rm "$completed_markers_start_with"*
     touch "$completed_marker"
 }
 
