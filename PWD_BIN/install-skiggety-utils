@@ -77,8 +77,7 @@ function use_installer {
               "$installer" == "jiggler" ||
               "$installer" == "misc_utils" ||
               "$installer" == "ssh-agent" ||
-              "$installer" == "synergy" ||
-              "$installer" == "uhk" ]]; then
+              "$installer" == "synergy" ]]; then
             # TODO: debug_here "skipping \"$installer\" installer for now..."
             return 0
         else
