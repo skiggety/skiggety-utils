@@ -79,6 +79,14 @@ function main {
         pushd $rbenv_dir
         git pull
         popd
+
+        local ruby_build_dir="$rbenv_dir/plugins/ruby-build"
+        if ! [ -d $ruby_build_dir ]; then
+            git clone https://github.com/rbenv/ruby-build.git $ruby_build_dir
+        fi
+        pushd $ruby_build_dir
+        git pull
+        popd
     fi
     # TODO: install rbenv-aliases?
 

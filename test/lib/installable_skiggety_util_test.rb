@@ -26,7 +26,7 @@ end
 
 class TestInstallableSkiggetyUtil < Minitest::Test
 
-  # TODO TODO TODO TODO: write more tests
+  # TODO TODO TODO TODO: write more tests, but not every method
 
   def setup
     @raw_subject = RawDummyInstaller.new
