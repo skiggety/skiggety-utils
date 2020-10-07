@@ -90,8 +90,6 @@ function main {
     fi
     # TODO: install rbenv-aliases?
 
-    # TODO TODO TODO TODO TODO TODO: why doesn't rbenv have an install command on linux? (read: "https://stackoverflow.com/questions/17618113/the-command-rbenv-install-is-missing")
-
     # ruby
     echo "Installing ruby"
     echo n | rbenv install $(cat $SKIGGETY_UTILS_DIR/.ruby-version) # echoing n is to avoid reinstall
