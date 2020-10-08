@@ -2,6 +2,9 @@
 
 require_relative '../lib/installable_skiggety_util.rb'
 
+# TODO: install gvim (gui)
+# TODO setup vimpager as your pager
+
 class VimInstaller
 
   include InstallableSkiggetyUtil

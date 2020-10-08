@@ -38,10 +38,11 @@ function exit_with_any_accumulated_errors {
 }
 
 function exit_with_accumulated_errors {
-    echo "!!!! exiting \"$(basename $0)\" because of $cumulative_error_count previously shown ERRORS"
+    echo_divider_with_text "!" "EXITING \"$(basename $0)\" because of $cumulative_error_count previously shown ERRORS"
     exit $cumulative_error_count
 }
 
+# TODO: consistent debug function names
 function echo_debug {
     echo "DEBUG: $*" >&2
 }
