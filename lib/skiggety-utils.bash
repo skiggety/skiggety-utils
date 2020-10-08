@@ -43,20 +43,25 @@ function exit_with_accumulated_errors {
 }
 
 # TODO: consistent debug function names
+
+SKIGGETY_DEBUG=${SKIGGETY_DEBUG:-false}
+
 function echo_debug {
-    echo "DEBUG: $*" >&2
+    if $SKIGGETY_DEBUG; then
+        echo "DEBUG: $*" >&2
+    fi
 }
 
-function debug_eval_here {
-    echo_debug "$(echo_eval $*)" "$(echo_callsite)"
+function debug_here {
+    echo_debug "$* at \"${BASH_SOURCE[1]}\":${BASH_LINENO[0]}"
 }
 
 function debug_eval {
     echo_debug "$(echo_eval $*)"
 }
 
-function debug_here {
-    echo_debug "$* at \"${BASH_SOURCE[1]}\":${BASH_LINENO[0]}"
+function debug_eval_here {
+    echo_debug "$(echo_eval $*)" "$(echo_callsite)"
 }
 
 function echo_eval {

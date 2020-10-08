@@ -10,6 +10,7 @@ How to get started:
 - Open a terminal
 - cd to this directory (where you checked out or downloaded this project)
 - run "./start"
+  - Follow the prompts, instructions, and read the output. By the end, you should know what's going on.
 
 Core Design Decisions and Questions:
 ======================

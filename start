@@ -33,7 +33,9 @@ debug_here "install-skiggety-utils completed successfully"; echo
 # debug_here
 # TODO: this is something similar that I'm also not sure is a good idea: ./bin/start_in_env.bash || exit_with_error "Could not run \"./bin/start_in_env.bash\"" # TODO: don't use relative path # TODO TODO: move most things in here, including any interactive stuff
 
-# TODO TODO: make auto-dev optional, or maybe DELETE  calls to it, as that's not necessarily what this script is for..
+echo "to learn more about the utilities that are now available, you'll essentially have to do a code review since I don't have a realy help system yet (TODO TODO: show real help)";pretty_sleep 10
+
+# TODO TODO TODO: make auto-dev optional, or maybe DELETE  calls to it, as that's not necessarily what this script is for..
 debug_here "let's try running auto-dev:"
 debug_here "---------------------------"
 $THIS_DIR/bin/auto-dev || exit_with_error "FAILED to run auto-dev" #TODO: since this is in ./PWD_BIN/, I shouldn't need to use a relative path

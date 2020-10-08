@@ -6,6 +6,9 @@
 # the right location with vim. For example, if you run "grim
 # gobbledygooklkajsdfoine", it should bring you right here.
 
+THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
+. $THIS_DIR/../lib/skiggety-utils.bash || exit 1
+
 VIM_OPTIONS="-on"
 GREP_OPTIONS="-Rl"
 VIM_SEARCH_STRING_SUFFIX=""
@@ -37,11 +40,11 @@ if ! [ -z "$*" ]; then
     echo "ERROR: no flags allowed after search string"
     exit 1
 fi
-echo GRIM_TARGET_STRING is: $GRIM_TARGET_STRING
+debug_eval GRIM_TARGET_STRING
 
 # don't open vim swap files
 GRIM_FILES=`grep $GREP_OPTIONS "$GRIM_TARGET_STRING" .|grep -v .swp\$`
-echo GRIM_FILES are: $GRIM_FILES
+debug_eval GRIM_FILES # TODO: make this an array variable?
 
 # TODO: Maybe other arguments passed in can be sent to vim, so you can to gvim or -O
 # TODO: what if a regex gets passed in? can you get the same one to work for grep and vim?
@@ -50,5 +53,5 @@ if [ -z "$GRIM_FILES" ]; then
 else
 
     vim $VIM_OPTIONS $GRIM_FILES +/"$GRIM_TARGET_STRING$VIM_SEARCH_STRING_SUFFIX" # TODO: support readonly vim mode by passing a "-R" flag if this program recieves a "-R"
-    echo DEBUG: ran: vim $VIM_OPTIONS $GRIM_FILES +/"$GRIM_TARGET_STRING$VIM_SEARCH_STRING_SUFFIX"
+    echo_debug "ran: vim $VIM_OPTIONS $GRIM_FILES +/\"$GRIM_TARGET_STRING$VIM_SEARCH_STRING_SUFFIX\""
 fi
