@@ -7,6 +7,7 @@
   # TODO: todo should accept a path ( to a file or directory) to use in place of "." for grep. This way you could run "todo bin/todo" and see the TODO's in this file cleanly without the ingorable lines.
   # TODO: non-interactive [read-only] mode should be the default when this is called from a script (output is not a tty)
   # TODO: avoid scanning large non-text files:
+  # TODO: perhaps todo could do the same thing with an alternate word. For example, you could pass in "-w TECHDEBT" if you had things like TECHDEBT^3 in your code
 # TODO: consider spinning this project off, with a not-so-clever name like "tood" or something
 
 grep -Rn "TODO" .                                                        | grep -v "TODO TODO"                                                        | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
