@@ -11,6 +11,9 @@ echo_divider_with_text "=" "test_all:"
 echo_divider_with_text "-" "install-skiggety-utils --non-interactive"
 $THIS_DIR/install-skiggety-utils --non-interactive || accumulate_error "could not run installers for skiggety-utils"
 
+echo_divider_with_text "-" "ruby_setup"
+{ $THIS_DIR/ruby_setup 2>&1 || echo FOO; } | tail -n 1 # in case this part gets skipped in installers/basic_prerequisites
+
 # run ruby unit tests
 echo_divider_with_text "-" "rake test"
 rake_test_output="$(rake test)" || accumulate_error "rake test FAILED"

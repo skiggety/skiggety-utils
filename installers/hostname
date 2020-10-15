@@ -50,8 +50,5 @@ class HostnameSetup
 end
 
 if __FILE__ == $0 # TODO: use this more widely if call_peer_installer uses a direct include method?
-  puts "Running \"#{$0}\"!" # TODO: DELETE
   HostnameSetup.run
-else
-  puts "Including \"#{$0}\"!" # TODO: DELETE
 end

@@ -1,4 +1,3 @@
-$LOAD_PATH.unshift File.expand_path("../lib", __dir__)
 
 # make sure symlinks exist to include installers in test coverage
 link_dir = File.expand_path(File.join(__dir__, '../lib/coverage_links'))

@@ -1,5 +1,5 @@
 require "test_helper"
-require_relative '../../lib/installable_skiggety_util.rb'
+require 'installable_skiggety_util'
 
 class RawDummyInstaller
   include InstallableSkiggetyUtil
