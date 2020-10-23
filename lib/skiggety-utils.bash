@@ -109,9 +109,14 @@ function echo_divider {
     echo
 }
 
+# for divider length, use last value, or current column count, or 80. Using last value over current means you might have to restart a review commond or other program for dividers to look perfect after resizing a terminal, but it also means that commands run inside review will fill the terminal properly instead of sensing 80
+calc_columns="$(tput cols)"
+calc_columns="${calc_columns:-80}"
+export SKIGGETY_DIVIDER_LENGTH="${SKIGGETY_DIVIDER_LENGTH:-$calc_columns}"
+
 function echo_divider_without_newline {
     char="$1"
-    echo_char_n_times "$char" 80 # TODO TODO TODO: sense terminal width or default to 80
+    echo_char_n_times "$char" "$SKIGGETY_DIVIDER_LENGTH" # TODO TODO TODO: sense terminal width or default to 80
 }
 
 function echo_char_n_times {
