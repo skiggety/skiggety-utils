@@ -95,17 +95,17 @@ function echo_error {
 }
 
 function echo_divider_with_text {
-    char="$1"
+    pattern="$1"
     text="$2"
-    echo_divider_without_newline "$char"
+    echo_divider_without_newline "$pattern"
     echo -ne "\r"
-    echo_char_n_times "$char" 4
+    echo_pattern_n_length "$pattern" 4
     echo " $text "
 }
 
 function echo_divider {
-    char="$1"
-    echo_divider_without_newline "$char"
+    pattern="$1"
+    echo_divider_without_newline "$pattern"
     echo
 }
 
@@ -115,12 +115,16 @@ calc_columns="${calc_columns:-80}"
 export SKIGGETY_DIVIDER_LENGTH="${SKIGGETY_DIVIDER_LENGTH:-$calc_columns}"
 
 function echo_divider_without_newline {
-    char="$1"
-    echo_char_n_times "$char" "$SKIGGETY_DIVIDER_LENGTH" # TODO TODO TODO: sense terminal width or default to 80
+    pattern="$1"
+    echo_pattern_n_length "$pattern" "$SKIGGETY_DIVIDER_LENGTH"
 }
 
-function echo_char_n_times {
-    char="$1"
+function echo_pattern_n_length {
+    pattern="$1"
     n="$2"
-    for ((i=1;i<=$n; i++)); do echo -n "$char"; done
+    pattern_length="${#pattern}"
+    repeats="$(( $n / $pattern_length))"
+    remainder="$(( $n % $pattern_length))"
+    for ((i=1;i<=$repeats; i++)); do echo -n "$pattern"; done
+    echo -n "${pattern:0:$remainder}"
 }
