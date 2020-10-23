@@ -95,7 +95,7 @@ module InstallableSkiggetyUtil
 
   def ask_user(request_text)
     if $interactive
-      return systemtrue?("#{installer_directory_path}/../bin/ask_user '#{request_text}'")
+      return system("#{installer_directory_path}/../bin/ask_user '#{request_text}'")
     else
       raise "Cannot ask user to do the following without being in interactive mode: '#{request_text}'"
     end
@@ -216,25 +216,21 @@ module InstallableSkiggetyUtil
     @on_mac_os ||= calc_on_mac_os?
   end
 
-  def calc_on_mac_os?
-    return systemtrue?("uname -a | grep Darwin > /dev/null")
+  # TODO: use rubocop to enforce syntax conventions, like using private this way:
+  private def calc_on_mac_os?
+    return system("uname -a | grep Darwin > /dev/null")
   end
 
   def on_linux_os?
     @on_linux_os ||= calc_on_linux_os?
   end
 
-  def calc_on_linux_os?
-    return systemtrue?("uname -a | grep Linux > /dev/null")
+  private def calc_on_linux_os?
+    return system("uname -a | grep Linux > /dev/null")
   end
 
   def assert_system(command)
-      systemtrue?(command) or raise "Failed to run command: \"#{command}\""
-  end
-
-  def systemtrue?(command)
-    system(command)
-    return ( $?.exitstatus == 0 )
+      system(command) or raise "Failed to run command: \"#{command}\""
   end
 
   def program_version_option_output_matches?(program, version_regex) # TODO: rename?

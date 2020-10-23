@@ -22,7 +22,7 @@ class ReviewProgram
   end
 
   def run
-    $interactive = ! ARGV.delete('--non-interactive')
+    $interactive = ! ARGV.delete('--non-interactive') # TODO: non-interactive by default, intereactive mode for when the program might prompt you with something, and in that case backticks cannot be used
 
     command = ARGV.map{|a| "\"#{a}\""}.join(' ')
 
