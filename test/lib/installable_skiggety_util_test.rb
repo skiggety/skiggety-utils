@@ -81,12 +81,20 @@ class TestInstallableSkiggetyUtil < Minitest::Test
   end
 
   # TODO: test open_in_browser(url)
+
   # TODO: test on_mac_os?
-  # TODO: test calc_on_mac_os?
   # TODO: test on_linux_os?
-  # TODO: test calc_on_linux_os?
-  # TODO: test assert_system(command)
-  # TODO: test systemtrue?(command)
+
+  def test_assert_system_true
+    @subject.assert_system('true') #no exception expected
+  end
+
+  def test_assert_system_false
+    assert_raises RuntimeError do
+      @subject.assert_system('false')
+    end
+  end
+
   # TODO: test program_version_option_output_matches?(program, version_regex) # TODO: rename?
 
 end
