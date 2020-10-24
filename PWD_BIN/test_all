@@ -5,17 +5,17 @@
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
-echo_divider_with_text "=" "test_all:"
+echo_divider_with_text "+-=======-" "test_all:"
 
 # install skiggety-utils
-echo_divider_with_text "-" "install-skiggety-utils --non-interactive"
+echo_divider_with_text "+-=======-" "install-skiggety-utils --non-interactive"
 $THIS_DIR/install-skiggety-utils --non-interactive || accumulate_error "could not run installers for skiggety-utils"
 
-echo_divider_with_text "-" "ruby_setup"
+echo_divider_with_text "O-=======-" "ruby_setup"
 { $THIS_DIR/ruby_setup 2>&1 || echo FOO; } | tail -n 1 # in case this part gets skipped in installers/basic_prerequisites
 
 # run ruby unit tests
-echo_divider_with_text "-" "rake test"
+echo_divider_with_text "+-=======-" "rake test"
 rake_test_output="$(rake test)" || accumulate_error "rake test FAILED"
 # trim blank space and anything non-deterministic out of test output:
 echo "$rake_test_output" | grep -v " --seed" | grep -v "^Finished" | grep -v "^$"

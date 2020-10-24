@@ -6,7 +6,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/include_in_bashrc.bash || exit 1
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
-echo_divider_with_text "/" "dev:"
+echo_divider_with_text "//======" "dev:"
 
 test_all && echo "test_all SUCCEEDED" || accumulate_error "test_all FAILED"
 
