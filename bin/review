@@ -14,6 +14,8 @@
 
 # TODO TODO: accept --minimum-delay or -m (e.g. auto-ci might want to call this with "-m 30")
 # TODO TODO TODO: accept --maximum-delay or -M (e.g. auto-ci might want to call this with "-M $(( 60 * 60 * 6 ))")
+# TODO TODO: accept --interactive ("-i") or --non-interactive ("-n"), to determine whether to use backticks
+# TODO: accept log file that logs output, changes, feequencies/counts, etc.
 
 class ReviewProgram
 
@@ -22,7 +24,7 @@ class ReviewProgram
   end
 
   def run
-    $interactive = ! ARGV.delete('--non-interactive') # TODO: non-interactive by default, intereactive mode for when the program might prompt you with something, and in that case backticks cannot be used
+    $interactive = ! ARGV.delete('--non-interactive') # TODO TODO: non-interactive by default, intereactive mode for when the program might prompt you with something, and in that case backticks cannot be used
 
     command = ARGV.map{|a| "\"#{a}\""}.join(' ')
 
