@@ -12,7 +12,7 @@ GEM
       ruby-progressbar
     rake (12.3.3)
     ruby-progressbar (1.10.1)
-    simplecov (0.19.0)
+    simplecov (0.19.1)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
     simplecov-html (0.12.3)
