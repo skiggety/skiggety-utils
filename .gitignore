@@ -1,5 +1,5 @@
 # This is for if you want files to be ignored
-*.gitignore.*
+*.gitignored.*
 
 .*.swp
 

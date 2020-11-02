@@ -4,7 +4,6 @@ require_relative '../lib/installable_skiggety_util.rb'
 
 class HostnameSetup
 
-  # TODO TODO: perhaps require "installers/hostname.config/localhost.gitignore.txt", but maybe the user shouldn't have to create it manually
   # enforce all-lowercase, numbers not in first character, etc. ...or whatever works for dns
   # TODO: perhaps require dns server config (check with nslookup or an equivalent library) --this might help with synergy config, etc.
     # TODO: To systematize this you could find the ip address of the local gatteway and pop it up in a browser
@@ -39,7 +38,7 @@ class HostnameSetup
   end
 
   def calc_desired_hostname
-    desired_hostname_file = self_config_path('localhost.gitignore.txt')
+    desired_hostname_file = self_config_path('localhost.gitignored.txt')
     if File.exist?(desired_hostname_file)
       `cat #{desired_hostname_file}`
     else
