@@ -17,7 +17,7 @@ class RectangleInstaller
   end
 
   def apparently_configured?
-    # TODO TODO: method/module extract?
+    # TODO TODO TODO: method/module extract?
     if $interactive
       ask_user "Is #{name} set up the way you want?"
     else
@@ -32,7 +32,7 @@ class RectangleInstaller
     if on_mac_os?
       assert_system("brew cask install rectangle")
     else
-      raise NotImplementedError, "TODO: implement this for this OS"
+      raise NotImplementedError, "TODO: implement this for this OS" # If we install a different program similar to rectangle on a different OS, this script should be renamed.
     end
   end
 

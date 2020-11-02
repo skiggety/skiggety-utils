@@ -1,4 +1,4 @@
-# TODO TODO: . $THIS_DIR/shelper.bash || exit 1 # TODO: extract & include shelper.bash which checks bash version
+# TODO TODO: . $THIS_DIR/shelper.bash || exit 1 # TODO TODO: extract & include shelper.bash which checks bash version, and provides utility functions. Figure out how to distribute it as a shell library.
 
 newline='
 '
@@ -42,7 +42,7 @@ function exit_with_accumulated_errors {
     exit $cumulative_error_count
 }
 
-# TODO: consistent debug function names
+# TODO TODO: consistent debug function names
 
 SKIGGETY_DEBUG=${SKIGGETY_DEBUG:-false}
 

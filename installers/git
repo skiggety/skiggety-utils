@@ -25,9 +25,9 @@ function main {
             *) ;;
         esac
     done
-    # TODO: maybe install git? at this point we're assuming it's already installed and just going ahead with configuration
 
-    # TODO: Install git?: echo "Installing $(basename $0)"
+    # TODO?: echo "Installing $(basename $0)"
+    # TODO: maybe install git? at this point we're assuming it's already installed and just going ahead with configuration. So...maybe just check the version and demand that the user take care of it? This should probably be lumped in with basic prerequisites, but maybe this installer could remain separate for setup only
 
     echo "Configuring $(basename $0)"
     git-set-global-default 'credential.helper' 'cache --timeout=2592000'

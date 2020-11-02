@@ -3,8 +3,8 @@
 # This script sleeps for a specified number of seconds, displaying progress as
 # it goes.
 
-# TODO?: show a clock, optionally
-# TODO?: integrate into a banner
+# TODO TODO?: show a clock, optionally
+# TODO TODO?: integrate into a banner
 
 PRINT_NEWLINE=true
 if [ "$1" == "-n" ];then

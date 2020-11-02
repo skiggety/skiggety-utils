@@ -55,8 +55,10 @@ function main {
     use_installer_unsafe "$INSTALLERS_DIR/basic_prerequisites" $INSTALLER_ARGS || exit_with_error "failed to set up basic prerequisites for other installers to run"
     . ~/.bashrc # reload environment
 
-    for installer in "$INSTALLERS_DIR"/*; do # TODO: files only
-        use_installer "$installer" $INSTALLER_ARGS || accumulate_error
+    for installer in "$INSTALLERS_DIR"/*; do
+        if [ -f "$installer" ]; then
+            use_installer "$installer" $INSTALLER_ARGS || accumulate_error
+        fi
     done
 
     exit_with_any_accumulated_errors
@@ -68,23 +70,20 @@ function use_installer {
     local INSTALLER_ARGS="$2"
     installer="$(basename $installer_path)"
 
-    if [ -f "$installer_path" ]; then
-
-        if [[ "$installer" == "skiggety.bash" ||
-              "$installer" == "basic_prerequisites" ||
-              # TODO TODO: DELETE this temporary special-case cruft as soon as I can, probably when this gets rewritten in a real language:
-              "$installer" == "gimp" ||
-              "$installer" == "jiggler" ||
-              "$installer" == "misc_utils" ||
-              "$installer" == "ssh-agent" ||
-              "$installer" == "synergy" ]]; then
-            # TODO: debug_here "skipping \"$installer\" installer for now..."
-            return 0
-        else
-            use_installer_unsafe "$@"
-            return $?
+    if [[ "$installer" == "skiggety.bash" ||
+          "$installer" == "basic_prerequisites" ||
+          # TODO TODO TODO: DELETE this temporary special-case cruft as soon as I can, probably when this gets rewritten in a real language:
+          "$installer" == "gimp" ||
+          "$installer" == "jiggler" ||
+          "$installer" == "misc_utils" ||
+          "$installer" == "ssh-agent" ||
+          "$installer" == "synergy" ]]; then
+        # TODO: debug_here "skipping \"$installer\" installer for now..."
+        return 0
+    else
+        use_installer_unsafe "$@"
+        return $?
         fi
-    fi
 }
 
 function use_installer_unsafe {

@@ -1,5 +1,7 @@
 # TODO: assert ruby version # puts "DEBUG: in #{name} installer, RUBY_VERSION is \"#{RUBY_VERSION}\"."
 
+# TODO: mark more of these methods private
+
 require 'fileutils'
 
 module InstallableSkiggetyUtil
@@ -18,7 +20,7 @@ module InstallableSkiggetyUtil
     # TODO TODO: should we catch exceptions and print them without a full stack trace?
     $interactive = ! ARGV.delete('--non-interactive')
 
-    # TODO: REFACTOR:
+    # TODO TODO: REFACTOR:
     unless marked_installed?
       if apparently_installed?
         puts "#{name} installation is already done" # TODO TODO: debug only
@@ -86,7 +88,7 @@ module InstallableSkiggetyUtil
     File.exist?(current_install_marker_file_path)
   end
 
-  # TODO: extract delegate_to_user and ask_user to another library
+  # TODO TODO: extract delegate_to_user and ask_user to another library/gem
   def delegate_to_user(request_text)
     unless ask_user(request_text)
       raise "user failed to: '#{request_text}"
@@ -158,7 +160,7 @@ module InstallableSkiggetyUtil
   end
 
   def call_peer_installer(name)
-    # TODO TODO: perhaps if the installer contains 'include InstallableSkiggetyUtil', we should call it in the same process
+    # TODO TODO TODO: perhaps if the installer contains 'include InstallableSkiggetyUtil', we should call it in the same process
     install_command = File.join(installer_directory_path,name)
     unless $interactive
       install_command = install_command + " --non-interactive"
@@ -170,7 +172,7 @@ module InstallableSkiggetyUtil
   def config_tree_hash
     if config_exist?
       if ( '' != `git status -s #{config_dir_path}`)
-        raise "There are uncommitted changes in #{config_dir_path}, so #{self.class} will not bother computing a hash to identify it." # TODO: we could return something random so it's different each time, or maybe bite the bullet and calculate what the tree hash would be from scratch, not sure...
+        raise "There are uncommitted changes in #{config_dir_path}, so #{self.class} will not bother computing a hash to identify it." # TODO TODO: we could return something random so it's different each time, or maybe bite the bullet and calculate what the tree hash would be from scratch, not sure...
       end
       return `git ls-tree HEAD -- #{config_dir_path}`.split(' ')[2].to_s
     else
@@ -208,7 +210,7 @@ module InstallableSkiggetyUtil
     elsif on_linux_os?
       assert_system("browse #{url} 2>/dev/null")
     else
-      raise NotImplementedError, "TODO: implement this for this OS"
+      raise NotImplementedError, "TODO: implement this for this OS" #IGNORE_TODO
     end
   end
 
@@ -216,7 +218,7 @@ module InstallableSkiggetyUtil
     @on_mac_os ||= calc_on_mac_os?
   end
 
-  # TODO: use rubocop to enforce syntax conventions, like using private this way:
+  # TODO TODO: use rubocop to enforce syntax conventions, like using private this way:
   private def calc_on_mac_os?
     return system("uname -a | grep Darwin > /dev/null")
   end
@@ -233,9 +235,9 @@ module InstallableSkiggetyUtil
       system(command) or raise "Failed to run command: \"#{command}\""
   end
 
-  def program_version_option_output_matches?(program, version_regex) # TODO: rename?
+  def program_version_option_output_matches?(program, version_regex) # TODO TODO: rename?
     version_output = `#{program} --version | head -n 1`
-    return (version_output =~ version_regex ).is_a?(Numeric) # TODO: update desired vim version and make sure it includes the gui version, too
+    return (version_output =~ version_regex ).is_a?(Numeric) # TODO TODO: update desired vim version and make sure it includes the gui version, too
   end
 
 end

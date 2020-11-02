@@ -18,9 +18,9 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/lib/include_in_bashrc.bash || exit 1
 . $THIS_DIR/lib/skiggety-utils.bash || exit 1
 
-debug_here "utils successfully included" # TODO TODO TODO: use a flag to turn debug messages on or off
+debug_here "utils successfully included" # TODO TODO TODO TODO: use a flag to turn debug messages on or off
 
-# TODO are "debug_here" and "echo_debug" redundant?
+# TODO TODO are "debug_here" and "echo_debug" redundant?
 
 debug_here "let's try running install-skiggety-utils:"
 debug_here "--------------------------"
@@ -33,7 +33,7 @@ debug_here "install-skiggety-utils completed successfully"; echo
 # debug_here
 # TODO: this is something similar that I'm also not sure is a good idea: ./bin/start_in_env.bash || exit_with_error "Could not run \"./bin/start_in_env.bash\"" # TODO: don't use relative path # TODO TODO: move most things in here, including any interactive stuff
 
-echo "to learn more about the utilities that are now available, you'll essentially have to do a code review since I don't have a realy help system yet (TODO TODO: show real help)";pretty_sleep 10
+echo "To learn more about the utilities that are now available, you'll essentially have to do a code review since I don't have a realy help system yet (TODO TODO: show real help)";pretty_sleep 10
 
 # TODO TODO TODO: make auto-dev optional, or maybe DELETE  calls to it, as that's not necessarily what this script is for..
 debug_here "let's try running auto-dev:"
@@ -45,6 +45,6 @@ exit_with_error "Technically FAILED, but if you got here, that's good."
 # exit_with_error "MOVABLE BREAKPOINT"
 debug_here "auto-dev completed successfully"; echo
 debug_here "exiting..."
-help # TODO TODO: test/implement
+help # TODO TODO: rename, test/implement
 exit 0
 

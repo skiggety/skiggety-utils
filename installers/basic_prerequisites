@@ -88,7 +88,7 @@ function main {
         git pull
         popd
     fi
-    # TODO: install rbenv-aliases?
+    # TODO TODO: install rbenv-aliases?
 
     # ruby
     echo "Installing ruby"

@@ -2,9 +2,9 @@
 
 # This script is a very fancy version of running "vim `which NAME`". You can edit a number of scripts whether they exist in the path, at the path given, or need to be created new (in which case it starts from a template).
 
-# TODO: accept a "-a" option, and use "which -a" in that case. This would be useful for "vimwhich -a dashboard"
+# TODO TODO: accept a "-a" option, and use "which -a" in that case. This would be useful for "vimwhich -a dashboard"
 
-# TODO: consider making this into a generic "editwhich" program, that supports other editors
+# TODO TODO: consider making this into a generic "editwhich" program, that supports other editors
 
 # NOTE: where do you want new scripts to be created, and what template file would you like to start with? Set the values of these variables in your ~/.bashrc file:
 DEFAULT_SCRIPT_LOCATION=${DEFAULT_SCRIPT_LOCATION:-"$SKIGGETY_UTILS_DIR/bin"}
@@ -29,7 +29,7 @@ for target in "$@";do
     fi
     destinations+=( "$destination" ) #; debug_eval_here destinations; pretty_sleep 5
 
-    # TODO: create $destination file from template if it doesn't exist and mark it executable
+    # TODO TODO: create $destination file from template if it doesn't exist and mark it executable
 
 done
 vim -o "${destinations[@]}"

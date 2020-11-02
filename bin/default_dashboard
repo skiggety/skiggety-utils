@@ -11,11 +11,11 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 echo_divider_with_text "-=" "TODO's:" # IGNORE_TODO
 $THIS_DIR/todo | tail -n 5 || exit_with_error "todo FAILED" # TODO TODO: abbreviate -n 5 todo
 
-# TODO TODO TODO: put test output right here if tests failed so todo's are the thing to scroll off the top of the screen instead of this.
+# TODO TODO TODO TODO: put test output right here if tests failed so todo's are the thing to scroll off the top of the screen instead of this.
 
-# TODO: show git stash information
+# TODO TODO: show git stash information
 
-# TODO: only do this stuff if it's a git repository
+# TODO TODO: only do this stuff if it's a git repository
 # echo_divider_with_text "-" "git diff of unstaged files:"
 # for next in $( git ls-files --others --exclude-standard ) ; do git -c color.ui=always --no-pager diff --no-index /dev/null $next; done | head -n 15  # git diff for files not checked in yet only?
 echo_divider_with_text "-=" "git diff:"

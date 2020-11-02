@@ -26,7 +26,7 @@ end
 
 class TestInstallableSkiggetyUtil < Minitest::Test
 
-  # TODO TODO TODO TODO: write more tests, but not every method
+  # TODO TODO TODO TODO: write more tests, but not private methods
 
   def setup
     @raw_subject = RawDummyInstaller.new
@@ -67,6 +67,7 @@ class TestInstallableSkiggetyUtil < Minitest::Test
   end
 
   # TODO: test installer_file_hash (use raw dummy and a stub like with test_installer_file_path because the main dummy will override these methods)
+    # TODO: Perhaps make sure the installer gets read as having run and has no git changes, then add a newline to the end of the file, make sure it gets read as needing to run, then revert the change and make sure it gets read as having run.
 
   def test_installer_file_path
     fake_method = Object.new
@@ -82,6 +83,7 @@ class TestInstallableSkiggetyUtil < Minitest::Test
 
   # TODO: test open_in_browser(url)
 
+  # TODO: test on_mac_os? and test on_linux_os? together? maybe make sure exactly one method of this kind returns true? or in that case wouldn't it just be better to replace these methods with one os method that returns a string
   # TODO: test on_mac_os?
   # TODO: test on_linux_os?
 
@@ -95,6 +97,6 @@ class TestInstallableSkiggetyUtil < Minitest::Test
     end
   end
 
-  # TODO: test program_version_option_output_matches?(program, version_regex) # TODO: rename?
+  # TODO: test program_version_option_output_matches?(program, version_regex)
 
 end

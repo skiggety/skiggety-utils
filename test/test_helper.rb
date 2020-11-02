@@ -29,4 +29,3 @@ Minitest::Reporters.use! [Minitest::Reporters::ProgressReporter.new(:color => tr
 SimpleCov.start do
   track_files 'lib/**/*.rb'
 end
-# TODO: follow https://github.com/simplecov-ruby/simplecov/issues/926 for a new version of ximplecov that won't complain about @enable_for_subprocesses not being initialized

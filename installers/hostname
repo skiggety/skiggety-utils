@@ -4,9 +4,9 @@ require_relative '../lib/installable_skiggety_util.rb'
 
 class HostnameSetup
 
-  # enforce all-lowercase, numbers not in first character, etc. ...or whatever works for dns
+  # TODO: enforce all-lowercase, numbers not in first character, etc. ...or whatever works for dns
   # TODO: perhaps require dns server config (check with nslookup or an equivalent library) --this might help with synergy config, etc.
-    # TODO: To systematize this you could find the ip address of the local gatteway and pop it up in a browser
+    # TODO: To systematize this, you could find the ip address of the local gatteway and pop it up in a browser
 
   include InstallableSkiggetyUtil
 
@@ -48,6 +48,6 @@ class HostnameSetup
 
 end
 
-if __FILE__ == $0 # TODO: use this more widely if call_peer_installer uses a direct include method?
+if __FILE__ == $0 # TODO TODO: use this more widely if call_peer_installer uses a direct include method?
   HostnameSetup.run
 end
