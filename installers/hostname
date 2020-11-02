@@ -11,11 +11,12 @@ class HostnameSetup
   include InstallableSkiggetyUtil
 
   def apparently_installed?
-    true # nothing to install
+    true # nothing to install, configuration only
   end
 
   def apparently_configured?
-    desired_hostname == `hostname`
+    apparent_hostname = `hostname`.chomp
+    desired_hostname == apparent_hostname or desired_hostname + '.local' == apparent_hostname
   end
 
   def configure
@@ -40,7 +41,7 @@ class HostnameSetup
   def calc_desired_hostname
     desired_hostname_file = self_config_path('localhost.gitignored.txt')
     if File.exist?(desired_hostname_file)
-      `cat #{desired_hostname_file}`
+      `cat #{desired_hostname_file}`.chomp
     else
       raise "Please put desired hostname in #{desired_hostname_file} and try again"
     end
