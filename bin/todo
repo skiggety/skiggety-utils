@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # TODO TODO: highlight TODO's
-# TODO TODO TODO: re-implement without it being such a hack. Probably use PYTHON or ruby (see old program "status"):
+# TODO TODO TODO TODO: re-implement without it being such a hack. Probably use Python (see old program "status"):
   # TODO TODO TODO: 	alternate syntax idea: start all todo's as to-not-do's, add exclamation points to vote, add dollar signs to vote that they could make you money, automate a background process to clean it up into a vote tally format, ( e.g. TODO!!! becomes TODO^3, TODO^3! becomes TODO^4, maybe have a vim macro to quickly upvote things, then the todo program [hashtag #TODO_PROGRAM to discuss the program itself] should sort stuff based on that (but maybe also be aware of indentation
   # TODO TODO TODO TODO: when called from a terminal, this program should interactively check with the user if they want to do replacements like "TODO TODO"-->"TODO^2" before displaying sorted output
     # TODO TODO: there should also be a "force" mode with a "-f/--force" flag that can do the replacements without asking
