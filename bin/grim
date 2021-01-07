@@ -40,11 +40,9 @@ if ! [ -z "$*" ]; then
     echo "ERROR: no flags allowed after search string"
     exit 1
 fi
-debug_eval GRIM_TARGET_STRING
 
 # don't open vim swap files
 GRIM_FILES=`grep $GREP_OPTIONS "$GRIM_TARGET_STRING" .|grep -v .swp\$`
-debug_eval GRIM_FILES # TODO: make this an array variable?
 
 # TODO: Maybe other arguments passed in can be sent to vim, so you can to gvim or -O
 # TODO: what if a regex gets passed in? can you get the same one to work for grep and vim?
