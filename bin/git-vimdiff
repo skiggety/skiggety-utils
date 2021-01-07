@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# use vimdiff as a difftool without permanently changing git configuration
+
+git -c diff.tool=vimdiff -c difftool.prompt=false difftool $@ || exit 1
