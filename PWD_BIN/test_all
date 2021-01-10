@@ -7,6 +7,8 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 
 echo_divider_with_text "O-=======-" "test_all:"
 
+build
+
 # install skiggety-utils
 echo_divider_with_text "+-=======-" "install-skiggety-utils --non-interactive"
 $THIS_DIR/install-skiggety-utils --non-interactive || exit_with_error "could not run installers for skiggety-utils"
