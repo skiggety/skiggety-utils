@@ -1,5 +1,5 @@
-./bin/todo:4:# TODO TODO TODO TODO: re-implement without it being such a hack. Probably use Python (see old program "status"):
-./bin/todo:6:  # TODO TODO TODO TODO: when called from a terminal, this program should interactively check with the user if they want to do replacements like "TODO TODO"-->"TODO^2" before displaying sorted output
+./bin/todo:29:  # TODO TODO TODO TODO: when called from a terminal, this program should interactively check with the user if they want to do replacements like "TODO TODO"-->"TODO^2" before displaying sorted output
 ./start:21:debug_here "utils successfully included" # TODO TODO TODO TODO: use a flag to turn debug messages on or off
 ./LICENSE:1:# TODO TODO TODO TODO TODO: GPLV3 (finish template--see: https://www.gnu.org/licenses/gpl-howto.en.html )
+./bin/todo:11:# TODO TODO TODO TODO TODO: IMPLEMENT
 ./installers/basic_prerequisites:98:    # TODO TODO TODO TODO TODO: get this working on linux box:
