@@ -6,6 +6,10 @@ import os
 if sys.version_info[0] < 3:
     raise Exception('Must be using Python 3')
 
+sys.path.append(os.path.abspath(os.path.join(os.getenv('SKIGGETY_UTILS_DIR'),"lib")))
+from lines import *
+
+# call old implementation
 os.system("todo-old")
 
 # TODO TODO TODO TODO TODO: IMPLEMENT
@@ -14,12 +18,6 @@ os.system("todo-old")
     # my_grep > lines | sort
     # print lines
     # print summary
-
-  # lines
-    # source location
-    # text
-    # processed_text
-    # replace in original file somehow (perhaps can't use external grep)
 
   # TODO: re-implement without it being such a hack. Probably use Python (see old program "status"):
 
@@ -34,3 +32,4 @@ os.system("todo-old")
   # TODO: perhaps todo could do the same thing with an alternate word. For example, you could pass in "-w TECHDEBT" if you had things like TECHDEBT^3 in your code
   # TODO: add a command line option to specify a minimum number of votes, so if you pass "--minimum-votes 3", "TODO TODO TODO" or TODO^3 will show up, but not "TODO TODO"
 # TODO: consider spinning this project off, with a not-so-clever name like "tood" or something
+

@@ -10,4 +10,6 @@
 /installers/.*.configured_with_version.*
 /installers/.*.updated_with_version.*
 
+lib/__pycache__/
+
 /coverage/
