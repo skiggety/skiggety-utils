@@ -37,7 +37,7 @@ class ReviewProgram
     show_footer(command, exit_val, exit_date)
 
     last_output = output = ''
-    while system("pretty_sleep -n #{delay}")
+    while (should_continue_looping(exit_val) && system("pretty_sleep -n #{delay}"))
       last_output = output
       non_interactive_command = "#{command} 2>&1"
       output = `#{non_interactive_command}`
@@ -68,6 +68,28 @@ class ReviewProgram
 
   def show_footer(command, exit_val, exit_date) # TODO TODO: colorize output, esp on failure
     system("echo_divider_with_text \"#\" \"'#{command}' exited with #{exit_val} at #{exit_date}\"")
+  end
+
+  def should_continue_looping(last_exit_val)
+    if (loop_condition == 'always' || loop_condition.nil?)
+      return true
+    elsif (loop_condition == 'success')
+      if last_exit_val == 0
+        return(true)
+      else
+        return(false)
+      end
+    elsif (loop_condition == 'fail')
+      if last_exit_val == 0
+        return(false)
+      else
+        return(true)
+      end
+    end
+  end
+
+  def loop_condition
+    @loop_condition ||= ENV['REVIEW_WHILE']
   end
 
 end

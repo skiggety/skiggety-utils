@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+REVIEW_WHILE="success" review "$@"
+exit $? # TODO: is this necessary?
