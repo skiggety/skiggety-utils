@@ -25,4 +25,4 @@ bin/default_dashboard || accumulate_error
 
 # More important than the output of default_dashboard:
 
-exit_with_any_accumulated_errors
+exit_if_any_accumulated_errors

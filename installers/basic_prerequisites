@@ -95,7 +95,7 @@ function main {
     echo n | rbenv install $(cat $SKIGGETY_UTILS_DIR/.ruby-version) # echoing n is to avoid reinstall
     rbenv versions
 
-    # TODO TODO TODO TODO TODO: get this working on linux box:
+    # TODO TODO TODO TODO TODO TODO: get this working on linux box:
     $THIS_DIR/../PWD_BIN/ruby_setup || exit_with_error "failed to set up prerequisites for my ruby code, such as gems"
 
     # pyenv/python
@@ -108,6 +108,9 @@ function main {
 
     echo "Installing python"
     echo n | pyenv install $(cat $SKIGGETY_UTILS_DIR/.python-version) # echoing n is to avoid reinstall
+
+    echo "Installing nose2 (TODO: move)"
+    pip install nose2
 
     # mark complete
     rm "$completed_markers_start_with"*

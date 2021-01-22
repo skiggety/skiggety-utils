@@ -7,3 +7,15 @@
     # processed_text
     # replace in original file somehow (perhaps can't use external grep)
 
+class Line:
+    def text():
+        return("TODO TODO: ...") # TODO: IMPLEMENT
+
+    def processed_text():
+        return("TODO^2: ...") # TODO: IMPLEMENT
+
+    def power():
+        return(2) # TODO: IMPLEMENT
+
+    def write():
+        raise Exception("TODO: IMPLEMENT")

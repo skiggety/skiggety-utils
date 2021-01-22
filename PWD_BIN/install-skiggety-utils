@@ -62,7 +62,7 @@ function main {
         fi
     done
 
-    exit_with_any_accumulated_errors
+    exit_if_any_accumulated_errors
 }
 
 # this function runs the installer, checks the exit code, prints context/formatting around it, perhaps remembers if it has already succeeded.

@@ -24,4 +24,8 @@ echo "$rake_test_output" | grep -v " --seed" | grep -v "^Finished" | grep -v "^$
 # TODO TODO: what can I do to make coverage results be trustworthy and meaningful?
 # TODO TODO: perhaps ratchet coverage results towards 100%, or make sure it clears a predefined minimum threshold
 
-exit_with_any_accumulated_errors
+echo_divider_with_text "+-=======-" "run all python tests"
+pushd $THIS_DIR/../test/python/integration/ > /dev/null
+python -m nose2 || accumulate_error "Python tests failed" # TODO: run ALL python tests"
+popd > /dev/null
+exit_if_any_accumulated_errors

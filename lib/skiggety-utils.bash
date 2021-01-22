@@ -11,6 +11,10 @@ function echo_callsite {
     echo "at ${BASH_SOURCE[2]}:${BASH_LINENO[1]}"
 }
 
+function echo_parent_callsite {
+    echo "at ${BASH_SOURCE[3]}:${BASH_LINENO[2]}"
+}
+
 function exit_with_error {
     echo "exiting $(basename $0) on ERROR: $* ( $(echo_callsite) )" >&2
     exit 1
@@ -18,21 +22,20 @@ function exit_with_error {
 
 function accumulate_error {
     local exit_status=$?
+    if [ "$exit_status" == "0" ]; then
+        exit_status=1
+    fi
     local error_message="$*"
 
     if [ "$error_message" != "" ]; then
-        echo_error "$error_message"
+        echo_error_callsite "$error_message"
     fi
     cumulative_error_count=${cumulative_error_count:-0}
     cumulative_error_count=$(($cumulative_error_count+$exit_status))
 }
 
-function exit_with_any_accumulated_errors {
-    if [ -z "$cumulative_error_count" ]; then
-        exit 0
-    elif [ "0" -eq "$cumulative_error_count" ]; then
-        exit 0
-    else
+function exit_if_any_accumulated_errors {
+    if ! [ -z "$cumulative_error_count" ]; then
         exit_with_accumulated_errors
     fi
 }
@@ -84,6 +87,10 @@ function is_array_name {
     local var="$1"
     regex="^declare -[aA] ${var}(=|$)"
     [[ $(declare -p "$var" 2> /dev/null) =~ $regex ]]
+}
+
+function echo_error_callsite {
+    echo "ERROR: $* ( $(echo_parent_callsite) )" >&2
 }
 
 function echo_error_here {
