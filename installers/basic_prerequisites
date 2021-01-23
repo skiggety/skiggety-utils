@@ -87,6 +87,15 @@ function main {
         pushd $ruby_build_dir
         git pull
         popd
+        if ! bundler --version;then
+            if $interactive;then
+                echo "You will need to type your password for sudo access..."
+                sudo apt-get install bundler ||
+                    exit_with_error "failed to install bundler!"
+            else
+                exit_with_error "must run $(basename $0) interactively to install bundler"
+            fi
+        fi
     fi
     # TODO TODO: install rbenv-aliases?
 
@@ -103,7 +112,13 @@ function main {
     if on_mac_os;then
         homebrew_install_latest pyenv
     else
-        exit_with_error "TODO: IMPLEMENT"
+        local pyenv_dir="$HOME/.pyenv"
+        if ! [ -d $pyenv_dir ]; then
+            git clone https://github.com/pyenv/pyenv.git $pyenv_dir
+        fi
+        pushd $pyenv_dir
+        git pull
+        popd
     fi
 
     echo "Installing python"
