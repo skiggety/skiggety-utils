@@ -1,5 +1,7 @@
 # This should be included into the user's .bashrc file)
 
+export EDITOR="vim"
+
 export SHELL_SESSION_HISTORY=0
 
 # ./PWD_BIN comes before $SKIGGETY_UTILS_DIR/bin so that you can override scripts like "dashboard"

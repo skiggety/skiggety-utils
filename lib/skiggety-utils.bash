@@ -4,7 +4,7 @@ newline='
 '
 
 function echo_here {
-    echo "at ${BASH_SOURCE[1]}:${BASH_LINENO[0]}"
+    echo "$*" "at ${BASH_SOURCE[1]}:${BASH_LINENO[0]}"
 }
 
 function echo_callsite {
@@ -56,7 +56,7 @@ function echo_debug {
 }
 
 function debug_here {
-    echo_debug "$* at \"${BASH_SOURCE[1]}\":${BASH_LINENO[0]}"
+    echo_debug "$* $(echo_callsite)"
 }
 
 function debug_eval {

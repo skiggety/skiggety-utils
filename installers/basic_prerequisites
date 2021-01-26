@@ -47,7 +47,7 @@ function main {
     fi
 
     # homebrew
-    if uname -a | grep Darwin >/dev/null;then
+    if on_mac_os;then
         echo "Installing latest homebrew"
         if brew --version; then
             brew update || exit_with_error "failed to update homebrew"
@@ -69,7 +69,7 @@ function main {
         ### https://javierjulio.com/rbenv/#section_3.2
     echo "Installing latest rbenv"
     rvm --version 2>/dev/null && ask_user to uninstall rvm with rvm implode
-    if uname -a | grep Darwin >/dev/null;then
+    if on_mac_os;then
         homebrew_install_latest rbenv
     else
         local rbenv_dir="$HOME/.rbenv"
@@ -100,14 +100,18 @@ function main {
     # TODO TODO: install rbenv-aliases?
 
     # ruby
-    echo "Installing ruby"
-    echo n | rbenv install $(cat $SKIGGETY_UTILS_DIR/.ruby-version) # echoing n is to avoid reinstall
-    rbenv versions
+    ruby_version="$(cat $SKIGGETY_UTILS_DIR/.ruby-version)"
+    if rbenv versions | grep "\* $ruby_version" > /dev/null; then
+        echo "ruby $ruby_version is already installed."
+    else
+        echo "Installing ruby $ruby_version:"
+        rbenv install $ruby_version || accumulate_error "failed to install ruby"
+        rbenv versions
+    fi
 
-    # TODO TODO TODO TODO TODO TODO: get this working on linux box:
     $THIS_DIR/../PWD_BIN/ruby_setup || exit_with_error "failed to set up prerequisites for my ruby code, such as gems"
 
-    # pyenv/python
+    # pyenv
     echo "Installing latest pyenv"
     if on_mac_os;then
         homebrew_install_latest pyenv
@@ -121,11 +125,20 @@ function main {
         popd
     fi
 
-    echo "Installing python"
-    echo n | pyenv install $(cat $SKIGGETY_UTILS_DIR/.python-version) # echoing n is to avoid reinstall
+    # python
+    python_version="$(cat $SKIGGETY_UTILS_DIR/.python-version)"
+    if pyenv versions | grep "\* $python_version" > /dev/null; then
+        echo "python $python_version is already installed."
+    else
+        echo "Installing python $python_version:"
+        pyenv install $python_version || accumulate_error "failed to install python"
+        pyenv versions
+    fi
 
-    echo "Installing nose2 (TODO: move)"
+    echo "Installing nose2" # TODO: move
     pip install nose2
+
+    exit_if_any_accumulated_errors # before marking complete
 
     # mark complete
     rm "$completed_markers_start_with"*

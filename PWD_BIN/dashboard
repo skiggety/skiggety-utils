@@ -26,3 +26,16 @@ bin/default_dashboard || accumulate_error
 # More important than the output of default_dashboard:
 
 exit_if_any_accumulated_errors
+
+experiment_script="./PWD_BIN/current_experiment.gitignored.bash"
+if ! [ -f "$experiment_script" ]; then
+    echo "#!$(which env) bash" > "$experiment_script"
+    echo "# TODO: edit this for dashboard output" > "$experiment_script"
+    chmod +x "$experiment_script"
+fi
+
+if [ -f "$experiment_script" ]; then
+    echo_divider_with_text "=" "running \"$experiment_script\" :"
+    $experiment_script || accumulate_error
+fi
+exit_if_any_accumulated_errors
