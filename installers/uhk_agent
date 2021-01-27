@@ -9,6 +9,8 @@ class UltimateHackingKeyboardAgentInstaller
   def apparently_installed?
     if on_mac_os?
       return Dir.exist?("/Applications/UHK Agent.app")
+    elsif on_linux_os?
+      return false
     else
       raise NotImplementedError, "TODO: implement this for this OS"
     end
@@ -32,6 +34,12 @@ class UltimateHackingKeyboardAgentInstaller
     if on_mac_os?
       if $interactive
         assert_system("open '/Applications/UHK Agent.app'")
+        delegate_to_user "Configure #{name}"
+      else
+        raise_interactive_only_configuration
+      end
+    elsif on_linux_os?
+      if $interactive
         delegate_to_user "Configure #{name}"
       else
         raise_interactive_only_configuration
