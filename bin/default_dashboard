@@ -9,7 +9,11 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 # TODO TODO: highlight ERRORS
 
 echo_divider_with_text "-=" "TODO's:" # IGNORE_TODO
-$THIS_DIR/todo | tail -n 5 || exit_with_error "todo FAILED" # TODO TODO: abbreviate -n 5 todo
+if [ -f ./todo_report.gen.txt]; then
+    cat ./todo_report.gen.txt
+else
+    $THIS_DIR/todo | tail -n 5 || exit_with_error "todo FAILED" # TODO TODO: abbreviate -n 5 todo
+fi
 
 # TODO TODO TODO TODO: put test output right here if tests failed so todo's are the thing to scroll off the top of the screen instead of this.
 
@@ -22,8 +26,20 @@ echo_divider_with_text "-=" "git diff:"
 git -c color.ui=always --no-pager diff -U1 | head -n 17 # TODO: not sure if I should use head
 # TODO: this shows a more complete diff, including new files...do I want to use it instead?: for next in $( git ls-files --others --exclude-standard ) ; do git --no-pager diff --no-index /dev/null $next; done; # git diff
 
+DO_NOT_ADD="$(git diff --inter-hunk-context=1 | grep [X]XX)"
+if ! [ -z "$DO_NOT_ADD" ]; then
+    echo_divider_with_text "!" "DO NOT ADD (X""XX) :"
+    echo "$DO_NOT_ADD"
+fi
+
 echo_divider_with_text "-=" "git status:"
 git -c color.ui=always --no-pager status -ss
+
+DO_NOT_COMMIT="$(git diff --staged --inter-hunk-context=1 | grep [X]XX)"
+if ! [ -z "$DO_NOT_COMMIT" ]; then
+    echo_divider_with_text "!" "DO NOT COMMIT (X""XX):"
+    echo "$DO_NOT_COMMIT"
+fi
 
 echo_divider_with_text "-=" "git log: (most recent commit and un-pushed commits)"
 git -c color.ui=always --no-pager log --oneline --decorate=short origin/HEAD~..HEAD # -n 5
