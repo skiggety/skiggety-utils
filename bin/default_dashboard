@@ -9,7 +9,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 # TODO TODO: highlight ERRORS
 
 echo_divider_with_text "-=" "TODO's:" # IGNORE_TODO
-if [ -f ./todo_report.gen.txt]; then
+if [ -f ./todo_report.gen.txt ]; then
     cat ./todo_report.gen.txt
 else
     $THIS_DIR/todo | tail -n 5 || exit_with_error "todo FAILED" # TODO TODO: abbreviate -n 5 todo
