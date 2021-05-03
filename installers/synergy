@@ -22,15 +22,15 @@ class SynergyInstaller
   def apparently_configured?
     if `ps aux | grep #{ENV['USER']} | grep synergy[sc]` == '' # synergy server or client must be running
       return false
+    end
+
+    if $interactive
+      return ask_user "Is #{name} set up the way you want?"
     else
-      if $interactive
-        return ask_user "Is #{name} set up the way you want?"
-      else
-        # In non-interactive mode, assume config is needed to make sure the user
-        # has a chance, since I can't think of a way to check if the current
-        # config is the desired version:
-        return false
-      end
+      # In non-interactive mode, assume config is needed to make sure the user
+      # has a chance, since I can't think of a way to check if the current
+      # config is the desired version:
+      return false
     end
   end
 
