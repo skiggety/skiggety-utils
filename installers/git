@@ -31,6 +31,7 @@ function main {
 
     echo "Configuring $(basename $0)"
     git-set-global-default 'credential.helper' 'cache --timeout=2592000'
+    git-set-global-default 'push.default' 'current' # this pushes to branches of the same name by default, so you don't need to set upstream
     # git push || exit_with_error "git push failed"
 }
 
