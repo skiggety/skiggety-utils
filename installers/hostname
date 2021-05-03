@@ -17,6 +17,7 @@ class HostnameSetup
   def apparently_configured?
     apparent_hostname = `hostname`.chomp
     desired_hostname == apparent_hostname or desired_hostname + '.local' == apparent_hostname
+    # TODO: verify nslookup, which means router config will be part of configuration process
   end
 
   def configure
