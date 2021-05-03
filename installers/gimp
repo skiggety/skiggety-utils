@@ -6,7 +6,25 @@ class GimpInstaller
 
   include InstallableSkiggetyUtil
 
-  raise "TODO TODO TODO: IMPLEMENT"
+  def apparently_installed?
+    if on_mac_os?
+      return Dir.glob("/Applications/GIMP*.app").any?
+    else
+      raise 'TODO TODO: IMPLEMENT'
+    end
+  end
+
+  def apparently_configured?
+    return true # pretty sure there's nothing to do here
+  end
+
+  def install
+    if on_mac_os?
+      assert_system("brew install gimp")
+    else
+      raise NotImplementedError, "TODO: implement this for this OS" # If we install a different program similar to rectangle on a different OS, this script should be renamed.
+    end
+  end
 
 end
 
