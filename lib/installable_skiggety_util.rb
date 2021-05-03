@@ -223,6 +223,14 @@ module InstallableSkiggetyUtil
     return system("uname -a | grep Darwin > /dev/null")
   end
 
+  def has_apt?
+    @has_apt ||= calc_has_apt?
+  end
+
+  private def calc_has_apt?
+    return system("which apt > /dev/null")
+  end
+
   def on_linux_os?
     @on_linux_os ||= calc_on_linux_os?
   end

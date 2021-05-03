@@ -10,7 +10,7 @@ class GimpInstaller
     if on_mac_os?
       return Dir.glob("/Applications/GIMP*.app").any?
     else
-      raise 'TODO TODO: IMPLEMENT'
+      return system("which gimp")
     end
   end
 
@@ -21,6 +21,12 @@ class GimpInstaller
   def install
     if on_mac_os?
       assert_system("brew install gimp")
+    elsif has_apt?
+      if $interactive
+        assert_system("sudo apt install gimp")
+      else
+        raise_interactive_only_install
+      end
     else
       raise NotImplementedError, "TODO: implement this for this OS" # If we install a different program similar to rectangle on a different OS, this script should be renamed.
     end
