@@ -25,7 +25,15 @@ echo "$rake_test_output" | grep -v " --seed" | grep -v "^Finished" | grep -v "^$
 # TODO TODO: perhaps ratchet coverage results towards 100%, or make sure it clears a predefined minimum threshold
 
 echo_divider_with_text "+-=======-" "run all python tests"
-pushd $THIS_DIR/../test/python/integration/ > /dev/null
-python -m nose2 || accumulate_error "Python tests failed" # TODO: run ALL python tests"
-popd > /dev/null
+function run_all_python_tests {
+    pushd $THIS_DIR/../test/python/integration/ > /dev/null
+    test_output_text=$(python -m nose2 2>&1)
+    test_exit_value="$?"
+
+    echo "$test_output_text" | sed 's/ in [0-9.]*s//' # get rid of time report to keep output deterministic
+    popd > /dev/null
+    return $test_exit_value
+}
+run_all_python_tests || accumulate_error "Python tests failed" # TODO: run ALL python tests"
+
 exit_if_any_accumulated_errors
