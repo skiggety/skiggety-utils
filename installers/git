@@ -33,9 +33,9 @@ function main {
     git-set-global-default 'credential.helper' 'cache --timeout=2592000'
     git-set-global-default 'push.default' 'current' # this pushes to branches of the same name by default, so you don't need to set upstream
     git-set-global-default 'pull.rebase' 'true'
-    git-set-global-default 'fetch.prune' 'true'
-    git-set-global-default 'diff.colorMoved' 'zebra'
     git-set-global-default 'rebase.autostash' 'true'
+    git-set-global-default 'fetch.prune' 'true'
+    git-set-global-default 'diff.colorMoved' 'zebra' # lines that moved but stayed the same have their own colors
     # git push || exit_with_error "git push failed"
 }
 
