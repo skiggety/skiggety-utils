@@ -9,6 +9,8 @@ class LocalBackupSetterUpper
   def apparently_installed?
     if on_mac_os?
       return program_version_option_output_matches?('tmutil', / 4\.0\.0 /) # TODO: update desired version # TODO TODO: how should I keep tabs on new versions of software, in general. Some automated way to watch for it and decide if I want it? maybe all installers expect a stanndardized method to check for updates?
+    elsif on_linux_os?
+      return true # TODO: IMPLEMENT
     else
       raise NotImplementedError, "TODO: implement this for this OS"
     end
@@ -19,6 +21,8 @@ class LocalBackupSetterUpper
     if on_mac_os?
       backup_done_indicator = `tmutil status|grep Percent`
       return (backup_done_indicator =~ /Percent = 1;/ ).is_a?(Numeric).to_s
+    elsif on_linux_os?
+      return true # TODO: IMPLEMENT
     else
       raise NotImplementedError, "TODO: implement this for this OS"
     end
