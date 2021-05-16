@@ -23,5 +23,8 @@ eval "$(rbenv init -)"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
- eval "$(pyenv init -)"
+    if pyenv init --help | grep path >/dev/null; then
+        eval "$(pyenv init --path)"
+    fi
+    eval "$(pyenv init -)"
 fi
