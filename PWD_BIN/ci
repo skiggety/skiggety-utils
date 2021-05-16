@@ -10,7 +10,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 # TODO: deal with any local changes...delete them? ...error out? both?
 
 echo_divider_with_text "-" "git pull:"
-git pull # TODO checkout fresh code, default to one branch
+git pull | grep -v autostash # TODO checkout fresh code, default to one branch
 
 test_all && echo "test_all SUCCEEDED" || accumulate_error "test_all FAILED"
 
