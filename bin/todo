@@ -7,7 +7,7 @@ if sys.version_info[0] < 3:
     raise Exception('Must be using Python 3')
 
 sys.path.append(os.path.abspath(os.path.join(os.getenv('SKIGGETY_UTILS_DIR'),"lib")))
-from lines import *
+from todo_line import *
 
 # call old implementation
 os.system("todo-old")

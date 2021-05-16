@@ -1,13 +1,13 @@
 
 # TODO TODO TODO TODO TODO TODO: TDD
 # TODO TODO TODO TODO TODO: IMPLEMENT
-  # lines
+  # TodoLine
     # source location
     # text
     # processed_text
     # replace in original file somehow (perhaps can't use external grep)
 
-class Line:
+class TodoLine:
     def text():
         return("TODO TODO: ...") # TODO: IMPLEMENT
 
