@@ -10,8 +10,6 @@ echo_divider_with_text "//======" "dev:"
 
 test_all && echo "test_all SUCCEEDED" || accumulate_error "test_all FAILED"
 
-exit_if_any_accumulated_errors
-
 dashboard || accumulate_error "dashboard FAILED"
 
 exit_if_any_accumulated_errors

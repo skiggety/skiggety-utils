@@ -135,3 +135,14 @@ function echo_pattern_n_length {
     for ((i=1;i<=$repeats; i++)); do echo -n "$pattern"; done
     echo -n "${pattern:0:$remainder}"
 }
+
+function assert_equal {
+    EXPECTED="$1"
+    RECEIVED="$2"
+    if [ "$EXPECTED" = "$RECEIVED" ]; then
+        echo_debug "SUCCESS! (\"$EXPECTED\" = \"$RECEIVED\")"
+    else
+        echo "assert_equal FAILED $(echo_callsite):$newline    expected: \"$EXPECTED\"$newline    received: \"$RECEIVED\"" >&2
+        exit 1
+    fi
+}

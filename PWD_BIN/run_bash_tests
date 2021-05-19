@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# This script runs tests directly implemented in bash, such as a few testing command line utilities from the outside
+
+THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
+. $THIS_DIR/../lib/skiggety-utils.bash || exit 1
+
+# TODO: turn debug output off
+
+function main {
+    test_one_todo_shows || exit_with_error "test failed"
+    # TODO TODO TODO TODO TODO TODO: more top level tests
+
+    #if all the tests pass, use the new program as the real TODO:
+    cp "$(which todo-new)" "$(which todo)"
+}
+
+function test_one_todo_shows {
+    pushd "test/examples/todo/simple"
+    result="$(todo-new)"
+    expected="./example.txt:2:TODO: foo
+./example.txt:1:TODO TODO: bar"
+    assert_equal "$expected" "$result"
+    popd
+}
+
+main "$@"
