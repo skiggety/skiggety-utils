@@ -1,5 +1,5 @@
-./LICENSE:1:# TODO TODO TODO TODO TODO: GPLV3 (finish template--see: https://www.gnu.org/licenses/gpl-howto.en.html )
-./bin/todo-new:15:# TODO TODO TODO TODO TODO: IMPLEMENT
+./bin/todo-new:22:            # TODO TODO TODO TODO TODO: IMPLEMENT
 ./bin/todo:15:# TODO TODO TODO TODO TODO: IMPLEMENT
-./lib/todo_line.py:2:# TODO TODO TODO TODO TODO: IMPLEMENT
+./PWD_BIN/run_bash_tests:15:    # TODO TODO TODO TODO TODO: cp "$(which todo-new)" "$(which todo)"
+./lib/todo_line.py:3:# TODO TODO TODO TODO TODO: IMPLEMENT
 ./PWD_BIN/run_bash_tests:12:    # TODO TODO TODO TODO TODO TODO: more top level tests

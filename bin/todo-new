@@ -2,6 +2,7 @@
 
 import sys
 import os
+import subprocess
 
 if sys.version_info[0] < 3:
     raise Exception('Must be using Python 3')
@@ -9,14 +10,24 @@ if sys.version_info[0] < 3:
 sys.path.append(os.path.abspath(os.path.join(os.getenv('SKIGGETY_UTILS_DIR'),"lib")))
 from todo_line import *
 
-# call old implementation
-os.system("todo-old")
+grep_output = subprocess.check_output(['grep', '-Rn', 'TODO', '.']).decode('utf-8')
 
-# TODO TODO TODO TODO TODO: IMPLEMENT
-  # main
-    # my_grep > lines | sort
-    # print lines
-    # print summary
+todo_lines = []
+for line in grep_output.splitlines():
+    # TODO: make todolines from grep output
+    try:
+        todo_line = TodoLine(line)
+        if (todo_line):
+            todo_lines.append(todo_line)
+            # TODO TODO TODO TODO TODO: IMPLEMENT
+            # TODO: sort lines by power
+            # TODO: print sorted todolines
+            print(str(todo_line)) # TODO TODO: move to separate loop after todo_lines gets sorted
+    except Exception:
+        pass
+
+# TODO: print summary with TODO count, maybe a vote count
+
 
 # TODO: flags:
   # TODO: highlighting on or off. It should be on by default unless output is piped to a file, like with grep and "--color" (or "--colour" )
