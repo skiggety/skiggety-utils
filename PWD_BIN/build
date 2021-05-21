@@ -1,3 +1,2 @@
 #!/usr/bin/env bash
-git restore --staged todo_report.gen.txt
 todo | grep -v ".gitignored." | tail -n 5 > todo_report.gen.txt
