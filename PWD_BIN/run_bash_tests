@@ -10,10 +10,12 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 function main {
     test_todo_shows_nothing_from_empty_dir || exit_with_error "test failed"
     test_todo_sorts_two_equivalent_lines_by_line_number_and_exits_correctly || exit_with_error "test failed"
+    test_todo_handles_a_complex_example || exit_with_error "test failed"
+
     # TODO TODO TODO TODO TODO TODO: more top level tests
 
-    #if all the tests pass, use the new program as the real TODO:
-    # TODO TODO TODO TODO TODO: cp "$(which todo-new)" "$(which todo)"
+    # If all the tests pass, use the new program as the real TODO:
+    # TODO TODO TODO TODO TODO TODO: cp "$(which todo-new)" "$(which todo)"
 }
 
 function test_todo_shows_nothing_from_empty_dir {
@@ -32,6 +34,17 @@ function test_todo_sorts_two_equivalent_lines_by_line_number_and_exits_correctly
     assert_equal "0" "$exit_value"
     expected="./example.txt:1:TODO: this is a todo
 ./example.txt:2:TODO: this is another todo"
+    assert_equal "$expected" "$result"
+    popd
+}
+
+function test_todo_handles_a_complex_example {
+    pushd "test/examples/todo"
+    result="$(todo-new)"
+    exit_value="$?"
+    assert_equal "0" "$exit_value"
+    expected="./simple/example.txt:1:TODO: this is a todo
+./simple/example.txt:2:TODO: this is another todo"
     assert_equal "$expected" "$result"
     popd
 }

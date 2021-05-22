@@ -28,7 +28,6 @@ for line in grep_output.splitlines():
 
 # TODO: print summary with TODO count, maybe a vote count
 
-
 # TODO: flags:
   # TODO: highlighting on or off. It should be on by default unless output is piped to a file, like with grep and "--color" (or "--colour" )
     # TODO TODO: highlight TODO's
