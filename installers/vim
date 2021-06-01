@@ -2,7 +2,6 @@
 
 require_relative '../lib/installable_skiggety_util.rb'
 
-# TODO TODO: install gvim (gui)
 # TODO TODO: install and set up vimpager as your pager, but maybe not in this installer
 
 class VimInstaller
@@ -26,6 +25,11 @@ class VimInstaller
       delegate_to_user 'make sure vim is installed'
     else
       raise_interactive_only_install
+    end
+
+    if on_mac_os?
+      brew_install_latest "macvim"
+      # TODO TODO: install gvim (gui) for linux
     end
   end
 

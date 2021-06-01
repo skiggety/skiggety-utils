@@ -248,4 +248,10 @@ module InstallableSkiggetyUtil
     return (version_output =~ version_regex ).is_a?(Numeric) # TODO TODO: update desired vim version and make sure it includes the gui version, too
   end
 
+  def brew_install_latest(package_name)
+    system("brew upgrade #{package_name}") or
+      system("brew install #{package_name}") or
+      raise "FAILED to upgrade or install #{package_name} with homebrew"
+  end
+
 end
