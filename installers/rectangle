@@ -30,7 +30,7 @@ class RectangleInstaller
 
   def install
     if on_mac_os?
-      assert_system("brew cask install rectangle")
+      brew_install_cask_latest "rectangle"
     else
       raise NotImplementedError, "TODO: implement this for this OS" # If we install a different program similar to rectangle on a different OS, this script should be renamed.
     end
