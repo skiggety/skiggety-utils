@@ -6,6 +6,10 @@ syntax enable
 set laststatus=2
 set ruler
 
+set number
+set relativenumber
+highlight LineNr ctermfg=black ctermbg=grey
+
 filetype plugin indent on
 
 highlight KeywordForComments ctermbg=yellow guibg=yellow
