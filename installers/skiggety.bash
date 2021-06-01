@@ -32,6 +32,21 @@ function main {
         esac
     done
 
+    # set up bash_profile for macs
+    if uname -a | grep Darwin > /dev/null; then
+        if ! grep bashrc ~/.bash_profile > /dev/null; then
+            MAC_BASH_PROFILE="$THIS_DIR/skiggety.bash.config/mac_bash_profile.bash"
+            if $interactive; then
+                $THIS_DIR/../bin/ask_user "vimdiff ~/.bash_profile $MAC_BASH_PROFILE" || exit_with_error "User did not complete bashrc install"
+            else
+                echo_error_here "diff needed:"
+                echo_error_here "\$ diff ~/.bash_profile $MAC_BASH_PROFILE"
+                                    diff ~/.bash_profile $MAC_BASH_PROFILE
+                exit_with_error "Failed to modify ~/.bash_profile because this is non-interactive mode. Please Re-run \"$THIS_DIR/../PWD_BIN/install-skiggety-utils\"."
+            fi
+        fi
+    fi
+
     # set up bashrc
     NEW_BASHRC_SECTION="$THIS_DIR/skiggety.bash.config/bashrc_section.bash"
     expected_bashrc_uniq_lines=$(( 1 + $(sort < ~/.bashrc | uniq | wc -l) )) # adding one because one HARDCODED value will be changed
@@ -58,21 +73,6 @@ function main {
             echo
             rm $TMP_BASHRC
             exit_with_error "Failed to modify ~/.bashrc because this is non-interactive mode. Please Re-run \"$THIS_DIR/../PWD_BIN/install-skiggety-utils\"."
-        fi
-    fi
-
-    # set up bash_profile for macs
-    if uname -a | grep Darwin > /dev/null; then
-        if ! grep bashrc ~/.bash_profile > /dev/null; then
-            MAC_BASH_PROFILE="$THIS_DIR/skiggety.bash.config/mac_bash_profile.bash"
-            if $interactive; then
-                $THIS_DIR/../bin/ask_user "vimdiff ~/.bash_profile $MAC_BASH_PROFILE" || exit_with_error "User did not complete bashrc install"
-            else
-                echo_error_here "diff needed:"
-                echo_error_here "\$ diff ~/.bash_profile $MAC_BASH_PROFILE"
-                                    diff ~/.bash_profile $MAC_BASH_PROFILE
-                exit_with_error "Failed to modify ~/.bash_profile because this is non-interactive mode. Please Re-run \"$THIS_DIR/../PWD_BIN/install-skiggety-utils\"."
-            fi
         fi
     fi
 
