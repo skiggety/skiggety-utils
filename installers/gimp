@@ -20,7 +20,7 @@ class GimpInstaller
 
   def install
     if on_mac_os?
-      assert_system("brew install gimp")
+      brew_install_latest "gimp"
     elsif has_apt?
       if $interactive
         assert_system("sudo apt install gimp")
