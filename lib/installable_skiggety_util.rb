@@ -254,7 +254,7 @@ module InstallableSkiggetyUtil
       raise "FAILED to upgrade or install #{package_name} with homebrew"
   end
 
-  def brew_install_cask_latest
+  def brew_install_cask_latest(package_name)
     system("brew upgrade --cask #{package_name}") or
       system("brew install --cask #{package_name}") or
       raise "FAILED to upgrade or install cask #{package_name} with homebrew"
