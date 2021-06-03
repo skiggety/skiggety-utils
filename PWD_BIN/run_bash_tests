@@ -13,9 +13,10 @@ function main {
     test_todo_handles_a_complex_example || exit_with_error "test failed"
 
     # TODO TODO TODO TODO TODO TODO: more top level tests
+    # TODO TODO: change todo tests to use an alternate keyword, like "TXDX", so it doesn't interfere with the real TODO report
 
     # If all the tests pass, use the new program as the real TODO:
-    # TODO TODO TODO TODO TODO TODO: cp "$(which todo-new)" "$(which todo)"
+    # TODO TODO TODO TODO TODO: cp "$(which todo-new)" "$(which todo)"
 }
 
 function test_todo_shows_nothing_from_empty_dir {
