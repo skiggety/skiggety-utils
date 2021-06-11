@@ -4,14 +4,17 @@ import sys
 import os
 import subprocess
 
-# TODO TODO: figure out how to run this with the right python version even if you're running it in another directory
+# TODO TODO TODO: figure out how to run this with the right python version even if you're running it in another directory
 if sys.version_info[0] < 3:
     raise Exception('Must be using Python 3')
 
 sys.path.append(os.path.abspath(os.path.join(os.getenv('SKIGGETY_UTILS_DIR'),"lib")))
 from todo_line import *
 
+# TODO: use pylint
+
 def main():
+    # TODO: stop relying on grep at some point, to avoid getting confused by filenames with colons and numbers in them, etc.:
     grep_output = subprocess.run(['grep', '-Rn', 'TODO', '.'], check=False, text=True, capture_output=True).stdout
 
     todo_lines = []

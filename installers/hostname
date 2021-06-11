@@ -44,7 +44,7 @@ class HostnameSetup
     if File.exist?(desired_hostname_file)
       `cat #{desired_hostname_file}`.chomp
     else
-      raise "Please put desired hostname in #{desired_hostname_file} and try again"
+      raise "Please put desired hostname in #{desired_hostname_file} and try again" # TODO TODO: if interactive, give the user a chance to do this
     end
   end
 

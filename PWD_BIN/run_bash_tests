@@ -16,7 +16,7 @@ function main {
     # TODO TODO: change todo tests to use an alternate keyword, like "TXDX", so it doesn't interfere with the real TODO report
 
     # If all the tests pass, use the new program as the real TODO:
-    # TODO TODO TODO TODO TODO: cp "$(which todo-new)" "$(which todo)"
+    # TODO TODO TODO TODO: cp "$(which todo-new)" "$(which todo)"
 }
 
 function test_todo_shows_nothing_from_empty_dir {
@@ -46,6 +46,7 @@ function test_todo_handles_a_complex_example {
     assert_equal "0" "$exit_value"
     expected="./simple/example.txt:1:TODO: this is a todo
 ./simple/example.txt:2:TODO: this is another todo"
+# TODO: add:./votes.txt:3:TODO^2: this todo is spelled out like todo todo
     assert_equal "$expected" "$result"
     popd
 }
