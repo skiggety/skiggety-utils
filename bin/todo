@@ -1,9 +1,8 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3.9
 
 import sys
 import os
 
-# TODO TODO TODO TODO TODO: figure out how to run this with the right python version even if you're running it in another directory
 if sys.version_info[0] < 3:
     raise Exception('Must be using Python 3')
 
