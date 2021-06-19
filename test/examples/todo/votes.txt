@@ -1,1 +1,2 @@
 TODO TODO: this todo is spelled out like todo todo
+TODO TODO: one item and TODO TODO TODO another on the same line. votecount should be 3.
