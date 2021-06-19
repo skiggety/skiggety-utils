@@ -47,7 +47,9 @@ function test_todo_handles_a_complex_example {
     expected="./simple/example.txt:1:TODO: this is a todo
 ./simple/example.txt:2:TODO: this is another todo
 ./votes.txt:1:TODO^2: this todo is spelled out like todo todo
-./votes.txt:2:TODO^2: one item and TODO^3 another on the same line. votecount should be 3."
+./votes.txt:2:TODO^2: one item and TODO^3 another on the same line. votecount should be 3.
+./votes.txt:3:TODO^2: one spelled out item and TODO^3 another concisely-voted item on the same line
+./votes.txt:4:TODO^4: votes are already partially collapsed"
     assert_equal "$expected" "$result"
     popd > /dev/null
 }

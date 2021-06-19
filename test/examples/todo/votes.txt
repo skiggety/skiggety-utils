@@ -1,2 +1,4 @@
 TODO TODO: this todo is spelled out like todo todo
 TODO TODO: one item and TODO TODO TODO another on the same line. votecount should be 3.
+TODO TODO: one spelled out item and TODO^3 another concisely-voted item on the same line
+TODO TODO^2 TODO: votes are already partially collapsed

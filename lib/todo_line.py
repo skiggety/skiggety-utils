@@ -1,13 +1,6 @@
 import re # regular expressions
 from functools import reduce
 
-# TODO TODO TODO TODO: IMPLEMENT
-  # TodoLine
-    # source location
-    # text
-    # processed_text
-    # replace in original file somehow (perhaps can't use external grep)
-
 # TODO: read up on memoization and lazy evaluation and figure out if that style will serve me well here. Alternately, I can call something like process() in __init__ and just do it all up front, which I think will perform the same in the end
 
 class TodoLine:
@@ -37,8 +30,12 @@ class TodoLine:
     # inside a todo_line is one or more groups of TODO's and TODO^n's called a todo_entry.# TODO The votecount of the todo_line comes from the max votecount of the todo_entries
     def collapse_todo_entry(self, todo_entry):
         def word_votecount(word):
-            return 1 # TODO TODO TODO: IMPLEMENT
-        votecount_list = list(map(word_votecount, todo_entry.split(' ')))
+            match_obj = re.search(r'(?P<votecount>\d+)$', word)
+            if match_obj:
+                return int(match_obj.group('votecount'))
+            else:
+                return 1
+        votecount_list = map(word_votecount, todo_entry.split(' ')) # TODO: maybe use a list comprehension instead of map, as it's more pythonic
         def add(x, y):
             return x + y
         votecount = reduce(add,votecount_list)
@@ -53,7 +50,7 @@ class TodoLine:
     # TODO?: @memoized # from python decorator library
     @property
     def votecount():
-        return(2) # TODO: IMPLEMENT
+        return(2) # TODO TODO TODO TODO TODO: IMPLEMENT
 
     # TODO: replace in original file somehow (perhaps can't use external grep anymore)
     def write():
