@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-# This script runs tests directly implemented in bash, such as a few testing command line utilities from the outside
-
-# TODO: rename/extract so these tests that are specific to 'todo' are in a script named to reflect that fact
+# This script tests 'todo' from the outside, written in bash because what the heck.
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
@@ -22,7 +20,7 @@ function main {
 }
 
 function test_todo_shows_nothing_from_empty_dir {
-    pushd "test/examples/todo/empty_dir"
+    pushd "$THIS_DIR/examples/todo/empty_dir"
     result="$(todo-new)"
     exit_value="$?"
     assert_equal "0" "$exit_value"
@@ -31,7 +29,7 @@ function test_todo_shows_nothing_from_empty_dir {
 }
 
 function test_todo_sorts_two_equivalent_lines_by_line_number_and_exits_correctly {
-    pushd "test/examples/todo/simple"
+    pushd "$THIS_DIR/examples/todo/simple"
     result="$(todo-new)"
     exit_value="$?"
     assert_equal "0" "$exit_value"
@@ -42,7 +40,7 @@ function test_todo_sorts_two_equivalent_lines_by_line_number_and_exits_correctly
 }
 
 function test_todo_handles_a_complex_example {
-    pushd "test/examples/todo"
+    pushd "$THIS_DIR/examples/todo"
     result="$(todo-new)"
     exit_value="$?"
     assert_equal "0" "$exit_value"

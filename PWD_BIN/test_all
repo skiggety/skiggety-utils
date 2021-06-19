@@ -14,7 +14,7 @@ echo_divider_with_text "+-=======-" "install-skiggety-utils --non-interactive"
 $THIS_DIR/install-skiggety-utils --non-interactive || exit_with_error "could not run installers for skiggety-utils"
 
 echo_divider_with_text "+-=======-" "run shell tests"
-./PWD_BIN/run_bash_tests || accumulate_error "shell integration tests failed"
+./test/test_todo.bash || accumulate_error "shell integration tests failed"
 
 echo_divider_with_text "+-=======-" "ruby_setup"
 { $THIS_DIR/ruby_setup 2>&1 || echo FOO; } | tail -n 1 # in case this part gets skipped in installers/basic_prerequisites
