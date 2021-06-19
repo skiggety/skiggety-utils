@@ -25,10 +25,12 @@ Cool Programs you'll find in here:
 ==================================
 
 - [duh](bin/duh) - Show Directory, Username, and Hostname (in scp format). Useful in prompts.
+- [default_dashboard](bin/default_dashboard) - Show a bunch of useful information for the current directory, especially if it's a git project. Also can be called by calling 'dashboard' if you don't implement your own ./PWD_BIN/dashboard 
 - [grim](bin/grim) - GRep for string and open in vIM.
+- [pretty_sleep](bin/pretty_sleep) - like 'sleep' but with a visual countdown.
 - [vimwhich](bin/vimwhich) - quickly edit files that are in your path (and new files)
 - [todo](bin/todo) - Show TODO's, sorted by number of votes <!-- (IGNORE_TODO) -->
-- [review](bin/review) - A program that displays output of other programs and refreshes.
+- [review](bin/review) - A program that displays output of other programs and refreshes on a delay with a backoff.
 - [dashboard](PWD_BIN/dashboard) A overrideable program that summarizes the overall status for one directory location.
 - gol - Short for "Git Off my Lawn", this would be an opinionated command line tool for efficiently dealing with everyday git operations. Not written yet (TODO)
 

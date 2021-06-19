@@ -1,6 +1,6 @@
 import re # regular expressions
 
-# TODO TODO TODO TODO TODO: IMPLEMENT
+# TODO TODO TODO TODO: IMPLEMENT
   # TodoLine
     # source location
     # text
@@ -11,7 +11,8 @@ class TodoLine:
     def __init__(self, file_path, line_number, original_text):
         self.file_path, self.line_number, self.original_text = file_path, line_number, original_text
 
-        if re.search(r'IGNORE_TODO', self.original_text): #TODO: call "validate" function
+        #TODO: call "validate" function:
+        if re.search(r'IGNORE_TODO', self.original_text):
             raise Exception("Can't create a TodoLine from this--TODO: change this to avoid using this exception for control flow")
         # TODO filter for Binary files
         # TODO separate into public fileds: file_path, line_number, original_text

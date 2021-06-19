@@ -3,7 +3,7 @@
 import sys
 import os
 
-# TODO TODO TODO: figure out how to run this with the right python version even if you're running it in another directory
+# TODO TODO TODO TODO TODO: figure out how to run this with the right python version even if you're running it in another directory
 if sys.version_info[0] < 3:
     raise Exception('Must be using Python 3')
 
@@ -12,27 +12,3 @@ from todo_line import *
 
 # call old implementation
 os.system("todo-old")
-
-# TODO TODO TODO TODO TODO: IMPLEMENT
-  # main
-    # my_grep > lines | sort
-    # print lines
-    # print summary
-
-# TODO: flags:
-  # TODO: highlighting on or off. It should be on by default unless output is piped to a file, like with grep and "--color" (or "--colour" )
-    # TODO TODO: highlight TODO's
-  # TODO: simplify TODO vote syntax. On by default
-  # TODO: reverse sort
-  # TODO: rewrite changes back to files or not. Off by default.
-    # TODO TODO: there should also be a "force" mode with a "-f/--force" flag that can do the replacements without asking
-  # TODO: todo should accept a path ( to a file or directory) to use in place of "." for grep. This way you could run "todo bin/todo" and see the TODO's in this file cleanly without the ingorable lines.
-  # TODO: non-interactive [read-only] mode should be the default when this is called from a script (output is not a tty)
-  # TODO: perhaps todo could do the same thing with an alternate word. For example, you could pass in "-w TECHDEBT" if you had things like TECHDEBT^3 in your code
-  # TODO: add a command line option to specify a minimum number of votes, so if you pass "--minimum-votes 3", "TODO TODO TODO" or TODO^3 will show up, but not "TODO TODO"
-# TODO: consider spinning this project off, with a not-so-clever name like "tood" or something
-
-  # TODO TODO TODO: 	alternate syntax idea: start all todo's as to-not-do's, add exclamation points to vote, add dollar signs to vote that they could make you money, automate a background process to clean it up into a vote tally format, ( e.g. TODO!!! becomes TODO^3, TODO^3! becomes TODO^4, maybe have a vim macro to quickly upvote things, then the todo program [hashtag #TODO_PROGRAM to discuss the program itself] should sort stuff based on that (but maybe also be aware of indentation
-  # TODO TODO TODO TODO: when called from a terminal, this program should interactively check with the user if they want to do replacements like "TODO TODO"-->"TODO^2" before displaying sorted output
-  # TODO: avoid scanning large non-text files:
-

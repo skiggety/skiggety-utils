@@ -45,7 +45,7 @@ function exit_with_accumulated_errors {
     exit $cumulative_error_count
 }
 
-# TODO TODO: consistent debug function names
+# TODO TODO TODO: consistent debug function names
 
 SKIGGETY_DEBUG=${SKIGGETY_DEBUG:-false}
 

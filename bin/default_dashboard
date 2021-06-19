@@ -6,7 +6,7 @@
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
-# TODO TODO: highlight ERRORS
+# TODO TODO TODO: highlight ERRORS
 
 echo_divider_with_text "-=" "TODO's:" # IGNORE_TODO
 if [ -f ./todo_report.gen.txt ]; then
@@ -17,13 +17,14 @@ fi
 
 # TODO TODO TODO TODO: put test output right here if tests failed so todo's are the thing to scroll off the top of the screen instead of this.
 
-# TODO TODO: show git stash information
+# TODO TODO: only do git stuff if it's a git repository
 
-# TODO TODO: only do this stuff if it's a git repository
+# TODO TODO TODO: show git stash information
+
 # echo_divider_with_text "-" "git diff of unstaged files:"
 # for next in $( git ls-files --others --exclude-standard ) ; do git -c color.ui=always --no-pager diff --no-index /dev/null $next; done | head -n 15  # git diff for files not checked in yet only?
 echo_divider_with_text "-=" "git diff:"
-git -c color.ui=always --no-pager diff -U1 | head -n 17 # TODO: not sure if I should use head
+git -c color.ui=always --no-pager diff -U1 | head -n 17
 # TODO: this shows a more complete diff, including new files...do I want to use it instead?: for next in $( git ls-files --others --exclude-standard ) ; do git --no-pager diff --no-index /dev/null $next; done; # git diff
 
 DO_NOT_ADD="$(git diff --inter-hunk-context=1 | grep [X]XX)"

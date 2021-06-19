@@ -1,4 +1,4 @@
-# TODO: assert ruby version # puts "DEBUG: in #{name} installer, RUBY_VERSION is \"#{RUBY_VERSION}\"."
+# TODO TODO: assert ruby version # puts "DEBUG: in #{name} installer, RUBY_VERSION is \"#{RUBY_VERSION}\"."
 
 # TODO: mark more of these methods private
 
@@ -23,7 +23,7 @@ module InstallableSkiggetyUtil
     # TODO TODO: REFACTOR:
     unless marked_installed?
       if apparently_installed?
-        puts "#{name} installation is already done" # TODO TODO: debug only
+        puts "#{name} installation is already done" # TODO: debug only
         STDOUT.flush
       else
         puts "Installing #{name}"
@@ -218,7 +218,7 @@ module InstallableSkiggetyUtil
     @on_mac_os ||= calc_on_mac_os?
   end
 
-  # TODO TODO: use rubocop to enforce syntax conventions, like using private this way:
+  # TODO TODO TODO: use rubocop to enforce syntax conventions, like using private this way:
   private def calc_on_mac_os?
     return system("uname -a | grep Darwin > /dev/null")
   end
@@ -245,7 +245,7 @@ module InstallableSkiggetyUtil
 
   def program_version_option_output_matches?(program, version_regex) # TODO TODO: rename?
     version_output = `#{program} --version | head -n 1`
-    return (version_output =~ version_regex ).is_a?(Numeric) # TODO TODO: update desired vim version and make sure it includes the gui version, too
+    return (version_output =~ version_regex ).is_a?(Numeric) # TODO TODO: update desired vim version
   end
 
   def brew_install_latest(package_name)

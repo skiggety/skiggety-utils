@@ -36,7 +36,7 @@ class TerminalProfileConfigurer
       elsif on_linux_os?
         assert_system("vim -d #{user_qterminal_ini_path} #{template_qterminal_ini_path}")
       else
-        raise NotImplementedError, "TODO: implement this for this OS"
+        raise NotImplementedError, "TODO: implement this for this OS" # IGNORE_TODO
       end
     else
       raise_interactive_only_configuration

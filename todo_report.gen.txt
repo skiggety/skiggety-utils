@@ -1,5 +1,5 @@
 ./LICENSE:1:# TODO TODO TODO TODO TODO: GPLV3 (finish template--see: https://www.gnu.org/licenses/gpl-howto.en.html )
+./bin/todo-new:7:# TODO TODO TODO TODO TODO: figure out how to run this with the right python version even if you're running it in another directory
 ./bin/todo-new:29:            # TODO TODO TODO TODO TODO: IMPLEMENT
-./bin/todo:16:# TODO TODO TODO TODO TODO: IMPLEMENT
-./lib/todo_line.py:3:# TODO TODO TODO TODO TODO: IMPLEMENT
-./PWD_BIN/run_bash_tests:15:    # TODO TODO TODO TODO TODO TODO: more top level tests
+./bin/todo:6:# TODO TODO TODO TODO TODO: figure out how to run this with the right python version even if you're running it in another directory
+./PWD_BIN/run_bash_tests:17:    # TODO TODO TODO TODO TODO: more top level tests

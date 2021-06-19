@@ -17,7 +17,7 @@ class RectangleInstaller
   end
 
   def apparently_configured?
-    # TODO TODO TODO: method/module extract?
+    # TODO TODO: method/module extract?
     if $interactive
       ask_user "Is #{name} set up the way you want?"
     else

@@ -14,7 +14,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
     # TODO TODO TODO: install docker/kubernetes
     # TODO TODO: install custom list app (opens dedicated browser window "as an app") (huh?)
     # TODO TODO: install a music player of some sort
-    # TODO: install/config chrome tab scheduler and/or other stuff to enable a some kind of dashboard in a web browswer
+    # TODO: install/config chrome tab scheduler and/or other stuff to enable a some kind of dashboard in a web browser
     # TODO: install moreutils (http://joeyh.name/code/moreutils/)?
 
 function main {
@@ -39,8 +39,6 @@ function main {
             *) ;;
         esac
     done
-
-    # TODO: get latest code (git pull)?
 
     local INSTALLER_ARGS=""
     if $interactive; then

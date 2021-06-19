@@ -2,21 +2,23 @@
 
 # This script runs tests directly implemented in bash, such as a few testing command line utilities from the outside
 
+# TODO: rename/extract so these tests that are specific to 'todo' are in a script named to reflect that fact
+
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
-# TODO: turn debug output off
+# TODO TODO: turn debug output off
 
 function main {
     test_todo_shows_nothing_from_empty_dir || exit_with_error "test failed"
     test_todo_sorts_two_equivalent_lines_by_line_number_and_exits_correctly || exit_with_error "test failed"
     test_todo_handles_a_complex_example || exit_with_error "test failed"
 
-    # TODO TODO TODO TODO TODO TODO: more top level tests
-    # TODO TODO: change todo tests to use an alternate keyword, like "TXDX", so it doesn't interfere with the real TODO report
+    # TODO TODO TODO TODO TODO: more top level tests
+    # TODO TODO TODO: change todo tests to use an alternate keyword, like "TXDX" or "EXAMPLE_KEYWORD", so it doesn't interfere with the real todo report
 
     # If all the tests pass, use the new program as the real TODO:
-    # TODO TODO TODO TODO: cp "$(which todo-new)" "$(which todo)"
+    # TODO TODO TODO: cp "$(which todo-new)" "$(which todo)"
 }
 
 function test_todo_shows_nothing_from_empty_dir {
