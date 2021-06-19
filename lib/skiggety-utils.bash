@@ -90,13 +90,14 @@ function is_array_name {
 }
 
 function echo_error_callsite {
-    echo "ERROR: $* ( $(echo_parent_callsite) )" >&2
+    echo_error "$* ( $(echo_parent_callsite) )"
 }
 
 function echo_error_here {
-    echo "ERROR: $* ( $(echo_callsite) )" >&2
+    echo_error "$* ( $(echo_callsite) )"
 }
 
+# TODO: colorize output when appropriate:
 function echo_error {
     echo "ERROR: $*" >&2
 }
@@ -140,9 +141,9 @@ function assert_equal {
     EXPECTED="$1"
     RECEIVED="$2"
     if [ "$EXPECTED" = "$RECEIVED" ]; then
-        echo_debug "SUCCESS! (\"$EXPECTED\" = \"$RECEIVED\")"
+        echo_debug "assert_equal SUCCESS! (value was: \"$RECEIVED\")"
     else
-        echo "assert_equal FAILED $(echo_callsite):" >&2
+        echo_error_callsite "assert_equal FAILED:"
         diff -u --label expected <(echo "$EXPECTED") --label received <(echo "$RECEIVED") >&2
         exit 1
     fi

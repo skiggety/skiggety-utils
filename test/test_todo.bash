@@ -20,27 +20,27 @@ function main {
 }
 
 function test_todo_shows_nothing_from_empty_dir {
-    pushd "$THIS_DIR/examples/todo/empty_dir"
+    pushd "$THIS_DIR/examples/todo/empty_dir" > /dev/null
     result="$(todo-new)"
     exit_value="$?"
     assert_equal "0" "$exit_value"
     assert_equal "" "$result"
-    popd
+    popd > /dev/null
 }
 
 function test_todo_sorts_two_equivalent_lines_by_line_number_and_exits_correctly {
-    pushd "$THIS_DIR/examples/todo/simple"
+    pushd "$THIS_DIR/examples/todo/simple" > /dev/null
     result="$(todo-new)"
     exit_value="$?"
     assert_equal "0" "$exit_value"
     expected="./example.txt:1:TODO: this is a todo
 ./example.txt:2:TODO: this is another todo"
     assert_equal "$expected" "$result"
-    popd
+    popd > /dev/null
 }
 
 function test_todo_handles_a_complex_example {
-    pushd "$THIS_DIR/examples/todo"
+    pushd "$THIS_DIR/examples/todo" > /dev/null
     result="$(todo-new)"
     exit_value="$?"
     assert_equal "0" "$exit_value"
@@ -49,7 +49,7 @@ function test_todo_handles_a_complex_example {
 ./votes.txt:1:TODO^2: this todo is spelled out like todo todo
 ./votes.txt:2:TODO^2: one item and TODO^3 another on the same line. votecount should be 3."
     assert_equal "$expected" "$result"
-    popd
+    popd > /dev/null
 }
 
 main "$@"
