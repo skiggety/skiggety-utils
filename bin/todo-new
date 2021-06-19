@@ -13,22 +13,27 @@ from todo_line import *
 # TODO TODO: use pylint
 
 def main():
+  # TODO TODO TODO: todo could do the same thing with an alternate keyword. For example, you could pass in "-w TECHDEBT" if you had things like TECHDEBT^3 in your code. I also need this so I can test this program on example files without real todos.
+      # TODO: validate that the keywords can only be letters, underscores, and some basic stuff
+    keyword = 'TODO' # because you can use other keywords # IGNORE_TODO
+    ignore_keyword = rf'IGNORE_{keyword}'
+
     # TODO: stop relying on grep at some point, to avoid getting confused by filenames with colons and numbers in them, etc.:
-    grep_output = subprocess.run(['grep', '-Rn', 'TODO', '.'], check=False, text=True, capture_output=True).stdout # IGNORE_TODO
+    grep_output = subprocess.run(['grep', '-Rn', keyword, '.'], check=False, text=True, capture_output=True).stdout # IGNORE_TODO
 
     todo_lines = []
     for line in grep_output.splitlines():
         todo_line = False
         try:
-            todo_line = TodoLine(*split_grep_output(line))
+            todo_line = TodoLine(keyword, ignore_keyword, *split_grep_output(line))
         except Exception:
             pass
         if (todo_line):
             todo_lines.append(todo_line)
             # TODO TODO TODO TODO TODO: IMPLEMENT
-            # TODO TODO: sort lines by power
-            # TODO: print sorted todolines
-            print(str(todo_line)) # TODO TODO TODO: move to separate loop after todo_lines gets sorted
+
+    for todo_line in todo_lines: # TODO TODO: sort todo_lines by votecount
+            print(str(todo_line))
 
     # TODO: print summary with TODO count, maybe a vote count
 
@@ -49,7 +54,6 @@ def split_grep_output(grep_output_line):
     # TODO TODO: there should also be a "force" mode with a "-f/--force" flag that can do the replacements without asking
   # TODO TODO: todo should accept a path ( to a file or directory) to use in place of "." for grep. This way you could run "todo bin/todo" and see the TODO's in this file cleanly without the ingorable lines.
   # TODO: non-interactive [read-only] mode should be the default when this is called from a script (output is not a tty)
-  # TODO TODO TODO: perhaps todo could do the same thing with an alternate word. For example, you could pass in "-w TECHDEBT" if you had things like TECHDEBT^3 in your code. I also need it so I can test this program on example files without real todos.
   # TODO: add a command line option to specify a minimum number of votes, so if you pass "--minimum-votes 3", "EXAMPLE_KEYWORD EXAMPLE_KEYWORD EXAMPLE_KEYWORD" or EXAMPLE_KEYWORD^3 will show up, but not "EXAMPLE_KEYWORD EXAMPLE_KEYWORD"
 # TODO: consider spinning this project off, with a not-so-clever name like "tood" or something
 

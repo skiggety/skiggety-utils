@@ -2,4 +2,4 @@
 ./installers/hostname:47:      raise "Please put desired hostname in #{desired_hostname_file} and try again" # TODO TODO TODO TODO: if interactive, give the user a chance to do this
 ./LICENSE:1:# TODO TODO TODO TODO TODO: GPLV3 (finish template--see: https://www.gnu.org/licenses/gpl-howto.en.html )
 ./test/test_todo.bash:15:    # TODO TODO TODO TODO TODO: more top level tests
-./bin/todo-new:28:            # TODO TODO TODO TODO TODO: IMPLEMENT
+./bin/todo-new:33:            # TODO TODO TODO TODO TODO: IMPLEMENT

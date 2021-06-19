@@ -45,8 +45,8 @@ function test_todo_handles_a_complex_example {
     exit_value="$?"
     assert_equal "0" "$exit_value"
     expected="./simple/example.txt:1:TODO: this is a todo
-./simple/example.txt:2:TODO: this is another todo"
-# TODO: add:./votes.txt:3:TODO^2: this todo is spelled out like todo todo
+./simple/example.txt:2:TODO: this is another todo
+./votes.txt:1:TODO^2: this todo is spelled out like todo todo"
     assert_equal "$expected" "$result"
     popd
 }
