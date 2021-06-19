@@ -142,7 +142,8 @@ function assert_equal {
     if [ "$EXPECTED" = "$RECEIVED" ]; then
         echo_debug "SUCCESS! (\"$EXPECTED\" = \"$RECEIVED\")"
     else
-        echo "assert_equal FAILED $(echo_callsite):$newline    expected: \"$EXPECTED\"$newline    received: \"$RECEIVED\"" >&2
+        echo "assert_equal FAILED $(echo_callsite):" >&2
+        diff -u --label expected <(echo "$EXPECTED") --label received <(echo "$RECEIVED") >&2
         exit 1
     fi
 }
