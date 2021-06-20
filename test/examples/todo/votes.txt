@@ -1,5 +1,5 @@
+TXDX^6: six votes, this should sort
 TXDX TXDX: this todo is spelled out like todo todo
 TXDX TXDX: one item and TXDX TXDX TXDX another on the same line. votecount should be 3.
 TXDX TXDX: one spelled out item and TXDX^3 another concisely-voted item on the same line
 TXDX TXDX^2 TXDX: votes are already partially collapsed
-TODO TODO TODO TODO TODO: put something with a lot of votes at the beginning to make sure todo can sort

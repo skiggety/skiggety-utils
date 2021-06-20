@@ -1,5 +1,5 @@
+./lib/coverage_links/hostname.rb:47:      raise "Please put desired hostname in #{desired_hostname_file} and try again" # TODO TODO TODO TODO: if interactive, give the user a chance to do this
+./coverage/index.html:1188:            <code class="ruby">      raise &quot;Please put desired hostname in #{desired_hostname_file} and try again&quot; # TODO TODO TODO TODO: if interactive, give the user a chance to do this</code>
+./installers/hostname:47:      raise "Please put desired hostname in #{desired_hostname_file} and try again" # TODO TODO TODO TODO: if interactive, give the user a chance to do this
 ./LICENSE:1:# TODO TODO TODO TODO TODO: GPLV3 (finish template--see: https://www.gnu.org/licenses/gpl-howto.en.html )
 ./test/test_todo.bash:16:    # TODO TODO TODO TODO TODO: more top level tests
-./test/examples/todo/votes.txt:5:TODO TODO TODO TODO TODO: put something with a lot of votes at the beginning to make sure todo can sort
-./bin/todo-new:48:    for todo_line in todo_lines: # TODO TODO TODO TODO TODO: reverse sort todo_lines by votecount # TODO: ...then by filename and line number
-./lib/todo_line.py:55:        return(2) # TODO TODO TODO TODO TODO: IMPLEMENT

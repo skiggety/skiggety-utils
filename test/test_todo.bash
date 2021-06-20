@@ -47,10 +47,11 @@ function test_todo_handles_a_complex_example {
     assert_equal "0" "$exit_value"
     expected="./simple/example.txt:1:TXDX: this is a todo
 ./simple/example.txt:2:TXDX: this is another todo
-./votes.txt:1:TXDX^2: this todo is spelled out like todo todo
-./votes.txt:2:TXDX^2: one item and TXDX^3 another on the same line. votecount should be 3.
-./votes.txt:3:TXDX^2: one spelled out item and TXDX^3 another concisely-voted item on the same line
-./votes.txt:4:TXDX^4: votes are already partially collapsed"
+./votes.txt:2:TXDX^2: this todo is spelled out like todo todo
+./votes.txt:3:TXDX^2: one item and TXDX^3 another on the same line. votecount should be 3.
+./votes.txt:4:TXDX^2: one spelled out item and TXDX^3 another concisely-voted item on the same line
+./votes.txt:5:TXDX^4: votes are already partially collapsed
+./votes.txt:1:TXDX^6: six votes, this should sort"
     assert_equal "$expected" "$result"
     popd > /dev/null
 }

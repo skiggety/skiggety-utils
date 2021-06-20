@@ -45,7 +45,9 @@ def main():
         if (todo_line):
             todo_lines.append(todo_line)
 
-    for todo_line in todo_lines: # TODO TODO TODO TODO TODO: reverse sort todo_lines by votecount # TODO: ...then by filename and line number
+    todo_lines = sorted(todo_lines, key = lambda l: (l.votecount, l.file_path, l.line_number))
+
+    for todo_line in todo_lines:
             print(str(todo_line))
 
     # TODO: print summary with TODO count, maybe a vote count
