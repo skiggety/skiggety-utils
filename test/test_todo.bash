@@ -4,6 +4,7 @@
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
+todo_examples_dir="$THIS_DIR/examples/todo"
 
 # TODO TODO: turn debug output off
 
@@ -20,8 +21,8 @@ function main {
 }
 
 function test_todo_shows_nothing_from_empty_dir {
-    pushd "$THIS_DIR/examples/todo/empty_dir" > /dev/null
-    result="$(todo-new)"
+    pushd "$todo_examples_dir/empty_dir" > /dev/null
+    result="$(todo-new -k TXDX)"
     exit_value="$?"
     assert_equal "0" "$exit_value"
     assert_equal "" "$result"
@@ -29,27 +30,27 @@ function test_todo_shows_nothing_from_empty_dir {
 }
 
 function test_todo_sorts_two_equivalent_lines_by_line_number_and_exits_correctly {
-    pushd "$THIS_DIR/examples/todo/simple" > /dev/null
-    result="$(todo-new)"
+    pushd "$todo_examples_dir/simple" > /dev/null
+    result="$(todo-new -k TXDX)"
     exit_value="$?"
     assert_equal "0" "$exit_value"
-    expected="./example.txt:1:TODO: this is a todo
-./example.txt:2:TODO: this is another todo"
+    expected="./example.txt:1:TXDX: this is a todo
+./example.txt:2:TXDX: this is another todo"
     assert_equal "$expected" "$result"
     popd > /dev/null
 }
 
 function test_todo_handles_a_complex_example {
-    pushd "$THIS_DIR/examples/todo" > /dev/null
-    result="$(todo-new)"
+    pushd "$todo_examples_dir" > /dev/null
+    result="$(todo-new -k TXDX)"
     exit_value="$?"
     assert_equal "0" "$exit_value"
-    expected="./simple/example.txt:1:TODO: this is a todo
-./simple/example.txt:2:TODO: this is another todo
-./votes.txt:1:TODO^2: this todo is spelled out like todo todo
-./votes.txt:2:TODO^2: one item and TODO^3 another on the same line. votecount should be 3.
-./votes.txt:3:TODO^2: one spelled out item and TODO^3 another concisely-voted item on the same line
-./votes.txt:4:TODO^4: votes are already partially collapsed"
+    expected="./simple/example.txt:1:TXDX: this is a todo
+./simple/example.txt:2:TXDX: this is another todo
+./votes.txt:1:TXDX^2: this todo is spelled out like todo todo
+./votes.txt:2:TXDX^2: one item and TXDX^3 another on the same line. votecount should be 3.
+./votes.txt:3:TXDX^2: one spelled out item and TXDX^3 another concisely-voted item on the same line
+./votes.txt:4:TXDX^4: votes are already partially collapsed"
     assert_equal "$expected" "$result"
     popd > /dev/null
 }

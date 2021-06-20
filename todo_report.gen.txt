@@ -1,5 +1,5 @@
 ./LICENSE:1:# TODO TODO TODO TODO TODO: GPLV3 (finish template--see: https://www.gnu.org/licenses/gpl-howto.en.html )
-./test/test_todo.bash:15:    # TODO TODO TODO TODO TODO: more top level tests
-./bin/todo-new:34:    for todo_line in todo_lines: # TODO TODO TODO TODO TODO: reverse sort todo_lines by votecount # TODO: ...then by filename and line number
+./test/test_todo.bash:16:    # TODO TODO TODO TODO TODO: more top level tests
+./test/examples/todo/votes.txt:5:TODO TODO TODO TODO TODO: put something with a lot of votes at the beginning to make sure todo can sort
+./bin/todo-new:48:    for todo_line in todo_lines: # TODO TODO TODO TODO TODO: reverse sort todo_lines by votecount # TODO: ...then by filename and line number
 ./lib/todo_line.py:55:        return(2) # TODO TODO TODO TODO TODO: IMPLEMENT
-./bin/todo-new:16:  # TODO TODO TODO TODO TODO TODO: todo could do the same thing with an alternate keyword. For example, you could pass in "-w TECHDEBT" if you had things like TECHDEBT^3 in your code. I also need this so I can test this program on example files without real todos.

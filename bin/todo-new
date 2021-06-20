@@ -1,22 +1,36 @@
 #!/usr/bin/env python3.9
 
+program_description = 'finds TODOs, sorted by votes'
+
 import sys
 import os
-import subprocess
 
 if sys.version_info[0] < 3:
     raise Exception('Must be using Python 3')
 
 sys.path.append(os.path.abspath(os.path.join(os.getenv('SKIGGETY_UTILS_DIR'),"lib")))
+
+import subprocess
+import argparse
+
 from todo_line import *
 
-# TODO TODO: use pylint
+# TODO TODO TODO: use pylint
 
 def main():
-  # TODO TODO TODO TODO TODO TODO: todo could do the same thing with an alternate keyword. For example, you could pass in "-w TECHDEBT" if you had things like TECHDEBT^3 in your code. I also need this so I can test this program on example files without real todos.
-      # TODO: validate that the keywords can only be letters, underscores, and some basic stuff
-    keyword = 'TODO' # because you can use other keywords # IGNORE_TODO
-    ignore_keyword = rf'IGNORE_{keyword}'
+
+    # TODO: use argparse built-in way of setting defaaults instead:
+    ignore_keyword = None
+
+    arg_parser = argparse.ArgumentParser(description = program_description)
+    arg_parser.add_argument('-k', '--keyword', help = 'select a keyword. Defaults to \'TODO\'.') # IGNORE_TODO
+    # TODO: add_argument('-i', '--ignore-keyword', help = 'TODO')
+    command_line_args = arg_parser.parse_args()
+
+    keyword = command_line_args.keyword or 'TODO' # because you can use other keywords # IGNORE_TODO
+    # TODO: use argparse built-in way of setting defaaults instead:
+    ignore_keyword = ignore_keyword or f'IGNORE_{keyword}'
+    # TODO: validate that the keywords can only be letters, underscores, and some basic stuff
 
     # TODO: stop relying on grep at some point, to avoid getting confused by filenames with colons and numbers in them, etc.:
     grep_output = subprocess.run(['grep', '-Rn', keyword, '.'], check=False, text=True, capture_output=True).stdout # IGNORE_TODO
