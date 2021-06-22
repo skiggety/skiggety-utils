@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
-grep -Rn "TODO" .                                                        | grep -v "TODO TODO"                                                   | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
-grep -Rn "TODO TODO" .                                                   | grep -v "TODO TODO TODO"                                              | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
-grep -Rn "TODO TODO TODO" .                                              | grep -v "TODO TODO TODO TODO"                                         | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
-grep -Rn "TODO TODO TODO TODO" .                                         | grep -v "TODO TODO TODO TODO TODO"                                    | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
-grep -Rn "TODO TODO TODO TODO TODO" .                                    | grep -v "TODO TODO TODO TODO TODO TODO"                               | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
-grep -Rn "TODO TODO TODO TODO TODO TODO" .                               | grep -v "TODO TODO TODO TODO TODO TODO TODO"                          | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
-grep -Rn "TODO TODO TODO TODO TODO TODO TODO" .                          | grep -v "TODO TODO TODO TODO TODO TODO TODO TODO"                     | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
-grep -Rn "TODO TODO TODO TODO TODO TODO TODO TODO" .                     | grep -v "TODO TODO TODO TODO TODO TODO TODO TODO TODO"                | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
-grep -Rn "TODO TODO TODO TODO TODO TODO TODO TODO TODO" .                | grep -v "TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO"           | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
-grep -Rn "TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO" .           | grep -v "TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO"      | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
-grep -Rn "TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO" .      | grep -v "TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO" | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
-grep -Rn "TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO" .                                                                         | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -RnI -D skip "TODO" .                                                        | grep -v "TODO TODO"                                                   | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -RnI -D skip "TODO TODO" .                                                   | grep -v "TODO TODO TODO"                                              | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -RnI -D skip "TODO TODO TODO" .                                              | grep -v "TODO TODO TODO TODO"                                         | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -RnI -D skip "TODO TODO TODO TODO" .                                         | grep -v "TODO TODO TODO TODO TODO"                                    | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -RnI -D skip "TODO TODO TODO TODO TODO" .                                    | grep -v "TODO TODO TODO TODO TODO TODO"                               | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -RnI -D skip "TODO TODO TODO TODO TODO TODO" .                               | grep -v "TODO TODO TODO TODO TODO TODO TODO"                          | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -RnI -D skip "TODO TODO TODO TODO TODO TODO TODO" .                          | grep -v "TODO TODO TODO TODO TODO TODO TODO TODO"                     | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -RnI -D skip "TODO TODO TODO TODO TODO TODO TODO TODO" .                     | grep -v "TODO TODO TODO TODO TODO TODO TODO TODO TODO"                | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -RnI -D skip "TODO TODO TODO TODO TODO TODO TODO TODO TODO" .                | grep -v "TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO"           | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -RnI -D skip "TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO" .           | grep -v "TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO"      | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -RnI -D skip "TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO" .      | grep -v "TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO" | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
+grep -RnI -D skip "TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO" .                                                                         | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
 
 exit 0

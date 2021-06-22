@@ -10,7 +10,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
 VIM_OPTIONS="-on"
-GREP_OPTIONS="-Rl"
+GREP_OPTIONS="-RlI -D skip"
 VIM_SEARCH_STRING_SUFFIX=""
 
 # TODO TODO: accept a -i option for case insensitive grep
