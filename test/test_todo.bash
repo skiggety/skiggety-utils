@@ -14,7 +14,6 @@ function main {
     test_todo_handles_a_complex_example || exit_with_error "test failed"
 
     # TODO TODO TODO TODO TODO: more top level tests
-    # TODO TODO TODO: change todo tests to use an alternate keyword, like "TXDX" or "EXAMPLE_KEYWORD", so it doesn't interfere with the real todo report
 
     # If all the tests pass, use the new program as the real TODO:
     # TODO TODO TODO: cp "$(which todo-new)" "$(which todo)"
@@ -47,6 +46,10 @@ function test_todo_handles_a_complex_example {
     assert_equal "0" "$exit_value"
     expected="./simple/example.txt:1:TXDX: this is a todo
 ./simple/example.txt:2:TXDX: this is another todo
+./filename_a.txt:1:TXDX^2: sort by filename and line number    /
+./filename_a.txt:2:TXDX^2: sort by filename and line number   /
+./filename_b.txt:1:TXDX^2: sort by filename and line number  /
+./filename_b.txt:2:TXDX^2: sort by filename and line number /
 ./votes.txt:2:TXDX^2: this todo is spelled out like todo todo
 ./votes.txt:3:TXDX^2: one item and TXDX^3 another on the same line. votecount should be 3.
 ./votes.txt:4:TXDX^2: one spelled out item and TXDX^3 another concisely-voted item on the same line
