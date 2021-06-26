@@ -56,6 +56,7 @@ function test_todo_handles_a_complex_example {
 ./filename_b.txt:2:TXDX^2: sort by filename and line number /
 ./nasty/filename_with_a_fake_line:3:number.txt:2:TXDX^2:6:and_a_fake_line_number_in_the_text
 ./nasty/filename_with_a_fake_line:4:number.txt:1:TXDX^2:5:and_a_fake_line_number_in_the_text
+./nasty/filename_with_a_fake_line:4:number.txt:2:TXDX^2:4:and_a_fake_line_number_in_the_text
 ./votes.txt:2:TXDX^2: this todo is spelled out like todo todo
 ./votes.txt:3:TXDX^2: one item and TXDX^3 another on the same line. votecount should be 3.
 ./votes.txt:4:TXDX^2: one spelled out item and TXDX^3 another concisely-voted item on the same line
