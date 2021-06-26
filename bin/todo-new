@@ -39,7 +39,7 @@ def main():
     ignore_keyword_regex = re.compile(ignore_keyword)
     for root, dirs, file_paths in os.walk('.'):
         for file_path in file_paths:
-            # TODO TODO TODO TODO TODO: skip binary files and devices
+            # TODO TODO TODO TODO TODO: skip devices: continue if stat.S_ISBLK(os.stat(file_path).st_mode)
             full_file_path = os.path.join(root, file_path)
             with open(full_file_path) as f:
                 line_number = 0
@@ -50,7 +50,7 @@ def main():
                         if keyword_regex.search(line):
                             if not ignore_keyword_regex.search(line):
                                 todo_lines.append(TodoLine(keyword, full_file_path, line_number, line))
-                except UnicodeDecodeError: # WHY is this necessary?
+                except UnicodeDecodeError: # skip binary files
                     pass
 
     todo_lines = sorted(todo_lines, key = lambda l: (l.votecount, l.file_path, l.line_number))

@@ -2,4 +2,4 @@
 ./coverage/index.html:1188:            <code class="ruby">      raise &quot;Please put desired hostname in #{desired_hostname_file} and try again&quot; # TODO TODO TODO TODO: if interactive, give the user a chance to do this</code>
 ./installers/hostname:47:      raise "Please put desired hostname in #{desired_hostname_file} and try again" # TODO TODO TODO TODO: if interactive, give the user a chance to do this
 ./LICENSE:1:# TODO TODO TODO TODO TODO: GPLV3 (finish template--see: https://www.gnu.org/licenses/gpl-howto.en.html )
-./bin/todo-new:42:            # TODO TODO TODO TODO TODO: skip binary files and devices
+./bin/todo-new:42:            # TODO TODO TODO TODO TODO: skip devices: continue if stat.S_ISBLK(os.stat(file_path).st_mode)
