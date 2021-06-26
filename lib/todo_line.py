@@ -2,8 +2,8 @@ import re # regular expressions
 from functools import reduce
 
 class TodoLine:
-    def __init__(self, keyword, ignore_keyword, file_path, line_number, original_text):
-        self.keyword, self.ignore_keyword = keyword, ignore_keyword
+    def __init__(self, keyword, file_path, line_number, original_text):
+        self.keyword = keyword
         self.file_path, self.line_number, self.original_text = file_path, line_number, original_text
         self.votecount = 0
 
@@ -15,13 +15,9 @@ class TodoLine:
         self.text = re.sub(find_todo_entry_pattern, replace_todo_entry, self.original_text)
 
         #TODO: call "validate" function to filter out bad lines:
-        # filter for ignore keyword, usually 'IGNORE_TODO'
-        if re.search(self.ignore_keyword, self.original_text):
-            raise Exception("Can't create a TodoLine from this--TODO: change this to avoid using this exception for control flow")
-        # TODO filter for Binary files
 
     def __str__(self): # TODO: implement __repr__ too, for use in exceptions
-        return self.file_path + ":" + self.line_number + ":" + self.text
+        return self.file_path + ":" + str(self.line_number) + ":" + self.text
 
     # inside a todo_line is one or more groups of TODO's and TODO^n's called a todo_entry.# TODO The votecount of the todo_line comes from the max votecount of the todo_entries # IGNORE_TODO
     # inside a todo_entry is one or more todo_words, such as 'TODO' or "TODO^2. They each have their own votecount, as indicated by the number after the caret. They are summed to make the votecount of the todo_entry. # IGNORE_TODO
