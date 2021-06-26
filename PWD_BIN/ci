@@ -11,6 +11,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 
 echo_divider_with_text "-" "git pull:"
 git pull | grep -v autostash # TODO checkout fresh code, default to one branch
+git restore --staged .
 
 test_all && echo "test_all SUCCEEDED" || accumulate_error "test_all FAILED"
 
