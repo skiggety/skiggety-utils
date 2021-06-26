@@ -12,6 +12,7 @@ sys.path.append(os.path.abspath(os.path.join(os.getenv('SKIGGETY_UTILS_DIR'),"li
 
 import subprocess
 import argparse
+import stat
 
 from todo_line import *
 
@@ -39,8 +40,9 @@ def main():
     ignore_keyword_regex = re.compile(ignore_keyword)
     for root, dirs, file_paths in os.walk('.'):
         for file_path in file_paths:
-            # TODO TODO TODO TODO TODO: skip devices: continue if stat.S_ISBLK(os.stat(file_path).st_mode)
             full_file_path = os.path.join(root, file_path)
+            if stat.S_ISBLK(os.stat(full_file_path).st_mode) or stat.S_ISSOCK(os.stat(full_file_path).st_mode): # skip devices
+                continue
             with open(full_file_path) as f:
                 line_number = 0
                 try:
