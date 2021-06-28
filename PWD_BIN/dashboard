@@ -3,7 +3,7 @@
 # this script prints a summary of the status of development (or whatever) in the current directory, including information about git, todo's, tests, etc. it can often simply call default_dashboard from the path
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
-. $THIS_DIR/../lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
 # Less important than the output of default_dashboard:
 # echo_divider "-"
