@@ -5,6 +5,7 @@ syntax enable
 "status bar
 set laststatus=2
 set ruler
+set showcmd
 
 set number
 set relativenumber
