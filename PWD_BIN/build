@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-todo | grep -v ".gitignored." | tail -n 5 > todo_report.gen.txt
+todo | grep -v ".gitignored." | grep -v "/coverage_links/" | grep -v "/coverage/index.html" | tail -n 5 > todo_report.gen.txt

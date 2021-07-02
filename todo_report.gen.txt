@@ -1,5 +1,5 @@
+./bin/git-squash:1:# TODO^4
+./bin/review:70:  def show_footer(command, exit_val, exit_date) # TODO^4: colorize output, esp on failure
 ./bin/today_todo:2:# TODO^4: rename/commit
-./coverage/index.html:1188:            <code class="ruby">      raise &quot;Please put desired hostname in #{desired_hostname_file} and try again&quot; # TODO^4: if interactive, give the user a chance to do this</code>
 ./installers/hostname:47:      raise "Please put desired hostname in #{desired_hostname_file} and try again" # TODO^4: if interactive, give the user a chance to do this
-./lib/coverage_links/hostname.rb:47:      raise "Please put desired hostname in #{desired_hostname_file} and try again" # TODO^4: if interactive, give the user a chance to do this
-./LICENSE:1:# TODO^5: GPLV3 (finish template--see: https://www.gnu.org/licenses/gpl-howto.en.html )
+./LICENSE:1:# TODO^5: GPLV3 (finish template (or change license--see: https://www.gnu.org/licenses/gpl-howto.en.html )

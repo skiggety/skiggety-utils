@@ -97,7 +97,7 @@ function echo_error_here {
     echo_error "$* ( $(echo_callsite) )"
 }
 
-# TODO: colorize output when appropriate:
+# TODO TODO TODO: colorize output when appropriate:
 function echo_error {
     echo "ERROR: $*" >&2
 }

@@ -44,6 +44,6 @@ class TodoLine:
     def record_todo_entry_votecount(self, votecount):
         self.votecount = max(votecount, self.votecount)
 
-    # TODO: replace in original file somehow (perhaps can't use external grep anymore)
+    # TODO TODO: replace in original file
     def write():
         raise Exception("TODO: IMPLEMENT")
