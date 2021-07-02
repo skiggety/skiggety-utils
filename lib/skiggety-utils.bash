@@ -1,5 +1,10 @@
 # TODO TODO: . $THIS_DIR/shelper.bash || exit 1 # TODO TODO: extract & include shelper.bash which checks bash version, and provides utility functions. Figure out how to distribute it as a shell library.
 
+red='\033[0;31m'
+RED='\033[1;31m'
+yellow='\033[0;33m'
+YELLOW='\033[1;33m'
+no_color='\033[0m'
 newline='
 '
 
@@ -16,7 +21,7 @@ function echo_parent_callsite {
 }
 
 function exit_with_error {
-    echo "exiting $(basename $0) on ERROR: $* ( $(echo_callsite) )" >&2
+    echo -e "exiting $(basename $0) on ${RED}ERROR:${red} $* ( $(echo_callsite) )${no_color}" >&2
     exit 1
 }
 
@@ -41,7 +46,7 @@ function exit_if_any_accumulated_errors {
 }
 
 function exit_with_accumulated_errors {
-    echo_divider_with_text "!" "EXITING \"$(basename $0)\" because of $cumulative_error_count previously shown ERRORS"
+    echo_divider_with_text "!" "EXITING \"$(basename $0)\" because of ${red}$cumulative_error_count previously shown ${RED}ERRORS${no_color}"
     exit $cumulative_error_count
 }
 
@@ -51,7 +56,7 @@ SKIGGETY_DEBUG=${SKIGGETY_DEBUG:-false}
 
 function echo_debug {
     if $SKIGGETY_DEBUG; then
-        echo "DEBUG: $*" >&2
+        echo -e "${YELLOW}DEBUG:${yellow} $*${no_color}" >&2
     fi
 }
 
@@ -97,9 +102,8 @@ function echo_error_here {
     echo_error "$* ( $(echo_callsite) )"
 }
 
-# TODO TODO TODO: colorize output when appropriate:
 function echo_error {
-    echo "ERROR: $*" >&2
+    echo -e "${RED}ERROR:${red} $*${no_color}" >&2
 }
 
 function echo_divider_with_text {
@@ -108,7 +112,7 @@ function echo_divider_with_text {
     echo_divider_without_newline "$pattern"
     echo -ne "\r"
     echo_pattern_n_length "$pattern" 4
-    echo " $text "
+    echo -e " $text "
 }
 
 function echo_divider {

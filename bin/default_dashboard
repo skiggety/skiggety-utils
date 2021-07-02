@@ -6,8 +6,6 @@
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
-# TODO TODO TODO TODO: highlight ERRORS (maybe implement in ../lib/skiggety-utils.bash )
-
 echo_divider_with_text "-=" "TODO's:" # IGNORE_TODO
 if [ -f ./todo_report.gen.txt ]; then
     cat ./todo_report.gen.txt
