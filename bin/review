@@ -13,7 +13,7 @@
 # will adjust automatically.
 
 # TODO TODO: avoid forcing the same version of ruby on programs that this may call
-# TODO TODO: accept --minimum-delay or -m (e.g. auto-ci might want to call this with "-m 30")
+# TODO TODO TODO: accept --minimum-delay or -m (e.g. auto-ci might want to call this with "-m 30")
 # TODO TODO TODO: accept --maximum-delay or -M (e.g. auto-ci might want to call this with "-M $(( 60 * 60 * 6 ))")
 # TODO TODO: accept --interactive ("-i") or --non-interactive ("-n"), to determine whether to use backticks
 # TODO: accept log file that logs output, changes, feequencies/counts, etc.
@@ -67,6 +67,7 @@ class ReviewProgram
     return result
   end
 
+  # TODO: time the command, show how long it took
   def show_footer(command, exit_val, exit_date) # TODO TODO TODO: colorize output, esp on failure
     system("echo_divider_with_text \"#\" \"'#{command}' exited with #{exit_val} at #{exit_date}\"")
   end
