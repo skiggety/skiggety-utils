@@ -16,6 +16,7 @@
 # TODO TODO TODO: accept --minimum-delay or -m (e.g. auto-ci might want to call this with "-m 30")
 # TODO TODO TODO: accept --maximum-delay or -M (e.g. auto-ci might want to call this with "-M $(( 60 * 60 * 6 ))")
 # TODO TODO: accept --interactive ("-i") or --non-interactive ("-n"), to determine whether to use backticks
+# TODO: accept a control character or signal to refresh now
 # TODO: accept log file that logs output, changes, feequencies/counts, etc.
 
 class ReviewProgram

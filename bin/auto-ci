@@ -6,4 +6,4 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 SKIGGETY_UTILS_DIR="$(cd "$(dirname $THIS_DIR)";pwd)"
 . $THIS_DIR/../lib/include_in_bashrc.bash || exit 1
 
-review ci
+review ci # TODO: pass in minimum and maximum wait times
