@@ -121,8 +121,11 @@ function main {
             git clone https://github.com/pyenv/pyenv.git $pyenv_dir
         fi
         pushd $pyenv_dir
+	git config pull.rebase true
         git pull
         popd
+	#install pyenv prerequisites
+	sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev
     fi
 
     # python
