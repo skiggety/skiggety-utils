@@ -59,11 +59,13 @@ class ReviewProgram
 
   end
 
+  ADD_TO_DELAY = 1
+  MULTIPLY_BY_DELAY = 1.10
   def adjust_delay(delay,change_detected)
     if change_detected
       result = 1
     else
-      result = ( 1.02 * delay).floor + 1
+      result = ( MULTIPLY_BY_DELAY * delay).floor + ADD_TO_DELAY
     end
     return result
   end
