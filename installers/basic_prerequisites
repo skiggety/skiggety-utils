@@ -111,6 +111,22 @@ function main {
 
     $THIS_DIR/../PWD_BIN/ruby_setup || exit_with_error "failed to set up prerequisites for my ruby code, such as gems"
 
+    #install pyenv prerequisites
+    if ! on_mac_os;then
+        for package in make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev;do
+            if apt -qq list $package 2>&1 | grep installed >/dev/null; then
+                echo "$package is already installed"
+            else
+
+                if $interactive;then
+                    sudo apt-get install -y $package
+                else
+                    exit_with_error "must run $(basename $0) interactively to install $package"
+                fi
+            fi
+        done
+    fi
+
     # pyenv
     echo "Installing latest pyenv"
     if on_mac_os;then
@@ -121,11 +137,9 @@ function main {
             git clone https://github.com/pyenv/pyenv.git $pyenv_dir
         fi
         pushd $pyenv_dir
-	git config pull.rebase true
+        git config pull.rebase true
         git pull
         popd
-	#install pyenv prerequisites
-	sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev
     fi
 
     # python
