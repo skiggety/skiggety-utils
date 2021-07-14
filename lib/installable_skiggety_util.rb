@@ -218,7 +218,7 @@ module InstallableSkiggetyUtil
     @on_mac_os ||= calc_on_mac_os?
   end
 
-  # TODO TODO TODO: use rubocop to enforce syntax conventions, like using private this way:
+  # TODO TODO TODO TODO: use rubocop to enforce syntax conventions, like using private this way:
   private def calc_on_mac_os?
     return system("uname -a | grep Darwin > /dev/null")
   end
