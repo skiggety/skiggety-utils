@@ -18,6 +18,7 @@
 # TODO TODO: accept --interactive ("-i") or --non-interactive ("-n"), to determine whether to use backticks
 # TODO: accept a control character or signal to refresh now
 # TODO: accept log file that logs output, changes, feequencies/counts, etc.
+# TODO: use the 'rerun' or 'listen'  gem to watch the filesystem and restart progrom when there are changes? maybe with a different command line option?
 
 class ReviewProgram
 
