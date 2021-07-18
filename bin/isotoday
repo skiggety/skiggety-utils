@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# This script shows the date in (global standard) iso 8601 format as per`https://xkcd.com/1179/
+
+date +'%Y-%m-%d'

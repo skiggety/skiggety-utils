@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# TODO TODO TODO TODO: rename/commit
+
+todo_list_file_name="TODO.$(isotoday).txt" # IGNORE_TODO
+todo_list_dir_path="$HOME/daily_todo_lists" # TODO: rename?
+
+mkdir -p "$todo_list_dir_path"
+cd "$todo_list_dir_path"
+
+if [ -f "$todo_list_file_name" ]; then
+    files_to_open="$todo_list_file_name"
+else
+    files_to_open="$todo_list_file_name ."
+fi
+echo "- TODO: ..." >> "$todo_list_file_name" # IGNORE_TODO
+vim -o $files_to_open '+/\.\.\.'
+
+if [ -f ./PWD_BIN/dashboard ]; then
+    ./PWD_BIN/dashboard # TODO: look closer at this program. maybe it should be committed or part of this program?
+else
+    todo # TODO: -n 5 # TODO: todo should accept an option for the number of lines. like "-n 3"
+fi
