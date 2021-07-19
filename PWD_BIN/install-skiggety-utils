@@ -49,8 +49,11 @@ function main {
 
     INSTALLERS_DIR="$(cd "$THIS_DIR/../installers";pwd)"
 
+    debug_here "about to run installers"
+
     use_installer_unsafe "$INSTALLERS_DIR/skiggety.bash" $INSTALLER_ARGS || exit_with_error "failed to set up bash"
     . ~/.bashrc # reload environment
+    debug_here "about to install basic prerequisites"
     use_installer_unsafe "$INSTALLERS_DIR/basic_prerequisites" $INSTALLER_ARGS || exit_with_error "failed to set up basic prerequisites for other installers to run"
     . ~/.bashrc # reload environment
 

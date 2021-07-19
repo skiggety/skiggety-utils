@@ -32,6 +32,8 @@ function main {
         esac
     done
 
+    debug_here "got options"
+
     self_hash="$(git hash-object $0)" # TODO: perhaps use a hash that takes the Gemfile into account as well?
     completed_markers_start_with="$THIS_DIR/.$(basename $0).updated_with_version."
     completed_marker="$completed_markers_start_with$self_hash"
@@ -62,6 +64,7 @@ function main {
         fi
     fi
 
+    debug_here "rbenv:"
     # rbenv
         # some rbenv reading material:
         ### https://medium.com/@namangupta01/replacing-rvm-with-rbenv-in-os-x-9dea622bd639#:~:text=Both%20rbenv%20and%20RVM%20are,lightweight%20Ruby%20version%20management%20tool.
@@ -71,7 +74,7 @@ function main {
     rvm --version 2>/dev/null && ask_user to uninstall rvm with rvm implode
     if on_mac_os;then
         homebrew_install_latest rbenv
-    else
+    else # TODO: if on linux
         local rbenv_dir="$HOME/.rbenv"
         if ! [ -d $rbenv_dir ]; then
             git clone https://github.com/rbenv/rbenv.git $rbenv_dir
@@ -97,6 +100,7 @@ function main {
             fi
         fi
     fi
+    debug_here "got rbenv, time for ruby"
     # TODO TODO: install rbenv-aliases?
 
     # ruby
@@ -108,6 +112,16 @@ function main {
         rbenv install $ruby_version || accumulate_error "failed to install ruby"
         rbenv versions
     fi
+
+    debug_here "got ruby, time to try to fix bundler?"
+    gem update --system || exit_with_error "gem failed to update system"
+    debug_here "got ruby, time to make sure bundler is installed?"
+    gem install bundler || exit_with_error "failed to install bundler"
+
+    debug_here "let's make sure bundler is ok:"
+    bundle --version || exit_with_error "bundler is not working"
+
+    debug_here "time for ruby_setup"
 
     $THIS_DIR/../PWD_BIN/ruby_setup || exit_with_error "failed to set up prerequisites for my ruby code, such as gems"
 

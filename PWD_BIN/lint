@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 todo_report="$(todo | grep -v "^./todo_report.gen.txt:" | grep -v ".gitignored." | grep -v "/coverage_links/" | grep -v "/coverage/index.html" | tail -n 5 )"
 echo "$todo_report" > todo_report.gen.txt
 echo "$todo_report"

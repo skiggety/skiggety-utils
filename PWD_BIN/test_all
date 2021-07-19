@@ -7,11 +7,12 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 
 echo_divider_with_text "O-=======-" "test_all:"
 
-build
-
 # install skiggety-utils
 echo_divider_with_text "+-=======-" "install-skiggety-utils --non-interactive"
-$THIS_DIR/install-skiggety-utils --non-interactive || exit_with_error "could not run installers for skiggety-utils"
+$THIS_DIR/install-skiggety-utils --non-interactive || accumulate_error "could not run installers for skiggety-utils"
+
+echo_divider_with_text "+-=======-" "run lint"
+lint || accumulate_error "lint FAILED"
 
 echo_divider_with_text "+-=======-" "run shell tests"
 ./test/test_todo.bash || accumulate_error "shell integration tests failed"
