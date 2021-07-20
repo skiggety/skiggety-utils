@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
-require_relative '../lib/installable_skiggety_util.rb'
+require_relative '../lib/installable_skiggety_util'
 
 class TerminalProfileConfigurer
 
@@ -11,15 +12,12 @@ class TerminalProfileConfigurer
   end
 
   def apparently_configured?
-    if on_mac_os?
-      return false # just assume it's needed if the marker file isn't there
-    elsif on_linux_os?
-      if ( ! File.exist?(user_qterminal_ini_path) )
-        return false
-      end
+    if on_linux_os?
+      return false unless File.exist?(user_qterminal_ini_path)
+
       FileUtils.compare_file(user_qterminal_ini_path, template_qterminal_ini_path)
     else
-      return false # TODO: IMPLEMENT
+      false # TODO: IMPLEMENT
       # TODO: commit/sync/install linux terminal profiles?
     end
   end
@@ -27,16 +25,23 @@ class TerminalProfileConfigurer
   def configure
     if $interactive
       if on_mac_os?
-        # TODO: deal with the extra clutter of profiles like "skiggterm 1", "skiggterm 2", etc. that pile up sometimes. I'm not sure how much of a problem this is going to be in practice
+        # TODO: deal with the extra clutter of profiles like "skiggterm 1",
+        # "skiggterm 2", etc. that pile up sometimes. I'm not sure how much of
+        # a problem this is going to be in practice
         assert_system("open #{skiggterm_mac_profile_path}")
-        delegate_to_user 'confirm that a terminal window just opened and has skiggterm in the title (you may close that window)'
+        delegate_to_user 'confirm that a terminal window just opened and has skiggterm in the title (you may close '\
+                         'that window)'
         assert_system('defaults write com.apple.Terminal "Default Window Settings" skiggterm')
-        assert_system('defaults read com.apple.Terminal "Default Window Settings"') # this is an attempt to get this setting to stick after the terminal restarts
-        delegate_to_user 'Make sure skiggterm is the default, especially when the terminal is restarted --you can quit this installer by running exit 1 and restart if you need to'
+
+        # this is an attempt to get this setting to stick after the terminal restarts:
+        assert_system('defaults read com.apple.Terminal "Default Window Settings"')
+
+        delegate_to_user 'Make sure skiggterm is the default, especially when the terminal is restarted --you can '\
+                         'quit this installer by running exit 1 and restart if you need to'
       elsif on_linux_os?
         assert_system("vim -d #{user_qterminal_ini_path} #{template_qterminal_ini_path}")
       else
-        raise NotImplementedError, "TODO: implement this for this OS" # IGNORE_TODO
+        raise NotImplementedError, 'TODO: implement this for this OS' # IGNORE_TODO
       end
     else
       raise_interactive_only_configuration
@@ -58,4 +63,3 @@ class TerminalProfileConfigurer
 end
 
 TerminalProfileConfigurer.run
-

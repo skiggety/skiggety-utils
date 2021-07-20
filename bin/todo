@@ -16,7 +16,7 @@ import stat
 
 from todo_line import *
 
-# TODO TODO TODO: use pylint
+# TODO TODO TODO TODO: use pylint
 
 def main():
 

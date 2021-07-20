@@ -1,8 +1,11 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
-require_relative '../lib/installable_skiggety_util.rb'
+require_relative '../lib/installable_skiggety_util'
 
-# TODO TODO: The process of downloading and installing Rectangle, Synergy, and probably others like Alfred is so similar on (on mac at least), that I think I whould do some method extracting.
+# TODO TODO: The process of downloading and installing Rectangle, Synergy, and
+# probably others like Alfred is so similar on (on mac at least), that I think
+# I whould do some method extracting.
 
 class SynergyInstaller
 
@@ -10,27 +13,25 @@ class SynergyInstaller
 
   def apparently_installed?
     if on_mac_os?
-      return Dir.exist?("/Applications/Synergy.app") # TODO: Checking the version would be a better approach if possible, I guess.
+      # TODO: Checking the version would be a better approach if possible, I guess:
+      Dir.exist?('/Applications/Synergy.app')
     elsif on_linux_os?
-      return false # TODO TODO: DELETE
-      raise "TODO: IMPLEMENT"
+      raise 'TODO: IMPLEMENT'
     else
-      raise NotImplementedError, "TODO: implement this for this OS"
+      raise NotImplementedError, 'TODO: implement this for this OS'
     end
   end
 
   def apparently_configured?
-    if `ps aux | grep #{ENV['USER']} | grep synergy[sc]` == '' # synergy server or client must be running
-      return false
-    end
+    return false if `ps aux | grep #{ENV['USER']} | grep synergy[sc]` == '' # synergy server or client must be running
 
     if $interactive
-      return ask_user "Is #{name} set up the way you want?"
+      ask_user "Is #{name} set up the way you want?"
     else
       # In non-interactive mode, assume config is needed to make sure the user
       # has a chance, since I can't think of a way to check if the current
       # config is the desired version:
-      return false
+      false
     end
   end
 
@@ -39,7 +40,8 @@ class SynergyInstaller
     if $interactive
       open_in_browser(download_url)
       delegate_to_user('Download/install Synergy manually. The download page should be open now.')
-      # TODO: should I specifically remind the user to have synergy start on startup or keep it in the dock? Should some of this be mac only?
+      # TODO: should I specifically remind the user to have synergy start on
+      # startup or keep it in the dock? Should some of this be mac only?
     else
       raise_interactive_only_install
     end
@@ -49,11 +51,11 @@ class SynergyInstaller
     call_peer_installer('hostname')
     if $interactive
       if on_mac_os?
-        assert_system("open /Applications/Synergy.app")
+        assert_system('open /Applications/Synergy.app')
       elsif on_linux_os?
-        raise "TODO: IMPLEMENT"
+        raise 'TODO: IMPLEMENT'
       else
-        raise NotImplementedError, "TODO: implement this for this OS"
+        raise NotImplementedError, 'TODO: implement this for this OS'
       end
       delegate_to_user("Configure #{name} manually (it should be open), and make sure it works.")
     else

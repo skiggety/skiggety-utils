@@ -1,12 +1,16 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
-require_relative '../lib/installable_skiggety_util.rb'
+require_relative '../lib/installable_skiggety_util'
 
 class HostnameSetup
 
   # TODO: enforce all-lowercase, numbers not in first character, etc. ...or whatever works for dns
-  # TODO: perhaps require dns server config (check with nslookup or an equivalent library) --this might help with synergy config, etc.
-    # TODO: To systematize this, you could find the ip address of the local gatteway and pop it up in a browser
+
+  # TODO: perhaps require dns server config (check with nslookup or an
+  # equivalent library) --this might help with synergy config, etc.
+
+  #   TODO: To systematize this, you could find the ip address of the local gatteway and pop it up in a browser
 
   include InstallableSkiggetyUtil
 
@@ -23,15 +27,15 @@ class HostnameSetup
   def configure
     if on_mac_os?
       if $interactive
-        puts "Sudo password will be needed to set hostname:"
-        %w(LocalHostName ComputerName).each do |sc_name|
+        puts 'Sudo password will be needed to set hostname:'
+        %w[LocalHostName ComputerName].each do |sc_name|
           assert_system("sudo scutil --set #{sc_name} #{desired_hostname}")
         end
       else
         raise_interactive_only_configuration
       end
     else
-      raise NotImplementedError, "TODO: implement this for this OS"
+      raise NotImplementedError, 'TODO: implement this for this OS'
     end
   end
 
@@ -44,12 +48,12 @@ class HostnameSetup
     if File.exist?(desired_hostname_file)
       `cat #{desired_hostname_file}`.chomp
     else
-      raise "Please put desired hostname in #{desired_hostname_file} and try again" # TODO TODO TODO TODO: if interactive, give the user a chance to do this
+      # TODO TODO TODO TODO TODO: if interactive, give the user a chance to do this:
+      raise "Please put desired hostname in #{desired_hostname_file} and try again"
     end
   end
 
 end
 
-if __FILE__ == $0 # TODO TODO: use this more widely if call_peer_installer uses a direct include method?
-  HostnameSetup.run
-end
+# TODO TODO: use this more widely if call_peer_installer uses a direct include method?:
+HostnameSetup.run if __FILE__ == $PROGRAM_NAME

@@ -1,5 +1,5 @@
-./bin/git-squash:1:# TODO^4
-./bin/review:16:# TODO^4: accept --minimum-delay or -m (e.g. auto-ci might want to call this with "-m 30")
+./bin/review:19:# TODO^4: accept --minimum-delay or -m (e.g. auto-ci might want to call this with "-m 30")
 ./bin/today_todo:2:# TODO^4: rename/commit
-./installers/hostname:47:      raise "Please put desired hostname in #{desired_hostname_file} and try again" # TODO^4: if interactive, give the user a chance to do this
-./lib/installable_skiggety_util.rb:221:  # TODO^4: use rubocop to enforce syntax conventions, like using private this way:
+./bin/todo:19:# TODO^4: use pylint
+./.rubocop_todo.yml:9:# TODO^5: Eliminate this file, bit by bit
+./installers/hostname:51:      # TODO^5: if interactive, give the user a chance to do this:

@@ -1,6 +1,9 @@
-source "https://rubygems.org"
+# frozen_string_literal: true
 
-gem "rake", "~> 12.0"
-gem "minitest", "~> 5.0"
+source 'https://rubygems.org'
+
+gem 'minitest', '~> 5.0'
 gem 'minitest-reporters' # for colorized test output
+gem 'rake', '~> 12.0'
+gem 'rubocop', require: false, group: :test
 gem 'simplecov', require: false, group: :test

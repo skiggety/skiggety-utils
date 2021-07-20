@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
-require_relative '../lib/installable_skiggety_util.rb'
+require_relative '../lib/installable_skiggety_util'
 
 class UltimateHackingKeyboardAgentInstaller
 
@@ -8,11 +9,11 @@ class UltimateHackingKeyboardAgentInstaller
 
   def apparently_installed?
     if on_mac_os?
-      return Dir.exist?("/Applications/UHK Agent.app")
+      Dir.exist?('/Applications/UHK Agent.app')
     elsif on_linux_os?
-      return false
+      false
     else
-      raise NotImplementedError, "TODO: implement this for this OS"
+      raise NotImplementedError, 'TODO: implement this for this OS'
     end
   end
 
@@ -21,7 +22,7 @@ class UltimateHackingKeyboardAgentInstaller
   end
 
   def install
-    download_url = "https://ultimatehackingkeyboard.com/start/agent"
+    download_url = 'https://ultimatehackingkeyboard.com/start/agent'
     if $interactive
       open_in_browser(download_url)
       delegate_to_user('Download/install UHK Agent manually. The download page should be open now.')
@@ -45,10 +46,9 @@ class UltimateHackingKeyboardAgentInstaller
         raise_interactive_only_configuration
       end
     else
-      raise NotImplementedError, "TODO: implement this for this OS"
+      raise NotImplementedError, 'TODO: implement this for this OS'
     end
   end
-
 
 end
 

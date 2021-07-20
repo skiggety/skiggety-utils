@@ -1,17 +1,24 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 require 'installable_skiggety_util'
 
 class RawDummyInstaller
+
   include InstallableSkiggetyUtil
+
 end
 
 class DummyInstaller < RawDummyInstaller
+
   def installer_file_path
-    "/installer_dir/dummy"
+    '/installer_dir/dummy'
   end
+
 end
 
 class DummyNoOpInstaller < DummyInstaller
+
   include InstallableSkiggetyUtil
 
   def apparently_configured?
@@ -63,32 +70,40 @@ class TestInstallableSkiggetyUtil < Minitest::Test
   # TODO: test self_config_path(file_name)
 
   def test_installer_directory_path
-    assert_equal "/installer_dir", @subject.installer_directory_path
+    assert_equal '/installer_dir', @subject.installer_directory_path
   end
 
-  # TODO: test installer_file_hash (use raw dummy and a stub like with test_installer_file_path because the main dummy will override these methods)
-    # TODO: Perhaps make sure the installer gets read as having run and has no git changes, then add a newline to the end of the file, make sure it gets read as needing to run, then revert the change and make sure it gets read as having run.
+  # TODO: test installer_file_hash (use raw dummy and a stub like with
+  # test_installer_file_path because the main dummy will override these
+  # methods)
+  #   TODO: Perhaps make sure the installer gets read as having run and has no
+  #   git changes, then add a newline to the end of the file, make sure it gets
+  #   read as needing to run, then revert the change and make sure it gets read
+  #   as having run.
 
   def test_installer_file_path
     fake_method = Object.new
     class << fake_method
+
       def source_location
-        ["/installers/dummy.rb", 1]
+        ['/installers/dummy.rb', 1]
       end
+
     end
-    RawDummyInstaller.stub( :instance_method, fake_method) do
-      assert_equal "/installers/dummy.rb", @raw_subject.installer_file_path
+    RawDummyInstaller.stub(:instance_method, fake_method) do
+      assert_equal '/installers/dummy.rb', @raw_subject.installer_file_path
     end
   end
 
   # TODO: test open_in_browser(url)
 
-  # TODO: test on_mac_os? and test on_linux_os? together? maybe make sure exactly one method of this kind returns true? or in that case wouldn't it just be better to replace these methods with one os method that returns a string
-  # TODO: test on_mac_os?
-  # TODO: test on_linux_os?
+  # TODO: test on_mac_os? and test on_linux_os? together? maybe make sure
+  # exactly one method of this kind returns true? or in that case wouldn't it
+  # just be better to replace these methods with one os method that returns a
+  # string
 
   def test_assert_system_true
-    @subject.assert_system('true') #no exception expected
+    @subject.assert_system('true') # no exception expected
   end
 
   def test_assert_system_false

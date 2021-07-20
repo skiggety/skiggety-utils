@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
-require_relative '../lib/installable_skiggety_util.rb'
+require_relative '../lib/installable_skiggety_util'
 
 # TODO TODO TODO: install and set up vimpager as your pager, but maybe not in this installer
 
@@ -9,14 +10,14 @@ class VimInstaller
   include InstallableSkiggetyUtil
 
   def apparently_installed?
-    return program_version_option_output_matches?('vim', / 8\.0 /)
+    program_version_option_output_matches?('vim', / 8\.0 /)
   end
 
-  # err on the side of returning false...if these files don't match perfectly the user will have a chance to make sure it's set up right.
+  # err on the side of returning false...if these files don't match perfectly
+  # the user will have a chance to make sure it's set up right.
   def apparently_configured?
-    if ( ! File.exist?(user_vimrc_path) )
-      return false
-    end
+    return false unless File.exist?(user_vimrc_path)
+
     FileUtils.compare_file(user_vimrc_path, template_vimrc_path)
   end
 
@@ -28,7 +29,7 @@ class VimInstaller
     end
 
     if on_mac_os?
-      brew_install_latest "macvim"
+      brew_install_latest 'macvim'
       # TODO TODO: install gvim (gui) for linux
     end
   end

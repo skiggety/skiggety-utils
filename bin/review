@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 # This program displays output of a given command and refreshes periodically.
 # By default, the delay is dynamic so you don't use up too many resources when
@@ -12,39 +13,45 @@
 # repeatedly you stop it, waiting a few seconds in between each run (this time
 # will adjust automatically.
 
+require 'English'
+
 # TODO TODO: avoid forcing the same version of ruby on programs that this may call
 # TODO TODO TODO TODO: accept --minimum-delay or -m (e.g. auto-ci might want to call this with "-m 30")
 # TODO TODO TODO: accept --maximum-delay or -M (e.g. auto-ci might want to call this with "-M $(( 60 * 60 * 6 ))")
 # TODO TODO: accept --interactive ("-i") or --non-interactive ("-n"), to determine whether to use backticks
 # TODO: accept a control character or signal to refresh now
 # TODO: accept log file that logs output, changes, feequencies/counts, etc.
-# TODO: use the 'rerun' or 'listen'  gem to watch the filesystem and restart progrom when there are changes? maybe with a different command line option?
+
+# TODO: use the 'rerun' or 'listen'  gem to watch the filesystem and restart progrom when there are changes? maybe with
+# a different command line option?
 
 class ReviewProgram
 
   def self.run
-    self.new.run
+    new.run
   end
 
   def run
-    $interactive = ! ARGV.delete('--non-interactive') # TODO TODO: non-interactive by default, intereactive mode for when the program might prompt you with something, and in that case backticks cannot be used
+    # TODO TODO: non-interactive by default, intereactive mode for when the
+    # program might prompt you with something, and in that case backticks
+    # cannot be used:
+    $interactive = !ARGV.delete('--non-interactive')
 
-    command = ARGV.map{|a| "\"#{a}\""}.join(' ')
+    command = ARGV.map{ |a| "\"#{a}\"" }.join(' ')
 
-    exit_val = "UNKNOWN"
     delay = 1
 
     system(command)
-    exit_val = $?.exitstatus
+    exit_val = $CHILD_STATUS.exitstatus
     exit_date = `date`.chomp
     show_footer(command, exit_val, exit_date)
 
-    last_output = output = ''
-    while (should_continue_looping(exit_val) && system("pretty_sleep -n #{delay}"))
+    output = ''
+    while should_continue_looping(exit_val) && system("pretty_sleep -n #{delay}")
       last_output = output
       non_interactive_command = "#{command} 2>&1"
       output = `#{non_interactive_command}`
-      exit_val = $?.exitstatus
+      exit_val = $CHILD_STATUS.exitstatus
       exit_date = `date`.chomp
 
       system('clear')
@@ -52,46 +59,35 @@ class ReviewProgram
       show_footer(command, exit_val, exit_date)
 
       change_detected = true
-      if ( output == last_output )
-        change_detected = false
-      end
-      delay = adjust_delay(delay,change_detected)
+      change_detected = false if output == last_output
+      delay = adjust_delay(delay, change_detected)
     end
-
   end
 
   ADD_TO_DELAY = 1
   MULTIPLY_BY_DELAY = 1.10
-  def adjust_delay(delay,change_detected)
+  def adjust_delay(delay, change_detected)
     if change_detected
-      result = 1
+      1
     else
-      result = ( MULTIPLY_BY_DELAY * delay).floor + ADD_TO_DELAY
+      (MULTIPLY_BY_DELAY * delay).floor + ADD_TO_DELAY
     end
-    return result
   end
 
   # TODO: time the command, show how long it took
   #   TODO: factor that time into the delay increase. Something that ties up the cpu for a while should delay longer
-  def show_footer(command, exit_val, exit_date) # TODO TODO TODO: colorize output, esp on failure
+  # TODO TODO TODO: colorize output, esp on failure
+  def show_footer(command, exit_val, exit_date)
     system("echo_divider_with_text \"#\" \"'#{command}' exited with #{exit_val} at #{exit_date}\"")
   end
 
   def should_continue_looping(last_exit_val)
-    if (loop_condition == 'always' || loop_condition.nil?)
-      return true
-    elsif (loop_condition == 'success')
-      if last_exit_val == 0
-        return(true)
-      else
-        return(false)
-      end
-    elsif (loop_condition == 'fail')
-      if last_exit_val == 0
-        return(false)
-      else
-        return(true)
-      end
+    if loop_condition == 'always' || loop_condition.nil?
+      true
+    elsif loop_condition == 'success'
+      last_exit_val.zero?
+    elsif loop_condition == 'fail'
+      !last_exit_val.zero?
     end
   end
 

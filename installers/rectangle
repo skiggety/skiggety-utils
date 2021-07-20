@@ -1,8 +1,10 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
-# NOTE: using https://github.com/rxhanson/Rectangle because Spectacle is going to be unmaintained: https://github.com/eczarny/spectacle#important-note
+# NOTE: using https://github.com/rxhanson/Rectangle because Spectacle is going
+# to be unmaintained: https://github.com/eczarny/spectacle#important-note
 
-require_relative '../lib/installable_skiggety_util.rb'
+require_relative '../lib/installable_skiggety_util'
 
 class RectangleInstaller
 
@@ -10,9 +12,9 @@ class RectangleInstaller
 
   def apparently_installed?
     if on_mac_os?
-      return Dir.exist?("/Applications/Rectangle.app")
+      Dir.exist?('/Applications/Rectangle.app')
     else
-      return true # rectangle not available for other OS'es, I think # TODO: but maybe install some equivalent
+      true # rectangle not available for other OS'es, I think # TODO: but maybe install some equivalent
     end
   end
 
@@ -24,22 +26,23 @@ class RectangleInstaller
       # In non-interactive mode, assume config is needed to make sure the user
       # has a chance, since I can't think of a way to check if the current
       # config is the desired version:
-      return false
+      false
     end
   end
 
   def install
     if on_mac_os?
-      brew_install_cask_latest "rectangle"
+      brew_install_cask_latest 'rectangle'
     else
-      raise NotImplementedError, "TODO: implement this for this OS" # If we install a different program similar to rectangle on a different OS, this script should be renamed.
+      # TODO: If we install a different program similar to rectangle on a different OS, this script should be renamed.
+      raise NotImplementedError, 'TODO: implement this for this OS'
     end
   end
 
   def configure
     if on_mac_os?
       if $interactive
-        assert_system("open /Applications/Rectangle.app")
+        assert_system('open /Applications/Rectangle.app')
         delegate_to_user "Configure #{name}"
       else
         raise_interactive_only_configuration
