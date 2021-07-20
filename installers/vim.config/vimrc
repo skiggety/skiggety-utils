@@ -2,6 +2,8 @@ set nocp
 set hlsearch
 syntax enable
 
+set textwidth=120
+
 "status bar
 set laststatus=2
 set ruler
