@@ -26,7 +26,7 @@ bin/default_dashboard || accumulate_error
 # More important than the output of default_dashboard:
 
 echo_divider_with_text "+-=======-" "diff summary for \"$SKIGGETY_UTILS_DONOR_DIR\":"
-rubocop -P --color || accumulate_error # TODO TODO TODO TODO: move this to PWD_BIN/lint, maybe add pylint while you're at it
+bundle exec rubocop -P --color || accumulate_error # TODO TODO TODO TODO: move this to PWD_BIN/lint, maybe add pylint while you're at it
 
 exit_if_any_accumulated_errors
 
