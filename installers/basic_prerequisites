@@ -116,7 +116,7 @@ function main {
     debug_here "got ruby, time to try to fix bundler?"
     gem update --system || run_only_if_interactive sudo gem update --system || exit_with_error "gem failed to update system"
     debug_here "got ruby, time to make sure bundler is installed?"
-    gem install bundler || exit_with_error "failed to install bundler"
+    gem install bundler || run_only_if_interactive sudo gem install bundler || exit_with_error "failed to install bundler"
 
     debug_here "let's make sure bundler is ok:"
     bundle --version || exit_with_error "bundler is not working"
