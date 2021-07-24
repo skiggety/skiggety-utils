@@ -16,7 +16,7 @@ class SynergyInstaller
       # TODO: Checking the version would be a better approach if possible, I guess:
       Dir.exist?('/Applications/Synergy.app')
     elsif on_linux_os?
-      raise 'TODO: IMPLEMENT'
+      system('which synergy')
     else
       raise NotImplementedError, 'TODO: implement this for this OS'
     end
