@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+vimwhich "$1"
+
+until "$@"
+do
+    vimwhich "$1"
+    echo "sleeping for 1 second, ctrl-c to quit"
+    sleep 1
+done
