@@ -2,6 +2,9 @@
 
 # This script runs tests this project as much as possible, and exits with an error if it fails.
 
+# TODO: make output mor concise, it takes up a lot of screen space when running 'auto-dev' (or 'dev'). Maybe show
+# various types of test results only when there's a failure
+
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
@@ -11,14 +14,14 @@ echo_divider_with_text "O-=======-" "test_all:"
 echo_divider_with_text "+-=======-" "install-skiggety-utils --non-interactive"
 $THIS_DIR/install-skiggety-utils --non-interactive || accumulate_error "could not run installers for skiggety-utils"
 
-echo_divider_with_text "+-=======-" "run lint"
+echo_divider_with_text "+-=======-" "ruby_setup"
+{ $THIS_DIR/ruby_setup 2>&1 || echo FOO; } | tail -n 1 # in case this part gets skipped in installers/basic_prerequisites
+
+# echo_divider_with_text "+-=======-" "run lint"
 lint || accumulate_error "lint FAILED"
 
 echo_divider_with_text "+-=======-" "run shell tests"
 ./test/test_todo.bash || accumulate_error "shell integration tests failed"
-
-echo_divider_with_text "+-=======-" "ruby_setup"
-{ $THIS_DIR/ruby_setup 2>&1 || echo FOO; } | tail -n 1 # in case this part gets skipped in installers/basic_prerequisites
 
 # run ruby unit tests
 echo_divider_with_text "+-=======-" "rake test"

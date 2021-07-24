@@ -91,7 +91,7 @@ function use_installer_unsafe {
     local INSTALLER_ARGS="$2"
     installer="$(basename $installer_path)"
 
-    echo "running installer \"$installer\"..."
+    echo_debug "running installer \"$installer\"..."
     $installer_path $INSTALLER_ARGS || { echo_error_here "installer \"$installer\" FAILED"; return 1; }
 }
 

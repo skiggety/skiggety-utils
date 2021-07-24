@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
+. $THIS_DIR/../lib/skiggety-utils.bash || exit 1
+
+# echo_divider_with_text "+-=======-" "generate ./todo_report.gen.txt:"
 todo_report="$(todo | grep -v "^./todo_report.gen.txt:" | grep -v ".gitignored." | grep -v "/coverage_links/" | grep -v "/coverage/index.html" | tail -n 5 )"
 echo "$todo_report" > todo_report.gen.txt
-echo "$todo_report"
+# echo "$todo_report"
+
+echo_divider_with_text "+-=======-" "rubocop:"
+bundle exec rubocop -P --color || accumulate_error # TODO TODO TODO TODO: move this to PWD_BIN/lint, maybe add pylint while you're at it
+
+exit_if_any_accumulated_errors
