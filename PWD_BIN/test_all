@@ -20,7 +20,7 @@ echo_divider_with_text "+-=======-" "ruby_setup"
 # echo_divider_with_text "+-=======-" "run lint"
 lint || accumulate_error "lint FAILED"
 
-echo_divider_with_text "+-=======-" "run shell tests"
+echo_divider_with_text "+-=======-" "'todo' tests"
 ./test/test_todo.bash || accumulate_error "shell integration tests failed"
 
 # run ruby unit tests

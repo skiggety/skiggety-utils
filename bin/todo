@@ -18,16 +18,21 @@ from todo_line import *
 
 # TODO TODO TODO TODO: use pylint
 
+# TODO: accept --exclude-dir option, using:
+# https://stackoverflow.com/questions/19859840/excluding-directories-in-os-walk
+
 def main():
 
     # TODO: use argparse built-in way of setting defaaults instead:
     ignore_keyword = None
 
     arg_parser = argparse.ArgumentParser(description = program_description)
-    arg_parser.add_argument('-k', '--keyword', help = 'select a keyword. Defaults to \'TODO\'.') # IGNORE_TODO
+    arg_parser.add_argument('-k', '--keyword', help = 'Select a keyword. Defaults to \'TODO\'.') # IGNORE_TODO
     # TODO: add_argument('-i', '--ignore-keyword', help = 'TODO')
+    arg_parser.add_argument('--exclude-dir', help = 'Directories to exclude.', action = 'append')
     command_line_args = arg_parser.parse_args()
 
+    exclude_dirs = command_line_args.exclude_dir or []
     keyword = command_line_args.keyword or 'TODO' # because you can use other keywords # IGNORE_TODO
     # TODO: use argparse built-in way of setting defaaults instead:
     ignore_keyword = ignore_keyword or f'IGNORE_{keyword}'
@@ -38,7 +43,8 @@ def main():
     # TODO: refactor, too much nesting:
     keyword_regex        = re.compile(keyword)
     ignore_keyword_regex = re.compile(ignore_keyword)
-    for root, dirs, file_paths in os.walk('.'):
+    for root, dirs, file_paths in os.walk('.', topdown=True):
+        dirs[:] = [d for d in dirs if d not in exclude_dirs]
         for file_path in file_paths:
             full_file_path = os.path.join(root, file_path)
             if stat.S_ISBLK(os.stat(full_file_path).st_mode) or stat.S_ISSOCK(os.stat(full_file_path).st_mode): # skip devices

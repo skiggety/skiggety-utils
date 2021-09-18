@@ -13,6 +13,7 @@ function main {
     test_todo_shows_nothing_from_empty_file || exit_with_error "test failed"
     test_todo_sorts_two_equivalent_lines_by_line_number_and_exits_correctly || exit_with_error "test failed"
     test_todo_handles_a_complex_example || exit_with_error "test failed"
+    echo "tests PASSED"
 }
 
 function test_todo_shows_nothing_from_empty_dir {
@@ -46,7 +47,7 @@ function test_todo_sorts_two_equivalent_lines_by_line_number_and_exits_correctly
 
 function test_todo_handles_a_complex_example {
     pushd "$todo_examples_dir" > /dev/null
-    result="$(todo -k TXDX)"
+    result="$(todo -k TXDX --exclude-dir exclude_me)"
     exit_value="$?"
     expected="./simple/example.txt:1:TXDX: this is a todo
 ./simple/example.txt:2:  TXDX: this is another todo that's indented

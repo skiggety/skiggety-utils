@@ -1,5 +1,5 @@
 ./bin/git-squash:1:# TODO^4
 ./bin/review:19:# TODO^4: accept --minimum-delay or -m (e.g. auto-ci might want to call this with "-m 30")
 ./bin/today_todo:2:# TODO^4: rename/commit
-./bin/todo:19:# TODO^4: use pylint
+./bin/todo:20:# TODO^4: use pylint
 ./installers/hostname:51:      # TODO^5: if interactive, give the user a chance to do this:
