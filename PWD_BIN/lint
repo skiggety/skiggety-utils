@@ -9,6 +9,10 @@ echo "$todo_report" > todo_report.gen.txt
 # echo "$todo_report"
 
 echo_divider_with_text "+-=======-" "rubocop:"
-bundle exec rubocop -P --color || accumulate_error # TODO TODO TODO TODO: move this to PWD_BIN/lint, maybe add pylint while you're at it
+bundle exec rubocop -P --color || accumulate_error 'rubocop reported errors'
+
+echo_divider_with_text "+-=======-" "pylint:"
+# TODO: abbreviate output
+pylint bin/todo lib/todo_line.py || accumulate_error 'pylint reported errors' # TODO automatically scan all python files
 
 exit_if_any_accumulated_errors
