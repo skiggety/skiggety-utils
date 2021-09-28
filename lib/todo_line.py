@@ -2,6 +2,7 @@ import re # regular expressions
 from functools import reduce
 
 class TodoLine:
+    """One line of text from a file with a keyword (usually 'TODO') on it.""" #IGNORE_TODO
     def __init__(self, keyword, file_path, line_number, original_text):
         self.keyword = keyword
         self.file_path, self.line_number, self.original_text = file_path, line_number, original_text
@@ -19,17 +20,26 @@ class TodoLine:
     def __str__(self): # TODO: implement __repr__ too, for use in exceptions
         return self.file_path + ":" + str(self.line_number) + ":" + self.text
 
-    # inside a todo_line is one or more groups of TODO's and TODO^n's called a todo_entry.# TODO The votecount of the todo_line comes from the max votecount of the todo_entries # IGNORE_TODO
-    # inside a todo_entry is one or more todo_words, such as 'TODO' or "TODO^2. They each have their own votecount, as indicated by the number after the caret. They are summed to make the votecount of the todo_entry. # IGNORE_TODO
+    # inside a todo_line is one or more groups of TODO's and TODO^n's (IGNORE_TODO) called a
+    # todo_entry. The votecount of the todo_line comes from the max votecount of the todo_entries.
+
+    # inside a todo_entry is one or more todo_words, such as 'TODO' or "TODO^2. They each have their
+    # own votecount, as indicated by the number after the caret. They are summed to make the
+    # votecount of the todo_entry. # IGNORE_TODO
 
     def collapse_todo_entry(self, todo_entry):
+        """
+        Simplify the part of the string with a keyword and votecount, as in
+        'TXDX^2 TXDX TXDX' --> 'TXDX^4'.
+        """
+
         def word_votecount(word):
             match_obj = re.search(r'(?P<votecount>\d+)$', word)
             if match_obj:
                 return int(match_obj.group('votecount'))
-            else:
-                return 1
-        votecount_list = map(word_votecount, todo_entry.split(' ')) # TODO: maybe use a list comprehension instead of map, as it's more pythonic
+            return 1
+        # TODO: maybe use a list comprehension instead of map, as it's more pythonic:
+        votecount_list = map(word_votecount, todo_entry.split(' '))
         def add(x, y):
             return x + y
         votecount = reduce(add,votecount_list)
@@ -37,13 +47,13 @@ class TodoLine:
         def wordify_number(votes):
             if votes == 1:
                 return self.keyword
-            else:
-                return self.keyword + '^' + str(votes)
+            return self.keyword + '^' + str(votes)
         return wordify_number(votecount)
 
-    def record_todo_entry_votecount(self, votecount):
-        self.votecount = max(votecount, self.votecount)
+    def record_todo_entry_votecount(self, entry_votecount):
+        """Keep track of the TodoLine votecount based on the votecount for an entry."""
+        self.votecount = max(entry_votecount, self.votecount)
 
-    # TODO TODO: replace in original file
-    def write():
-        raise Exception("TODO: IMPLEMENT")
+    # TODO: def write():
+    # TODO:     """write the TodoLine back to the original file with simplifying changes"""
+    # TODO:     raise Exception("TODO: IMPLEMENT ( replace in original file) ")
