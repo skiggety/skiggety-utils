@@ -3,6 +3,7 @@ set hlsearch
 syntax enable
 
 set textwidth=120
+set colorcolumn=+1
 
 "status bar
 set laststatus=2
@@ -39,3 +40,4 @@ autocmd Filetype ruby set sw=2
 
 autocmd Filetype python set softtabstop=4
 autocmd Filetype python set sw=4
+autocmd Filetype python set textwidth=100
