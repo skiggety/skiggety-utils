@@ -8,6 +8,10 @@ no_color='\033[0m'
 newline='
 '
 
+function nextwhich {
+    which -a $1 | grep -A 1 `which $1` | tail -n 1
+}
+
 function echo_here {
     echo "$*" "at ${BASH_SOURCE[1]}:${BASH_LINENO[0]}"
 }
