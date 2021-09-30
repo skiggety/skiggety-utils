@@ -1,5 +1,5 @@
 ./.rubocop_todo.yml:9:# TODO^4: Eliminate this file, bit by bit
-./bin/default_dashboard:16:# TODO^4: put test output right here if tests failed so todo's are the thing to scroll off the top of the screen instead of this.
+./bin/default_dashboard:17:# TODO^4: put test output right here if tests failed so todo's are the thing to scroll off the top of the screen instead of this.
 ./bin/review:19:# TODO^4: accept --minimum-delay or -m (e.g. auto-ci might want to call this with "-m 30")
 ./bin/today_todo:2:# TODO^4: rename/commit
 ./installers/hostname:51:      # TODO^5: if interactive, give the user a chance to do this:

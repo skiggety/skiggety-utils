@@ -18,7 +18,7 @@ require 'English'
 # TODO TODO: avoid forcing the same version of ruby on programs that this may call
 # TODO TODO TODO TODO: accept --minimum-delay or -m (e.g. auto-ci might want to call this with "-m 30")
 # TODO TODO TODO: accept --maximum-delay or -M (e.g. auto-ci might want to call this with "-M $(( 60 * 60 * 6 ))")
-# TODO TODO: accept --interactive ("-i") or --non-interactive ("-n"), to determine whether to use backticks
+# TODO TODO TODO: accept --interactive ("-i") or --non-interactive ("-n"), to determine whether to use backticks
 # TODO: accept a control character or signal to refresh now
 # TODO: accept log file that logs output, changes, feequencies/counts, etc.
 
@@ -64,6 +64,8 @@ class ReviewProgram
     end
   end
 
+  # TODO TODO: time how long the command takes and use that as ADD_TO_DELAY because it sucks to run a long command
+  # constantly
   ADD_TO_DELAY = 1
   MULTIPLY_BY_DELAY = 1.10
   def adjust_delay(delay, change_detected)
