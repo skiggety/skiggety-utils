@@ -10,7 +10,8 @@ echo_divider_with_text "-=" "TODO's:" # IGNORE_TODO
 if [ -f ./todo_report.gen.txt ]; then
     cat ./todo_report.gen.txt
 else
-    $THIS_DIR/todo | tail -n 5 || exit_with_error "todo FAILED" # TODO TODO: abbreviate -n 5 todo
+    # purposely call whatever 'todo' is in the path so you can override it with PWD_BIN/todo
+    todo | tail -n 5 || exit_with_error "todo FAILED" # TODO TODO: abbreviate -n 5 todo
 fi
 
 # TODO TODO TODO TODO: put test output right here if tests failed so todo's are the thing to scroll off the top of the screen instead of this.
