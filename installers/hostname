@@ -45,10 +45,14 @@ class HostnameSetup
 
   def calc_desired_hostname
     desired_hostname_file = self_config_path('localhost.gitignored.txt')
+    if $interactive
+      unless File.exist?(desired_hostname_file)
+        ask_user "Please put your desired hostname in #{desired_hostname_file}"
+      end
+    end
     if File.exist?(desired_hostname_file)
       `cat #{desired_hostname_file}`.chomp
     else
-      # TODO TODO TODO TODO TODO: if interactive, give the user a chance to do this:
       raise "Please put desired hostname in #{desired_hostname_file} and try again"
     end
   end

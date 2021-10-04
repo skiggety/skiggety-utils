@@ -4,6 +4,8 @@
 require_relative '../lib/installable_skiggety_util'
 
 # TODO TODO TODO: install and set up vimpager as your pager, but maybe not in this installer
+# TODO TODO: install vim rake plugin with vim pathogen
+# TODO: maybe detect local vimrc changes
 
 class VimInstaller
 
