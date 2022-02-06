@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# TODO TODO TODO TODO: rename/commit
+# TODO TODO TODO TODO TODO: rename?
+
+# TODO: this program needs to display some instructions so the user knows how to use it.
 
 todo_list_file_name="TODO.$(isotoday).txt" # IGNORE_TODO
 todo_list_dir_path="$HOME/daily_todo_lists" # TODO: rename?
@@ -14,6 +16,8 @@ else
 fi
 echo "- TODO: ..." >> "$todo_list_file_name" # IGNORE_TODO
 vim -o $files_to_open '+/\.\.\.'
+
+clear
 
 if [ -f ./PWD_BIN/dashboard ]; then
     ./PWD_BIN/dashboard # TODO: look closer at this program. maybe it should be committed or part of this program?

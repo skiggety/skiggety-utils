@@ -2,4 +2,4 @@
 ./.rubocop_todo.yml:9:# TODO^4: Eliminate this file, bit by bit
 ./bin/default_dashboard:17:# TODO^4: put test output right here if tests failed so todo's are the thing to scroll off the top of the screen instead of this.
 ./bin/review:19:# TODO^4: accept --minimum-delay or -m (e.g. auto-ci might want to call this with "-m 30")
-./bin/today_todo:2:# TODO^4: rename/commit
+./bin/today_todo:2:# TODO^5: rename?
