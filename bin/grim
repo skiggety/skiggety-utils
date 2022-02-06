@@ -20,7 +20,7 @@ while [[ "$1" == -* ]]; do
         VIM_SEARCH_STRING_SUFFIX="\c"
         shift
     elif [[ "$1" == --exclude* ]]; then
-        echo_debug "running grep with option $1 $2"
+        echo_debug "running grep with option: $1 $2"
         GREP_OPTIONS="$GREP_OPTIONS $1 $2"
         shift
         shift
