@@ -32,8 +32,14 @@ class VimInstaller
 
     if on_mac_os?
       brew_install_latest 'macvim'
-      # TODO TODO: install gvim (gui) for linux
     end
+    # TODO TODO: install gvim (gui) for linux
+
+    FileUtils.mkdir_p "#{Dir.home}/.vim/autoload"
+    puts `curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim`
+
+    bundle_dir = "#{Dir.home}/.vim/bundle"
+    FileUtils.mkdir_p bundle_dir
   end
 
   def configure
