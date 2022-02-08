@@ -7,6 +7,7 @@
 # TODO TODO: consider making this into a generic "editwhich" program, that supports other editors
 
 # NOTE: where do you want new scripts to be created, and what template file would you like to start with? Set the values of these variables in your ~/.bashrc file:
+# TODO: debug DEFAULT_SCRIPT_LOCATION, I think it's not working
 DEFAULT_SCRIPT_LOCATION=${DEFAULT_SCRIPT_LOCATION:-"$SKIGGETY_UTILS_DIR/bin"}
 # TODO: DEFAULT_SCRIPT_TEMPLATE=${DEFAULT_SCRIPT_TEMPLATE:-"$SKIGGETY_UTILS_DIR/lib/templates/blank.rb"}
 
