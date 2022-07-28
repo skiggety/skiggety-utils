@@ -23,6 +23,12 @@ bin/default_dashboard || accumulate_error
 # TODO?: tell you what command to run to commit changes or whatever
 # TODO?: graph score over time (see program "progress")
 
+echo_divider_with_text "-=" "rubocop"
+rm -f rubocop_output.txt
+bundle exec rubocop --parallel --color -o rubocop_output.txt || accumulate_error "rubocop FAILED"
+cat rubocop_output.txt
+rm rubocop_output.txt
+
 # More important than the output of default_dashboard:
 
 exit_if_any_accumulated_errors
