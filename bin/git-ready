@@ -2,7 +2,7 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash
 
-while [[ "$1" == -* ]];do
+while [[ "$1" == -* ]]; do
     # accept -n for git commit -n
     if [ "$1" == "-n" ]; then
         GIT_COMMIT_OPTIONS="$GIT_COMMIT_OPTIONS $1"
