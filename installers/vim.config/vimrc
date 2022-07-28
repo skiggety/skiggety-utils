@@ -1,8 +1,10 @@
 execute pathogen#infect()
 
 set nocp
-set hlsearch
 syntax enable
+
+set hlsearch
+set incsearch                           " incremental searching
 
 set textwidth=120
 set colorcolumn=+1
