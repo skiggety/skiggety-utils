@@ -13,8 +13,8 @@ VIM_OPTIONS="-on"
 GREP_OPTIONS="-RlI -D skip"
 VIM_SEARCH_STRING_SUFFIX=""
 
-# TODO TODO: accept a -i option for case insensitive grep
 while [[ "$1" == -* ]]; do
+    # accept a -i option for case insensitive grep
     if [ "$1" == "-i" ]; then
         GREP_OPTIONS="$GREP_OPTIONS $1"
         VIM_SEARCH_STRING_SUFFIX="\c"
