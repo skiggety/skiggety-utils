@@ -30,9 +30,7 @@ class VimInstaller
       raise_interactive_only_install
     end
 
-    if on_mac_os?
-      brew_install_latest 'macvim'
-    end
+    brew_install_latest 'macvim' if on_mac_os?
     # TODO TODO: install gvim (gui) for linux
 
     FileUtils.mkdir_p "#{Dir.home}/.vim/autoload"
