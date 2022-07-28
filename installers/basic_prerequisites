@@ -74,6 +74,7 @@ function main {
     rvm --version 2>/dev/null && ask_user to uninstall rvm with rvm implode
     if on_mac_os;then
         homebrew_install_latest rbenv
+        homebrew_install_latest ruby-build # plugin for rbenv
     else # TODO: if on linux
         local rbenv_dir="$HOME/.rbenv"
         if ! [ -d $rbenv_dir ]; then
