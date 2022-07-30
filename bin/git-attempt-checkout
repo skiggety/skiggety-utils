@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety_utils.bash
+
+SEARCH="$1"
+BRANCHES="$(git branch -a | grep $SEARCH | grep remotes/origin/ | awk -F/ '{print $3}' )"
+BRANCHES_COUNT="$(echo $BRANCHES | wc -w)"
+
+if [ $BRANCHES_COUNT == 0 ]; then
+    exit_with_error "no branches found"
+elif [ $BRANCHES_COUNT == 1 ]; then
+    git checkout $BRANCHES
+else
+    echo "multiple branches found, use longer search term or try one of these:"
+    echo
+    echo "$BRANCHES" | awk '{print "git checkout " $1}'
+    exit 1
+fi
