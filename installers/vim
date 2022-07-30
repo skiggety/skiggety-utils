@@ -38,6 +38,22 @@ class VimInstaller
 
     bundle_dir = "#{Dir.home}/.vim/bundle"
     FileUtils.mkdir_p bundle_dir
+
+    git_clone_latest('https://github.com/tpope/vim-rails.git', "#{bundle_dir}/vim-rails")
+    # TODO: learn to use:
+    git_clone_latest('https://github.com/preservim/nerdcommenter.git', "#{bundle_dir}/nerdcommenter")
+    # TODO: fzf.vim
+    # TODO: nerdcommenter
+    # TODO: nerdtree
+    # TODO: vim-ripgrep
+  end
+
+  # TODO: maybe move to installable_skiggety_util.rb:
+  def git_clone_latest(repo, dir)
+    assert_system("git clone #{repo} #{dir}") unless Dir.exist?(dir)
+    Dir.chdir(dir) do
+      assert_system('git pull')
+    end
   end
 
   def configure

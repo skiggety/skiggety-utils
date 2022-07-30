@@ -16,9 +16,29 @@ set showcmd
 
 set number
 set relativenumber
+
 highlight LineNr ctermfg=black ctermbg=grey
 
+set autoindent
+set wildmenu
+set history=1000
+set visualbell
 filetype plugin indent on
+
+" Auto-reload vimrc
+augroup reload_vimrc " {
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
+
+" bind K to grep word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+" Run the current file with rspec
+map <Leader>rb :Dispatch bin/rspec %<CR>
+
+" NERDCommenter
+let g:NERDSpaceDelims = 1
+let g:NERDTrimTrailingWhitespace = 1
 
 highlight KeywordForComments ctermbg=yellow guibg=yellow
 au BufWinEnter * call matchadd("KeywordForComments", '\<\(TODO\|IGNORE_TODO\|XXX\|\(UN-\)\|HARDCODE\|DELETE\|UNCOMMENT\|COMMENT\|MAYBE\|ISSUE\|MOVE\|DEBUG\|REFACTOR\|EXPERIMENTAL\|byebug\)\>')
