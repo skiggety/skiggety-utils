@@ -62,6 +62,7 @@ function main {
                 exit_with_error "must run $(basename $0) interactively to install homebrew"
             fi
         fi
+        brew upgrade
     fi
 
     debug_here "rbenv:"
