@@ -64,6 +64,10 @@ function echo_debug {
     fi
 }
 
+function debug {
+    echo_debug "$*"
+}
+
 function debug_here {
     echo_debug "$* $(echo_callsite)"
 }
