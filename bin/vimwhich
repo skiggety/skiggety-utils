@@ -30,7 +30,7 @@ for target in "$@";do
     fi
     destinations+=( "$destination" ) #; debug_eval_here destinations; pretty_sleep 5
 
-    # TODO TODO: create $destination file from template if it doesn't exist and mark it executable
+    # TODO TODO TODO: create $destination file from template if it doesn't exist and mark it executable
 
 done
 vim -o "${destinations[@]}"

@@ -43,6 +43,7 @@ function accumulate_error {
     cumulative_error_count=$(($cumulative_error_count+$exit_status))
 }
 
+# TODO: rename to exit_with_any_accumulated_errors
 function exit_if_any_accumulated_errors {
     if ! [ -z "$cumulative_error_count" ]; then
         exit_with_accumulated_errors
