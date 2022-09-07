@@ -41,6 +41,7 @@ class TestInstallableSkiggetyUtil < Minitest::Test
     @no_op_subject = DummyNoOpInstaller.new
   end
 
+  # TODO TODO: test call_peer_installer(name)
   # TODO: test self.run
   # TODO: test run
   # TODO: test name
@@ -63,7 +64,6 @@ class TestInstallableSkiggetyUtil < Minitest::Test
   # TODO: test raise_interactive_only_configuration
   # TODO: test raise_interactive_only_install
   # TODO: test raise_interactive_only_action(action)
-  # TODO: test call_peer_installer(name)
   # TODO: test config_tree_hash
   # TODO: test config_exist?
   # TODO: test config_dir_path

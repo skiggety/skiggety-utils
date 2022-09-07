@@ -1,1 +1,0 @@
-../../installers/terminal_profiles

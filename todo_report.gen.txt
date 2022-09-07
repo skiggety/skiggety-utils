@@ -1,5 +1,5 @@
-./installers/tmux:6:raise 'TODO^5: IMPLEMENT'
-./installers/vim:47:    # TODO^5: ripgrep
-./installers/rg:6:raise 'TODO^6: IMPLEMENT'
-./installers/vim:46:    # TODO^6: fzf
-./installers/fzf:6:raise 'TODO^7: IMPLEMENT'
+./installers/vim:49:    # TODO^5: ripgrep
+./installers/evernote:6:raise 'TODO^6: IMPLEMENT'
+./installers/ripgrep:8:raise 'TODO^6: IMPLEMENT'
+./installers/vim:28:    # TODO^6: call_peer_installer('ripgrep')
+./installers/vim:48:    # TODO^7: 'fzf' plugin (and learn to use it)

@@ -99,6 +99,17 @@ module InstallableSkiggetyUtil
     end
   end
 
+  # TODO: rename:
+  # call another installer besides this one, for prerequisites
+  def call_peer_installer(name)
+    # TODO^3: perhaps if the installer contains 'include InstallableSkiggetyUtil', we should call it in the same process
+    install_command = File.join(installer_directory_path, name)
+    install_command += ' --non-interactive' unless $interactive
+    puts "calling: \"#{install_command}\"."
+    system(install_command)
+    raise "Failed to set up \"#{name}\", which is blocking \"#{self.name}\"." unless $CHILD_STATUS == 0
+  end
+
   def past_install_marker_file_paths
     result = Dir.glob(File.join(installer_directory_path, install_marker_file_name_prefix + '*'))
     result.delete(current_install_marker_file_path)
@@ -154,14 +165,6 @@ module InstallableSkiggetyUtil
   def raise_interactive_only_action(action)
     raise "Cannot #{action} #{name} in non-interactive mode, user should run \"install-skiggety-utils\" or "\
           "\"#{installer_file_path}\"."
-  end
-
-  def call_peer_installer(name)
-    # TODO^3: perhaps if the installer contains 'include InstallableSkiggetyUtil', we should call it in the same process
-    install_command = File.join(installer_directory_path, name)
-    install_command += ' --non-interactive' unless $interactive
-    system(install_command)
-    raise "Failed to set up \"#{name}\", which is blocking \"#{self.name}\"." unless $CHILD_STATUS == 0
   end
 
   def config_tree_hash

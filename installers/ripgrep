@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ripgrep is AKA rg, a way faster recursive grep
+
 require_relative '../lib/installable_skiggety_util'
 
 raise 'TODO TODO TODO TODO TODO TODO: IMPLEMENT'

@@ -9,3 +9,5 @@ gem 'rubocop', require: false, group: :test
 gem 'rubocop-minitest', require: false, group: :test
 gem 'rubocop-rake', require: false, group: :test
 gem 'simplecov', require: false, group: :test
+
+gem 'byebug', '~> 11.1'

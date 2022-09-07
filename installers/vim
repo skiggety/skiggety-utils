@@ -24,8 +24,10 @@ class VimInstaller
   end
 
   def install
+    call_peer_installer('fzf')
+    # TODO TODO TODO TODO TODO TODO: call_peer_installer('ripgrep')
     if $interactive
-      delegate_to_user 'make sure vim is installed'
+      delegate_to_user 'make sure vim is installed by running \'vim -h\' or some such...'
     else
       raise_interactive_only_install
     end
@@ -43,7 +45,7 @@ class VimInstaller
     git_clone_latest('https://github.com/tpope/vim-rails.git', "#{bundle_dir}/vim-rails")
     # TODO TODO: learn to use:
     git_clone_latest('https://github.com/preservim/nerdcommenter.git', "#{bundle_dir}/nerdcommenter")
-    # TODO TODO TODO TODO TODO TODO: fzf
+    # TODO TODO TODO TODO TODO TODO TODO: 'fzf' plugin (and learn to use it)
     # TODO TODO TODO TODO TODO: ripgrep
     # TODO: vim-ripgrep
     # TODO: nerdcommenter
