@@ -5,4 +5,5 @@ require_relative '../lib/installable_skiggety_util'
 
 raise 'TODO TODO TODO TODO TODO: IMPLEMENT'
 
-# TODO: handle tmux config like vim config, by bringing up a diff window between ~/.tmux.conf and ./installers/tmux.config/tmux.conf
+# TODO: handle tmux config like vim config, by bringing up a diff window between ~/.tmux.conf and
+# ./installers/tmux.config/tmux.conf
