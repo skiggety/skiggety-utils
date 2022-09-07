@@ -13,7 +13,7 @@ export CLICOLOR='xterm-color' # colorize ls output and such in mac xterm
 
 # TODO: use more stuff from older bashrc files I've used
 
-trap 'if [ "login" == "$(ps -o comm= $PPID)" ];then echo holding the window open for a short interval;pretty_sleep 15;fi' EXIT
+trap 'if [ "login" == "$(ps -o comm= $PPID)" ];then echo holding the window open for a short interval just in case you exited prematurely;pretty_sleep 30;fi' EXIT
 
 # rbenv stuff (should be at the bottom of this file):
 export PATH="$HOME/.rbenv/bin:$PATH"
