@@ -69,8 +69,8 @@ def main():
 
 # TODO: flags:
 
-  # TODO TODO: highlighting on or off. It should be on by default unless output is piped to a file,
-  # like with grep and "--color" (or "--colour" )
+  # TODO TODO TODO: highlighting on or off. It should be on by default unless output is piped to a
+  # file, like with grep and "--color" (or "--colour" )
 
     # TODO TODO: highlight TODO's
 

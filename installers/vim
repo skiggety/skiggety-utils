@@ -33,6 +33,7 @@ class VimInstaller
     brew_install_latest 'macvim' if on_mac_os?
     # TODO TODO: install gvim (gui) for linux
 
+    # installing pathogen means we can install other plugins by dropping them in the "bundle" directory:
     FileUtils.mkdir_p "#{Dir.home}/.vim/autoload"
     puts `curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim`
 
@@ -40,12 +41,13 @@ class VimInstaller
     FileUtils.mkdir_p bundle_dir
 
     git_clone_latest('https://github.com/tpope/vim-rails.git', "#{bundle_dir}/vim-rails")
-    # TODO: learn to use:
+    # TODO TODO: learn to use:
     git_clone_latest('https://github.com/preservim/nerdcommenter.git', "#{bundle_dir}/nerdcommenter")
-    # TODO: fzf.vim
+    # TODO TODO TODO TODO TODO TODO: fzf
+    # TODO TODO TODO TODO TODO: ripgrep
+    # TODO: vim-ripgrep
     # TODO: nerdcommenter
     # TODO: nerdtree
-    # TODO: vim-ripgrep
   end
 
   # TODO: maybe move to installable_skiggety_util.rb:

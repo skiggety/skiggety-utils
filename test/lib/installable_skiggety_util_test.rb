@@ -33,7 +33,7 @@ end
 
 class TestInstallableSkiggetyUtil < Minitest::Test
 
-  # TODO TODO TODO: write more tests, but not private methods
+  # TODO TODO TODO: write more tests
 
   def setup
     @raw_subject = RawDummyInstaller.new

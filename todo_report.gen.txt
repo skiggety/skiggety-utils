@@ -1,5 +1,5 @@
-./test/lib/installable_skiggety_util_test.rb:36:  # TODO^3: write more tests, but not private methods
-./.rubocop_todo.yml:9:# TODO^4: Eliminate this file, bit by bit
-./bin/default_dashboard:17:# TODO^4: put test output right here if tests failed so todo's are the thing to scroll off the top of the screen instead of this.
-./bin/review:19:# TODO^4: accept --minimum-delay or -m (e.g. auto-ci might want to call this with "-m 30")
-./bin/today_todo:2:# TODO^5: rename?
+./installers/tmux:6:raise 'TODO^5: IMPLEMENT'
+./installers/vim:47:    # TODO^5: ripgrep
+./installers/rg:6:raise 'TODO^6: IMPLEMENT'
+./installers/vim:46:    # TODO^6: fzf
+./installers/fzf:6:raise 'TODO^7: IMPLEMENT'

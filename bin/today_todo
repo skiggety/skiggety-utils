@@ -19,6 +19,7 @@ vim -o $files_to_open '+/\.\.\.'
 
 clear
 
+# TODO TODO: some of the custom stuff from dashboard on eelwright should just be part of this
 if [ -f ./PWD_BIN/dashboard ]; then
     ./PWD_BIN/dashboard # TODO: look closer at this program. maybe it should be committed or part of this program?
 else
