@@ -77,7 +77,8 @@ function use_installer {
           # TODO TODO TODO: DELETE this temporary special-case cruft as soon as I can, probably when this gets rewritten in a real language:
           "$installer" == "jiggler" ||
           "$installer" == "misc_utils" ||
-          "$installer" == "ssh-agent" ]]; then
+          "$installer" == "ssh-agent" ||
+          "$installer" == "synergy" ]]; then
         # TODO: debug_here "skipping \"$installer\" installer for now..."
         return 0
     else
