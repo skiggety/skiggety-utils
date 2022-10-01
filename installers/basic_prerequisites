@@ -38,7 +38,7 @@ function main {
     completed_markers_start_with="$THIS_DIR/.$(basename $0).updated_with_version."
     completed_marker="$completed_markers_start_with$self_hash"
 
-    if ! $interactive; then
+    if ! $interactive; then # TODO: should this really depend on interactive mode? how about unless --force ?
         if [ -f $completed_marker ]; then
             if find $completed_marker -mtime -1 | grep $completed_marker >/dev/null; then
                 completed_marker_time="$(ls -l $completed_marker| awk '{print $6" "$7" "$8}')"

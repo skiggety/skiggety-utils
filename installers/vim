@@ -47,7 +47,7 @@ class VimInstaller
     git_clone_latest('https://github.com/tpope/vim-rails.git', "#{bundle_dir}/vim-rails")
     # TODO TODO: learn to use:
     git_clone_latest('https://github.com/preservim/nerdcommenter.git', "#{bundle_dir}/nerdcommenter")
-    # TODO TODO TODO TODO TODO TODO TODO: 'fzf' plugin (and learn to use it)
+    # TODO TODO TODO TODO TODO TODO TODO TODO: 'fzf' plugin (and learn to use it)
     # TODO TODO TODO TODO TODO: ripgrep
     # TODO: vim-ripgrep
     # TODO: nerdcommenter
