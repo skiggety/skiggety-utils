@@ -17,9 +17,6 @@ $THIS_DIR/install-skiggety-utils --non-interactive || accumulate_error "could no
 echo_divider_with_text "+-=======-" "ruby_setup"
 { $THIS_DIR/ruby_setup 2>&1 || echo FOO; } | tail -n 1 # in case this part gets skipped in installers/basic_prerequisites
 
-# echo_divider_with_text "+-=======-" "run lint"
-lint || accumulate_error "lint FAILED"
-
 echo_divider_with_text "+-=======-" "'todo' tests"
 ./test/test_todo.bash || accumulate_error "shell integration tests failed"
 
