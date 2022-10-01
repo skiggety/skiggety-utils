@@ -10,7 +10,7 @@ class RipgrepInstaller
   include InstallableSkiggetyUtil
 
   def apparently_installed?
-    system 'which rg'
+    program_version_option_output_matches?('rg', / 13\.0\.0 /)
   end
 
   def apparently_configured?
