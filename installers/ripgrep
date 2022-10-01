@@ -5,4 +5,26 @@
 
 require_relative '../lib/installable_skiggety_util'
 
-raise 'TODO TODO TODO TODO TODO TODO: IMPLEMENT'
+class RipgrepInstaller
+
+  include InstallableSkiggetyUtil
+
+  def apparently_installed?
+    system 'which rg'
+  end
+
+  def apparently_configured?
+    true # no config
+  end
+
+  def install
+    if on_mac_os?
+      brew_install_latest 'rg'
+    else
+      raise 'TODO: IMPLEMENT'
+    end
+  end
+
+end
+
+RipgrepInstaller.run
