@@ -40,8 +40,8 @@ class TodoLine:
             return 1
         # TODO: maybe use a list comprehension instead of map, as it's more pythonic:
         votecount_list = map(word_votecount, todo_entry.split(' '))
-        def add(x, y):
-            return x + y
+        def add(x_int, y_int):
+            return x_int + y_int
         votecount = reduce(add,votecount_list)
         self.record_todo_entry_votecount(votecount)
         def wordify_number(votes):
