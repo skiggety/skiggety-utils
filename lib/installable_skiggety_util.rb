@@ -5,8 +5,11 @@
 # TODO: mark more of these methods private
 
 require 'fileutils'
+require_relative 'user_delegation'
 
 module InstallableSkiggetyUtil
+
+  include UserDelegation
 
   def self.included(base)
     base.class_eval do
@@ -20,28 +23,35 @@ module InstallableSkiggetyUtil
     # TODO TODO: should we catch exceptions and print them without a full stack trace?
     $interactive = !ARGV.delete('--non-interactive')
 
-    # TODO TODO: REFACTOR:
+    ensure_installed!
+    ensure_configured!
+  end
+
+  def ensure_installed!
     unless marked_installed?
       if apparently_installed?
-        puts "#{name} installation is already done" # TODO: debug only
         $stdout.flush
+        mark_installed
       else
         puts "Installing #{name}"
         $stdout.flush
         install # TODO TODO: catch exception and wrap in: raise "install command failed for #{self.class}"
+        mark_installed if apparently_installed?
       end
-      mark_installed
     end
+  end
+
+  def ensure_configured!
     unless marked_configured?
       if apparently_configured?
-        puts "#{name} configuration is already done" # TODO: debug only
         $stdout.flush
+        mark_configured
       else
         puts "Configuring #{name}"
         $stdout.flush
         configure
+        mark_configured if apparently_configured?
       end
-      mark_configured
     end
   end
 
@@ -84,19 +94,6 @@ module InstallableSkiggetyUtil
 
   def marked_installed?
     File.exist?(current_install_marker_file_path)
-  end
-
-  # TODO TODO: extract delegate_to_user and ask_user to another library/gem
-  def delegate_to_user(request_text)
-    raise "user failed to: '#{request_text}" unless ask_user(request_text)
-  end
-
-  def ask_user(request_text)
-    if $interactive
-      system("#{installer_directory_path}/../bin/ask_user '#{request_text}'")
-    else
-      raise "Cannot ask user to do the following without being in interactive mode: '#{request_text}'"
-    end
   end
 
   # TODO: rename:

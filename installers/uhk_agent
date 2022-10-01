@@ -18,7 +18,8 @@ class UltimateHackingKeyboardAgentInstaller
   end
 
   def apparently_configured?
-    false # assume we need configuration done if the marker file isn't there
+    # TODO: ask user less stuff, but we still need a way to return true here when it's been done:
+    ask_user 'Has the UHK has been set up OK?'
   end
 
   def install

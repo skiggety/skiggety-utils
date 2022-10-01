@@ -17,7 +17,8 @@ class TerminalProfileConfigurer
 
       FileUtils.compare_file(user_qterminal_ini_path, template_qterminal_ini_path)
     else
-      false # TODO: IMPLEMENT
+      # TODO: ask user less stuff, but we still need a way to return true here when it's been done:
+      ask_user 'Have terminal profiles have been set up OK?'
       # TODO: commit/sync/install linux terminal profiles?
     end
   end
