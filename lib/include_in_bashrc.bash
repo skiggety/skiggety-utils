@@ -17,7 +17,9 @@ trap 'if [ "login" == "$(ps -o comm= $PPID)" ];then echo holding the window open
 
 # rbenv stuff (should be at the bottom of this file):
 export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+if which rbenv;then
+    eval "$(rbenv init -)"
+fi
 
 # pyenv stuff (should be at the bottom of this file):
 export PYENV_ROOT="$HOME/.pyenv"
