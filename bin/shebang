@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# just try running "shebang bash" or "shebang env ruby > new.rb" or something. You'll see.
+
+DIR="$(dirname $(which $1))"
+echo "#!$DIR/$@"
