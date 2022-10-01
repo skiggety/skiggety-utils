@@ -171,6 +171,11 @@ function main {
     echo "Installing nose2" # TODO: move
     pip install nose2
 
+    if ! which pylint > /dev/null; then
+        echo "Installing pylint"
+        python -m pip install pylint
+    fi
+
     exit_if_any_accumulated_errors # before marking complete
 
     # mark complete
