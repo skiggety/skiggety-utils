@@ -233,7 +233,7 @@ module InstallableSkiggetyUtil
 
   # TODO TODO: rename?
   def program_version_option_output_matches?(program, version_regex)
-    version_output = `#{program} --version | head -n 1`
+    version_output = `#{program} --version | head -n 1`.chomp
     (version_output =~ version_regex).is_a?(Numeric) # TODO TODO: update desired vim version
   end
 
