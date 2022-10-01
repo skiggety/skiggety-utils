@@ -17,7 +17,7 @@ trap 'if [ "login" == "$(ps -o comm= $PPID)" ];then echo holding the window open
 
 # rbenv stuff (should be at the bottom of this file):
 export PATH="$HOME/.rbenv/bin:$PATH"
-if which rbenv;then
+if which rbenv > /dev/null;then
     eval "$(rbenv init -)"
 fi
 
