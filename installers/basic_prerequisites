@@ -168,6 +168,9 @@ function main {
         pyenv versions
     fi
 
+    echo "Updating pip..."
+    python -m pip install --upgrade pip
+
     echo "Installing nose2" # TODO: move
     pip install nose2
 
