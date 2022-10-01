@@ -76,6 +76,8 @@ function main {
         fi
     fi
 
+    true
+
 }
 
 main "$@"
