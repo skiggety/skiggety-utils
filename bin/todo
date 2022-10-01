@@ -45,7 +45,8 @@ def main():
         dirs[:] = [d for d in dirs if d not in exclude_dirs]
         for file_path in file_paths:
             full_file_path = os.path.join(root, file_path)
-            if stat.S_ISBLK(os.stat(full_file_path).st_mode) or stat.S_ISSOCK(os.stat(full_file_path).st_mode): # skip devices
+            if (stat.S_ISBLK(os.stat(full_file_path).st_mode) or
+                stat.S_ISSOCK(os.stat(full_file_path).st_mode) ): # skip devices
                 continue
             with open(full_file_path) as file:
                 line_number = 0
