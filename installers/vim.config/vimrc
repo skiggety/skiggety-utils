@@ -10,7 +10,7 @@ set textwidth=120
 set colorcolumn=+1
 
 "status bar
-set laststatus=2
+set laststatus=2 "Always show status bar
 set ruler
 set showcmd
 
