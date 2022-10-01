@@ -11,6 +11,8 @@ export PS1="\$(duh)\$(git branch 2>/dev/null|grep '^*'|sed 's/^\\*/ \\*/') - \D{
 
 export CLICOLOR='xterm-color' # colorize ls output and such in mac xterm
 
+alias tmux="TERM=screen-256color-bce tmux"
+
 # TODO: use more stuff from older bashrc files I've used
 
 trap 'if [ "login" == "$(ps -o comm= $PPID)" ];then echo holding the window open for a short interval just in case you exited prematurely;pretty_sleep 30;fi' EXIT
