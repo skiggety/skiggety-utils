@@ -106,8 +106,7 @@ module InstallableSkiggetyUtil
     install_command = File.join(installer_directory_path, name)
     install_command += ' --non-interactive' unless $interactive
     puts "calling: \"#{install_command}\"."
-    system(install_command)
-    raise "Failed to set up \"#{name}\", which is blocking \"#{self.name}\"." unless $CHILD_STATUS == 0
+    raise "Failed to set up \"#{name}\", which is blocking \"#{self.name}\"." unless system(install_command)
   end
 
   def past_install_marker_file_paths

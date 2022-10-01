@@ -24,8 +24,6 @@ class VimInstaller
   end
 
   def install
-    call_peer_installer('fzf')
-    # TODO TODO TODO TODO TODO TODO: call_peer_installer('ripgrep')
     if $interactive
       delegate_to_user 'make sure vim is installed by running \'vim -h\' or some such...'
     else
@@ -34,6 +32,10 @@ class VimInstaller
 
     brew_install_latest 'macvim' if on_mac_os?
     # TODO TODO: install gvim (gui) for linux
+
+    # we need these other programs installed to go much further since plugins depend on them:
+    call_peer_installer('fzf')
+    call_peer_installer('ripgrep')
 
     # installing pathogen means we can install other plugins by dropping them in the "bundle" directory:
     FileUtils.mkdir_p "#{Dir.home}/.vim/autoload"
