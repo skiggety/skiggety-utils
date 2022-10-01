@@ -13,7 +13,6 @@ set colorcolumn=+1
 set laststatus=2 "Always show status bar
 set ruler
 set showcmd
-
 set number
 set relativenumber
 
