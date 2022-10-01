@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# TODO TODO TODO TODO TODO TODO: automate https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko
+
 require_relative '../lib/installable_skiggety_util'
 
 class FzfInstaller

@@ -1,5 +1,5 @@
-./bin/default_dashboard:17:# TODO^4: put test output right here if tests failed so todo's are the thing to scroll off the top of the screen instead of this.
 ./bin/review:19:# TODO^4: accept --minimum-delay or -m (e.g. auto-ci might want to call this with "-m 30")
 ./bin/today_todo:2:# TODO^5: rename?
 ./installers/vim:51:    # TODO^5: ripgrep
+./installers/fzf:4:# TODO^6: automate https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko
 ./installers/vim:50:    # TODO^8: 'fzf' plugin (and learn to use it)
