@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative '../lib/installable_skiggety_util'
+
+class EvernoteInstaller
+
+  include InstallableSkiggetyUtil
+
+  def apparently_installed?
+    if on_mac_os?
+      # TODO: Checking the version would be a better approach if possible, I guess:
+      Dir.exist?('/Applications/Evernote.app')
+    else
+      raise NotImplementedError, 'TODO: implement this for this OS'
+    end
+  end
+
+  def apparently_configured?
+    ask_user 'Are you able to use Evernote?'
+  end
+
+  def install
+    delegate_download_and_install_to_user('https://evernote.com/download', 'Evernote')
+  end
+
+  def configure
+    delegate_to_user 'Sign in to Evernote'
+  end
+
+end
+
+EvernoteInstaller.run

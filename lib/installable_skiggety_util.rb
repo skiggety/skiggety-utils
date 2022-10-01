@@ -203,16 +203,6 @@ module InstallableSkiggetyUtil
     File.expand_path(self.class.instance_method(:apparently_installed?).source_location[0])
   end
 
-  def open_in_browser(url)
-    if on_mac_os?
-      assert_system("open #{url}")
-    elsif on_linux_os?
-      assert_system("browse #{url} 2>/dev/null")
-    else
-      raise NotImplementedError, 'TODO: implement this for this OS' # IGNORE_TODO
-    end
-  end
-
   def on_mac_os?
     @on_mac_os ||= calc_on_mac_os?
   end
