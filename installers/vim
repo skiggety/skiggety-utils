@@ -12,7 +12,7 @@ class VimInstaller
   include InstallableSkiggetyUtil
 
   def apparently_installed?
-    program_version_option_output_matches?('vim', / 8\.0 /)
+    program_version_option_output_matches?('vim', / 9\.0 /)
   end
 
   # err on the side of returning false...if these files don't match perfectly
