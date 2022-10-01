@@ -8,7 +8,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
 function main {
-    echo_debug "Setting up $(basename $0)"
+    debug_here "Setting up $(basename $0)"
 
     for arg in "$@"; do
         shift
