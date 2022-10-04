@@ -72,6 +72,7 @@ function main {
     done
 
     exit_if_any_accumulated_errors
+    echo "$(basename $0) COMPLETE."
 }
 
 # this function runs the installer, checks the exit code, prints context/formatting around it, perhaps remembers if it has already succeeded.
