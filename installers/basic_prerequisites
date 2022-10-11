@@ -38,15 +38,16 @@ function main {
     completed_markers_start_with="$THIS_DIR/.$(basename $0).updated_with_version."
     completed_marker="$completed_markers_start_with$self_hash"
 
-    if ! $interactive; then # TODO: should this really depend on interactive mode? how about unless --force ?
-        if [ -f $completed_marker ]; then
-            if find $completed_marker -mtime -1 | grep $completed_marker >/dev/null; then
-                completed_marker_time="$(ls -l $completed_marker| awk '{print $6" "$7" "$8}')"
-                echo "$(basename $(dirname $0))/$(basename $0) has already completed in the last day (at $completed_marker_time), so skipping updates in non-interactive mode."
-                exit 0
-            fi
+    #if ! $interactive; then # TODO: should this really depend on interactive mode? how about unless --force ?
+    if [ -f $completed_marker ]; then
+        debug_here "completed marker $completed_marker exists"
+        if find $completed_marker -mtime -1 | grep $completed_marker >/dev/null; then
+            completed_marker_time="$(ls -l $completed_marker| awk '{print $6" "$7" "$8}')"
+            debug_here "$(basename $(dirname $0))/$(basename $0) has already completed in the last day (at $completed_marker_time), so skipping updates in non-interactive mode."
+            exit 0
         fi
     fi
+    # fi
 
     # homebrew
     if on_mac_os;then
