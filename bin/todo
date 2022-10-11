@@ -9,6 +9,7 @@ import stat
 sys.path.append(os.path.abspath(os.path.join(os.getenv('SKIGGETY_UTILS_DIR'),"lib")))
 from todo_line import *
 
+# TODO: accept piped-in grep output for sorting
 if sys.version_info[0] < 3:
     raise Exception('Must be using Python 3')
 
