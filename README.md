@@ -42,13 +42,13 @@ misc TODO's:: (run 'todo' or 'dashboard' for the full sorted list) <!-- (IGNORE_
 - TODO: document usage of commands
 - TODO TODO TODO: write a program to abbreviate output for use in the dashboard. You should be able to specify a maximum number of lines and pipe output through it, and it will do something like "head" or "tail" if necessary, but also display information about how many lines were removed/kept/found-in-total
   - TODO TODO: once we can abbreviate, maybe choose the linecounts for different things dynamically depending on the terminal size
+- TODO TODO TODO: consider supporting zsh
 - TODO TODO: music rotator thingy
 - TODO: mini-project: raspberry pi backup machine, and the software to run it.
 - TODO: "playbot", a program that tunes in youtube livestreams, video meetings, watch later, podcasts and your personal dashboards, automatically. Great as an information radiator.
-- TODO: inforad (chrome extension?) information radiator
 - TODO TODO: collect data on email inbox, etc. and auto-generate graphs for the dashboard
+- TODO: inforad (chrome extension?) information radiator
 - TODO: systematized config (automate the configuration I always want anyway)
-- TODO TODO: consider supporting zsh
     - TODO TODO: hook up to google drive
 - TODO: help set up home data center?
   - TODO: set up router
