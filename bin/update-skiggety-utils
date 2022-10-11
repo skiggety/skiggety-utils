@@ -5,9 +5,11 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 
 # This script installs the latest skiggety-utils
 
-# TODO TODO: consider making this runnable from anwhere. You'd have to pushd to the dir and move this script from PWD_BIN to bin
+pushd $SKIGGETY_UTILS_DIR
+
 git pull || exit_with_error "could not pull latest changes from git"
 
-$THIS_DIR/install-skiggety-utils "$@" || exit 1
+install-skiggety-utils "$@" || exit 1
 
+popd
 echo "$(basename $0) COMPLETE."
