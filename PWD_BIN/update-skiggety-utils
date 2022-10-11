@@ -9,3 +9,5 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 git pull || exit_with_error "could not pull latest changes from git"
 
 $THIS_DIR/install-skiggety-utils "$@" || exit 1
+
+echo "$(basename $0) COMPLETE."
