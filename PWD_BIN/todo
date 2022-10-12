@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+THIS_NAME="$(basename $0)"
+$(nextwhich $THIS_NAME) $* | grep -v todo_report.gen.txt # TODO: get rid of the grep -v once todo supports --exclude option
