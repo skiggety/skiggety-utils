@@ -35,6 +35,9 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " Run the current file with rspec
 map <Leader>rb :Dispatch bin/rspec %<CR>
 
+" fzf
+set rtp+=/usr/local/opt/fzf
+
 " NERDCommenter
 let g:NERDSpaceDelims = 1
 let g:NERDTrimTrailingWhitespace = 1
