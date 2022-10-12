@@ -15,9 +15,6 @@ if sys.version_info[0] < 3:
 
 PROGRAM_DESCRIPTION = 'finds TODOs, sorted by votes'
 
-# TODO: accept --exclude-dir option, using:
-# https://stackoverflow.com/questions/19859840/excluding-directories-in-os-walk
-
 def main():
     """Find and display todo entries, according to options passed in."""
 
@@ -29,6 +26,7 @@ def main():
             help = 'Select a keyword. Defaults to \'TODO\'.') # IGNORE_TODO
     # TODO: add_argument('-i', '--ignore-keyword', help = 'TODO')
     arg_parser.add_argument('--exclude-dir', help = 'Directories to exclude.', action = 'append')
+    # TODO: support stuff like ' --exclude todo_report.gen.txt' starting with: arg_parser.add_argument('--exclude', help = 'Directories to exclude.', action = 'append')
     command_line_args = arg_parser.parse_args()
 
     exclude_dirs = command_line_args.exclude_dir or []
