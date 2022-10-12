@@ -12,8 +12,8 @@ export PS1="\$(duh)\$(git branch 2>/dev/null|grep '^*'|sed 's/^\\*/ \\*/') - \D{
 export CLICOLOR='xterm-color' # colorize ls output and such in mac xterm
 
 if type rg &> /dev/null; then
-  export FZF_DEFAULT_COMMAND='rg --files'
-  export FZF_DEFAULT_OPTS='-m --height 50% --border'
+    export FZF_DEFAULT_COMMAND='rg --files'
+    export FZF_DEFAULT_OPTS='-m --height 50% --border'
 fi
 
 alias tmux="TERM=screen-256color-bce tmux"
