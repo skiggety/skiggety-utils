@@ -4,7 +4,7 @@
 # TODO: this program needs to display some instructions so the user knows how to use it.
 
 todo_list_file_name="TODO.$(isotoday).txt" # IGNORE_TODO
-todo_list_dir_path="$HOME/daily_todo_lists" # TODO TODO: rename?
+todo_list_dir_path="$HOME/today_todo"
 
 mkdir -p "$todo_list_dir_path"
 cd "$todo_list_dir_path"
