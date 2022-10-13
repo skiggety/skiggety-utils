@@ -3,7 +3,11 @@
 
 # TODO: this program needs to display some instructions so the user knows how to use it.
 
-todo_list_file_name="TODO.$(isotoday).txt" # IGNORE_TODO
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+isotoday="$(isotoday)"
+
+todo_list_file_name="TODO.$isotoday.txt" # IGNORE_TODO
 todo_list_dir_path="$HOME/today_todo"
 
 mkdir -p "$todo_list_dir_path"
@@ -19,10 +23,29 @@ vim -o $files_to_open '+/\.\.\.'
 
 clear
 
-# TODO TODO: some of the custom stuff from dashboard on eelwright should just be part of this
-if [ -f ./PWD_BIN/dashboard ]; then
-    # TODO: in dashboard, graph how many are done each day
-    ./PWD_BIN/dashboard # TODO TODO: look closer at this program. maybe it should be committed or part of this program?
-else
-    todo # TODO: -n 5 # TODO TODO: todo should accept an option for the number of lines. like "-n 3"
-fi
+# TODO: consider extracting the rest of this to "today_todo_report", which can be overridden with PWD_BIN:
+todo_list_file_name="TODO.$isotoday.txt"   # IGNORE_TODO
+todo_output="$(todo)" # TODO: -n 5 # TODO TODO: todo should accept an option for the number of lines. like "-n 3". Maybe if we pass an option in?
+grep -n DONE $(ls -1 TODO.*.txt | tail -n 3) # IGNORE_TODO
+
+todo_count=$(( 0 + $(echo "$todo_output" | wc -l) ))
+echo
+echo "Found $todo_count todos:"
+echo "$todo_output" | tail -n 5
+
+todo_later_output="$(echo "$todo_output" | grep LATER)"
+todo_later_count=$(( 0 + $(echo "$todo_later_output" | wc -l) ))
+
+todo_prog_output="$(echo "$todo_output" | grep IN_PROGRESS | grep -v LATER)"
+todo_prog_count=$(( 0 + $(echo "$todo_prog_output" | wc -l) ))
+echo
+echo "Found $todo_prog_count todos IN_PROGRESS:"
+echo "$todo_prog_output"
+
+echo
+# TODO: show total vote count:
+echo "$(( $todo_count + $todo_prog_count )) combined score, $todo_prog_count todos IN_PROGRESS"
+
+# graph how many are done each day
+# TODO: what date format should I use?:
+echo "$isotoday,$todo_count,$todo_prog_count,$todo_later_count,$(( $todo_count + $todo_prog_count ))" >> graph.csv
