@@ -8,7 +8,7 @@
 isotoday="$(isotoday)"
 
 todo_list_file_name="TODO.$isotoday.txt" # IGNORE_TODO
-todo_list_dir_path="$HOME/today_todo"
+todo_list_dir_path="$HOME/$(basename $0)"
 
 mkdir -p "$todo_list_dir_path"
 cd "$todo_list_dir_path"
