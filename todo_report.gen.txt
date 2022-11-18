@@ -1,5 +1,5 @@
-./bin/review:19:# TODO^4: accept --minimum-delay or -m (e.g. auto-ci might want to call this with "-m 30")
 ./bin/today_todo:2:# TODO^5: rename?
 ./installers/vim:54:    # TODO^5: ripgrep
+./lib/installable_skiggety_util.rb:33:        # TODO^5: but what if it is apparently installed, but marked for an old hash (installer has changed), we should
 ./installers/vim:51:    # TODO^6: automate https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko
 ./installers/vim:52:    # TODO^8: (learn to use 'fzf' plugin ):

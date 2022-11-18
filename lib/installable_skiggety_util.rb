@@ -30,6 +30,8 @@ module InstallableSkiggetyUtil
   def ensure_installed!
     unless marked_installed?
       if apparently_installed?
+        # TODO^5: but what if it is apparently installed, but marked for an old hash (installer has changed), we should
+        # probably still run the installer
         $stdout.flush
         mark_installed
       else
