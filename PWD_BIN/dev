@@ -10,7 +10,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 
 echo_divider_with_text "//======" "dev:"
 
-test_all && echo "test_all SUCCEEDED" || accumulate_error "test_all FAILED"
+test_all && echo "test_all SUCCEEDED" || exit_with_error "test_all FAILED"
 
 lint && echo "lint SUCCEEDED" || accumulate_error "lint FAILED"
 

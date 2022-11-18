@@ -5,9 +5,10 @@ import os
 import subprocess
 import argparse
 import stat
+import re # regular expressions
 
 sys.path.append(os.path.abspath(os.path.join(os.getenv('SKIGGETY_UTILS_DIR'),"lib")))
-from todo_line import *
+from todo_line import TodoLine
 
 # TODO: accept piped-in grep output for sorting
 if sys.version_info[0] < 3:
@@ -38,7 +39,7 @@ def main():
     ignore_keyword = ignore_keyword or f'IGNORE_{keyword}'
     # TODO: validate that the keywords can only be letters, underscores, and some basic stuff
 
-    todo_lines = []
+    lines = []
 
     # TODO: refactor, too much nesting:
     keyword_regex        = re.compile(keyword)
@@ -58,15 +59,15 @@ def main():
                         line_number += 1
                         if keyword_regex.search(line):
                             if not ignore_keyword_regex.search(line):
-                                todo_lines.append(TodoLine(keyword, full_file_path, line_number,
+                                lines.append(TodoLine(keyword, full_file_path, line_number,
                                     line))
                 except UnicodeDecodeError: # skip binary files
                     pass
 
-    todo_lines = sorted(todo_lines, key = lambda l: (l.votecount, l.file_path, l.line_number))
+    lines = sorted(lines, key = lambda l: (l.votecount, l.file_path, l.line_number))
 
-    for todo_line in todo_lines:
-        print(str(todo_line))
+    for line in lines:
+        print(str(line))
 
     # TODO: print summary with TODO count, maybe a vote count
 
