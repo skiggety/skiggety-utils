@@ -1,3 +1,5 @@
+"""This class represents a line of code or text that has a todo on it, and knows about how many
+votes it has"""
 import re # regular expressions
 from functools import reduce
 

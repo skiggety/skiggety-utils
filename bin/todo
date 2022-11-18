@@ -1,4 +1,5 @@
 #!/usr/bin/env python3.9
+"""show TODO's in code (unless they say IGNORE_TODO on the same line, like this), sorted by votes"""
 
 import sys
 import os
