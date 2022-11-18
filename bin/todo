@@ -3,13 +3,14 @@
 
 import sys
 import os
-import subprocess
 import argparse
 import stat
 import re # regular expressions
 
 sys.path.append(os.path.abspath(os.path.join(os.getenv('SKIGGETY_UTILS_DIR'),"lib")))
+#pylint: disable=C0413
 from todo_line import TodoLine
+#pylint: enable=C0413
 
 # TODO: accept piped-in grep output for sorting
 if sys.version_info[0] < 3:
@@ -43,8 +44,6 @@ def main():
     lines = []
 
     # TODO: refactor, too much nesting:
-    keyword_regex        = re.compile(keyword)
-    ignore_keyword_regex = re.compile(ignore_keyword)
     for root, dirs, file_paths in os.walk('.', topdown=True):
         dirs[:] = [d for d in dirs if d not in exclude_dirs]
         for file_path in file_paths:
@@ -52,18 +51,7 @@ def main():
             if (stat.S_ISBLK(os.stat(full_file_path).st_mode) or
                 stat.S_ISSOCK(os.stat(full_file_path).st_mode) ): # skip devices
                 continue
-            with open(full_file_path) as file:
-                line_number = 0
-                try:
-                    for line in file:
-                        line = line.rstrip('\n')
-                        line_number += 1
-                        if keyword_regex.search(line):
-                            if not ignore_keyword_regex.search(line):
-                                lines.append(TodoLine(keyword, full_file_path, line_number,
-                                    line))
-                except UnicodeDecodeError: # skip binary files
-                    pass
+            add_lines_from_file(lines, full_file_path, keyword, ignore_keyword)
 
     lines = sorted(lines, key = lambda l: (l.votecount, l.file_path, l.line_number))
 
@@ -71,6 +59,29 @@ def main():
         print(str(line))
 
     # TODO: print summary with TODO count, maybe a vote count
+
+def add_lines_from_file(lines, full_file_path, keyword, ignore_keyword):
+    """given a file, collect relevant TodoLine's in lines"""
+    # TODO: make "lines" an instance variable, once this is all in a class
+
+    # TODO: it is inefficient to re-create these every time, so make them an instance variable:
+    keyword_regex        = re.compile(keyword)
+    ignore_keyword_regex = re.compile(ignore_keyword)
+
+    # what happens with files of different encodings?
+    #   TODO: make sure it works with files of different encodings
+    #   TODO: shut up pylint (it wants me to specify an encoding)
+    with open(full_file_path) as file:
+        line_number = 0
+        try:
+            for line in file:
+                line = line.rstrip('\n')
+                line_number += 1
+                if keyword_regex.search(line):
+                    if not ignore_keyword_regex.search(line):
+                        lines.append(TodoLine(keyword, full_file_path, line_number, line))
+        except UnicodeDecodeError: # skip binary files
+            pass
 
 # TODO: flags:
 
