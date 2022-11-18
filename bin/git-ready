@@ -12,6 +12,8 @@ while [[ "$1" == -* ]]; do
     fi
 done
 
+# TODO TODO: un-loop:
+# TODO: if the remote branch doesn't exist yet, we should skip trying git pull, since it will fail anyway
 for command in \
     'git add -p' \
     'git vimdiff --staged' \
@@ -19,6 +21,7 @@ for command in \
     'git pull' \
     'git push -u'
 do
+    # TODO TODO TODO: method extract:
     echo
     echo "running \"$command\" momentarily, press CTRL+C to stop..."
     pretty_sleep 2
