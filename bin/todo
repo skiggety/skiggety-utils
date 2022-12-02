@@ -90,10 +90,11 @@ def add_lines_from_file(lines, full_file_path, keyword, ignore_keyword):
 
     # TODO TODO: highlight TODO's
 
-  # TODO: rewrite changes back to files or not. Off by default.
+  # TODO TODO TODO TODO TODO TODO: rewrite changes back to files or not. Off by default.
 
     # TODO TODO: there should also be a "force" mode with a "-f/--force" flag that can do the
-    # replacements without asking
+    # replacements without asking. Also, for debugging anyway, you might want different levels of
+    # checking in with the user.
 
   # TODO TODO: todo should accept a path ( to a file or directory) to use in place of "." for grep.
   # This way you could run "todo bin/todo" and see the TODO's in this file cleanly without the
