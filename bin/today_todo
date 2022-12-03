@@ -45,6 +45,15 @@ echo
 echo "Found $todo_prog_count todos IN_PROGRESS:"
 echo "$todo_prog_output"
 
+# TODO: add NOW count to graph:
+todo_now_output="$(echo "$todo_output" | grep NOW)"
+todo_now_count=$(( 0 + $(echo "$todo_now_output" | wc -l) ))
+if [ "$todo_now_output" != "" ]; then
+    echo
+    echo "Found $todo_now_count todos to do right NOW:"
+    echo "$todo_now_output"
+fi
+
 echo
 # TODO: show total vote count:
 echo "$(( $todo_count + $todo_prog_count )) combined score, $todo_prog_count todos IN_PROGRESS"
