@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 # TODO TODO TODO TODO TODO: rename?
+# TODO: flag to grep for and count a specific word, sort of like what I do for "NOW"
+# TODO: "-q" or "-n" flag to be quick, and skip the editor phase
 
 # TODO: this program needs to display some instructions so the user knows how to use it.
+# TODO: maybe during business hours, show results with "BUSINESS_HOURS" more prominently, and hide them otherwise
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
