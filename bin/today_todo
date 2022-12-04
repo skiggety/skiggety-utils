@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# TODO TODO TODO TODO TODO: rename?
+# TODO TODO TODO TODO: rename? ("todo-today"?, "todoy"
 # TODO: flag to grep for and count a specific word, sort of like what I do for "NOW"
 # TODO: "-q" or "-n" flag to be quick, and skip the editor phase
 
@@ -45,7 +45,7 @@ echo
 echo "Found $todo_prog_count todos IN_PROGRESS:"
 echo "$todo_prog_output"
 
-# TODO: add NOW count to graph:
+# TODO TODO: add NOW count to graph:
 todo_now_output="$(echo "$todo_output" | grep NOW)"
 todo_now_count=$(( 0 + $(echo "$todo_now_output" | wc -l) ))
 if [ "$todo_now_output" != "" ]; then
