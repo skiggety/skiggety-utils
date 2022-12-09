@@ -30,14 +30,17 @@ echo_divider_with_text "-=" "git diff:"
 git -c color.ui=always --no-pager diff -U1 | head -n 17
 # TODO: this shows a more complete diff, including new files...do I want to use it instead?: for next in $( git ls-files --others --exclude-standard ) ; do git --no-pager diff --no-index /dev/null $next; done; # git diff
 
-echo_divider_with_text "-=" "git status:"
-git -c color.ui=always --no-pager status -ss
-
 DO_NOT_ADD="$(git diff --inter-hunk-context=1 | grep [X]XX)"
 if ! [ -z "$DO_NOT_ADD" ]; then
     echo_divider_with_text "!" "DO NOT ADD (X""XX) :"
     echo_error "$DO_NOT_ADD"
 fi
+
+echo_divider_with_text "-=" "git status:"
+GIT_STATUS="$(git -c color.ui=always --no-pager status -ss)"
+echo "$GIT_STATUS"
+GIT_STATUS_LINECOUNT="$(echo "$GIT_STATUS"|wc -l)"
+echo "$GIT_STATUS_LINECOUNT files with changes"
 
 DO_NOT_COMMIT="$(git diff --staged --inter-hunk-context=1 | grep [X]XX)"
 if ! [ -z "$DO_NOT_COMMIT" ]; then
