@@ -23,8 +23,7 @@ class VimInstaller
   def apparently_configured?
     return false unless File.exist?(user_vimrc_path)
 
-    FileUtils.compare_file(user_vimrc_path, template_vimrc_path) or
-      ask_user 'Have you confirmed that your vimrc is good enough?'
+    FileUtils.compare_file(user_vimrc_path, template_vimrc_path)
   end
 
   def install

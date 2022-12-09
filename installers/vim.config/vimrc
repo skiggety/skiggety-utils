@@ -3,6 +3,8 @@ execute pathogen#infect()
 set nocp
 syntax enable
 
+let mapleader = ","
+
 set hlsearch
 set incsearch                           " incremental searching
 
@@ -35,8 +37,9 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " Run the current file with rspec
 map <Leader>rb :Dispatch bin/rspec %<CR>
 
-" fzf
+" fzf:
 set rtp+=/usr/local/opt/fzf
+nnoremap <Leader>f :Rg<CR>
 
 " NERDCommenter
 let g:NERDSpaceDelims = 1

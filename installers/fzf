@@ -16,6 +16,7 @@ class FzfInstaller
   end
 
   def install
+    call_peer_installer('ripgrep') # since fzf is configured to depend on ripgrep
     if on_mac_os?
       brew_install_latest 'fzf'
     else
