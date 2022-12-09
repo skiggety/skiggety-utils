@@ -12,6 +12,9 @@ sys.path.append(os.path.abspath(os.path.join(os.getenv('SKIGGETY_UTILS_DIR'),"li
 from todo_line import TodoLine
 #pylint: enable=C0413
 
+# TODO: consider supporting an alternate format for votes, something that rubocop won't complain
+# about
+
 # TODO: accept piped-in grep output for sorting
 if sys.version_info[0] < 3:
     raise Exception('Must be using Python 3')
