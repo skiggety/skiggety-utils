@@ -12,6 +12,7 @@ class VimInstaller
   include InstallableSkiggetyUtil
 
   def apparently_installed?
+    # TODO: use File.join or something, not interploation for these:
     program_version_option_output_matches?('vim', / 9\.0 /) &&
       Dir.exist?("#{bundle_dir}/vim-rails") &&
       Dir.exist?("#{bundle_dir}/fzf.vim") &&
@@ -53,7 +54,8 @@ class VimInstaller
     # TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO: (learn to use 'fzf' plugin ):
     git_clone_latest('https://github.com/junegunn/fzf.vim.git', "#{bundle_dir}/fzf.vim")
     # TODO TODO TODO TODO TODO: ripgrep
-    # TODO: vim-ripgrep
+    # TODO?: vim-ripgrep & learn to use it (be careful, it seems to have it's own :Rg command that's different from
+    # fzf.vim's)
     # TODO TODO TODO TODO TODO: learn to use nerdcommenter:
     git_clone_latest('https://github.com/preservim/nerdcommenter.git', "#{bundle_dir}/nerdcommenter")
     # TODO: nerdtree
