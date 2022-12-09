@@ -1,5 +1,5 @@
-./installers/vim:54:    # TODO^5: ripgrep
-./lib/installable_skiggety_util.rb:33:        # TODO^5: but what if it is apparently installed, but marked for an old hash (installer has changed), we should
-./installers/vim:51:    # TODO^6: automate https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko
-./bin/todo:93:  # TODO^7: rewrite changes back to files or not. Off by default.
-./installers/vim:52:    # TODO^8: (learn to use 'fzf' plugin ):
+./README.md:37:- TODO^6: revive that old password generation script I had that measured entropy
+./bin/todo:115:  # TODO^11: when called from a terminal, this program should
+./bin/todo:74:  # TODO^13: rewrite changes back to files or not. Off by default.
+./installers/vim:51:    # TODO^14: systematize/learn ...
+./installers/vim:53:    # TODO^14: (learn to use 'fzf' plugin ):

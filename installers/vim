@@ -47,12 +47,14 @@ class VimInstaller
     FileUtils.mkdir_p bundle_dir
 
     git_clone_latest('https://github.com/tpope/vim-rails.git', "#{bundle_dir}/vim-rails")
-    # TODO TODO TODO TODO TODO TODO: automate https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko
-    # TODO TODO TODO TODO TODO TODO TODO TODO: (learn to use 'fzf' plugin ):
+
+    # TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO: systematize/learn ...
+    # ...: https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko
+    # TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO: (learn to use 'fzf' plugin ):
     git_clone_latest('https://github.com/junegunn/fzf.vim.git', "#{bundle_dir}/fzf.vim")
     # TODO TODO TODO TODO TODO: ripgrep
     # TODO: vim-ripgrep
-    # TODO TODO TODO: learn to use:
+    # TODO TODO TODO TODO TODO: learn to use nerdcommenter:
     git_clone_latest('https://github.com/preservim/nerdcommenter.git', "#{bundle_dir}/nerdcommenter")
     # TODO: nerdtree
   end

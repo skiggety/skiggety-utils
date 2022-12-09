@@ -15,7 +15,7 @@ from todo_line import TodoLine
 # TODO: consider supporting an alternate format for votes, something that rubocop won't complain
 # about
 
-# TODO: accept piped-in grep output for sorting
+# TODO TODO TODO: accept piped-in grep output for sorting, like grep does
 if sys.version_info[0] < 3:
     raise Exception('Must be using Python 3')
 
@@ -33,7 +33,7 @@ def main():
     # TODO: add_argument('-i', '--ignore-keyword', help = 'TODO')
     arg_parser.add_argument('--exclude-dir', help = 'Directories to exclude.', action = 'append')
 
-    # TODO: support stuff like ' --exclude todo_report.gen.txt' starting with:
+    # TODO TODO: support stuff like ' --exclude todo_report.gen.txt' starting with:
     # arg_parser.add_argument('--exclude', help = 'Directories to exclude.', action = 'append')
 
     command_line_args = arg_parser.parse_args()
@@ -61,19 +61,25 @@ def main():
     for line in lines:
         print(str(line))
 
-    # TODO: print summary with TODO count, maybe a vote count
+    # TODO TODO: print summary with TODO count, maybe a vote count
 
 def add_lines_from_file(lines, full_file_path, keyword, ignore_keyword):
     """given a file, collect relevant TodoLine's in lines"""
-    # TODO: make "lines" an instance variable, once this is all in a class
 
-    # TODO: it is inefficient to re-create these every time, so make them an instance variable:
+    # TODO TODO: it is inefficient to re-create these every time, so make them an instance
+    # variable:, once this is all in a class
     keyword_regex        = re.compile(keyword)
     ignore_keyword_regex = re.compile(ignore_keyword)
 
+  # TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO: rewrite changes back to files or not. Off by default.
+
+    # TODO TODO TODO: there should also be a "force" mode with a "-f/--force" flag that can do the
+    # replacements without asking. Also, for debugging anyway, you might want different levels of
+    # checking in with the user.
+
     # what happens with files of different encodings?
     #   TODO: make sure it works with files of different encodings
-    #   TODO: shut up pylint (it wants me to specify an encoding)
+    #   TODO TODO: shut up pylint (it wants me to specify an encoding)
     with open(full_file_path) as file:
         line_number = 0
         try:
@@ -88,30 +94,27 @@ def add_lines_from_file(lines, full_file_path, keyword, ignore_keyword):
 
 # TODO: flags:
 
-  # TODO TODO TODO: highlighting on or off. It should be on by default unless output is piped to a
+  # TODO TODO TODO TODO TODO: make sure the last line is highlighted. It's the most important todo
+  # and your attention should be drawn to it.
+  # TODO TODO TODO TODO: highlighting on or off. It should be on by default unless output is piped to a
   # file, like with grep and "--color" (or "--colour" )
 
-    # TODO TODO: highlight TODO's
+    # TODO TODO TODO: highlight TODO's
 
-  # TODO TODO TODO TODO TODO TODO TODO: rewrite changes back to files or not. Off by default.
-
-    # TODO TODO: there should also be a "force" mode with a "-f/--force" flag that can do the
-    # replacements without asking. Also, for debugging anyway, you might want different levels of
-    # checking in with the user.
-
-  # TODO TODO: todo should accept a path ( to a file or directory) to use in place of "." for grep.
-  # This way you could run "todo bin/todo" and see the TODO's in this file cleanly without the
+  # TODO TODO TODO: todo should accept a path ( to a file or directory) to use in place of "." for grep.
+  # This way you could run "todo bin/todo" and see the TODO TODO's in this file cleanly without the
   # ingorable lines.
 
-  # TODO: non-interactive [read-only] mode should be the default when this is called from a script
+  # TODO TODO: non-interactive [read-only] mode should be the default when this is called from a script
   # (output is not a tty)
 
   # TODO: add a command line option to specify a minimum number of votes, so if you pass
   # "--minimum-votes 3", "EXAMPLE_KEYWORD EXAMPLE_KEYWORD EXAMPLE_KEYWORD" or EXAMPLE_KEYWORD^3 will
   # show up, but not "EXAMPLE_KEYWORD EXAMPLE_KEYWORD"
 
-  # TODO^3: when called from a terminal, this program should interactively check with the user if
-  # they want to do replacements like "TODO TODO"-->"TODO^2" before displaying sorted output
+  # TODO TODO TODO TODO TODO TODO TODO TODO TODO^3: when called from a terminal, this program should
+  # interactively check with the user if they want to do replacements like "TODO TODO"-->"TODO^2"
+  # before displaying sorted output
 
 # TODO: consider spinning this project off, with a not-so-clever name like "tood" or something
 
