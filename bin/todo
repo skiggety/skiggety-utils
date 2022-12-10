@@ -58,6 +58,12 @@ def main():
 
     lines = sorted(lines, key = lambda l: (l.votecount, l.file_path, l.line_number))
 
+  # TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO: rewrite (collapsed)
+  # changes back to files or not. Off by default. It's gonna be something like: ...
+  #   TODO TODO: if ask_user_if_they_want_to_write_changes_to_disk:
+  #   TODO TODO:   for line in lines.reverse:
+  #   TODO TODO:     line.write
+
     for line in lines:
         print(str(line))
 
@@ -70,8 +76,6 @@ def add_lines_from_file(lines, full_file_path, keyword, ignore_keyword):
     # variable:, once this is all in a class
     keyword_regex        = re.compile(keyword)
     ignore_keyword_regex = re.compile(ignore_keyword)
-
-  # TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO: rewrite changes back to files or not. Off by default.
 
     # TODO TODO TODO: there should also be a "force" mode with a "-f/--force" flag that can do the
     # replacements without asking. Also, for debugging anyway, you might want different levels of

@@ -3,6 +3,8 @@ votes it has"""
 import re # regular expressions
 from functools import reduce
 
+# TODO: traditional unit tests for this library
+
 class TodoLine:
     """One line of text from a file with a keyword (usually 'TODO') on it.""" #IGNORE_TODO
     def __init__(self, keyword, file_path, line_number, original_text):
@@ -56,6 +58,6 @@ class TodoLine:
         """Keep track of the TodoLine votecount based on the votecount for an entry."""
         self.votecount = max(entry_votecount, self.votecount)
 
-    # TODO: def write():
-    # TODO:     """write the TodoLine back to the original file with simplifying changes"""
-    # TODO:     raise Exception("TODO: IMPLEMENT ( replace in original file) ")
+    # TODO TODO: def write():
+    # TODO TODO:     """write the TodoLine back to the original file with simplifying changes"""
+    # TODO TODO:     raise Exception("TODO: IMPLEMENT ( replace in original file) ")
