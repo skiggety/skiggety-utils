@@ -12,6 +12,9 @@ require 'securerandom'
 
 # TODO: see what you can learn from the Wikipedia article on Diceware
 
+# TODO: consider a --dense (a.k.a. --troubador a.k.a. -d) mode to generate secure passwords in the traditional style
+# that doesn't need to be as long but is harder to remember.
+
 class PassphraseGenerator
 
   # TODO: maybe accept and pass through options for min/max words/characters/characters-per-word, plus whether it should jamn in extras for compliance
