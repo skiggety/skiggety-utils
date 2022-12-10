@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# TODO TODO: assert ruby version # puts "DEBUG: in #{name} installer, RUBY_VERSION is \"#{RUBY_VERSION}\"."
+# TODO^2: assert ruby version # puts "DEBUG: in #{name} installer, RUBY_VERSION is \"#{RUBY_VERSION}\"."
 
 # TODO: mark more of these methods private
 
@@ -20,7 +20,7 @@ module InstallableSkiggetyUtil
   end
 
   def run
-    # TODO TODO: should we catch exceptions and print them without a full stack trace?
+    # TODO^2: should we catch exceptions and print them without a full stack trace?
     $interactive = !ARGV.delete('--non-interactive')
 
     ensure_installed!
@@ -37,7 +37,7 @@ module InstallableSkiggetyUtil
       else
         puts "Installing #{name}"
         $stdout.flush
-        install # TODO TODO: catch exception and wrap in: raise "install command failed for #{self.class}"
+        install # TODO^2: catch exception and wrap in: raise "install command failed for #{self.class}"
         mark_installed if apparently_installed?
       end
     end
@@ -168,7 +168,7 @@ module InstallableSkiggetyUtil
   def config_tree_hash
     if config_exist?
       if '' != `git status -s #{config_dir_path}`
-        # TODO TODO: we could return something random so it's different each
+        # TODO^2: we could return something random so it's different each
         # time, or maybe bite the bullet and calculate what the tree hash would
         # be from scratch, not sure...
         raise "There are uncommitted changes in #{config_dir_path}, so #{self.class} will not bother computing a "\
@@ -233,10 +233,10 @@ module InstallableSkiggetyUtil
     system(command) or raise "Failed to run command: \"#{command}\""
   end
 
-  # TODO TODO: rename?
+  # TODO^2: rename?
   def program_version_option_output_matches?(program, version_regex)
     version_output = `#{program} --version | head -n 1`.chomp
-    (version_output =~ version_regex).is_a?(Numeric) # TODO TODO: update desired vim version
+    (version_output =~ version_regex).is_a?(Numeric) # TODO^2: update desired vim version
   end
 
   def brew_install_latest(package_name)

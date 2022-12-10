@@ -1,4 +1,4 @@
-# TODO TODO: . $THIS_DIR/shelper.bash || exit 1 # TODO TODO: extract & include shelper.bash which checks bash version, and provides utility functions. Figure out how to distribute it as a shell library.
+# TODO^2: . $THIS_DIR/shelper.bash || exit 1 # TODO^2: extract & include shelper.bash which checks bash version, and provides utility functions. Figure out how to distribute it as a shell library.
 
 red='\033[0;31m'
 RED='\033[1;31m'
@@ -55,7 +55,7 @@ function exit_with_accumulated_errors {
     exit $cumulative_error_count
 }
 
-# TODO TODO TODO: consistent debug function names
+# TODO^3: consistent debug function names
 
 SKIGGETY_DEBUG=${SKIGGETY_DEBUG:-false}
 

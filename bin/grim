@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# TODO TODO: make this (and others like it) a printable help message:
+# TODO^2: make this (and others like it) a printable help message:
 # This script, "grim" is GRep into vIM. It is a handy way to find instances of
 # a keyword (with grep) across a directory tree, and then open those files at
 # the right location with vim. For example, if you run "grim
@@ -52,6 +52,6 @@ if [ -z "$GRIM_FILES" ]; then
     echo No files to open!
 else
 
-    vim $VIM_OPTIONS $GRIM_FILES +/"$GRIM_TARGET_STRING$VIM_SEARCH_STRING_SUFFIX" # TODO TODO: support readonly vim mode by passing a "-R" flag if this program recieves a "-R"
+    vim $VIM_OPTIONS $GRIM_FILES +/"$GRIM_TARGET_STRING$VIM_SEARCH_STRING_SUFFIX" # TODO^2: support readonly vim mode by passing a "-R" flag if this program recieves a "-R"
     echo_debug "ran: vim $VIM_OPTIONS $GRIM_FILES +/\"$GRIM_TARGET_STRING$VIM_SEARCH_STRING_SUFFIX\""
 fi

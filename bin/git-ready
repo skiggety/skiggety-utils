@@ -12,7 +12,7 @@ while [[ "$1" == -* ]]; do
     fi
 done
 
-# TODO TODO: un-loop:
+# TODO^2: un-loop:
 # TODO: if the remote branch doesn't exist yet, we should skip trying git pull, since it will fail anyway
 # TODO: stop before vimdiff if there is no git diff
 for command in \
@@ -22,7 +22,7 @@ for command in \
     'git pull' \
     'git push -u'
 do
-    # TODO TODO TODO: method extract:
+    # TODO^3: method extract:
     echo
     echo "running \"$command\" momentarily, press CTRL+C to stop..."
     pretty_sleep 2

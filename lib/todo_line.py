@@ -61,6 +61,7 @@ class TodoLine:
     def has_changes_to_write(self):
         return self.text != self.original_text
 
+    # TODO: make this more efficient. Writing a file once per line is silly.
     def write(self):
         """write the TodoLine back to the original file with simplifying changes"""
         with open(self.file_path, 'r') as file:

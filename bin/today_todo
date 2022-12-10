@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# TODO TODO TODO TODO: rename? ("todo-today"?, "todoy"
+# TODO^4: rename? ("todo-today"?, "todoy"
 # TODO: flag to grep for and count a specific word, sort of like what I do for "NOW"
 # TODO: "-q" or "-n" flag to be quick, and skip the editor phase
 
@@ -28,7 +28,7 @@ clear
 
 # TODO: consider extracting the rest of this to "today_todo_report", which can be overridden with PWD_BIN:
 todo_list_file_name="TODO.$isotoday.txt"   # IGNORE_TODO
-todo_output="$(todo)" # TODO: -n 5 # TODO TODO: todo should accept an option for the number of lines. like "-n 3". Maybe if we pass an option in?
+todo_output="$(todo)" # TODO: -n 5 # TODO^2: todo should accept an option for the number of lines. like "-n 3". Maybe if we pass an option in?
 grep -n DONE $(ls -1 TODO.*.txt | tail -n 3) # IGNORE_TODO
 
 todo_count=$(( 0 + $(echo "$todo_output" | wc -l) ))
@@ -45,8 +45,8 @@ echo
 echo "Found $todo_prog_count todos IN_PROGRESS:"
 echo "$todo_prog_output"
 
-# TODO TODO TODO TODO: add NOW count to graph:
-# TODO TODO: NOW output should be highlighted.
+# TODO^4: add NOW count to graph:
+# TODO^2: NOW output should be highlighted.
 todo_now_output="$(echo "$todo_output" | grep --color=always NOW)"
 todo_now_count=$(( 0 + $(echo "$todo_now_output" | wc -l) ))
 if [ "$todo_now_output" != "" ]; then
@@ -61,7 +61,7 @@ if [ "$todo_now_output" != "" ]; then
     echo "$todo_now_output" | tail -n 3
 fi
 
-# TODO TODO TODO: add NOW count to this output?:
+# TODO^3: add NOW count to this output?:
 echo "$(( $todo_count + $todo_prog_count )) combined score, $todo_prog_count todos IN_PROGRESS"
 
 # graph how many are done each day

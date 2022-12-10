@@ -12,7 +12,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 
 echo_divider_with_text "O-=======-" "Dashboard for $(duh) :"
 
-# show diff with old mac files: # TODO TODO TODO: work on this diff:
+# show diff with old mac files: # TODO^3: work on this diff:
 if ! [ -z "$SKIGGETY_UTILS_DONOR_DIR" ]; then
     echo_divider_with_text "+-=======-" "diff summary for \"$SKIGGETY_UTILS_DONOR_DIR\":"
     diff -rq --exclude=.DS_Store --exclude=.git $THIS_DIR/.. $SKIGGETY_UTILS_DONOR_DIR | grep -v "^Only in $THIS_DIR/.." | head -n 5
@@ -33,10 +33,10 @@ rm rubocop_output.txt
 
 exit_if_any_accumulated_errors
 
-experiment_script="./PWD_BIN/current_experiment.gitignored.bash"
+experiment_script="./PWD_BIN/experiment.gitignored.bash"
 if ! [ -f "$experiment_script" ]; then
     echo "#!$(which env) bash" > "$experiment_script"
-    echo "# TODO: edit this for dashboard output" >> "$experiment_script"
+    echo "# TODO: edit this for dashboard output" >> "$experiment_script" # IGNORE_TODO
     chmod +x "$experiment_script"
 fi
 

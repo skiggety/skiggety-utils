@@ -18,9 +18,9 @@ Core Design Decisions and Questions:
   - This project uses, and helps the user use, several programming languages, since this project is a spawning ground for other projects.
   - There will be a bias towards certain tools that I prefer to use, but I'll try to make it as unobtrusive as possible. If you use bash and vim you will find extra goodies to make your life easier here, but if not there's still plenty here for you. I'm currently developing on a mac and doing some testing on a linux box, so there is bias from that, too.
   - "./PWD_BIN" should be in the user's in the PATH, which allows you to cd into a directory and run commands with simple technology-agnostic names, like "dashboard", "build", "precommit", "unit-test", "run", etc. Of course, this is scary because the meaning of these commands is changind depending on what local directory you're in, and you could run something you don't expect. To mitigate this concern, this will be configured with confirmation from the user, and PWD_BIN is a name chosen to conspicuously convey it's purpose.
-    - TODO TODO: figure out how to tack one git repo on to another so you don't have ./PWD_BIN always showing up in the
+    - TODO^2: figure out how to tack one git repo on to another so you don't have ./PWD_BIN always showing up in the
       uncommitted files in other git repos
-    - (?) How can I make this safer? (TODO TODO TODO TODO: probably should use direnv: "https://direnv.net/docs/hook.html") Put ./users_safeword/../PWD_BIN" in the path instead? make everything in PWD a subcommand of some other command? Come up with some handy way to add/remove it from the path quickly (or add it temporarily)? I put skiggety-utils/PWD_BIN_FIREWALL in your path before ./PWD_BIN if I wanted to block certain things
+    - (?) How can I make this safer? (TODO^4: probably should use direnv: "https://direnv.net/docs/hook.html") Put ./users_safeword/../PWD_BIN" in the path instead? make everything in PWD a subcommand of some other command? Come up with some handy way to add/remove it from the path quickly (or add it temporarily)? I put skiggety-utils/PWD_BIN_FIREWALL in your path before ./PWD_BIN if I wanted to block certain things
   - This project uses and enables TODO's in code, ranked so that "TODO TODO" is equal to "TODO^2" and outranks "TODO". This way you can easily add a vote when something becomes and impediment or whatever, and the cream will rise to the top. The "todo" program is a key part of this and is shown in the "default_dashboard". You can also put "IGNORE_TODO" on the same line as "TODO" if you want to mention "TODO" without it being on the list (like this).
 
 Cool Programs you'll find in here:
@@ -41,27 +41,27 @@ Cool Programs you'll find in here:
 misc TODO's:: (run 'todo' or 'dashboard' for the full sorted list) <!-- (IGNORE_TODO) -->
 ===============================================================
 
-- TODO TODO TODO: output license summary in interactive programs (like you're supposed to)??
-- TODO TODO TODO: commit initial skigg-utils, to get to parity with what I already like to use
+- TODO^3: output license summary in interactive programs (like you're supposed to)??
+- TODO^3: commit initial skigg-utils, to get to parity with what I already like to use
 - TODO: document usage of commands
-- TODO TODO TODO: write a program to abbreviate output for use in the dashboard. You should be able to specify a maximum number of lines and pipe output through it, and it will do something like "head" or "tail" if necessary, but also display information about how many lines were removed/kept/found-in-total
-  - TODO TODO: once we can abbreviate, maybe choose the linecounts for different things dynamically depending on the terminal size
-- TODO TODO TODO: consider supporting zsh
-- TODO TODO: music rotator thingy
-- TODO TODO: collect data on email inbox, etc. and auto-generate graphs for the dashboard
+- TODO^3: write a program to abbreviate output for use in the dashboard. You should be able to specify a maximum number of lines and pipe output through it, and it will do something like "head" or "tail" if necessary, but also display information about how many lines were removed/kept/found-in-total
+  - TODO^2: once we can abbreviate, maybe choose the linecounts for different things dynamically depending on the terminal size
+- TODO^3: consider supporting zsh
+- TODO^2: music rotator thingy
+- TODO^2: collect data on email inbox, etc. and auto-generate graphs for the dashboard
   - TODO: set up router
-    - TODO TODO: help set up local dns
-  - TODO TODO: set up NAS
-- TODO TODO TODO: try some editable vim macros
-- TODO TODO: automatically graph gmail progress outstanding messages, by writing a program that takes a url or gmail search string and monitors it. You can check in on the graph periodically to make sure you're on track.
+    - TODO^2: help set up local dns
+  - TODO^2: set up NAS
+- TODO^3: try some editable vim macros
+- TODO^2: automatically graph gmail progress outstanding messages, by writing a program that takes a url or gmail search string and monitors it. You can check in on the graph periodically to make sure you're on track.
   - TODO: find a tool that can show graphs of provided data on the command line
-- TODO TODO: have a way to open the github webpage from inside a git repo from the command line. You can use "open <URL>" on a mac, for example, and scripts like what you use for automatic git pushing can use it to help you get PR's going fast.
-- TODO TODO TODO: set up a git hook system so you can add multiple scripts. For example, I'd like to block commits that include "XXX", irrespective of any other commit hooks. That hook might be shared by a team or individual to me, and I'd like to be able to support both kinds without conflicts.
+- TODO^2: have a way to open the github webpage from inside a git repo from the command line. You can use "open <URL>" on a mac, for example, and scripts like what you use for automatic git pushing can use it to help you get PR's going fast.
+- TODO^3: set up a git hook system so you can add multiple scripts. For example, I'd like to block commits that include "XXX", irrespective of any other commit hooks. That hook might be shared by a team or individual to me, and I'd like to be able to support both kinds without conflicts.
 - TODO: mini-project: raspberry pi backup machine, and the software to run it.
 - TODO: "playbot", a program that tunes in youtube livestreams, video meetings, watch later, podcasts and your personal dashboards, automatically. Great as an information radiator.
 - TODO: inforad (chrome extension?) information radiator
 - TODO: systematized config (automate the configuration I always want anyway)
-    - TODO TODO: hook up to google drive
+    - TODO^2: hook up to google drive
 - TODO: help set up home data center?
 - TODO: put a directory in skigg-utils that contains reference/demo code that shows you how to do certain things
 - TODO: implement ratcheting that can be used for code coverage, number of intstances of a string, number of lint failures, etc. It should be usable as part of a pre-merge hook for git and/or blocking a github pull request

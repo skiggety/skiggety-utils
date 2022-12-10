@@ -33,7 +33,7 @@ end
 
 class TestInstallableSkiggetyUtil < Minitest::Test
 
-  # TODO TODO TODO: write more tests
+  # TODO^3: write more tests
 
   def setup
     @raw_subject = RawDummyInstaller.new
@@ -41,7 +41,7 @@ class TestInstallableSkiggetyUtil < Minitest::Test
     @no_op_subject = DummyNoOpInstaller.new
   end
 
-  # TODO TODO: test call_peer_installer(name)
+  # TODO^2: test call_peer_installer(name)
   # TODO: test self.run
   # TODO: test run
   # TODO: test name

@@ -11,12 +11,12 @@ if [ -f ./todo_report.gen.txt ]; then
     cat ./todo_report.gen.txt
 else
     # purposely call whatever 'todo' is in the path so you can override it with PWD_BIN/todo
-    todo | tail -n 5 || exit_with_error "todo FAILED" # TODO TODO: abbreviate -n 5 todo
+    todo | tail -n 5 || exit_with_error "todo FAILED" # TODO^2: abbreviate -n 5 todo
 fi
 
-# TODO TODO TODO TODO: put test output right here if tests failed so todo's are the thing to scroll off the top of the screen instead of this.
+# TODO^4: put test output right here if tests failed so todo's are the thing to scroll off the top of the screen instead of this.
 
-# TODO TODO: only do git stuff if it's a git repository
+# TODO^2: only do git stuff if it's a git repository
 
 git_stash_list="$(git stash list)"
 if [ "$git_stash_list" != "" ]; then

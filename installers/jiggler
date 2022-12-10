@@ -7,7 +7,7 @@ class JigglerInstaller
 
   include InstallableSkiggetyUtil
 
-  raise 'TODO TODO: IMPLEMENT'
+  raise 'TODO^2: IMPLEMENT'
 
 end
 

@@ -25,8 +25,8 @@ echo_divider_with_text "+-=======-" "rake test"
 rake_test_output="$(rake test)" || accumulate_error "rake test FAILED"
 # trim blank space and anything non-deterministic out of test output:
 echo "$rake_test_output" | grep -v " --seed" | grep -v "^Finished" | grep -v "^$"
-# TODO TODO: what can I do to make coverage results be trustworthy and meaningful?
-# TODO TODO: perhaps ratchet coverage results towards 100%, or make sure it clears a predefined minimum threshold
+# TODO^2: what can I do to make coverage results be trustworthy and meaningful?
+# TODO^2: perhaps ratchet coverage results towards 100%, or make sure it clears a predefined minimum threshold
 
 echo_divider_with_text "+-=======-" "run all python tests"
 function run_all_python_tests {

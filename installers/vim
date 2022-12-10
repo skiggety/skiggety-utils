@@ -3,8 +3,8 @@
 
 require_relative '../lib/installable_skiggety_util'
 
-# TODO TODO TODO: install and set up vimpager as your pager, but maybe not in this installer
-# TODO TODO: install vim rake plugin with vim pathogen
+# TODO^3: install and set up vimpager as your pager, but maybe not in this installer
+# TODO^2: install vim rake plugin with vim pathogen
 # TODO: maybe detect local vimrc changes
 
 class VimInstaller
@@ -35,7 +35,7 @@ class VimInstaller
     end
 
     brew_install_latest 'macvim' if on_mac_os?
-    # TODO TODO: install gvim (gui) for linux
+    # TODO^2: install gvim (gui) for linux
 
     # we need these other programs installed to go much further since plugins depend on them:
     call_peer_installer('fzf')
@@ -49,8 +49,7 @@ class VimInstaller
 
     git_clone_latest('https://github.com/tpope/vim-rails.git', "#{bundle_dir}/vim-rails")
 
-    # TODO^15: systematize/learn ...
-    # ...: https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko
+    # TODO^15: systematize/learn: https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko
     # TODO^14: (learn to use 'fzf.vim' plugin ):
     #   TODO: learn some "Other Searches" for fzf.vim from ...
     #   ... https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko
@@ -58,7 +57,7 @@ class VimInstaller
     # TODO TODO TODO TODO TODO: ripgrep
     # TODO?: vim-ripgrep & learn to use it (be careful, it seems to have it's own :Rg command that's different from
     # fzf.vim's)
-    # TODO TODO TODO TODO TODO: learn to use nerdcommenter:
+    # TODO^5: learn to use nerdcommenter:
     git_clone_latest('https://github.com/preservim/nerdcommenter.git', "#{bundle_dir}/nerdcommenter")
     # TODO: nerdtree
   end
@@ -67,7 +66,7 @@ class VimInstaller
     "#{Dir.home}/.vim/bundle"
   end
 
-  # TODO TODO: maybe move to installable_skiggety_util.rb:
+  # TODO^2: maybe move to installable_skiggety_util.rb:
   def git_clone_latest(repo, dir)
     assert_system("git clone #{repo} #{dir}") unless Dir.exist?(dir)
     Dir.chdir(dir) do

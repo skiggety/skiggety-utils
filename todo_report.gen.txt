@@ -1,5 +1,5 @@
+./lib/installable_skiggety_util.rb:33:        # TODO^5: but what if it is apparently installed, but marked for an old hash (installer has changed), we should
 ./bin/review:19:# TODO^8: accept --minimum-delay or -m (e.g. auto-ci might want to call this with "-m
-./bin/todo:117:  # TODO^11: when called from a terminal, this program should
-./bin/todo:74:  # TODO^14: rewrite changes back to files or not. Off by default.
-./installers/vim:52:    # TODO^14: systematize/learn ...
-./installers/vim:54:    # TODO^14: (learn to use 'fzf.vim' plugin ):
+./bin/todo:179:  # TODO^11: when called from a terminal, this program should interactively check with the user if
+./installers/vim:53:    # TODO^14: (learn to use 'fzf.vim' plugin ):
+./installers/vim:52:    # TODO^15: systematize/learn: https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko

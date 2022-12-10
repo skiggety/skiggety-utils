@@ -15,12 +15,12 @@
 
 require 'English'
 
-# TODO TODO TODO: avoid forcing the same version of ruby on programs that this may call
-# TODO TODO TODO TODO TODO TODO TODO TODO: accept --minimum-delay or -m (e.g. auto-ci might want to call this with "-m
+# TODO^3: avoid forcing the same version of ruby on programs that this may call
+# TODO^8: accept --minimum-delay or -m (e.g. auto-ci might want to call this with "-m
 # 30")
-# TODO TODO TODO: accept --maximum-delay or -M (e.g. auto-ci might want to call this with "-M $(( 60 * 60 * 6 ))")
-# TODO TODO TODO: accept --interactive ("-i") or --non-interactive ("-n"), to determine whether to use backticks
-# TODO TODO TODO: we need a control key to wake it up and make it refresh immediately (accept a
+# TODO^3: accept --maximum-delay or -M (e.g. auto-ci might want to call this with "-M $(( 60 * 60 * 6 ))")
+# TODO^3: accept --interactive ("-i") or --non-interactive ("-n"), to determine whether to use backticks
+# TODO^3: we need a control key to wake it up and make it refresh immediately (accept a
 # control character or signal to refresh now)
 # TODO: accept log file that logs output, changes, feequencies/counts, etc.
 # TODO: ensure we never mess with the colors, test with "review git diff"
@@ -35,7 +35,7 @@ class ReviewProgram
   end
 
   def run
-    # TODO TODO: non-interactive by default, intereactive mode for when the
+    # TODO^2: non-interactive by default, intereactive mode for when the
     # program might prompt you with something, and in that case backticks
     # cannot be used:
     $interactive = !ARGV.delete('--non-interactive')
@@ -67,7 +67,7 @@ class ReviewProgram
     end
   end
 
-  # TODO TODO: time how long the command takes and use that as ADD_TO_DELAY because it sucks to run a long command
+  # TODO^2: time how long the command takes and use that as ADD_TO_DELAY because it sucks to run a long command
   # constantly
   ADD_TO_DELAY = 1
   MULTIPLY_BY_DELAY = 1.10
@@ -81,7 +81,7 @@ class ReviewProgram
 
   # TODO: time the command, show how long it took
   #   TODO: factor that time into the delay increase. Something that ties up the cpu for a while should delay longer
-  # TODO TODO TODO: colorize output, esp on failure
+  # TODO^3: colorize output, esp on failure
   def show_footer(command, exit_val, exit_date)
     system("echo_divider_with_text \"#\" \"'#{command}' exited with #{exit_val} at #{exit_date}\"")
   end

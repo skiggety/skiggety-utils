@@ -61,5 +61,5 @@ class HostnameSetup
 
 end
 
-# TODO TODO: use this more widely if call_peer_installer uses a direct include method?:
+# TODO^2: use this more widely if call_peer_installer uses a direct include method?:
 HostnameSetup.run if __FILE__ == $PROGRAM_NAME

@@ -3,7 +3,7 @@
 
 require_relative '../lib/installable_skiggety_util'
 
-# TODO TODO: The process of downloading and installing Rectangle, Synergy, and
+# TODO^2: The process of downloading and installing Rectangle, Synergy, and
 # probably others like Alfred is so similar on (on mac at least), that I think
 # I whould do some method extracting.
 

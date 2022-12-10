@@ -106,7 +106,7 @@ function main {
         fi
     fi
     debug_here "got rbenv, time for ruby"
-    # TODO TODO: install rbenv-aliases?
+    # TODO^2: install rbenv-aliases?
 
     # ruby
     ruby_version="$(cat $SKIGGETY_UTILS_DIR/.ruby-version)"

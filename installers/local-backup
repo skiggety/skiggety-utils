@@ -10,7 +10,7 @@ class LocalBackupSetterUpper
   def apparently_installed?
     if on_mac_os?
       program_version_option_output_matches?('tmutil', / 4\.0\.0 /) # TODO: update desired version
-      # TODO TODO: how should I keep tabs on new versions of software, in
+      # TODO^2: how should I keep tabs on new versions of software, in
       # general. Some automated way to watch for it and decide if I want it?
       # maybe all installers expect a stanndardized method to check for
       # updates?
@@ -21,7 +21,7 @@ class LocalBackupSetterUpper
     end
   end
 
-  # TODO TODO: make sure there was a backup in the last week? (is this the [only] place for this)
+  # TODO^2: make sure there was a backup in the last week? (is this the [only] place for this)
   def apparently_configured?
     if on_mac_os?
       backup_done_indicator = `tmutil status|grep Percent`
