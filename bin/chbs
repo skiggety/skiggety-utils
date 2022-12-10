@@ -135,5 +135,5 @@ def random_element(array)
   array[choose(array.length)]
 end
 
-generator = CHBS.new(max_word_length: 9)
+generator = CHBS.new(max_word_length: 7)
 puts generator.report
