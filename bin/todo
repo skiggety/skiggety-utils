@@ -60,9 +60,10 @@ def main():
 
   # TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO: rewrite (collapsed)
   # changes back to files or not. Off by default. It's gonna be something like: ...
-  #   TODO TODO: if ask_user_if_they_want_to_write_changes_to_disk:
+  #   TODO TODO: if ask_user_if_they_want_to_write_changes_to_disk: # TODO: if in debug mode
   #   TODO TODO:   for line in lines.reverse:
-  #   TODO TODO:     line.write
+  #   TODO TODO:     if line.ask_user_to_confirm_before_disk_write: # TODO: if in debug mode
+  #   TODO TODO:       line.write
 
     for line in lines:
         print(str(line))
