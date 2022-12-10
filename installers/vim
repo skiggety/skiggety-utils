@@ -54,7 +54,6 @@ class VimInstaller
     #   TODO: learn some "Other Searches" for fzf.vim from ...
     #   ... https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko
     git_clone_latest('https://github.com/junegunn/fzf.vim.git', "#{bundle_dir}/fzf.vim")
-    # TODO TODO TODO TODO TODO: ripgrep
     # TODO?: vim-ripgrep & learn to use it (be careful, it seems to have it's own :Rg command that's different from
     # fzf.vim's)
     # TODO^5: learn to use nerdcommenter:
