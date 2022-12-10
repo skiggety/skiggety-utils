@@ -16,7 +16,8 @@
 require 'English'
 
 # TODO TODO: avoid forcing the same version of ruby on programs that this may call
-# TODO TODO TODO TODO: accept --minimum-delay or -m (e.g. auto-ci might want to call this with "-m 30")
+# TODO TODO TODO TODO TODO TODO TODO TODO: accept --minimum-delay or -m (e.g. auto-ci might want to call this with "-m
+# 30")
 # TODO TODO TODO: accept --maximum-delay or -M (e.g. auto-ci might want to call this with "-M $(( 60 * 60 * 6 ))")
 # TODO TODO TODO: accept --interactive ("-i") or --non-interactive ("-n"), to determine whether to use backticks
 # TODO: accept a control character or signal to refresh now

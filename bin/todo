@@ -71,7 +71,7 @@ def add_lines_from_file(lines, full_file_path, keyword, ignore_keyword):
     keyword_regex        = re.compile(keyword)
     ignore_keyword_regex = re.compile(ignore_keyword)
 
-  # TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO: rewrite changes back to files or not. Off by default.
+  # TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO: rewrite changes back to files or not. Off by default.
 
     # TODO TODO TODO: there should also be a "force" mode with a "-f/--force" flag that can do the
     # replacements without asking. Also, for debugging anyway, you might want different levels of
