@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 # Named for "correct horse battery staple" because of "Password Strength" aka 'xkcd.com/936/', this program generates
 # secure-enough passwords, optimized for being memorized by humans
@@ -17,10 +18,11 @@ require 'securerandom'
 
 class PassphraseGenerator
 
-  # TODO: maybe accept and pass through options for min/max words/characters/characters-per-word, plus whether it should jamn in extras for compliance
+  # TODO: maybe accept and pass through options for min/max words/characters/characters-per-word, plus whether it should
+  # jamn in extras for compliance
   # TODO: RENAME this method and bring it up to speed so it's a usefully concise way of printing the whole report
-  def self.generate_passphrase()
-    generator = PassphraseGenerator.new()
+  def self.generate_passphrase
+    generator = PassphraseGenerator.new
     generator.generate
   end
 
@@ -33,12 +35,12 @@ class PassphraseGenerator
 
   def self.read_dictionary_words_from_traditional_location
     result = []
-    File.open("/usr/share/dict/words") do |file|
+    File.open('/usr/share/dict/words') do |file|
       file.each do |line|
         result << line.strip
       end
     end
-    return result
+    result
   end
 
   def initialize(max_word_length: 8, min_word_length: 4)
@@ -46,13 +48,12 @@ class PassphraseGenerator
     @min_word_length = min_word_length
   end
 
-  def generate()
+  def generate
     selected_words = []
     wordcount.times do
       selected_words << random_word
     end
-    passphrase = selected_words.join(' ')
-    return passphrase
+    selected_words.join(' ')
   end
 
   def count_available_words
@@ -74,54 +75,53 @@ class PassphraseGenerator
   def report
     lines = []
 
-    message = "Generating passphrases from #{count_available_words} possible words (for now you have to edit this program to tweak this):"
+    message = "Generating passphrases from #{count_available_words} possible words (for now you have to edit this " \
+              'program to tweak this):'
     lines << message
-    lines << message.gsub(/./,'-')
+    lines << message.gsub(/./, '-')
 
     passphrase_count.times{ lines << generate }
 
-    entropy_report = "Entropy is >= #{entropy_bitcount.floor} bits, from your choice of #{passphrase_count} passphrases with #{entropy_bitcount_per_passphrase.round(2)} bits each."
-    lines << entropy_report.gsub(/./,'-')
+    entropy_report = "Entropy is >= #{entropy_bitcount.floor} bits, from your choice of #{passphrase_count} "\
+                     "passphrases with #{entropy_bitcount_per_passphrase.round(2)} bits each."
+    lines << entropy_report.gsub(/./, '-')
     lines << entropy_report
 
-    return lines.join("\n")
+    lines.join("\n")
   end
 
-  private
-
-  def wordcount
-    4   #TODO: UN-HARDCODE
+  private def wordcount
+    4 # TODO: UN-HARDCODE
   end
 
-  def passphrase_count
-    21   #TODO: UN-HARDCODE
+  private def passphrase_count
+    21 # TODO: UN-HARDCODE
   end
 
-  def possibilities_count
-    count_available_words ** wordcount
+  private def possibilities_count
+    count_available_words**wordcount
   end
 
-  def random_word
+  private def random_word
     result = nil
-    until valid_word?(result) do
-      result = random_element(words)
-    end
-    return result
+    result = random_element(words) until valid_word?(result)
+    result
   end
 
-  def words
+  private def words
     @words ||= self.class.words.select{ |w| valid_word?(w) }
   end
 
-  def valid_word?(word)
+  private def valid_word?(word)
     return false if word.nil?
-    return word.length >= @min_word_length && word.length <= @max_word_length && ( ! is_too_proper(word) )
+
+    word.length >= @min_word_length && word.length <= @max_word_length && !too_proper?(word)
   end
 
   # filter out proper nouns (capitalized words)
-  def is_too_proper(word)
-    #TODO: make this optional
-    !! (/[[:upper:]]/.match(word[0]) )
+  private def too_proper?(word)
+    # TODO: make this optional
+    !!/[[:upper:]]/.match(word[0])
   end
 
 end
@@ -134,5 +134,5 @@ def random_element(array)
   array[choose(array.length)]
 end
 
-generator = PassphraseGenerator.new(max_word_length: 9 )
+generator = PassphraseGenerator.new(max_word_length: 9)
 puts generator.report
