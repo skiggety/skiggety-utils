@@ -45,8 +45,7 @@ echo
 echo "Found $todo_prog_count todos IN_PROGRESS:"
 echo "$todo_prog_output"
 
-# TODO TODO: add NOW count to graph:
-# TODO TODO: enforce a rule, NOW can't acknowledge more than 3 items. becase you need focus.
+# TODO TODO TODO TODO: add NOW count to graph:
 # TODO TODO: NOW output should be highlighted.
 todo_now_output="$(echo "$todo_output" | grep --color=always NOW)"
 todo_now_count=$(( 0 + $(echo "$todo_now_output" | wc -l) ))

@@ -18,8 +18,9 @@ require 'securerandom'
 
 class CHBS
 
-  # TODO: maybe accept and pass through options for min/max words/characters/characters-per-word, plus whether it should
+  # TODO TODO: accept and pass through options for min/max words/characters/characters-per-word, plus whether it should
   # jamn in extras for compliance
+  # TODO TODO TODO:  and pass through options for min/max word length (--mwl/--Mwl)
   # TODO: RENAME this method and bring it up to speed so it's a usefully concise way of printing the whole report
   def self.generate_passphrase
     generator = CHBS.new
