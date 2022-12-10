@@ -70,6 +70,11 @@ def main():
 
     # TODO TODO: print summary with TODO count, maybe a vote count
 
+# TODO TODO: def ask_user_if_they_want_to_write_changes_to_disk():
+# TODO TODO:     """interactively bug the user to see if they want to write simplified-format
+# todo entries back to disk (at least if we are in debug mode)"""
+# TODO TODO:     TODO...
+
 def add_lines_from_file(lines, full_file_path, keyword, ignore_keyword):
     """given a file, collect relevant TodoLine's in lines"""
 

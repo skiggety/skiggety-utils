@@ -61,3 +61,8 @@ class TodoLine:
     # TODO TODO: def write():
     # TODO TODO:     """write the TodoLine back to the original file with simplifying changes"""
     # TODO TODO:     raise Exception("TODO: IMPLEMENT ( replace in original file) ")
+
+    # TODO TODO: def ask_user_to_confirm_before_disk_write():
+    # TODO TODO:     """interactively bug the user to see if they want to write one individual
+    # simplified-format todo entry back to disk (at least if we are in debug mode)"""
+    # TODO TODO:     TODO...
