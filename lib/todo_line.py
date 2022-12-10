@@ -60,6 +60,7 @@ class TodoLine:
 
     # TODO TODO: def write():
     # TODO TODO:     """write the TodoLine back to the original file with simplifying changes"""
+    # TODO TODO:     # TODO: write text in place of original_text
     # TODO TODO:     raise Exception("TODO: IMPLEMENT ( replace in original file) ")
 
     # TODO TODO: def ask_user_to_confirm_before_disk_write():
