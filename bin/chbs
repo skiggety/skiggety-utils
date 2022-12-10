@@ -16,13 +16,13 @@ require 'securerandom'
 # TODO: consider a --dense (a.k.a. --troubador a.k.a. -d) mode to generate secure passwords in the traditional style
 # that doesn't need to be as long but is harder to remember.
 
-class PassphraseGenerator
+class CHBS
 
   # TODO: maybe accept and pass through options for min/max words/characters/characters-per-word, plus whether it should
   # jamn in extras for compliance
   # TODO: RENAME this method and bring it up to speed so it's a usefully concise way of printing the whole report
   def self.generate_passphrase
-    generator = PassphraseGenerator.new
+    generator = CHBS.new
     generator.generate
   end
 
@@ -134,5 +134,5 @@ def random_element(array)
   array[choose(array.length)]
 end
 
-generator = PassphraseGenerator.new(max_word_length: 9)
+generator = CHBS.new(max_word_length: 9)
 puts generator.report
