@@ -36,7 +36,7 @@ exit_if_any_accumulated_errors
 experiment_script="./PWD_BIN/current_experiment.gitignored.bash"
 if ! [ -f "$experiment_script" ]; then
     echo "#!$(which env) bash" > "$experiment_script"
-    echo "# TODO: edit this for dashboard output" > "$experiment_script"
+    echo "# TODO: edit this for dashboard output" >> "$experiment_script"
     chmod +x "$experiment_script"
 fi
 
