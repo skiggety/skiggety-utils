@@ -50,13 +50,18 @@ echo "$todo_prog_output"
 todo_now_output="$(echo "$todo_output" | grep --color=always NOW)"
 todo_now_count=$(( 0 + $(echo "$todo_now_output" | wc -l) ))
 if [ "$todo_now_output" != "" ]; then
+    if (( $todo_now_count > 3 )); then
+        only_showing=", only showing 3"
+    else
+        only_showing=''
+    fi
+
     echo
-    echo "Found $todo_now_count todos to do right NOW:"
-    echo "$todo_now_output"
+    echo "Found $todo_now_count todos to do right NOW$only_showing:" | grep --color=always \\d
+    echo "$todo_now_output" | tail -n 3
 fi
 
-echo
-# TODO: show total vote count:
+# TODO TODO TODO: add NOW count to this output?:
 echo "$(( $todo_count + $todo_prog_count )) combined score, $todo_prog_count todos IN_PROGRESS"
 
 # graph how many are done each day
