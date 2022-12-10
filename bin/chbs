@@ -4,6 +4,9 @@
 # Named for "correct horse battery staple" because of "Password Strength" aka 'xkcd.com/936/', this program generates
 # secure-enough passwords, optimized for being memorized by humans
 
+# NOTE: If you like reading code top-down as I do, start reading outside the class at the end of the script, which will
+# quickly bring you back to CHBS#initialize and CHBS#report just a little ways below here.
+
 require 'securerandom'
 
 # TODO: this is interesting:
@@ -49,6 +52,24 @@ class CHBS
     @min_word_length = min_word_length
   end
 
+  def report
+    lines = []
+
+    message = "Generating passphrases from #{count_available_words} possible words (for now you have to edit this " \
+              'program to tweak this):'
+    lines << message
+    lines << message.gsub(/./, '-')
+
+    passphrase_count.times{ lines << generate }
+
+    entropy_report = "Entropy is >= #{entropy_bitcount.floor} bits, from your choice of #{passphrase_count} "\
+                     "passphrases with #{entropy_bitcount_per_passphrase.round(2)} bits each."
+    lines << entropy_report.gsub(/./, '-')
+    lines << entropy_report
+
+    lines.join("\n")
+  end
+
   def generate
     selected_words = []
     wordcount.times do
@@ -71,24 +92,6 @@ class CHBS
 
   def lost_entropy_when_user_inevitably_picks_the_weakest_passphrase_shown
     Math.log(passphrase_count, 2)
-  end
-
-  def report
-    lines = []
-
-    message = "Generating passphrases from #{count_available_words} possible words (for now you have to edit this " \
-              'program to tweak this):'
-    lines << message
-    lines << message.gsub(/./, '-')
-
-    passphrase_count.times{ lines << generate }
-
-    entropy_report = "Entropy is >= #{entropy_bitcount.floor} bits, from your choice of #{passphrase_count} "\
-                     "passphrases with #{entropy_bitcount_per_passphrase.round(2)} bits each."
-    lines << entropy_report.gsub(/./, '-')
-    lines << entropy_report
-
-    lines.join("\n")
   end
 
   private def wordcount
