@@ -1,0 +1,132 @@
+#!/usr/bin/env ruby
+
+require 'securerandom'
+
+# TODO: this is interesting:
+# https://www.schneier.com/blog/archives/2014/03/choosing_secure_1.html#c4820917
+# . You could make a feature that will tell you your website passphrase given
+# your master passphrase.
+
+# TODO: see what you can learn from the Wikipedia article on Diceware
+
+class PassphraseGenerator
+
+  # TODO: maybe accept and pass through options for min/max words/characters/characters-per-word, plus whether it should jamn in extras for compliance
+  # TODO: RENAME this method and bring it up to speed so it's a usefully concise way of printing the whole report
+  def self.generate_passphrase()
+    generator = PassphraseGenerator.new()
+    generator.generate
+  end
+
+  def self.words
+    # TODO: # consider (optionally? If there's an internet connection) using the
+    # TODO: # EFF word list:
+    # TODO: # https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt
+    @words ||= read_dictionary_words_from_traditional_location
+  end
+
+  def self.read_dictionary_words_from_traditional_location
+    result = []
+    File.open("/usr/share/dict/words") do |file|
+      file.each do |line|
+        result << line.strip
+      end
+    end
+    return result
+  end
+
+  def initialize(max_word_length: 8, min_word_length: 4)
+    @max_word_length = max_word_length
+    @min_word_length = min_word_length
+  end
+
+  def generate()
+    selected_words = []
+    wordcount.times do
+      selected_words << random_word
+    end
+    passphrase = selected_words.join(' ')
+    return passphrase
+  end
+
+  def count_available_words
+    words.length
+  end
+
+  def entropy_bitcount
+    entropy_bitcount_per_passphrase - lost_entropy_when_user_inevitably_picks_the_weakest_passphrase_shown
+  end
+
+  def entropy_bitcount_per_passphrase
+    Math.log(possibilities_count, 2)
+  end
+
+  def lost_entropy_when_user_inevitably_picks_the_weakest_passphrase_shown
+    Math.log(passphrase_count, 2)
+  end
+
+  def report
+    lines = []
+
+    message = "Generating passphrases from #{count_available_words} possible words (for now you have to edit this program to tweak this):"
+    lines << message
+    lines << message.gsub(/./,'-')
+
+    passphrase_count.times{ lines << generate }
+
+    entropy_report = "Entropy is >= #{entropy_bitcount.floor} bits, from your choice of #{passphrase_count} passphrases with #{entropy_bitcount_per_passphrase.round(2)} bits each."
+    lines << entropy_report.gsub(/./,'-')
+    lines << entropy_report
+
+    return lines.join("\n")
+  end
+
+  private
+
+  def wordcount
+    4   #TODO: UN-HARDCODE
+  end
+
+  def passphrase_count
+    21   #TODO: UN-HARDCODE
+  end
+
+  def possibilities_count
+    count_available_words ** wordcount
+  end
+
+  def random_word
+    result = nil
+    until valid_word?(result) do
+      result = random_element(words)
+    end
+    return result
+  end
+
+  def words
+    @words ||= self.class.words.select{ |w| valid_word?(w) }
+  end
+
+  def valid_word?(word)
+    return false if word.nil?
+    return word.length >= @min_word_length && word.length <= @max_word_length && ( ! is_too_proper(word) )
+  end
+
+  # filter out proper nouns (capitalized words)
+  def is_too_proper(word)
+    #TODO: make this optional
+    !! (/[[:upper:]]/.match(word[0]) )
+  end
+
+end
+
+def choose(ubound)
+  SecureRandom.random_number(ubound)
+end
+
+def random_element(array)
+  array[choose(array.length)]
+end
+
+generator = PassphraseGenerator.new(max_word_length: 9 )
+puts generator.report
