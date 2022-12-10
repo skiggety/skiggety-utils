@@ -34,7 +34,6 @@ Cool Programs you'll find in here:
 - [todo](bin/todo) - Show TODO's, sorted by number of votes <!-- (IGNORE_TODO) -->
 - [review](bin/review) - A program that displays output of other programs and refreshes on a delay with a backoff.
 - [dashboard](PWD_BIN/dashboard) A overrideable program that summarizes the overall status for one directory location.
-- TODO TODO TODO TODO TODO TODO: revive that old password generation script I had that measured entropy
 - gol - Short for "Git Off my Lawn", this would be an opinionated command line tool for efficiently dealing with everyday git operations. Not written yet (TODO)
 
 misc TODO's:: (run 'todo' or 'dashboard' for the full sorted list) <!-- (IGNORE_TODO) -->

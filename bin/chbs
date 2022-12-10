@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 
+# Named for "correct horse battery staple" because of "Password Strength" aka 'xkcd.com/936/', this program generates
+# secure-enough passwords, optimized for being memorized by humans
+
 require 'securerandom'
 
 # TODO: this is interesting:
