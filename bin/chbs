@@ -30,11 +30,11 @@ class CHBS
     generator.generate
   end
 
-  def self.words
+  def self.available_words
     # TODO: # consider (optionally? If there's an internet connection) using the
     # TODO: # EFF word list:
     # TODO: # https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt
-    @words ||= read_dictionary_words_from_traditional_location
+    @available_words ||= read_dictionary_words_from_traditional_location
   end
 
   def self.read_dictionary_words_from_traditional_location
@@ -55,7 +55,7 @@ class CHBS
   def report
     lines = []
 
-    message = "Generating passphrases from #{count_available_words} possible words (for now you have to edit this " \
+    message = "Generating passphrases from #{count_available_words} available words (for now you have to edit this " \
               'program to tweak this):'
     lines << message
     lines << message.gsub(/./, '-')
@@ -79,7 +79,7 @@ class CHBS
   end
 
   def count_available_words
-    words.length
+    available_words.length
   end
 
   def entropy_bitcount
@@ -108,12 +108,14 @@ class CHBS
 
   private def random_word
     result = nil
-    result = random_element(words) until valid_word?(result)
+    # TODO: do this better. Even thought the average case is OK, the worst case is horrible. Or has this already been
+    # filtered? I need to get some unit tests in here::
+    result = random_element(available_words) until valid_word?(result)
     result
   end
 
-  private def words
-    @words ||= self.class.words.select{ |w| valid_word?(w) }
+  private def available_words
+    @available_words ||= self.class.available_words.select{ |w| valid_word?(w) }
   end
 
   private def valid_word?(word)
