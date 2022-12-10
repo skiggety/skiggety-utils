@@ -12,7 +12,7 @@ class TodoLine:
         self.file_path, self.line_number, self.original_text = file_path, line_number, original_text
         self.votecount = 0
 
-        find_todo_entry_pattern = re.compile(rf"(?P<todo_entry>({self.keyword}(\^\d)?)( {self.keyword}(\^\d)?)*)")
+        find_todo_entry_pattern = re.compile(rf"(?P<todo_entry>({self.keyword}(\^\d+)?)( {self.keyword}(\^\d+)?)*)")
         def replace_todo_entry(matchobj): # TODO: can I move this method?:
             # TODO: decide about whether to break out todo_entry as a separate object:
             return self.collapse_todo_entry(matchobj.group('todo_entry'))
@@ -58,12 +58,15 @@ class TodoLine:
         """Keep track of the TodoLine votecount based on the votecount for an entry."""
         self.votecount = max(entry_votecount, self.votecount)
 
-    # TODO TODO: def write():
-    # TODO TODO:     """write the TodoLine back to the original file with simplifying changes"""
-    # TODO TODO:     # TODO: write text in place of original_text
-    # TODO TODO:     raise Exception("TODO: IMPLEMENT ( replace in original file) ")
+    def has_changes_to_write(self):
+        return self.text != self.original_text
 
-    # TODO TODO: def ask_user_to_confirm_before_disk_write():
-    # TODO TODO:     """interactively bug the user to see if they want to write one individual
-    # simplified-format todo entry back to disk (at least if we are in debug mode)"""
-    # TODO TODO:     TODO...
+    def write(self):
+        """write the TodoLine back to the original file with simplifying changes"""
+        with open(self.file_path, 'r') as file:
+            data = file.readlines()
+
+        data[self.line_number - 1]  = self.text + '\n' # watch out for off-by-one errors
+
+        with open(self.file_path, 'w') as file:
+            file.writelines( data )

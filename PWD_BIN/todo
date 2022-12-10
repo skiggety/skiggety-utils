@@ -3,5 +3,7 @@
 
 THIS_NAME="$(basename $0)"
 $(nextwhich $THIS_NAME) --exclude-dir coverage_links \
-                        --exclude-dir coverage $* \
+                        --exclude-dir coverage \
+                        --exclude-dir .git \
+                        $* \
                         | grep -v todo_report.gen.txt # TODO: get rid of the grep -v once todo supports --exclude option

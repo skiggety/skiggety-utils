@@ -12,6 +12,7 @@ function main {
     test_todo_shows_nothing_from_empty_dir || exit_with_error "test failed"
     test_todo_shows_nothing_from_empty_file || exit_with_error "test failed"
     test_todo_sorts_two_equivalent_lines_by_line_number_and_exits_correctly || exit_with_error "test failed"
+    test_todo_finds_and_sorts_concise_format_correctly || exit_with_error "test failed"
     test_todo_handles_a_complex_example || exit_with_error "test failed"
     echo "tests PASSED"
 }
@@ -45,6 +46,17 @@ function test_todo_sorts_two_equivalent_lines_by_line_number_and_exits_correctly
     popd > /dev/null
 }
 
+function test_todo_finds_and_sorts_concise_format_correctly {
+    pushd "$todo_examples_dir/mixed_conciseness" > /dev/null
+    result="$(todo -k TXDX)"
+    exit_value="$?"
+    expected="./long_example.txt:1:TXDX^2: this is a todo with the keyword listed twice
+./concise_example.txt:1:TXDX^13: this is a todo with concise syntax to specify 3 votes"
+    assert_equal "$expected" "$result"
+    assert_equal "0" "$exit_value"
+    popd > /dev/null
+}
+
 function test_todo_handles_a_complex_example {
     pushd "$todo_examples_dir" > /dev/null
     result="$(todo -k TXDX --exclude-dir exclude_me)"
@@ -55,6 +67,7 @@ function test_todo_handles_a_complex_example {
 ./filename_a.txt:2:TXDX^2: sort by filename and line number   /
 ./filename_b.txt:1:TXDX^2: sort by filename and line number  /
 ./filename_b.txt:2:TXDX^2: sort by filename and line number /
+./mixed_conciseness/long_example.txt:1:TXDX^2: this is a todo with the keyword listed twice
 ./nasty/filename_with_a_fake_line:3:number.txt:2:TXDX^2:6:and_a_fake_line_number_in_the_text
 ./nasty/filename_with_a_fake_line:4:number.txt:1:TXDX^2:5:and_a_fake_line_number_in_the_text
 ./nasty/filename_with_a_fake_line:4:number.txt:2:TXDX^2:4:and_a_fake_line_number_in_the_text
@@ -62,7 +75,8 @@ function test_todo_handles_a_complex_example {
 ./votes.txt:3:TXDX^2: one item and TXDX^3 another on the same line. votecount should be 3.
 ./votes.txt:4:TXDX^2: one spelled out item and TXDX^3 another concisely-voted item on the same line
 ./votes.txt:5:TXDX^4: votes are already partially collapsed
-./votes.txt:1:TXDX^6: six votes, this should sort"
+./votes.txt:1:TXDX^6: six votes, this should sort
+./mixed_conciseness/concise_example.txt:1:TXDX^13: this is a todo with concise syntax to specify 3 votes"
     assert_equal "$expected" "$result"
     assert_equal "0" "$exit_value"
     popd > /dev/null
