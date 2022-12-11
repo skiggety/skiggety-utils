@@ -38,8 +38,12 @@ Cool Programs you'll find in here:
   passwords that can't only be in your password manager and must be remembered.
 - gol - Short for "Git Off my Lawn", this would be an opinionated command line tool for efficiently dealing with everyday git operations. Not written yet (TODO)
 
-misc TODO's:: (run 'todo' or 'dashboard' for the full sorted list) <!-- (IGNORE_TODO) -->
+TODO's:: (run 'todo' or 'dashboard' for the full sorted list) <!-- (IGNORE_TODO) -->
 ===============================================================
+
+NOTE: look in [todo_report.gen.txt](todo_report.gen.txt) for the 5 most important todo items, or see the whole list
+sorted ascending by votes by running 'todo' at the command line. Most of the todo list is distributed around the
+codebase, but there are a few miscellaneous ones collected here:
 
 - TODO^3: output license summary in interactive programs (like you're supposed to)??
 - TODO^3: commit initial skigg-utils, to get to parity with what I already like to use
