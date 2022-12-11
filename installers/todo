@@ -1,9 +1,10 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# TODO: can I avoid this whole installer? is there a cleaner way to make sure pip installs get run?
+
 require_relative '../lib/installable_skiggety_util'
 
-# TODO: can I avoid this installer? is there a cleaner way to make sure pip installs get run?
 class TodoInstaller
 
   include InstallableSkiggetyUtil
@@ -18,6 +19,7 @@ class TodoInstaller
 
   def install
     call_peer_installer('basic_prerequisites')
+    # TODO^17: figure out how to do this so it is available when your current directory is outside of skiggety_utils
     system 'pip install colorama' or raise 'pip install colorama failed'
   end
 
