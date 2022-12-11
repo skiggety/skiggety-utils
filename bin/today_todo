@@ -28,7 +28,7 @@ clear
 
 # TODO: consider extracting the rest of this to "today_todo_report", which can be overridden with PWD_BIN:
 todo_list_file_name="TODO.$isotoday.txt"   # IGNORE_TODO
-todo_output="$(todo)" # TODO: -n 5 # TODO^2: todo should accept an option for the number of lines. like "-n 3". Maybe if we pass an option in?
+todo_output="$(todo -w)" # TODO: -n 5 # TODO^2: todo should accept an option for the number of lines. like "-n 3". Maybe if we pass an option in?
 grep -n DONE $(ls -1 TODO.*.txt | tail -n 3) # IGNORE_TODO
 
 todo_count=$(( 0 + $(echo "$todo_output" | wc -l) ))

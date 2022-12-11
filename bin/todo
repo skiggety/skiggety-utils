@@ -6,6 +6,9 @@ import os
 import argparse
 import stat
 import re # regular expressions
+
+# TODO^17: this breaks when you try to run from outside skiggety_utils, like when you run today_todo
+# from your home dir:
 from colorama import Fore, Back, Style
 
 sys.path.append(os.path.abspath(os.path.join(os.getenv('SKIGGETY_UTILS_DIR'),"lib")))
