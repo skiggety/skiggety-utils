@@ -59,6 +59,7 @@ class TodoLine:
         self.votecount = max(entry_votecount, self.votecount)
 
     def has_changes_to_write(self):
+        """TODO: why the heck am I enforcing doc strings on self-explanatory methods like this?"""
         return self.text != self.original_text
 
     # TODO: make this more efficient. Writing a file once per line is silly.
