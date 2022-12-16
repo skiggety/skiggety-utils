@@ -40,6 +40,7 @@ map <Leader>rb :Dispatch bin/rspec %<CR>
 " fzf:
 set rtp+=/usr/local/opt/fzf
 nnoremap <Leader>f :Rg<CR>
+nnoremap <C-f> :Files<CR>
 
 " NERDCommenter
 let g:NERDSpaceDelims = 1
