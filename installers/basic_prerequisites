@@ -181,7 +181,7 @@ function main {
     echo "Installing nose2" # TODO: move
     pip install nose2
 
-    if ! which pylint > /dev/null; then
+    if ! pylint --version> /dev/null; then
         echo "Installing pylint"
         python -m pip install pylint
     fi

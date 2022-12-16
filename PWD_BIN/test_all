@@ -31,7 +31,8 @@ echo "$rake_test_output" | grep -v " --seed" | grep -v "^Finished" | grep -v "^$
 echo_divider_with_text "+-=======-" "run all python tests"
 function run_all_python_tests {
     pushd $THIS_DIR/../test/python/integration/ > /dev/null
-    test_output_text=$(python -m nose2 2>&1)
+    PYENV_VERSION=3.11.1 pip install nose2 || exit_with_error "could not install nose2"
+    test_output_text=$(PYENV_VERSION=3.11.1 python -m nose2 2>&1)
     test_exit_value="$?"
 
     echo "$test_output_text" | sed 's/ in [0-9.]*s//' # get rid of time report to keep output deterministic
