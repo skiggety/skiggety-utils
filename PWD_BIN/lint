@@ -6,7 +6,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 echo_divider_with_text "O-=======-" "lint:"
 
 echo_divider_with_text "+-=======-" "collapse todo votes:"
-todo -wfq --non-interactive --exclude-dir .git || accumulate_error 'could not write simplified TODO entries.' # IGNORE_TODO
+todo -wfq --non-interactive --exclude-dir .git || accumulate_error "could not write simplified TODO entries, todo exited with $?" # IGNORE_TODO
 
 echo_divider_with_text "+-=======-" "generate ./todo_report.gen.txt:"
 TODO_REPORT_LINES=5

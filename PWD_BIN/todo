@@ -2,8 +2,10 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
 THIS_NAME="$(basename $0)"
+#
+# NOTE: this must be the very last thing in the script, so that the exit code passes through:
+# TODO^16: this will need support in bin/todo: --exclude todo_report.gen.txt \
 $(nextwhich $THIS_NAME) --exclude-dir coverage_links \
                         --exclude-dir coverage \
                         --exclude-dir .git \
-                        $* \
-                        | grep -v todo_report.gen.txt # TODO: get rid of the grep -v once todo supports --exclude option
+                        $*
