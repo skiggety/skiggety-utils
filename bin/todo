@@ -9,7 +9,7 @@ import sys
 import platform
 import os
 DESIRED_PYTHON_VERSION = '3.11.1' # TODO: how about a newer one
-if ( DESIRED_PYTHON_VERSION != platform.python_version()):
+if DESIRED_PYTHON_VERSION != platform.python_version():
     os.environ["PYENV_VERSION"] = DESIRED_PYTHON_VERSION
     os.execvpe(sys.argv[0], sys.argv, os.environ) # exec self
 
@@ -17,7 +17,7 @@ import argparse
 import stat
 import re # regular expressions
 
-from colorama import Fore, Back, Style
+from colorama import Fore, Style
 
 sys.path.append(os.path.abspath(os.path.join(os.getenv('SKIGGETY_UTILS_DIR'),"lib")))
 #pylint: disable=C0413
@@ -43,7 +43,6 @@ def main():
     arg_parser.add_argument('-k', '--keyword',
             help = 'Select a keyword. Defaults to \'TODO\'.') # IGNORE_TODO
     # TODO: add_argument('-i', '--ignore-keyword', help = 'TODO')
-    # TODO: add_argument('--interactive', action='store_true', help = 'TODO') # TODO: what's the one-character
 
     arg_parser.add_argument('--non-interactive', action='store_true', help = 'TODO') # TODO: what's the one-character version?
     arg_parser.add_argument('-w', '--write', action='store_true', help = 'TODO')
@@ -67,15 +66,16 @@ def main():
     should_write = command_line_args.write
     should_force = command_line_args.force
     global should_debug # TODO: eliminate globals
-    should_debug = command_line_args.debug
     quiet_mode = command_line_args.quiet
 
-    # --non-interactive takes precendence until I figure out which one came last: (TODO: fix):
-    interactive = True # TODO^2: check if output is to a terminal
-    # TODO: interactive = command_line_args.interactive or interactive
-    interactive = not command_line_args.non_interactive or interactive
-
+    # above here, you just gotta print:
+    should_debug = command_line_args.debug
     echo_debug('We are in debug mode (if you are seeing this message).')
+
+    global interactive # TODO: eliminate globals
+    interactive = True # TODO^4: detect if output is to a terminal
+    if command_line_args.non_interactive:
+        interactive = False
 
     lines = []
 
@@ -93,26 +93,25 @@ def main():
 
     # TODO: method extract:
     if should_write:
-        echo_debug('Ok, we should writing changes to disk...')
-        if should_force:
-            echo_debug('should_force = True')
+        echo_debug('Ok, we should be writing changes to disk...')
+        echo_debug(f"should_force = {should_force}")
+        echo_debug(f"interactive = {interactive}")
+        if (should_force or interactive):
+            echo_debug("considering writing files, no need to raise exception")
+            if (should_force or (interactive and ask_user_to_confirm_file_writes())):
+                echo_debug('Writing changes to disk...')
+                for line in reversed(lines): # start with the highest-voted ones
+                    if line.has_changes_to_write():
+                        echo_debug('There are changes to write for line: \'' + str(line) + '\'')
+                        if (should_force or (interactive and ask_user_to_confirm_this_line_write(line))):
+                            line.write()
         else:
-            echo_debug('should_force = False')
-        if interactive:
-            echo_debug('interactive = True')
-        else:
-            echo_debug('interactive = False')
-        if (should_force or (interactive and ask_user_to_confirm_file_writes())):
-            echo_debug('Writing changes to disk...')
-            for line in reversed(lines): # start with the highest-voted ones
-                if line.has_changes_to_write():
-                    echo_debug('There are changes to write for line: \'' + str(line) + '\'')
-                    if (should_force or ask_user_to_confirm_this_line_write(line)):
-                        line.write()
-                else:
-                    echo_debug('...skipping line with no changes')
+            raise Exception('Cannot write changes in non-interactive mode without the -f or ' \
+                            '--force flag')
 
-    if not quiet_mode:
+    if quiet_mode:
+        echo_debug('skipping the report since we are in quiet mode')
+    else:
         for line in lines:
             print(str(line))
 
@@ -124,6 +123,7 @@ def echo_debug(debug_message): # TODO: rename?
         # TODO: if you want, you could tie this into python's logging framework and do it that way
         sys.stderr.write(Fore.YELLOW + debug_message + '\n')
         sys.stderr.write(Style.RESET_ALL)
+        sys.stdout.write(Style.RESET_ALL)
 
 def ask_user_to_confirm_file_writes():
     return ask_user_yn('Would you like to write changes to files?')
@@ -133,16 +133,17 @@ def ask_user_to_confirm_this_line_write(line):
                        line.text + '\' at ' + line.file_path + ":" + str(line.line_number))
 
 def ask_user_yn(question_text):
+    if not interactive:
+        raise Exception('cannot ask user questions in non-interactive mode')
     full_question = question_text + ' [y/n]:'
-    print(full_question, file=sys.stdout)
+    sys.stdout.write(full_question)
     answer = input()
     echo_debug('answer is \'' + answer + '\'')
     if answer.lower() in ["y","yes"]:
         echo_debug('...which means \'yes\'.')
         return True
-    else:
-        echo_debug('...which means \'no\'.')
-        return False
+    echo_debug('...which means \'no\'.')
+    return False
 
 def add_lines_from_file(lines, full_file_path, keyword, ignore_keyword):
     """given a file, collect relevant TodoLine's in lines"""
