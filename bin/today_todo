@@ -24,12 +24,17 @@ fi
 echo "- TODO: ..." >> "$todo_list_file_name" # IGNORE_TODO
 vim -o $files_to_open '+/\.\.\.'
 
+# TODO^16: eventually we probably want to pass -f to write quicker, playing it safe for the moment
+todo -wq $EXCLUDE_DIR_ARGS
 clear
 
-# TODO: consider extracting the rest of this to "today_todo_report", which can be overridden with PWD_BIN:
-todo_list_file_name="TODO.$isotoday.txt"   # IGNORE_TODO
-todo_output="$(todo -w)" # TODO: -n 5 # TODO^2: todo should accept an option for the number of lines. like "-n 3". Maybe if we pass an option in?
-grep -n DONE $(ls -1 TODO.*.txt | tail -n 3) # IGNORE_TODO
+# TODO: consider extracting the rest of this script to "today_todo_report", which can be overridden with PWD_BIN:
+
+echo "Last few todos DONE:"
+EXCLUDE_DIR_ARGS="--exclude-dir archive" # TODO: move up
+todo -k DONE $EXCLUDE_DIR_ARGS | tail -n 3
+
+todo_output="$(todo $EXCLUDE_DIR_ARGS)" # TODO: -n 5 # TODO^2: todo should accept an option for the number of lines. like "-n 3". Maybe if we pass an option in?
 
 todo_count=$(( 0 + $(echo "$todo_output" | wc -l) ))
 echo
