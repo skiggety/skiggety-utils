@@ -10,7 +10,7 @@ todo -wfq --non-interactive --exclude-dir .git || accumulate_error "could not wr
 
 echo_divider_with_text "+-=======-" "generate ./todo_report.gen.txt:"
 TODO_REPORT_LINES=5
-# TODO: in the future, use 'todo --exclude <FILE>' (when it's supported) instead of relying on 'grep -v'
+# TODO^15: in the future, use 'todo --exclude <FILE>' (when it's supported) instead of relying on 'grep -v'
 todo_report="$(todo | grep -v "^./todo_report.gen.txt:" | grep -v ".gitignored." | tail -n $TODO_REPORT_LINES )"
 echo "$todo_report" > todo_report.gen.txt
 ls -lh todo_report.gen.txt

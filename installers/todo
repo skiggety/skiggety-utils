@@ -10,7 +10,7 @@ class TodoInstaller
   include InstallableSkiggetyUtil
 
   def apparently_installed?
-    false # just play it safe and make sure
+    false # just play it safe and make sure # TODO: fix this
   end
 
   def apparently_configured?

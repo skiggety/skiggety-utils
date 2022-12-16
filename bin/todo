@@ -42,6 +42,9 @@ def main():
     arg_parser = argparse.ArgumentParser(description = PROGRAM_DESCRIPTION)
     arg_parser.add_argument('-k', '--keyword',
             help = 'Select a keyword. Defaults to \'TODO\'.') # IGNORE_TODO
+
+    # TODO: consider different single-letter extension, since -i is often used to mean
+    # case-insensitive:
     # TODO: add_argument('-i', '--ignore-keyword', help = 'TODO')
 
     arg_parser.add_argument('--non-interactive', action='store_true', help = 'TODO') # TODO: what's the one-character version?

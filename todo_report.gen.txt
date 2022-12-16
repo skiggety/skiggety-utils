@@ -1,5 +1,5 @@
-./bin/todo:182:  # TODO^11: when called from a terminal, this program should interactively check with the user if
-./installers/vim:53:    # TODO^14: (learn to use 'fzf.vim' plugin ):
+./PWD_BIN/lint:13:# TODO^15: in the future, use 'todo --exclude <FILE>' (when it's supported) instead of relying on 'grep -v'
 ./installers/vim:52:    # TODO^15: systematize/learn: https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko
-./installers/todo:22:    # TODO^17: figure out how to do this so it is available when your current directory is outside of skiggety_utils
-./bin/todo:10:# TODO^18: this breaks when you try to run from outside skiggety_utils, like when you run today_todo
+./PWD_BIN/todo:7:# TODO^16: this will need support in bin/todo: --exclude todo_report.gen.txt \
+./bin/today_todo:27:# TODO^16: eventually we probably want to pass -f to write quicker, playing it safe for the moment
+./bin/todo:4:# TODO^17: similar hack for rbenv

@@ -23,6 +23,8 @@ bin/default_dashboard || accumulate_error
 # TODO?: tell you what command to run to commit changes or whatever
 # TODO?: graph score over time (see program "progress")
 
+# TODO: DELETE redundant rubocop call, it is alredy called in PWD_BIN/lint . But hold off until lint
+# calls it with || exit_with_error:
 echo_divider_with_text "-=" "rubocop"
 rm -f rubocop_output.txt
 bundle exec rubocop --parallel --color -o rubocop_output.txt || accumulate_error "rubocop FAILED"

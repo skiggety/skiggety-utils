@@ -45,6 +45,7 @@ NOTE: look in [todo_report.gen.txt](todo_report.gen.txt) for the 5 most importan
 sorted ascending by votes by running 'todo' at the command line. Most of the todo list is distributed around the
 codebase, but there are a few miscellaneous ones collected here:
 
+- TODO: update to ruby 3
 - TODO^3: output license summary in interactive programs (like you're supposed to)??
 - TODO^3: commit initial skigg-utils, to get to parity with what I already like to use
 - TODO: document usage of commands

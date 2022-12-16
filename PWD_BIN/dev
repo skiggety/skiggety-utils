@@ -12,6 +12,9 @@ echo_divider_with_text "//======" "dev:"
 
 test_all && echo "test_all SUCCEEDED" || exit_with_error "test_all FAILED"
 
+# TODO: we could get in the habit of keeping everything clean and then use exit_with_error here,
+# because it's a pain to have these be the errors that cause dev to fail, but to have them so far
+# off the screen because of dashboard output:
 lint && echo "lint SUCCEEDED" || accumulate_error "lint FAILED"
 
 dashboard || accumulate_error "dashboard FAILED"
