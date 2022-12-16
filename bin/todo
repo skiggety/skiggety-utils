@@ -2,12 +2,13 @@
 """show TODO's in code (unless they say IGNORE_TODO on the same line, like this), sorted by votes"""
 
 # TODO^17: similar hack for rbenv
-# TODO: THIS SHOULD NOT BE NECESSARY! WHY? OH, WHY?!?! (maybe learn more about pyenv):
+# TODO: THIS SHOULD NOT BE NECESSARY! WHY? OH, WHY?!?! (maybe learn more about pyenv and how python
+# scripts are normally packaged):
 # Because the CURRENT directory should not determine the python version:
 import sys
 import platform
 import os
-DESIRED_PYTHON_VERSION = '3.9.6'
+DESIRED_PYTHON_VERSION = '3.11.1' # TODO: how about a newer one
 if ( DESIRED_PYTHON_VERSION != platform.python_version()):
     os.environ["PYENV_VERSION"] = DESIRED_PYTHON_VERSION
     os.execvpe(sys.argv[0], sys.argv, os.environ) # exec self

@@ -20,7 +20,8 @@ class TodoInstaller
   def install
     call_peer_installer('basic_prerequisites')
     # TODO^17: figure out how to do this so it is available when your current directory is outside of skiggety_utils
-    system 'pip install colorama' or raise 'pip install colorama failed'
+    # PYENV_VERSION matches the one in bin/todo:
+    system 'PYENV_VERSION=3.11.1 pip install colorama' or raise 'pip install colorama failed'
   end
 
 end
