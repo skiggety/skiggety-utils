@@ -10,8 +10,11 @@ import platform
 import os
 DESIRED_PYTHON_VERSION = '3.11.1' # TODO: how about a newer one
 if DESIRED_PYTHON_VERSION != platform.python_version():
-    os.environ["PYENV_VERSION"] = DESIRED_PYTHON_VERSION
-    os.execvpe(sys.argv[0], sys.argv, os.environ) # exec self
+    if os.environ.get('PYENV_VERSION_HACKED') == 'true': # avoid infinite loop
+        raise Exception(f"Failed to force python version to {DESIRED_PYTHON_VERSION}")
+    os.environ['PYENV_VERSION'] = DESIRED_PYTHON_VERSION
+    os.environ['PYENV_VERSION_HACKED'] = 'true'
+    os.execvpe(sys.argv[0], sys.argv, os.environ) # system exec self
 
 import argparse
 import stat
