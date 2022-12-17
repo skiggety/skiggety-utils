@@ -24,6 +24,7 @@ if [ "$git_stash_list" != "" ]; then
     echo "$git_stash_list"
 fi
 
+unset GIT_EXTERNAL_DIFF # if call this from inside a git-vimdiff, we still want "git diff" to behave normally
 # echo_divider_with_text "-" "git diff of unstaged files:"
 # for next in $( git ls-files --others --exclude-standard ) ; do git -c color.ui=always --no-pager diff --no-index /dev/null $next; done | head -n 15  # git diff for files not checked in yet only?
 echo_divider_with_text "-=" "git diff:"
