@@ -37,8 +37,8 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " Run the current file with rspec
 map <Leader>rb :Dispatch bin/rspec %<CR>
 
-" fzf:
-set rtp+=/usr/local/opt/fzf
+" fzf.vim:
+set rtp+=/usr/local/opt/fzf "TODO: make this cross-platform, this is just where fzf gets installed with brew on mac
 nnoremap <Leader>f :Rg<CR>
 nnoremap <C-f> :Files<CR>
 

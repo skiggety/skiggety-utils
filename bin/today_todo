@@ -28,7 +28,8 @@ vim -o $files_to_open '+/\.\.\.'
 todo -wq $EXCLUDE_DIR_ARGS
 clear
 
-# TODO: consider extracting the rest of this script to "today_todo_report", which can be overridden with PWD_BIN:
+# TODO: consider extracting the rest of this script to "today_todo_display", which can be overridden with PWD_BIN, or
+# alternatively we could do like 'todo' and use flags to turn editing and reporting on and off:
 
 echo "Last few todos DONE:"
 EXCLUDE_DIR_ARGS="--exclude-dir archive" # TODO: move up

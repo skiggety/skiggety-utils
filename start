@@ -33,7 +33,7 @@ debug_here "update-skiggety-utils completed successfully"; echo
 # debug_here
 # TODO: this is something similar that I'm also not sure is a good idea: ./bin/start_in_env.bash || exit_with_error "Could not run \"./bin/start_in_env.bash\"" # TODO: don't use relative path # TODO^2: move most things in here, including any interactive stuff
 
-echo "To learn more about the utilities that are now available, you'll essentially have to do a code review since I don't have a real help system yet (TODO^2: show real help)";pretty_sleep 10
+echo "To learn more about the utilities that are now available, you'll essentially have to do a code review or read the README since I don't have a real help system yet (TODO^2: show real help)";pretty_sleep 10
 
 # TODO^3: make auto-dev optional, or maybe DELETE  calls to it, as that's not necessarily what this script is for.. (or use ask_user to have the user do it if they want)
 debug_here "let's try running auto-dev:"
