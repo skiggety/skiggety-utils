@@ -12,6 +12,7 @@ echo_divider_with_text "O-=======-" "test_all:"
 
 # install skiggety-utils
 echo_divider_with_text "+-=======-" "install-skiggety-utils --non-interactive"
+# TODO: should we even be doing this at all in here?:
 $THIS_DIR/install-skiggety-utils --non-interactive || accumulate_error "could not run installers for skiggety-utils"
 
 echo_divider_with_text "+-=======-" "ruby_setup"

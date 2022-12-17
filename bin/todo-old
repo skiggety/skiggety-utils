@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# TODO: get rid of this old todo version
+# TODO: probably should get rid of this old todo version, but it's pretty funny
 
 grep -RnI -D skip "TODO" .                                                        | grep -v "TODO TODO"                                                   | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"
 grep -RnI -D skip "TODO TODO" .                                                   | grep -v "TODO TODO TODO"                                              | grep -v IGNORE_TODO | grep -v "^Binary file .* matches$"

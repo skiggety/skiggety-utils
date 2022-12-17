@@ -13,7 +13,7 @@
 # repeatedly you stop it, waiting a few seconds in between each run (this time
 # will adjust automatically.
 
-# TODO^17: rbenv version hack similar to what was done in bin/todo with DESIRED_PYTHON_VERSION, but beware of all the
+# TODO^16: rbenv version hack similar to what was done in bin/todo with DESIRED_PYTHON_VERSION, but beware of all the
 # trouble that caused
 
 require 'English' # needed for: $CHILD_STATUS.exitstatus
