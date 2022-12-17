@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# TODO: set miniumum refresh time with: --m 10
+# TODO TODO TODO TODO: set Maxiumum refresh time with something like: --m 1800
+review dev
