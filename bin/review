@@ -21,8 +21,8 @@ require 'English'
 
 # TODO^4: avoid forcing the same version of ruby on programs that this may call (maybe be careful
 # not to pass rbenv-related environment variables down)
-# TODO TODO TODO^9: accept --minimum-delay or -m (e.g. auto-ci might want to call this with "-m 30")
-# TODO TODO^3: accept --maximum-delay or -M (e.g. auto-ci might want to call this with "-M $(( 60 * 60 * 6 ))")
+# TODO^11: accept --minimum-delay or -m (e.g. auto-ci might want to call this with "-m 30")
+# TODO^4: accept --maximum-delay or -M (e.g. auto-ci might want to call this with "-M $(( 60 * 60 * 6 ))")
 # TODO^3: accept --interactive ("-i") or --non-interactive ("-n"), to determine whether to use backticks
 # TODO^3: we need a control key to wake it up and make it refresh immediately (accept a
 # control character or signal to refresh now)
