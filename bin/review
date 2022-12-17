@@ -13,7 +13,9 @@
 # repeatedly you stop it, waiting a few seconds in between each run (this time
 # will adjust automatically.
 
-require 'English'
+# TODO^17: rbenv version hack similar to what was done in bin/todo with DESIRED_PYTHON_VERSION
+
+require 'English' # needed for: $CHILD_STATUS.exitstatus
 
 # TODO: would it be smart to have a cron job that runs 'pkill review' every day at ~7pm on my work laptop? Or should I
 # instead strive to make the default behavior of this, and auto-dev, so reasonable that it's not required? Also, can I
