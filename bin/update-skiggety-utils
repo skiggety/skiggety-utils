@@ -5,11 +5,13 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 
 # This script installs the latest skiggety-utils
 
-pushd $SKIGGETY_UTILS_DIR
+pushd $SKIGGETY_UTILS_DIR >/dev/null
 
+echo "getting the latest skiggety-utils by running 'git pull':"
 git pull || exit_with_error "could not pull latest changes from git"
 
+echo "running 'install-skiggety-utils $@':"
 install-skiggety-utils "$@" || exit 1
 
-popd
+popd >/dev/null
 echo "$(basename $0) COMPLETE."
