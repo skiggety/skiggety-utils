@@ -1,20 +1,19 @@
 #!/usr/bin/env python3
 """show TODO's in code (unless they say IGNORE_TODO on the same line, like this), sorted by votes"""
 
+# TODO^18: solve the CFPVOM bug here too once it's been solved in demo_python_version_hack
+
+# Because the CURRENT directory should not determine the python version:
 # TODO: THIS SHOULD NOT BE NECESSARY! WHY? OH, WHY?!?! (maybe learn more about pyenv and how python
 # scripts are normally packaged):
-# Because the CURRENT directory should not determine the python version:
-import sys
-import platform
 import os
+import platform
+import sys
 DESIRED_PYTHON_VERSION = '3.11.1'
-# TODO^19: why the hell doesn't this work on metrigon (one of my macs)? It's setting the variable,
-# but somehow pyenv is not doing the right thing. AHA! on metrigon, the specific python version is
-# determined by $PATH before it can get to the shim the first time this runs, likely because of the
-# "pyenv exec" that happens in the shim.
 if DESIRED_PYTHON_VERSION != platform.python_version():
     if os.environ.get('PYENV_VERSION_HACKED') == 'true': # avoid infinite loop
-        raise Exception(f"Failed to force python version to {DESIRED_PYTHON_VERSION}")
+        raise Exception(f"Failed to force python version to {DESIRED_PYTHON_VERSION}." \
+                        " Use demo_python_version_hack to debug.")
     os.environ['PYENV_VERSION'] = DESIRED_PYTHON_VERSION
     os.environ['PYENV_VERSION_HACKED'] = 'true'
     os.execvpe(sys.argv[0], sys.argv, os.environ) # system exec self

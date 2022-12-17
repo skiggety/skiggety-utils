@@ -1,0 +1,44 @@
+#!/usr/bin/env python3
+"""Demonstrates a hack, that may not even be a good idea, that allows a python script to
+self-determine its version using pyenv."""
+
+# TODO^19: (calling this "CFPVOM" bug because "cannot force python version on metrigon") Why the
+# hell doesn't this hack work on metrigon (one of my macs)? It's setting the variable, but somehow pyenv
+# is not doing the right thing. AHA! on metrigon, the specific python version is determined by $PATH
+# before it can get to the shim the first time this runs, likely because of the "pyenv exec" that
+# happens in the shim. This would not happen if we made a shell script that set PYENV_VERSION and
+# called a renamed version ("todo_impl") of this script, so at some point we could give up and do
+# that instead.
+
+# TODO^17: DELETE many, but not all of the debug messages once "CFPVOM" bug is solved.
+
+# Because the CURRENT directory should not determine the python version:
+# TODO: THIS SHOULD NOT BE NECESSARY! WHY? OH, WHY?!?! (maybe learn more about pyenv and how python
+# scripts are normally packaged):
+import os
+import platform
+import sys
+DESIRED_PYTHON_VERSION = '3.11.1'
+print(f"DEBUG: ----------------------------------------")
+print(f"DEBUG: sys.argv[0] is {sys.argv[0]}")
+print(f"DEBUG: before touching version, os.environ.get('PYENV_VERSION') is {os.environ.get('PYENV_VERSION')}")
+print(f"DEBUG: before touching version, os.environ.get('PYENV_VERSION_HACKED') is {os.environ.get('PYENV_VERSION_HACKED')}")
+print(f"DEBUG: before touching version, platform.python_version() is {platform.python_version()}")
+# TODO^21: (part of solving CFPVOM bug) why does the PATH have the wrong version python bin in it if
+# called from outside skiggety-utils? I think that is only supposed to happen if you call pyenv
+# exec. UPDATE: I noticed pyenv exec IS being used in the pyenv shim, so why does this work at all
+# on eelwright? maybe set PYENV_DEBUG to true and test that way. Another idea would be to rip it out
+# of the path before exec, or get a fresh path using a new login shell or calling eval on python
+# init. I dunno. It sounds pretty desperate.:
+print(f"DEBUG: before touching version, os.environ.get('PATH') is {os.environ.get('PATH')}")
+if DESIRED_PYTHON_VERSION != platform.python_version():
+    if os.environ.get('PYENV_VERSION_HACKED') == 'true': # avoid infinite loop
+        raise Exception(f"Failed to force python version to {DESIRED_PYTHON_VERSION}. " \
+                        "This script needs debugging.")
+    print(f"DEBUG: OK, attempting to switch from python version {platform.python_version()} to {DESIRED_PYTHON_VERSION}")
+    os.environ['PYENV_VERSION'] = DESIRED_PYTHON_VERSION
+    os.environ['PYENV_VERSION_HACKED'] = 'true'
+    print(f"DEBUG: after setting version, os.environ.get('PYENV_VERSION') is {os.environ.get('PYENV_VERSION')}")
+    os.execvpe(sys.argv[0], sys.argv, os.environ) # system exec self
+
+print(f"DEBUG: SUCCESS! (this is after version hack) If you cd to a different dir, will it still work?")
