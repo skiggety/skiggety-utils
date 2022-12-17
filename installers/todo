@@ -21,6 +21,7 @@ class TodoInstaller
     call_peer_installer('basic_prerequisites')
     # PYENV_VERSION matches the one in bin/todo:
     system 'PYENV_VERSION=3.11.1 pip install colorama' or raise 'pip install colorama failed'
+    mark_installed # TODO: DELETE once we implement apparently_installed? for real
   end
 
 end
