@@ -1,5 +1,5 @@
 ./installers/vim:53:    # TODO^15: (learn to use 'fzf.vim' plugin ):
 ./PWD_BIN/todo:7:# TODO^16: this will need support in bin/todo: --exclude todo_report.gen.txt \
 ./bin/today_todo:27:# TODO^16: eventually we probably want to pass -f to write quicker, playing it safe for the moment
-./bin/todo:4:# TODO^17: similar hack for rbenv, beware all the trouble this one caused, though
-./bin/todo:12:# TODO^19: why the hell doesn't this work on metrigon (one of my macs)? It's setting the variable,
+./bin/review:16:# TODO^17: rbenv version hack similar to what was done in bin/todo with DESIRED_PYTHON_VERSION, but beware of all the
+./bin/todo:11:# TODO^19: why the hell doesn't this work on metrigon (one of my macs)? It's setting the variable,

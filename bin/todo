@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """show TODO's in code (unless they say IGNORE_TODO on the same line, like this), sorted by votes"""
 
-# TODO^17: similar hack for rbenv, beware all the trouble this one caused, though
 # TODO: THIS SHOULD NOT BE NECESSARY! WHY? OH, WHY?!?! (maybe learn more about pyenv and how python
 # scripts are normally packaged):
 # Because the CURRENT directory should not determine the python version:
@@ -38,7 +37,7 @@ from todo_line import TodoLine
 if sys.version_info[0] < 3:
     raise Exception('Must be using Python 3')
 
-PROGRAM_DESCRIPTION = 'finds TODOs, sorted by votes'
+PROGRAM_DESCRIPTION = 'finds TODOs, sorted by votes' # IGNORE_TODO
 
 def main():
     """Find and display todo entries, according to options passed in."""
