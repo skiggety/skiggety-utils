@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# TODO^16: finish implementing rbenv version hack similar to what was done in
+# demo_python_version_hack, as long as it still seems reasonable after the difficulty with the
+# python one
+
+DESIRED_RUBY_VERSION = '3.1.3'
+puts "DEBUG XXX: in #{$PROGRAM_NAME}, RUBY_VERSION is #{RUBY_VERSION}"
+raise 'TODO: IMPLEMENT'

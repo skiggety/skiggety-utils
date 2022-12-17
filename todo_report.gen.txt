@@ -1,5 +1,5 @@
+./installers/vim:52:    # TODO^16: systematize/learn: https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko
 ./bin/demo_python_version_hack:13:# TODO^17: DELETE many, but not all of the debug messages once "CFPVOM" bug is solved.
-./bin/review:16:# TODO^17: rbenv version hack similar to what was done in bin/todo with DESIRED_PYTHON_VERSION, but beware of all the
 ./bin/todo:4:# TODO^18: solve the CFPVOM bug here too once it's been solved in demo_python_version_hack
 ./bin/demo_python_version_hack:5:# TODO^19: (calling this "CFPVOM" bug because "cannot force python version on metrigon") Why the
 ./bin/demo_python_version_hack:27:# TODO^21: (part of solving CFPVOM bug) why does the PATH have the wrong version python bin in it if
