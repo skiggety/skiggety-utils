@@ -135,14 +135,21 @@ def echo_debug(debug_message): # TODO: rename?
         sys.stderr.write(Style.RESET_ALL)
         sys.stdout.write(Style.RESET_ALL)
 
+# TODO: maybe don't ask these questions as much, or only in a special mode, or DELETE entirely. See
+# how it goes for now:
 def ask_user_to_confirm_file_writes():
+    """a high-level check of whether you want to write files at all"""
     return ask_user_yn('Would you like to write changes to files?')
 
 def ask_user_to_confirm_this_line_write(line):
-    return ask_user_yn('Would you like to replace \'' + line.original_text + '\' with \'' +
-                       line.text + '\' at ' + line.file_path + ":" + str(line.line_number))
+    """ask the user about individual lines to replace. Might be overkill, fine for now"""
+    message = f"Would you like to replace this line:\n{line.original_text}\n" \
+            f" ...with this line:\n{line.text}\n" \
+            f" ...at this location?:\n{line.file_path}:{str(line.line_number)}\n"
+    return ask_user_yn(message)
 
 def ask_user_yn(question_text):
+    """prompt the user with any yes or no question and return as a boolean"""
     if not interactive:
         raise Exception('cannot ask user questions in non-interactive mode')
     full_question = question_text + ' [y/n]:'
