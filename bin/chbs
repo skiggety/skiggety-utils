@@ -19,22 +19,20 @@ require 'securerandom'
 # TODO: consider a --dense (a.k.a. --troubador a.k.a. -d) mode to generate secure passwords in the traditional style
 # that doesn't need to be as long but is harder to remember.
 
+# TODO: maybe accept a flag that makes this print one and only one passphrase, with no other output. It could be used by
+# other programs.
+
 class CHBS
 
   # TODO^2: accept and pass through options for min/max words/characters/characters-per-word, plus whether it should
-  # jamn in extras for compliance
+  # jam in extras for compliance
   # TODO^3:  and pass through options for min/max word length (--mwl/--Mwl)
-  # TODO: RENAME this method and bring it up to speed so it's a usefully concise way of printing the whole report
-  def self.generate_passphrase
-    generator = CHBS.new
-    generator.generate
-  end
 
-  def self.available_words
+  def self.all_available_words
     # TODO: # consider (optionally? If there's an internet connection) using the
     # TODO: # EFF word list:
     # TODO: # https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt
-    @available_words ||= read_dictionary_words_from_traditional_location
+    @all_available_words ||= read_dictionary_words_from_traditional_location
   end
 
   def self.read_dictionary_words_from_traditional_location
@@ -55,31 +53,34 @@ class CHBS
   def report
     lines = []
 
-    message = "Generating passphrases from #{count_available_words} available words (for now you have to edit this " \
-              'program to tweak this):'
-    lines << message
-    lines << message.gsub(/./, '-')
+    intro_message = "Generating passphrases from #{words.length} words" \
+                    ' (for now you have to edit this program to tweak this):'
+    lines << intro_message
+    lines << divider_same_length_as(intro_message)
 
-    passphrase_count.times{ lines << generate }
+    passphrase_count.times{ lines << generate_passphrase }
 
-    entropy_report = "Entropy is >= #{entropy_bitcount.floor} bits, from your choice of #{passphrase_count} "\
-                     "passphrases with #{entropy_bitcount_per_passphrase.round(2)} bits each."
-    lines << entropy_report.gsub(/./, '-')
+    lines << divider_same_length_as(entropy_report)
     lines << entropy_report
 
     lines.join("\n")
   end
 
-  def generate
-    selected_words = []
-    wordcount.times do
-      selected_words << random_word
-    end
-    selected_words.join(' ')
+  def entropy_report
+    "Entropy is >= #{entropy_bitcount.floor} bits, from your choice of #{passphrase_count} passphrases "\
+      "with #{entropy_bitcount_per_passphrase.round(2)} bits each."
   end
 
-  def count_available_words
-    available_words.length
+  def divider_same_length_as(text)
+    text.gsub(/./, '-')
+  end
+
+  def generate_passphrase
+    selected_words = []
+    wordcount.times do
+      selected_words << random_element(words)
+    end
+    selected_words.join(' ')
   end
 
   def entropy_bitcount
@@ -87,7 +88,7 @@ class CHBS
   end
 
   def entropy_bitcount_per_passphrase
-    Math.log(possibilities_count, 2)
+    Math.log(possible_passphrase_count, 2)
   end
 
   def lost_entropy_when_user_inevitably_picks_the_weakest_passphrase_shown
@@ -102,20 +103,12 @@ class CHBS
     21 # TODO: UN-HARDCODE
   end
 
-  private def possibilities_count
-    count_available_words**wordcount
+  private def possible_passphrase_count
+    words.length**wordcount
   end
 
-  private def random_word
-    result = nil
-    # TODO: do this better. Even thought the average case is OK, the worst case is horrible. Or has this already been
-    # filtered? I need to get some unit tests in here::
-    result = random_element(available_words) until valid_word?(result)
-    result
-  end
-
-  private def available_words
-    @available_words ||= self.class.available_words.select{ |w| valid_word?(w) }
+  private def words
+    @words ||= self.class.all_available_words.select{ |w| valid_word?(w) }
   end
 
   private def valid_word?(word)
