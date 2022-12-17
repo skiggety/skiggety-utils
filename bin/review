@@ -26,7 +26,11 @@ require 'English' # needed for: $CHILD_STATUS.exitstatus
 # not to pass rbenv-related environment variables down)
 # TODO^11: accept --minimum-delay or -m (e.g. auto-ci might want to call this with "-m 30")
 # TODO^4: accept --maximum-delay or -M (e.g. auto-ci might want to call this with "-M $(( 60 * 60 * 6 ))")
-# TODO^3: accept --interactive ("-i") or --non-interactive ("-n"), to determine whether to use backticks
+# TODO^4: accept --interactive ("-i") or --non-interactive ("-n"), to determine whether to use backticks
+#   TODO^4: DEBUG, if you call review with -i, it misinterprets it and fails forever, which is silly. We need to
+#   make sure extra flags aren't ending up somewhere they shouldn't.
+#   TODO^4: DEBUG: ...but, on the other hand, if you run 'review update-skiggety-utils --non-interactive',
+#   update-skiggety-utils will never get the --non-interactive flag
 # TODO^3: we need a control key to wake it up and make it refresh immediately (accept a
 # control character or signal to refresh now)
 # TODO: accept log file that logs output, changes, feequencies/counts, etc.
@@ -42,10 +46,11 @@ class ReviewProgram
   end
 
   def run
-    # TODO^2: non-interactive by default, intereactive mode for when the
+    # TODO^3: non-interactive by default, intereactive mode for when the
     # program might prompt you with something, and in that case backticks
     # cannot be used:
-    $interactive = !ARGV.delete('--non-interactive')
+    # NOTE: this is an example of what NOT to do, because we need to distinguish between arguments that are meant for
+    # this program, and arguments that are part of the command: $interactive = !ARGV.delete('--non-interactive')
 
     command = ARGV.map{ |a| "\"#{a}\"" }.join(' ')
 

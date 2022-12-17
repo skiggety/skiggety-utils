@@ -44,8 +44,11 @@ function main {
 
     local INSTALLER_ARGS=""
     if $interactive; then
+        debug_here "running interactively"
         INSTALLER_ARGS=""
     else
+        # TODO: make sure that when you run "review install-skiggety-utils", this is in non-interactive mode:
+        debug_here "NOT running interactively"
         INSTALLER_ARGS="--non-interactive"
     fi
 
