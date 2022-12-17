@@ -8,7 +8,11 @@
 import sys
 import platform
 import os
-DESIRED_PYTHON_VERSION = '3.11.1' # TODO: how about a newer one
+DESIRED_PYTHON_VERSION = '3.11.1'
+# TODO TODO^18: why the hell doesn't this work on metrigon (one of my macs)? It's setting the variable,
+# but somehow pyenv is not doing the right thing. AHA! on metrigon, the specific python version is
+# determined by $PATH before it can get to the shim the first time this runs, likely because of the
+# "pyenv exec" that happens in the shim.
 if DESIRED_PYTHON_VERSION != platform.python_version():
     if os.environ.get('PYENV_VERSION_HACKED') == 'true': # avoid infinite loop
         raise Exception(f"Failed to force python version to {DESIRED_PYTHON_VERSION}")
@@ -23,7 +27,7 @@ import re # regular expressions
 from colorama import Fore, Style
 
 sys.path.append(os.path.abspath(os.path.join(os.getenv('SKIGGETY_UTILS_DIR'),"lib")))
-#pylint: disable=C0413
+#pylint: disable=C0413 # because this has to go after we mess with sys.path
 from todo_line import TodoLine
 #pylint: enable=C0413
 

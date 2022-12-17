@@ -1,5 +1,5 @@
 ./PWD_BIN/lint:13:# TODO^15: in the future, use 'todo --exclude <FILE>' (when it's supported) instead of relying on 'grep -v'
 ./installers/vim:52:    # TODO^15: systematize/learn: https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko
 ./PWD_BIN/todo:7:# TODO^16: this will need support in bin/todo: --exclude todo_report.gen.txt \
-./bin/today_todo:27:# TODO^16: eventually we probably want to pass -f to write quicker, playing it safe for the moment
-./bin/todo:4:# TODO^17: similar hack for rbenv
+./bin/today_todo:29:# TODO^16: eventually we probably want to pass -f to write quicker, playing it safe for the moment
+./bin/todo:5:# TODO^17: similar hack for rbenv

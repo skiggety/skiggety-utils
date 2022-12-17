@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
 # This script continuously displays and refreshes the dashboard
-# TODO: rename this script?
+# TODO TODO: rename this script, and all versions in PWD_BIN directories?
+#   TODO: consider 'review-dev' as a name. It makes obvious sense, and shell tab completion would let you know that it
+#   exists if you were about to run 'review dev', which would help you get any custom parameters. Only thing is, if I
+#   have a default version at $SKIGGETY_UTILS_DIR , then tab completion will steer you towards it when you don't have
+#   custom parameters, so If I do that, I might want to get rid of this copy and just leave it to users to make
+#   PWD_BIN/review-dev when it makes sense, maybe even provide a template version by renaming this version to
+#   bin/default_review-dev or the like.
 
-THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
-SKIGGETY_UTILS_DIR="$(cd "$(dirname $THIS_DIR)";pwd)"
-. $THIS_DIR/../lib/include_in_bashrc.bash || exit 1
-. $THIS_DIR/../lib/skiggety-utils.bash || exit 1
-
-review dev # TODO: pass in minimum and maximum wait times
+review dev
