@@ -4,7 +4,7 @@
 # demo_ruby_version_hack to do whatever testing I need to do. And control where the output goes, etc.
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
-SKIGGETY_DEBUG = true
+SKIGGETY_DEBUG=true
 
 # TODO^31: call this from your local PWD/experiment.gitignored.bash on all machines that want to
 # participate in debugging.
