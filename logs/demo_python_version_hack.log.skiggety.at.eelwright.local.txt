@@ -1,3 +1,4 @@
+from: skiggety@gmail.com
 at: [1;33mskiggety[0m@[1;35meelwright.local[0m:[1;36m~/today_todo[0m
 running: 'demo_python_version_hack'
 DEBUG: ----------------------------------------

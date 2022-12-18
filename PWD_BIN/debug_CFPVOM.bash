@@ -18,7 +18,9 @@ do
     # TODO: try ask_user congrats, you are in a debugger at TODO_current_script_name_and_line_number_TODO
     OUTFILE=$SKIGGETY_UTILS_DIR/logs/$cmd.log.$(whoami).at.$(hostname).txt
     mkdir -p "$(dirname "$OUTFILE")"
-    echo "at: $(duh)" | tee $OUTFILE
+    touch "$OUTFILE"
+    echo "from: $(git config user.email)" | tee $OUTFILE
+    echo "at: $(duh)" | tee -a $OUTFILE
     echo "running: '$cmd'" | tee -a $OUTFILE
     $cmd | tee -a $OUTFILE || accumulate_error "$cmd FAILED"
     echo "your test results are in $OUTFILE"
