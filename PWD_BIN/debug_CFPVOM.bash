@@ -25,6 +25,7 @@ do
     echo_divider "="
     echo "pyenv version returns:" | tee -a $OUTFILE
     pyenv version | tee -a $OUTFILE
+    debug_eval_here PYTHON_VERSION_HACKED 2>&1 | tee -a $OUTFILE
     # ask_user "congrats, you are in a debugger at $(echo_here)"
     echo "running: '$cmd'" | tee -a $OUTFILE
     $cmd >> $OUTFILE 2>&1 || accumulate_error "$cmd FAILED"
