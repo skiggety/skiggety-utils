@@ -13,10 +13,4 @@ echo_divider_with_text "-" "git pull:"
 git pull | grep -v autostash # TODO checkout fresh code, default to one branch
 git restore --staged .
 
-test_all && echo "test_all SUCCEEDED" || accumulate_error "test_all FAILED"
-
-lint && echo "lint SUCCEEDED" || accumulate_error "lint FAILED"
-
-dashboard || accumulate_error "dashboard FAILED"
-
-exit_if_any_accumulated_errors
+dev && echo "dev SUCCEEDED" || accumulate_error "dev FAILED"
