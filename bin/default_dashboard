@@ -8,7 +8,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 
 echo_divider_with_text "-=" "TODO's:" # IGNORE_TODO
 if [ -f ./todo_report.gen.txt ]; then
-    cat ./todo_report.gen.txt
+    cat ./todo_report.gen.txt | grep --color=always -A 10 -B 10 TODO # grep is just to highlight
 else
     # purposely call whatever 'todo' is in the path so you can override it with PWD_BIN/todo
     todo | tail -n 5 || exit_with_error "todo FAILED" # TODO^2: abbreviate -n 5 todo
