@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 TODO_REPORT_LINES=5 # IGNORE_TODO
 # TODO^17: in the future, use 'todo --exclude <FILE>' (when it's supported) instead of relying on 'grep -v'
-todo_report="$(todo | grep -v "^./todo_report.gen.txt:" | grep -v ".gitignored." | tail -n $TODO_REPORT_LINES )"
+todo_report="$(todo | grep -v "^./todo_report.gen.txt:" | grep -v ".gitignored." | grep -v "XXX" | tail -n $TODO_REPORT_LINES )"
 echo "$todo_report" > todo_report.gen.txt
 cat todo_report.gen.txt

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO: consider renaming to review_dev
+# TODO: consider moving to bin
 # TODO: set miniumum refresh time with: --m 10
 # TODO^4: set Maxiumum refresh time with something like: --m 1800
 review dev
