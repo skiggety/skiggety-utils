@@ -25,7 +25,7 @@ do
     pyenv version | tee -a $OUTFILE
     # ask_user "congrats, you are in a debugger at $(echo_here)"
     echo "running: '$cmd'" | tee -a $OUTFILE
-    $cmd | tee -a $OUTFILE || accumulate_error "$cmd FAILED"
+    $cmd >> $OUTFILE || accumulate_error "$cmd FAILED"
     echo "your test results are in $OUTFILE"
 
     exit_with_error "stopping now: one language at a time TODO: DELETE when the python hack is working everywhere"
