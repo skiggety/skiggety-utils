@@ -6,6 +6,7 @@ running: 'demo_python_version_hack'
 DEBUG: ----------------------------------------
 DEBUG: sys.argv[0] is /Users/skiggety/code/skiggety-utils/bin/demo_python_version_hack
 DEBUG: before touching version, os.environ.get('PYENV_VERSION') is 3.11.1
+TODO^38: make sure this is false on the first run:
 DEBUG: before touching version, os.environ.get('PYENV_VERSION_HACKED') is true
 ...well, no wonder it works on eelwright...this is not a good test, apparently
 DEBUG: before touching version, platform.python_version() is 3.11.1
@@ -13,6 +14,8 @@ DEBUG: the contents os $PATH breaks down to:
     /Users/skiggety/.pyenv/versions/3.11.1/bin
     /usr/local/Cellar/pyenv/2.3.8/libexec
     /usr/local/Cellar/pyenv/2.3.8/plugins/python-build/bin
+    /Users/skiggety/.pyenv/shims
+    /Users/skiggety/.pyenv/bin
     /usr/local/Cellar/pyenv/2.3.8/libexec
     /usr/local/Cellar/pyenv/2.3.8/plugins/python-build/bin
     /Users/skiggety/.pyenv/shims

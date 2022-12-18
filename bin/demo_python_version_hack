@@ -29,17 +29,10 @@ print('...well, no wonder it works on eelwright...this is not a good test, appar
 # TODO^34: maybe it has something to to with PWD WHEN YOU START THE SHELL or WINDOW
 
 # TODO^36: uh-oh, the log comes out different depending on whether you run it on its own or as
-# part of auto-dev
+# part of auto-dev, specifically, whether PYENV_VERSION_HACKED is already true (it should always be
+# false at the beginning of the first run.
 
 print(f"DEBUG: before touching version, platform.python_version() is {platform.python_version()}")
-# print(f"DEBUG: before touching version, os.environ.get('PATH') is {os.environ.get('PATH')}")
-
-# TODO^21: (part of solving CFPVOM bug) why does the PATH have the wrong version python bin in it if
-# called from outside skiggety-utils? I think that is only supposed to happen if you call pyenv
-# exec. UPDATE: I noticed pyenv exec IS being used in the pyenv shim, so why does this work at all
-# on eelwright? maybe set PYENV_DEBUG to true and test that way. Another idea would be to rip it out
-# of the path before exec, or get a fresh path using a new login shell or calling eval on python
-# init. I dunno. It sounds pretty desperate.:
 
 print('DEBUG: the contents os $PATH breaks down to:')
 path_as_array = os.environ.get('PATH').split(':')
@@ -57,10 +50,12 @@ if DESIRED_PYTHON_VERSION != platform.python_version():
     os.environ['PYENV_VERSION_HACKED'] = 'true'
     print(f"DEBUG: os.environ.get('HOME') is {os.environ.get('HOME')}")
     home_dir = os.environ.get('HOME')
-    print(f"DEBUG: home_dir is {home_dir}")
-    # TODO^37: try stacking a new shim on the path:
+
+    # ugh, stack new shims on the path in case a parent process has already used pyenv to
+    # stack on a specific python version's bin path:
     print(f"DEBUG adding to front of path: {home_dir}/.pyenv/shims:{home_dir}/.pyenv/bin")
     os.environ['PATH'] = f"{home_dir}/.pyenv/shims:{home_dir}/.pyenv/bin:{os.environ['PATH']}"
+
     print(f"DEBUG: after setting version, os.environ.get('PYENV_VERSION') is {os.environ.get('PYENV_VERSION')}")
     os.execvpe(sys.argv[0], sys.argv, os.environ) # system exec self
 
