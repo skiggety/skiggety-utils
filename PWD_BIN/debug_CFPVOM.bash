@@ -25,7 +25,7 @@ do
     pyenv version | tee -a $OUTFILE
     # ask_user "congrats, you are in a debugger at $(echo_here)"
     echo "running: '$cmd'" | tee -a $OUTFILE
-    $cmd >> $OUTFILE || accumulate_error "$cmd FAILED"
+    $cmd >> $OUTFILE 2>&1 || accumulate_error "$cmd FAILED"
     echo "your test results are in $OUTFILE"
     echo "last line is:"
     tail -n 1 "$OUTFILE"
