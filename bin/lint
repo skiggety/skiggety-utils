@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+misc_lint
+PWD_BIN/lint || accumulate_error "Please create a runnable script at './PWD_BIN/lint', then try again. Whatever linter(s) you want to run. Look at $SKIGGETY_UTILS_DIR/PWD_BIN/lint for an example."
