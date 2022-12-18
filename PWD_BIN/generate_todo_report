@@ -1,6 +1,18 @@
 #!/usr/bin/env bash
+
 TODO_REPORT_LINES=5 # IGNORE_TODO
+TODO_REPORT_FILE="todo_report/README.txt"
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash
+
+debug_eval_here TODO_REPORT_FILE
+debug_here mkdir -p "$(dirname "$TODO_REPORT_FILE")"
+mkdir -p "$(dirname "$TODO_REPORT_FILE")"
+
 # TODO^17: in the future, use 'todo --exclude <FILE>' (when it's supported) instead of relying on 'grep -v'
-todo_report="$(todo | grep -v "^./todo_report.gen.txt:" | grep -v ".gitignored." | grep -v "XXX" | tail -n $TODO_REPORT_LINES )"
-echo "$todo_report" > todo_report.gen.txt
-cat todo_report.gen.txt
+todo_report="$(todo | grep -v "^./${TODO_REPORT_FILE}:" | grep -v ".gitignored." | grep -v "XXX" | tail -n $TODO_REPORT_LINES )"
+# TODO: echo header with explanation > $TODO_REPORT_FILE
+echo "$todo_report" > $TODO_REPORT_FILE
+# TODO: echo linecount info >> $TODO_REPORT_FILE
+
+cat $TODO_REPORT_FILE

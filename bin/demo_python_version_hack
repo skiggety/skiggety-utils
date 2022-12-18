@@ -53,7 +53,7 @@ if DESIRED_PYTHON_VERSION != platform.python_version():
     home_dir = os.environ.get('HOME')
     print(f"DEBUG: home_dir is {home_dir}")
     # TODO^37: try stacking a new shim on the path:
-    print(f"DEBUG maybe add to path, if you can confirm they exist: {home_dir}/.pyenv/shims:{home_dir}/.pyenv/bin:...")
+    print(f"DEBUG maybe add to front of path, if you can confirm they are in the path elsewhere: {home_dir}/.pyenv/shims:{home_dir}/.pyenv/bin:...") # TODO TODO^37
     print(f"DEBUG: after setting version, os.environ.get('PYENV_VERSION') is {os.environ.get('PYENV_VERSION')}")
     os.execvpe(sys.argv[0], sys.argv, os.environ) # system exec self
 
