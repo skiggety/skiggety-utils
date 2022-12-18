@@ -25,13 +25,19 @@ print(f"DEBUG: before touching version, os.environ.get('PYENV_VERSION') is {os.e
 print(f"DEBUG: before touching version, os.environ.get('PYENV_VERSION_HACKED') is {os.environ.get('PYENV_VERSION_HACKED')}")
 print('...well, no wonder it works on eelwright...this is not a good test, apparently')
 print(f"DEBUG: before touching version, platform.python_version() is {platform.python_version()}")
+# print(f"DEBUG: before touching version, os.environ.get('PATH') is {os.environ.get('PATH')}")
+
 # TODO^21: (part of solving CFPVOM bug) why does the PATH have the wrong version python bin in it if
 # called from outside skiggety-utils? I think that is only supposed to happen if you call pyenv
 # exec. UPDATE: I noticed pyenv exec IS being used in the pyenv shim, so why does this work at all
 # on eelwright? maybe set PYENV_DEBUG to true and test that way. Another idea would be to rip it out
 # of the path before exec, or get a fresh path using a new login shell or calling eval on python
 # init. I dunno. It sounds pretty desperate.:
-print(f"DEBUG: before touching version, os.environ.get('PATH') is {os.environ.get('PATH')}")
+print('DEBUG: the contents os $PATH breaks down to:')
+path_as_array = os.environ.get('PATH').split(':')
+for path_element in path_as_array:
+    print(f"    {path_element}")
+
 if DESIRED_PYTHON_VERSION != platform.python_version():
     if os.environ.get('PYENV_VERSION_HACKED') == 'true': # avoid infinite loop
         raise Exception(f"Failed to force python version to {DESIRED_PYTHON_VERSION}. " \
@@ -39,6 +45,7 @@ if DESIRED_PYTHON_VERSION != platform.python_version():
     print(f"DEBUG: OK, attempting to switch from python version {platform.python_version()} to {DESIRED_PYTHON_VERSION}")
     os.environ['PYENV_VERSION'] = DESIRED_PYTHON_VERSION
     os.environ['PYENV_VERSION_HACKED'] = 'true'
+    # TODO^36: try stacking a new shim on the path
     print(f"DEBUG: after setting version, os.environ.get('PYENV_VERSION') is {os.environ.get('PYENV_VERSION')}")
     os.execvpe(sys.argv[0], sys.argv, os.environ) # system exec self
 
