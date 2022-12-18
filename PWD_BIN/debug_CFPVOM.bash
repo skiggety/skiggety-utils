@@ -15,12 +15,15 @@ cd ~/today_todo/
 for cmd in demo_python_version_hack \
            demo_ruby_version_hack
 do
-    # TODO: try ask_user congrats, you are in a debugger at TODO_current_script_name_and_line_number_TODO
     OUTFILE=$SKIGGETY_UTILS_DIR/logs/$cmd.log.$(whoami).at.$(hostname).txt
     mkdir -p "$(dirname "$OUTFILE")"
     touch "$OUTFILE"
     echo "from: $(git config user.email)" | tee $OUTFILE
     echo "at: $(duh)" | tee -a $OUTFILE
+    echo_divider "="
+    echo "pyenv version returns:" | tee -a $OUTFILE
+    pyenv version | tee -a $OUTFILE
+    # ask_user "congrats, you are in a debugger at $(echo_here)"
     echo "running: '$cmd'" | tee -a $OUTFILE
     $cmd | tee -a $OUTFILE || accumulate_error "$cmd FAILED"
     echo "your test results are in $OUTFILE"

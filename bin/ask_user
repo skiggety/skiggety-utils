@@ -7,7 +7,7 @@
 # say a bash script but you could call it from other languages and inspect environment variables, technically):
 #
 #     for whatever in $___whatever_the_point_is_you_are_deep_in_code__; do
-#         if ask_user "debug and decide whether you want to foo"
+#         if ask_user "debug and decide whether you want to foo at $(echo_here)"
 #         then
 #             foo
 #         else

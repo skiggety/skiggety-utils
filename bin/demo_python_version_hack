@@ -23,6 +23,7 @@ print(f"DEBUG: ----------------------------------------")
 print(f"DEBUG: sys.argv[0] is {sys.argv[0]}")
 print(f"DEBUG: before touching version, os.environ.get('PYENV_VERSION') is {os.environ.get('PYENV_VERSION')}")
 print(f"DEBUG: before touching version, os.environ.get('PYENV_VERSION_HACKED') is {os.environ.get('PYENV_VERSION_HACKED')}")
+print('...well, no wonder it works on eelwright...this is not a good test, apparently')
 print(f"DEBUG: before touching version, platform.python_version() is {platform.python_version()}")
 # TODO^21: (part of solving CFPVOM bug) why does the PATH have the wrong version python bin in it if
 # called from outside skiggety-utils? I think that is only supposed to happen if you call pyenv

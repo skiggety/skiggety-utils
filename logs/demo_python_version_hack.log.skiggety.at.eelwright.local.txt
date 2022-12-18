@@ -1,10 +1,13 @@
 from: skiggety@gmail.com
 at: [1;33mskiggety[0m@[1;35meelwright.local[0m:[1;36m~/today_todo[0m
+pyenv version returns:
+system (set by /Users/skiggety/.pyenv/version)
 running: 'demo_python_version_hack'
 DEBUG: ----------------------------------------
 DEBUG: sys.argv[0] is /Users/skiggety/code/skiggety-utils/bin/demo_python_version_hack
 DEBUG: before touching version, os.environ.get('PYENV_VERSION') is 3.11.1
 DEBUG: before touching version, os.environ.get('PYENV_VERSION_HACKED') is true
+...well, no wonder it works on eelwright...this is not a good test, apparently
 DEBUG: before touching version, platform.python_version() is 3.11.1
-DEBUG: before touching version, os.environ.get('PATH') is /Users/skiggety/.pyenv/versions/3.11.1/bin:/usr/local/Cellar/pyenv/2.3.8/libexec:/usr/local/Cellar/pyenv/2.3.8/plugins/python-build/bin:/usr/local/Cellar/pyenv/2.3.8/libexec:/usr/local/Cellar/pyenv/2.3.8/plugins/python-build/bin:/Users/skiggety/.pyenv/shims:/Users/skiggety/.pyenv/bin:/Users/skiggety/.rbenv/shims:/Users/skiggety/.rbenv/bin:/Users/skiggety/.rbenv/versions/2.7.6/bin:/usr/local/Cellar/rbenv/1.2.0/libexec:/Users/skiggety/.pyenv/bin:/Users/skiggety/.rbenv/shims:/Users/skiggety/.rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:./PWD_BIN:/Users/skiggety/code/skiggety-utils/bin:/Users/skiggety/bin:./PWD_BIN:/Users/skiggety/code/skiggety-utils/bin:/Users/skiggety/bin
+DEBUG: before touching version, os.environ.get('PATH') is /Users/skiggety/.pyenv/versions/3.11.1/bin:/usr/local/Cellar/pyenv/2.3.8/libexec:/usr/local/Cellar/pyenv/2.3.8/plugins/python-build/bin:/usr/local/Cellar/pyenv/2.3.8/libexec:/usr/local/Cellar/pyenv/2.3.8/plugins/python-build/bin:/Users/skiggety/.pyenv/shims:/Users/skiggety/.pyenv/bin:/Users/skiggety/.rbenv/shims:/Users/skiggety/.rbenv/bin:/Users/skiggety/.pyenv/bin:/Users/skiggety/.rbenv/shims:/Users/skiggety/.rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:./PWD_BIN:/Users/skiggety/code/skiggety-utils/bin:/Users/skiggety/bin:./PWD_BIN:/Users/skiggety/code/skiggety-utils/bin:/Users/skiggety/bin
 DEBUG: SUCCESS! (this is after version hack) If you cd to a different dir, will it still work?
