@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Safely try out a docker container with skiggety utils installed, to see what it's like
+# without affecting your machine
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash
+
+exit_with_error "TODO: "\
+    "IMPLEMENT or vote by doing s/TODO/TODO TODO/" # IGNORE_TODO
