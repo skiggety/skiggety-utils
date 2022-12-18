@@ -41,7 +41,7 @@ Cool Programs you'll find in here:
 TODO's:: (run 'todo' or 'dashboard' for the full sorted list) <!-- (IGNORE_TODO) -->
 ===============================================================
 
-NOTE: look in [todo_report.gen.txt](todo_report.gen.txt) for the 5 most important todo items, or see the whole list
+NOTE: look in [todo_report/README.txt](todo_report/README.txt) for the 5 most important todo items, or see the whole list
 sorted ascending by votes by running 'todo' at the command line. Most of the todo list is distributed around the
 codebase, but there are a few miscellaneous ones collected here:
 

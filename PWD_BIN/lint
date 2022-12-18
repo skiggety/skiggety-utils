@@ -8,10 +8,10 @@ echo_divider_with_text "O-=======-" "lint:"
 echo_divider_with_text "+-=======-" "collapse todo votes:"
 todo -wfq --non-interactive --exclude-dir .git || accumulate_error "could not write simplified TODO entries, todo exited with $?" # IGNORE_TODO
 
-echo_divider_with_text "+-=======-" "generate ./todo_report.gen.txt:"
+echo_divider_with_text "+-=======-" "generate ./todo_report/README.txt:"
 generate_todo_report >/dev/null || accumulate_error 'could not generate todo report'
 echo "The most important todo is currently:"
-tail -n 1 todo_report.gen.txt
+tail -n 1 todo_report/README.txt
 
 echo_divider_with_text "+-=======-" "rubocop:"
 bundle exec rubocop -P --color || accumulate_error 'rubocop reported errors'

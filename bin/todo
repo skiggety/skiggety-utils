@@ -64,7 +64,7 @@ def main():
     # it, compacts it, and that's it.
 
     arg_parser.add_argument('--exclude-dir', help = 'Directories to exclude.', action = 'append')
-    # TODO^6: support stuff like ' --exclude todo_report.gen.txt' starting with:
+    # TODO^6: support stuff like ' --exclude todo_report/README.txt' starting with:
     # arg_parser.add_argument('--exclude', help = 'Directories to exclude.', action = 'append')
 
     command_line_args = arg_parser.parse_args()
