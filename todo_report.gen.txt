@@ -2,4 +2,4 @@
 ./bin/todo:4:# TODO^18: solve the CFPVOM bug here too once it's been solved in demo_python_version_hack
 ./bin/demo_python_version_hack:5:# TODO^19: (calling this "CFPVOM" bug because "cannot force python version on metrigon") Why the
 ./bin/demo_python_version_hack:30:# TODO^21: (part of solving CFPVOM bug) why does the PATH have the wrong version python bin in it if
-./bin/demo_python_version_hack:48:    # TODO^36: try stacking a new shim on the path
+./bin/demo_python_version_hack:53:    # TODO^37: try stacking a new shim on the path:
