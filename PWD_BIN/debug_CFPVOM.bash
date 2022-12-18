@@ -27,6 +27,8 @@ do
     echo "running: '$cmd'" | tee -a $OUTFILE
     $cmd >> $OUTFILE || accumulate_error "$cmd FAILED"
     echo "your test results are in $OUTFILE"
+    echo "last line is:"
+    tail -n 1 "$OUTFILE"
 
     exit_with_error "stopping now: one language at a time TODO: DELETE when the python hack is working everywhere"
     exit_if_any_accumulated_errors
