@@ -14,6 +14,7 @@ mkdir -p "$(dirname "$TODO_REPORT_FILE")"
 # TODO^17: in the future, use 'todo --exclude <FILE>' (when it's supported) instead of relying on 'grep -v'
 todo_report="$(todo | grep -v "^./${TODO_REPORT_FILE}:" | grep -v ".gitignored." | grep -v "XXX" | tail -n $TODO_REPORT_LINES )"
 echo "Here are the most important $TODO_REPORT_LINES todos, most important last, out of TODO total." > $TODO_REPORT_FILE
+echo_divider "=" >> $TODO_REPORT_FILE
 echo "$todo_report" >> $TODO_REPORT_FILE
 
 cat $TODO_REPORT_FILE
