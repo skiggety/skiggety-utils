@@ -52,6 +52,8 @@ def main():
     # case-insensitive:
     # TODO: add_argument('-i', '--ignore-keyword', help = 'TODO')
 
+    # TODO: how about an argument/mode for the linter that complains about non-compacted TODO
+    # syntax, instead of writing or printing the normal report.
     arg_parser.add_argument('--non-interactive', action='store_true', help = 'TODO') # TODO: what's the one-character version?
     arg_parser.add_argument('-w', '--write', action='store_true', help = 'TODO')
     arg_parser.add_argument('-f', '--force', action='store_true', help = 'TODO')
@@ -59,7 +61,7 @@ def main():
     arg_parser.add_argument('-q', '--quiet', action='store_true', help = 'TODO')
 
     arg_parser.add_argument('--exclude-dir', help = 'Directories to exclude.', action = 'append')
-    # TODO^4: support stuff like ' --exclude todo_report.gen.txt' starting with:
+    # TODO^6: support stuff like ' --exclude todo_report.gen.txt' starting with:
     # arg_parser.add_argument('--exclude', help = 'Directories to exclude.', action = 'append')
 
     command_line_args = arg_parser.parse_args()
