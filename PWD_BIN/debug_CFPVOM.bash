@@ -22,6 +22,7 @@ do
     echo "running: '$cmd'" | tee $OUTFILE
     $cmd | tee -a $OUTFILE || exit_with_error "$cmd FAILED"
     echo_debug "your test results are in $OUTFILE TODO^33 no they are not"
+    exit # TODO: DELETE when it's time to play with other versions
 done
 
 # TODO: DELETE this script when done
