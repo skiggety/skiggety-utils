@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+# XXX TODO: complain if PWD_BIN/dev is too long (use wc)
