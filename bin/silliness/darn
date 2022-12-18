@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+$SKIGGETY_UTILS_DIR/bin/silliness/blow_up 'darn!'
