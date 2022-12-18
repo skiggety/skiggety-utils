@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 
-# TODO^2: consider renaming to review_dev
-# TODO^2: consider moving to bin
-# TODO: set miniumum refresh time with: --m 10
-# TODO^4: set Maxiumum refresh time with something like: --m 1800
+# The point of this is to be something that runs your dev cycle for you in one window, so you can stay in your editor in
+# the other window and not have to keep switching windows.
 
+# TODO^3: consider moving to bin
+# TODO^2: consider renaming to review_dev
+# TODO: consider splitting to default_ and normal version like dashboard and lint
+
+# TODO^4: set Maxiumum refresh time with something like: --m 1800
+# TODO: set miniumum refresh time with: --m 10
 review dev
