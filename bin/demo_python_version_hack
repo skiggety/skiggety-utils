@@ -22,6 +22,7 @@ DESIRED_PYTHON_VERSION = '3.11.1'
 print(f"DEBUG: ----------------------------------------")
 print(f"DEBUG: sys.argv[0] is {sys.argv[0]}")
 print(f"DEBUG: before touching version, os.environ.get('PYENV_VERSION') is {os.environ.get('PYENV_VERSION')}")
+print('TODO^38: make sure this is false on the first run:')
 print(f"DEBUG: before touching version, os.environ.get('PYENV_VERSION_HACKED') is {os.environ.get('PYENV_VERSION_HACKED')}")
 print('...well, no wonder it works on eelwright...this is not a good test, apparently')
 print(f"DEBUG: before touching version, platform.python_version() is {platform.python_version()}")
@@ -33,6 +34,7 @@ print(f"DEBUG: before touching version, platform.python_version() is {platform.p
 # on eelwright? maybe set PYENV_DEBUG to true and test that way. Another idea would be to rip it out
 # of the path before exec, or get a fresh path using a new login shell or calling eval on python
 # init. I dunno. It sounds pretty desperate.:
+
 print('DEBUG: the contents os $PATH breaks down to:')
 path_as_array = os.environ.get('PATH').split(':')
 for path_element in path_as_array:
@@ -56,3 +58,4 @@ if DESIRED_PYTHON_VERSION != platform.python_version():
     os.execvpe(sys.argv[0], sys.argv, os.environ) # system exec self
 
 print(f"DEBUG: SUCCESS! (this is after version hack) If you cd to a different dir, will it still work?")
+os.environ['PYENV_VERSION_HACKED'] = 'false'
