@@ -25,6 +25,12 @@ print(f"DEBUG: before touching version, os.environ.get('PYENV_VERSION') is {os.e
 print('TODO^38: make sure this is false on the first run:')
 print(f"DEBUG: before touching version, os.environ.get('PYENV_VERSION_HACKED') is {os.environ.get('PYENV_VERSION_HACKED')}")
 print('...well, no wonder it works on eelwright...this is not a good test, apparently')
+
+# TODO^34: maybe it has something to to with PWD WHEN YOU START THE SHELL or WINDOW
+
+# TODO^36: uh-oh, the log comes out different depending on whether you run it on its own or as
+# part of auto-dev
+
 print(f"DEBUG: before touching version, platform.python_version() is {platform.python_version()}")
 # print(f"DEBUG: before touching version, os.environ.get('PATH') is {os.environ.get('PATH')}")
 
@@ -53,7 +59,7 @@ if DESIRED_PYTHON_VERSION != platform.python_version():
     home_dir = os.environ.get('HOME')
     print(f"DEBUG: home_dir is {home_dir}")
     # TODO^37: try stacking a new shim on the path:
-    print(f"DEBUG maybe add to front of path, if you can confirm they are in the path elsewhere: {home_dir}/.pyenv/shims:{home_dir}/.pyenv/bin:...") # TODO TODO^37
+    print(f"DEBUG maybe add to front of path, if you can confirm they are in the path elsewhere: {home_dir}/.pyenv/shims:{home_dir}/.pyenv/bin:...") # TODO^38
     print(f"DEBUG: after setting version, os.environ.get('PYENV_VERSION') is {os.environ.get('PYENV_VERSION')}")
     os.execvpe(sys.argv[0], sys.argv, os.environ) # system exec self
 
