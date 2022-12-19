@@ -2,7 +2,7 @@
 """Demonstrates a hack, that may not even be a good idea, that allows a python script to
 self-determine its version using pyenv."""
 
-# TODO^17: DELETE many, but not all of the debug messages once "CFPVOM" bug is solved.
+# TODO^17: DELETE many, but not all of the debug messages now that "CFPVOM" bug is solved.
 
 # Because the CURRENT directory should not determine the python version:
 # TODO: THIS SHOULD NOT BE NECESSARY! WHY? OH, WHY?!?! (maybe learn more about pyenv and how python
@@ -14,8 +14,6 @@ DESIRED_PYTHON_VERSION = '3.11.1'
 print(f"DEBUG: ----------------------------------------")
 print(f"DEBUG: sys.argv[0] is {sys.argv[0]}")
 print(f"DEBUG: before touching version, os.environ.get('PYENV_VERSION') is {os.environ.get('PYENV_VERSION')}")
-print('TODO^38: make sure this is false on the first run:')
-print(f'TODO^49: DEBUG: did I fix CFPVOM? I think so, so clean up:')
 print(f"DEBUG: before touching version, os.environ.get('PYENV_VERSION_HACK_DEPTH') is {os.environ.get('PYENV_VERSION_HACK_DEPTH')}")
 print('...well, no wonder it works on eelwright...this is not a good test, apparently')
 
@@ -27,9 +25,6 @@ for path_element in path_as_array:
     print(f"    {path_element}") # XXX TODO: print home dir as '~/' for diffability
 
 if DESIRED_PYTHON_VERSION != platform.python_version():
-
-    # TODO^39: make this a measure of loop depth instead of a bool. then you can kill it every
-    # multiple of n:
 
     # limit recursion depth:
     os.environ['PYENV_VERSION_HACK_DEPTH'] = os.environ.get('PYENV_VERSION_HACK_DEPTH') or str(1)

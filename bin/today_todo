@@ -26,7 +26,6 @@ vim -o $files_to_open '+/\.\.\.'
 
 # TODO^16: eventually we probably want to pass -f to write quicker, playing it safe for the moment
 echo "It's time to compact todo's in $0"
-# TODO^35: CFPVOM is not solved until you can get rid of PYENV_VERSION='3.11.1' everywhere
 todo -wfq $EXCLUDE_DIR_ARGS
 clear
 

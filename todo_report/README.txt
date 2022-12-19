@@ -1,7 +1,7 @@
-Here are the most important 5 todos, most important last, out of      377 total.
+Here are the most important 5 todos, most important last, out of      372 total.
 ================================================================================
-./bin/todo:4:# TODO^18: solve the CFPVOM bug here too once it's been solved in demo_python_version_hack
-./bin/today_todo:29:# TODO^35: CFPVOM is not solved until you can get rid of PYENV_VERSION='3.11.1' everywhere
-./bin/demo_python_version_hack:17:print('TODO^38: make sure this is false on the first run:')
-./bin/demo_python_version_hack:31:    # TODO^39: make this a measure of loop depth instead of a bool. then you can kill it every
-./bin/demo_python_version_hack:18:print(f'TODO^49: DEBUG: did I fix CFPVOM? I think so, so clean up:')
+./bin/today_todo:27:# TODO^16: eventually we probably want to pass -f to write quicker, playing it safe for the moment
+./installers/vim:54:    # TODO^16: systematize/learn: https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko
+./bin/demo_python_version_hack:5:# TODO^17: DELETE many, but not all of the debug messages now that "CFPVOM" bug is solved.
+./PWD_BIN/generate_todo_report:13:# TODO^18: in the future, use 'todo --exclude <FILE>' (when it's supported) instead of relying on 'grep -v'
+./PWD_BIN/todo:7:# TODO^18: this will need support in bin/todo: --exclude todo_report/README.txt \
