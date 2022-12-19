@@ -40,7 +40,7 @@ if DESIRED_PYTHON_VERSION != platform.python_version():
 
     # limit recursion depth:
     os.environ['PYENV_VERSION_HACK_DEPTH'] = os.environ.get('PYENV_VERSION_HACK_DEPTH') or str(1)
-    print(f"TODO^47: DEBUG: after ||= 1, os.environ.get('PYENV_VERSION_HACK_DEPTH') is {os.environ.get('PYENV_VERSION_HACK_DEPTH')}")
+    print(f"DEBUG: after ||= 1, os.environ.get('PYENV_VERSION_HACK_DEPTH') is {os.environ.get('PYENV_VERSION_HACK_DEPTH')}")
 
     print(f"DEBUG: before modulo check, os.environ.get('PYENV_VERSION_HACK_DEPTH') is {os.environ.get('PYENV_VERSION_HACK_DEPTH')}")
     print(f"DEBUG: before modulo check, int(os.environ.get('PYENV_VERSION_HACK_DEPTH') or 1) is {int(os.environ.get('PYENV_VERSION_HACK_DEPTH') or 1)}")
