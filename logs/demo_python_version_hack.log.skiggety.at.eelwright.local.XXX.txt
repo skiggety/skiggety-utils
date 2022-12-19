@@ -9,7 +9,6 @@ DEBUG: ----------------------------------------
 DEBUG: sys.argv[0] is /Users/skiggety/code/skiggety-utils/bin/demo_python_version_hack
 DEBUG: before touching version, os.environ.get('PYENV_VERSION') is 3.11.1
 TODO^38: make sure this is false on the first run:
-DEBUG: before touching version, os.environ.get('PYENV_VERSION_HACKED') is true
 TODO^49: DEBUG: did I fix CFPVOM? I think so, so clean up:
 DEBUG: before touching version, os.environ.get('PYENV_VERSION_HACK_DEPTH') is 2
 ...well, no wonder it works on eelwright...this is not a good test, apparently
@@ -26,8 +25,11 @@ DEBUG: the contents os $PATH breaks down to:
     /Users/skiggety/.pyenv/bin
     /Users/skiggety/.rbenv/shims
     /Users/skiggety/.rbenv/bin
-    /Users/skiggety/.rbenv/versions/2.7.6/bin
-    /usr/local/Cellar/rbenv/1.2.0/libexec
+    /Users/skiggety/code/skiggety-utils/bin/silliness
+    /Users/skiggety/.pyenv/bin
+    /Users/skiggety/.rbenv/shims
+    /Users/skiggety/.rbenv/bin
+    /Users/skiggety/code/skiggety-utils/bin/silliness
     /Users/skiggety/.pyenv/bin
     /Users/skiggety/.rbenv/shims
     /Users/skiggety/.rbenv/bin
@@ -36,6 +38,9 @@ DEBUG: the contents os $PATH breaks down to:
     /bin
     /usr/sbin
     /sbin
+    ./PWD_BIN
+    /Users/skiggety/code/skiggety-utils/bin
+    /Users/skiggety/bin
     ./PWD_BIN
     /Users/skiggety/code/skiggety-utils/bin
     /Users/skiggety/bin
