@@ -53,10 +53,8 @@ if DESIRED_PYTHON_VERSION != platform.python_version():
     # stack on a specific python version's bin path:
     print(f"DEBUG adding to front of path: {home_dir}/.pyenv/shims:{home_dir}/.pyenv/bin")
     os.environ['PATH'] = f"{home_dir}/.pyenv/shims:{home_dir}/.pyenv/bin:{os.environ['PATH']}"
-
     print(f"DEBUG: after setting version, os.environ.get('PYENV_VERSION') is {os.environ.get('PYENV_VERSION')}")
     os.execvpe(sys.argv[0], sys.argv, os.environ) # system exec self
-
 print(f"DEBUG: SUCCESS! (this is after version hack) If you cd to a different dir, will it still work?")
 os.environ['PYENV_VERSION_HACK_DEPTH'] = '0'
 print(f"DEBUG: after resetting to 0, os.environ.get('PYENV_VERSION_HACK_DEPTH') is {os.environ.get('PYENV_VERSION_HACK_DEPTH')}")
