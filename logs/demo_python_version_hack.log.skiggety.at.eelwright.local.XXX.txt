@@ -22,9 +22,12 @@ DEBUG: the contents os $PATH breaks down to:
     /Users/skiggety/.pyenv/bin
     /usr/local/Cellar/pyenv/2.3.8/libexec
     /usr/local/Cellar/pyenv/2.3.8/plugins/python-build/bin
+    /Users/skiggety/.pyenv/shims
+    /Users/skiggety/.pyenv/bin
+    /Users/skiggety/.rbenv/shims
+    /Users/skiggety/.rbenv/bin
     /Users/skiggety/.rbenv/versions/2.7.6/bin
     /usr/local/Cellar/rbenv/1.2.0/libexec
-    /Users/skiggety/.pyenv/shims
     /Users/skiggety/.pyenv/bin
     /Users/skiggety/.rbenv/shims
     /Users/skiggety/.rbenv/bin
@@ -33,6 +36,9 @@ DEBUG: the contents os $PATH breaks down to:
     /bin
     /usr/sbin
     /sbin
+    ./PWD_BIN
+    /Users/skiggety/code/skiggety-utils/bin
+    /Users/skiggety/bin
     ./PWD_BIN
     /Users/skiggety/code/skiggety-utils/bin
     /Users/skiggety/bin
