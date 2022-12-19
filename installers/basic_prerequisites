@@ -89,7 +89,7 @@ function main {
             git clone https://github.com/rbenv/rbenv.git $rbenv_dir
         fi
         pushd $rbenv_dir
-        git pull
+        git pretty-pull
         popd
 
         local ruby_build_dir="$rbenv_dir/plugins/ruby-build"
@@ -97,7 +97,7 @@ function main {
             git clone https://github.com/rbenv/ruby-build.git $ruby_build_dir
         fi
         pushd $ruby_build_dir
-        git pull
+        git pretty-pull
         popd
         if ! bundler --version;then
             if $interactive;then
@@ -168,7 +168,7 @@ function main {
         fi
         pushd $pyenv_dir
         git config pull.rebase true
-        git pull
+        git pretty-pull
         popd
     fi
 
