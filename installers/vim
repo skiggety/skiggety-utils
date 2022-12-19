@@ -58,7 +58,8 @@ class VimInstaller
     # fzf.vim's)
     # TODO^5: learn to use nerdcommenter:
     git_clone_latest('https://github.com/preservim/nerdcommenter.git', "#{bundle_dir}/nerdcommenter")
-    # TODO: nerdtree
+    # TODO^2: nerdtree
+    # TODO: https://github.com/tpope/vim-dispatch
   end
 
   def bundle_dir
