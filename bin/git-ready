@@ -30,3 +30,5 @@ do
 done
 
 dev
+
+echo "...finished '$(basename "$0")'."

@@ -8,7 +8,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 
 pushd $SKIGGETY_UTILS_DIR >/dev/null
 
-git-pretty-pull || "git-pretty-pull FALED"
+git-pretty-pull || exit_with_error "git-pretty-pull FALED"
 
 cat $SKIGGETY_UTILS_DIR/todo_report/README.txt
 
