@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# Self, program thyself
+
+$SKIGGETY_UTILS_DIR/bin/silliness/live.XXX.gitignore.bash
