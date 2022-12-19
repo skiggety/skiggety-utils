@@ -5,7 +5,6 @@ TODO_REPORT_FILE="todo_report/README.txt"
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash
 
-
 debug_eval_here TODO_REPORT_FILE
 debug_here mkdir -p "$(dirname "$TODO_REPORT_FILE")"
 mkdir -p "$(dirname "$TODO_REPORT_FILE")"
