@@ -17,8 +17,8 @@ class VimInstaller
       Dir.exist?("#{bundle_dir}/vim-rails") &&
       Dir.exist?("#{bundle_dir}/fzf.vim") &&
       Dir.exist?("#{bundle_dir}/nerdcommenter")
-      # TODO: Dir.exist?("#{bundle_dir}/nerdtree")
-      # TODO: Dir.exist?("#{bundle_dir}/vim-dispatch")
+    # TODO: Dir.exist?("#{bundle_dir}/nerdtree")
+    # TODO: Dir.exist?("#{bundle_dir}/vim-dispatch")
   end
 
   # err on the side of returning false...if these files don't match perfectly
