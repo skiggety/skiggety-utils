@@ -2,8 +2,7 @@ from: skiggety@gmail.com
 at: [1;33mskiggety[0m@[1;35meelwright.local[0m:[1;36m~/today_todo[0m
 pyenv version returns:
 system (set by /Users/skiggety/.pyenv/version)
-[1;33mDEBUG:[0;33m PYTHON_VERSION_HACKED='' at ./PWD_BIN/debug_CFPVOM.bash:30[0m
-[1;33mDEBUG:[0;33m PYTHON_VERSION_HACK_DEPTH='' at ./PWD_BIN/debug_CFPVOM.bash:31[0m
+[1;33mDEBUG:[0;33m PYTHON_VERSION_HACK_DEPTH='' at ./PWD_BIN/debug_CFPVOM.bash:28[0m
 running: 'demo_python_version_hack'
 DEBUG: ----------------------------------------
 DEBUG: sys.argv[0] is /Users/skiggety/code/skiggety-utils/bin/demo_python_version_hack
@@ -25,6 +24,8 @@ DEBUG: the contents os $PATH breaks down to:
     /Users/skiggety/.pyenv/bin
     /Users/skiggety/.rbenv/shims
     /Users/skiggety/.rbenv/bin
+    /Users/skiggety/.rbenv/versions/2.7.6/bin
+    /usr/local/Cellar/rbenv/1.2.0/libexec
     /Users/skiggety/.pyenv/bin
     /Users/skiggety/.rbenv/shims
     /Users/skiggety/.rbenv/bin

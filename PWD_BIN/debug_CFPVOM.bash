@@ -8,7 +8,6 @@
 # TODO^31: call this from your local PWD/experiment.gitignored.bash on all machines that want to
 # participate in debugging.
 
-
 # go where there's no accurate .python-version to rely on to put these version hacks to the test:
 cd ~/today_todo/
 
