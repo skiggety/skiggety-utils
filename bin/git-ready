@@ -19,7 +19,7 @@ for command in \
     'git add -p' \
     'git vimdiff --staged' \
     "git commit $GIT_COMMIT_OPTIONS" \
-    'git pull' \
+    'git pretty-pull' \
     'git push -u'
 do
     # TODO^3: method extract:
