@@ -40,6 +40,8 @@ for path_element in path_as_array:
     print(f"    {path_element}")
 
 if DESIRED_PYTHON_VERSION != platform.python_version():
+    # TODO^39: make this a measure of loop depth instead of a bool. then you can kill it every
+    # multiple of n:
     if os.environ.get('PYENV_VERSION_HACKED') == 'true': # avoid infinite loop
         raise Exception(f"Failed to force python version to {DESIRED_PYTHON_VERSION}. " \
                         "This script needs debugging.")
