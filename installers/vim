@@ -17,6 +17,8 @@ class VimInstaller
       Dir.exist?("#{bundle_dir}/vim-rails") &&
       Dir.exist?("#{bundle_dir}/fzf.vim") &&
       Dir.exist?("#{bundle_dir}/nerdcommenter")
+      # TODO: Dir.exist?("#{bundle_dir}/nerdtree")
+      # TODO: Dir.exist?("#{bundle_dir}/vim-dispatch")
   end
 
   # err on the side of returning false...if these files don't match perfectly
@@ -58,7 +60,7 @@ class VimInstaller
     # fzf.vim's)
     # TODO^5: learn to use nerdcommenter:
     git_clone_latest('https://github.com/preservim/nerdcommenter.git', "#{bundle_dir}/nerdcommenter")
-    # TODO^2: nerdtree
+    # TODO: nerdtree
     # TODO: https://github.com/tpope/vim-dispatch
   end
 
@@ -66,11 +68,11 @@ class VimInstaller
     "#{Dir.home}/.vim/bundle"
   end
 
-  # TODO^2: maybe move to installable_skiggety_util.rb:
+  # TODO^3: maybe move to installable_skiggety_util.rb:
   def git_clone_latest(repo, dir)
     assert_system("git clone #{repo} #{dir}") unless Dir.exist?(dir)
     Dir.chdir(dir) do
-      assert_system('git pull')
+      assert_system('git pretty-pull')
     end
   end
 
