@@ -26,7 +26,7 @@ vim -o $files_to_open '+/\.\.\.'
 
 # TODO^16: eventually we probably want to pass -f to write quicker, playing it safe for the moment
 echo "It's time to compact todo's in $0"
-PYENV_VERSION='3.11.1' todo -wq $EXCLUDE_DIR_ARGS # TODO: shouldn't have to specify PYENV_VERSION
+todo -wfq $EXCLUDE_DIR_ARGS
 clear
 
 # TODO: consider extracting the rest of this script to "today_todo_display", which can be overridden with PWD_BIN, or
@@ -34,10 +34,9 @@ clear
 
 echo "Last few todos DONE:"
 EXCLUDE_DIR_ARGS="--exclude-dir archive" # TODO: move up
-PYENV_VERSION='3.11.1' todo -k DONE $EXCLUDE_DIR_ARGS | tail -n 3 # TODO: shouldn't have to specify PYENV_VERSION
+todo -k DONE $EXCLUDE_DIR_ARGS | tail -n 3
 
-# TODO: shouldn't have to specify PYENV_VERSION:
-todo_output="$(PYENV_VERSION='3.11.1' todo $EXCLUDE_DIR_ARGS)" # TODO: -n 5 # TODO^2: todo should accept an option for the number of lines. like "-n 3". Maybe if we pass an option in?
+todo_output="$(todo $EXCLUDE_DIR_ARGS)" # TODO: -n 5 # TODO^2: todo should accept an option for the number of lines. like "-n 3". Maybe if we pass an option in?
 
 todo_count=$(( 0 + $(echo "$todo_output" | wc -l) ))
 echo
