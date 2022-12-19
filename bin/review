@@ -79,8 +79,8 @@ class ReviewProgram
     end
   end
 
-  # TODO^2: time how long the command takes and use that as ADD_TO_DELAY because it sucks to run a long command
-  # constantly
+  # TODO^3: time how long the command takes and use that both to display and as ADD_TO_DELAY because
+  # it sucks to run a long command constantly
   ADD_TO_DELAY = 1
   MULTIPLY_BY_DELAY = 1.10
   def adjust_delay(delay, change_detected)
