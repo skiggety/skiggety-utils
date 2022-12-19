@@ -28,3 +28,5 @@ do
     pretty_sleep 2
     $command || exit_with_error "Command \"$command\" failed."
 done
+
+dev
