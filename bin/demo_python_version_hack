@@ -59,3 +59,4 @@ if DESIRED_PYTHON_VERSION != platform.python_version():
 
 print(f"DEBUG: SUCCESS! (this is after version hack) If you cd to a different dir, will it still work?")
 os.environ['PYENV_VERSION_HACK_DEPTH'] = '0'
+print(f"DEBUG: after resetting to 0, os.environ.get('PYENV_VERSION_HACK_DEPTH') is {os.environ.get('PYENV_VERSION_HACK_DEPTH')}")
