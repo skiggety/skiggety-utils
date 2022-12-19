@@ -24,6 +24,7 @@ print(f"DEBUG: sys.argv[0] is {sys.argv[0]}")
 print(f"DEBUG: before touching version, os.environ.get('PYENV_VERSION') is {os.environ.get('PYENV_VERSION')}")
 print('TODO^38: make sure this is false on the first run:')
 print(f"DEBUG: before touching version, os.environ.get('PYENV_VERSION_HACKED') is {os.environ.get('PYENV_VERSION_HACKED')}")
+print(f"DEBUG: before touching version, os.environ.get('PYENV_VERSION_HACK_DEPTH') is {os.environ.get('PYENV_VERSION_HACK_DEPTH')}")
 print('...well, no wonder it works on eelwright...this is not a good test, apparently')
 
 # TODO^34: maybe it has something to to with PWD WHEN YOU START THE SHELL or WINDOW

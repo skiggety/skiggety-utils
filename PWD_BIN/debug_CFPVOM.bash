@@ -17,7 +17,7 @@ cd ~/today_todo/
 for cmd in demo_python_version_hack \
            demo_ruby_version_hack
 do
-    OUTFILE=$SKIGGETY_UTILS_DIR/logs/$cmd.log.$(whoami).at.$(hostname).txt
+    OUTFILE=$SKIGGETY_UTILS_DIR/logs/$cmd.log.$(whoami).at.$(hostname).XXX.txt
     mkdir -p "$(dirname "$OUTFILE")"
     touch "$OUTFILE"
     echo "from: $(git config user.email)" | tee $OUTFILE
