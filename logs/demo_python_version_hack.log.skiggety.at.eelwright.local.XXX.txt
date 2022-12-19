@@ -10,7 +10,8 @@ DEBUG: sys.argv[0] is /Users/skiggety/code/skiggety-utils/bin/demo_python_versio
 DEBUG: before touching version, os.environ.get('PYENV_VERSION') is 3.11.1
 TODO^38: make sure this is false on the first run:
 DEBUG: before touching version, os.environ.get('PYENV_VERSION_HACKED') is true
-DEBUG: before touching version, os.environ.get('PYENV_VERSION_HACK_DEPTH') is 2
+TODO^49: DEBUG: did I fix CFPVOM?
+TODO^48: DEBUG: before touching version, os.environ.get('PYENV_VERSION_HACK_DEPTH') is 2
 ...well, no wonder it works on eelwright...this is not a good test, apparently
 DEBUG: before touching version, platform.python_version() is 3.11.1
 DEBUG: the contents os $PATH breaks down to:

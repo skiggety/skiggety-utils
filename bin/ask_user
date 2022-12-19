@@ -23,8 +23,12 @@
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
+
+debug_here "\$\* is: '$*'"
 TASK_DESCRIPTION="$*"
-ESCAPED_TASK_DESCRIPTION="$(echo $TASK_DESCRIPTION | sed 's/\("\)/\\\1/g')"
+debug_eval_here TASK_DESCRIPTION
+ESCAPED_TASK_DESCRIPTION="$(echo "$TASK_DESCRIPTION" | sed 's/\("\)/\\\1/g')"
+debug_eval_here ESCAPED_TASK_DESCRIPTION
 banner='########################################################################'
 
 # ding
