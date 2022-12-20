@@ -4,7 +4,6 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
 # This script installs the latest skiggety-utils
-# TODO^2: show last updated time
 
 pushd $SKIGGETY_UTILS_DIR >/dev/null
 
