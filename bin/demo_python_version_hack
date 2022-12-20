@@ -2,6 +2,10 @@
 """Demonstrates a hack, that may not even be a good idea, that allows a python script to
 self-determine its version using pyenv."""
 
+# This is just a salty little hack that allows a script to run itself in the version of it's choice.
+# Probably a bad idea but I'm trying to be perhaps a little paranoid while I learn more about pyenv
+# and packaging...
+
 # TODO^17: DELETE many, but not all of the debug messages now that "CFPVOM" bug is solved.
 
 # Because the CURRENT directory should not determine the python version:
