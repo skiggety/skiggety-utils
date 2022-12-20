@@ -20,8 +20,12 @@ fi
 
 git_stash_list="$(git stash list)"
 if [ "$git_stash_list" != "" ]; then
-    echo_divider_with_text "-=" "git stash list:"
+    echo_divider_with_text "-=" "git stash list"
     echo "$git_stash_list"
+    echo_divider_with_text "-" "git stash show"
+    git -c color.ui=always stash show
+    echo_divider_with_text "-" "git stash show -p | head -n 10"
+    git -c color.ui=always stash show -p | head -n 10
 fi
 
 unset GIT_EXTERNAL_DIFF # if call this from inside a git-vimdiff, we still want "git diff" to behave normally
