@@ -29,6 +29,4 @@ do
     $command || exit_with_error "Command \"$command\" failed."
 done
 
-dev
-
 echo "...finished '$(basename "$0")'."
