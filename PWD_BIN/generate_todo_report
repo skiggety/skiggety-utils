@@ -2,19 +2,29 @@
 
 TODO_REPORT_LINES=5 # IGNORE_TODO
 TODO_REPORT_FILE="todo_report/README.txt"
+TODO_REPORT_COLOR_FILE="todo_report/README_in_color.txt"
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash
 
 debug_eval_here TODO_REPORT_FILE
+debug_eval_here TODO_REPORT_COLOR_FILE
 debug_here mkdir -p "$(dirname "$TODO_REPORT_FILE")"
+debug_here mkdir -p "$(dirname "$TODO_REPORT_COLOR_FILE")"
 mkdir -p "$(dirname "$TODO_REPORT_FILE")"
+mkdir -p "$(dirname "$TODO_REPORT_COLOR_FILE")"
 
 # TODO^18: in the future, use 'todo --exclude <FILE>' (when it's supported) instead of relying on 'grep -v'
 todo_report_whole="$(todo | grep -v "^./${TODO_REPORT_FILE}:" | grep -v ".gitignored." | grep -v "XXX")"
 todo_report_body="$(echo "$todo_report_whole" | tail -n $TODO_REPORT_LINES )"
+todo_report_color_body="$(echo "$todo_report_body" |  grep --color=always TODO )"
 todo_report_linecount=$(echo "$todo_report_whole" | wc -l)
-echo "Here are the most important $TODO_REPORT_LINES todos, most important last, out of ${todo_report_linecount##*()} total." > $TODO_REPORT_FILE
-SKIGGETY_DIVIDER_LENGTH=80 echo_divider "=" >> $TODO_REPORT_FILE
-echo "$todo_report_body" >> $TODO_REPORT_FILE
+todo_header="Here are the most important $TODO_REPORT_LINES todos, most important last, out of ${todo_report_linecount##*()} total."
 
-cat $TODO_REPORT_FILE
+echo "$todo_header" > $TODO_REPORT_FILE
+echo "$todo_header" > $TODO_REPORT_COLOR_FILE
+SKIGGETY_DIVIDER_LENGTH=80 echo_divider "=" >> $TODO_REPORT_FILE
+SKIGGETY_DIVIDER_LENGTH=80 echo_divider "=" >> $TODO_REPORT_COLOR_FILE
+echo "$todo_report_body" >> $TODO_REPORT_FILE
+echo "$todo_report_color_body" >> $TODO_REPORT_COLOR_FILE
+
+cat $TODO_REPORT_COLOR_FILE
