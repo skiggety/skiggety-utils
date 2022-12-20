@@ -24,7 +24,6 @@ fi
 echo "- TODO: ..." >> "$todo_list_file_name" # IGNORE_TODO
 vim -o $files_to_open '+/\.\.\.'
 
-# TODO^16: eventually we probably want to pass -f to write quicker, playing it safe for the moment
 echo "It's time to compact todo's in $0"
 todo -wfq $EXCLUDE_DIR_ARGS
 clear

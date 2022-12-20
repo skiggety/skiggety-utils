@@ -1,6 +1,6 @@
-Here are the most important 5 todos, most important last, out of      388 total.
+Here are the most important 5 todos, most important last, out of      387 total.
 ================================================================================
-./bin/today_todo:27:# [01;31m[KTODO[m[K^16: eventually we probably want to pass -f to write quicker, playing it safe for the moment
+./bin/review:16:# [01;31m[KTODO[m[K^16: rbenv version hack similar to what was done in bin/todo with DESIRED_PYTHON_VERSION, but beware of all the
 ./installers/vim:54:    # [01;31m[KTODO[m[K^16: systematize/learn: https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko
 ./bin/demo_python_version_hack:9:# [01;31m[KTODO[m[K^17: DELETE many, but not all of the debug messages now that "CFPVOM" bug is solved.
 ./PWD_BIN/generate_todo_report:16:# [01;31m[KTODO[m[K^18: in the future, use 'todo --exclude <FILE>' (when it's supported) instead of relying on 'grep -v'
