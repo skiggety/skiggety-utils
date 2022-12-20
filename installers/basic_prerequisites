@@ -5,8 +5,8 @@
 # installers, hence this bootstrapping script to get us up to the point of
 # having a recent ruby.
 
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
-. $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
 function main {
 
@@ -41,7 +41,7 @@ function main {
     #if ! $interactive; then # TODO: should this really depend on interactive mode? how about unless --force ?
     if [ -f $completed_marker ]; then
         debug_here "completed marker $completed_marker exists"
-        if find $completed_marker -mtime -1 | grep $completed_marker >/dev/null; then
+        if find $completed_marker -mtime -1 | grep $completed_marker >/dev/null; then # TODO: explanatory comment
             completed_marker_time="$(ls -l $completed_marker| awk '{print $6" "$7" "$8}')"
             debug_here "$(basename $(dirname $0))/$(basename $0) has already completed in the last day (at $completed_marker_time), so skipping updates in non-interactive mode."
             # TODO: maybe exiting early should also be conditional on whether .python-version has been updated since the
