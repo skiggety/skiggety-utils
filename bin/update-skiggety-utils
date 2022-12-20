@@ -10,6 +10,7 @@ pushd $SKIGGETY_UTILS_DIR >/dev/null
 
 git-pretty-pull || exit_with_error "git-pretty-pull FALED"
 
+echo_divider_with_text "=" "Showing todo_report/README.txt:"
 cat $SKIGGETY_UTILS_DIR/todo_report/README.txt
 
 echo_divider_with_text "--==" "running: install-skiggety-utils '$@':"
