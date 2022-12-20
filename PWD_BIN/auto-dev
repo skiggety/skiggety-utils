@@ -4,7 +4,7 @@
 # the other window and not have to keep switching windows.
 
 # TODO^3: consider moving to bin
-# TODO^3: consider renaming to review_dev (this and bin/ version)
+# TODO^4: consider renaming to review_dev (this and bin/ version)
 # TODO: consider splitting to default_ and normal version like dashboard and lint
 
 # TODO^4: set Maxiumum refresh time with something like: --m 1800
