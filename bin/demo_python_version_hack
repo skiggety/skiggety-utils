@@ -31,13 +31,13 @@ for path_element in path_as_array:
 if DESIRED_PYTHON_VERSION != platform.python_version():
 
     # limit recursion depth:
-    os.environ['PYENV_VERSION_HACK_DEPTH'] = os.environ.get('PYENV_VERSION_HACK_DEPTH') or str(1)
+    os.environ['PYENV_VERSION_HACK_DEPTH'] = os.environ.get('PYENV_VERSION_HACK_DEPTH', '1')
     print(f"DEBUG: after ||= 1, os.environ.get('PYENV_VERSION_HACK_DEPTH') is {os.environ.get('PYENV_VERSION_HACK_DEPTH')}")
 
     print(f"DEBUG: before modulo check, os.environ.get('PYENV_VERSION_HACK_DEPTH') is {os.environ.get('PYENV_VERSION_HACK_DEPTH')}")
     print(f"DEBUG: before modulo check, int(os.environ.get('PYENV_VERSION_HACK_DEPTH') or 1) is {int(os.environ.get('PYENV_VERSION_HACK_DEPTH') or 1)}")
     # This is hacky, but, if it works, whatever:
-    if int(os.environ.get('PYENV_VERSION_HACK_DEPTH') or 1) % 5 == 5: # avoid infinite loop
+    if int(os.environ.get('PYENV_VERSION_HACK_DEPTH', 1)) % 5 == 5: # avoid infinite loop
         raise Exception(f"Failed to force python version to {DESIRED_PYTHON_VERSION}. " \
                         "This script needs debugging.")
     print(f"DEBUG: OK, attempting to switch from python version {platform.python_version()} to {DESIRED_PYTHON_VERSION}")

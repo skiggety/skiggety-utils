@@ -4,12 +4,11 @@
 import os
 import platform
 import sys
-# TODO: maybe reinstate something like demo_python_version hack when it's up to snuff
 DESIRED_PYTHON_VERSION = '3.11.1'
 if DESIRED_PYTHON_VERSION != platform.python_version():
     # limit recursion depth:
-    os.environ['PYENV_VERSION_HACK_DEPTH'] = os.environ.get('PYENV_VERSION_HACK_DEPTH') or str(1)
-    if int(os.environ.get('PYENV_VERSION_HACK_DEPTH') or 1) % 5 == 5: # avoid infinite loop
+    os.environ['PYENV_VERSION_HACK_DEPTH'] = os.environ.get('PYENV_VERSION_HACK_DEPTH', '1')
+    if int(os.environ.get('PYENV_VERSION_HACK_DEPTH', 1)) % 5 == 5: # avoid infinite loop
         raise Exception(f"Failed to force python version to {DESIRED_PYTHON_VERSION}. " \
                         "This script needs debugging.")
     os.environ['PYENV_VERSION'] = DESIRED_PYTHON_VERSION

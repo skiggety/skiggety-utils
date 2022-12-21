@@ -1,4 +1,4 @@
-Here are the most important 5 todos, most important last, out of      387 total.
+Here are the most important 5 todos, most important last, out of      386 total.
 ================================================================================
 ./bin/review:16:# [01;31m[KTODO[m[K^16: rbenv version hack similar to what was done in bin/todo with DESIRED_PYTHON_VERSION, but beware of all the
 ./installers/vim:54:    # [01;31m[KTODO[m[K^16: systematize/learn: https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko
