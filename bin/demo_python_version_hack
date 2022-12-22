@@ -6,8 +6,6 @@ self-determine its version using pyenv."""
 # Probably a bad idea but I'm trying to be perhaps a little paranoid while I learn more about pyenv
 # and packaging...
 
-# TODO^17: DELETE many, but not all of the debug messages now that "CFPVOM" bug is solved.
-
 # Because the CURRENT directory should not determine the python version:
 # TODO: THIS SHOULD NOT BE NECESSARY! WHY? OH, WHY?!?! (maybe learn more about pyenv and how python
 # scripts are normally packaged):
@@ -19,8 +17,6 @@ print(f"DEBUG: ----------------------------------------")
 print(f"DEBUG: sys.argv[0] is {sys.argv[0]}")
 print(f"DEBUG: before touching version, os.environ.get('PYENV_VERSION') is {os.environ.get('PYENV_VERSION')}")
 print(f"DEBUG: before touching version, os.environ.get('PYENV_VERSION_HACK_DEPTH') is {os.environ.get('PYENV_VERSION_HACK_DEPTH')}")
-print('...well, no wonder it works on eelwright...this is not a good test, apparently')
-
 print(f"DEBUG: before touching version, platform.python_version() is {platform.python_version()}")
 
 print('DEBUG: the contents os $PATH breaks down to:')
@@ -35,7 +31,6 @@ if DESIRED_PYTHON_VERSION != platform.python_version():
     print(f"DEBUG: after ||= 1, os.environ.get('PYENV_VERSION_HACK_DEPTH') is {os.environ.get('PYENV_VERSION_HACK_DEPTH')}")
 
     print(f"DEBUG: before modulo check, os.environ.get('PYENV_VERSION_HACK_DEPTH') is {os.environ.get('PYENV_VERSION_HACK_DEPTH')}")
-    print(f"DEBUG: before modulo check, int(os.environ.get('PYENV_VERSION_HACK_DEPTH') or 1) is {int(os.environ.get('PYENV_VERSION_HACK_DEPTH') or 1)}")
     # This is hacky, but, if it works, whatever:
     if int(os.environ.get('PYENV_VERSION_HACK_DEPTH', 1)) % 5 == 5: # avoid infinite loop
         raise Exception(f"Failed to force python version to {DESIRED_PYTHON_VERSION}. " \
@@ -43,6 +38,7 @@ if DESIRED_PYTHON_VERSION != platform.python_version():
     print(f"DEBUG: OK, attempting to switch from python version {platform.python_version()} to {DESIRED_PYTHON_VERSION}")
     print('setting PYENV_VERSION in env...')
     os.environ['PYENV_VERSION'] = DESIRED_PYTHON_VERSION
+    print('incrementing PYENV_VERSION_HACK_DEPTH in env...')
     os.environ['PYENV_VERSION_HACK_DEPTH'] = str(int(os.environ['PYENV_VERSION_HACK_DEPTH']) + 1)
     print(f"DEBUG: after increment, os.environ.get('PYENV_VERSION_HACK_DEPTH') is {os.environ.get('PYENV_VERSION_HACK_DEPTH')}")
     print(f"DEBUG: os.environ.get('HOME') is {os.environ.get('HOME')}")
