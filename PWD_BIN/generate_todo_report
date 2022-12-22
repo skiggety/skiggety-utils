@@ -1,20 +1,17 @@
 #!/usr/bin/env bash
 
 TODO_REPORT_LINES=5 # IGNORE_TODO
-TODO_REPORT_FILE="todo_report/README.txt"
-TODO_REPORT_COLOR_FILE="todo_report/README_in_color.txt"
+TODO_REPORT_DIR="todo_report" # IGNORE_TODO
+TODO_REPORT_FILE="$TODO_REPORT_DIR/README.txt" # IGNORE_TODO
+TODO_REPORT_COLOR_FILE="$TODO_REPORT_DIR/README_in_color.txt" # IGNORE_TODO
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash
 
-debug_eval_here TODO_REPORT_FILE
-debug_eval_here TODO_REPORT_COLOR_FILE
-debug_here mkdir -p "$(dirname "$TODO_REPORT_FILE")"
-debug_here mkdir -p "$(dirname "$TODO_REPORT_COLOR_FILE")"
-mkdir -p "$(dirname "$TODO_REPORT_FILE")"
-mkdir -p "$(dirname "$TODO_REPORT_COLOR_FILE")"
+debug_eval_here TODO_REPORT_FILE # IGNORE_TODO
+debug_eval_here TODO_REPORT_COLOR_FILE # IGNORE_TODO
+mkdir -p "$TODO_REPORT_DIR" # IGNORE_TODO
 
-# TODO^18: in the future, use 'todo --exclude <FILE>' (when it's supported) instead of relying on 'grep -v'
-todo_report_whole="$(todo | grep -v "^./${TODO_REPORT_FILE}:" | grep -v ".gitignored." | grep -v "XXX")"
+todo_report_whole="$(todo --exclude-dir "$TODO_REPORT_DIR" | grep -v ".gitignored." | grep -v "XXX")"
 todo_report_body="$(echo "$todo_report_whole" | tail -n $TODO_REPORT_LINES )"
 todo_report_color_body="$(echo "$todo_report_body" |  grep --color=always TODO )"
 todo_report_linecount=$(echo "$todo_report_whole" | wc -l)

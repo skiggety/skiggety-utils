@@ -59,7 +59,7 @@ function test_todo_finds_and_sorts_concise_format_correctly {
 
 function test_todo_handles_a_complex_example {
     pushd "$todo_examples_dir" > /dev/null
-    result="$(todo -k TXDX --exclude-dir exclude_me)"
+    result="$(todo -k TXDX --exclude-dir exclude_me --exclude nasty/excluded.txt)"
     exit_value="$?"
     expected="./simple/example.txt:1:TXDX: this is a todo
 ./simple/example.txt:2:  TXDX: this is another todo that's indented

@@ -67,25 +67,28 @@ def main():
 
     arg_parser.add_argument('--exclude-dir', help = 'Directories to exclude.', action = 'append')
     # TODO^6: support stuff like ' --exclude todo_report/README.txt' starting with:
-    # arg_parser.add_argument('--exclude', help = 'Directories to exclude.', action = 'append')
+    arg_parser.add_argument('--exclude', help = 'Files to exclude.', action = 'append')
 
     command_line_args = arg_parser.parse_args()
+
+    global should_debug # TODO: eliminate globals
+    # above here, you just gotta print:
+    should_debug = command_line_args.debug
+    echo_debug('We are in debug mode (if you are seeing this message).')
 
     # set up condtions from command line arguments:
 
     exclude_dirs = command_line_args.exclude_dir or []
+    exclude_files = command_line_args.exclude or []
+    exclude_files = [re.sub('^\.\/', '', i) for i in exclude_files]
+
     keyword = command_line_args.keyword or 'TODO' # because you can use other keywords # IGNORE_TODO
     # TODO: use argparse built-in way of setting defaaults instead:
     ignore_keyword = ignore_keyword or f'IGNORE_{keyword}'
     # TODO: validate that the keywords can only be letters, underscores, and some basic stuff
     should_write = command_line_args.write
     should_force = command_line_args.force
-    global should_debug # TODO: eliminate globals
     quiet_mode = command_line_args.quiet
-
-    # above here, you just gotta print:
-    should_debug = command_line_args.debug
-    echo_debug('We are in debug mode (if you are seeing this message).')
 
     global interactive # TODO: eliminate globals
     interactive = True # TODO^4: detect if output is to a terminal
@@ -99,6 +102,9 @@ def main():
         dirs[:] = [d for d in dirs if d not in exclude_dirs]
         for file_path in file_paths:
             full_file_path = os.path.join(root, file_path)
+            if re.sub('^\.\/', '', full_file_path) in exclude_files:
+                echo_debug(f"EXCLUDING FILE: {full_file_path}")
+                continue
             if (stat.S_ISBLK(os.stat(full_file_path).st_mode) or
                 stat.S_ISSOCK(os.stat(full_file_path).st_mode) ): # skip devices
                 continue
