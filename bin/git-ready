@@ -19,7 +19,7 @@ for command in \
     'git add -p' \
     'git vimdiff --staged' \
     "git commit $GIT_COMMIT_OPTIONS" \
-    'git pretty-pull' \
+    'git pull' \
     'git push -u'
 do
     # TODO^3: method extract:
@@ -28,5 +28,7 @@ do
     pretty_sleep 2
     $command || exit_with_error "Command \"$command\" failed."
 done
+
+git -c color.ui=always --no-pager log --oneline --decorate=short origin/HEAD~..HEAD -n 15
 
 echo "...finished '$(basename "$0")'."
