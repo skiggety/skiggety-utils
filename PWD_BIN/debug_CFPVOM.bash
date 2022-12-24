@@ -5,9 +5,7 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-# TODO: it might be interesting to try running this in different docker containers
-# TODO^31: call this from your local PWD/experiment.gitignored.bash on all machines that want to
-# participate in debugging.
+# TODO: It might be interesting to try running this in different docker containers
 
 # go where there's no accurate .python-version to rely on to put these version hacks to the test:
 cd ~/today_todo/
