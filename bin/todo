@@ -95,7 +95,7 @@ def main():
 
     exclude_dirs = command_line_args.exclude_dir or []
     exclude_files = command_line_args.exclude or []
-    exclude_files = [re.sub('^\.\/', '', i) for i in exclude_files]
+    exclude_files = [re.sub(r'^\.\/', '', i) for i in exclude_files]
 
     keyword = command_line_args.keyword or 'TODO' # because you can use other keywords # IGNORE_TODO
     # TODO: use argparse built-in way of setting defaaults instead:
@@ -118,7 +118,7 @@ def main():
         dirs[:] = [d for d in dirs if d not in exclude_dirs]
         for file_path in file_paths:
             full_file_path = os.path.join(root, file_path)
-            if re.sub('^\.\/', '', full_file_path) in exclude_files:
+            if re.sub(r'^\.\/', '', full_file_path) in exclude_files:
                 echo_debug(f"EXCLUDING FILE: {full_file_path}")
                 continue
             if (stat.S_ISBLK(os.stat(full_file_path).st_mode) or
