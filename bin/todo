@@ -143,6 +143,7 @@ def main():
 
 # TODO: move to a new library:
 def echo_debug(debug_message): # TODO: rename?
+    """basic debug output"""
     if SHOULD_DEBUG:
         # TODO: if you want, you could tie this into python's logging framework and do it that way
         sys.stderr.write(Fore.YELLOW + debug_message + '\n')
