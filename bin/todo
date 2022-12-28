@@ -109,7 +109,7 @@ def main():
             if (stat.S_ISBLK(os.stat(full_file_path).st_mode) or
                 stat.S_ISSOCK(os.stat(full_file_path).st_mode) ): # skip devices
                 continue
-            add_lines_from_file(lines, full_file_path, keyword, ignore_keyword)
+            lines.extend(lines_from_file(full_file_path, keyword, ignore_keyword))
 
     lines = sorted(lines, key = lambda l: (l.votecount, l.file_path, l.line_number))
 
@@ -175,8 +175,10 @@ def ask_user_yn(question_text):
     echo_debug('...which means \'no\'.')
     return False
 
-def add_lines_from_file(lines, full_file_path, keyword, ignore_keyword):
+def lines_from_file(full_file_path, keyword, ignore_keyword):
     """given a file, collect relevant TodoLine's in lines"""
+
+    lines_found = []
 
     # TODO^2: it is inefficient to re-create these every time, so make them an instance
     # variable:, once this is all in a class
@@ -194,9 +196,10 @@ def add_lines_from_file(lines, full_file_path, keyword, ignore_keyword):
                 line_number += 1
                 if keyword_regex.search(line):
                     if not ignore_keyword_regex.search(line):
-                        lines.append(TodoLine(keyword, full_file_path, line_number, line))
+                        lines_found.append(TodoLine(keyword, full_file_path, line_number, line))
         except UnicodeDecodeError: # skip binary files
             pass
+    return lines_found
 
 # TODO: flags:
 
