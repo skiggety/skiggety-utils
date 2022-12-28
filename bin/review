@@ -25,7 +25,7 @@ require 'English' # needed for: $CHILD_STATUS.exitstatus
 # TODO^9: avoid forcing the same version of ruby on programs that this may call (maybe be careful not to pass
 # rbenv-related environment variables down). Because it would be nice to be able to use "review dev" at work sometimes.
 
-# TODO^11: accept --minimum-delay or -m (e.g. auto-ci might want to call this with "-m 30")
+# TODO^12: accept --minimum-delay or -m (e.g. auto-ci might want to call this with "-m 30")
 # TODO^4: accept --maximum-delay or -M (e.g. auto-ci might want to call this with "-M $(( 60 * 60 * 6 ))")
 # TODO^4: accept --interactive ("-i") or --non-interactive ("-n"), to determine whether to use backticks
 #   TODO^4: DEBUG, if you call review with -i, it misinterprets it and fails forever, which is silly. We need to
