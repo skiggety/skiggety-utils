@@ -27,9 +27,9 @@ class TodoLine:
     # inside a todo_line is one or more groups of TODO's and TODO^n's (IGNORE_TODO) called a
     # todo_entry. The votecount of the todo_line comes from the max votecount of the todo_entries.
 
-    # inside a todo_entry is one or more todo_words, such as 'TODO' or "TODO^2. They each have their
-    # own votecount, as indicated by the number after the caret. They are summed to make the
-    # votecount of the todo_entry. # IGNORE_TODO
+    # inside a todo_entry is one or more todo_words, such as 'TODO' or "TODO^2 (IGNORE_TODO). They
+    # each have their own votecount, as indicated by the number after the caret. They are summed to
+    # make the votecount of the todo_entry.
 
     def collapse_todo_entry(self, todo_entry):
         """
