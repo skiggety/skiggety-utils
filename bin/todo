@@ -149,12 +149,6 @@ def echo_debug(debug_message): # TODO: rename?
         sys.stderr.write(Style.RESET_ALL)
         sys.stdout.write(Style.RESET_ALL)
 
-# TODO: maybe don't ask these questions as much, or only in a special mode, or DELETE entirely. See
-# how it goes for now:
-def ask_user_to_confirm_file_writes():
-    """a high-level check of whether you want to write files at all"""
-    return ask_user_yn('Would you like to write changes to files?')
-
 def ask_user_to_confirm_this_line_write(line):
     """ask the user about individual lines to replace. Might be overkill, fine for now"""
     message = f"Would you like to replace this line:\n{line.original_text}\n" \
