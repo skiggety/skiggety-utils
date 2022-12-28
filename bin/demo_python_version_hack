@@ -6,41 +6,50 @@ self-determine its version using pyenv."""
 # Probably a bad idea but I'm trying to be perhaps a little paranoid while I learn more about pyenv
 # and packaging...
 
-# Because the CURRENT directory should not determine the python version:
+# Because the CURRENT directory should not determine the python version, which I think of as a
+# property of the script itself:
+
 # TODO: THIS SHOULD NOT BE NECESSARY! WHY? OH, WHY?!?! (maybe learn more about pyenv and how python
 # scripts are normally packaged):
 import os
 import platform
 import sys
+import re # regular expressions, only for debug output
 DESIRED_PYTHON_VERSION = '3.11.1'
-print(f"DEBUG: ----------------------------------------")
+print("DEBUG: ----------------------------------------")
 print(f"DEBUG: sys.argv[0] is {sys.argv[0]}")
 print(f"DEBUG: before touching version, os.environ.get('PYENV_VERSION') is {os.environ.get('PYENV_VERSION')}")
-print(f"DEBUG: before touching version, os.environ.get('PYENV_VERSION_HACK_DEPTH') is {os.environ.get('PYENV_VERSION_HACK_DEPTH')}")
+print("DEBUG: before touching version, os.environ.get('PYENV_VERSION_HACK_DEPTH') is "
+      f"{os.environ.get('PYENV_VERSION_HACK_DEPTH')}")
 print(f"DEBUG: before touching version, platform.python_version() is {platform.python_version()}")
 
 print('DEBUG: the contents os $PATH breaks down to:')
 path_as_array = os.environ.get('PATH').split(':')
 for path_element in path_as_array:
-    print(f"    {path_element}") # XXX TODO: print home dir as '~/' for diffability
+    # showing home as ~ makes this easier to diff across different users and machines:
+    print(re.sub(os.environ.get('HOME'), '~', f"    {path_element}"))
 
 if DESIRED_PYTHON_VERSION != platform.python_version():
 
     # limit recursion depth:
     os.environ['PYENV_VERSION_HACK_DEPTH'] = os.environ.get('PYENV_VERSION_HACK_DEPTH', '1')
-    print(f"DEBUG: after ||= 1, os.environ.get('PYENV_VERSION_HACK_DEPTH') is {os.environ.get('PYENV_VERSION_HACK_DEPTH')}")
+    print("DEBUG: after ||= 1, os.environ.get('PYENV_VERSION_HACK_DEPTH') is " \
+          f"{os.environ.get('PYENV_VERSION_HACK_DEPTH')}")
 
-    print(f"DEBUG: before modulo check, os.environ.get('PYENV_VERSION_HACK_DEPTH') is {os.environ.get('PYENV_VERSION_HACK_DEPTH')}")
+    print("DEBUG: before modulo check, os.environ.get('PYENV_VERSION_HACK_DEPTH') is " \
+          f"{os.environ.get('PYENV_VERSION_HACK_DEPTH')}")
     # This is hacky, but, if it works, whatever:
     if int(os.environ.get('PYENV_VERSION_HACK_DEPTH', 1)) % 5 == 5: # avoid infinite loop
         raise Exception(f"Failed to force python version to {DESIRED_PYTHON_VERSION}. " \
                         "This script needs debugging.")
-    print(f"DEBUG: OK, attempting to switch from python version {platform.python_version()} to {DESIRED_PYTHON_VERSION}")
+    print(f"DEBUG: OK, attempting to switch from python version {platform.python_version()} to " \
+          f"{DESIRED_PYTHON_VERSION}")
     print('setting PYENV_VERSION in env...')
     os.environ['PYENV_VERSION'] = DESIRED_PYTHON_VERSION
     print('incrementing PYENV_VERSION_HACK_DEPTH in env...')
     os.environ['PYENV_VERSION_HACK_DEPTH'] = str(int(os.environ['PYENV_VERSION_HACK_DEPTH']) + 1)
-    print(f"DEBUG: after increment, os.environ.get('PYENV_VERSION_HACK_DEPTH') is {os.environ.get('PYENV_VERSION_HACK_DEPTH')}")
+    print("DEBUG: after increment, os.environ.get('PYENV_VERSION_HACK_DEPTH') is " \
+          f"{os.environ.get('PYENV_VERSION_HACK_DEPTH')}")
     print(f"DEBUG: os.environ.get('HOME') is {os.environ.get('HOME')}")
     home_dir = os.environ.get('HOME')
 
@@ -50,6 +59,7 @@ if DESIRED_PYTHON_VERSION != platform.python_version():
     os.environ['PATH'] = f"{home_dir}/.pyenv/shims:{home_dir}/.pyenv/bin:{os.environ['PATH']}"
     print(f"DEBUG: after setting version, os.environ.get('PYENV_VERSION') is {os.environ.get('PYENV_VERSION')}")
     os.execvpe(sys.argv[0], sys.argv, os.environ) # system exec self
-print(f"DEBUG: SUCCESS! (this is after version hack) If you cd to a different dir, will it still work?")
+print("DEBUG: SUCCESS! (this is after version hack) If you cd to a different dir, will it still work?")
 os.environ['PYENV_VERSION_HACK_DEPTH'] = '0'
-print(f"DEBUG: after resetting to 0, os.environ.get('PYENV_VERSION_HACK_DEPTH') is {os.environ.get('PYENV_VERSION_HACK_DEPTH')}")
+print("DEBUG: after resetting to 0, os.environ.get('PYENV_VERSION_HACK_DEPTH') is " \
+      f"{os.environ.get('PYENV_VERSION_HACK_DEPTH')}")
