@@ -122,15 +122,13 @@ def main():
         echo_debug(f"should_force = {should_force}")
         echo_debug(f"interactive = {interactive}")
         if (should_force or interactive):
-            echo_debug("considering writing files, no need to raise exception")
-            if (should_force or (interactive and ask_user_to_confirm_file_writes())):
-                echo_debug('Writing changes to disk...')
-                for line in reversed(lines): # start with the highest-voted ones
-                    if line.has_changes_to_write():
-                        echo_debug('There are changes to write for line: \'' + str(line) + '\'')
-                        if (should_force or (interactive and ask_user_to_confirm_this_line_write(line))):
-                            # TODO^3: write more efficiently (all changes from one file at once):
-                            line.write()
+            echo_debug('Writing changes to disk...')
+            for line in reversed(lines): # start with the highest-voted ones
+                if line.has_changes_to_write():
+                    echo_debug('There are changes to write for line: \'' + str(line) + '\'')
+                    if (should_force or (interactive and ask_user_to_confirm_this_line_write(line))):
+                        # TODO^3: write more efficiently (all changes from one file at once):
+                        line.write()
         else:
             raise Exception('Cannot write changes in non-interactive mode without the -f or ' \
                             '--force flag')
