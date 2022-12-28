@@ -41,6 +41,18 @@ from todo_line import TodoLine
 
 # TODO^3: accept piped-in grep output for sorting, like grep does
 
+# TODO^2: maybe accept --vote 'string', --downvote 'string', or --delete 'string'  to find a
+# matching todo and change the vote count without doing anything else
+#  TODO: once we have a --delete option, you could write a script that goes through your todo's in
+#  priority order, and prompts you to do each one with ask_user, and deletes them if you say you
+#  have done it.
+
+# TODO: maybe todo should suggest running todo -w when it notices simplifications it could be
+# making.
+
+# TODO: maybe todo should suggest -f option when you are using -w mode with manual confirmation for
+# each file.
+
 PROGRAM_DESCRIPTION = 'finds TODOs, sorted by votes' # IGNORE_TODO
 
 def main():
@@ -127,7 +139,7 @@ def main():
                 if line.has_changes_to_write():
                     echo_debug('There are changes to write for line: \'' + str(line) + '\'')
                     if (should_force or (interactive and ask_user_to_confirm_this_line_write(line))):
-                        # TODO^3: write more efficiently (all changes from one file at once):
+                        # TODO^4: write more efficiently (all changes from one file at once):
                         line.write()
         else:
             raise Exception('Cannot write changes in non-interactive mode without the -f or ' \
@@ -141,8 +153,8 @@ def main():
 
     # TODO^4: print summary with TODO count, maybe a vote count
 
-# TODO: move to a new library:
-def echo_debug(debug_message): # TODO: rename?
+# TODO^2: rename, remove, move to a new library, or use an existing library?
+def echo_debug(debug_message):
     """basic debug output"""
     if SHOULD_DEBUG:
         # TODO: if you want, you could tie this into python's logging framework and do it that way

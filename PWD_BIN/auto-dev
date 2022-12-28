@@ -3,8 +3,8 @@
 # The point of this is to be something that runs your dev cycle for you in one window, so you can stay in your editor in
 # the other window and not have to keep switching windows.
 
-# TODO^3: consider moving to bin
-# TODO^4: consider renaming to review_dev (this and bin/ version)
+# TODO^6: consider renaming to review_dev (this and bin/ version)
+# TODO^4: consider moving to bin
 # TODO: consider splitting to default_ and normal version like dashboard and lint
 
 # TODO^4: set Maxiumum refresh time with something like: --m 1800

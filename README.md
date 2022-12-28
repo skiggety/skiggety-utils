@@ -63,8 +63,9 @@ codebase, but there are a few miscellaneous ones collected here:
 - TODO^2: have a way to open the github webpage from inside a git repo from the command line. You can use "open <URL>" on a mac, for example, and scripts like what you use for automatic git pushing can use it to help you get PR's going fast.
 - TODO^3: set up a git hook system so you can add multiple scripts. For example, I'd like to block commits that include "XXX", irrespective of any other commit hooks. That hook might be shared by a team or individual to me, and I'd like to be able to support both kinds without conflicts.
 - TODO: mini-project: raspberry pi backup machine, and the software to run it.
-- TODO: "playbot", a program that tunes in youtube livestreams, video meetings, watch later, podcasts and your personal dashboards, automatically. Great as an information radiator.
-- TODO: inforad (chrome extension?) information radiator
+- TODO^3: some tools for setting up information radiators
+  - TODO^2: inforad (chrome extension?) information radiator
+  - TODO: "playbot", a program that tunes in youtube livestreams, video meetings, watch later, podcasts and your personal dashboards, automatically. Great as an information radiator.
 - TODO: systematized config (automate the configuration I always want anyway)
     - TODO^2: hook up to google drive
 - TODO: help set up home data center?
