@@ -70,7 +70,7 @@ function main {
         brew upgrade
     fi
 
-    # TODO?: install latest bash and make sure other scripts are compatible...
+    # TODO^3: install latest bash and make sure other scripts are compatible...
 
     debug_here "rbenv:"
     # rbenv
