@@ -216,10 +216,6 @@ def add_lines_from_file(lines, full_file_path, keyword, ignore_keyword):
   # "--minimum-votes 3", "EXAMPLE_KEYWORD EXAMPLE_KEYWORD EXAMPLE_KEYWORD" or EXAMPLE_KEYWORD^3 will
   # show up, but not "EXAMPLE_KEYWORD EXAMPLE_KEYWORD"
 
-  # TODO^11: when called from a terminal, this program should interactively check with the user if
-  # they want to do replacements like "TODO TODO"-->"TODO^2" (IGNORE_TODO) before displaying sorted
-  # output.
-
 # TODO: consider spinning this project off, with a not-so-clever name like "tood" or something
 
 main()
