@@ -20,6 +20,11 @@ if DESIRED_PYTHON_VERSION != platform.python_version():
     os.execvpe(sys.argv[0], sys.argv, os.environ) # system exec self
 os.environ['PYENV_VERSION_HACK_DEPTH'] = '0'
 
+# TODO: figure out what's really the best way to nail down the python version, the hack above, or
+# something simple like this in combination with packaging:
+if sys.version_info[0] < 3:
+    raise Exception('Must be using Python 3')
+
 import argparse
 import stat
 import re # regular expressions
@@ -35,8 +40,6 @@ from todo_line import TodoLine
 # about
 
 # TODO^3: accept piped-in grep output for sorting, like grep does
-if sys.version_info[0] < 3:
-    raise Exception('Must be using Python 3')
 
 PROGRAM_DESCRIPTION = 'finds TODOs, sorted by votes' # IGNORE_TODO
 
@@ -71,9 +74,9 @@ def main():
 
     command_line_args = arg_parser.parse_args()
 
-    global should_debug # TODO: eliminate globals
     # above here, you just gotta print:
-    should_debug = command_line_args.debug
+    global SHOULD_DEBUG
+    SHOULD_DEBUG = command_line_args.debug
     echo_debug('We are in debug mode (if you are seeing this message).')
 
     # set up condtions from command line arguments:
@@ -142,7 +145,7 @@ def main():
 
 # TODO: move to a new library:
 def echo_debug(debug_message): # TODO: rename?
-    if should_debug:
+    if SHOULD_DEBUG:
         # TODO: if you want, you could tie this into python's logging framework and do it that way
         sys.stderr.write(Fore.YELLOW + debug_message + '\n')
         sys.stderr.write(Style.RESET_ALL)
