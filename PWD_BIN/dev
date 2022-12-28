@@ -19,4 +19,17 @@ lint && echo "lint SUCCEEDED" || accumulate_error "lint FAILED"
 
 dashboard || accumulate_error "dashboard FAILED"
 
+experiment_script="./PWD_BIN/experiment.gitignored.bash"
+if ! [ -f "$experiment_script" ]; then
+    echo "#!$(which env) bash" > "$experiment_script"
+    echo "# TODO: edit this for dashboard output" >> "$experiment_script" # IGNORE_TODO
+    chmod +x "$experiment_script"
+fi
+
+if [ -f "$experiment_script" ]; then
+    # TODO: only show this divider if there will be output below:
+    echo_divider_with_text "=" "running \"$experiment_script\" :"
+    $experiment_script || accumulate_error
+fi
+
 exit_if_any_accumulated_errors
