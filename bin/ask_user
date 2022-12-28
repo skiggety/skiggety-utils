@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
+# TODO: rename to reflect the fact that we are putting the user in a full shell (which is useful), not just a y/n
+# prompt.
+
 # This script asks the user to do the task described and report status back. It is a great way of stubbing out
-# functionality.
+# functionality, setting yourself one-off reminders, or....
 
 # BONUS!!: I'm pretty sure it's also a shell/environment debugger. Just write something like this in your code (let's
 # say a bash script but you could call it from other languages and inspect environment variables, technically):

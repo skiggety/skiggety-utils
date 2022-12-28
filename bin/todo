@@ -97,6 +97,7 @@ def main():
 
     lines = []
 
+    # TODO^2: parallelization might make this a lot faster (learn from rg)
     # TODO: refactor, too much nesting:
     for root, dirs, file_paths in os.walk('.', topdown=True):
         dirs[:] = [d for d in dirs if d not in exclude_dirs]
@@ -125,6 +126,7 @@ def main():
                     if line.has_changes_to_write():
                         echo_debug('There are changes to write for line: \'' + str(line) + '\'')
                         if (should_force or (interactive and ask_user_to_confirm_this_line_write(line))):
+                            # TODO^3: write more efficiently (all changes from one file at once):
                             line.write()
         else:
             raise Exception('Cannot write changes in non-interactive mode without the -f or ' \
@@ -198,12 +200,11 @@ def add_lines_from_file(lines, full_file_path, keyword, ignore_keyword):
 
 # TODO: flags:
 
-  # TODO^5: make sure the last line is highlighted. It's the most important todo
-  # and your attention should be drawn to it.
-  # TODO^4: highlighting on or off. It should be on by default unless output is piped to a
-  # file, like with grep and "--color" (or "--colour" )
-
-    # TODO^3: highlight TODO's
+  # TODO^5: highlight TODO's
+    # TODO^5: make sure the last line is highlighted. It's the most important todo
+    # and your attention should be drawn to it.
+    # TODO^5: highlighting on or off. It should be on by default unless output is piped to a
+    # file, like with grep and "--color" (or "--colour" )
 
   # TODO^3: todo should accept a path ( to a file or directory) to use in place of "." for grep.
   # This way you could run "todo bin/todo" and see the TODO^2's in this file cleanly without the

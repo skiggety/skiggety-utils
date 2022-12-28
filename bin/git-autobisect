@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# TODO^2: Does the thing that you probably want to do with git bisect without having to remember the subcommands or
+# specify a start point. Lets you provide a script to test whether the bug occurs or not.
