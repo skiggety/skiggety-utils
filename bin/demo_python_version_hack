@@ -54,7 +54,7 @@ if DESIRED_PYTHON_VERSION != platform.python_version():
     home_dir = os.environ.get('HOME')
 
     # TODO^2: is there something slightly cleaner I could do like run the child in a fresh login shell
-    # or something to re-init pyenv? or maybe take shims *out* of the path?
+    # or something to re-init pyenv?
     # ugh, stack new shims on the path in case a parent process has already used pyenv to
     # stack on a specific python version's bin path:
     print(f"DEBUG adding to front of path: {home_dir}/.pyenv/shims:{home_dir}/.pyenv/bin")
