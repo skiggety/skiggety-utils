@@ -29,12 +29,16 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 debug_here "\$\* is: '$*'"
 TASK_DESCRIPTION="$*"
 debug_eval_here TASK_DESCRIPTION
-ESCAPED_TASK_DESCRIPTION="$(echo "$TASK_DESCRIPTION" | sed 's/\("\)/\\\1/g')"
+ESCAPED_TASK_DESCRIPTION="$(echo "$TASK_DESCRIPTION" | sed 's/\(["\$]\)/\\\1/g')"
 debug_eval_here ESCAPED_TASK_DESCRIPTION
+
+# Try running the following to see why this is necessary: ask_user 'spend $0 on "stuff"'.
+DOUBLE_ESCAPED_TASK_DESCRIPTION="$(echo "$ESCAPED_TASK_DESCRIPTION" | sed 's/\(["\$]\)/\\\1/g')"
+debug_eval_here DOUBLE_ESCAPED_TASK_DESCRIPTION
 banner='########################################################################'
 
 # ding
 tput bel
 
-bash --rcfile <(cat ~/.bashrc; echo "PS1=\"${newline}$banner${newline}# TODO:${newline}# 1.) ${ESCAPED_TASK_DESCRIPTION}${newline}# 2.) Run \\\"exit 0\\\" for success/yes, or \\\"exit 1\\\" to say no/failure.${newline}$banner${newline}\$PS1\"") - # IGNORE_TODO
+bash --rcfile <(cat ~/.bashrc; echo "PS1=\"${newline}$banner${newline}# TODO:${newline}# 1.) ${DOUBLE_ESCAPED_TASK_DESCRIPTION}${newline}# 2.) Run \\\"exit 0\\\" for success/yes, or \\\"exit 1\\\" to say no/failure.${newline}$banner${newline}\$PS1\"") - # IGNORE_TODO
 exit $?
