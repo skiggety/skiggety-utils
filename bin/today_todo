@@ -36,7 +36,7 @@ clear
 # alternatively we could do like 'todo' and use flags to turn editing and reporting on and off:
 
 echo "Last few todos DONE:"
-todo -k DONE $EXCLUDE_DIR_ARGS | tail -n 3
+todo -k DONE $EXCLUDE_DIR_ARGS | tail -n 3 | grep --color=always DONE
 pretty_sleep $PAUSE_TO_READ
 
 todo_output="$(todo $EXCLUDE_DIR_ARGS)" # TODO: -n 5 # TODO^2: todo should accept an option for the number of lines. like "-n 3". Maybe if we pass an option in?
@@ -44,18 +44,19 @@ todo_output="$(todo $EXCLUDE_DIR_ARGS)" # TODO: -n 5 # TODO^2: todo should accep
 todo_count=$(( 0 + $(echo "$todo_output" | wc -l) ))
 echo
 echo "Found $todo_count todos, showing 10:"
-echo "$todo_output" | tail -n 10
+echo "$todo_output" | tail -n 10 | grep --color=always TODO
 pretty_sleep $PAUSE_TO_READ
 
+# only collected for graph, not displayed # TODO: rethink this keyword entirely
 todo_later_output="$(echo "$todo_output" | grep LATER)"
 todo_later_count=$(( 0 + $(echo "$todo_later_output" | wc -l) ))
-pretty_sleep $PAUSE_TO_READ
+# TODO: do something with $todo_later_output, or get rid of this paragraph
 
 todo_prog_output="$(echo "$todo_output" | grep IN_PROGRESS | grep -v LATER)"
 todo_prog_count=$(( 0 + $(echo "$todo_prog_output" | wc -l) ))
 echo
 echo "Found $todo_prog_count todos IN_PROGRESS:"
-echo "$todo_prog_output"
+echo "$todo_prog_output" | grep --color=always IN_PROGRESS
 pretty_sleep $PAUSE_TO_READ
 
 # TODO^4: add NOW count to graph:
