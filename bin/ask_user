@@ -26,9 +26,6 @@
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
-# TODO: I think something is getting eval'ed too many times, I'm trying to pass in TODO's and it's complainging about
-# the syntax of what is supposed to be just text. Encountering this problem in ./silliness/live
-
 debug_here "\$\* is: '$*'"
 TASK_DESCRIPTION="$*"
 debug_eval_here TASK_DESCRIPTION
