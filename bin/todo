@@ -25,11 +25,13 @@ os.environ['PYENV_VERSION_HACK_DEPTH'] = '0'
 if sys.version_info[0] < 3:
     raise Exception('Must be using Python 3')
 
+#pylint: disable=C0413 # because I might as well wait until we've got the right python version
 import argparse
 import stat
 import re # regular expressions
 
 from colorama import Fore, Style
+#pylint: enable=C0413
 
 sys.path.append(os.path.abspath(os.path.join(os.getenv('SKIGGETY_UTILS_DIR'),"lib")))
 #pylint: disable=C0413 # because this has to go after we mess with sys.path
@@ -71,7 +73,9 @@ def main():
 
     # TODO: how about an argument/mode for the linter that complains about non-compacted TODO
     # syntax, instead of writing or printing the normal report.
-    arg_parser.add_argument('--non-interactive', action='store_true', help = 'TODO') # TODO: what's the one-character version?
+
+    # TODO: what's the one-character version of the '--non-interactive' flag?:
+    arg_parser.add_argument('--non-interactive', action='store_true', help = 'TODO')
     arg_parser.add_argument('-w', '--write', action='store_true', help = 'TODO')
     arg_parser.add_argument('-f', '--force', action='store_true', help = 'TODO')
     arg_parser.add_argument('-d', '--debug', action='store_true', help = 'TODO')
