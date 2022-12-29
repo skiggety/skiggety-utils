@@ -43,8 +43,8 @@ from todo_line import TodoLine
 
 # TODO^3: accept piped-in grep output for sorting, like grep does
 
-# TODO^2: maybe accept --vote 'string', --downvote 'string', or --delete 'string'  to find a
-# matching todo and change the vote count without doing anything else
+# TODO^2: maybe accept --vote 'substring', --downvote 'substring', or --delete 'substring'  to find
+# a matching todo and change the vote count without doing anything else
 #  TODO: once we have a --delete option, you could write a script that goes through your todo's in
 #  priority order, and prompts you to do each one with ask_user, and deletes them if you say you
 #  have done it.
@@ -71,7 +71,7 @@ def main():
     # case-insensitive:
     # TODO: add_argument('-i', '--ignore-keyword', help = 'TODO')
 
-    # TODO: how about an argument/mode for the linter that complains about non-compacted TODO
+    # TODO: how about an argument/mode for the linter that complains about non-compacted todo
     # syntax, instead of writing or printing the normal report.
 
     # TODO: what's the one-character version of the '--non-interactive' flag?:
@@ -80,9 +80,6 @@ def main():
     arg_parser.add_argument('-f', '--force', action='store_true', help = 'TODO')
     arg_parser.add_argument('-d', '--debug', action='store_true', help = 'TODO')
     arg_parser.add_argument('-q', '--quiet', action='store_true', help = 'TODO')
-
-    # TODO: take a -v/--vote-for flag that takes a substring of a matching todo line and adds a vote for
-    # it, compacts it, and that's it.
 
     arg_parser.add_argument('--exclude-dir', help = 'Directories to exclude.', action = 'append')
     # TODO^6: support stuff like ' --exclude todo_report/README.txt' starting with:
