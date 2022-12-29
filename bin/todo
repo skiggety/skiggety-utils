@@ -215,7 +215,7 @@ def lines_from_file(full_file_path, keyword, ignore_keyword):
 
 # TODO: flags:
 
-  # TODO^5: highlight TODO's
+  # TODO^6: highlight TODO's
     # TODO^5: make sure the last line is highlighted. It's the most important todo
     # and your attention should be drawn to it.
     # TODO^5: highlighting on or off. It should be on by default unless output is piped to a
