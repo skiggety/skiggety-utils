@@ -104,9 +104,11 @@ function main {
     # TODO^4: add NOW count to this output?:
     echo "$(( $todo_count + $todo_prog_count )) combined score, $todo_prog_count todos IN_PROGRESS"
 
-    # graph how many are done each day
-    # TODO: what date format should I use?:
-    echo "$isotoday,$todo_count,$todo_prog_count,$todo_later_count,$(( $todo_count + $todo_prog_count ))" >> graph.csv
+    if $interactive; then
+        # graph how many are done each day
+        # TODO: what date format should I use?:
+        echo "$isotoday,$todo_count,$todo_prog_count,$todo_later_count,$(( $todo_count + $todo_prog_count ))" >> graph.csv
+    fi
 }
 
 main "$@"
