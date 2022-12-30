@@ -21,6 +21,8 @@ class VimInstaller
     # TODO: Dir.exist?("#{bundle_dir}/vim-dispatch")
   end
 
+  # TODO^4: we need some way of watching other files. If they are newer than our marker file, we need a reinstall. Like
+  # ~/.vimrc for example. This will need to be a common installer feature.
   # err on the side of returning false...if these files don't match perfectly
   # the user will have a chance to make sure it's set up right.
   def apparently_configured?
@@ -74,7 +76,9 @@ class VimInstaller
 
   def configure
     if $interactive
-      assert_system("vim -do #{user_vimrc_path} #{template_vimrc_path}")
+      # TODO: prompt the user with something to explain what they need to do:
+      assert_system("vim -d #{user_vimrc_path} #{template_vimrc_path}")
+      mark_configured # force this, since you might want to leave some differences between your .vimrc and the template
     else
       raise_interactive_only_configuration
     end

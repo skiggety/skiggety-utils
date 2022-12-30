@@ -4,6 +4,8 @@
 
 # TODO: mark more of these methods private
 
+# TODO: implement uninstall
+
 require 'fileutils'
 require_relative 'user_delegation'
 
