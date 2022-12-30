@@ -6,7 +6,7 @@
 # This script provides a general purpose status report that is sensitive to the current directory. If you are in a git repo for a coding project, it'll give you an idea of høw tests are doing, what's left to do/commit, etc. It will usuually be called from that directory's ./PWD_BIN/dashboard script to form the bulk of the output
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
-. $THIS_DIR/../lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
 echo_divider_with_text "-=" "TODO's:" # IGNORE_TODO
 if [ -f ./todo_report/README.txt ]; then

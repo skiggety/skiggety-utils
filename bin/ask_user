@@ -24,7 +24,7 @@
 
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
-. $THIS_DIR/../lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
 debug_here "\$\* is: '$*'"
 TASK_DESCRIPTION="$*"
