@@ -9,6 +9,28 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
 function main {
+    for arg in "$@"; do
+        shift
+        case "$arg" in
+            --non-interactive) set -- "$@" "-n" ;;
+            *)                 set -- "$@" "$arg" ;;
+        esac
+    done
+
+    # defaults
+    interactive=true
+
+    OPTIND=1
+    while getopts ":inhi?" opt; do
+        case "$opt" in
+            "i") interactive=true ;;
+            "n") interactive=false ;;
+            "h") exit_with_error "TODO: print usage" ;;
+            "?") exit_with_error "TODO: print usage" ;;
+            *) ;;
+        esac
+    done
+
     isotoday="$(isotoday)"
 
     todo_list_file_name="TODO.$isotoday.txt" # IGNORE_TODO
@@ -17,20 +39,22 @@ function main {
     mkdir -p "$todo_list_dir_path"
     cd "$todo_list_dir_path"
 
-    if [ -f "$todo_list_file_name" ]; then
-        files_to_open="$todo_list_file_name"
-    else
-        files_to_open="$todo_list_file_name ."
+    if $interactive; then
+        if [ -f "$todo_list_file_name" ]; then
+            files_to_open="$todo_list_file_name"
+        else
+            files_to_open="$todo_list_file_name ."
+        fi
+        echo "- TODO: ..." >> "$todo_list_file_name" # IGNORE_TODO
+        vim -o $files_to_open '+/\.\.\.' # TODO^6: here and elsewhere, use $EDITOR, not vim
     fi
-    echo "- TODO: ..." >> "$todo_list_file_name" # IGNORE_TODO
-    vim -o $files_to_open '+/\.\.\.' # TODO^6: here and elsewhere, use $EDITOR, not vim
 
     EXCLUDE_DIR_ARGS="--exclude-dir archive"
 
     echo "It's time to compact todo's in $0"
     todo -wfq $EXCLUDE_DIR_ARGS
     PAUSE_TO_READ=2
-    pretty_sleep $PAUSE_TO_READ
+    if $interactive; then pretty_sleep $PAUSE_TO_READ;fi
     clear
 
     # TODO: consider extracting the rest of this script to "today_todo_display", which can be overridden with PWD_BIN, or
@@ -38,7 +62,7 @@ function main {
 
     echo "Last few todos DONE:"
     todo -k DONE $EXCLUDE_DIR_ARGS | tail -n 3 | grep --color=always DONE
-    pretty_sleep $PAUSE_TO_READ
+    if $interactive; then pretty_sleep $PAUSE_TO_READ;fi
 
     todo_output="$(todo $EXCLUDE_DIR_ARGS)" # TODO: -n 5 # TODO^2: todo should accept an option for the number of lines. like "-n 3". Maybe if we pass an option in?
 
@@ -46,7 +70,7 @@ function main {
     echo
     echo "Found $todo_count todos, showing 10:"
     echo "$todo_output" | tail -n 10 | grep --color=always TODO
-    pretty_sleep $PAUSE_TO_READ
+    if $interactive; then pretty_sleep $PAUSE_TO_READ;fi
 
     # only collected for graph, not displayed # TODO: rethink this keyword entirely
     todo_later_output="$(echo "$todo_output" | grep LATER)"
@@ -58,7 +82,7 @@ function main {
     echo
     echo "Found $todo_prog_count todos IN_PROGRESS:"
     echo "$todo_prog_output" | grep --color=always IN_PROGRESS
-    pretty_sleep $PAUSE_TO_READ
+    if $interactive; then pretty_sleep $PAUSE_TO_READ;fi
 
     # TODO^4: add NOW count to graph:
     # TODO^2: NOW output should be highlighted.
@@ -74,7 +98,7 @@ function main {
         echo
         echo "Found $todo_now_count todos to do right NOW$only_showing:" | grep --color=always \\d
         echo "$todo_now_output" | tail -n 3
-        pretty_sleep $PAUSE_TO_READ
+        if $interactive; then pretty_sleep $PAUSE_TO_READ;fi
     fi
 
     # TODO^4: add NOW count to this output?:
