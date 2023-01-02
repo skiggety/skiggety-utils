@@ -84,6 +84,11 @@ function main {
     echo "$todo_prog_output" | grep --color=always IN_PROGRESS
     if $interactive; then pretty_sleep $PAUSE_TO_READ;fi
 
+    display_grep_for_keyword CONFIRMING "$todo_output"
+
+    # TODO^2: if it's around new years:
+    display_grep_for_keyword NEW_YEARS_RESOLUTION "$todo_output"
+
     # TODO^4: add NOW count to graph:
     # TODO^2: NOW output should be highlighted.
     todo_now_output="$(echo "$todo_output" | grep --color=always NOW)"
@@ -109,6 +114,17 @@ function main {
         # TODO: what date format should I use?:
         echo "$isotoday,$todo_count,$todo_prog_count,$todo_later_count,$(( $todo_count + $todo_prog_count ))" >> graph.csv
     fi
+}
+
+function display_grep_for_keyword {
+    KEYWORD="$1" # e.g. "CONFIRMING"
+    TEXT="$2" # e.g. "$todo_output"
+
+    todo_keyword_output="$(echo "$TEXT" | grep --color=always "$KEYWORD")"
+    todo_keyword_count=$(( 0 + $(echo "$todo_keyword_output" | wc -l) ))
+    echo
+    echo "Found $todo_keyword_count todos with \"$KEYWORD\":" | grep --color=always \\d
+    echo "$todo_keyword_output"
 }
 
 main "$@"
