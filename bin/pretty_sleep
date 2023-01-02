@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# TODO^2: consider renaming this script (which is used in many places) to "sleep_with_countdown", "verbose_sleep", etc.
+# TODO^4: consider renaming this script (which is used in many places) to "sleep_with_countdown", "verbose_sleep", etc.
 
 # This script sleeps for a specified number of seconds, displaying progress as
 # it goes.
