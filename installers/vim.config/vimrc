@@ -38,10 +38,11 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 map <Leader>rb :Dispatch bin/rspec %<CR>
 
 " fzf.vim:
+" most of this fzf section is from https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko :
 set rtp+=/usr/local/opt/fzf "TODO: make this cross-platform, this is just where fzf gets installed with brew on mac
 nnoremap <Leader>f :Rg<CR>
 nnoremap <C-f> :Files<CR>
-" TODO^15: learn/consider some of these, from https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko :
+" TODO^15: learn/consider some of these:
 " nnoremap <Leader>b :Buffers<CR> " TODO
 " nnoremap <Leader>f :Rg<CR>
 " nnoremap <Leader>/ :BLines<CR>
