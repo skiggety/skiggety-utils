@@ -1,6 +1,6 @@
-Here are the most important 5 todos, most important last, out of 390 total.
+Here are the most important 5 todos, most important last, out of 392 total.
 ================================================================================
-./demo_in_docker:8:exit_with_error "TODO^12: "\
+./README.md:48:- TODO^13 with Kevin: do rust koans so we can prepare to...
 ./bin/review:29:# TODO^13: accept --minimum-delay or -m (e.g. auto-ci might want to call this with "-m 30")
 ./bin/review:16:# TODO^15: rbenv version hack similar to what was done in bin/todo with DESIRED_PYTHON_VERSION, but beware of all the
 ./installers/vim.config/vimrc:45:" TODO^15: learn/consider some of these:

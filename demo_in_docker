@@ -5,6 +5,7 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash
 
+# possibly do this with Kevin so he can be up and running to test todo:
 exit_with_error "TODO^12: "\
     "IMPLEMENT or vote by doing s/TODO/TODO TODO/" # IGNORE_TODO
 
