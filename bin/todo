@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """show TODO's in code (unless they say IGNORE_TODO on the same line, like this), sorted by votes"""
 
+# In skiggety-utils, this program basically takes the place of a bug tracking system. It's a
+# good-enough solution, since I am my own client.
+
 import os
 import platform
 import sys

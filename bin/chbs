@@ -9,10 +9,10 @@
 
 require 'securerandom'
 
-# TODO: this is interesting:
-# https://www.schneier.com/blog/archives/2014/03/choosing_secure_1.html#c4820917
-# . You could make a feature that will tell you your website passphrase given
-# your master passphrase.
+# In this article https://www.schneier.com/blog/archives/2014/03/choosing_secure_1.html#c4820917 , Bruce Schneier seems
+# to be criticizing correct-horse-battery-staple style passwords but I read it as saying the real problem is tha they
+# are not random because humans are choosing to come up with arbitrary words out of their own head instead, which is
+# exactly the problem this program addresses.
 
 # TODO: see what you can learn from the Wikipedia article on Diceware
 
