@@ -14,7 +14,9 @@ echo "The most important todo is currently:"
 tail -n 1 todo_report/README.txt
 
 echo_divider_with_text "+-=======-" "rubocop:"
-bundle exec rubocop -P --color || accumulate_error 'rubocop reported errors'
+# TODO: call rupocop with -a OR -P depending on whether this script is in write mode or not (this script should have
+# that as a distinct mode like todo does)
+bundle exec rubocop -a --color || accumulate_error 'rubocop reported errors'
 
 echo_divider_with_text "+-=======-" "pylint:"
 # TODO: abbreviate output?:

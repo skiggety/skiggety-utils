@@ -7,7 +7,8 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/include_in_bashrc.bash || exit 1
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
-# TODO: deal with any local changes...delete them? ...error out? both?
+# TODO^3: deal with any local changes...delete them? ...error out? both? I think it would be best to stash any at the
+# beginning and then treat any created by dev as errors (but clean up after them)
 
 git-pretty-pull || "git-pretty-pull FALED"
 

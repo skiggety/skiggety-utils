@@ -11,10 +11,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 
 echo_divider_with_text "O-=======-" "test_all:"
 
-# install skiggety-utils
-echo_divider_with_text "+-=======-" "install-skiggety-utils --non-interactive"
-# TODO: should we even be doing this at all in here?:
-$THIS_DIR/install-skiggety-utils --non-interactive || accumulate_error "could not run installers for skiggety-utils"
+# TODO: complain if install-skiggety-utils needs to be run
 
 echo_divider_with_text "+-=======-" "ruby_setup"
 { $THIS_DIR/ruby_setup 2>&1 || echo FOO; } | tail -n 1 # in case this part gets skipped in installers/basic_prerequisites
