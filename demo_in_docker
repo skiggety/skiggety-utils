@@ -25,6 +25,8 @@ MARKER_DIR=/tmp/skiggety-utils-demo-installer-markers.pid_$$
 rm -rf "$MARKER_DIR"
 mkdir -p "$MARKER_DIR"
 
+cat todo_report/README_in_color.txt
+echo
 ls
 echo
 # TODO: perhaps figure out how to get by without this extra step:
