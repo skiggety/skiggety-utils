@@ -152,7 +152,7 @@ function main {
                 echo "$package is already installed"
             else
 
-                if $interactive;then
+                if $interactive || [ "$(whoami)" == 'root' ] ;then
                     sudo apt-get install -y $package
                 else
                     exit_with_error "must run $(basename $0) interactively to install $package"
