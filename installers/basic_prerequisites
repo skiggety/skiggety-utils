@@ -99,8 +99,8 @@ function main {
         pushd $ruby_build_dir
         git pretty-pull
         popd
-        if ! bundler --version;then
-            if $interactive;then
+        if ! bundler --version 2>/dev/null;then
+            if $interactive || [ "$(whoami)" == 'root' ] ;then
                 echo "You will need to type your password for sudo access..."
                 sudo apt-get install -y bundler ||
                     exit_with_error "failed to install bundler!"
@@ -117,7 +117,7 @@ function main {
     # TODO: could do something fancy involving grep -R DESIRED_RUBY_VERSION to avoid hardcoding version numbers here,
     # but it's probably a bad idea. Still, maybe there is some way to round up all the versions I need somewhere without
     # too much duplicated information:
-    ruby_versions="$main_ruby_version 3.1.3"
+    ruby_versions="$main_ruby_version 3.1.3" # TODO: reduce the size of this list to speed up demo_in_docker
     for ruby_version in $ruby_versions;do
         debug_eval_here ruby_version
         if rbenv versions | grep " ${ruby_version}\( \|$\)" > /dev/null; then

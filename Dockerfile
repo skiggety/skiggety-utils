@@ -7,9 +7,14 @@ RUN apt install -y libz-dev
 
 # TODO: ideally skiggety utils should handle this:
 RUN apt install -y vim
+
 RUN mkdir -p /code/skiggety-utils
 WORKDIR /code/skiggety-utils
 ADD . .
+ENV SKIGGETY_UTILS_DIR="/code/skiggety-utils"
+ENV PATH="${PATH}:./PWD_BIN:$SKIGGETY_UTILS_DIR/bin"
+
+# RUN ./bin/skiggety_env_exec ./installers/basic_prerequisites --non-interactive
 
 # TODO: set up something helpful to display on the screen when the user logs in with bash
 

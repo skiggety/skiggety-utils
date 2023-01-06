@@ -47,7 +47,7 @@ codebase, but there are a few miscellaneous ones collected here:
 
 - TODO^14 with Kevin: do rust koans so we can prepare to...
 - TODO^11 with Kevin: ...rewrite todo in rust with parallelization
-- TODO^6: update all ruby scripts to ruby 3+ (2.7.6 is reaching end-of-life)
+- TODO^7: update all ruby scripts to ruby 3+ (2.7.6 is reaching end-of-life)
 - TODO^3: output license summary in interactive programs (like you're supposed to)??
 - TODO^3: commit initial skigg-utils, to get to parity with what I already like to use
 - TODO: document usage of commands
