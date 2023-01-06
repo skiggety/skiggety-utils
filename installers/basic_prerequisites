@@ -133,7 +133,7 @@ function main {
         fi
     done
 
-    if ! [ -f /.dockerenv ]; then
+    if ! [ -f /.in_docker ]; then
         debug_here "got ruby, time to try to fix bundler?"
         gem update --system || run_only_if_interactive sudo gem update --system || exit_with_error "gem failed to update system"
     fi
