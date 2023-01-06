@@ -11,7 +11,6 @@ SKIGGETY_DEBUG=true
 # Work on this script with Kevin so he can be up and running to test todo:
 
 # TODO: ./installers/docker || exit_with_error "Could not install Docker"
-# XXX UNCOMMENT: ask_user "install docker"
 
 cd $SKIGGETY_UTILS_DIR || exit_with_error "Could not find \$SKIGGETY_UTILS_DIR"
 
@@ -22,8 +21,5 @@ docker run --rm -it --entrypoint bash skiggety-utils-box
 
 # TODO: run a shell with a helpful intro message in the docker container
 
-exit_with_error "TODO^15: "\
-    "IMPLEMENT or vote by doing s/TODO/TODO TODO/" # IGNORE_TODO
-
-# TODO: after you implement this, figure out what the shortes one liner is to checkout skiggety utils, and run this
+# TODO: after you implement this, figure out what the shortest one liner is to checkout skiggety utils, and run this
 # script.
