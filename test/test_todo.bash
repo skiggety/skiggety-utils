@@ -3,7 +3,7 @@
 # This script tests 'todo' from the outside, written in bash because what the heck.
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
-. $THIS_DIR/../lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 todo_examples_dir="$THIS_DIR/examples/todo"
 
 # TODO^2: turn debug output off
