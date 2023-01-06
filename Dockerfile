@@ -39,6 +39,9 @@ RUN ./bin/skiggety_env_exec ./PWD_BIN/ruby_setup
 
 ADD . .
 
+# TODO^17: the mount in demo_in_docker
+# renders this pretty useless. Maybe I can move installer marker files to their own (hidden) directory and mount a tmp
+# dir over it:
 RUN rm installers/.*updated_with_version* installers/.*installed_with_version* installers/.*configured_with_version*
 
 # TODO: DELETE the " || true" when you don't need it for debugging. It allows us to get into the instance to pick up

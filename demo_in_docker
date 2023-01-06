@@ -3,7 +3,7 @@
 # Safely try out a docker container with skiggety utils installed, to see what it's like
 # without affecting your machine
 #
-# TODO^16: IMPLEMENT
+# TODO^16: IMPLEMENT (IN_PROGRESS, with Kevin's involvement)
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 SKIGGETY_UTILS_DIR="$THIS_DIR"
@@ -20,7 +20,7 @@ docker build -t skiggety-utils-box --progress plain . || exit_with_error "docker
 
 ls
 echo "Run ./start"
-echo "exec bash to get new prompt"
+echo "...then run 'exec bash' to get new prompt"
 echo "read README.md"
 
 docker run --rm -it --entrypoint bash -v $SKIGGETY_UTILS_DIR:/code/skiggety-utils skiggety-utils-box # TODO^2: mount volume
