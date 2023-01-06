@@ -12,7 +12,7 @@ SKIGGETY_DEBUG=true
 
 # Work on this script with Kevin so he can be up and running to test todo:
 
-# TODO: ./installers/docker || exit_with_error "Could not install Docker"
+./installers/docker || exit_with_error "Could not install Docker"
 
 cd $SKIGGETY_UTILS_DIR || exit_with_error "Could not find \$SKIGGETY_UTILS_DIR"
 
