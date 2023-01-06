@@ -102,7 +102,7 @@ function main {
         if ! bundler --version;then
             if $interactive;then
                 echo "You will need to type your password for sudo access..."
-                sudo apt-get install bundler ||
+                sudo apt-get install -y bundler ||
                     exit_with_error "failed to install bundler!"
             else
                 exit_with_error "must run $(basename $0) interactively to install bundler"
