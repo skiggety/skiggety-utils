@@ -25,7 +25,7 @@ debug_here "utils successfully included"
 debug_here "let's try running update-skiggety-utils:"
 debug_here "--------------------------"
 
-./PWD_BIN/update-skiggety-utils || echo_error_here "Could not run \"./PWD_BIN/update-skiggety-utils"
+./bin/update-skiggety-utils || echo_error_here "Could not run \"./PWD_BIN/update-skiggety-utils"
 
 debug_here "update-skiggety-utils completed successfully"; echo
 
@@ -38,7 +38,7 @@ echo "To learn more about the utilities that are now available, you'll essential
 # TODO^3: make auto-dev optional, or maybe DELETE  calls to it, as that's not necessarily what this script is for.. (or use ask_user to have the user do it if they want)
 debug_here "let's try running auto-dev:"
 debug_here "---------------------------"
-$THIS_DIR/bin/auto-dev || exit_with_error "FAILED to run auto-dev" #TODO: since this is in ./PWD_BIN/, I shouldn't need to use a relative path
+$SKIGGETY_UTILS_DIR/PWD_BIN/auto-dev || exit_with_error "FAILED to run auto-dev" #TODO: since this is in ./PWD_BIN/, I shouldn't need to use a relative path
 
 echo
 exit_with_error "Technically FAILED, but if you got here, that's good."
