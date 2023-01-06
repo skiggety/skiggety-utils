@@ -26,6 +26,7 @@ Core Design Decisions and Questions:
 Cool Programs you'll find in here:
 ==================================
 
+- [demo_in_docker](./demo_in_docker) - try skiggety-utils in a safe sandbox!
 - [duh](bin/duh) - Show Directory, Username, and Hostname (in scp format). Useful in prompts.
 - [default_dashboard](bin/default_dashboard) - Show a bunch of useful information for the current directory, especially if it's a git project. Also can be called by calling 'dashboard' if you don't implement your own ./PWD_BIN/dashboard 
 - [grim](bin/grim) - GRep for string and open in vIM.
