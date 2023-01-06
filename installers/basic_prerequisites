@@ -78,6 +78,8 @@ function main {
     # TODO^3: install latest bash and make sure other scripts are compatible...
 
     # TODO^3: consider replacing rbenv and pyenv with asdf
+    #   TODO^4: ...but first, make sure you have learned how to make version hacks play nice with them
+    #   TODO^4: ...but first, reorganize this script so rbenv and pyenv happen before ruby and python
     debug_here "rbenv:"
     # rbenv
         # some rbenv reading material:

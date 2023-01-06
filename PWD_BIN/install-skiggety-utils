@@ -7,7 +7,9 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 
 # NOTE: This is in bash because other scripting languages might not be installed yet
 
-# TODO: careful mode, ask user for confirmation as you go. Might make it easier for others 
+# TODO^5: careful/tentative/untrusting mode, ask user for confirmation as you go. Might make it easier for others. It
+# should allow you to skip UHK installation if you don't have one, or set your EDITOR to nanoe for example. ./start
+# should use this mode.
 
 # TODO^2: move to bin? I need to make sure I can run it independently of $PWD, though
 
