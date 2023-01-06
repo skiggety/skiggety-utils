@@ -54,8 +54,10 @@ function main {
     echo "It's time to compact todo's in $0"
     todo -wfq $EXCLUDE_DIR_ARGS
     PAUSE_TO_READ=2
-    if $interactive; then pretty_sleep $PAUSE_TO_READ;fi
-    clear
+    if $interactive; then
+        pretty_sleep $PAUSE_TO_READ
+        clear
+    fi
 
     # TODO: consider extracting the rest of this script to "today_todo_display", which can be overridden with PWD_BIN, or
     # alternatively we could do like 'todo' and use flags to turn editing and reporting on and off:
