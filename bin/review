@@ -58,47 +58,57 @@ class ReviewProgram
 
     delay = 1
 
-    system(command)
-    exit_val = $CHILD_STATUS.exitstatus
-    exit_date = `date`.chomp
-    show_footer(command, exit_val, exit_date)
+    time_command do
+      system(command)
+      @last_exit_val = $CHILD_STATUS.exitstatus
+    end
+    show_footer(command)
 
-    output = ''
-    while should_continue_looping(exit_val) && system("pretty_sleep -n #{delay}")
-      last_output = output
-      non_interactive_command = "#{command} 2>&1"
-      output = `#{non_interactive_command}`
-      exit_val = $CHILD_STATUS.exitstatus
-      exit_date = `date`.chomp
+    @output = ''
+    while should_continue_looping(@last_exit_val) && system("pretty_sleep -n #{delay}")
+      time_command do
+        @last_output = @output
+        non_interactive_command = "#{command} 2>&1"
+        @output = `#{non_interactive_command}`
+        @last_exit_val = $CHILD_STATUS.exitstatus
+      end
 
       system('clear')
-      puts output
-      show_footer(command, exit_val, exit_date)
+      puts @output
+      show_footer(command)
 
       change_detected = true
-      change_detected = false if output == last_output
-      delay = adjust_delay(delay, change_detected)
+      change_detected = false if @output == @last_output
+      delay = adjust_delay(delay, change_detected, @ran_in_seconds)
     end
   end
 
-  # TODO^3: time how long the command takes and use that both to display and as ADD_TO_DELAY because
-  # it sucks to run a long command constantly
-  ADD_TO_DELAY = 1
+  def time_command
+    @last_start_timestamp = Time.now
+    yield
+    @last_end_timestamp = Time.now
+    @ran_in_seconds = ((@last_end_timestamp - @last_start_timestamp) + 0.5).to_i
+  end
+
   MULTIPLY_BY_DELAY = 1.10
-  def adjust_delay(delay, change_detected)
+  def adjust_delay(delay, change_detected, elapsed)
     if change_detected
       1
     else
-      (MULTIPLY_BY_DELAY * delay).floor + ADD_TO_DELAY
+      # adding elapsed time means commands that take longer will backoff for longer, which seems appropriate
+      (MULTIPLY_BY_DELAY * delay).floor + elapsed
     end
   end
 
   # TODO: time the command, show how long it took
   #   TODO: factor that time into the delay increase. Something that ties up the cpu for a while should delay longer
   # TODO^3: colorize output, esp on failure
-  def show_footer(command, exit_val, exit_date)
-    system("echo_divider_with_text \"#\" \"'#{command}' exited with #{exit_val} at #{exit_date}\"")
+  def show_footer(command)
+    system("echo_divider_with_text \"#\" \"'#{command}' exited with #{@last_exit_val} after #{ran_in_seconds} " \
+           "seconds at #{@last_end_timestamp}\"")
   end
+
+  attr_reader :ran_in_seconds
 
   def should_continue_looping(last_exit_val)
     if loop_condition == 'always' || loop_condition.nil?

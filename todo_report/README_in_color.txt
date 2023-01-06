@@ -1,4 +1,4 @@
-Here are the most important 5 todos, most important last, out of 407 total.
+Here are the most important 5 todos, most important last, out of 406 total.
 ================================================================================
 ./README.md:49:- [01;31m[KTODO[m[K^14 with Kevin: do rust koans so we can prepare to...
 ./bin/review:25:# [01;31m[KTODO[m[K^14: avoid forcing the same version of ruby on programs that this may call (maybe be careful not to pass
