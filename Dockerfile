@@ -1,6 +1,9 @@
 FROM ubuntu
 RUN apt update
 RUN apt install -y git
+RUN apt install -y sudo
+
+# TODO: ideally skiggety utils should handle this:
 RUN apt install -y vim
 RUN mkdir -p /code/skiggety-utils
 WORKDIR /code/skiggety-utils
