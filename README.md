@@ -50,26 +50,26 @@ codebase, but there are a few miscellaneous ones collected here:
 - TODO^7: update all ruby scripts to ruby 3+ (2.7.6 is reaching end-of-life)
 - TODO^3: output license summary in interactive programs (like you're supposed to)??
 - TODO^3: commit initial skigg-utils, to get to parity with what I already like to use
-- TODO: document usage of commands
 - TODO^3: write a program to abbreviate output for use in the dashboard. You should be able to specify a maximum number of lines and pipe output through it, and it will do something like "head" or "tail" if necessary, but also display information about how many lines were removed/kept/found-in-total
   - TODO^2: once we can abbreviate, maybe choose the linecounts for different things dynamically depending on the terminal size
 - TODO^3: consider supporting zsh
+- TODO^3: try some editable vim macros
+- TODO^3: set up a git hook system so you can add multiple scripts. For example, I'd like to block commits that include "XXX", irrespective of any other commit hooks. That hook might be shared by a team or individual to me, and I'd like to be able to support both kinds without conflicts.
+- TODO^3: some tools for setting up information radiators
+  - TODO^2: inforad (chrome extension?) information radiator
+  - TODO: "playbot", a program that tunes in youtube livestreams, video meetings, watch later, podcasts and your personal dashboards, automatically. Great as an information radiator.
+- TODO^2: automatically graph gmail progress outstanding messages, by writing a program that takes a url or gmail search string and monitors it. You can check in on the graph periodically to make sure you're on track.
+  - TODO: find a tool that can show graphs of provided data on the command line
 - TODO^2: music rotator thingy
 - TODO^2: collect data on email inbox, etc. and auto-generate graphs for the dashboard
   - TODO: set up router
     - TODO^2: help set up local dns
   - TODO^2: set up NAS
-- TODO^3: try some editable vim macros
-- TODO^2: automatically graph gmail progress outstanding messages, by writing a program that takes a url or gmail search string and monitors it. You can check in on the graph periodically to make sure you're on track.
-  - TODO: find a tool that can show graphs of provided data on the command line
 - TODO^2: have a way to open the github webpage from inside a git repo from the command line. You can use "open <URL>" on a mac, for example, and scripts like what you use for automatic git pushing can use it to help you get PR's going fast.
-- TODO^3: set up a git hook system so you can add multiple scripts. For example, I'd like to block commits that include "XXX", irrespective of any other commit hooks. That hook might be shared by a team or individual to me, and I'd like to be able to support both kinds without conflicts.
-- TODO: mini-project: raspberry pi backup machine, and the software to run it.
-- TODO^3: some tools for setting up information radiators
-  - TODO^2: inforad (chrome extension?) information radiator
-  - TODO: "playbot", a program that tunes in youtube livestreams, video meetings, watch later, podcasts and your personal dashboards, automatically. Great as an information radiator.
 - TODO: systematized config (automate the configuration I always want anyway)
     - TODO^2: hook up to google drive
+- TODO: mini-project: raspberry pi backup machine, and the software to run it.
+- TODO: document usage of commands
 - TODO: help set up home data center?
 - TODO: put a directory in skigg-utils that contains reference/demo code that shows you how to do certain things
 - TODO: implement ratcheting that can be used for code coverage, number of intstances of a string, number of lint failures, etc. It should be usable as part of a pre-merge hook for git and/or blocking a github pull request
