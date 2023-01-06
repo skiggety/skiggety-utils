@@ -23,13 +23,17 @@ ENV PATH="${PATH}:./PWD_BIN:$SKIGGETY_UTILS_DIR/bin"
 # optimizations, stuff to do before runnining installers/basic_prerequisites:
 RUN git clone https://github.com/rbenv/rbenv.git /root/.rbenv
 RUN git clone https://github.com/rbenv/ruby-build.git /root/.rbenv/plugins/ruby-build
+RUN git clone https://github.com/pyenv/pyenv.git /root/.pyenv
 RUN apt install -y bundler
 ADD ./bin/skiggety_env_exec ./bin/skiggety_env_exec
 ADD ./lib/include_in_bashrc.bash ./lib/include_in_bashrc.bash
 ADD ./lib/skiggety-utils.bash ./lib/skiggety-utils.bash
 RUN ./bin/skiggety_env_exec rbenv install 2.7.6
 RUN ./bin/skiggety_env_exec rbenv install 3.1.3
+RUN ./bin/skiggety_env_exec pyenv install 3.11.1
 RUN gem install bundler
+ADD ./PWD_BIN/ruby_setup ./PWD_BIN/ruby_setup
+RUN ./bin/skiggety_env_exec ./PWD_BIN/ruby_setup
 
 ADD . .
 
