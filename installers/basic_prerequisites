@@ -5,8 +5,11 @@
 # installers, hence this bootstrapping script to get us up to the point of
 # having a recent ruby.
 
-. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
+
+# include with THIS_DIR instead of SKIGGETY_UTILS_DIR so we can call it from the Dockerfile to boostrap some other
+# stuff:
+. $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
 function main {
 
@@ -72,6 +75,7 @@ function main {
 
     # TODO^3: install latest bash and make sure other scripts are compatible...
 
+    # TODO^3: consider replacing rbenv and pyenv with asdf
     debug_here "rbenv:"
     # rbenv
         # some rbenv reading material:
