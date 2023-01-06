@@ -8,7 +8,9 @@
 # TODO: ./installers/docker
 ask_user "install docker"
 
+cd $SKIGGETY_UTILS_DIR || exit_with_error "Could not find \$SKIGGETY_UTILS_DIR"
 # TODO: docker build something something
+# TODO: docker run the container in the background
 # TODO: run a shell with a helpful intro message in the docker container
 
 # possibly do this with Kevin so he can be up and running to test todo:
