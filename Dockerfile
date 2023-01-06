@@ -2,6 +2,8 @@ FROM ubuntu
 RUN apt update
 RUN apt install -y git
 RUN apt install -y sudo
+RUN apt install -y curl
+RUN apt install -y libz-dev
 
 # TODO: ideally skiggety utils should handle this:
 RUN apt install -y vim

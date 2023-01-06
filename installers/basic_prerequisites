@@ -124,7 +124,7 @@ function main {
             echo "ruby $ruby_version is already installed."
         else
             echo "Installing ruby $ruby_version:"
-            rbenv install $ruby_version || accumulate_error "failed to install ruby"
+            rbenv install $ruby_version || accumulate_error "FAILED to install ruby"
             rbenv versions
         fi
     done

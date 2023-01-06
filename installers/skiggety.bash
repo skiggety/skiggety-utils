@@ -60,6 +60,7 @@ function main {
         SKIGGETY_UTILS_DIR="${SKIGGETY_UTILS_DIR/$HOME/\$HOME}"
         ESCAPED_SKIGGETY_UTILS_DIR="$(echo $SKIGGETY_UTILS_DIR | sed 's/\//\\\//g')"
 
+        echo >> $TMP_BASHRC
         sed "s/\$HARDCODED_SKIGGETY_UTILS_DIR/$ESCAPED_SKIGGETY_UTILS_DIR/g"< "$NEW_BASHRC_SECTION" >> $TMP_BASHRC
         . $TMP_BASHRC
 
