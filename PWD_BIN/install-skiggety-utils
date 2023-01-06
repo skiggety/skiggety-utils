@@ -31,7 +31,7 @@ function main {
     # defaults
     interactive=true
 
-    # TODO: add an option to reinstall, meaning delete installers/.*_with_version* first
+    # TODO: add an option to reinstall, meaning delete installers/.markers/*_with_version* first
     #   TODO: have update-skiggety-utils support this option, too
     OPTIND=1
     while getopts ":inhi?" opt; do

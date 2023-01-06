@@ -11,6 +11,8 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 # stuff:
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
+SKIGGETY_DEBUG=true
+
 function main {
 
     for arg in "$@"; do
@@ -38,7 +40,7 @@ function main {
     debug_here "got options"
 
     self_hash="$(git hash-object $0)" # TODO: perhaps use a hash that takes the Gemfile into account as well?
-    completed_markers_start_with="$THIS_DIR/.$(basename $0).updated_with_version."
+    completed_markers_start_with="$THIS_DIR/.markers/$(basename $0).updated_with_version."
     completed_marker="$completed_markers_start_with$self_hash"
 
     #if ! $interactive; then # TODO: should this really depend on interactive mode? how about unless --force ?
@@ -60,12 +62,12 @@ function main {
     if on_mac_os;then
         echo "Installing latest homebrew"
         if brew --version; then
-            brew update || exit_with_error "failed to update homebrew"
+            brew update || exit_with_error "FAILED to update homebrew"
         else
             if $interactive;then
                 echo "You will need to type your password for sudo access..."
                 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" ||
-                    exit_with_error "failed to install homebrew, please check http://brew.sh"
+                    exit_with_error "FAILED to install homebrew, please check http://brew.sh"
             else
                 exit_with_error "must run $(basename $0) interactively to install homebrew"
             fi
@@ -107,7 +109,7 @@ function main {
             if $interactive || [ "$(whoami)" == 'root' ] ;then
                 echo "You will need to type your password for sudo access..."
                 sudo apt-get install -y bundler ||
-                    exit_with_error "failed to install bundler!"
+                    exit_with_error "FAILED to install bundler!"
             else
                 exit_with_error "must run $(basename $0) interactively to install bundler"
             fi
@@ -124,6 +126,7 @@ function main {
     ruby_versions="$main_ruby_version 3.2.0" # TODO: reduce the size of this list to speed up demo_in_docker
     for ruby_version in $ruby_versions;do
         debug_eval_here ruby_version
+        . $THIS_DIR/../lib/include_in_bashrc.bash
         if rbenv versions | grep " ${ruby_version}\( \|$\)" > /dev/null; then
             echo "ruby $ruby_version is already installed."
         else
@@ -133,21 +136,21 @@ function main {
         fi
     done
 
-    if ! [ -f /.in_docker ]; then
+    if ! [ -f /.in_docker_demo ]; then
         debug_here "got ruby, time to try to fix bundler?"
-        gem update --system || run_only_if_interactive sudo gem update --system || exit_with_error "gem failed to update system"
+        gem update --system || run_only_if_interactive sudo gem update --system || exit_with_error "gem FAILED to update system"
     fi
 
     debug_here "got ruby, time to make sure bundler is installed?"
-    gem install bundler || run_only_if_interactive sudo gem install bundler || exit_with_error "failed to install bundler"
+    gem install bundler || run_only_if_interactive sudo gem install bundler || exit_with_error "FAILED to install bundler"
 
     debug_here "let's make sure bundler is ok:"
     bundle --version || exit_with_error "bundler is not working"
 
     debug_here "time for ruby_setup"
+    $THIS_DIR/../PWD_BIN/ruby_setup || exit_with_error "FAILED to set up prerequisites for my ruby code, such as gems"
 
-    $THIS_DIR/../PWD_BIN/ruby_setup || exit_with_error "failed to set up prerequisites for my ruby code, such as gems"
-
+    debug_here "time for pyenv prerequisites"
     #install pyenv prerequisites
     if ! on_mac_os;then
         for package in make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libyaml-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev;do
@@ -164,7 +167,9 @@ function main {
         done
     fi
 
+    debug_here "pyenv:"
     # pyenv
+    debug_here "Installing latest pyenv"
     echo "Installing latest pyenv"
     if on_mac_os;then
         homebrew_install_latest pyenv
@@ -179,22 +184,26 @@ function main {
         popd
     fi
 
+    debug_here "got pyenv, time for python"
     # python
     python_version="$(cat $SKIGGETY_UTILS_DIR/.python-version)"
     if pyenv versions | grep "\* $python_version" > /dev/null; then
         echo "python $python_version is already installed."
     else
         echo "Installing python $python_version:"
-        pyenv install $python_version || accumulate_error "failed to install python"
+        pyenv install $python_version || accumulate_error "FAILED to install python"
         pyenv versions
     fi
 
+    debug_here "pip:"
     echo "Updating pip..."
     python -m pip install --upgrade pip
 
+    debug_here "nose2:"
     echo "Installing nose2" # TODO: move
     pip install nose2
 
+    debug_here "pylint:"
     if ! pylint --version> /dev/null; then
         echo "Installing pylint"
         python -m pip install pylint
@@ -203,6 +212,7 @@ function main {
     exit_if_any_accumulated_errors # before marking complete
 
     # mark complete
+    debug_here "marking $0 complete"
     rm "$completed_markers_start_with"*
     touch "$completed_marker"
 }

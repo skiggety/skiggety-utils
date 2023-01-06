@@ -16,14 +16,26 @@ SKIGGETY_DEBUG=true
 
 cd $SKIGGETY_UTILS_DIR || exit_with_error "Could not find \$SKIGGETY_UTILS_DIR"
 
+echo 'Building docker image...'
 docker build -t skiggety-utils-box --progress plain . || exit_with_error "docker build failed"
+echo '...done building docker image.'
+echo
+
+MARKER_DIR=/tmp/skiggety-utils-demo-installer-markers.pid_$$
+rm -rf "$MARKER_DIR"
+mkdir -p "$MARKER_DIR"
 
 ls
-echo "Run ./start"
-echo "...then run 'exec bash' to get new prompt"
+echo
+# TODO: perhaps figure out how to get by without this extra step:
+echo "Run 'install-skiggety-utils;exec bash' because exec'ing bash after install will refresh your prompt and other env"
+echo "...then try running  './start'"
 echo "read README.md"
 
-docker run --rm -it --entrypoint bash -v $SKIGGETY_UTILS_DIR:/code/skiggety-utils skiggety-utils-box # TODO^2: mount volume
+docker run --rm -it --entrypoint bash \
+    -v "${SKIGGETY_UTILS_DIR}:/code/skiggety-utils" \
+    -v "${MARKER_DIR}:/code/skiggety-utils/installers/.markers" \
+    skiggety-utils-box
 
 # TODO: run a shell with a helpful intro message in the docker container
 

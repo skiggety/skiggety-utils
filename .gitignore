@@ -7,9 +7,9 @@
 .DS_Store
 .byebug_history
 
-/installers/.*.installed_with_version.*
-/installers/.*.configured_with_version.*
-/installers/.*.updated_with_version.*
+/installers/.markers/*.installed_with_version.*
+/installers/.markers/*.configured_with_version.*
+/installers/.markers/*.updated_with_version.*
 lib/coverage_links/*
 
 __pycache__/

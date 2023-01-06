@@ -65,7 +65,7 @@ function main {
         . $TMP_BASHRC
 
         if $interactive; then
-            $THIS_DIR/../bin/ask_user "Make suggested .bashrc edits, using a command such as: \"vimdiff -o ~/.bashrc $TMP_BASHRC\"" || exit_with_error "User did not complete bashrc install"
+            $THIS_DIR/../bin/ask_user "Make suggested .bashrc edits, using a command such as: \"vimdiff ~/.bashrc $TMP_BASHRC\"" || exit_with_error "User did not complete bashrc install"
             rm $TMP_BASHRC
         else
             echo

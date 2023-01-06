@@ -1,6 +1,6 @@
 FROM ubuntu
 
-RUN touch /.in_docker
+RUN touch /.in_docker_demo
 RUN apt update
 RUN apt install -y git
 RUN apt install -y sudo
@@ -28,7 +28,9 @@ RUN apt install -y bundler
 ADD ./bin/skiggety_env_exec ./bin/skiggety_env_exec
 ADD ./lib/include_in_bashrc.bash ./lib/include_in_bashrc.bash
 ADD ./lib/skiggety-utils.bash ./lib/skiggety-utils.bash
+RUN echo "This might take a while the first time...."
 RUN ./bin/skiggety_env_exec rbenv install 2.7.6
+RUN echo "This might take a while the first time...."
 RUN ./bin/skiggety_env_exec rbenv install 3.2.0
 RUN ./bin/skiggety_env_exec pyenv install 3.11.1
 RUN gem install bundler
@@ -36,13 +38,14 @@ ADD Gemfile Gemfile
 ADD Gemfile.lock Gemfile.lock
 ADD ./PWD_BIN/ruby_setup ./PWD_BIN/ruby_setup
 RUN ./bin/skiggety_env_exec ./PWD_BIN/ruby_setup
+# TODO^15: ...more optimizations
 
 ADD . .
 
-# TODO^17: the mount in demo_in_docker
-# renders this pretty useless. Maybe I can move installer marker files to their own (hidden) directory and mount a tmp
-# dir over it:
-RUN rm installers/.*updated_with_version* installers/.*installed_with_version* installers/.*configured_with_version*
+# and how about nano too, just for the docker demo, since some people might rely on it
+RUN apt install -y nano
+
+RUN rm installers/.markers/*_with_version*
 
 # TODO: DELETE the " || true" when you don't need it for debugging. It allows us to get into the instance to pick up
 # where this command left off::

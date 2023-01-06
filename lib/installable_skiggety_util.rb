@@ -111,13 +111,13 @@ module InstallableSkiggetyUtil
   end
 
   def past_install_marker_file_paths
-    result = Dir.glob(File.join(installer_directory_path, install_marker_file_name_prefix + '*'))
+    result = Dir.glob(File.join(marker_directory_path, install_marker_file_name_prefix + '*'))
     result.delete(current_install_marker_file_path)
     result
   end
 
   def current_install_marker_file_path
-    File.join(installer_directory_path, current_install_marker_file_name)
+    File.join(marker_directory_path, current_install_marker_file_name)
   end
 
   def past_config_marker_file_paths
@@ -131,11 +131,11 @@ module InstallableSkiggetyUtil
   end
 
   def config_marker_file_paths
-    Dir.glob(File.join(installer_directory_path, config_marker_file_name_prefix + '*'))
+    Dir.glob(File.join(marker_directory_path, config_marker_file_name_prefix + '*'))
   end
 
   def current_config_marker_file_path
-    File.join(installer_directory_path, current_config_marker_file_name)
+    File.join(marker_directory_path, current_config_marker_file_name)
   end
 
   def current_install_marker_file_name
@@ -146,7 +146,7 @@ module InstallableSkiggetyUtil
   # executable file called "vim", for example, that is actually only a way to install vim. This will require messing
   # with these prefixes because the marker filenames rely on them.
   def install_marker_file_name_prefix
-    ".#{File.basename(installer_file_path)}.installed_with_version."
+    "#{File.basename(installer_file_path)}.installed_with_version."
   end
 
   def current_config_marker_file_name
@@ -154,7 +154,7 @@ module InstallableSkiggetyUtil
   end
 
   def config_marker_file_name_prefix
-    ".#{File.basename(config_dir_path)}ured_with_version."
+    "#{File.basename(config_dir_path)}ured_with_version."
   end
 
   def raise_interactive_only_configuration
@@ -199,6 +199,10 @@ module InstallableSkiggetyUtil
     File.join(config_dir_path, file_name)
   end
 
+  def marker_directory_path
+    File.join(installer_directory_path, '.markers')
+  end
+
   def installer_directory_path
     File.dirname(installer_file_path)
   end
@@ -213,6 +217,10 @@ module InstallableSkiggetyUtil
 
   def on_mac_os?
     @on_mac_os ||= calc_on_mac_os?
+  end
+
+  def in_docker_demo?
+    File.exist?('/.in_docker_demo')
   end
 
   private def calc_on_mac_os?

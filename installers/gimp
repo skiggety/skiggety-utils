@@ -8,6 +8,8 @@ class GimpInstaller
   include InstallableSkiggetyUtil
 
   def apparently_installed?
+    return true if in_docker_demo? # TODO^18: reuse this in a bunch of places once it's working
+
     if on_mac_os?
       Dir.glob('/Applications/GIMP*.app').any?
     else

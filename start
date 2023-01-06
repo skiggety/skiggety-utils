@@ -25,7 +25,6 @@ debug_here "utils successfully included"
 
 debug_here "let's try running update-skiggety-utils:"
 debug_here "--------------------------"
-
 ./bin/update-skiggety-utils || echo_error_here "Could not run \"./bin/update-skiggety-utils"
 
 debug_here "update-skiggety-utils completed successfully"; echo
