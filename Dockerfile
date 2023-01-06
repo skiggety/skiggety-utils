@@ -1,4 +1,4 @@
-FROM alpine # TODO: start with "alpine"
+FROM alpine/git
 
 # TODO: git clone skiggety utils
 # TODO: install skiggety utils
