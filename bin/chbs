@@ -120,7 +120,9 @@ class CHBS
   # filter out proper nouns (capitalized words)
   private def too_proper?(word)
     # TODO: make this optional
-    !!/[[:upper:]]/.match(word[0])
+    /[[:upper:]]/.match(word[0])
+  rescue ArgumentError
+    true
   end
 
 end
