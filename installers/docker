@@ -8,6 +8,8 @@ class DockerInstaller
   include InstallableSkiggetyUtil
 
   def apparently_installed?
+    return true if in_docker_demo?
+
     if on_mac_os?
       Dir.exist?('/Applications/Docker.app')
     # TODO true if we're in a docker container, same with config
@@ -19,6 +21,8 @@ class DockerInstaller
   end
 
   def apparently_configured?
+    return true if in_docker_demo?
+
     ask_user 'Is Docker configured the way you like and running in the background?'
   end
 
