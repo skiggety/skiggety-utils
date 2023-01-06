@@ -5,9 +5,10 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash
 
-# TODO: ./installers/docker
+# TODO: ./installers/docker || exit_with_error "Could not install Docker"
 ask_user "install docker"
 
+docker build -t skiggety-utils-box .
 cd $SKIGGETY_UTILS_DIR || exit_with_error "Could not find \$SKIGGETY_UTILS_DIR"
 # TODO: docker build something something
 # TODO: docker run the container in the background
