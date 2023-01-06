@@ -19,7 +19,6 @@ cd $SKIGGETY_UTILS_DIR || exit_with_error "Could not find \$SKIGGETY_UTILS_DIR"
 docker build -t skiggety-utils-box --progress plain . || exit_with_error "docker build failed"
 
 ls
-grep basic_prerequisites Dockerfile
 echo "Run ./start"
 echo "exec bash to get new prompt"
 echo "read README.md"
