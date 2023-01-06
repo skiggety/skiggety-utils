@@ -18,7 +18,10 @@ cd $SKIGGETY_UTILS_DIR || exit_with_error "Could not find \$SKIGGETY_UTILS_DIR"
 
 docker build -t skiggety-utils-box . || exit_with_error "docker build failed"
 
-docker run --rm -it --entrypoint bash skiggety-utils-box
+ls
+grep basic_prerequisites Dockerfile
+
+docker run --rm -it --entrypoint bash skiggety-utils-box # TODO: mount volume
 
 # TODO: run a shell with a helpful intro message in the docker container
 
