@@ -16,8 +16,7 @@ SKIGGETY_DEBUG=true
 
 cd $SKIGGETY_UTILS_DIR || exit_with_error "Could not find \$SKIGGETY_UTILS_DIR"
 
-docker build -t skiggety-utils-box .
-debug_here "docker build returned: $?"
+docker build -t skiggety-utils-box . || exit_with_error "docker build failed"
 
 docker run --rm -it --entrypoint bash skiggety-utils-box
 
