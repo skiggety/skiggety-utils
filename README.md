@@ -46,7 +46,7 @@ NOTE: look in [todo_report/README.txt](todo_report/README.txt) for the 5 most im
 sorted ascending by votes by running 'todo' at the command line. Most of the todo list is distributed around the
 codebase, but there are a few miscellaneous ones collected here:
 
-- TODO^14 with Kevin: do rust koans so we can prepare to...
+- TODO^15 with Kevin: do rust koans so we can prepare to...
 - TODO^11 with Kevin: ...rewrite todo in rust with parallelization
 - TODO^7: update all ruby scripts to ruby 3+ (2.7.6 is reaching end-of-life)
 - TODO^3: output license summary in interactive programs (like you're supposed to)??
