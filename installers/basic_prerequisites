@@ -133,8 +133,11 @@ function main {
         fi
     done
 
-    debug_here "got ruby, time to try to fix bundler?"
-    gem update --system || run_only_if_interactive sudo gem update --system || exit_with_error "gem failed to update system"
+    if ! [ -f /.dockerenv ]; then
+        debug_here "got ruby, time to try to fix bundler?"
+        gem update --system || run_only_if_interactive sudo gem update --system || exit_with_error "gem failed to update system"
+    fi
+
     debug_here "got ruby, time to make sure bundler is installed?"
     gem install bundler || run_only_if_interactive sudo gem install bundler || exit_with_error "failed to install bundler"
 
