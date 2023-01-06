@@ -77,6 +77,22 @@ function main {
 
     # TODO^3: install latest bash and make sure other scripts are compatible...
 
+    debug_here "time for pyenv and rbenv prerequisites"
+    # install pyenv and rbenv prerequisites
+    if ! on_mac_os;then
+        for package in make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libyaml-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev;do
+            if apt -qq list $package 2>&1 | grep installed >/dev/null; then
+                echo "$package is already installed"
+            else
+                if $interactive || [ "$(whoami)" == 'root' ] ;then
+                    sudo apt-get install -y $package
+                else
+                    exit_with_error "must run $(basename $0) interactively to install $package"
+                fi
+            fi
+        done
+    fi
+
     # TODO^3: consider replacing rbenv and pyenv with asdf
     #   TODO^4: ...but first, make sure you have learned how to make version hacks play nice with them
     #   TODO^4: ...but first, reorganize this script so rbenv and pyenv happen before ruby and python
@@ -151,23 +167,6 @@ function main {
 
     debug_here "time for ruby_setup"
     $THIS_DIR/../PWD_BIN/ruby_setup || exit_with_error "FAILED to set up prerequisites for my ruby code, such as gems"
-
-    debug_here "time for pyenv prerequisites"
-    #install pyenv prerequisites
-    if ! on_mac_os;then
-        for package in make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libyaml-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev;do
-            if apt -qq list $package 2>&1 | grep installed >/dev/null; then
-                echo "$package is already installed"
-            else
-
-                if $interactive || [ "$(whoami)" == 'root' ] ;then
-                    sudo apt-get install -y $package
-                else
-                    exit_with_error "must run $(basename $0) interactively to install $package"
-                fi
-            fi
-        done
-    fi
 
     debug_here "pyenv:"
     # pyenv
