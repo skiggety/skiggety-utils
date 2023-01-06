@@ -29,9 +29,11 @@ ADD ./bin/skiggety_env_exec ./bin/skiggety_env_exec
 ADD ./lib/include_in_bashrc.bash ./lib/include_in_bashrc.bash
 ADD ./lib/skiggety-utils.bash ./lib/skiggety-utils.bash
 RUN ./bin/skiggety_env_exec rbenv install 2.7.6
-RUN ./bin/skiggety_env_exec rbenv install 3.1.3
+RUN ./bin/skiggety_env_exec rbenv install 3.2.0
 RUN ./bin/skiggety_env_exec pyenv install 3.11.1
 RUN gem install bundler
+ADD Gemfile Gemfile
+ADD Gemfile.lock Gemfile.lock
 ADD ./PWD_BIN/ruby_setup ./PWD_BIN/ruby_setup
 RUN ./bin/skiggety_env_exec ./PWD_BIN/ruby_setup
 
