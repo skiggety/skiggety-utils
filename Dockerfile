@@ -38,7 +38,7 @@ ADD Gemfile Gemfile
 ADD Gemfile.lock Gemfile.lock
 ADD ./PWD_BIN/ruby_setup ./PWD_BIN/ruby_setup
 RUN ./bin/skiggety_env_exec ./PWD_BIN/ruby_setup
-RUN apt install -y wamerican
+RUN apt install -y wamerican-large
 
 ADD . .
 
