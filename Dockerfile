@@ -4,9 +4,12 @@ RUN touch /.in_docker
 RUN apt update
 RUN apt install -y git
 RUN apt install -y sudo
-RUN apt install -y curl
-RUN apt install -y libz-dev
-RUN apt install -y libssl-dev
+RUN apt install -y wget curl
+RUN apt install -y make build-essential
+RUN apt install -y libz-dev libssl-dev zlib1g-dev libbz2-dev
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ="Etc/UTC"
+RUN apt install -y libreadline-dev libsqlite3-dev llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev
 
 # TODO: ideally skiggety utils should handle this:
 RUN apt install -y vim
