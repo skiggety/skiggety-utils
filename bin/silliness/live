@@ -4,9 +4,9 @@
 
 $SKIGGETY_UTILS_DIR/bin/silliness/live.XXX.gitignored.bash
 
+#### Today's Todo List #########################################################
 today_todo --non-interactive
 ask_user 'run today_todo once or twice to make sure you are ready to focus on the right stuff'
-
 pushd ~/today_todo/
 todos="$($SKIGGETY_UTILS_DIR/bin/todo|grep NOW|tail -n 3)"
 ORIGINAL_IFS="$IFS"
@@ -20,6 +20,9 @@ for todo_line in ${todos_as_array[@]};do
 done
 IFS="$ORIGINAL_IFS"
 popd
+
+################################################################################
+
 pushd $SKIGGETY_UTILS_DIR
 ask_user "commit some code"
 popd
