@@ -6,7 +6,7 @@ RUN apt install -y git
 RUN apt install -y sudo
 RUN apt install -y wget curl
 RUN apt install -y make build-essential
-RUN apt install -y libz-dev libssl-dev zlib1g-dev libbz2-dev
+RUN apt install -y libz-dev libssl-dev zlib1g-dev libbz2-dev libyaml-dev
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ="Etc/UTC"
 RUN apt install -y libreadline-dev libsqlite3-dev llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev
@@ -29,8 +29,6 @@ ADD ./bin/skiggety_env_exec ./bin/skiggety_env_exec
 ADD ./lib/include_in_bashrc.bash ./lib/include_in_bashrc.bash
 ADD ./lib/skiggety-utils.bash ./lib/skiggety-utils.bash
 RUN ./bin/skiggety_env_exec rbenv install 2.7.6
-# TODO: move up:
-RUN apt install -y libyaml-dev
 RUN ./bin/skiggety_env_exec rbenv install 3.2.0
 RUN ./bin/skiggety_env_exec pyenv install 3.11.1
 RUN gem install bundler
