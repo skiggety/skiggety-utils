@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # TODO^3: figure out why this sporadically fails to set the prompt
-# TODO^4: rename to reflect the fact that we are putting the user in a full shell (which is useful), not just a y/n
-# prompt. How about "bash-ask"?
+# TODO^7: rename to reflect the fact that we are putting the user in a full shell (which is useful), not just a y/n
+# prompt. How about "bash-ask" or "shellask"?
 
 # This script asks the user to do the task described and report status back. It is a great way of stubbing out
 # functionality, setting yourself one-off reminders, or....

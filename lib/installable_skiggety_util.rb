@@ -77,6 +77,7 @@ module InstallableSkiggetyUtil
     end
   end
 
+  # TODO: rename with exclamation point?:
   def mark_configured
     past_config_marker_file_paths.each do |path_to_delete|
       File.delete(path_to_delete)

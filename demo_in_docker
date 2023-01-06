@@ -12,7 +12,9 @@ SKIGGETY_DEBUG=true
 
 # Work on this script with Kevin so he can be up and running to test todo:
 
-./installers/docker || exit_with_error "Could not install Docker"
+if ! ls installers/.markers/docker.configured_with_version* installers/.markers/docker.installed_with_version*; then
+    ./bin/ask_user "Make sure Docker is installed and running in the background" || exit_with_error "Could not install Docker"
+fi
 
 cd $SKIGGETY_UTILS_DIR || exit_with_error "Could not find \$SKIGGETY_UTILS_DIR"
 
@@ -28,10 +30,11 @@ mkdir -p "$MARKER_DIR"
 ls
 echo
 # TODO: perhaps figure out how to get by without this extra step:
-echo "Run 'install-skiggety-utils;exec bash' because exec'ing bash after install will refresh your prompt and other env"
-echo "...then try running  './start'"
-echo "read README.md"
+echo "Run 'install-skiggety-utils; bash; exit' because exec'ing bash after install will refresh your prompt and other env"
+echo "...then read README.md and try running  './start', 'chbs', or 'review-dev', for example "
+echo
 
+# TODO^2: try using docker compose for this:
 docker run --rm -it --entrypoint bash \
     -v "${SKIGGETY_UTILS_DIR}:/code/skiggety-utils" \
     -v "${MARKER_DIR}:/code/skiggety-utils/installers/.markers" \
