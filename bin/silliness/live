@@ -4,4 +4,25 @@
 
 $SKIGGETY_UTILS_DIR/bin/silliness/live.XXX.gitignored.bash
 
+today_todo --non-interactive
+ask_user 'run today_todo once or twice to make sure you are ready to focus on the right stuff'
+
+pushd ~/today_todo/
+todos="$($SKIGGETY_UTILS_DIR/bin/todo|grep NOW|tail -n 3)"
+ORIGINAL_IFS="$IFS"
+IFS=$'\n'
+NEWLINE='
+'
+ read -rd '' -a todos_as_array <<<"$todos"
+debug_here "echo \${todos_as_array} contains"
+for todo_line in ${todos_as_array[@]};do
+    ask_user "Work on this task (and downvote or mark done using today_todo):${NEWLINE}${todo_line}"
+done
+IFS="$ORIGINAL_IFS"
+popd
+pushd $SKIGGETY_UTILS_DIR
+ask_user "commit some code"
+popd
+
+ask_user "close one browser tab until they are reasonable"
 clear
