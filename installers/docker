@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative '../lib/installable_skiggety_util'
+
+class DockerInstaller
+
+  include InstallableSkiggetyUtil
+
+  def apparently_installed?
+    if on_mac_os?
+      Dir.exist?('/Applications/Docker.app')
+    # TODO true if we're in a docker container, same with config
+    else
+      # TODO: Maybe ruby can sometimes ask_user an ordinary question, and sometimes use bash_ask or whatever I rename it
+      # to:
+      ask_user 'Is Docker installed (TODO: IMPLEMENT for real)?'
+    end
+  end
+
+  def apparently_configured?
+    ask_user 'Is Docker configured the way you like and running in the background?'
+  end
+
+  def install
+    delegate_download_and_install_to_user('https://docs.docker.com/get-docker/', 'Docker')
+  end
+
+  def configure
+    delegate_to_user 'Check through your docker preferences and make sure it is running'
+  end
+
+end
+
+DockerInstaller.run
