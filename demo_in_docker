@@ -30,7 +30,7 @@ mkdir -p "$MARKER_DIR"
 ls
 echo
 # TODO: perhaps figure out how to get by without this extra step:
-echo "Run 'install-skiggety-utils; bash; exit' because exec'ing bash after install will refresh your prompt and other env"
+echo "Run 'install-skiggety-utils; bash; exit' because you need a fresh bash after install for prompt and other env"
 echo "...then read README.md and try running  './start', 'chbs', or 'review-dev', for example "
 echo
 
