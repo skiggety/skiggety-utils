@@ -32,10 +32,12 @@ class VimInstaller
   end
 
   def install
-    if $interactive
-      delegate_to_user 'make sure vim is installed by running \'vim -h\' or some such...'
-    else
-      raise_interactive_only_install
+    unless in_docker_demo?
+      if $interactive
+        delegate_to_user 'make sure vim is installed by running \'vim -h\' or some such...'
+      else
+        raise_interactive_only_install
+      end
     end
 
     brew_install_latest 'macvim' if on_mac_os?

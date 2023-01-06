@@ -13,17 +13,17 @@ class DockerInstaller
     if on_mac_os?
       Dir.exist?('/Applications/Docker.app')
     # TODO true if we're in a docker container, same with config
-    else
-      # TODO: Maybe ruby can sometimes ask_user an ordinary question, and sometimes use bash_ask or whatever I rename it
-      # to:
-      ask_user 'Is Docker installed (TODO: IMPLEMENT for real)?'
+    elsif ask_user 'Is Docker installed (TODO: IMPLEMENT for real)?'
+      mark_installed
     end
+    # TODO: Maybe ruby can sometimes ask_user an ordinary question, and sometimes use bash_ask or whatever I rename it
+    # to:
   end
 
   def apparently_configured?
     return true if in_docker_demo?
 
-    ask_user 'Is Docker configured the way you like and running in the background?'
+    mark_configured if ask_user 'Is Docker configured the way you like and running in the background?'
   end
 
   def install

@@ -18,6 +18,14 @@ class PstreeInstaller
   def install
     if on_mac_os?
       brew_install_latest 'pstree'
+    elsif apt_available?
+      if in_docker_demo?
+        assert_system('apt install -y psmisc')
+      elsif $interactive
+        assert_system('sudo apt install psmisc')
+      else
+        raise_interactive_only_install
+      end
     else
       raise 'TODO: IMPLEMENT'
     end

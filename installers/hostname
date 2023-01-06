@@ -19,6 +19,8 @@ class HostnameSetup
   end
 
   def apparently_configured?
+    return true if in_docker_demo?
+
     apparent_hostname = `hostname`.chomp
     desired_hostname == apparent_hostname or desired_hostname + '.local' == apparent_hostname
     # TODO: verify nslookup, which means router config will be part of configuration process

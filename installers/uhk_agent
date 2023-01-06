@@ -8,6 +8,8 @@ class UltimateHackingKeyboardAgentInstaller
   include InstallableSkiggetyUtil
 
   def apparently_installed?
+    return true if in_docker_demo?
+
     if on_mac_os?
       Dir.exist?('/Applications/UHK Agent.app')
     elsif on_linux_os?
@@ -18,6 +20,8 @@ class UltimateHackingKeyboardAgentInstaller
   end
 
   def apparently_configured?
+    return true if in_docker_demo?
+
     # TODO: ask user less stuff, but we still need a way to return true here when it's been done:
     ask_user 'Has the UHK has been set up OK?'
   end

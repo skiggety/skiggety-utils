@@ -21,7 +21,13 @@ class RipgrepInstaller
     if on_mac_os?
       brew_install_latest 'rg'
     elsif apt_available?
-      raise 'TODO^20: IMPLEMENT'
+      if in_docker_demo?
+        assert_system('apt install -y ripgrep')
+      elsif $interactive
+        assert_system('sudo apt install ripgrep')
+      else
+        raise_interactive_only_install
+      end
     else
       raise 'TODO: IMPLEMENT'
     end

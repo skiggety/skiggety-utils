@@ -12,6 +12,8 @@ class TerminalProfileConfigurer
   end
 
   def apparently_configured?
+    return true if in_docker_demo?
+
     if on_linux_os?
       return false unless File.exist?(user_qterminal_ini_path)
 

@@ -11,6 +11,8 @@ class RectangleInstaller
   include InstallableSkiggetyUtil
 
   def apparently_installed?
+    return true if in_docker_demo?
+
     if on_mac_os?
       Dir.exist?('/Applications/Rectangle.app')
     else
@@ -19,6 +21,8 @@ class RectangleInstaller
   end
 
   def apparently_configured?
+    return true if in_docker_demo?
+
     # TODO^2: method/module extract?
     if $interactive
       ask_user "Is #{name} set up the way you want?"

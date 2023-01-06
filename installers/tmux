@@ -8,12 +8,20 @@ class TmuxInstaller
   include InstallableSkiggetyUtil
 
   def apparently_installed?
-    assert_system('which tmux')
+    system('which tmux')
   end
 
   def install
     if on_mac_os?
       brew_install_latest 'tmux'
+    elsif apt_available?
+      if in_docker_demo?
+        assert_system('apt install -y tmux')
+      elsif $interactive
+        assert_system('sudo apt install tmux')
+      else
+        raise_interactive_only_install
+      end
     else
       raise 'TODO: IMPLEMENT'
     end
@@ -30,7 +38,7 @@ class TmuxInstaller
 
   def configure
     if $interactive
-      assert_system("vim -do #{user_tmux_conf_path} #{template_tmux_conf_path}")
+      assert_system("vim -d #{user_tmux_conf_path} #{template_tmux_conf_path}")
     else
       raise_interactive_only_configuration
     end

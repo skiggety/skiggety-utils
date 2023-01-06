@@ -8,6 +8,8 @@ class EvernoteInstaller
   include InstallableSkiggetyUtil
 
   def apparently_installed?
+    return true if in_docker_demo?
+
     if on_mac_os?
       # TODO: Checking the version would be a better approach if possible, I guess:
       Dir.exist?('/Applications/Evernote.app')
@@ -17,6 +19,8 @@ class EvernoteInstaller
   end
 
   def apparently_configured?
+    return true if in_docker_demo?
+
     ask_user 'Are you able to use Evernote?'
   end
 

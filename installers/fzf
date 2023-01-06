@@ -19,6 +19,14 @@ class FzfInstaller
     call_peer_installer('ripgrep') # since fzf is configured to depend on ripgrep
     if on_mac_os?
       brew_install_latest 'fzf'
+    elsif apt_available?
+      if in_docker_demo?
+        assert_system('apt install -y fzf')
+      elsif $interactive
+        assert_system('sudo apt install fzf')
+      else
+        raise_interactive_only_install
+      end
     else
       raise 'TODO: IMPLEMENT'
     end
