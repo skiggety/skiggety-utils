@@ -6,8 +6,8 @@
 # various types of test results only when there's a failure
 
 # TODO^2: I think I should be using SKIGGETY_UTILS_DIR more widely instead of THIS_DIR:
-THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
-. $THIS_DIR/../lib/skiggety-utils.bash || exit 1
+THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)" # TODO: DELETE?
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
 echo_divider_with_text "O-=======-" "test_all:"
 
