@@ -15,5 +15,5 @@ if [ "$CLICOLOR" == 'xterm-color' ]; then # TODO^2: look at other things that sh
     NO_COLOR='\033[0m'
 fi
 
-echo -e ${COLOR1}$USER${NO_COLOR}@${COLOR2}$HOSTNAME${NO_COLOR}:${COLOR3}$PWD_PRETTY${NO_COLOR}
+echo -e "${COLOR1}$(whoami)${NO_COLOR}@${COLOR2}$HOSTNAME${NO_COLOR}:${COLOR3}$PWD_PRETTY${NO_COLOR}"
 
