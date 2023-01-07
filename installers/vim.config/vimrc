@@ -42,16 +42,14 @@ map <Leader>rb :Dispatch bin/rspec %<CR>
 set rtp+=/usr/local/opt/fzf "TODO: make this cross-platform, this is just where fzf gets installed with brew on mac
 nnoremap <Leader>f :Rg<CR>
 nnoremap <C-f> :Files<CR>
-" TODO^15: learn/consider some of these:
-" nnoremap <Leader>b :Buffers<CR> " TODO
-" nnoremap <Leader>f :Rg<CR>
-" nnoremap <Leader>/ :BLines<CR>
-" nnoremap <Leader>' :Marks<CR>
-" nnoremap <Leader>g :Commits<CR> " TODO
-" nnoremap <Leader>H :Helptags<CR>
-" nnoremap <Leader>hh :History<CR> " TODO
-" nnoremap <Leader>h: :History:<CR> " TODO
-" nnoremap <Leader>h/ :History/<CR> " TODO
+nnoremap <Leader>b :Buffers<CR>
+nnoremap <Leader>/ :BLines<CR>
+" TODO^14: learn/consider: nnoremap <Leader>' :Marks<CR>
+nnoremap <Leader>g :Commits<CR>
+" TODO^14: learn/consider: nnoremap <Leader>H :Helptags<CR>
+nnoremap <Leader>hh :History<CR>
+nnoremap <Leader>h: :History:<CR>
+nnoremap <Leader>h/ :History/<CR>
 
 " NERDCommenter
 let g:NERDSpaceDelims = 1
