@@ -1,4 +1,4 @@
-Here are the most important 5 todos, most important last, out of 402 total.
+Here are the most important 5 todos, most important last, out of 400 total.
 ================================================================================
 ./bin/review:29:# [01;31m[KTODO[m[K^13: accept --minimum-delay or -m (e.g. auto-ci might want to call this with "-m 30")
 ./bin/review:25:# [01;31m[KTODO[m[K^14: avoid forcing the same version of ruby on programs that this may call (maybe be careful not to pass
