@@ -44,9 +44,8 @@ nnoremap <Leader>f :Rg<CR>
 nnoremap <C-f> :Files<CR>
 nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>/ :BLines<CR>
-" TODO^14: learn/consider: nnoremap <Leader>' :Marks<CR>
+nnoremap <Leader>' :Marks<CR>
 nnoremap <Leader>g :Commits<CR>
-" TODO^14: learn/consider: nnoremap <Leader>H :Helptags<CR>
 nnoremap <Leader>hh :History<CR>
 nnoremap <Leader>h: :History:<CR>
 nnoremap <Leader>h/ :History/<CR>
