@@ -8,7 +8,9 @@ SKIGGETY_UTILS_DIR="$THIS_DIR"
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash
 SKIGGETY_DEBUG=true
 
-# Work on this script with Kevin so he can be up and running to test todo:
+if [ -f /.in_docker_demo ]; then
+    exit_with_error "You are already in the docker demo."
+fi
 
 if ! ls installers/.markers/docker.configured_with_version* installers/.markers/docker.installed_with_version*; then
     ./bin/ask_user "Make sure Docker is installed and running in the background" || exit_with_error "Could not install Docker"
