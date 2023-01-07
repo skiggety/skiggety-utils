@@ -54,7 +54,7 @@ function main {
     if [ $expected_bashrc_uniq_lines == $projected_bashrc_uniq_lines ]; then
         . ~/.bashrc
     else
-        TMP_BASHRC="/tmp/bashrc.example.generated_by_SKIGGETY_UTILS.pid_$$"
+        TMP_BASHRC="/tmp/skiggety_suggested_bashrc.pid_$$"
         grep -v FROM_SKIGGETY_UTILS ~/.bashrc > $TMP_BASHRC # $TMP_BASHRC < ~/.bashrc
         SKIGGETY_UTILS_DIR="$(cd "$(dirname $THIS_DIR)";pwd)"
         SKIGGETY_UTILS_DIR="${SKIGGETY_UTILS_DIR/$HOME/\$HOME}"
