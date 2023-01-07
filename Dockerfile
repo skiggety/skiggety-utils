@@ -14,6 +14,9 @@ RUN apt install -y libreadline-dev libsqlite3-dev llvm libncurses5-dev libncurse
 # TODO: ideally skiggety utils should handle this:
 RUN apt install -y vim
 
+# and how about nano too, just for the docker demo, since some people might rely on it
+RUN apt install -y nano
+
 ENV SKIGGETY_UTILS_DIR="/root/code/skiggety-utils"
 RUN mkdir -p "$SKIGGETY_UTILS_DIR"
 WORKDIR "$SKIGGETY_UTILS_DIR"
@@ -45,9 +48,6 @@ RUN ./bin/skiggety_env_exec pip install nose2
 RUN ./bin/skiggety_env_exec python -m pip install pylint
 
 ADD . .
-
-# and how about nano too, just for the docker demo, since some people might rely on it
-RUN apt install -y nano
 
 RUN rm installers/.markers/*_with_version*
 
