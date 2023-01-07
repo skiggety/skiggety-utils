@@ -14,10 +14,10 @@ RUN apt install -y libreadline-dev libsqlite3-dev llvm libncurses5-dev libncurse
 # TODO: ideally skiggety utils should handle this:
 RUN apt install -y vim
 
-RUN mkdir -p /code/skiggety-utils
-WORKDIR /code/skiggety-utils
+ENV SKIGGETY_UTILS_DIR="/root/code/skiggety-utils"
+RUN mkdir -p "$SKIGGETY_UTILS_DIR"
+WORKDIR "$SKIGGETY_UTILS_DIR"
 
-ENV SKIGGETY_UTILS_DIR="/code/skiggety-utils"
 ENV PATH="${PATH}:./PWD_BIN:$SKIGGETY_UTILS_DIR/bin"
 
 # optimizations, stuff to do before runnining installers/basic_prerequisites:
@@ -28,9 +28,9 @@ RUN apt install -y bundler
 ADD ./bin/skiggety_env_exec ./bin/skiggety_env_exec
 ADD ./lib/include_in_bashrc.bash ./lib/include_in_bashrc.bash
 ADD ./lib/skiggety-utils.bash ./lib/skiggety-utils.bash
-RUN echo "This might take a while the first time...."
+RUN echo "The next step might take a while the first time...."
 RUN ./bin/skiggety_env_exec rbenv install 2.7.6
-RUN echo "This might take a while the first time...."
+RUN echo "The next step might take a while the first time...."
 RUN ./bin/skiggety_env_exec rbenv install 3.2.0
 RUN ./bin/skiggety_env_exec pyenv install 3.11.1
 RUN gem install bundler
