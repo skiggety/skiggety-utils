@@ -23,7 +23,7 @@ WORKDIR "$SKIGGETY_UTILS_DIR"
 
 ENV PATH="${PATH}:./PWD_BIN:$SKIGGETY_UTILS_DIR/bin"
 
-# optimizations, stuff to do before runnining installers/basic_prerequisites:
+# optimizations, stuff to do before runnining installers/basic_prerequisites so it doesn't have to work as hard:
 RUN git clone https://github.com/rbenv/rbenv.git /root/.rbenv
 RUN git clone https://github.com/rbenv/ruby-build.git /root/.rbenv/plugins/ruby-build
 RUN git clone https://github.com/pyenv/pyenv.git /root/.pyenv
@@ -50,10 +50,6 @@ RUN ./bin/skiggety_env_exec python -m pip install pylint
 ADD . .
 
 RUN rm installers/.markers/*_with_version*
-
-# TODO: DELETE the " || true" when you don't need it for debugging. It allows us to get into the instance to pick up
-# where this command left off::
-RUN ./bin/skiggety_env_exec ./installers/basic_prerequisites --non-interactive || true
 
 # TODO: set up something helpful to display on the screen when the user logs in with bash
 
