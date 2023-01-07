@@ -19,7 +19,7 @@ fi
 cd $SKIGGETY_UTILS_DIR || exit_with_error "Could not find \$SKIGGETY_UTILS_DIR"
 
 echo 'Building docker image...'
-docker build -t skiggety-utils-box --progress plain . || exit_with_error "docker build failed"
+time docker build -t skiggety-utils-box --progress plain . || exit_with_error "docker build failed"
 echo '...done building docker image.'
 echo
 
@@ -35,6 +35,8 @@ echo
 echo "Run 'install-skiggety-utils; bash; exit' because you need a fresh bash after install for prompt and other env"
 echo "...then read README.md and try running  './start', 'chbs', or 'review-dev', for example "
 echo
+
+# TODO: maybe run it in the background and then tell you how to connect more to it, then connect, then clean up
 
 # TODO^2: try using docker compose for this:
 docker run --rm -it --entrypoint bash \
