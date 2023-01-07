@@ -2,8 +2,12 @@
 
 # Self, program thyself
 
+# This came in handy when I went through a phase of wanting to do nothing but code. This program uses ask_user to prompt
+# me to do a tolerable mix of stuff. meant for running repeatedly.
+
 ################################################################################
-$SKIGGETY_UTILS_DIR/bin/silliness/live.XXX.gitignored.bash
+ask_user 'do one act of self care or something on the habit tracker'
+ask_user 'do another act of self care or something on the habit tracker'
 
 #### Today's Todo List #########################################################
 today_todo --non-interactive
