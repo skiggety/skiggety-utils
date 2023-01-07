@@ -23,9 +23,9 @@ time docker build -t skiggety-utils-box --progress plain . || exit_with_error "d
 echo '...done building docker image.'
 echo
 
-MARKER_DIR=/tmp/skiggety-utils-demo-installer-markers.pid_$$
-rm -rf "$MARKER_DIR"
-mkdir -p "$MARKER_DIR"
+TMP_MARKER_DIR=/tmp/skiggety-utils-demo-installer-markers.pid_$$
+rm -rf "$TMP_MARKER_DIR"
+mkdir -p "$TMP_MARKER_DIR"
 
 cat todo_report/README_in_color.txt
 echo
@@ -35,14 +35,13 @@ echo
 echo "Run 'install-skiggety-utils; bash; exit' because you need a fresh bash after install for prompt and other env"
 echo "...then read README.md and try running  './start', 'chbs', or 'review-dev', for example"
 
-# TODO: maybe run it in the background and then tell you how to connect more to it, then connect, then clean up
-
-# TODO: can I set the hostname to something friendly so it appears in the prompt?
-
-# TODO^2: try using docker compose for this:
+# TODO: maybe run it in the background and then tell you how to connect more to it, then connect, then clean up:
+# TODO: can I set the hostname to something friendly so it appears in the prompt?:
+# TODO^3: try using docker compose for this:
+CONTAINED_UTILS_DIR="/root/code/skiggety-utils"
 docker run --rm -it --entrypoint bash \
-    -v "${SKIGGETY_UTILS_DIR}:/code/skiggety-utils" \
-    -v "${MARKER_DIR}:/code/skiggety-utils/installers/.markers" \
+    -v "${SKIGGETY_UTILS_DIR}:${CONTAINED_UTILS_DIR}" \
+    -v "${TMP_MARKER_DIR}:${CONTAINED_UTILS_DIR}/installers/.markers" \
     skiggety-utils-box
 
 # TODO: run a shell with a helpful intro message in the docker container
