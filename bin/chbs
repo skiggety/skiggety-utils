@@ -4,25 +4,23 @@
 # Named for "correct horse battery staple" because of "Password Strength" aka 'xkcd.com/936/', this program generates
 # secure-enough passwords, optimized for being memorized by humans
 
-# NOTE: If you like reading code top-down as I do, start reading outside the class at the end of the script, which will
-# quickly bring you back to CHBS#initialize and CHBS#report just a little ways below here.
-
-require 'securerandom'
-
 # In this article https://www.schneier.com/blog/archives/2014/03/choosing_secure_1.html#c4820917 , Bruce Schneier seems
 # to be criticizing correct-horse-battery-staple style passwords but I read it as saying the real problem is tha they
 # are not random because humans are choosing to come up with arbitrary words out of their own head instead, which is
 # exactly the problem this program addresses.
 
-# TODO: see what you can learn from the Wikipedia article on Diceware
+# NOTE: If you like reading code top-down as I do, start reading outside the class at the end of the script, which will
+# quickly bring you back to CHBS#initialize and CHBS#report just a little ways below here.
 
-# TODO: consider a --dense (a.k.a. --troubador a.k.a. -d) mode to generate secure passwords in the traditional style
-# that doesn't need to be as long but is harder to remember.
-
-# TODO: maybe accept a flag that makes this print one and only one passphrase, with no other output. It could be used by
-# other programs.
+require 'securerandom'
 
 class CHBS
+
+  # TODO: consider a --dense (a.k.a. --troubador a.k.a. -d) mode to generate secure passwords in the traditional style
+  # that doesn't need to be as long but is harder to remember.
+
+  # TODO: maybe accept a flag that makes this print one and only one passphrase, with no other output. It could be used
+  # by other programs.
 
   # TODO^2: accept and pass through options for min/max words/characters/characters-per-word, plus whether it should
   # jam in extras for compliance
@@ -53,8 +51,7 @@ class CHBS
   def report
     lines = []
 
-    intro_message = "Generating passphrases from #{words.length} words" \
-                    ' (for now you have to edit this program to tweak this):'
+    intro_message = "Generating passphrases from #{words.length} words (edit to tweak, for now):"
     lines << intro_message
     lines << divider_same_length_as(intro_message)
 
