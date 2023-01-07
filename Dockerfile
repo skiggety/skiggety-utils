@@ -39,6 +39,10 @@ ADD Gemfile.lock Gemfile.lock
 ADD ./PWD_BIN/ruby_setup ./PWD_BIN/ruby_setup
 RUN ./bin/skiggety_env_exec ./PWD_BIN/ruby_setup
 RUN apt install -y wamerican-large
+ENV PYENV_VERSION=3.11.1
+RUN ./bin/skiggety_env_exec python -m pip install --upgrade pip
+RUN ./bin/skiggety_env_exec pip install nose2
+RUN ./bin/skiggety_env_exec python -m pip install pylint
 
 ADD . .
 
