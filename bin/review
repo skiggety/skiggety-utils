@@ -95,8 +95,9 @@ class ReviewProgram
     if change_detected
       1
     else
-      # adding elapsed time means commands that take longer will backoff for longer, which seems appropriate
-      (MULTIPLY_BY_DELAY * delay).floor + elapsed
+      # using elapsed time in here means commands that take longer will backoff for longer, which seems appropriate
+      add_to_delay = (1 + (elapsed * 0.5)).to_i
+      (MULTIPLY_BY_DELAY * delay).floor + add_to_delay
     end
   end
 
