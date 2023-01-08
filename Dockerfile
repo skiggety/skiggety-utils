@@ -37,7 +37,7 @@ RUN ./bin/skiggety_env_exec rbenv install 3.2.0
 RUN echo "The next step might take a while the first time...."
 # RUN ./bin/skiggety_env_exec rbenv install 3.1.3
 RUN ./bin/skiggety_env_exec pyenv install 3.11.1
-RUN ls installers/.markers/.keep
+# TODO: DEBUG later: RUN ls installers/.markers/.keep => false (not found)
 RUN gem install bundler
 ADD Gemfile Gemfile
 ADD Gemfile.lock Gemfile.lock
