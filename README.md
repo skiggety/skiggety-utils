@@ -7,6 +7,14 @@ This is top-down programming from the very top. The first thing I do on a new co
 How to get started:
 ===================
 
+There are two options, a docker demo to try it safely, or a normal mode to install skiggety-utils and other preferrred
+software on your machine. For the safe docker demo:
+
+- Open a terminal
+- cd to this directory (where you checked out or downloaded this project)
+- run "./demo_in_docker"
+  - Follow the prompts, instructions, and read the output. By the end, you should know what's going on.
+
 - Open a terminal
 - cd to this directory (where you checked out or downloaded this project)
 - run "./start"
@@ -57,6 +65,8 @@ codebase, but there are a few miscellaneous ones collected here:
       - TODO^22: TEST installers inside demo_in_docker (on both laptops)
       - TODO^22: TEST chbs inside demo_in_docker (on both laptops)
       - TODO^20: TEST 'review dev' inside demo_in_docker (on both laptops)
+  - TODO^18: while you're slowing down docker builds anyway, check for any other messing with the Dockerfile you shoul
+    be doing
 - TODO^5: some tools for setting up information radiators
   - TODO^2: inforad (chrome extension?) information radiator
   - TODO: "playbot", a program that tunes in youtube livestreams, video meetings, watch later, podcasts and your personal dashboards, automatically. Great as an information radiator.
