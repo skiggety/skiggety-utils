@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
-THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
-. $THIS_DIR/../lib/skiggety-utils.bash || exit 1
-
 # This script installs skiggety-utils, and does all setup necessary to set up a workstation the way skiggety likes it. Some of this is automatic, and some of this will be delegated back to the user to do manually with guidance.
 
 # NOTE: This is in bash because other scripting languages might not be installed yet
+
+THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
+. $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
 # TODO^5: careful/tentative/untrusting mode, ask user for confirmation as you go. Might make it easier for others. It
 # should allow you to skip UHK installation if you don't have one, or set your EDITOR to nanoe for example. ./start
 # should use this mode.
 
-# TODO^2: move to bin? I need to make sure I can run it independently of $PWD, though
+# TODO^3: move to bin? I need to make sure I can run it independently of $PWD, though
 
 # TODO: install and configure 3rd party programs
     # TODO: install pocket
@@ -20,6 +20,8 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
     # TODO^2: install a music player of some sort
     # TODO: install/config chrome tab scheduler and/or other stuff to enable a some kind of dashboard in a web browser
     # TODO: install moreutils (http://joeyh.name/code/moreutils/)?
+
+export SKIGGETY_DEBUG=true
 
 function main {
     for arg in "$@"; do
@@ -65,6 +67,8 @@ function main {
     debug_here "reloading environment..."
     . ~/.bashrc # reload environment
 
+    # TODO: set up a naming convention for installers, because install-vim might make more sense than vim
+
     debug_here "running installer: $INSTALLERS_DIR/basic_prerequisites"
     use_installer_unsafe "$INSTALLERS_DIR/basic_prerequisites" $INSTALLER_ARGS || exit_with_error "failed to set up basic prerequisites for other installers to run"
     debug_here "reloading environment..."
@@ -74,7 +78,7 @@ function main {
     for installer in "$INSTALLERS_DIR"/*; do
         if [ -f "$installer" ]; then
             debug_here "running installer: $installer"
-            use_installer "$installer" $INSTALLER_ARGS || accumulate_error
+            use_installer "$installer" $INSTALLER_ARGS || accumulate_error "installer $installer FAILED"
         fi
     done
 
@@ -88,25 +92,32 @@ function use_installer {
     local INSTALLER_ARGS="$2"
     installer="$(basename $installer_path)"
 
+    debug_eval_here installer
+
     if [[ "$installer" == "skiggety.bash" ||
           "$installer" == "basic_prerequisites" ||
-          # TODO^3: DELETE this temporary special-case cruft as soon as I can, probably when this gets rewritten in a real language:
           "$installer" == "jiggler" ||
           "$installer" == "misc_utils" ||
           "$installer" == "ssh-agent" ||
           "$installer" == "synergy" ]]; then
-        # TODO: debug_here "skipping \"$installer\" installer for now..."
+        debug_eval_here installer
         return 0
     else
+        debug_eval_here installer
+        debug_here "will run use_installer_unsafe with $@"
         use_installer_unsafe "$@"
         return $?
-        fi
+    fi
+
 }
 
 function use_installer_unsafe {
     local installer_path="$1"
+    debug_eval_here installer_path
     local INSTALLER_ARGS="$2"
+    debug_eval_here INSTALLER_ARGS
     installer="$(basename $installer_path)"
+    debug_eval_here installer
 
     echo_debug "running installer \"$installer\"..."
     $installer_path $INSTALLER_ARGS || { echo_error_here "installer \"$installer\" FAILED"; return 1; }

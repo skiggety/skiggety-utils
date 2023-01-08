@@ -38,6 +38,8 @@ class CHBS
     File.open('/usr/share/dict/words') do |file|
       file.each do |line|
         result << line.strip
+      rescue Encoding::CompatibilityError
+        next
       end
     end
     result
@@ -64,7 +66,7 @@ class CHBS
   end
 
   def entropy_report
-    "Entropy is >= #{entropy_bitcount.floor} bits, from your choice of #{passphrase_count} passphrases "\
+    "Entropy is >= #{entropy_bitcount.floor} bits, from your choice of #{passphrase_count} passphrases " \
       "with #{entropy_bitcount_per_passphrase.round(2)} bits each."
   end
 

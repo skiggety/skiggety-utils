@@ -20,7 +20,7 @@ bundle exec rubocop -a --color || accumulate_error 'rubocop reported errors'
 
 echo_divider_with_text "+-=======-" "pylint:"
 # TODO: abbreviate output?:
-# TODO^3 automatically scan all python files:
+# TODO^4 automatically scan all python files:
 pylint --rcfile .pylintrc bin/todo lib/todo_line.py bin/demo_python_version_hack || accumulate_error 'pylint reported errors'
 
 exit_if_any_accumulated_errors

@@ -2,6 +2,8 @@
 
 # This script continuously checks out fresh code and tries it out
 
+# TODO: rename to 'review-ci'?
+
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 SKIGGETY_UTILS_DIR="$(cd "$(dirname $THIS_DIR)";pwd)"
 . $THIS_DIR/../lib/include_in_bashrc.bash || exit 1

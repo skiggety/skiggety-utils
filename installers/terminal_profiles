@@ -32,14 +32,14 @@ class TerminalProfileConfigurer
         # "skiggterm 2", etc. that pile up sometimes. I'm not sure how much of
         # a problem this is going to be in practice
         assert_system("open #{skiggterm_mac_profile_path}")
-        delegate_to_user 'confirm that a terminal window just opened and has skiggterm in the title (you may close '\
+        delegate_to_user 'confirm that a terminal window just opened and has skiggterm in the title (you may close ' \
                          'that window)'
         assert_system('defaults write com.apple.Terminal "Default Window Settings" skiggterm')
 
         # this is an attempt to get this setting to stick after the terminal restarts:
         assert_system('defaults read com.apple.Terminal "Default Window Settings"')
 
-        delegate_to_user 'Make sure skiggterm is the default, especially when the terminal is restarted --you can '\
+        delegate_to_user 'Make sure skiggterm is the default, especially when the terminal is restarted --you can ' \
                          'quit this installer by running exit 1 and restart if you need to'
       elsif on_linux_os?
         assert_system("vim -d #{user_qterminal_ini_path} #{template_qterminal_ini_path}")

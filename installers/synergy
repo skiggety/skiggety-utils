@@ -23,7 +23,8 @@ class SynergyInstaller
   end
 
   def apparently_configured?
-    return false if `ps aux | grep #{ENV['USER']} | grep synergy[sc]` == '' # synergy server or client must be running
+    # synergy server or client must be running:
+    return false if `ps aux | grep #{ENV.fetch('USER', nil)} | grep synergy[sc]` == ''
 
     if $interactive
       ask_user "Is #{name} set up the way you want?"

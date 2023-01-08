@@ -32,7 +32,7 @@ echo
 ls
 echo
 # TODO: perhaps figure out how to get by without this extra step:
-echo "Run 'install-skiggety-utils; bash; exit' because you need a fresh bash after install for prompt and other env"
+echo "Run 'install-skiggety-utils;less README.md;dev; bash; exit' because you need a fresh bash after install for prompt and other env"
 echo "...then read README.md and try running  './start', 'chbs', or 'review-dev', for example"
 
 # TODO: maybe run it in the background and then tell you how to connect more to it, then connect, then clean up:

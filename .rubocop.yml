@@ -8,6 +8,7 @@ AllCops:
   NewCops: enable
   Exclude:
     - 'lib/coverage_links/**'
+  TargetRubyVersion: 3.2.0
 
 Lint/DuplicateBranch:
   IgnoreLiteralBranches: true

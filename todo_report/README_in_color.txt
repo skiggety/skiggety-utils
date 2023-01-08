@@ -1,7 +1,7 @@
-Here are the most important 5 todos, most important last, out of 400 total.
+Here are the most important 5 todos, most important last, out of 412 total. (Do not edit, this file is generated)
 ================================================================================
-./bin/review:29:# [01;31m[KTODO[m[K^13: accept --minimum-delay or -m (e.g. auto-ci might want to call this with "-m 30")
-./bin/review:25:# [01;31m[KTODO[m[K^14: avoid forcing the same version of ruby on programs that this may call (maybe be careful not to pass
-./README.md:49:- [01;31m[KTODO[m[K^15 with Kevin: do rust koans so we can prepare to...
-./bin/review:16:# [01;31m[KTODO[m[K^15: rbenv version hack similar to what was done in bin/todo with DESIRED_PYTHON_VERSION, but beware of all the
-./bin/demo_ruby_version_hack:4:# [01;31m[KTODO[m[K^16: finish implementing rbenv version hack similar to what was done in
+./README.md:67:      - [01;31m[KTODO[m[K^20: TEST 'review dev' inside demo_in_docker (on both laptops)
+./README.md:63:    - [01;31m[KTODO[m[K^21: TEST installers
+./README.md:64:    - [01;31m[KTODO[m[K^21: TEST demo_in_docker (on both laptops)
+./README.md:65:      - [01;31m[KTODO[m[K^22: TEST installers inside demo_in_docker (on both laptops)
+./README.md:66:      - [01;31m[KTODO[m[K^22: TEST chbs inside demo_in_docker (on both laptops)

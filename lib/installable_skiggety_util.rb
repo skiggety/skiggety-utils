@@ -92,7 +92,7 @@ module InstallableSkiggetyUtil
   def marked_configured?
     File.exist?(current_config_marker_file_path)
   rescue RuntimeError => e
-    puts 'ERROR: cannot determine current config marker file, assuming configuration is needed. Original error was: '\
+    puts 'ERROR: cannot determine current config marker file, assuming configuration is needed. Original error was: ' \
          "\"#{e.inspect}\""
     false
   end
@@ -167,7 +167,7 @@ module InstallableSkiggetyUtil
   end
 
   def raise_interactive_only_action(action)
-    raise "Cannot #{action} #{name} in non-interactive mode, user should run \"install-skiggety-utils\" or "\
+    raise "Cannot #{action} #{name} in non-interactive mode, user should run \"install-skiggety-utils\" or " \
           "\"#{installer_file_path}\"."
   end
 
@@ -178,7 +178,7 @@ module InstallableSkiggetyUtil
         # time, or maybe bite the bullet and calculate what the tree hash would
         # be from scratch, not sure...
         #   TODO^3: maybe just use the latest timestamp, from anywhere in the tree?
-        raise "There are uncommitted changes in #{config_dir_path}, so #{self.class} will not bother computing a "\
+        raise "There are uncommitted changes in #{config_dir_path}, so #{self.class} will not bother computing a " \
               'hash to identify it.'
       end
 

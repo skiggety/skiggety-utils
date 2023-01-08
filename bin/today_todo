@@ -49,6 +49,7 @@ function main {
         vim -o $files_to_open '+/\.\.\.' # TODO^6: here and elsewhere, use $EDITOR, not vim
     fi
 
+    # TODO: maybe automate the archiving, too?
     EXCLUDE_DIR_ARGS="--exclude-dir archive"
 
     echo "It's time to compact todo's in $0"
