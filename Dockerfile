@@ -34,7 +34,7 @@ ADD ./lib/skiggety-utils.bash ./lib/skiggety-utils.bash
 RUN echo "The next step might take a while the first time...."
 RUN ./bin/skiggety_env_exec rbenv install 2.7.6
 RUN echo "The next step might take a while the first time...."
-RUN ./bin/skiggety_env_exec rbenv install 3.2.0
+# RUN ./bin/skiggety_env_exec rbenv install 3.1.3
 RUN ./bin/skiggety_env_exec pyenv install 3.11.1
 RUN gem install bundler
 ADD Gemfile Gemfile
