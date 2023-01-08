@@ -7,6 +7,7 @@ RUN apt install -y sudo
 RUN apt install -y wget curl
 RUN apt install -y make build-essential
 RUN apt install -y libz-dev libssl-dev zlib1g-dev libbz2-dev libyaml-dev
+RUN apt install -y wamerican-large
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ="Etc/UTC"
 RUN apt install -y libreadline-dev libsqlite3-dev llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev
@@ -36,12 +37,12 @@ RUN ./bin/skiggety_env_exec rbenv install 3.2.0
 RUN echo "The next step might take a while the first time...."
 # RUN ./bin/skiggety_env_exec rbenv install 3.1.3
 RUN ./bin/skiggety_env_exec pyenv install 3.11.1
+RUN ls installers/.markers/.keep
 RUN gem install bundler
 ADD Gemfile Gemfile
 ADD Gemfile.lock Gemfile.lock
 ADD ./PWD_BIN/ruby_setup ./PWD_BIN/ruby_setup
 RUN ./bin/skiggety_env_exec ./PWD_BIN/ruby_setup
-RUN apt install -y wamerican-large
 ENV PYENV_VERSION=3.11.1
 RUN ./bin/skiggety_env_exec python -m pip install --upgrade pip
 RUN ./bin/skiggety_env_exec pip install nose2

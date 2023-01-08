@@ -56,17 +56,6 @@ codebase, but there are a few miscellaneous ones collected here:
 
 - TODO^15 with Kevin: do rust koans so we can prepare to...
   - TODO^11 with Kevin: ...rewrite todo in rust with parallelization
-- TODO^18: update all ruby scripts to ruby 3+ (2.7.6 is reaching end-of-life). Rubocop can help with the switch.
-  - TODO^19: TEST all ruby scripts using ruby 3.2.0, at least:
-    - TODO^20: TEST review
-    - TODO^20: TEST chbs
-    - TODO^21: TEST installers
-    - TODO^21: TEST demo_in_docker (on both laptops)
-      - TODO^22: TEST installers inside demo_in_docker (on both laptops)
-      - TODO^22: TEST chbs inside demo_in_docker (on both laptops)
-      - TODO^20: TEST 'review dev' inside demo_in_docker (on both laptops)
-  - TODO^18: while you're slowing down docker builds anyway, check for any other messing with the Dockerfile you shoul
-    be doing
 - TODO^5: some tools for setting up information radiators
   - TODO^2: inforad (chrome extension?) information radiator
   - TODO: "playbot", a program that tunes in youtube livestreams, video meetings, watch later, podcasts and your personal dashboards, automatically. Great as an information radiator.

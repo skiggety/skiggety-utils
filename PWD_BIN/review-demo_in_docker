@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# In this case, an override script for review that doesn't even call review, since it doesn't yet have an interactive
+# mode. This is a way to do development, just run this in one terminal.
+
+echo "Ready to run ./demo_in_docker ? (CTRL+C if not)"
+while pretty_sleep 5;do
+    ./demo_in_docker
+    echo "after a short pause, running ./demo_in_docker again, CTRL+C to quit"
+done
