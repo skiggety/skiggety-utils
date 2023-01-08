@@ -21,8 +21,6 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
     # TODO: install/config chrome tab scheduler and/or other stuff to enable a some kind of dashboard in a web browser
     # TODO: install moreutils (http://joeyh.name/code/moreutils/)?
 
-export SKIGGETY_DEBUG=true
-
 function main {
     for arg in "$@"; do
         shift

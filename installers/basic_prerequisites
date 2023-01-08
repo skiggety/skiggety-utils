@@ -11,8 +11,6 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 # stuff:
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
-SKIGGETY_DEBUG=true
-
 function main {
 
     for arg in "$@"; do

@@ -6,7 +6,6 @@
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 SKIGGETY_UTILS_DIR="$THIS_DIR"
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash
-SKIGGETY_DEBUG=true
 
 if [ -f /.in_docker_demo ]; then
     exit_with_error "You are already in the docker demo."
