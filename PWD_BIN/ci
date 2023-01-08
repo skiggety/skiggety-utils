@@ -10,8 +10,16 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 # TODO^3: deal with any local changes...delete them? ...error out? both? I think it would be best to stash any at the
 # beginning and then treat any created by dev as errors (but clean up after them)
 
-git-pretty-pull || "git-pretty-pull FALED"
+git-pretty-pull || exit_with_error "git-pretty-pull FALED"
 
 git restore --staged .
 
+# TODO^4: ensure that the mere act of running ci doesn't cause local changes. I'm looking at PWD_BIN/lint .
 dev && echo "dev SUCCEEDED" || accumulate_error "dev FAILED"
+
+git restore todo_report
+
+# TODO: accumulate error if any local changes are found, i.e. "maybe you want to run 'dev' instead of 'ci'? Do you want
+# to commit these changes?'
+
+exit_if_any_accumulated_errors
