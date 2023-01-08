@@ -27,9 +27,8 @@ if ! [ -f "$experiment_script" ]; then
 fi
 
 if [ -f "$experiment_script" ]; then
-    # TODO: only show this divider if there will be output below:
     echo_divider_with_text "=" "running \"$experiment_script\" :"
-    $experiment_script || accumulate_error
+    $experiment_script || accumulate_error "experimental script \"$experiment_script\" FAILED"
 fi
 
 exit_if_any_accumulated_errors
