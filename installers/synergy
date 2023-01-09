@@ -36,11 +36,11 @@ class SynergyInstaller
     end
   end
 
-  def install
+  def install!
     delegate_download_and_install_to_user('https://members.symless.com/download', 'Synergy')
   end
 
-  def configure
+  def configure!
     call_peer_installer('hostname')
     if $interactive
       if on_mac_os?

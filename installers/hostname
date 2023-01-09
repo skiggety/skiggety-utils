@@ -26,7 +26,7 @@ class HostnameSetup
     # TODO: verify nslookup, which means router config will be part of configuration process
   end
 
-  def configure
+  def configure!
     if on_mac_os?
       if $interactive
         puts 'Sudo password will be needed to set hostname:'

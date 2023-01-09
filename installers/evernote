@@ -24,11 +24,11 @@ class EvernoteInstaller
     ask_user 'Are you able to use Evernote?'
   end
 
-  def install
+  def install!
     delegate_download_and_install_to_user('https://evernote.com/download', 'Evernote')
   end
 
-  def configure
+  def configure!
     delegate_to_user 'Sign in to Evernote'
   end
 

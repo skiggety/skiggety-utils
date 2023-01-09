@@ -21,7 +21,7 @@ class GimpInstaller
     true # pretty sure there's nothing to do here
   end
 
-  def install
+  def install!
     if on_mac_os?
       brew_install_latest 'gimp'
     elsif apt_available?

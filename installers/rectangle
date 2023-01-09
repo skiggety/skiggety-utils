@@ -34,7 +34,7 @@ class RectangleInstaller
     end
   end
 
-  def install
+  def install!
     if on_mac_os?
       brew_install_cask_latest 'rectangle'
     else
@@ -43,7 +43,7 @@ class RectangleInstaller
     end
   end
 
-  def configure
+  def configure!
     if on_mac_os?
       if $interactive
         assert_system('open /Applications/Rectangle.app')

@@ -25,7 +25,7 @@ class TerminalProfileConfigurer
     end
   end
 
-  def configure
+  def configure!
     if $interactive
       if on_mac_os?
         # TODO: deal with the extra clutter of profiles like "skiggterm 1",

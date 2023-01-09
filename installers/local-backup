@@ -33,7 +33,7 @@ class LocalBackupSetterUpper
     end
   end
 
-  def install
+  def install!
     if on_mac_os?
       if $interactive
         delegate_to_user 'make sure Time Machine is installed'
@@ -46,7 +46,7 @@ class LocalBackupSetterUpper
     end
   end
 
-  def configure
+  def configure!
     if on_mac_os?
       if $interactive
         assert_system('open /System/Library/PreferencePanes/TimeMachine.prefPane')

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# TODO: maybe convert to rspec, make sure install! gets called when it should, etc.
+
 require 'test_helper'
 require 'installable_skiggety_util'
 
@@ -45,9 +47,9 @@ class TestInstallableSkiggetyUtil < Minitest::Test
   # TODO: test self.run
   # TODO: test run
   # TODO: test name
-  # TODO: test mark_installed
-  # TODO: test delete_all_config_markers
-  # TODO: test mark_configured
+  # TODO: test mark_installed!
+  # TODO: test delete_all_config_markers!
+  # TODO: test mark_configured!
   # TODO: test marked_configured?
   # TODO: test marked_installed?
   # TODO: test delegate_to_user(request_text)

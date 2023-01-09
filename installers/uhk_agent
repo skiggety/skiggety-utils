@@ -26,11 +26,11 @@ class UltimateHackingKeyboardAgentInstaller
     ask_user 'Has the UHK has been set up OK?'
   end
 
-  def install
+  def install!
     delegate_download_and_install_to_user('https://ultimatehackingkeyboard.com/start/agent', 'UHK Agent')
   end
 
-  def configure
+  def configure!
     if on_mac_os?
       if $interactive
         assert_system("open '/Applications/UHK Agent.app'")

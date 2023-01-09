@@ -36,7 +36,7 @@ pushd $SKIGGETY_UTILS_DIR
 ask_user "commit some code" || accumulate_error "Did not commit"
 popd
 
-ask_user "close a browser tab or 3 until they are reasonable" || accumulate_error "Did not clean up browser tabs"
+ask_user "close a browser tab or 3 unless they are reasonable already" || accumulate_error "Did not clean up browser tabs"
 clear
 
 exit_if_any_accumulated_errors

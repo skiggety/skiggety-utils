@@ -30,17 +30,18 @@ module InstallableSkiggetyUtil
   end
 
   def ensure_installed!
+    # TODO: also have other files you can watch for changes since last marker file, like this one:
     unless marked_installed?
       if apparently_installed?
         # TODO^5: but what if it is apparently installed, but marked for an old hash (installer has changed), we should
         # probably still run the installer
         $stdout.flush
-        mark_installed
+        mark_installed!
       else
         puts "Installing #{name}"
         $stdout.flush
-        install # TODO^2: catch exception and wrap in: raise "install command failed for #{self.class}"
-        mark_installed if apparently_installed?
+        install! # TODO^2: catch exception and wrap in: raise "install! command failed for #{self.class}"
+        mark_installed! if apparently_installed?
       end
     end
   end
@@ -49,12 +50,12 @@ module InstallableSkiggetyUtil
     unless marked_configured?
       if apparently_configured?
         $stdout.flush
-        mark_configured
+        mark_configured!
       else
         puts "Configuring #{name}"
         $stdout.flush
-        configure
-        mark_configured if apparently_configured?
+        configure!
+        mark_configured! if apparently_configured?
       end
     end
   end
@@ -63,22 +64,22 @@ module InstallableSkiggetyUtil
     File.basename(installer_file_path)
   end
 
-  def mark_installed
+  def mark_installed!
     past_install_marker_file_paths.each do |path_to_delete|
       File.delete(path_to_delete)
     end
     FileUtils.touch(current_install_marker_file_path)
-    delete_all_config_markers # if install happens, config should happen too--even if it's marked done
+    delete_all_config_markers! # if install! happens, config should happen too--even if it's marked done
   end
 
-  def delete_all_config_markers
+  def delete_all_config_markers!
     config_marker_file_paths.each do |path_to_delete|
       File.delete(path_to_delete)
     end
   end
 
-  # TODO: rename with exclamation point?:
-  def mark_configured
+  # TODO^2: rename to add "!":
+  def mark_configured!
     past_config_marker_file_paths.each do |path_to_delete|
       File.delete(path_to_delete)
     end

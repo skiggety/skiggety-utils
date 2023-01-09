@@ -35,6 +35,7 @@ function main {
 
     # TODO: install gitk? (brew install git-gui) on mac
 
+    # TODO^5: what's with the sporadic syntax error sometime after this?
     # TODO: check for marker file to avoid re-running
     echo "Configuring $(basename $0)"
     git-set-global-default 'credential.helper' 'cache --timeout=2592000'
@@ -43,7 +44,6 @@ function main {
     git-set-global-default 'rebase.autostash' 'true'
     git-set-global-default 'fetch.prune' 'true'
     git-set-global-default 'diff.colorMoved' 'zebra' # lines that moved but stayed the same have their own colors
-    # git push || exit_with_error "git push failed"
 }
 
 function git-set-global-default {

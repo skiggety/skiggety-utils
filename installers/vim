@@ -31,7 +31,7 @@ class VimInstaller
     FileUtils.compare_file(user_vimrc_path, template_vimrc_path)
   end
 
-  def install
+  def install!
     unless in_docker_demo?
       if $interactive
         delegate_to_user 'make sure vim is installed by running \'vim -h\' or some such...'
@@ -76,11 +76,11 @@ class VimInstaller
     end
   end
 
-  def configure
+  def configure!
     if $interactive
       # TODO: prompt the user with something to explain what they need to do:
       assert_system("vim -d #{user_vimrc_path} #{template_vimrc_path}")
-      mark_configured # force this, since you might want to leave some differences between your .vimrc and the template
+      mark_configured! # force this, since you might want to leave some differences between your .vimrc and the template
     else
       raise_interactive_only_configuration
     end

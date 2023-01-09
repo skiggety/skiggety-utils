@@ -56,9 +56,10 @@ codebase, but there are a few miscellaneous ones collected here:
 
 - TODO^15 with Kevin: do rust koans ( https://github.com/crazymykl/rust-koans ) so we can prepare to...
   - TODO^11 with Kevin: ...rewrite todo in rust with parallelization
-- TODO^5: some tools for setting up information radiators
+- TODO^6: some tools for setting up information radiators
   - TODO^2: inforad (chrome extension?) information radiator
   - TODO: "playbot", a program that tunes in youtube livestreams, video meetings, watch later, podcasts and your personal dashboards, automatically. Great as an information radiator.
+  - TODO: something to keep randomized youtube playlists playing without interruption for music and such
 - TODO^4: output license summary in interactive programs (like you're supposed to)??
 - TODO^4: commit initial skigg-utils, to get to parity with what I already like to use
 - TODO^3: write a program to abbreviate output for use in the dashboard. You should be able to specify a maximum number of lines and pipe output through it, and it will do something like "head" or "tail" if necessary, but also display information about how many lines were removed/kept/found-in-total
@@ -69,7 +70,7 @@ codebase, but there are a few miscellaneous ones collected here:
 - TODO^3: set up a git hook system so you can add multiple scripts. For example, I'd like to block commits that include "XXX", irrespective of any other commit hooks. That hook might be shared by a team or individual to me, and I'd like to be able to support both kinds without conflicts.
 - TODO^2: automatically graph gmail progress outstanding messages, by writing a program that takes a url or gmail search string and monitors it. You can check in on the graph periodically to make sure you're on track.
   - TODO: find a tool that can show graphs of provided data on the command line
-- TODO^2: music rotator thingy
+- TODO^4: music rotator thingy (Neighbor Shawn might beta test)
 - TODO^2: collect data on email inbox, etc. and auto-generate graphs for the dashboard
   - TODO: set up router
     - TODO^2: help set up local dns

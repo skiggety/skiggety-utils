@@ -11,7 +11,7 @@ class TmuxInstaller
     system('which tmux')
   end
 
-  def install
+  def install!
     if on_mac_os?
       brew_install_latest 'tmux'
     elsif apt_available?
@@ -36,7 +36,7 @@ class TmuxInstaller
       ask_user 'Have you confirmed that your tmux.conf is good enough?'
   end
 
-  def configure
+  def configure!
     if $interactive
       assert_system("vim -d #{user_tmux_conf_path} #{template_tmux_conf_path}")
     else

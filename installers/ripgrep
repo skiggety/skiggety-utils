@@ -17,7 +17,7 @@ class RipgrepInstaller
     true # no config
   end
 
-  def install
+  def install!
     if on_mac_os?
       brew_install_latest 'rg'
     elsif apt_available?

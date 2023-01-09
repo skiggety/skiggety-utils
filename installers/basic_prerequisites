@@ -78,6 +78,7 @@ function main {
     debug_here "time for pyenv and rbenv prerequisites"
     # install pyenv and rbenv prerequisites
     if ! on_mac_os;then
+        # TODO^4: un-loop, it's too slow:
         for package in make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libyaml-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev;do
             if apt -qq list $package 2>&1 | grep installed >/dev/null; then
                 echo "$package is already installed"
