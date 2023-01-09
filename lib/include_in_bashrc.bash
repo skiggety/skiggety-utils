@@ -17,6 +17,7 @@ if type rg &> /dev/null; then
 fi
 
 alias tmux="TERM=screen-256color-bce tmux"
+alias vw="vimwhich"
 
 # TODO: use more stuff from older bashrc files I've used
 
