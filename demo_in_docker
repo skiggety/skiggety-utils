@@ -27,6 +27,7 @@ echo
 TMP_MARKER_DIR=/tmp/skiggety-utils-demo-installer-markers.pid_$$
 rm -rf "$TMP_MARKER_DIR"
 mkdir -p "$TMP_MARKER_DIR"
+touch "$TMP_MARKER_DIR/.keep"  #So it doesn't show as missing in docker
 
 cat todo_report/README_in_color.txt
 echo
