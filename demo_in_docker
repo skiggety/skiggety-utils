@@ -32,6 +32,8 @@ cat todo_report/README_in_color.txt
 echo
 ls
 echo
+echo "So here you are in this demo machine with skiggety utils not fully installed yet. Todo's and files in '.' are above to help you see what's what, and running the suggestions below will get you started:"
+echo
 # TODO: perhaps figure out how to get by without this extra step:
 echo "Run 'install-skiggety-utils;less README.md;dev; bash; exit' because you need a fresh bash after install for prompt and other env"
 echo "...then read README.md and try running  './start', 'chbs', or 'review-dev', for example"
