@@ -5,7 +5,6 @@
 # TODO^2: get donor code from old script "dashboard"
 
 # # TODO: API spec (name changes):
-#   # TODO: "auto-dev" will replace what was called "dashboard" when I worked at TBI. It basically runs "review dashboard"
 #   # DONE: if you enter the command "review dashboard" you get the dashboard, continually updated on your screen.
 #   # TODO^2: "review" will replace "loop" (same for review_while and review_until)
 #   # TODO: "dashboard" will replace "summarize_status". It displays a snapshot of current status
@@ -33,18 +32,17 @@ debug_here "update-skiggety-utils completed successfully"; echo
 # debug_here
 # TODO: this is something similar that I'm also not sure is a good idea: ./bin/start_in_env.bash || exit_with_error "Could not run \"./bin/start_in_env.bash\"" # TODO: don't use relative path # TODO^2: move most things in here, including any interactive stuff
 
-echo "To learn more about the utilities that are now available, you'll essentially have to do a code review or read the README since I don't have a real help system yet (TODO^2: show real help)";pretty_sleep 10
+ask_user "let's take a look at the readme, ok?" && less README.md
 
-# TODO^3: make auto-dev optional, or maybe DELETE  calls to it, as that's not necessarily what this script is for.. (or use ask_user to have the user do it if they want)
-debug_here "let's try running auto-dev:"
+debug_here "let's try running dev:"
 debug_here "---------------------------"
-${SKIGGETY_UTILS_DIR}/PWD_BIN/auto-dev || exit_with_error "FAILED to run auto-dev" #TODO: since this is in ./PWD_BIN/, I shouldn't need to use a relative path
+ask_user "let's run 'dev', ok?" && ${SKIGGETY_UTILS_DIR}/PWD_BIN/dev || exit_with_error "FAILED to run dev" #TODO: since this is in ./PWD_BIN/, I shouldn't need to use a relative path
 
 echo
 exit_with_error "Technically FAILED, but if you got here, that's good."
 # exit_with_error "MOVABLE BREAKPOINT"
 debug_here "auto-dev completed successfully"; echo
 debug_here "exiting..."
-help # TODO^3: rename, test/implement
+help_with_skiggety_utils # TODO^3: rename, test/implement
 exit 0
 
