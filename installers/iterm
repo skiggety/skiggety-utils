@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative '../lib/installable_skiggety_util'
+
+class ItermInstaller
+
+  include InstallableSkiggetyUtil
+
+  def apparently_installed?
+    return true if in_docker_demo?
+
+    if on_mac_os?
+      !system(" brew info iterm2 | grep 'Not Installed")
+    else
+      raise 'TODO: IMPLEMENT'
+    end
+  end
+
+  def apparently_configured?
+    true # TODO: implement saving profiles if you can
+  end
+
+  def install
+    if on_mac_os?
+      brew_install_cask_latest 'iterm2' # TODO: TEST
+    else
+      raise 'TODO: IMPLEMENT'
+    end
+  end
+
+end
+
+ItermInstaller.run
