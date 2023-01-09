@@ -4,6 +4,8 @@
 
 # NOTE: This is in bash because other scripting languages might not be installed yet
 
+# TODO^3: use a lock file so you don't run this twice at once by accident
+
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
@@ -11,7 +13,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 # should allow you to skip UHK installation if you don't have one, or set your EDITOR to nanoe for example. ./start
 # should use this mode.
 
-# TODO^3: move to bin? I need to make sure I can run it independently of $PWD, though
+# TODO^4: move to bin? I need to make sure I can run it independently of $PWD, though
 
 # TODO: install and configure 3rd party programs
     # TODO: install pocket
