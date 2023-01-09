@@ -54,8 +54,9 @@ NOTE: look in [todo_report/README.txt](todo_report/README.txt) for the 5 most im
 sorted ascending by votes by running 'todo' at the command line. Most of the todo list is distributed around the
 codebase, but there are a few miscellaneous ones collected here:
 
-- TODO^15 with Kevin: do rust koans ( https://github.com/crazymykl/rust-koans ) so we can prepare to...
-  - TODO^11 with Kevin: ...rewrite todo in rust with parallelization
+- TODO^15 with Kevin: do rust things ...
+  - TODO^15: do rust koans ( https://github.com/crazymykl/rust-koans ) so we can prepare to...
+  - TODO^11: ...rewrite todo in rust with parallelization
 - TODO^6: some tools for setting up information radiators
   - TODO^2: inforad (chrome extension?) information radiator
   - TODO: "playbot", a program that tunes in youtube livestreams, video meetings, watch later, podcasts and your personal dashboards, automatically. Great as an information radiator.
