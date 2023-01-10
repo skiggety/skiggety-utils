@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# WARNING: Changes to this file will make ./demo_in_docker very slow to start on the next run. Hesitate to commit!
+
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 export SKIGGETY_UTILS_DIR="$THIS_DIR/.."
 . $SKIGGETY_UTILS_DIR/lib/include_in_bashrc.bash || exit 1
