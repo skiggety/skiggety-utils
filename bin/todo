@@ -85,7 +85,6 @@ def main():
     arg_parser.add_argument('-q', '--quiet', action='store_true', help = 'TODO')
 
     arg_parser.add_argument('--exclude-dir', help = 'Directories to exclude.', action = 'append')
-    # TODO^6: support stuff like ' --exclude todo_report/README.txt' starting with:
     arg_parser.add_argument('--exclude', help = 'Files to exclude.', action = 'append')
 
     command_line_args = arg_parser.parse_args()
