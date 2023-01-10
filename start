@@ -41,7 +41,7 @@ ask_user "let's run 'dev', ok?" && ${SKIGGETY_UTILS_DIR}/PWD_BIN/dev || exit_wit
 echo
 exit_with_error "Technically FAILED, but if you got here, that's good."
 # exit_with_error "MOVABLE BREAKPOINT"
-debug_here "auto-dev completed successfully"; echo
+debug_here "dev completed successfully"; echo
 debug_here "exiting..."
 help_with_skiggety_utils # TODO^3: rename, test/implement
 exit 0

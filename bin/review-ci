@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# This script continuously checks out fresh code and tries it out
+
+review -m 30 -M 3600 ci

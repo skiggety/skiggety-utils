@@ -18,7 +18,7 @@ require 'English' # needed for: $CHILD_STATUS.exitstatus
 require 'optparse'
 
 # TODO: would it be smart to have a cron job that runs 'pkill review' every day at ~7pm on my work laptop? Or should I
-# instead strive to make the default behavior of this, and auto-dev, so reasonable that it's not required? Also, can I
+# instead strive to make the default behavior of this, and review-dev, so reasonable that it's not required? Also, can I
 # make this exit gracefully when pkill runs (possibly with -HUP)?
 
 # TODO^15: avoid forcing the same version of ruby on programs that this may call (maybe be careful not to pass

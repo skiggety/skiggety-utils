@@ -2,7 +2,7 @@
 
 # This script runs tests this project as much as possible, and exits with an error if it fails.
 
-# TODO: make output mor concise, it takes up a lot of screen space when running 'auto-dev' (or 'dev'). Maybe show
+# TODO: make output more concise, it takes up a lot of screen space when running 'review-dev' (or 'dev'). Maybe show
 # various types of test results only when there's a failure
 
 # TODO^2: I think I should be using SKIGGETY_UTILS_DIR more widely instead of THIS_DIR:
