@@ -1,5 +1,6 @@
 # This should be included into the user's .bashrc file)
 
+# TODO: somebody please set this to nano and then submit a pr to make other stuff work with nano, lol
 export EDITOR="vim"
 
 export SHELL_SESSION_HISTORY=0

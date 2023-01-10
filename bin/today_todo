@@ -125,9 +125,11 @@ function display_grep_for_keyword {
 
     todo_keyword_output="$(echo "$TEXT" | grep --color=always "$KEYWORD")"
     todo_keyword_count=$(( 0 + $(echo "$todo_keyword_output" | wc -l) ))
-    echo
-    echo "Found $todo_keyword_count todos with \"$KEYWORD\":" | grep --color=always \\d
-    echo "$todo_keyword_output"
+    if [ "$todo_keyword_output" != "" ]; then
+        echo
+        echo "Found $todo_keyword_count todos with \"$KEYWORD\":" | grep --color=always \\d
+        echo "$todo_keyword_output"
+    fi
 }
 
 main "$@"
