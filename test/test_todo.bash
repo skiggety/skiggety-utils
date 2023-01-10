@@ -6,7 +6,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 todo_examples_dir="$THIS_DIR/examples/todo"
 
-# TODO^2: turn debug output off
+SKIGGETY_DEBUG=true # TODO^2: turn debug output off
 
 function main {
     test_todo_shows_nothing_from_empty_dir || exit_with_error "test failed"
