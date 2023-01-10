@@ -6,8 +6,8 @@ red='\033[0;31m'
 RED='\033[1;31m'
 yellow='\033[0;33m'
 YELLOW='\033[1;33m'
-green='\033[0;32m'
-GREEN='\033[1;32m'
+cyan='\033[0;36m'
+CYAN='\033[1;36m'
 no_color='\033[0m'
 newline='
 '
@@ -77,7 +77,7 @@ SKIGGETY_DEBUG=${SKIGGETY_DEBUG:-false}
 
 function echo_debug {
     if $SKIGGETY_DEBUG; then
-        echo -e "${GREEN}DEBUG:${green} $*${no_color}" >&2
+        echo -e "${CYAN}DEBUG:${cyan} $*${no_color}" >&2
     fi
 }
 
