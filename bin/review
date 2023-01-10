@@ -15,6 +15,8 @@
 
 require 'English' # needed for: $CHILD_STATUS.exitstatus
 
+require 'optparse'
+
 # TODO: would it be smart to have a cron job that runs 'pkill review' every day at ~7pm on my work laptop? Or should I
 # instead strive to make the default behavior of this, and auto-dev, so reasonable that it's not required? Also, can I
 # make this exit gracefully when pkill runs (possibly with -HUP)?
@@ -23,14 +25,12 @@ require 'English' # needed for: $CHILD_STATUS.exitstatus
 # rbenv-related environment variables down). Because it would be nice to be able to use "review dev" in other ruby
 # projects sometimes, like at work.
 
-# TODO^16: accept --minimum-delay or -m (e.g. auto-ci might want to call this with "-m 30")
-# TODO^6: accept --maximum-delay or -M (e.g. auto-ci might want to call this with "-M $(( 60 * 60 * 6 ))")
 # TODO^6: accept --interactive ("-i") or --non-interactive ("-n"), to determine whether to use backticks
 #   TODO^4: DEBUG, if you call review with -i, it misinterprets it and fails forever, which is silly. We need to
 #   make sure extra flags aren't ending up somewhere they shouldn't.
 #   TODO^4: DEBUG: ...but, on the other hand, if you run 'review update-skiggety-utils --non-interactive',
 #   update-skiggety-utils will never get the --non-interactive flag
-# TODO^3: we need a control key to wake it up and make it refresh immediately (accept a
+# TODO^5: we need a control key to wake it up and make it refresh immediately (accept a
 # control character or signal to refresh now)
 # TODO: accept a flag to stop running if the wait gets longer than some specified amount
 # TODO: accept log file that logs output, changes, feequencies/counts, etc.
@@ -46,15 +46,13 @@ class ReviewProgram
   end
 
   def run
-    # TODO^3: non-interactive by default, intereactive mode for when the
-    # program might prompt you with something, and in that case backticks
-    # cannot be used:
-    # NOTE: this is an example of what NOT to do, because we need to distinguish between arguments that are meant for
-    # this program, and arguments that are part of the command: $interactive = !ARGV.delete('--non-interactive')
+    parse_args
 
+    # TODO: the quotes in 'command' seem kind of excessive when you see them in the footer. How to safely/consistently
+    # get rid of them:
     command = ARGV.map{ |a| "\"#{a}\"" }.join(' ')
 
-    delay = 1
+    delay = @min_delay || 1
 
     time_command do
       system(command)
@@ -81,28 +79,54 @@ class ReviewProgram
     end
   end
 
+  def parse_args
+    # TODO^3: non-interactive by default, intereactive mode for when the
+    # program might prompt you with something, and in that case backticks
+    # cannot be used:
+    # NOTE: this is an example of what NOT to do, because we need to distinguish between arguments that are meant for
+    # this program, and arguments that are part of the command: $interactive = !ARGV.delete('--non-interactive')
+
+    # turns out this is important so the rest of the options get left alone and passed on to the next comand:
+    ENV['POSIXLY_CORRECT'] = 'true'
+
+    OptionParser.new do |parser|
+      parser.banner = "Usage: #{$PROGRAM_NAME} [options] command ..."
+      parser.on('-m', '--min-delay MINIMUM', 'specify minimum delay in seconds') do |min|
+        @min_delay = min.to_i
+      end
+      parser.on('-M', '--max-delay MAXIMUM', 'specify maximum delay in seconds') do |min|
+        @max_delay = min.to_i
+      end
+    end.parse!(ARGV)
+
+    # ...and I need to set it back or it screws up the output of pretty sleep and echo divider since they go back to the
+    # beginning of the line
+    ENV['POSIXLY_CORRECT'] = nil
+  end
+
   def time_command
     @last_start_timestamp = Time.now
     yield
     @last_end_timestamp = Time.now
-    # TODO: maybe instead of using to_i, convert to decimal with 2-3 places:
+    # TODO^3: maybe instead of using to_i, convert to decimal with 2-3 places:
     @ran_in_seconds = (@last_end_timestamp - @last_start_timestamp).to_i
   end
 
   MULTIPLY_BY_DELAY = 1.10
   def adjust_delay(delay, change_detected, elapsed)
     if change_detected
-      1
+      @min_delay || 1
     else
       # using elapsed time in here means commands that take longer will backoff for longer, which seems appropriate
       add_to_delay = ((elapsed * 0.5) + 1).to_i
-      (MULTIPLY_BY_DELAY * delay).floor + add_to_delay
+      result = (MULTIPLY_BY_DELAY * delay).floor + add_to_delay
+      result = [result, @min_delay].max if @min_delay
+      result = [result, @max_delay].min if @max_delay
+      result
     end
   end
 
-  # TODO: time the command, show how long it took
-  #   TODO: factor that time into the delay increase. Something that ties up the cpu for a while should delay longer
-  # TODO^3: colorize output, esp on failure
+  # TODO^3: colorize output, esp on failure:
   def show_footer(command)
     system("echo_divider_with_text \"#\" \"'#{command}' exited with #{@last_exit_val} after #{ran_in_seconds} " \
            "seconds at #{@last_end_timestamp}\"")
