@@ -13,7 +13,7 @@ fi
 
 # TODO: also, use a lock file to ensure you're not accidentally running multiple instances of this
 
-if ! ls installers/.markers/docker.configured_with_version* installers/.markers/docker.installed_with_version*; then
+if ! ls installers/.markers/docker.configured_with_* installers/.markers/docker.installed_with_* 2>/dev/null; then
     ./bin/shellask "Make sure Docker is installed and running in the background" || exit_with_error "Could not install Docker"
 fi
 
