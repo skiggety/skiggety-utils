@@ -32,11 +32,11 @@ debug_here "update-skiggety-utils completed successfully"; echo
 # debug_here
 # TODO: this is something similar that I'm also not sure is a good idea: ./bin/start_in_env.bash || exit_with_error "Could not run \"./bin/start_in_env.bash\"" # TODO: don't use relative path # TODO^2: move most things in here, including any interactive stuff
 
-ask_user "let's take a look at the readme, ok?" && less README.md
+shellask "let's take a look at the readme, ok?" && less README.md
 
 debug_here "let's try running dev:"
 debug_here "---------------------------"
-ask_user "let's run 'dev', ok?" && ${SKIGGETY_UTILS_DIR}/PWD_BIN/dev || exit_with_error "FAILED to run dev" #TODO: since this is in ./PWD_BIN/, I shouldn't need to use a relative path
+shellask "let's run 'dev', ok?" && ${SKIGGETY_UTILS_DIR}/PWD_BIN/dev || exit_with_error "FAILED to run dev" #TODO: since this is in ./PWD_BIN/, I shouldn't need to use a relative path
 
 echo
 exit_with_error "Technically FAILED, but if you got here, that's good."

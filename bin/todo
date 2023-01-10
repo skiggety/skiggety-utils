@@ -49,7 +49,7 @@ from todo_line import TodoLine
 # TODO^2: maybe accept --vote 'substring', --downvote 'substring', or --delete 'substring'  to find
 # a matching todo and change the vote count without doing anything else
 #  TODO: once we have a --delete option, you could write a script that goes through your todo's in
-#  priority order, and prompts you to do each one with ask_user, and deletes them if you say you
+#  priority order, and prompts you to do each one with shellask, and deletes them if you say you
 #  have done it.
 
 # TODO: maybe todo should suggest running todo -w when it notices simplifications it could be

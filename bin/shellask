@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# TODO^3: figure out why this sporadically fails to set the prompt
-# TODO^7: rename to reflect the fact that we are putting the user in a full shell (which is useful), not just a y/n
-# prompt. How about "bash-ask" or "shellask"?
-
 # This script asks the user to do the task described and report status back. It is a great way of stubbing out
 # functionality, setting yourself one-off reminders, or....
 
@@ -11,7 +7,7 @@
 # say a bash script but you could call it from other languages and inspect environment variables, technically):
 #
 #     for whatever in $___whatever_the_point_is_you_are_deep_in_code__; do
-#         if ask_user "debug and decide whether you want to foo at $(echo_here)"
+#         if shellask "debug and decide whether you want to foo at $(echo_here)"
 #         then
 #             foo
 #         else
@@ -23,6 +19,7 @@
 # because in some cases it's helpful to make a human decision a few times before you figure out how to teach^Wprogram
 # the computer.
 
+# TODO^3: figure out why this sporadically fails to set the prompt
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 
@@ -35,7 +32,7 @@ debug_eval_here TASK_DESCRIPTION
 ESCAPED_TASK_DESCRIPTION="$(echo "$TASK_DESCRIPTION" | sed 's/\(["\$]\)/\\\1/g')"
 debug_eval_here ESCAPED_TASK_DESCRIPTION
 
-# Try running the following to see why this is necessary: ask_user 'spend $0 on "stuff"'.
+# Try running the following to see why this is necessary: shellask 'spend $0 on "stuff"'.
 DOUBLE_ESCAPED_TASK_DESCRIPTION="$(echo "$ESCAPED_TASK_DESCRIPTION" | sed 's/\(["\$]\)/\\\1/g')"
 debug_eval_here DOUBLE_ESCAPED_TASK_DESCRIPTION
 banner='########################################################################'

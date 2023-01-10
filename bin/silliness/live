@@ -2,18 +2,18 @@
 
 # Self, program thyself
 
-# This came in handy when I went through a phase of wanting to do nothing but code. This program uses ask_user to prompt
+# This came in handy when I went through a phase of wanting to do nothing but code. This program uses shellask to prompt
 # me to do a tolerable mix of stuff. meant for running repeatedly.
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash
 
 ################################################################################
-ask_user 'do one act of self care or something on the habit tracker' || accumulate_error 'missed a habit'
-ask_user 'do another act of self care or something on the habit tracker' || accumulate_error 'missed a habit'
+shellask 'do one act of self care or something on the habit tracker' || accumulate_error 'missed a habit'
+shellask 'do another act of self care or something on the habit tracker' || accumulate_error 'missed a habit'
 
 #### Today's Todo List #########################################################
 today_todo --non-interactive
-ask_user 'run today_todo once or twice to make sure you are ready to focus on the right stuff' || \
+shellask 'run today_todo once or twice to make sure you are ready to focus on the right stuff' || \
     accumulate_error 'did not get tasks organized'
 pushd ~/today_todo/
 todos="$($SKIGGETY_UTILS_DIR/bin/todo|grep NOW|tail -n 3)"
@@ -24,7 +24,7 @@ NEWLINE='
  read -rd '' -a todos_as_array <<<"$todos"
 debug_here "echo \${todos_as_array} contains"
 for todo_line in ${todos_as_array[@]};do
-    ask_user "Work on this task (and downvote or mark done using today_todo):${NEWLINE}${todo_line}" || \
+    shellask "Work on this task (and downvote or mark done using today_todo):${NEWLINE}${todo_line}" || \
         accumulate_error "Didn't work on todo: $todo_line"
 done
 IFS="$ORIGINAL_IFS"
@@ -33,10 +33,10 @@ popd
 ################################################################################
 
 pushd $SKIGGETY_UTILS_DIR
-ask_user "commit some code" || accumulate_error "Did not commit"
+shellask "commit some code" || accumulate_error "Did not commit"
 popd
 
-ask_user "close a browser tab or 3 unless they are reasonable already" || accumulate_error "Did not clean up browser tabs"
+shellask "close a browser tab or 3 unless they are reasonable already" || accumulate_error "Did not clean up browser tabs"
 clear
 
 exit_if_any_accumulated_errors

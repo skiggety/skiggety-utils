@@ -102,7 +102,7 @@ function main {
         ### https://github.com/rbenv/rbenv/issues/1100
         ### https://javierjulio.com/rbenv/#section_3.2
     echo "Installing latest rbenv"
-    rvm --version 2>/dev/null && ask_user to uninstall rvm with rvm implode
+    rvm --version 2>/dev/null && shellask to uninstall rvm with rvm implode
     if on_mac_os;then
         homebrew_install_latest rbenv
         homebrew_install_latest ruby-build # plugin for rbenv
