@@ -83,6 +83,7 @@ class ReviewProgram
     # TODO^3: non-interactive by default, intereactive mode for when the
     # program might prompt you with something, and in that case backticks
     # cannot be used:
+    # TODO: how about a flag to turn off screen clearing. I might like to run: review --no-clear -m 300 git pretty-pull
     # NOTE: this is an example of what NOT to do, because we need to distinguish between arguments that are meant for
     # this program, and arguments that are part of the command: $interactive = !ARGV.delete('--non-interactive')
 
