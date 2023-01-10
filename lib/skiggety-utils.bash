@@ -4,6 +4,8 @@ red='\033[0;31m'
 RED='\033[1;31m'
 yellow='\033[0;33m'
 YELLOW='\033[1;33m'
+green='\033[0;32m'
+GREEN='\033[1;32m'
 no_color='\033[0m'
 newline='
 '
@@ -57,11 +59,23 @@ function exit_with_accumulated_errors {
 
 # TODO^3: consistent debug function names
 
+function echo_warning {
+    echo -e "${YELLOW}WARNING:${yellow} $*${no_color}" >&2
+}
+
+function warn {
+    echo_warning "$*"
+}
+
+function warn_here {
+    echo_warning "$* $(echo_callsite)"
+}
+
 SKIGGETY_DEBUG=${SKIGGETY_DEBUG:-false}
 
 function echo_debug {
     if $SKIGGETY_DEBUG; then
-        echo -e "${YELLOW}DEBUG:${yellow} $*${no_color}" >&2
+        echo -e "${GREEN}DEBUG:${green} $*${no_color}" >&2
     fi
 }
 
