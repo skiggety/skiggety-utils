@@ -20,8 +20,6 @@ export SKIGGETY_UTILS_DIR="$THIS_DIR"
 
 debug_here "utils successfully included"
 
-# TODO^2 are "debug_here" and "echo_debug" redundant?
-
 debug_here "let's try running update-skiggety-utils:"
 debug_here "--------------------------"
 ./bin/update-skiggety-utils || echo_error_here "Could not run \"./bin/update-skiggety-utils"
@@ -32,17 +30,18 @@ debug_here "update-skiggety-utils completed successfully"; echo
 # debug_here
 # TODO: this is something similar that I'm also not sure is a good idea: ./bin/start_in_env.bash || exit_with_error "Could not run \"./bin/start_in_env.bash\"" # TODO: don't use relative path # TODO^2: move most things in here, including any interactive stuff
 
-shellask "let's take a look at the readme, ok?" && less README.md
+shellask "let's take a look at the README.md, ok?" && less README.md || echo "...that's ok, we can skip the README.md"
+# help_with_skiggety_utils # TODO^3: rename, test/implement something to show the help system if I do more with it.
 
 debug_here "let's try running dev:"
 debug_here "---------------------------"
-shellask "let's run 'dev', ok?" && ${SKIGGETY_UTILS_DIR}/PWD_BIN/dev || exit_with_error "FAILED to run dev" #TODO: since this is in ./PWD_BIN/, I shouldn't need to use a relative path
+shellask "let's run 'dev', ok?" && ./PWD_BIN/dev
 
 echo
-exit_with_error "Technically FAILED, but if you got here, that's good."
-# exit_with_error "MOVABLE BREAKPOINT"
-debug_here "dev completed successfully"; echo
+echo "You may want to run 'exec bash', to get a fresh shell now that you've set up some shell stuff"
+
+echo
+debug_here "dev completed successfully"
 debug_here "exiting..."
-help_with_skiggety_utils # TODO^3: rename, test/implement
 exit 0
 
