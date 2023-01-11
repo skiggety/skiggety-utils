@@ -54,6 +54,9 @@ NOTE: look in [todo_report/README.txt](todo_report/README.txt) for the 5 most im
 sorted ascending by votes by running 'todo' at the command line. Most of the todo list is distributed around the
 codebase, but there are a few miscellaneous ones collected here:
 
+And by the way, a todo with a vote or 2 is really a "to-not-do". That's the key to the whole thing. Not doing everything
+you can, doing the things that come up often enough earn some votes.
+
 - TODO^15 with Kevin: do rust things ...
   - TODO^15: do rust koans ( https://github.com/crazymykl/rust-koans ) so we can prepare to...
   - TODO^11: ...rewrite todo in rust with parallelization
