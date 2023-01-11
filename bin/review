@@ -21,7 +21,7 @@ require 'optparse'
 # instead strive to make the default behavior of this, and review-dev, so reasonable that it's not required? Also, can I
 # make this exit gracefully when pkill runs (possibly with -HUP)?
 
-# TODO^15: avoid forcing the same version of ruby on programs that this may call (maybe be careful not to pass
+# TODO^16: avoid forcing the same version of ruby on programs that this may call (maybe be careful not to pass
 # rbenv-related environment variables down). Because it would be nice to be able to use "review dev" in other ruby
 # projects sometimes, like at work.
 
