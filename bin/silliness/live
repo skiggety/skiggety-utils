@@ -16,7 +16,7 @@ today_todo --non-interactive
 shellask 'run today_todo once or twice to make sure you are ready to focus on the right stuff' || \
     accumulate_error 'did not get tasks organized'
 pushd ~/today_todo/
-todos="$($SKIGGETY_UTILS_DIR/bin/todo|grep NOW|tail -n 3)"
+todos="$($SKIGGETY_UTILS_DIR/bin/todo|grep NOW|tail -n 3|tac)"
 ORIGINAL_IFS="$IFS"
 IFS=$'\n'
 NEWLINE='

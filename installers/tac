@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative '../lib/installable_skiggety_util'
+
+class TacInstaller
+
+  include InstallableSkiggetyUtil
+
+  def apparently_installed?
+    system 'which tac'
+  end
+
+  def apparently_configured?
+    true # no config
+  end
+
+  def install!
+    if on_mac_os?
+      brew_install_latest 'coreutils'
+    else
+      raise 'TODO: implement'
+    end
+  end
+
+end
+
+TacInstaller.run
