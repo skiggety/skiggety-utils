@@ -51,7 +51,7 @@ function test_todo_finds_and_sorts_concise_format_correctly {
     result="$(todo -k TXDX)"
     exit_value="$?"
     expected="./long_example.txt:1:TXDX^2: this is a todo with the keyword listed twice
-./concise_example.txt:1:TXDX^13: this is a todo with concise syntax to specify 3 votes"
+./concise_example.txt:1:TXDX^13: this is a todo with concise syntax to specify 13 votes"
     assert_equal "$expected" "$result"
     assert_equal "0" "$exit_value"
     popd > /dev/null
@@ -76,7 +76,7 @@ function test_todo_handles_a_complex_example {
 ./votes.txt:4:TXDX^2: one spelled out item and TXDX^3 another concisely-voted item on the same line
 ./votes.txt:5:TXDX^4: votes are already partially collapsed
 ./votes.txt:1:TXDX^6: six votes, this should sort
-./mixed_conciseness/concise_example.txt:1:TXDX^13: this is a todo with concise syntax to specify 3 votes"
+./mixed_conciseness/concise_example.txt:1:TXDX^13: this is a todo with concise syntax to specify 13 votes"
     assert_equal "$expected" "$result"
     assert_equal "0" "$exit_value"
     popd > /dev/null

@@ -1,1 +1,1 @@
-TXDX^13: this is a todo with concise syntax to specify 3 votes
+TXDX^13: this is a todo with concise syntax to specify 13 votes
