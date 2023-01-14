@@ -42,6 +42,8 @@ function run_all_python_tests {
     popd > /dev/null
     return $test_exit_value
 }
-run_all_python_tests || accumulate_error "Python tests failed" # TODO: run ALL python tests"
+run_all_python_tests || accumulate_error "Python tests FAILED" # TODO: run ALL python tests"
+
+demo_ruby_version_hack || accumulate_error "demo_ruby_version_hack FAILED"
 
 exit_if_any_accumulated_errors

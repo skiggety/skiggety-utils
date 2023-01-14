@@ -1,8 +1,70 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# TODO^17: finish implementing rbenv version hack similar to what was done in demo_python_version_hack .
+# Demonstrates a hack, that may not even be a good idea, that allows a ruby script to self-determine its ruby version
+# using pyenv.
 
-# TODO: DESIRED_RUBY_VERSION = '3.1.3'
-# TODO: puts "DEBUG: in #{$PROGRAM_NAME}, RUBY_VERSION is #{RUBY_VERSION}"
-# TODO: raise 'TODO: IMPLEMENT'
+# TO-NOT-DO: Once this works, use it everywhere.
+# TODO^0: consider adding ruby 3.1.3 back to skiggety utils for this hack to work, or skip it for performance and just
+# have this script complain if it's not installed.
+
+# NOTE: you may have to run 'rbenv install 3.1.3' first for this demo to work, or change DESIRED_RUBY_VERSION to
+# one you have installed already.
+
+# XXX TODO: test this in docker demo
+
+# TODO^18: finish testing this script
+
+DESIRED_RUBY_VERSION = '3.1.3'
+puts 'DEBUG: ----------------------------------------'
+puts "DEBUG: in #{File.basename($PROGRAM_NAME)}, DESIRED_RUBY_VERSION is #{DESIRED_RUBY_VERSION}"
+puts "DEBUG: in #{File.basename($PROGRAM_NAME)}, RUBY_VERSION is #{RUBY_VERSION}"
+puts "DEBUG: before touching version, ENV.fetch('RBENV_VERSION', nil) is #{ENV.fetch('RBENV_VERSION', nil)}"
+puts "DEBUG: before touching version, ENV.fetch('RBENV_VERSION_HACK_DEPTH', nil) is " \
+     "#{ENV.fetch('RBENV_VERSION_HACK_DEPTH', nil)}"
+
+puts 'DEBUG: the contents of $PATH breaks down to:'
+path_as_array = ENV['PATH'].split(':')
+path_as_array.each do |path_element|
+  puts "    #{path_element}"
+end
+
+if DESIRED_RUBY_VERSION != RUBY_VERSION
+  # limit recursion depth:
+  # TODO: IMPLEMENT'
+
+  puts "DEBUG: OK, attempting to switch from ruby version #{RUBY_VERSION} to #{DESIRED_RUBY_VERSION}"
+  puts 'setting RBENV_VERSION in env...'
+  ENV['RBENV_VERSION'] = DESIRED_RUBY_VERSION
+  puts 'incrementing RBENV_VERSION_HACK_DEPTH in env...'
+  ENV['RBENV_VERSION_HACK_DEPTH'] = (ENV.fetch('RBENV_VERSION_HACK_DEPTH', 0).to_int + 1).to_s
+  puts "DEBUG: after increment, ENV.fetch('RBENV_VERSION_HACK_DEPTH', 0) is #{ENV.fetch('RBENV_VERSION_HACK_DEPTH', 0)}"
+  puts "DEBUG: ENV.fetch('RBENV_ROOT', nil) is #{ENV.fetch('RBENV_ROOT', nil)}"
+  rbenv_root_dir = ENV.fetch('RBENV_ROOT', nil)
+
+  # TODO^2: is there something slightly cleaner I could do like run the child in a fresh login shell or something to
+  # re-init rbenv?
+  # ugh, stack new shims on the path in case a parent process has already used rbenv to stack on a specific python
+  # version's bin path:
+  # TODO: probably should only do this if rbenv shims are in the path somewhere:
+  puts "DEBUG adding to front of path: #{rbenv_root_dir}/shims:#{rbenv_root_dir}/bin"
+  # ENV['PATH'] = "#{rbenv_root_dir}/shims:#{rbenv_root_dir}/bin:#{ENV.fetch('PATH')}"
+  ["#{rbenv_root_dir}/shims", "#{rbenv_root_dir}/bin"].each do |dir|
+    path_as_array = ENV['PATH'].split(':')
+    ENV['PATH'] = "#{dir}:#{ENV.fetch('PATH')}" if path_as_array.include?(dir)
+  end
+
+  puts 'DEBUG: after mucking with it, the contents of $PATH breaks down to:'
+  path_as_array = ENV['PATH'].split(':')
+  path_as_array.each do |path_element|
+    puts "    #{path_element}"
+  end
+
+  puts "DEBUG: after setting version, ENV.fetch('RBENV_VERSION') is #{ENV.fetch('RBENV_VERSION')}"
+  exec($PROGRAM_NAME, *ARGV) # system exec self
+  raise 'Should never get here.'
+end
+
+ENV['RBENV_VERSION_HACK_DEPTH'] = '0'
+puts "DEBUG: after resetting to 0, ENV.fetch('RBENV_VERSION_HACK_DEPTH') is #{ENV.fetch('RBENV_VERSION_HACK_DEPTH')}"
+puts 'DEBUG: SUCCESS! (this is after version hack) If you cd to a different dir, will it still work?'

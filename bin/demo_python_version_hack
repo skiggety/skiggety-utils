@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """Demonstrates a hack, that may not even be a good idea, that allows a python script to
-self-determine its version using pyenv."""
+self-determine its python version using pyenv."""
 
-# This is just a salty little hack that allows a script to run itself in the version of it's choice.
-# Probably a bad idea but I'm trying to be perhaps a little paranoid while I learn more about pyenv
-# and packaging...
+# This is just a salty little hack that allows a script to run itself in the python version of it's
+# choice.  Probably a bad idea but I'm trying to be perhaps a little paranoid while I learn more
+# about pyenv and packaging...
 
 # Because the CURRENT directory should not determine the python version, which I think of as a
 # property of the script itself:
+
+# TO-NOT-DO: Once this works, use it everywhere.
 
 # TODO: THIS SHOULD NOT BE NECESSARY! WHY? OH, WHY?!?! (maybe learn more about pyenv and how python
 # scripts are normally packaged):
@@ -23,7 +25,7 @@ print("DEBUG: before touching version, os.environ.get('PYENV_VERSION_HACK_DEPTH'
       f"{os.environ.get('PYENV_VERSION_HACK_DEPTH')}")
 print(f"DEBUG: before touching version, platform.python_version() is {platform.python_version()}")
 
-print('DEBUG: the contents os $PATH breaks down to:')
+print('DEBUG: the contents of $PATH breaks down to:')
 path_as_array = os.environ.get('PATH').split(':')
 for path_element in path_as_array:
     # showing home as ~ makes this easier to diff across different users and machines:
@@ -50,18 +52,20 @@ if DESIRED_PYTHON_VERSION != platform.python_version():
     os.environ['PYENV_VERSION_HACK_DEPTH'] = str(int(os.environ['PYENV_VERSION_HACK_DEPTH']) + 1)
     print("DEBUG: after increment, os.environ.get('PYENV_VERSION_HACK_DEPTH') is " \
           f"{os.environ.get('PYENV_VERSION_HACK_DEPTH')}")
-    print(f"DEBUG: os.environ.get('HOME') is {os.environ.get('HOME')}")
+    print(f"DEBUG: os.environ.get('PYENV_ROOT') is {os.environ.get('PYENV_ROOT')}")
     pyenv_root_dir = os.environ.get('PYENV_ROOT')
 
     # TODO^2: is there something slightly cleaner I could do like run the child in a fresh login shell
     # or something to re-init pyenv?
     # ugh, stack new shims on the path in case a parent process has already used pyenv to
+    # TODO: probably should only do this if pyenv shims are in the path somewhere
     # stack on a specific python version's bin path:
     print(f"DEBUG adding to front of path: {pyenv_root_dir}/shims:{pyenv_root_dir}/bin")
     os.environ['PATH'] = f"{pyenv_root_dir}/shims:{pyenv_root_dir}/bin:{os.environ['PATH']}"
     print(f"DEBUG: after setting version, os.environ.get('PYENV_VERSION') is {os.environ.get('PYENV_VERSION')}")
     os.execvpe(sys.argv[0], sys.argv, os.environ) # system exec self
-print("DEBUG: SUCCESS! (this is after version hack) If you cd to a different dir, will it still work?")
+    raise Exception("Should never get here.")
 os.environ['PYENV_VERSION_HACK_DEPTH'] = '0'
 print("DEBUG: after resetting to 0, os.environ.get('PYENV_VERSION_HACK_DEPTH') is " \
       f"{os.environ.get('PYENV_VERSION_HACK_DEPTH')}")
+print("DEBUG: SUCCESS! (this is after version hack) If you cd to a different dir, will it still work?")
