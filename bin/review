@@ -36,25 +36,21 @@ class ReviewProgram
     parse_args
     cleanup_rbenv_influence
 
-    # TODO^2: the quotes in 'command' seem kind of excessive when you see them in the footer. How to safely/consistently
+    # TODO^3: the quotes in 'command' seem kind of excessive when you see them in the footer. How to safely/consistently
     # get rid of them:
     command = ARGV.map{ |a| "\"#{a}\"" }.join(' ')
 
     delay = @min_delay || 1
 
-    # TODO^8: accept --interactive ("-i") or --non-interactive ("-n"), to determine whether to use backticks. This
-    # presents the problem of how to grab the output though
-
-    # TODO^2: method extract running timed command and showing footer interactively:
     fill_screen_interactive(command)
 
-    start_wake # TODO: should this depend on a command line flag?
-
+    start_wake # TODO^2: should this depend on a command line flag?
     @output = ''
-    while should_continue_looping(@exit_val) && sleep_verbose(delay)
-      # TODO^2: method extract running timed command and showing footer non-interactively:
-      fill_screen_non_interactive(command)
 
+    while should_continue_looping(@exit_val) && sleep_verbose(delay)
+      # TODO^8: accept --interactive ("-i") or --non-interactive ("-n"), to determine whether to use backticks. This
+      # presents the problem of how to grab the output though
+      fill_screen_non_interactive(command)
       change_detected = calc_change_detected
       delay = adjust_delay(delay, change_detected, @ran_in_seconds)
     end
@@ -178,7 +174,7 @@ class ReviewProgram
 
   # TODO^3: colorize output, esp on failure:
   def show_footer(command)
-    system("echo_divider_with_text \"#\" \"'#{command}' exited with #{@exit_val} after #{ran_in_seconds} " \
+    system("echo_divider_with_text \"#\" \"\\\"#{command}\\\" exited with #{@exit_val} after #{ran_in_seconds} " \
            "seconds at #{@last_end_timestamp}\"")
   end
 
