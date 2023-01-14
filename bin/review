@@ -47,27 +47,29 @@ class ReviewProgram
     # TODO^8: accept --interactive ("-i") or --non-interactive ("-n"), to determine whether to use backticks. This
     # presents the problem of how to grab the output though
 
+    # TODO: method extract running timed command and showing footer interactively:
     time_command do
       system(command)
-      @last_exit_val = $CHILD_STATUS.exitstatus
+      @exit_val = $CHILD_STATUS.exitstatus
     end
     show_footer(command)
 
     @output = ''
-    while should_continue_looping(@last_exit_val) && system("pretty_sleep -n #{delay}")
+    # TODO: method extract running timed command and showing footer non-interactively:
+    while should_continue_looping(@exit_val) && system("pretty_sleep -n #{delay}")
       time_command do
         @last_output = @output
+        @last_exit_val = @exit_val
         non_interactive_command = "#{command} 2>&1"
         @output = `#{non_interactive_command}`
-        @last_exit_val = $CHILD_STATUS.exitstatus
+        @exit_val = $CHILD_STATUS.exitstatus
       end
 
       system('clear')
       puts @output
       show_footer(command)
 
-      change_detected = true
-      change_detected = false if @output == @last_output
+      change_detected = calc_change_detected
       delay = adjust_delay(delay, change_detected, @ran_in_seconds)
     end
   end
@@ -119,13 +121,20 @@ class ReviewProgram
     @ran_in_seconds = (@last_end_timestamp - @last_start_timestamp).to_i
   end
 
+  def calc_change_detected
+    change_detected = true
+    change_detected = false if @output == @last_output
+    change_detected = true if @exit_val != @last_exit_val
+    change_detected
+  end
+
   MULTIPLY_BY_DELAY = 1.10
   def adjust_delay(delay, change_detected, elapsed)
     if change_detected
       @min_delay || 1
     else
       # using elapsed time in here means commands that take longer will backoff for longer, which seems appropriate
-      add_to_delay = ((elapsed * 0.5) + 1).to_i
+      add_to_delay = (elapsed * 0.5).to_i + 1
       result = (MULTIPLY_BY_DELAY * delay).floor + add_to_delay
       result = [result, @min_delay].max if @min_delay
       result = [result, @max_delay].min if @max_delay
@@ -135,7 +144,7 @@ class ReviewProgram
 
   # TODO^3: colorize output, esp on failure:
   def show_footer(command)
-    system("echo_divider_with_text \"#\" \"'#{command}' exited with #{@last_exit_val} after #{ran_in_seconds} " \
+    system("echo_divider_with_text \"#\" \"'#{command}' exited with #{@exit_val} after #{ran_in_seconds} " \
            "seconds at #{@last_end_timestamp}\"")
   end
 
