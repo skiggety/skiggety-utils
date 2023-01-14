@@ -11,3 +11,5 @@ gem 'rubocop-rake', require: false, group: :test
 gem 'simplecov', require: false, group: :test
 
 gem 'byebug', '~> 11.1'
+
+gem 'listen', '~> 3.8'

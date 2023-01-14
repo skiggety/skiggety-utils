@@ -13,16 +13,14 @@
 require 'English' # needed for: $CHILD_STATUS.exitstatus
 
 require 'optparse'
+require 'listen'
 
 # TODO: would it be smart to have a cron job that runs 'pkill review' every day at ~7pm on my work laptop? Or should I
 # instead strive to make the default behavior of this, and review-dev, so reasonable that it's not required? Also, can I
 # make this exit gracefully when pkill runs (possibly with -HUP)?
 
-# two about waking up:
-# TODO^8: we need a control key to wake it up and make it refresh immediately (accept a
-# control character or signal to refresh now)
-# TODO^9: use the 'rerun' or 'listen'  gem to watch the filesystem and restart progrom when there are changes? maybe
-# with a different command line option?
+# TODO: we might need a control key to wake it up and make it refresh immediately (accept a control character or signal
+# to refresh now), but we might not need it now that we're 'listening' to the file system
 
 # TODO: accept a flag to stop running if the wait gets longer than some specified amount
 # TODO: accept log file that logs output, changes, feequencies/counts, etc.
@@ -38,7 +36,7 @@ class ReviewProgram
     parse_args
     cleanup_rbenv_influence
 
-    # TODO: the quotes in 'command' seem kind of excessive when you see them in the footer. How to safely/consistently
+    # TODO^2: the quotes in 'command' seem kind of excessive when you see them in the footer. How to safely/consistently
     # get rid of them:
     command = ARGV.map{ |a| "\"#{a}\"" }.join(' ')
 
@@ -47,27 +45,15 @@ class ReviewProgram
     # TODO^8: accept --interactive ("-i") or --non-interactive ("-n"), to determine whether to use backticks. This
     # presents the problem of how to grab the output though
 
-    # TODO: method extract running timed command and showing footer interactively:
-    time_command do
-      system(command)
-      @exit_val = $CHILD_STATUS.exitstatus
-    end
-    show_footer(command)
+    # TODO^2: method extract running timed command and showing footer interactively:
+    fill_screen_interactive(command)
+
+    start_wake # TODO: should this depend on a command line flag?
 
     @output = ''
-    # TODO: method extract running timed command and showing footer non-interactively:
-    while should_continue_looping(@exit_val) && system("pretty_sleep -n #{delay}")
-      time_command do
-        @last_output = @output
-        @last_exit_val = @exit_val
-        non_interactive_command = "#{command} 2>&1"
-        @output = `#{non_interactive_command}`
-        @exit_val = $CHILD_STATUS.exitstatus
-      end
-
-      system('clear')
-      puts @output
-      show_footer(command)
+    while should_continue_looping(@exit_val) && sleep_verbose(delay)
+      # TODO^2: method extract running timed command and showing footer non-interactively:
+      fill_screen_non_interactive(command)
 
       change_detected = calc_change_detected
       delay = adjust_delay(delay, change_detected, @ran_in_seconds)
@@ -113,12 +99,60 @@ class ReviewProgram
     ENV['RBENV_DIR'] = nil
   end
 
+  def fill_screen_interactive(command)
+    time_command do
+      @last_exit_val = @exit_val
+      system(command)
+      @exit_val = $CHILD_STATUS.exitstatus
+    end
+    show_footer(command)
+  end
+
+  def fill_screen_non_interactive(command)
+    time_command do
+      @last_output = @output
+      @last_exit_val = @exit_val
+      non_interactive_command = "#{command} 2>&1"
+      @output = `#{non_interactive_command}`
+      @exit_val = $CHILD_STATUS.exitstatus
+    end
+    system('clear')
+    puts @output
+    show_footer(command)
+  end
+
   def time_command
     @last_start_timestamp = Time.now
     yield
     @last_end_timestamp = Time.now
     # TODO^3: maybe instead of using to_i, convert to decimal with 2-3 places:
     @ran_in_seconds = (@last_end_timestamp - @last_start_timestamp).to_i
+  end
+
+  def start_wake
+    listener = Listen.to('.') do |_modified, _added, _removed|
+      @wake_up_now = true if @wake_up_now == false
+    end
+    listener.start
+  end
+
+  def sleep_verbose(delay)
+    @wake_up_now = false
+    delay = delay.to_i # just making sure, don't want to get confused
+    delay_remaining = delay
+    slept_already = 0
+    while delay_remaining.positive? && @wake_up_now == false
+      print "_...sleeping for #{delay_remaining}/#{delay} seconds...\033[0K\r"
+      sleep 1
+      delay_remaining -= 1
+      slept_already += 1
+    end
+    print "_...slept for #{slept_already}/#{delay} seconds.#{woke_up_message}}\033[0K\r"
+    true
+  end
+
+  def woke_up_message
+    @wake_up_now ? ' (WOKE UP on filesystem change)' : ''
   end
 
   def calc_change_detected

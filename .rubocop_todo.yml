@@ -13,6 +13,10 @@ Lint/UnreachableCode:
   Exclude:
     - 'installers/witch-lights'
 
+Metrics/ClassLength:
+  Exclude:
+    - 'bin/review'
+
 # Offense count: 4
 # Configuration parameters: CheckForMethodsWithNoSideEffects.
 Lint/Void:
