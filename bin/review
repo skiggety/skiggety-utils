@@ -19,18 +19,16 @@ require 'optparse'
 # make this exit gracefully when pkill runs (possibly with -HUP)?
 
 # TODO^8: accept --interactive ("-i") or --non-interactive ("-n"), to determine whether to use backticks
-#   TODO^4: DEBUG, if you call review with -i, it misinterprets it and fails forever, which is silly. We need to
-#   make sure extra flags aren't ending up somewhere they shouldn't.
-#   TODO^4: DEBUG: ...but, on the other hand, if you run 'review update-skiggety-utils --non-interactive',
-#   update-skiggety-utils will never get the --non-interactive flag
+
+# two about waking up:
 # TODO^8: we need a control key to wake it up and make it refresh immediately (accept a
 # control character or signal to refresh now)
+# TODO^8: use the 'rerun' or 'listen'  gem to watch the filesystem and restart progrom when there are changes? maybe
+# with a different command line option?
+
 # TODO: accept a flag to stop running if the wait gets longer than some specified amount
 # TODO: accept log file that logs output, changes, feequencies/counts, etc.
 # TODO: ensure we never mess with the colors, test with "review git diff"
-
-# TODO^6: use the 'rerun' or 'listen'  gem to watch the filesystem and restart progrom when there are changes? maybe
-# with a different command line option?
 
 class ReviewProgram
 
