@@ -26,7 +26,7 @@ Core Design Decisions and Questions:
   - This project uses, and helps the user use, several programming languages, since this project is a spawning ground for other projects.
   - There will be a bias towards certain tools that I prefer to use, but I'll try to make it as unobtrusive as possible. If you use bash and vim you will find extra goodies to make your life easier here, but if not there's still plenty here for you. I'm currently developing on a mac and doing some testing on a linux box, so there is bias from that, too.
   - "./PWD_BIN" should be in the user's in the PATH, which allows you to cd into a directory and run commands with simple technology-agnostic names, like "dashboard", "build", "precommit", "unit-test", "run", etc. Of course, this is scary because the meaning of these commands is changind depending on what local directory you're in, and you could run something you don't expect. To mitigate this concern, this will be configured with confirmation from the user, and PWD_BIN is a name chosen to conspicuously convey it's purpose.
-    - TODO^5: figure out how to tack one git repo on to another so you don't have ./PWD_BIN always showing up in the
+    - TODO^6: figure out how to tack one git repo on to another so you don't have ./PWD_BIN always showing up in the
       uncommitted files in other git repos
     - (?) How can I make this safer? (TODO^4: probably should use direnv: "https://direnv.net/docs/hook.html") Put ./users_safeword/../PWD_BIN" in the path instead? make everything in PWD a subcommand of some other command? Come up with some handy way to add/remove it from the path quickly (or add it temporarily)? I put skiggety-utils/PWD_BIN_FIREWALL in your path before ./PWD_BIN if I wanted to block certain things
   - This project uses and enables TODO's in code, ranked so that "TODO TODO" is equal to "TODO^2" and outranks "TODO". This way you can easily add a vote when something becomes and impediment or whatever, and the cream will rise to the top. The "todo" program is a key part of this and is shown in the "default_dashboard". You can also put "IGNORE_TODO" on the same line as "TODO" if you want to mention "TODO" without it being on the list (like this).
@@ -55,7 +55,8 @@ sorted ascending by votes by running 'todo' at the command line. Most of the tod
 codebase, but there are a few miscellaneous ones collected here:
 
 And by the way, a todo with a vote or 2 is really a "to-not-do". That's the key to the whole thing. Not doing everything
-you can, doing the things that come up often enough earn some votes.
+you can, doing the things that come up often enough earn some votes. In some cases, you might want
+to make that more explicit, turns out writing "TODO^0" works just fine. (IGNORE_TODO)
 
 - TODO^15 with Kevin: do rust things ...
   - TODO^15: do rust koans ( https://github.com/crazymykl/rust-koans ) so we can prepare to...

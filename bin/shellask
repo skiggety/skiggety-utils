@@ -19,7 +19,7 @@
 # because in some cases it's helpful to make a human decision a few times before you figure out how to teach^Wprogram
 # the computer.
 
-# TODO^3: figure out why this sporadically fails to set the prompt
+# TODO^5: figure out why this sporadically fails to set the prompt
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 
