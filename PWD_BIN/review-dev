@@ -5,4 +5,4 @@
 
 # TODO: consider splitting to default_ and normal version like dashboard and lint
 
-review -m 5 -M 900 dev
+review -m 4 -M 900 dev
