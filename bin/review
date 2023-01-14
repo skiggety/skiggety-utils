@@ -18,7 +18,7 @@ require 'optparse'
 # instead strive to make the default behavior of this, and review-dev, so reasonable that it's not required? Also, can I
 # make this exit gracefully when pkill runs (possibly with -HUP)?
 
-# TODO^6: accept --interactive ("-i") or --non-interactive ("-n"), to determine whether to use backticks
+# TODO^8: accept --interactive ("-i") or --non-interactive ("-n"), to determine whether to use backticks
 #   TODO^4: DEBUG, if you call review with -i, it misinterprets it and fails forever, which is silly. We need to
 #   make sure extra flags aren't ending up somewhere they shouldn't.
 #   TODO^4: DEBUG: ...but, on the other hand, if you run 'review update-skiggety-utils --non-interactive',
