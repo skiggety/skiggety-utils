@@ -18,12 +18,10 @@ require 'optparse'
 # instead strive to make the default behavior of this, and review-dev, so reasonable that it's not required? Also, can I
 # make this exit gracefully when pkill runs (possibly with -HUP)?
 
-# TODO^8: accept --interactive ("-i") or --non-interactive ("-n"), to determine whether to use backticks
-
 # two about waking up:
 # TODO^8: we need a control key to wake it up and make it refresh immediately (accept a
 # control character or signal to refresh now)
-# TODO^8: use the 'rerun' or 'listen'  gem to watch the filesystem and restart progrom when there are changes? maybe
+# TODO^9: use the 'rerun' or 'listen'  gem to watch the filesystem and restart progrom when there are changes? maybe
 # with a different command line option?
 
 # TODO: accept a flag to stop running if the wait gets longer than some specified amount
@@ -45,6 +43,9 @@ class ReviewProgram
     command = ARGV.map{ |a| "\"#{a}\"" }.join(' ')
 
     delay = @min_delay || 1
+
+    # TODO^8: accept --interactive ("-i") or --non-interactive ("-n"), to determine whether to use backticks. This
+    # presents the problem of how to grab the output though
 
     time_command do
       system(command)

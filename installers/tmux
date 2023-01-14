@@ -38,6 +38,7 @@ class TmuxInstaller
 
   def configure!
     if $interactive
+      # TODO^4: maybe use shellask, but don't assume user is ready to be launched into vim:
       assert_system("vim -d #{user_tmux_conf_path} #{template_tmux_conf_path}")
     else
       raise_interactive_only_configuration
