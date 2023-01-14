@@ -11,8 +11,6 @@
 # NOTE: you may have to run 'rbenv install 3.1.3' first for this demo to work, or change DESIRED_RUBY_VERSION to
 # one you have installed already.
 
-# TODO^2: test this in docker demo
-
 DESIRED_RUBY_VERSION = '3.1.3'
 puts 'DEBUG: ----------------------------------------'
 puts "DEBUG: in #{File.basename($PROGRAM_NAME)}, DESIRED_RUBY_VERSION is #{DESIRED_RUBY_VERSION}"

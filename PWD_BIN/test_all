@@ -44,6 +44,9 @@ function run_all_python_tests {
 }
 run_all_python_tests || accumulate_error "Python tests FAILED" # TODO: run ALL python tests"
 
+echo_divider_with_text "+-=======-" "version hacking"
+demo_python_version_hack || accumulate_error "demo_python_version_hack FAILED"
 demo_ruby_version_hack || accumulate_error "demo_ruby_version_hack FAILED"
+# RBENV_VERSION=2.7.6 demo_ruby_version_hack || accumulate_error "RBENV_VERSION=2.7.6 demo_ruby_version_hack FAILED"
 
 exit_if_any_accumulated_errors
