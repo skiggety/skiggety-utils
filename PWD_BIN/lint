@@ -15,15 +15,15 @@ generate_todo_report >/dev/null || accumulate_error 'could not generate todo rep
 echo "The most important todo is currently:"
 tail -n 1 todo_report/README.txt
 
+echo_divider_with_text "+-=======-" "pylint:"
+# TODO: abbreviate output?:
+# TODO^4 automatically scan all python files:
+# TODO^5: get in the habit of keeping everything clean and then use accumulate_error here:
+pylint --rcfile .pylintrc bin/todo lib/todo_line.py bin/demo_python_version_hack || warn_here 'TEMPORARILY IGNORING the fact that pylint reported ERRORS'
+
 echo_divider_with_text "+-=======-" "rubocop:"
 # TODO: call rupocop with -a OR -P depending on whether this script is in write mode or not (this script should have
 # that as a distinct mode like todo does)
 bundle exec rubocop -P --color || accumulate_error 'rubocop reported errors'
-
-echo_divider_with_text "+-=======-" "pylint:"
-# TODO: abbreviate output?:
-# TODO^4 automatically scan all python files:
-# TODO^7: get in the habit of keeping everything clean and then use accumulate_error here:
-pylint --rcfile .pylintrc bin/todo lib/todo_line.py bin/demo_python_version_hack || warn_here 'TEMPORARILY IGNORING the fact that pylint reported ERRORS'
 
 exit_if_any_accumulated_errors
