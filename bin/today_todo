@@ -2,6 +2,7 @@
 # TODO^4: rename? ("todo-today"?, "todoy"
 # TODO: flag to grep for and count a specific word, sort of like what I do for "NOW"
 # TODO: "-q" or "-n" flag to be quick, and skip the editor phase
+# TODO: how about a mode for the edit phase only?
 
 # TODO: this program needs to display some instructions so the user knows how to use it.
 # TODO: maybe during business hours, show results with "BUSINESS_HOURS" more prominently, and hide them otherwise
