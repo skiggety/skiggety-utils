@@ -10,9 +10,6 @@
 # -RI " $" .'. The grep will run repeatedly until you stop it, waiting a few seconds in between each run (this time will
 # adjust automatically.
 
-# TODO^15: rbenv version hack similar to what was done in bin/todo with DESIRED_PYTHON_VERSION, but beware of all the
-# trouble that caused
-
 require 'English' # needed for: $CHILD_STATUS.exitstatus
 
 require 'optparse'
@@ -20,10 +17,6 @@ require 'optparse'
 # TODO: would it be smart to have a cron job that runs 'pkill review' every day at ~7pm on my work laptop? Or should I
 # instead strive to make the default behavior of this, and review-dev, so reasonable that it's not required? Also, can I
 # make this exit gracefully when pkill runs (possibly with -HUP)?
-
-# TODO^18: avoid forcing the same version of ruby on programs that this may call (maybe be careful not to pass
-# rbenv-related environment variables down). Because it would be nice to be able to use "review dev" in other ruby
-# projects sometimes, like at work. I think I should do that ruby version hack first thought to learn what I'm doing.
 
 # TODO^6: accept --interactive ("-i") or --non-interactive ("-n"), to determine whether to use backticks
 #   TODO^4: DEBUG, if you call review with -i, it misinterprets it and fails forever, which is silly. We need to
@@ -47,6 +40,7 @@ class ReviewProgram
 
   def run
     parse_args
+    cleanup_rbenv_influence
 
     # TODO: the quotes in 'command' seem kind of excessive when you see them in the footer. How to safely/consistently
     # get rid of them:
@@ -103,6 +97,19 @@ class ReviewProgram
     # ...and I need to set it back or it screws up the output of pretty sleep and echo divider since they go back to the
     # beginning of the line
     ENV['POSIXLY_CORRECT'] = nil
+  end
+
+  # avoid forcing the same version of ruby on programs that this may call (be careful not to pass rbenv-related
+  # environment variables down). Because it would be nice to be able to use "review dev" in other ruby projects
+  # sometimes, like at work.
+  def cleanup_rbenv_influence
+    rbenv_root_dir = ENV.fetch('RBENV_ROOT', nil)
+    ["#{rbenv_root_dir}/bin", "#{rbenv_root_dir}/shims"].each do |dir|
+      path_as_array = ENV.fetch('PATH').split(':')
+      ENV['PATH'] = "#{dir}:#{ENV.fetch('PATH')}" if path_as_array.include?(dir)
+    end
+    ENV['RBENV_VERSION'] = nil
+    ENV['RBENV_DIR'] = nil
   end
 
   def time_command
