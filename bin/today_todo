@@ -57,9 +57,8 @@ function main {
 
     echo "It's time to compact todo's in $0"
     todo -wfq $EXCLUDE_DIR_ARGS
-    PAUSE_TO_READ=2
+    PAUSE_TO_READ=1
     if $interactive; then
-        sleep-verbose $PAUSE_TO_READ
         clear
     fi
 
