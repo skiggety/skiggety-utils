@@ -47,7 +47,7 @@ class ReviewProgram
 
     start_wake_on_filesystem_change # TODO^2: should this depend on a command line flag?
 
-    while should_continue_looping(@exit_val) && sleep_verbose(delay)
+    while should_continue_looping(@exit_val) && wakeable_sleep_verbose(delay)
       if @interactive
         fill_screen_interactive(command)
       else
@@ -147,7 +147,7 @@ class ReviewProgram
     listener.start
   end
 
-  def sleep_verbose(delay)
+  def wakeable_sleep_verbose(delay)
     # TODO: think about how it would be nice to set @wake_up_now = false before the command runs to catch filesystem
     # changes during the command run, but the command you're running will often touch the filesystem so it may be not
     # practical:
