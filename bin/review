@@ -40,7 +40,7 @@ class ReviewProgram
     # get rid of them:
     command = ARGV.map{ |a| "\"#{a}\"" }.join(' ')
 
-    delay = @min_delay || 1
+    delay = minimum_delay
 
     @output = ''
     fill_screen_interactive(command)
@@ -183,7 +183,7 @@ class ReviewProgram
   MULTIPLY_BY_DELAY = 1.10
   def adjust_delay(delay, change_detected, elapsed)
     if change_detected
-      @min_delay || 1
+      minimum_delay
     else
       # using elapsed time in here means commands that take longer will backoff for longer, which seems appropriate
       add_to_delay = (elapsed * 0.5).to_i + 1
@@ -192,6 +192,11 @@ class ReviewProgram
       result = [result, @max_delay].min if @max_delay
       result
     end
+  end
+
+  MINIMUM_DELAY = 1
+  def minimum_delay
+    @min_delay || MINIMUM_DELAY
   end
 
   # TODO^3: colorize output, esp on failure:
