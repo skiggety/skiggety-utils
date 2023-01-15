@@ -42,31 +42,32 @@ class ReviewProgram
 
     delay = @min_delay || 1
 
+    @output = ''
     fill_screen_interactive(command)
 
     start_wake # TODO^2: should this depend on a command line flag?
-    @output = ''
 
     while should_continue_looping(@exit_val) && sleep_verbose(delay)
-      # TODO^8: accept --interactive ("-i") or --non-interactive ("-n"), to determine whether to use backticks. This
-      # presents the problem of how to grab the output though
-      fill_screen_non_interactive(command)
+      if @interactive
+        fill_screen_interactive(command)
+      else
+        fill_screen_non_interactive(command)
+      end
       change_detected = calc_change_detected
       delay = adjust_delay(delay, change_detected, @ran_in_seconds)
     end
   end
 
   def parse_args
-    # TODO^3: non-interactive by default, intereactive mode for when the
-    # program might prompt you with something, and in that case backticks
-    # cannot be used:
     # TODO: how about a flag to turn off screen clearing. I might like to run: review --no-clear -m 300 git pretty-pull
+
     # NOTE: this is an example of what NOT to do, because we need to distinguish between arguments that are meant for
     # this program, and arguments that are part of the command: $interactive = !ARGV.delete('--non-interactive')
 
     # turns out this is important so the rest of the options get left alone and passed on to the next comand:
     ENV['POSIXLY_CORRECT'] = 'true'
 
+    @interactive = false
     OptionParser.new do |parser|
       parser.banner = "Usage: #{$PROGRAM_NAME} [options] command ..."
       parser.on('-m', '--min-delay MINIMUM', 'specify minimum delay in seconds') do |min|
@@ -74,6 +75,12 @@ class ReviewProgram
       end
       parser.on('-M', '--max-delay MAXIMUM', 'specify maximum delay in seconds') do |min|
         @max_delay = min.to_i
+      end
+      parser.on('-i', '--interactive', 'interactive mode') do
+        @interactive = true
+      end
+      parser.on('-n', '--non-interactive', 'non-interactive (normal) mode') do
+        @interactive = false
       end
     end.parse!(ARGV)
 
@@ -95,10 +102,13 @@ class ReviewProgram
     ENV['RBENV_DIR'] = nil
   end
 
+  # TODO: probably rename these methods:
   def fill_screen_interactive(command)
     time_command do
+      @last_output = @output
       @last_exit_val = @exit_val
       system(command)
+      @output = 'TODO: consider pulling some bs with tee to get the output'
       @exit_val = $CHILD_STATUS.exitstatus
     end
     show_footer(command)
@@ -143,7 +153,7 @@ class ReviewProgram
       delay_remaining -= 1
       slept_already += 1
     end
-    print "_...slept for #{slept_already}/#{delay} seconds.#{woke_up_message}}\033[0K\r"
+    print "_...slept for #{slept_already}/#{delay} seconds.#{woke_up_message}\033[0K\r"
     true
   end
 
