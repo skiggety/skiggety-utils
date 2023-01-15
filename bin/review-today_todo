@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+review -M 120 today_todo --non-interactive
