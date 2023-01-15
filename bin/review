@@ -196,9 +196,9 @@ class ReviewProgram
     end
   end
 
-  MINIMUM_DELAY = 1
+  DEFAULT_MINIMUM_DELAY = 1
   def minimum_delay
-    @min_delay || MINIMUM_DELAY
+    @min_delay || DEFAULT_MINIMUM_DELAY
   end
 
   # TODO^3: colorize output, esp on failure:
