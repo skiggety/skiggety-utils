@@ -55,6 +55,8 @@ from todo_line import TodoLine
 # TODO: maybe todo should suggest running todo -w when it notices simplifications it could be
 # making.
 
+# TODO: it would be cool to have a way to show a histogram of todos by votes
+
 # TODO: maybe todo should suggest -f option when you are using -w mode with manual confirmation for
 # each file.
 
@@ -217,13 +219,13 @@ def lines_from_file(full_file_path, keyword, ignore_keyword):
 
 # TODO: flags:
 
-  # TODO^6: highlight TODO's
-    # TODO^5: make sure the last line is highlighted. It's the most important todo
+  # TODO^7: highlight TODO's
+    # TODO^6: make sure the last line is highlighted. It's the most important todo
     # and your attention should be drawn to it.
-    # TODO^5: highlighting on or off. It should be on by default unless output is piped to a
+    # TODO^6: highlighting on or off. It should be on by default unless output is piped to a
     # file, like with grep and "--color" (or "--colour" )
 
-  # TODO^3: todo should accept a path ( to a file or directory) to use in place of "." for grep.
+  # TODO^4: todo should accept a path ( to a file or directory) to use in place of "." for grep.
   # This way you could run "todo bin/todo" and see the TODO^2's in this file cleanly without the
   # ingorable lines.
 
