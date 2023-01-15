@@ -1,4 +1,4 @@
-Here are the most important 5 todos, most important last, out of 408 total. (Do not edit, this file is generated)
+Here are the most important 5 todos, most important last, out of 409 total. (Do not edit, this file is generated)
 ================================================================================
 ./bin/todo:225:    # [01;31m[KTODO[m[K^6: highlighting on or off. It should be on by default unless output is piped to a
 ./bin/git-ready:16:# [01;31m[KTODO[m[K^7: git vimdiff --staged should be optional

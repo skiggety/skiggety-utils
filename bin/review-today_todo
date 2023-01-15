@@ -1,2 +1,6 @@
 #!/usr/bin/env bash
-review -M 120 today_todo --non-interactive
+
+# TODO: gotta rename this and today_todo. Underscores in the name are just too weird, especially when mixed with hyphens
+
+cd ~/today_todo
+review today_todo --non-interactive
