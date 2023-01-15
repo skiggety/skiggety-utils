@@ -173,7 +173,7 @@ class ReviewProgram
   end
 
   def running_message
-    @interactive ? '' : ', now running again in the background'
+    @interactive ? '' : ', NOW RUNNING again in the background'
   end
 
   def calc_change_detected
