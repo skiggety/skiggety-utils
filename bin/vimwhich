@@ -29,7 +29,7 @@ for target in "$@";do
         fi
         mkdir -p "$destination_dir"
     fi
-    destinations+=( "$destination" ) #; debug_eval_here destinations; pretty_sleep 5
+    destinations+=( "$destination" )
 
     # TODO^3: create $destination file from template if it doesn't exist and mark it executable
 

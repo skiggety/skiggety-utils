@@ -6,5 +6,5 @@ while "$@"
 do
     vimwhich "$1"
     echo "sleeping for 2 seconds, ctrl-c to quit"
-    pretty_sleep 2
+    sleep-verbose 2
 done

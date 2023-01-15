@@ -3,6 +3,9 @@
 # This script sleeps for a specified number of seconds, displaying progress as
 # it goes.
 
+# TODO^2?: show a clock, optionally
+# TODO^2?: integrate into a banner
+
 PRINT_NEWLINE=true
 if [ "$1" == "-n" ];then
     PRINT_NEWLINE=false
@@ -25,6 +28,4 @@ function main {
         echo
     fi
 }
-
-echo "# TODO^5: DELETE this script onnce you're sure it's not used" >> $0
 main "$@"

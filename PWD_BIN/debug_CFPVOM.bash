@@ -33,4 +33,4 @@ do
     exit_if_any_accumulated_errors
 done
 
-# TODO: DELETE this script when done
+# TODO^2: DELETE this script when done

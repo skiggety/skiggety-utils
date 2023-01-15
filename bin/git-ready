@@ -26,7 +26,7 @@ do
     # TODO^3: method extract:
     echo
     echo "running \"$command\" momentarily, press CTRL+C to stop..."
-    pretty_sleep 2
+    sleep-verbose 2
     $command || exit_with_error "Command \"$command\" failed."
 done
 
