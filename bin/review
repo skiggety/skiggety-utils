@@ -161,12 +161,16 @@ class ReviewProgram
       delay_remaining -= 1
       slept_already += 1
     end
-    print "_...slept for #{slept_already}/#{delay} seconds.#{woke_up_message}\033[0K\r"
+    print "_...slept for #{slept_already}/#{delay} seconds#{running_message}.#{woke_up_message}\033[0K\r"
     true
   end
 
   def woke_up_message
     @wake_up_now ? ' (WOKE UP on filesystem change)' : ''
+  end
+
+  def running_message
+    @interactive ? '' : ', now running again in the background'
   end
 
   def calc_change_detected
