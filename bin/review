@@ -45,7 +45,7 @@ class ReviewProgram
     @output = ''
     fill_screen_interactive(command)
 
-    start_wake # TODO^2: should this depend on a command line flag?
+    start_wake_on_filesystem_change # TODO^2: should this depend on a command line flag?
 
     while should_continue_looping(@exit_val) && sleep_verbose(delay)
       if @interactive
@@ -106,7 +106,7 @@ class ReviewProgram
     ENV['RBENV_DIR'] = nil
   end
 
-  # TODO: probably rename these methods:
+  # TODO: probably rename these two "fill screen" methods, and maybe DRY the insides of them too:
   def fill_screen_interactive(command)
     time_command do
       @last_output = @output
@@ -139,7 +139,8 @@ class ReviewProgram
     @ran_in_seconds = (@last_end_timestamp - @last_start_timestamp).to_i
   end
 
-  def start_wake
+  # TODO: maybe skip files that are gitignored?:
+  def start_wake_on_filesystem_change
     listener = Listen.to('.') do |_modified, _added, _removed|
       @wake_up_now = true if @wake_up_now == false
     end
@@ -147,6 +148,9 @@ class ReviewProgram
   end
 
   def sleep_verbose(delay)
+    # TODO: think about how it would be nice to set @wake_up_now = false before the command runs to catch filesystem
+    # changes during the command run, but the command you're running will often touch the filesystem so it may be not
+    # practical:
     @wake_up_now = false
     delay = delay.to_i # just making sure, don't want to get confused
     delay_remaining = delay
