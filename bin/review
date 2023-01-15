@@ -70,6 +70,10 @@ class ReviewProgram
     @interactive = false
     OptionParser.new do |parser|
       parser.banner = "Usage: #{$PROGRAM_NAME} [options] command ..."
+      parser.on('-h', '--help', 'show this help') do
+        puts parser
+        exit
+      end
       parser.on('-m', '--min-delay MINIMUM', 'specify minimum delay in seconds') do |min|
         @min_delay = min.to_i
       end
