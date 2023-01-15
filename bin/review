@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# TODO: possibly rename "delay" to sleep_interval or wait_time or something and use the language consistently.
+
 # This program displays output of a given command and refreshes periodically.  By default, the delay is dynamic so you
 # don't use up too many resources when nothing is changing but it is responsive when the output is changing.
 
@@ -40,21 +42,21 @@ class ReviewProgram
     # get rid of them:
     command = ARGV.map{ |a| "\"#{a}\"" }.join(' ')
 
-    delay = minimum_delay
+    @delay = minimum_delay
 
     @output = ''
     fill_screen_interactive(command)
 
     start_wake_on_filesystem_change # TODO^2: should this depend on a command line flag?
 
-    while should_continue_looping(@exit_val) && wakeable_sleep_verbose(delay)
+    while should_continue_looping(@exit_val) && wakeable_sleep_verbose(@delay)
       if @interactive
         fill_screen_interactive(command)
       else
         fill_screen_non_interactive(command)
       end
       change_detected = calc_change_detected
-      delay = adjust_delay(delay, change_detected, @ran_in_seconds)
+      adjust_delay!(change_detected, @ran_in_seconds)
     end
   end
 
@@ -181,16 +183,16 @@ class ReviewProgram
   end
 
   MULTIPLY_BY_DELAY = 1.10
-  def adjust_delay(delay, change_detected, elapsed)
+  def adjust_delay!(change_detected, elapsed)
     if change_detected
-      minimum_delay
+      @delay = minimum_delay
     else
       # using elapsed time in here means commands that take longer will backoff for longer, which seems appropriate
       add_to_delay = (elapsed * 0.5).to_i + 1
-      result = (MULTIPLY_BY_DELAY * delay).floor + add_to_delay
+      result = (MULTIPLY_BY_DELAY * @delay).floor + add_to_delay
       result = [result, @min_delay].max if @min_delay
       result = [result, @max_delay].min if @max_delay
-      result
+      @delay = result
     end
   end
 
