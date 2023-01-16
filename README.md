@@ -4,11 +4,12 @@ My collection of convenience scripts and configuration. Basically I checkout thi
 start to get everything the way I like it, including 3rd-party programs and my own stuff. I expect to use this as a
 spawning ground for other projects that will move on to their own repos.
 
-How to get started:
-===================
+## How to get started:
 
 There are two options, a docker demo to try it safely, or a normal mode to install skiggety-utils and other preferrred
-software on your machine. For the safe docker demo:
+software on your machine.
+
+For the safe docker demo:
 
 - git clone this project
 - Open a terminal and cd to this directory
@@ -22,23 +23,35 @@ software on your machine. For the safe docker demo:
 - run "./start"
 - Follow the prompts, instructions, and read the output. By the end, you should know what's going on.
 
-Core Design Decisions and Questions:
-======================
+## Design
+
+  This is a sandbox and a miscellaneous bin among other things, so there is no one design per se, but there are some
+  core ideas:
 
   - This project uses, and helps the user use, several programming languages, since this project is a spawning ground for other projects.
-  - There will be a bias towards certain tools that I prefer to use, but I'll try to make it as unobtrusive as possible. If you use bash and vim you will find extra goodies to make your life easier here, but if not there's still plenty here for you. I'm currently developing on a mac and doing some testing on a linux box, so there is bias from that, too.
-  - "./PWD_BIN" should be in the user's in the PATH, which allows you to cd into a directory and run commands with simple technology-agnostic names, like "dashboard", "build", "precommit", "unit-test", "run", etc. Of course, this is scary because the meaning of these commands is changind depending on what local directory you're in, and you could run something you don't expect. To mitigate this concern, this will be configured with confirmation from the user, and PWD_BIN is a name chosen to conspicuously convey it's purpose.
-    - TODO^7: figure out how to tack one git repo on to another so you don't have ./PWD_BIN always showing up in the
+  - These tools are opinionated, in general. This is a personal sandbox after all
+    - vim is good, especially when appropriately accessorized.
+    - Terminals are nice, in all shapes and sizes. The order of what's displayed in
+      [PWD_BIN/dashboard](PWD_BIN/dashboard) and [PWD_BIN/dev](PWD_BIN/dev) reflects this, in that you always see the
+      most important stuff that your terminal has room for. [todo](bin/todo) is so terminal-friendly that it sorts
+      results in reverse, so that the most important information hasn't scrolled off the screen ('top' doesn't even mean
+      'most important' anymore, how strange)
+    - the default git ui requires typing too many commands
+    are pretty clear.
+  - reducing the number of steps for developer tasks is common theme. Most of the git subcommands are about that. 'review' manages one
+    terminal for you so you don't have to keep switching back to it.
+  - "./PWD_BIN" should be in the user's in the PATH, which allows you to cd into a directory and run commands with simple technology-agnostic names, like "dev" "dashboard", "build", "precommit", "unit-test", "run", etc. This is all about what I think of as developer ergonomics, because it helps fit the project to the developer. For example, I tend to put whatever my current development cycle is into one place and call it ./PWD_BIN/dev (under whatever project), which means I can come back to that project with faded memories and quickly get going again my (maybe reading first) and running 'dev'. Of course, this is scary because the meaning of these commands is changind depending on what local directory you're in, and you could run something you don't expect. To mitigate this concern, this will be configured with confirmation from the user, and PWD_BIN is a name chosen to conspicuously convey it's purpose.
+    - TODO^7: by the way, figure out how to tack one git repo on to another so you don't have ./PWD_BIN always showing up in the
       uncommitted files in other git repos. This is also important so git-vimchanged can work properly when you add
       your own PWD_BIN with convenience scripts to another repo
-    - (?) How can I make this safer? (TODO^4: probably should use direnv: "https://direnv.net/docs/hook.html") Put ./users_safeword/../PWD_BIN" in the path instead? make everything in PWD a subcommand of some other command? Come up with some handy way to add/remove it from the path quickly (or add it temporarily)? I put skiggety-utils/PWD_BIN_FIREWALL in your path before ./PWD_BIN if I wanted to block certain things
+    - (?) How can I make this safer? (TODO^4: consider direnv: "https://direnv.net/docs/hook.html") Put ./users_safeword/../PWD_BIN" in the path instead? make everything in PWD a subcommand of some other command? Come up with some handy way to add/remove it from the path quickly (or add it temporarily)? I put skiggety-utils/PWD_BIN_FIREWALL in your path before ./PWD_BIN if I wanted to block certain things
+
   - This project uses and enables TODO's in code, ranked so that "TODO TODO" is equal to "TODO^2" and outranks "TODO". This way you can easily add a vote when something becomes and impediment or whatever, and the cream will rise to the top. The "todo" program is a key part of this and is shown in the "default_dashboard". You can also put "IGNORE_TODO" on the same line as "TODO" if you want to mention "TODO" without it being on the list (like this).
 
-Programs you'll find in here:
-==================================
+## Programs you'll find in here:
 
 - [chbs](bin/chbs) A password generator based on xkcd's memorable "correct horse battery staple" cartoon for the few
-  passwords that can't only be in your password manager and must be remembered.
+  passwords that must be remembered so they can get you into your computer or password manager.
 - [demo_in_docker](./demo_in_docker) - try skiggety-utils in a safe sandbox!
 - [PWD_BIN/dev](PWD_BIN/dev) - The basic dev cycle I use to develop this suite most of the time. if tests work, it moves
   on to linting, then dashboard, etc. Good when combined with review as in 'review dev'. Prone to lots of change but I
@@ -49,7 +62,7 @@ Programs you'll find in here:
 - [demo_ruby_version_hack](bin/demo_ruby_version_hack) and [demo_python_version_hack](bin/demo_python_version_hack)
   re-run themselves in the language version of their choice using rbenv and pyenv. The fact that you can do it doesn't
   mean you should.
-- various git subcommands:
+- various *git* subcommands:
   - [git-attempt-checkout](bin/git-attempt-checkout) - finds a branch by substring and checks it out quickly
   - [git-pretty-pull](bin/git-pretty-pull) - git pull with a little bit of extra information.
   - [git-push-new-branch](bin/git-push-new-branch) - basically just 'git checkout -b' and 'git push -u' put together, a
@@ -61,7 +74,9 @@ Programs you'll find in here:
   - [git-vimchanged](bin/git-vimchanged) - quickly open up all the files that have local changes in my favorite editor
   - [git-vimdiff](bin/git-vimdiff) - my usual diff util as it's own explicit subcommand in case you want to have a more
     read-only diff tool as your other difftool
-- [grim](bin/grim) - GRep for string and open in vIM.
+- [grim](bin/grim) - GRep for string and open in vIM. This is what you use when you can remember a unique key word or
+  phrase in the text location where you want to edit quicker than you can remember the file name. Also good for shotgun
+  surgery since you can find all occurrences quickly.
 - [review](bin/review) - A program that displays output of other programs and refreshes on a delay with a backoff.
 - [shebang](bin/shebang) - quickly produces a shebang line for the top of your script. Try
 'shebang env bash > my_new_script' to get the idea
@@ -73,12 +88,18 @@ Programs you'll find in here:
 - [sleep-verbose](bin/sleep-verbose) - like 'sleep' but with a visual countdown.
 - [vimwhich](bin/vimwhich) - quickly edit files that are in your path (and new files)
 
-TODO's:: (run 'todo' or 'dashboard' for the full sorted list) <!-- (IGNORE_TODO) -->
-===============================================================
+## TODO list <!-- IGNORE_TODO -->
 
-NOTE: look in [todo_report/README.txt](todo_report/README.txt) for the 5 most important todo items, or see the whole list
+The todo list is denoted with the 'TODO' <!--IGNORE_TODO--> keyword and managed by the 'todo' program.
+
+### The most important tasks 'to do' next...
+...are in [todo_report/README.txt](todo_report/README.txt), and they are sorted in *descending* order.
+
+### The full list
 sorted ascending by votes by running 'todo' at the command line. Most of the todo list is distributed around the
 codebase, but there are a few miscellaneous ones collected here:
+
+ (run 'todo' or 'dashboard' for the full sorted list) <!-- (IGNORE_TODO) -->
 
 And by the way, a todo with a vote or 2 is really a "to-not-do". That's the key to the whole thing. Not doing everything
 you can, doing the things that come up often enough earn some votes. In some cases, you might want
