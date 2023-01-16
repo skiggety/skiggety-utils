@@ -13,7 +13,7 @@ if ! [ -z "$SKIGGETY_UTILS_DONOR_DIR" ]; then
     diff -rq --exclude=.DS_Store --exclude=.git $THIS_DIR/.. $SKIGGETY_UTILS_DONOR_DIR | grep -v "^Only in $THIS_DIR/.." | grep --color=always '\(differ\|Only\)' | head -n 5
 fi
 
-echo_divider_with_text "-=" "TODO's:" # IGNORE_TODO
+echo_divider_with_text "-=" "TODO's, just the 5 most important, ascending:" # IGNORE_TODO
 if [ -f ./todo_report/README_in_color.txt ]; then
     tail -n 5 ./todo_report/README_in_color.txt
 else

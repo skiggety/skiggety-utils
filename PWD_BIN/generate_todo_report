@@ -15,7 +15,7 @@ todo_report_whole="$(todo --exclude-dir "$TODO_REPORT_DIR" | grep -v ".gitignore
 todo_report_body="$(echo "$todo_report_whole" | tail -n $TODO_REPORT_LINES )"
 todo_report_color_body="$(echo "$todo_report_body" |  grep --color=always TODO )"
 todo_report_linecount=$(echo "$todo_report_whole" | wc -l | sed 's/^[ \t]*//')
-todo_header="Here are the most important $TODO_REPORT_LINES todos, most important last, out of ${todo_report_linecount##*()} total. (Do not edit, this file is generated)"
+todo_header="Here are the most important $TODO_REPORT_LINES todos, ascending, out of ${todo_report_linecount##*()} total. (Do not edit, this file is generated)"
 
 echo "$todo_header" > $TODO_REPORT_FILE
 echo "$todo_header" > $TODO_REPORT_COLOR_FILE

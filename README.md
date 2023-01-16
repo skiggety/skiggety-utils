@@ -93,7 +93,7 @@ For the safe docker demo:
 The todo list is denoted with the 'TODO' <!--IGNORE_TODO--> keyword all over code and managed by the 'todo' program.
 
 ### The most important tasks 'to do' next...
-...are in [todo_report/README.txt](todo_report/README.txt), and they are sorted in *descending* order. Note the filename
+...are in [todo_report/README.txt](todo_report/README.txt), and they are sorted in *ascending* order. Note the filename
 and line number pointing to the origin of each item.
 
 ### The full list ..
