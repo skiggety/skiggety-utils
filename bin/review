@@ -6,6 +6,14 @@
 # This program displays output of a given command and refreshes periodically.  By default, the delay is dynamic so you
 # don't use up too many resources when nothing is changing but it is responsive when the output is changing.
 
+# Ok, that's the dry version. Here's the real version. There's this common pattern where you have one window with your
+# editor, and another terminal window where you run the thing. You know, whatever it is. It could be as simple as 'ls',
+# but usually it's something like 'rspec spec/this/one/file.rb' or 'pylint <BLAH> <BLAH>' or 'do-my-usual-stuff.bash'.
+# So, the point of 'review' is that it will manage that terminal window for you so you don't have to keep switching back
+# and forth.  you run 'review my-command my commands args' and it takes care of running it over and over, so you don't
+# have to.  Often 'my-command' would be a script you have open in your editor, so you really don't have to switch
+# windows.
+
 # For example, lets say you want to grep your text files for trailing spaces, you could do so with the command 'grep -RI
 # " $" .', but it might be nice to keep running that command and updating a terminal with fresh output while you
 # eliminate the trailing spaces in another terminal. In that case, prepend "review" to the command to get 'review grep
