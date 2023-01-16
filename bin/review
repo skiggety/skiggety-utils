@@ -183,13 +183,17 @@ class ReviewProgram
     change_detected
   end
 
-  MULTIPLY_BY_DELAY = 1.10
+  # MULTIPLY_BY_DELAY has been dialed in based on real usage. There is no magic number. It should
+  # always be greater than 1. Make it bigger to save cpu, and smaller to make this program more
+  # responsive. Now that we wake up on filesystem changes, this can be a little bit larger:
+  MULTIPLY_BY_DELAY = 1.25
+
   def adjust_delay!(change_detected, command_run_time)
     if change_detected
       @delay = minimum_delay
     else
-      # using command_run_time time in here means commands that take longer will backoff for longer,
-      # which seems appropriate:
+      # Using command_run_time time in here means commands that take longer will backoff for longer, which seems
+      # appropriate, since we can run quick things more often without using too much cpu/battery:
       add_to_delay = (command_run_time * 0.5).to_i + 1
       result = (MULTIPLY_BY_DELAY * @delay).floor + add_to_delay
       result = [result, @min_delay].max if @min_delay
