@@ -26,26 +26,48 @@ Core Design Decisions and Questions:
   - This project uses, and helps the user use, several programming languages, since this project is a spawning ground for other projects.
   - There will be a bias towards certain tools that I prefer to use, but I'll try to make it as unobtrusive as possible. If you use bash and vim you will find extra goodies to make your life easier here, but if not there's still plenty here for you. I'm currently developing on a mac and doing some testing on a linux box, so there is bias from that, too.
   - "./PWD_BIN" should be in the user's in the PATH, which allows you to cd into a directory and run commands with simple technology-agnostic names, like "dashboard", "build", "precommit", "unit-test", "run", etc. Of course, this is scary because the meaning of these commands is changind depending on what local directory you're in, and you could run something you don't expect. To mitigate this concern, this will be configured with confirmation from the user, and PWD_BIN is a name chosen to conspicuously convey it's purpose.
-    - TODO^6: figure out how to tack one git repo on to another so you don't have ./PWD_BIN always showing up in the
-      uncommitted files in other git repos
+    - TODO^7: figure out how to tack one git repo on to another so you don't have ./PWD_BIN always showing up in the
+      uncommitted files in other git repos. This is also important so git-vimchanged can work properly when you add
+      your own PWD_BIN with convenience scripts to another repo
     - (?) How can I make this safer? (TODO^4: probably should use direnv: "https://direnv.net/docs/hook.html") Put ./users_safeword/../PWD_BIN" in the path instead? make everything in PWD a subcommand of some other command? Come up with some handy way to add/remove it from the path quickly (or add it temporarily)? I put skiggety-utils/PWD_BIN_FIREWALL in your path before ./PWD_BIN if I wanted to block certain things
   - This project uses and enables TODO's in code, ranked so that "TODO TODO" is equal to "TODO^2" and outranks "TODO". This way you can easily add a vote when something becomes and impediment or whatever, and the cream will rise to the top. The "todo" program is a key part of this and is shown in the "default_dashboard". You can also put "IGNORE_TODO" on the same line as "TODO" if you want to mention "TODO" without it being on the list (like this).
 
-Cool Programs you'll find in here:
+Programs you'll find in here:
 ==================================
 
-- [demo_in_docker](./demo_in_docker) - try skiggety-utils in a safe sandbox!
-- [duh](bin/duh) - Show Directory, Username, and Hostname (in scp format). Useful in prompts.
-- [default_dashboard](bin/default_dashboard) - Show a bunch of useful information for the current directory, especially if it's a git project. Also can be called by calling 'dashboard' if you don't implement your own ./PWD_BIN/dashboard 
-- [grim](bin/grim) - GRep for string and open in vIM.
-- [sleep-verbose](bin/sleep-verbose) - like 'sleep' but with a visual countdown.
-- [vimwhich](bin/vimwhich) - quickly edit files that are in your path (and new files)
-- [todo](bin/todo) - Show TODO's, sorted by number of votes <!-- (IGNORE_TODO) -->
-- [review](bin/review) - A program that displays output of other programs and refreshes on a delay with a backoff.
-- [dashboard](PWD_BIN/dashboard) A overrideable program that summarizes the overall status for one directory location.
 - [chbs](bin/chbs) A password generator based on xkcd's memorable "correct horse battery staple" cartoon for the few
   passwords that can't only be in your password manager and must be remembered.
-- gol - Short for "Git Off my Lawn", this would be an opinionated command line tool for efficiently dealing with everyday git operations. Not written yet (TODO)
+- [demo_in_docker](./demo_in_docker) - try skiggety-utils in a safe sandbox!
+- [PWD_BIN/dev](PWD_BIN/dev) - The basic dev cycle I use to develop this suite most of the time. if tests work, it moves
+  on to linting, then dashboard, etc. Good when combined with review as in 'review dev'. Prone to lots of change but I
+  try to keep it fast, deterministic, and concise.
+- [duh](bin/duh) - Show Directory, Username, and Hostname (in scp format). Useful in prompts.
+- [dashboard](PWD_BIN/dashboard) A overrideable program that summarizes the overall status for one directory location.
+- [default_dashboard](bin/default_dashboard) - Show a bunch of useful information for the current directory, especially if it's a git project. Also can be called by calling 'dashboard' if you don't implement your own ./PWD_BIN/dashboard 
+- [demo_ruby_version_hack](bin/demo_ruby_version_hack) and [demo_python_version_hack](bin/demo_python_version_hack)
+  re-run themselves in the language version of their choice using rbenv and pyenv. The fact that you can do it doesn't
+  mean you should.
+- various git subcommands:
+  - [git-attempt-checkout](bin/git-attempt-checkout) - finds a branch by substring and checks it out quickly
+  - [git-pretty-pull](bin/git-pretty-pull) - git pull with a little bit of extra information.
+  - [git-push-new-branch](bin/git-push-new-branch) - basically just 'git checkout -b' and 'git push -u' put together, a
+    way to create matching branches locally and upstream as one step once you decide th name
+  - [git-put](bin/git-put) - git commiT and PUsh in one step
+  - [git-ready](bin/git-ready) - check over your changes and then commit and push them. One script to run to get my
+    changes putshed up when they are working on disk, even if I'm not going to commit every last line.
+  - [git-subtract](bin/git-subtract) - just the opposite of 'git add', lol
+  - [git-vimchanged](bin/git-vimchanged) - quickly open up all the files that have local changes in my favorite editor
+  - [git-vimdiff](bin/git-vimdiff) - my usual diff util as it's own explicit subcommand in case you want to have a more
+    read-only diff tool as your other difftool
+- [grim](bin/grim) - GRep for string and open in vIM.
+- [review](bin/review) - A program that displays output of other programs and refreshes on a delay with a backoff.
+- [shebang](bin/shebang) - quickly produces a shebang line for the top of your script. Try
+'shebang env bash > my_new_script' to get the idea
+- [shellask](bin/shellask) - ask/assign the user a question/task and give them a shell to answer/accomplish it. Works
+  for stubbing out functionality, as a shell breakpoint, or for setting yourself reminders that can nest.
+- [todo](bin/todo) - Show and lint TODO's, sorted by number of votes <!-- (IGNORE_TODO) -->
+- [sleep-verbose](bin/sleep-verbose) - like 'sleep' but with a visual countdown.
+- [vimwhich](bin/vimwhich) - quickly edit files that are in your path (and new files)
 
 TODO's:: (run 'todo' or 'dashboard' for the full sorted list) <!-- (IGNORE_TODO) -->
 ===============================================================
@@ -91,3 +113,4 @@ to make that more explicit, turns out writing "TODO^0" works just fine. (IGNORE_
 - TODO: is there a way to commit TODO's somewhere other than local, but not show them publicly on github (I have gitignore files available, but a branching convention might be ghood for keeping them in code)?
 - TODO: An [opinionated] tool for automatically seeding/templating new projects
 - TODO: utility for timestamping [log] output like this: https://serverfault.com/questions/310098/how-to-add-a-timestamp-to-bash-script-log
+- TODO?: gol - Short for "Git Off my Lawn", this would be an opinionated command-line front end for git.
