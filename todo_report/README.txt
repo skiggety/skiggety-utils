@@ -1,4 +1,4 @@
-Here are the most important 5 todos, most important last, out of 410 total. (Do not edit, this file is generated)
+Here are the most important 5 todos, most important last, out of 408 total. (Do not edit, this file is generated)
 ================================================================================
 ./bin/git-ready:16:# TODO^7: git vimdiff --staged should be optional
 ./bin/todo:223:  # TODO^7: highlight TODO's
