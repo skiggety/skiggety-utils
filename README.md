@@ -99,10 +99,13 @@ and line number pointing to the origin of each item.
 ### The full list ..
 ...can be seen by running 'todo' at the command line from within this directory.
 
-And by the way, a todo with a vote or 2 is really a "to-not-do". That's the key to the whole thing. Not doing everything
-you can, doing the things that come up often enough earn some votes. In some cases, you might want
-to make that more explicit, turns out writing "TODO^0" works just fine. (IGNORE_TODO) So you don't really need to look a
-t the full list, just a screen-full or so.
+And by the way, a todo with a vote or 2 is really a "to-not-do", or a
+"to-do-if-you-are-in-the-neighborhood-and-it-would-be-wicked-easy". That's the key to the whole thing. Not doing
+everything you can, doing the things that come up often enough earn some votes. In some cases, you might want to make
+that more explicit, and it turns out writing "TODO^0" <!-- IGNORE_TODO --> works just fine for those cases when you
+really want to make sure you remember not do it.
+
+So anyway, you don't really need to look a t the full list, just a screen-full or so.
 
 ### Miscellaneous
 
