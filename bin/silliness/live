@@ -2,6 +2,8 @@
 
 # Self, program thyself
 
+# TODO: rename to something far sillier: "ask-self-to-do-stuff", I dunno.
+
 # This came in handy when I went through a phase of wanting to do nothing but code. This program uses shellask to prompt
 # me to do a tolerable mix of stuff. meant for running repeatedly.
 
@@ -12,6 +14,8 @@ shellask 'do one act of self care or something on the habit tracker' || accumula
 shellask 'do another act of self care or something on the habit tracker' || accumulate_error 'missed a habit'
 
 #### Today's Todo List #########################################################
+# TODO: maybe something more like 5.times do today_todo; shellask work on your one of your top 3 todos and downvote it
+# if appropriate:
 today_todo --non-interactive
 shellask 'run today_todo once or twice to make sure you are ready to focus on the right stuff' || \
     accumulate_error 'did not get tasks organized'

@@ -25,7 +25,7 @@ require 'English' # needed for: $CHILD_STATUS.exitstatus
 require 'optparse'
 require 'listen'
 
-# TODO^2: would it be smart to have a cron job that runs 'pkill review' every day at ~7pm on my work laptop? Or should I
+# TODO^3: would it be smart to have a cron job that runs 'pkill review' every day at ~7pm on my work laptop? Or should I
 # instead strive to make the default behavior of this, and review-dev, so reasonable that it's not required? Also, can I
 # make this exit gracefully when pkill runs (possibly with -HUP)?
 
@@ -33,7 +33,7 @@ require 'listen'
 # to refresh now), but we might not need it now that we're 'listening' to the file system
 
 # TODO: accept a flag to stop running if the wait gets longer than some specified amount
-# TODO: accept log file that logs output, changes, feequencies/counts, etc.
+# TODO: accept log file that logs output, changes, frequencies/counts, etc.
 # TODO: ensure we never mess with the colors, test with "review git diff"
 
 # TODO: rubocop says this class is long (see .rubocop_todo.yml), is parse_args the part to extract?
@@ -47,8 +47,6 @@ class ReviewProgram
     parse_args
     cleanup_rbenv_influence
 
-    # TODO^3: the quotes in 'command' seem kind of excessive when you see them in the footer. How to safely/consistently
-    # get rid of them:
     command = ARGV.map{ |a| "\"#{a}\"" }.join(' ')
 
     @delay = minimum_delay
