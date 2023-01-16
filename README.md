@@ -90,20 +90,23 @@ For the safe docker demo:
 
 ## TODO list <!-- IGNORE_TODO -->
 
-The todo list is denoted with the 'TODO' <!--IGNORE_TODO--> keyword and managed by the 'todo' program.
+The todo list is denoted with the 'TODO' <!--IGNORE_TODO--> keyword all over code and managed by the 'todo' program.
 
 ### The most important tasks 'to do' next...
-...are in [todo_report/README.txt](todo_report/README.txt), and they are sorted in *descending* order.
+...are in [todo_report/README.txt](todo_report/README.txt), and they are sorted in *descending* order. Note the filename
+and line number pointing to the origin of each item.
 
-### The full list
-sorted ascending by votes by running 'todo' at the command line. Most of the todo list is distributed around the
-codebase, but there are a few miscellaneous ones collected here:
-
- (run 'todo' or 'dashboard' for the full sorted list) <!-- (IGNORE_TODO) -->
+### The full list ..
+...can be seen by running 'todo' at the command line from within this directory.
 
 And by the way, a todo with a vote or 2 is really a "to-not-do". That's the key to the whole thing. Not doing everything
 you can, doing the things that come up often enough earn some votes. In some cases, you might want
-to make that more explicit, turns out writing "TODO^0" works just fine. (IGNORE_TODO)
+to make that more explicit, turns out writing "TODO^0" works just fine. (IGNORE_TODO) So you don't really need to look a
+t the full list, just a screen-full or so.
+
+### Miscellaneous
+
+These ideas don't have a code location, so they go here:
 
 - TODO: with Kevin: do rust things ...
   - TODO^15: do [rust koans](https://github.com/crazymykl/rust-koans) (with Kevin) so we can prepare to...

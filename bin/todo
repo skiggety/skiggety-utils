@@ -2,7 +2,8 @@
 """show TODO's in code (unless they say IGNORE_TODO on the same line, like this), sorted by votes"""
 
 # In skiggety-utils, this program basically takes the place of a bug tracking system. It's a
-# good-enough solution, since I am my own client.
+# good-enough solution, since I am my own client. I just vote when stuff bothers me, this program
+# shows me what is worth spending time on.
 
 import os
 import platform
