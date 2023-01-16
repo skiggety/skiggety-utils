@@ -1,8 +1,8 @@
 # skiggety-utils
 
-My collection of convenience scripts and configuration
-
-This is top-down programming from the very top. The first thing I do on a new computer should be to check this out and run it. It should be flexible enough that other people with different preferences can use it too, but the core mission is for myself. Once run, I should have my programs and utilities set up.
+My collection of convenience scripts and configuration. Basically I checkout this git repo on a new computer and run
+start to get everything the way I like it, including 3rd-party programs and my own stuff. I expect to use this as a
+spawning ground for other projects that will move on to their own repos.
 
 How to get started:
 ===================
@@ -10,15 +10,17 @@ How to get started:
 There are two options, a docker demo to try it safely, or a normal mode to install skiggety-utils and other preferrred
 software on your machine. For the safe docker demo:
 
-- Open a terminal
-- cd to this directory (where you checked out or downloaded this project)
+- git clone this project
+- Open a terminal and cd to this directory
 - run "./demo_in_docker"
-  - Follow the prompts, instructions, and read the output. By the end, you should know what's going on.
+- Follow the prompts, instructions, and read the output. By the end, you should know what's going on.
 
-- Open a terminal
-- cd to this directory (where you checked out or downloaded this project)
+...or for the full experience:
+
+- git clone this project
+- Open a terminal and cd to this directory
 - run "./start"
-  - Follow the prompts, instructions, and read the output. By the end, you should know what's going on.
+- Follow the prompts, instructions, and read the output. By the end, you should know what's going on.
 
 Core Design Decisions and Questions:
 ======================
@@ -65,7 +67,9 @@ Programs you'll find in here:
 'shebang env bash > my_new_script' to get the idea
 - [shellask](bin/shellask) - ask/assign the user a question/task and give them a shell to answer/accomplish it. Works
   for stubbing out functionality, as a shell breakpoint, or for setting yourself reminders that can nest.
-- [todo](bin/todo) - Show and lint TODO's, sorted by number of votes <!-- (IGNORE_TODO) -->
+- [todo](bin/todo) - Show and lint TODO's, sorted by number of votes. <!-- (IGNORE_TODO) --> This has evolved to suit my
+  own usage. Basically I vote when something bugs me and this program shows me what I have wanted the most over time so
+  I can work on that.
 - [sleep-verbose](bin/sleep-verbose) - like 'sleep' but with a visual countdown.
 - [vimwhich](bin/vimwhich) - quickly edit files that are in your path (and new files)
 
