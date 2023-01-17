@@ -85,7 +85,8 @@ For the safe docker demo:
 - [todo](bin/todo) - Show and lint TODO's, sorted by number of votes. <!-- (IGNORE_TODO) --> This has evolved to suit my
   own usage. Basically I vote when something bugs me and this program shows me what I have wanted the most over time so
   I can work on that.
-- [sleep-verbose](bin/sleep-verbose) - like 'sleep' but with a visual countdown.
+- [sleep-verbose](bin/sleep-verbose) - like 'sleep' but with a visual countdown, because I want details if I have to
+  wait.
 - [vimwhich](bin/vimwhich) - quickly edit files that are in your path (and new files)
 
 ## TODO list <!-- IGNORE_TODO -->
