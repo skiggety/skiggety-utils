@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# TODO: ask-to-run could be a similar script, using shellask and used by today_todo & ./start
+
+echo "Running \"$@\" momentarily, press CTRL+C to stop..."
+sleep-verbose 2
+$@
