@@ -13,26 +13,30 @@ function main {
         fi
     done
 
-    # TODO^6: un-loop:
-    # TODO^10: git vimdiff --staged should be optional
-    # TODO^2: if the remote branch doesn't exist yet, we should skip trying git pull, since it will fail anyway
-    # TODO: stop before vimdiff if there is no git diff
-    for command in \
-        'git add -p' \
-        'git vimdiff --staged' \
-        "git commit $GIT_COMMIT_OPTIONS" \
-        'git pull' \
-        'git push -u'
-    do
-        echo
-        hesitate-and-run $command || exit_with_error "Command \"$command\" FAILED"
-    done
+    hesitate-and-run-or-fail git add -p
+
+    shellask "Are your changes what you want? (use 'git diff --staged' or 'git vimdiff --staged')" || \
+        exit_with_error "Prepare your changes the way you want and then try $(basename $0) again."
+
+    echo
+    hesitate-and-run-or-fail git commit $GIT_COMMIT_OPTIONS
+
+    # TODO^3: if the remote branch doesn't exist yet, we should skip trying git pull, since it will fail anyway
+    echo
+    hesitate-and-run-or-fail git pull
+
+    echo
+    hesitate-and-run-or-fail git push -u
 
     echo
     git -c color.ui=always --no-pager log --oneline --decorate=short origin/HEAD~..HEAD -n 3
 
     echo
     echo "...finished '$(basename "$0")'."
+}
+
+function hesitate-and-run-or-fail {
+   hesitate-and-run $@ || exit_with_error "Command \"$@\" FAILED"
 }
 
 main "$@"
