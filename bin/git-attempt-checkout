@@ -5,8 +5,11 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash
 
 SEARCH="$1"
-BRANCHES="$(git branch -a | grep $SEARCH | grep remotes/origin/ | awk -F/ '{print $3}' )"
-BRANCHES_COUNT="$(echo $BRANCHES | wc -w)"
+
+REMOTE_BRANCHES="$(git branch -a | grep $SEARCH | grep remotes/origin/ | awk -F/ '{print $3}' )"
+LOCAL_BRANCHES="$(git branch -a | grep $SEARCH | grep -v remotes/origin/ | awk '{print $1}')"
+BRANCHES="$(echo "${REMOTE_BRANCHES}${newline}${LOCAL_BRANCHES}" | sort | uniq)"
+BRANCHES_COUNT="$(echo $BRANCHES | wc -w | awk '{print $1}')"
 
 if [ $BRANCHES_COUNT == 0 ]; then
     exit_with_error "no branches found"
