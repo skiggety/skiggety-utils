@@ -164,7 +164,7 @@ class ReviewProgram
     delay = delay.to_i # just making sure, don't want to get confused
     delay_remaining = delay
     slept_already = 0
-    while delay_remaining.positive? && @wake_up_now == false
+    while delay_remaining.positive? && (slept_already < @min_delay || @wake_up_now == false)
       print "_...sleeping for #{delay_remaining}/#{delay} seconds...\033[0K\r"
       sleep 1
       delay_remaining -= 1
