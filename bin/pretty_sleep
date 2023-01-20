@@ -26,5 +26,8 @@ function main {
     fi
 }
 
-echo "# TODO^5: DELETE this script onnce you're sure it's not used" >> $0
+# TODO^6: DELETE this script once you're sure it's not used
+echo "# oops, ran \"$0 $*\" at $(date)" >> $0
 main "$@"
+exit_with_error "oops, please use sleep-verbose instead of pretty_sleep"
+
