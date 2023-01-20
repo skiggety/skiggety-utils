@@ -23,7 +23,7 @@ function main {
 
     # TODO^3: if the remote branch doesn't exist yet, we should skip trying git pull, since it will fail anyway
     echo
-    hesitate-and-run-or-fail git pull
+    hesitate-and-run git pull
 
     echo
     hesitate-and-run-or-fail git push -u
