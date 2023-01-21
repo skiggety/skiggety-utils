@@ -37,7 +37,7 @@ fi
 
 DO_NOT_ADD="$(git diff --inter-hunk-context=1 | grep '^[+].*[X]XX')"
 if ! [ -z "$DO_NOT_ADD" ]; then
-    echo_divider_with_text "!" "DO NOT ADD (X""XX) :"
+    echo_divider_with_text '!' 'DO NOT ADD (X''XX) :' | grep --color=always 'XX''X'
     echo_error "$DO_NOT_ADD"
 fi
 
