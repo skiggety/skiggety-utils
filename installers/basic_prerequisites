@@ -56,21 +56,21 @@ function main {
     fi
     # fi
 
-    # homebrew
+    # Homebrew
     if on_mac_os;then
-        echo "Installing latest homebrew"
+        echo "Installing latest Homebrew"
         if brew --version; then
-            brew update || exit_with_error "FAILED to update homebrew"
+            brew update || exit_with_error "FAILED to get newest version of Homebrew"
         else
             if $interactive;then
                 echo "You will need to type your password for sudo access..."
                 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" ||
-                    exit_with_error "FAILED to install homebrew, please check http://brew.sh"
+                    exit_with_error "FAILED to install Homebrew, please check http://brew.sh"
             else
-                exit_with_error "must run $(basename $0) interactively to install homebrew"
+                exit_with_error "must run $(basename $0) interactively to install Homebrew"
             fi
         fi
-        brew upgrade
+        # TO-NOT-DO: brew upgrade # to just update everything in homebrew
     fi
 
     # TODO^3: install latest bash and make sure other scripts are compatible...
