@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# TODO^3: make this read-only by default
-# TODO^2: run shellcheck
+# TODO^6: make this read-only by default, split the write version into another script if necessary
+# TODO^4: run shellcheck
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1

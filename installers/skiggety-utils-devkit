@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Install just what's needed to work on the programs in here, without any skiggety-ish preferences inflicted on you.
+
+# TODO: IMPLEMENT:
+#   TODO: document this in README
+#   TODO: what's minimally-invasive that someone else could install to work on todo or review?
+#   TODO: call todo installer
+#   TODO: install shellcheck if I start using it

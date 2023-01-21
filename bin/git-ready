@@ -15,6 +15,8 @@ function main {
 
     hesitate-and-run-or-fail git add -p
 
+    # TODO^2: just exit 0 right here unless there are changes staged
+
     shellask "Are your changes what you want? (use 'git diff --staged' or 'git vimdiff --staged')" || \
         exit_with_error "Prepare your changes the way you want and then try $(basename $0) again."
 
