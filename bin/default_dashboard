@@ -37,7 +37,7 @@ fi
 
 DO_NOT_ADD="$(git diff --inter-hunk-context=1 | grep '^[+].*[X]XX')"
 if ! [ -z "$DO_NOT_ADD" ]; then
-    echo_divider_with_text '!' 'DO NOT ADD (X''XX) :' | grep --color=always 'XX''X'
+    echo_divider_with_text '!' "DO NOT ADD (${RED}X""XX${no_color}) :"
     echo_error "$DO_NOT_ADD"
 fi
 
@@ -54,7 +54,7 @@ echo "$GIT_STATUS_LINECOUNT files with changes"
 
 DO_NOT_COMMIT="$(git diff --staged --inter-hunk-context=1 | grep '^[+].*[X]XX')"
 if ! [ -z "$DO_NOT_COMMIT" ]; then
-    echo_divider_with_text "!" "DO NOT COMMIT these git added files with (\"X""XX\"):"
+    echo_divider_with_text "!" "${RED}DO NOT COMMIT${no_color} these git added files with (\"${RED}X""XX${no_color}\"):"
     echo_error "$DO_NOT_COMMIT"
     # TODO: echoing the line number this is coming from is distracting:
     exit_with_error "You have staged lines including \"X""XX\". fix with: git restore --staged <file>..."
