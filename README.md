@@ -1,7 +1,7 @@
 # skiggety-utils
 
 My collection of convenience scripts and configuration. Basically I checkout this git repo on a new computer and run
-start to get everything the way I like it, including 3rd-party programs and my own stuff. I expect to use this as a
+'./start' to get everything the way I like it, including 3rd-party programs and my own stuff. I expect to use this as a
 spawning ground for other projects that will move on to their own repos.
 
 ## How to get started:
