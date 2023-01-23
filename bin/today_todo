@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
-# TODO^4: rename? ("todo-today"?, "todoy"
+
+# This is how I trick myself into getting things done. It basically helps organize and display a series of text files
+# containing a todo list with the usual keyword and voting (see 'todo' program).
+
+# TODO^5: RENAME? ("todo-today"?, "todoy")
 # TODO: flag to grep for and count a specific word, sort of like what I do for "NOW"
 # TODO: "-q" or "-n" flag to be quick, and skip the editor phase
 # TODO: how about a mode for the edit phase only?

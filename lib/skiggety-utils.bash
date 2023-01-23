@@ -75,7 +75,7 @@ function exit_with_accumulated_errors {
     exit $accumulated_error_count
 }
 
-# TODO^3: consistent debug function names
+# TODO^5: consistent debug/echo function names
 
 function echo_warning {
     echo -e "${YELLOW}WARNING:${yellow} $*${no_color}" >&2

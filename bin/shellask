@@ -38,9 +38,10 @@ debug_eval_here DOUBLE_ESCAPED_TASK_DESCRIPTION
 name_banner='############################## (shellask) ##############################'
 banner='########################################################################'
 
-# XXX TODO: can we do something to make the terminal tab blink?
+# TODO^2: can we do something to make the terminal tab blink?:
 # ding
 tput bel
 
+# TODO^3: can I rename these aliases to something more convenient? I mean "yes_shellask"? seriously?:
 bash --rcfile <(if [ -f ~/.bashrc ]; then cat ~/.bashrc;fi;echo "alias yes_shellask='exit 0'" ;echo "alias no_shellask='exit 1'" ;echo "PS1=\"${newline}$name_banner${newline}# TODO:${newline}# 1.) ${DOUBLE_ESCAPED_TASK_DESCRIPTION}${newline}# 2.) Run \\\"yes_shellask\\\" for success/yes, or \\\"no_shellask\\\" to say no/failure.${newline}$banner${newline}\$PS1\"") - # IGNORE_TODO
 exit $?

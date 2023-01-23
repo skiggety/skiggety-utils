@@ -1,8 +1,6 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# TODO: possibly rename "delay" to sleep_interval or wait_time or something and use the language consistently.
-
 # This program displays output of a given command and refreshes periodically.  By default, the delay is dynamic so you
 # don't use up too many resources when nothing is changing but it is responsive when the output is changing.
 
@@ -49,6 +47,7 @@ class ReviewProgram
 
     command = ARGV.map{ |a| "\"#{a}\"" }.join(' ')
 
+    # TODO: possibly RENAME "delay" to sleep_interval or wait_time or something and use the terminology consistently.
     @delay = minimum_delay
 
     @output = ''
@@ -115,7 +114,7 @@ class ReviewProgram
     ENV['RBENV_DIR'] = nil
   end
 
-  # TODO: probably rename these two "fill screen" methods, and maybe DRY the insides of them too:
+  # TODO: probably RENAME these two "fill screen" methods, and maybe DRY the insides of them too:
   def fill_screen_interactive(command)
     time_command do
       @last_output = @output

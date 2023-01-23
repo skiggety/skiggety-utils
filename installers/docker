@@ -16,8 +16,7 @@ class DockerInstaller
     elsif ask_user 'Is Docker installed (TODO: IMPLEMENT for real)?'
       mark_installed!
     end
-    # TODO: Maybe ruby can sometimes ask_user an ordinary question, and sometimes use bash_ask or whatever I rename it
-    # to:
+    # TODO: Maybe ruby can sometimes ask_user an ordinary question, and sometimes use shellask:
   end
 
   def apparently_configured?

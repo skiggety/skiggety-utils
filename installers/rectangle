@@ -38,7 +38,7 @@ class RectangleInstaller
     if on_mac_os?
       brew_install_cask_latest 'rectangle'
     else
-      # TODO: If we install a different program similar to rectangle on a different OS, this script should be renamed.
+      # TODO: If we install a different program similar to rectangle on a different OS, this script should be RENAMEd.
       raise NotImplementedError, 'TODO: implement this for this OS'
     end
   end

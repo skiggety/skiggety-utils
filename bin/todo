@@ -162,7 +162,7 @@ def main():
 
     # TODO^4: print summary with TODO count, maybe a vote count
 
-# TODO^2: rename, remove, move to a new library, or use an existing library?
+# TODO^2: RENAME, remove, move to a new library, or use an existing library?
 def echo_debug(debug_message):
     """basic debug output"""
     if SHOULD_DEBUG:
