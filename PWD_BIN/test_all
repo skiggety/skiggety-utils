@@ -53,4 +53,4 @@ if rbenv versions | grep '3.1.3' >/dev/null;then
     fi
 fi
 
-exit_if_any_accumulated_errors
+exit_with_any_accumulated_errors

@@ -27,4 +27,4 @@ echo_divider_with_text "+-=======-" "rubocop:"
 # that as a distinct mode like todo does)
 bundle exec rubocop -P --color || accumulate_error 'rubocop reported errors'
 
-exit_if_any_accumulated_errors
+exit_with_any_accumulated_errors

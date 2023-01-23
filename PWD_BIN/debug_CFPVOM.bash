@@ -30,7 +30,7 @@ do
     tail -n 1 "$OUTFILE"
 
     exit_with_error "stopping now: one language at a time TODO: DELETE when the python hack is working everywhere"
-    exit_if_any_accumulated_errors
+    exit_with_any_accumulated_errors
 done
 
 # TODO^2: DELETE this script when done

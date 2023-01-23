@@ -5,7 +5,7 @@
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-echo_divider_with_text "O-=======-" "Dashboard for $(duh) :"
+echo_divider_with_text "O-=======-" "'dashboard' for $(duh) :"
 
 # show diff with old mac files: # TODO^4: work on this diff:
 if ! [ -z "$SKIGGETY_UTILS_DONOR_DIR" ]; then
@@ -21,11 +21,12 @@ else
     todo | tail -n 5 || exit_with_error "todo FAILED" # TODO^2: abbreviate -n 5 todo
 fi
 
-bin/default_dashboard || accumulate_error
+bin/default_dashboard || accumulate_error "default_dashboard FAILED"
 
 # TODO?: tell you what command to run to commit changes or whatever
 # TODO?: graph score over time (see program "progress")
 
 # More important than the output of default_dashboard:
 
-exit_if_any_accumulated_errors
+echo_divider_with_text "O-=======-" "END of 'dashboard' for $(duh) :"
+exit_with_any_accumulated_errors

@@ -8,7 +8,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/include_in_bashrc.bash || exit 1
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
-echo_divider_with_text "//======" "dev:"
+echo_divider_with_text "#" "running 'dev':"
 
 test_all && echo "test_all SUCCEEDED" || exit_with_error "test_all FAILED"
 
@@ -29,4 +29,5 @@ if [ -f "$experiment_script" ]; then
     $experiment_script || accumulate_error "experimental script \"$experiment_script\" FAILED"
 fi
 
-exit_if_any_accumulated_errors
+echo_divider_with_text "#" "END of 'dev'."
+exit_with_any_accumulated_errors

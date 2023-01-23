@@ -209,7 +209,7 @@ function main {
         python -m pip install pylint
     fi
 
-    exit_if_any_accumulated_errors # before marking complete
+    exit_with_any_accumulated_errors # before marking complete
 
     # mark complete
     debug_here "marking $0 complete"

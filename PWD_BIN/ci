@@ -27,4 +27,4 @@ git restore todo_report
 # TODO: accumulate error if any local changes are found, i.e. "maybe you want to run 'dev' instead of 'ci'? Do you want
 # to commit these changes?'
 
-exit_if_any_accumulated_errors
+exit_with_any_accumulated_errors

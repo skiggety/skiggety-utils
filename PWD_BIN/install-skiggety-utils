@@ -82,7 +82,7 @@ function main {
         fi
     done
 
-    exit_if_any_accumulated_errors
+    exit_with_any_accumulated_errors
     echo "$(basename $0) COMPLETE."
 }
 

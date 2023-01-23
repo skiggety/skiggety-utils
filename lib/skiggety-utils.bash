@@ -43,20 +43,36 @@ function accumulate_error {
     if [ "$error_message" != "" ]; then
         echo_error_callsite "$error_message"
     fi
-    cumulative_error_count=${cumulative_error_count:-0}
-    cumulative_error_count=$(($cumulative_error_count+$exit_status))
+    accumulated_error_messages=${accumulated_error_messages:-''}
+    if [ "$accumulated_error_messages" != '' ]; then
+        accumulated_error_messages="${accumulated_error_messages}${newline}"
+    fi
+    accumulated_error_messages="${accumulated_error_messages}$(echo_error_callsite "${error_message}" 2>&1)"
+    accumulated_error_count=${accumulated_error_count:-0}
+    accumulated_error_count=$(($accumulated_error_count+$exit_status))
 }
 
-# TODO: rename to exit_with_any_accumulated_errors
+function exit_with_any_accumulated_errors {
+    show_accumulated_errors
+    exit_if_any_accumulated_errors
+}
+
+function show_accumulated_errors {
+    if ! [ -z "$accumulated_error_count" ]; then
+        echo -e "Showing ${RED}${accumulated_error_count}${no_color} previous ${RED}ERRORS:${no_color}" >&2
+        echo "$accumulated_error_messages" >&2
+    fi
+}
+
 function exit_if_any_accumulated_errors {
-    if ! [ -z "$cumulative_error_count" ]; then
+    if ! [ -z "$accumulated_error_count" ]; then
         exit_with_accumulated_errors
     fi
 }
 
 function exit_with_accumulated_errors {
-    echo_divider_with_text "!" "EXITING \"$(basename $0)\" because of ${red}$cumulative_error_count previously shown ${RED}ERRORS${no_color}"
-    exit $cumulative_error_count
+    echo_divider_with_text "!" "EXITING \"$(basename $0)\" because of ${red}$accumulated_error_count previously shown ${RED}ERRORS${no_color}"
+    exit $accumulated_error_count
 }
 
 # TODO^3: consistent debug function names
