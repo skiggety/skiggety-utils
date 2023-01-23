@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO: schedule this program in a terminal in the morning
+
 while sleep-verbose 5;do
     live
     echo "running 'live' momentarily, CTRL+C to quit"
