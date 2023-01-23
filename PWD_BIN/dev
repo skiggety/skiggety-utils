@@ -20,7 +20,11 @@ dashboard || accumulate_error "dashboard FAILED"
 experiment_script="./PWD_BIN/experiment.gitignored.bash"
 if ! [ -f "$experiment_script" ]; then
     echo "#!$(which env) bash" > "$experiment_script"
-    echo "# TODO: edit this for dashboard output" >> "$experiment_script" # IGNORE_TODO
+    echo >> "$experiment_script"
+    echo ". \$SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1" >> "$experiment_script"
+    echo "SKIGGETY_DEBUG=true" >> "$experiment_script"
+    echo >> "$experiment_script"
+    echo "# TODO: edit this, and it will be run/shown by '$(basename $0)'." >> "$experiment_script" # IGNORE_TODO
     chmod +x "$experiment_script"
 fi
 
