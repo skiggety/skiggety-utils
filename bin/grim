@@ -5,8 +5,7 @@
 # tree, and then open those files at the right location with vim. For example, if you run "grim someuniquegobbledygook"
 # from within your $SKIGGETY_UTILS_DIR, it should bring you right here.
 
-THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
-. $THIS_DIR/../lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
 # TODO^5: consider setting this program up to use rg instead of grep, maybe optionally, because it would be so much faster
 
