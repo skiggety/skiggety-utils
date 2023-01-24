@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
-# TODO: I guess the idea for this script is to limit the length of output of something, so you could pipe something
-# through this script and it would just pass it through if it's not too long, or print a head and^W^W^W a tail and an
-# explanation of how many lines were omitted otherwise. Maybe could RENAME it to 'tailmax' or something?
+# The purpose of this script is to limit the length of output of something, so you could pipe something through this
+# script and it would just pass it through if it's not too long, or print an explanation of how many lines were omitted
+# and run tail otherwise. TODO: # Maybe could RENAME it to 'tailmax' or something?
+
+# TODO: try using this in dashboard
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
