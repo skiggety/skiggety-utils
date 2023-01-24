@@ -3,6 +3,5 @@
 # TODO: schedule this program in a terminal in the morning
 
 while shellask "should you be doing stuff?" || ! shellask "have you checked off all habits today" ;do
-    live
-    echo "running 'live' momentarily, CTRL+C to quit"
+    editfirst live
 done
