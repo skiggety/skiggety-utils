@@ -44,6 +44,7 @@ class ReviewProgram
   def initialize
     @stop_on_failure = false
     @stop_on_success = false
+    # TODO: min_delay, interactive, etc.
   end
 
   def run
