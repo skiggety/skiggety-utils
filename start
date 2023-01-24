@@ -2,14 +2,6 @@
 
 # This script makes sure everything is installed, familiarizes you with what's here, and maybe even displays the dashboard
 
-# TODO^2: get donor code from old script "dashboard"
-
-# # TODO: API spec (name changes):
-#   # DONE: if you enter the command "review dashboard" you get the dashboard, continually updated on your screen.
-#   # TODO: "dashboard" will replace "summarize_status". It displays a snapshot of current status
-#   # TODO: ./bin/todo should draw from the old ./PWD_BIN/status.
-#   # TODO?: "./PWD_BIN/local_status" will replace ./status
-
 echo "starting at $(date) ..."
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
