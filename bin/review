@@ -74,11 +74,11 @@ class ReviewProgram
   def exit_if_loop_condition_flag
     if @exit_val.zero?
       if @stop_on_success
-        puts "#{File.basename($PROGRAM_NAME)} stopping on command success, was called with '--until'"
+        puts "'#{File.basename($PROGRAM_NAME)}' stopping on command success, was called with '--until'"
         exit(@exit_val)
       end
     elsif @stop_on_failure
-      puts "#{File.basename($PROGRAM_NAME)} stopping on command failure, was called with '--while'"
+      puts "'#{File.basename($PROGRAM_NAME)}' stopping on command failure, was called with '--while'"
       exit(@exit_val)
     end
   end
