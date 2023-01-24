@@ -3,6 +3,8 @@
 # This script sleeps for a specified number of seconds, displaying progress as
 # it goes.
 
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash
+
 PRINT_NEWLINE=true
 if [ "$1" == "-n" ];then
     PRINT_NEWLINE=false
@@ -27,7 +29,11 @@ function main {
 }
 
 # TODO^6: DELETE this script once you're sure it's not used
+SKIGGETY_DEBUG=true
+debug_here "# oops, ran \"$0 $*\" at $(date)"
 echo "# oops, ran \"$0 $*\" at $(date)" >> $0
 main "$@"
+echo_error "sleeping again because calling the wrong script should be inconvenient"
+sleep-verbose "$@"
 exit_with_error "oops, please use sleep-verbose instead of pretty_sleep"
 
