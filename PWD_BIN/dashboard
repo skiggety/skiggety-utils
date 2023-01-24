@@ -10,7 +10,7 @@ echo_divider_with_text "O-=======-" "'dashboard' for $(duh) :"
 # show diff with old mac files: # TODO^4: work on this diff:
 if ! [ -z "$SKIGGETY_UTILS_DONOR_DIR" ]; then
     echo_divider_with_text "+-=======-" "diff summary for \"$SKIGGETY_UTILS_DONOR_DIR\":"
-    diff -rq --exclude=.DS_Store --exclude=.git $THIS_DIR/.. $SKIGGETY_UTILS_DONOR_DIR | grep -v "^Only in $THIS_DIR/.." | grep --color=always '\(differ\|Only\)' | head -n 5
+    diff -rq --exclude=.DS_Store --exclude=.git $THIS_DIR/.. $SKIGGETY_UTILS_DONOR_DIR | grep -v "^Only in $THIS_DIR/.." | grep --color=always '\(differ\|Only\)' | abbreviate -n 5
 fi
 
 echo_divider_with_text "-=" "TODO's, just the 5 most important, ascending:" # IGNORE_TODO
