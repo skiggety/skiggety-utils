@@ -4,5 +4,31 @@
 # through this script and it would just pass it through if it's not too long, or print a head and^W^W^W a tail and an
 # explanation of how many lines were omitted otherwise. Maybe could RENAME it to 'tailmax' or something?
 
-echo TODO^3: IMPLEMENT $0
-exit 1
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+while [[ "$1" == -* ]]; do
+    if [ "$1" == '-n' ]; then
+        shift
+        MAX_LINES="$1"
+        shift
+    fi
+done
+
+INPUT="$(cat "$@")" # I think this will work with piped in input or with a filename
+echo_debug "==========================================================================="
+echo_debug "$(basename $0) was called with $@"
+debug_eval MAX_LINES
+if [ "$INPUT" == '' ];then
+    INPUT_LINES='0'
+else
+    INPUT_LINES="$(( 0 + $(echo "$INPUT" | wc -l) ))"
+fi
+debug_eval INPUT_LINES
+echo_debug "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+
+if [ $INPUT_LINES -gt $MAX_LINES ]; then
+    echo "    ( showing last $MAX_LINES lines out of $INPUT_LINES: )"
+    echo -e "$INPUT" | tail -n $MAX_LINES
+else
+    echo -e "$INPUT"
+fi

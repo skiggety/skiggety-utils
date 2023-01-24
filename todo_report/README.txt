@@ -1,4 +1,4 @@
-Here are the most important 5 todos, ascending, out of 412 total. (Do not edit, this file is generated)
+Here are the most important 5 todos, ascending, out of 411 total. (Do not edit, this file is generated)
 ================================================================================
 ./bin/todo:224:    # TODO^7: make sure the last line is highlighted. It's the most important todo
 ./installers/tmux:41:      # TODO^7: maybe use shellask, but don't assume user is ready to be launched into vim:
