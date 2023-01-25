@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO^3: maybe rename, e.g. 'git-pull-verbose'
+
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash
 
 echo "getting the latest skiggety-utils by running 'git pull':"
