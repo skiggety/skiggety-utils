@@ -16,8 +16,8 @@ fi
 if [ -f ./todo_report/README_in_color.txt ]; then
     cat ./todo_report/README_in_color.txt
 else
-    # purposely call whatever 'todo' is in the path so you can override it with PWD_BIN/todo
     echo_divider_with_text "=" "TODO's" # IGNORE_TODO
+    # purposely call whatever 'todo' is in the path in case you are overriding it with a 'PWD_BIN/todo' script:
     todo | abbreviate -n 5 || exit_with_error "todo FAILED" # TODO^2: abbreviate -n 5 todo
 fi
 
