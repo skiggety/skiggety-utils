@@ -73,7 +73,7 @@ function main {
     todo -k DONE $EXCLUDE_DIR_ARGS | tail -n 3 | grep --color=always DONE
     if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
 
-    todo_output="$(todo $EXCLUDE_DIR_ARGS)" # TODO: -n 5 # TODO^2: todo should accept an option for the number of lines. like "-n 3". Maybe if we pass an option in?
+    todo_output="$(todo --color always $EXCLUDE_DIR_ARGS)" # TODO: -n 5 # TODO^2: todo should accept an option for the number of lines. like "-n 3". Maybe if we pass an option in?
 
     todo_count=$(( 0 + $(echo "$todo_output" | wc -l) ))
     echo
