@@ -28,7 +28,7 @@ module UserDelegation
     if on_mac_os?
       assert_system("open #{url}")
     elsif on_linux_os?
-      assert_system("browse #{url} 2>/dev/null")
+      assert_system("browse #{url} 2>/dev/null &")
     else
       raise NotImplementedError, 'TODO: implement this for this OS' # IGNORE_TODO
     end
