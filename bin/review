@@ -241,6 +241,8 @@ class ReviewProgram
   end
 
   # TODO^3: colorize output, esp on failure:
+  #   TODO: exit code could be red if failure
+  #   TODO: last_end_timestamp should be a different color every time so you know it changed.
   def show_footer(command)
     system("echo_divider_with_text \"#\" \"\\\"#{command}\\\" exited with #{@exit_val} after #{ran_in_seconds} " \
            "seconds at #{@last_end_timestamp}\"")
