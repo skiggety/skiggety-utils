@@ -2,6 +2,7 @@
 
 # make sure symlinks exist to include installers in test coverage
 link_dir = File.expand_path(File.join(__dir__, '../lib/coverage_links'))
+FileUtils.mkdir_p link_dir
 # puts "link_dir is \"#{link_dir}\""
 installer_dir = File.expand_path(File.join(__dir__, '../installers'))
 # puts "installer_dir is \"#{installer_dir}\""
