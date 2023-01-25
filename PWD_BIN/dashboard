@@ -7,7 +7,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 
 echo_divider_with_text "O-=======-" "'dashboard' for $(duh) :"
 
-# show diff with old mac files: # TODO^4: work on this diff:
+# show diff with old mac files: # TODO^5: work on this diff:
 if ! [ -z "$SKIGGETY_UTILS_DONOR_DIR" ]; then
     echo_divider_with_text "+-=======-" "diff summary for \"$SKIGGETY_UTILS_DONOR_DIR\":"
     diff -rq --exclude=.DS_Store --exclude=.git $THIS_DIR/.. $SKIGGETY_UTILS_DONOR_DIR | grep -v "^Only in $THIS_DIR/.." | grep --color=always '\(differ\|Only\)' | abbreviate -n 5

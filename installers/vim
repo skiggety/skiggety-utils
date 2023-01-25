@@ -79,7 +79,7 @@ class VimInstaller
   def configure!
     if $interactive
       # TODO: prompt the user with something to explain what they need to do:
-      # TODO^6: maybe use shellask, but don't assume user is ready to be launched into vim. Even though you are
+      # TODO^7: maybe use shellask, but don't assume user is ready to be launched into vim. Even though you are
       # installing vim, you might not be proficient yet:
       assert_system("vim -d #{user_vimrc_path} #{template_vimrc_path}")
       mark_configured! # force this, since you might want to leave some differences between your .vimrc and the template
