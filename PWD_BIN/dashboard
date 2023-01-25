@@ -13,12 +13,12 @@ if ! [ -z "$SKIGGETY_UTILS_DONOR_DIR" ]; then
     diff -rq --exclude=.DS_Store --exclude=.git $THIS_DIR/.. $SKIGGETY_UTILS_DONOR_DIR | grep -v "^Only in $THIS_DIR/.." | grep --color=always '\(differ\|Only\)' | abbreviate -n 5
 fi
 
-echo_divider_with_text "-=" "TODO's, just the 5 most important, ascending:" # IGNORE_TODO
 if [ -f ./todo_report/README_in_color.txt ]; then
-    tail -n 5 ./todo_report/README_in_color.txt
+    cat ./todo_report/README_in_color.txt
 else
     # purposely call whatever 'todo' is in the path so you can override it with PWD_BIN/todo
-    todo | tail -n 5 || exit_with_error "todo FAILED" # TODO^2: abbreviate -n 5 todo
+    echo_divider_with_text "=" "TODO's" # IGNORE_TODO
+    todo | abbreviate -n 5 || exit_with_error "todo FAILED" # TODO^2: abbreviate -n 5 todo
 fi
 
 bin/default_dashboard || accumulate_error "default_dashboard FAILED"

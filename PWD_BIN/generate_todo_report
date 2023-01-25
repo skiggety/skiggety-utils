@@ -12,15 +12,13 @@ debug_eval_here TODO_REPORT_COLOR_FILE # IGNORE_TODO
 mkdir -p "$TODO_REPORT_DIR" # IGNORE_TODO
 
 todo_report_whole="$(todo --exclude-dir "$TODO_REPORT_DIR" | grep -v ".gitignored." | grep -v "XXX")"
-todo_report_body="$(echo "$todo_report_whole" | tail -n $TODO_REPORT_LINES )"
-todo_report_color_body="$(echo "$todo_report_body" |  grep --color=always TODO )"
+todo_report_body="$(echo "$todo_report_whole" | abbreviate -n $TODO_REPORT_LINES )"
+todo_report_color_body="$(echo "$todo_report_body" |  grep -B 1 --color=always TODO )"
 todo_report_linecount=$(echo "$todo_report_whole" | wc -l | sed 's/^[ \t]*//') # TODO^2: graph this over time
-todo_header="Here are the most important $TODO_REPORT_LINES todos, ascending, out of ${todo_report_linecount##*()} total. (Do not edit, this file is generated)"
+todo_header="$(SKIGGETY_DIVIDER_LENGTH=100 echo_divider_with_text "=" "TODOs, ascending. Do not edit, run '$(basename $0)' to generate.")" # IGNORE_TODO
 
 echo "$todo_header" > $TODO_REPORT_FILE
 echo "$todo_header" > $TODO_REPORT_COLOR_FILE
-SKIGGETY_DIVIDER_LENGTH=80 echo_divider "=" >> $TODO_REPORT_FILE
-SKIGGETY_DIVIDER_LENGTH=80 echo_divider "=" >> $TODO_REPORT_COLOR_FILE
 echo "$todo_report_body" >> $TODO_REPORT_FILE
 echo "$todo_report_color_body" >> $TODO_REPORT_COLOR_FILE
 

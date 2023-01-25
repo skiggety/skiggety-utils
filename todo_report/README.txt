@@ -1,5 +1,5 @@
-Here are the most important 5 todos, ascending, out of 411 total. (Do not edit, this file is generated)
-================================================================================
+======================================================================================================== TODOs, ascending. Do not edit, run 'generate_todo_report' to generate. 
+    ( showing last 5 lines out of 408: )
 ./bin/todo:224:    # TODO^7: make sure the last line is highlighted. It's the most important todo
 ./installers/tmux:41:      # TODO^7: maybe use shellask, but don't assume user is ready to be launched into vim:
 ./README.md:134:  - TODO^10: precommit to prevent committing X X X (without the spaces)
