@@ -11,7 +11,7 @@
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)" # TODO: DELETE?
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-echo_divider_with_text "O-=======-" "test_all:"
+echo_divider_with_text "O-=======-" "$(basename $0):"
 
 # TODO: complain if install-skiggety-utils needs to be run
 
