@@ -44,6 +44,7 @@ function main {
     git-set-global-default 'rebase.autostash' 'true'
     git-set-global-default 'fetch.prune' 'true'
     git-set-global-default 'diff.colorMoved' 'zebra' # lines that moved but stayed the same have their own colors
+    # TODO: on linux global config credential.helper cache
 }
 
 function git-set-global-default {
