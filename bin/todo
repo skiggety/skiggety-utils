@@ -87,6 +87,8 @@ def main():
     arg_parser.add_argument('-d', '--debug', action='store_true', help = 'TODO')
     arg_parser.add_argument('-q', '--quiet', action='store_true', help = 'TODO')
 
+    arg_parser.add_argument('--color', action='store', choices=['never', 'auto', 'always'],  help = 'TODO')
+
     arg_parser.add_argument('--exclude-dir', help = 'Directories to exclude.', action = 'append')
     arg_parser.add_argument('--exclude', help = 'Files to exclude.', action = 'append')
 
@@ -95,7 +97,7 @@ def main():
     # above here, you just gotta print:
     global SHOULD_DEBUG
     SHOULD_DEBUG = command_line_args.debug
-    echo_debug('We are in debug mode (if you are seeing this message).')
+    print_debug('We are in debug mode (if you are seeing this message).')
 
     # set up condtions from command line arguments:
 
@@ -110,6 +112,17 @@ def main():
     should_write = command_line_args.write
     should_force = command_line_args.force
     quiet_mode = command_line_args.quiet
+    print_debug(f"command_line_args.color is {command_line_args.color}")
+    match command_line_args.color:
+        case 'always':
+            print_debug('setting: color_mode = true')
+            color_mode = True
+        case 'never':
+            print_debug('setting: color_mode = false')
+            color_mode = False
+        case _:
+            print_debug('setting: color_mode = sys.stdout.isatty()')
+            color_mode = sys.stdout.isatty()
 
     global interactive # TODO: eliminate globals
     interactive = True # TODO^4: detect if output is to a terminal
@@ -125,7 +138,7 @@ def main():
         for file_path in file_paths:
             full_file_path = os.path.join(root, file_path)
             if re.sub(r'^\.\/', '', full_file_path) in exclude_files:
-                echo_debug(f"EXCLUDING FILE: {full_file_path}")
+                print_debug(f"EXCLUDING FILE: {full_file_path}")
                 continue
             if (stat.S_ISBLK(os.stat(full_file_path).st_mode) or
                 stat.S_ISSOCK(os.stat(full_file_path).st_mode) ): # skip devices
@@ -136,15 +149,15 @@ def main():
 
     # TODO: method extract:
     if should_write:
-        echo_debug('Ok, we should be writing changes to disk...')
-        echo_debug(f"should_force = {should_force}")
-        echo_debug(f"interactive = {interactive}")
+        print_debug('Ok, we should be writing changes to disk...')
+        print_debug(f"should_force = {should_force}")
+        print_debug(f"interactive = {interactive}")
         if (should_force or interactive):
             writecount = 0
-            echo_debug('Writing changes to disk...')
+            print_debug('Writing changes to disk...')
             for line in reversed(lines): # start with the highest-voted ones
                 if line.has_changes_to_write():
-                    echo_debug('There are changes to write for line: \'' + str(line) + '\'')
+                    print_debug('There are changes to write for line: \'' + str(line) + '\'')
                     if (should_force or (interactive and ask_user_to_confirm_this_line_write(line))):
                         # TODO^4: write more efficiently (all changes from one file at once):
                         line.write()
@@ -155,21 +168,33 @@ def main():
                             '--force flag')
 
     if quiet_mode:
-        echo_debug('skipping the report since we are in quiet mode')
+        print_debug('skipping the report since we are in quiet mode')
     else:
-        for line in lines:
-            print(str(line))
+        if color_mode:
+            find_todo_entry_pattern = re.compile(rf"(?P<todo_entry>({keyword}(\^\d+)?)( {keyword}(\^\d+)?)*)")
+            line_color = Style.RESET_ALL
+            def highlight_todo_entry(matchobj): # TODO: can I move this method?:
+                return Style.BRIGHT + Fore.RED + matchobj.group('todo_entry') + line_color
+            for line in lines[:-1]:
+                print(re.sub(find_todo_entry_pattern, highlight_todo_entry, str(line)))
+            line_color = Style.BRIGHT + Fore.YELLOW
+            print_debug(f"we have {len(lines)} lines")
+            if len(lines) > 0:
+                print(line_color +
+                        re.sub(find_todo_entry_pattern, highlight_todo_entry, str(lines[-1])) +
+                        Style.RESET_ALL)
+        else:
+            for line in lines:
+                print(str(line))
 
     # TODO^4: print summary with TODO count, maybe a vote count
 
 # TODO^2: RENAME, remove, move to a new library, or use an existing library?
-def echo_debug(debug_message):
+def print_debug(debug_message):
     """basic debug output"""
     if SHOULD_DEBUG:
         # TODO: if you want, you could tie this into python's logging framework and do it that way
-        sys.stderr.write(Fore.YELLOW + debug_message + '\n')
-        sys.stderr.write(Style.RESET_ALL)
-        sys.stdout.write(Style.RESET_ALL)
+        sys.stderr.write(Fore.CYAN + debug_message + Style.RESET_ALL + '\n')
 
 def ask_user_to_confirm_this_line_write(line):
     """ask the user about individual lines to replace. Might be overkill, fine for now"""
@@ -185,11 +210,11 @@ def ask_user_yn(question_text):
     full_question = question_text + ' [y/n]:'
     sys.stdout.write(full_question)
     answer = input()
-    echo_debug('answer is \'' + answer + '\'')
+    print_debug('answer is \'' + answer + '\'')
     if answer.lower() in ["y","yes"]:
-        echo_debug('...which means \'yes\'.')
+        print_debug('...which means \'yes\'.')
         return True
-    echo_debug('...which means \'no\'.')
+    print_debug('...which means \'no\'.')
     return False
 
 def lines_from_file(full_file_path, keyword, ignore_keyword):
@@ -219,12 +244,6 @@ def lines_from_file(full_file_path, keyword, ignore_keyword):
     return lines_found
 
 # TODO: flags:
-
-  # TODO^7: highlight TODO's
-    # TODO^7: make sure the last line is highlighted. It's the most important todo
-    # and your attention should be drawn to it.
-    # TODO^6: highlighting on or off. It should be on by default unless output is piped to a
-    # file, like with grep and "--color" (or "--colour" )
 
   # TODO^4: todo should accept a path ( to a file or directory) to use in place of "." for grep.
   # This way you could run "todo bin/todo" and see the TODO^2's in this file cleanly without the
