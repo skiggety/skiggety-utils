@@ -49,7 +49,7 @@ RUN ./bin/skiggety_env_exec python -m pip install pylint
 
 ADD . .
 
-RUN rm installers/.markers/*_with_version*
+RUN rm -f installers/.markers/*_with_version*
 
 # If I'm brave enough to make sure it doesn't loop forever. It better run only on login shells:
 # TODO: RUN echo "install-skiggety-utils;less README.md;dev" >> /root/.bashrc
