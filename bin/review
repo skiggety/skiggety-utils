@@ -35,6 +35,9 @@ require 'listen'
 # TODO: ensure we never mess with the colors, test with "review git diff"
 
 # TODO: rubocop says this class is long (see .rubocop_todo.yml), is parse_args the part to extract?
+
+# TODO: BUG watch out for this program pinning the cpu
+
 class ReviewProgram
 
   def self.run
@@ -241,8 +244,9 @@ class ReviewProgram
   end
 
   # TODO^3: colorize output, esp on failure:
-  #   TODO: exit code could be red if failure
-  #   TODO: last_end_timestamp should be a different color every time so you know it changed.
+  #   TODO^3: exit code could be red if failure
+  #   TODO^9: last_end_timestamp should be a different color every time so you know it changed, just go around the
+  #   rainbow..
   def show_footer(command)
     system("echo_divider_with_text \"#\" \"\\\"#{command}\\\" exited with #{@exit_val} after #{ran_in_seconds} " \
            "seconds at #{@last_end_timestamp}\"")

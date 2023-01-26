@@ -19,12 +19,12 @@
 # because in some cases it's helpful to make a human decision a few times before you figure out how to teach^Wprogram
 # the computer.
 
-# TODO^6: figure out why this sporadically fails to set the prompt
-
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 
 # including with THIS_DIR instead of SKIGGETY_UTILS_DIR so we can use it in demo_in_docker:
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
+
+# SKIGGETY_DEBUG=true # TODO^6: figure out why this sporadically fails to set the prompt
 
 debug_here "\$\* is: '$*'"
 TASK_DESCRIPTION="$*"

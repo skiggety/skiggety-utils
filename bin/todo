@@ -5,6 +5,10 @@
 # good-enough solution, since I am my own client. I just vote when stuff bothers me, this program
 # shows me what is worth spending time on.
 
+# TODO^9: why is this failing on metrigon? (seems like python version hack doesn't get past syntax
+# issues because syntax is checked before runtime), so probably the fix is a wrapper script that
+# sets the pyenv version.
+
 import os
 import platform
 import sys
