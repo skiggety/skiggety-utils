@@ -5,41 +5,14 @@
 # good-enough solution, since I am my own client. I just vote when stuff bothers me, this program
 # shows me what is worth spending time on.
 
-# TODO^9: why is this failing on metrigon? (seems like python version hack doesn't get past syntax
-# issues because syntax is checked before runtime), so probably the fix is a wrapper script that
-# sets the pyenv version.
-
 import os
 import platform
 import sys
-DESIRED_PYTHON_VERSION = '3.11.1'
-if DESIRED_PYTHON_VERSION != platform.python_version():
-    # limit recursion depth:
-    os.environ['PYENV_VERSION_HACK_DEPTH'] = os.environ.get('PYENV_VERSION_HACK_DEPTH', '1')
-    if int(os.environ.get('PYENV_VERSION_HACK_DEPTH', 1)) % 5 == 5: # avoid infinite loop
-        raise Exception(f"Failed to force python version to {DESIRED_PYTHON_VERSION}. " \
-                        "This script needs debugging.")
-    os.environ['PYENV_VERSION'] = DESIRED_PYTHON_VERSION
-    os.environ['PYENV_VERSION_HACK_DEPTH'] = str(int(os.environ['PYENV_VERSION_HACK_DEPTH']) + 1)
-    home_dir = os.environ.get('HOME')
-    # ugh, stack new shims on the path in case a parent process has already used pyenv to
-    # stack on a specific python version's bin path:
-    os.environ['PATH'] = f"{home_dir}/.pyenv/shims:{home_dir}/.pyenv/bin:{os.environ['PATH']}"
-    os.execvpe(sys.argv[0], sys.argv, os.environ) # system exec self
-os.environ['PYENV_VERSION_HACK_DEPTH'] = '0'
-
-# TODO: figure out what's really the best way to nail down the python version, the hack above, or
-# something simple like this in combination with packaging:
-if sys.version_info[0] < 3:
-    raise Exception('Must be using Python 3')
-
-#pylint: disable=C0413 # because I might as well wait until we've got the right python version
 import argparse
 import stat
 import re # regular expressions
 
 from colorama import Fore, Style
-#pylint: enable=C0413
 
 sys.path.append(os.path.abspath(os.path.join(os.getenv('SKIGGETY_UTILS_DIR'),"lib")))
 #pylint: disable=C0413 # because this has to go after we mess with sys.path
@@ -56,9 +29,6 @@ from todo_line import TodoLine
 #  TODO: once we have a --delete option, you could write a script that goes through your todo's in
 #  priority order, and prompts you to do each one with shellask, and deletes them if you say you
 #  have done it.
-
-# TODO: maybe todo should suggest running todo -w when it notices simplifications it could be
-# making.
 
 # TODO: It would be interesting to have a way to show a histogram of todos by votes.
 
@@ -81,8 +51,11 @@ def main():
     # case-insensitive:
     # TODO: add_argument('-i', '--ignore-keyword', help = 'TODO')
 
-    # TODO: how about an argument/mode for the linter that complains about non-compacted todo
+    # TODO^3: how about an argument/mode for the linter that complains about non-compacted todo
     # syntax, instead of writing or printing the normal report.
+
+    # TODO: maybe todo should suggest running todo -w when it notices simplifications it could be
+    # making.
 
     # TODO: what's the one-character version of the '--non-interactive' flag?:
     arg_parser.add_argument('--non-interactive', action='store_true', help = 'TODO')
