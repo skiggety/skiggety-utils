@@ -22,6 +22,7 @@ require 'English' # needed for: $CHILD_STATUS.exitstatus
 
 require 'optparse'
 require 'listen'
+require 'colorize'
 
 # TODO^3: would it be smart to have a cron job that runs 'pkill review' every day at ~7pm on my work laptop? Or should I
 # instead strive to make the default behavior of this, and review-dev, so reasonable that it's not required? Also, can I
@@ -43,6 +44,8 @@ class ReviewProgram
   def self.run
     new.run
   end
+
+  attr_reader :ran_in_seconds
 
   def initialize
     @stop_on_failure = false
@@ -243,16 +246,31 @@ class ReviewProgram
     @min_delay || DEFAULT_MINIMUM_DELAY
   end
 
-  # TODO^3: colorize output, esp on failure:
-  #   TODO^3: exit code could be red if failure
-  #   TODO^9: last_end_timestamp should be a different color every time so you know it changed, just go around the
-  #   rainbow..
+  # Now, in color!
   def show_footer(command)
-    system("echo_divider_with_text \"#\" \"\\\"#{command}\\\" exited with #{@exit_val} after #{ran_in_seconds} " \
-           "seconds at #{@last_end_timestamp}\"")
+    system("echo_divider_with_text \"#\" \"\\\"#{command}\\\" exited with #{red_unless_zero(@exit_val).bold} after " \
+           "#{ran_in_seconds} seconds at " + rotate_rainbow(@last_end_timestamp) + '"')
   end
 
-  attr_reader :ran_in_seconds
+  def red_unless_zero(text)
+    text = text.to_s
+    if text == '0'
+      text
+    else
+      text.red
+    end
+  end
+
+  def rotate_rainbow(text)
+    @rainbow_index ||= 0
+    @rainbow_colors ||= %i[yellow red magenta blue cyan green]
+    color_method_name = @rainbow_colors[@rainbow_index]
+
+    @rainbow_index += 1
+    @rainbow_index %= @rainbow_colors.size
+
+    text.to_s.send(color_method_name)
+  end
 
 end
 
