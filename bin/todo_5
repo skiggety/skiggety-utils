@@ -151,7 +151,8 @@ def main():
             find_todo_entry_pattern = re.compile(rf"(?P<todo_entry>({keyword}(\^\d+)?)( {keyword}(\^\d+)?)*)")
             line_color = Style.RESET_ALL
             def highlight_todo_entry(matchobj): # TODO: can I move this method?:
-                return Style.BRIGHT + Fore.RED + matchobj.group('todo_entry') + line_color
+                return (Style.BRIGHT + Fore.RED + matchobj.group('todo_entry') +
+                    Style.RESET_ALL + line_color)
             for line in lines[:-1]:
                 print(re.sub(find_todo_entry_pattern, highlight_todo_entry, str(line)))
             line_color = Style.BRIGHT + Fore.YELLOW
