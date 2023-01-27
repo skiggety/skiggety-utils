@@ -61,9 +61,6 @@ For the safe docker demo:
 - [duh](bin/duh) - Show Directory, Username, and Hostname (in scp format). Useful in prompts.
 - [dashboard](PWD_BIN/dashboard) A overrideable program that summarizes the overall status for one directory location.
 - [default_dashboard](bin/default_dashboard) - Show a bunch of useful information for the current directory, especially if it's a git project. Also can be called by calling 'dashboard' if you don't implement your own ./PWD_BIN/dashboard 
-- [demo_ruby_version_hack](bin/demo_ruby_version_hack) and [demo_python_version_hack](bin/demo_python_version_hack)
-  re-run themselves in the language version of their choice using rbenv and pyenv. The fact that you can do it doesn't
-  mean you should.
 - various *git* subcommands:
   - [git-attempt-checkout](bin/git-attempt-checkout) - finds a branch by substring and checks it out quickly
   - [git-pretty-pull](bin/git-pretty-pull) - git pull with a little bit of extra information.
