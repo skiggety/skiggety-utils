@@ -24,7 +24,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 # including with THIS_DIR instead of SKIGGETY_UTILS_DIR so we can use it in demo_in_docker:
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
-# SKIGGETY_DEBUG=true # TODO^6: figure out why this sporadically fails to set the prompt
+# TODO^6: figure out why this script sporadically fails to set the prompt:
 
 debug_here "\$\* is: '$*'"
 TASK_DESCRIPTION="$*"
