@@ -41,16 +41,15 @@ if ! [ -z "$DO_NOT_ADD" ]; then
     echo_error "$DO_NOT_ADD"
 fi
 
-# TODO: TEST with and without 0 files changed:
 echo_divider_with_text "-=" "git status:"
 GIT_STATUS="$(git -c color.ui=always --no-pager status -ss)"
 if [ "$GIT_STATUS" == "" ] ;then
     GIT_STATUS_LINECOUNT=0
 else
-    GIT_STATUS_LINECOUNT="$(echo "$GIT_STATUS"|wc -l)"
+    GIT_STATUS_LINECOUNT="$(echo "$GIT_STATUS" | wc -l | awk '{print $1}')"
     echo "$GIT_STATUS"
 fi
-echo "$GIT_STATUS_LINECOUNT files with changes"
+echo "$GIT_STATUS_LINECOUNT files with changes on branch '$(git branch --show-current)'"
 
 DO_NOT_COMMIT="$(git diff --staged --inter-hunk-context=1 | grep '^[+].*[X]XX')"
 if ! [ -z "$DO_NOT_COMMIT" ]; then

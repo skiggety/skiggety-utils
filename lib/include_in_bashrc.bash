@@ -10,7 +10,7 @@ export SHELL_SESSION_HISTORY=0
 # ./PWD_BIN comes before $SKIGGETY_UTILS_DIR/bin so that you can override scripts like "dashboard"
 export PATH="$PATH:./PWD_BIN:$SKIGGETY_UTILS_DIR/bin:$HOME/bin"
 
-export PS1="\$(duh)\$(git branch 2>/dev/null|grep '^*'|sed 's/^\\*/ \\*/') - \D{%F %T}\n\$ " # TODO: add colors (besides duh)
+export PS1="\$(duh) * \$(git branch --show-current) - \D{%F %T}\n\$ " # TODO: add colors (besides duh)
 
 export CLICOLOR='xterm-color' # colorize ls output and such in mac xterm
 
