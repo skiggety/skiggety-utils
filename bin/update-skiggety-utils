@@ -5,6 +5,8 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 
 # This script installs the latest skiggety-utils
 
+# TODO: set interactivity (to be picked up by other installer scripts) according to whether this is a tty?
+
 pushd $SKIGGETY_UTILS_DIR >/dev/null
 
 git restore todo_report # These are generated, and can always be re-generated. Ditching changes here avoids conflicts.

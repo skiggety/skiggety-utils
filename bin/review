@@ -28,8 +28,8 @@ require 'colorize'
 # instead strive to make the default behavior of this, and review-dev, so reasonable that it's not required? Also, can I
 # make this exit gracefully when pkill runs (possibly with -HUP)?
 
-# TODO: we might need a control key to wake it up and make it refresh immediately (accept a control character or signal
-# to refresh now), but we might not need it now that we're 'listening' to the file system
+# TODO^2: a control key to wake it up and make it refresh immediately (accept a control character or signal to
+# refresh now)
 
 # TODO: accept a flag to stop running if the wait gets longer than some specified amount
 # TODO: accept log file that logs output, changes, frequencies/counts, etc.
@@ -38,7 +38,7 @@ require 'colorize'
 # TODO: rubocop says this class is long (see .rubocop_todo.yml), is parse_args the part to extract?
 
 # TODO: BUG watch out for this program pinning the cpu
-# TODO^2: BUG make sure child processes get killed when you use CTRL + C on this program to stop it
+# TODO^4: BUG make sure child processes get killed when you use CTRL + C on this program to stop it
 
 class ReviewProgram
 
@@ -49,12 +49,12 @@ class ReviewProgram
   attr_reader :ran_in_seconds
 
   def initialize
+    # TODO: min_delay, etc.
     @stop_on_failure = false
     @stop_on_success = false
     @slept_already = 0
     @should_clear_screen = true
     @interactive = false
-    # TODO: min_delay, interactive, etc.
   end
 
   def run
