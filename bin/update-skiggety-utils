@@ -13,15 +13,12 @@ git restore todo_report # These are generated, and can always be re-generated. D
 
 git-pretty-pull || exit_with_error "git-pretty-pull FALED"
 
-echo_divider_with_text "=" "Showing todo_report/README.txt:"
-if [ -f $SKIGGETY_UTILS_DIR/todo_report/README_in_color.txt ]; then
-    cat $SKIGGETY_UTILS_DIR/todo_report/README_in_color.txt
-else
-    cat $SKIGGETY_UTILS_DIR/todo_report/README.txt
-fi
-
 echo_divider_with_text "--==" "running: install-skiggety-utils '$@':"
 install-skiggety-utils "$@" || exit 1
+
+echo
+cat $SKIGGETY_UTILS_DIR/todo_report/README_in_color.txt
+echo
 
 popd >/dev/null
 echo "$(basename $0) COMPLETE."
