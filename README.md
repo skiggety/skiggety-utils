@@ -118,6 +118,7 @@ These ideas don't have a code location, so they go here:
   - TODO^2: inforad (chrome extension?) information radiator
   - TODO: "playbot", a program that tunes in youtube livestreams, video meetings, watch later, podcasts and your personal dashboards, automatically. Great as an information radiator.
   - TODO: something to keep randomized youtube playlists playing without interruption for music and such
+  - TODO: 'rod' would be a good name for a transparent screen locker. It would stand for "Read-Only Display"
 - TODO^4: output license summary in interactive programs (like you're supposed to)??
 - TODO^4: commit initial skigg-utils, to get to parity with what I already like to use
 - TODO^3: write a program to abbreviate output for use in the dashboard. You should be able to specify a maximum number of lines and pipe output through it, and it will do something like "head" or "tail" if necessary, but also display information about how many lines were removed/kept/found-in-total
@@ -130,7 +131,7 @@ These ideas don't have a code location, so they go here:
   "X X X" (without the spaces), irrespective of any other commit hooks. That hook might be shared by a team or
   individual to me, and I'd like to be able to support both kinds without conflicts. use
   https://github.com/pre-commit/pre-commit
-  - TODO^10: precommit to prevent committing X X X (without the spaces)
+  - TODO^11: precommit to prevent committing X X X or B R E A D C R U M B (without the spaces)
 - TODO^2: automatically graph gmail progress outstanding messages, by writing a program that takes a url or gmail search string and monitors it. You can check in on the graph periodically to make sure you're on track.
   - TODO: find a tool that can show graphs of provided data on the command line
 - TODO^4: music rotator thingy (Neighbor Shawn might beta test)

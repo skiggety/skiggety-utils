@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# TODO: help configure a ~/.crontab with shellask
+# TODO: run crontab ~/.crontab to make cron aware of the changes
