@@ -154,11 +154,12 @@ class ReviewProgram
 
   # TODO: probably RENAME these two "fill screen" methods, and maybe DRY the insides of them too:
   def fill_screen_interactive(command)
+    clear_screen_if_needed
     time_command do
       @last_output = @output
       @last_exit_val = @exit_val
       system(command)
-      @output = 'TODO: consider pulling some bs with tee to get the output'
+      @output = "TODO^2: consider pulling some BS with tee to get output, meanwhile #{rand(99)} should keep it snappy"
       @exit_val = $CHILD_STATUS.exitstatus
     end
     show_footer(command)
@@ -173,7 +174,7 @@ class ReviewProgram
       @output = `#{non_interactive_command}`
       @exit_val = $CHILD_STATUS.exitstatus
     end
-    system('clear') if @should_clear_screen
+    clear_screen_if_needed
     puts @output
     show_footer(command)
     exit_if_loop_condition_flag
@@ -185,6 +186,16 @@ class ReviewProgram
     @last_end_timestamp = Time.now
     # TODO^3: maybe instead of using to_i, convert to decimal with 2-3 places:
     @ran_in_seconds = (@last_end_timestamp - @last_start_timestamp).to_i
+  end
+
+  def clear_screen_if_needed
+    if ran_in_seconds # Don't clear screen until the command has run before
+      if @should_clear_screen
+        system('clear')
+      else
+        puts ''
+      end
+    end
   end
 
   # TODO: maybe skip files that are gitignored?:
@@ -204,12 +215,12 @@ class ReviewProgram
     delay_remaining = delay
     @slept_already = 0
     while delay_remaining.positive? && (@slept_already < minimum_delay || @wake_up_now == false)
-      print "_...sleeping for #{delay_remaining}/#{delay} seconds...\033[0K\r"
+      print " ...sleeping for #{delay_remaining}/#{delay} seconds...\033[0K\r"
       sleep 1
       delay_remaining -= 1
       @slept_already += 1
     end
-    print "_...slept for #{@slept_already}/#{delay} seconds#{running_message}.#{woke_up_message}\033[0K\r"
+    print " ...slept for #{@slept_already}/#{delay} seconds#{running_message}.#{woke_up_message}\033[0K\r"
     true
   end
 
