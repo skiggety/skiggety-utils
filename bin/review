@@ -38,6 +38,7 @@ require 'colorize'
 # TODO: rubocop says this class is long (see .rubocop_todo.yml), is parse_args the part to extract?
 
 # TODO: BUG watch out for this program pinning the cpu
+# TODO^2: BUG make sure child processes get killed when you use CTRL + C on this program to stop it
 
 class ReviewProgram
 
@@ -50,7 +51,9 @@ class ReviewProgram
   def initialize
     @stop_on_failure = false
     @stop_on_success = false
+    @slept_already = 0
     @should_clear_screen = true
+    @interactive = false
     # TODO: min_delay, interactive, etc.
   end
 
@@ -75,7 +78,7 @@ class ReviewProgram
         fill_screen_non_interactive(command)
       end
       change_detected = calc_change_detected
-      adjust_delay!(change_detected, @ran_in_seconds)
+      adjust_delay!(change_detected)
     end
   end
 
@@ -99,7 +102,6 @@ class ReviewProgram
     # turns out this is important so the rest of the options get left alone and passed on to the next comand:
     ENV['POSIXLY_CORRECT'] = 'true'
 
-    @interactive = false
     # rubocop:disable Metrics/BlockLength
     OptionParser.new do |parser|
       parser.banner = "Usage: #{$PROGRAM_NAME} [options] command ..."
@@ -200,14 +202,14 @@ class ReviewProgram
     @wake_up_now = false
     delay = delay.to_i # just making sure, don't want to get confused
     delay_remaining = delay
-    slept_already = 0
-    while delay_remaining.positive? && (slept_already < minimum_delay || @wake_up_now == false)
+    @slept_already = 0
+    while delay_remaining.positive? && (@slept_already < minimum_delay || @wake_up_now == false)
       print "_...sleeping for #{delay_remaining}/#{delay} seconds...\033[0K\r"
       sleep 1
       delay_remaining -= 1
-      slept_already += 1
+      @slept_already += 1
     end
-    print "_...slept for #{slept_already}/#{delay} seconds#{running_message}.#{woke_up_message}\033[0K\r"
+    print "_...slept for #{@slept_already}/#{delay} seconds#{running_message}.#{woke_up_message}\033[0K\r"
     true
   end
 
@@ -229,16 +231,16 @@ class ReviewProgram
   # MULTIPLY_BY_DELAY has been dialed in based on real usage. There is no magic number. It should
   # always be greater than 1. Make it bigger to save cpu, and smaller to make this program more
   # responsive. Now that we wake up on filesystem changes, this can be a little bit larger:
-  MULTIPLY_BY_DELAY = 1.25
+  MULTIPLY_BY_SLEPT_ALREADY = 0.25
 
-  def adjust_delay!(change_detected, command_run_time)
+  def adjust_delay!(change_detected)
     if change_detected
       @delay = minimum_delay
     else
-      # Using command_run_time time in here means commands that take longer will backoff for longer, which seems
+      # Using ran_in_seconds time in here means commands that take longer will backoff for longer, which seems
       # appropriate, since we can run quick things more often without using too much cpu/battery:
-      add_to_delay = (command_run_time * 0.5).to_i + 1
-      result = (MULTIPLY_BY_DELAY * @delay).floor + add_to_delay
+      add_to_delay = (ran_in_seconds * 0.5).to_i + 1
+      result = (@delay + (MULTIPLY_BY_SLEPT_ALREADY * @slept_already)).floor + add_to_delay
       result = [result, @min_delay].max if @min_delay
       result = [result, @max_delay].min if @max_delay
       @delay = result
@@ -250,10 +252,11 @@ class ReviewProgram
     @min_delay || DEFAULT_MINIMUM_DELAY
   end
 
+  # TODO: maybe format the timestamp differently, it's a little cluttered:
   # Now, in color!
   def show_footer(command)
-    system("echo_divider_with_text \"#\" \"\\\"#{command}\\\" exited with #{red_unless_zero(@exit_val).bold} after " \
-           "#{ran_in_seconds} seconds at " + rotate_rainbow(@last_end_timestamp) + '"')
+    system("echo_divider_with_text \"#\" \"\\\"#{command}\\\" exited with #{red_unless_zero(@exit_val)} after " \
+           "#{ran_in_seconds} seconds, having started at " + rotate_rainbow(@last_start_timestamp) + '"')
   end
 
   def red_unless_zero(text)
@@ -261,13 +264,13 @@ class ReviewProgram
     if text == '0'
       text
     else
-      text.red
+      text.light_red
     end
   end
 
   def rotate_rainbow(text)
-    @rainbow_index ||= 0
-    @rainbow_colors ||= %i[yellow red magenta blue cyan green]
+    @rainbow_colors ||= %i[light_yellow light_red light_magenta light_blue light_cyan light_green]
+    @rainbow_index ||= rand(@rainbow_colors.size)
     color_method_name = @rainbow_colors[@rainbow_index]
 
     @rainbow_index += 1
