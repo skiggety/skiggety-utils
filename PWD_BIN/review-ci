@@ -2,4 +2,4 @@
 
 # This script continuously checks out fresh code and tries it out
 
-review -m 30 -M 3600 ci
+review -m 60 -M 7200 ci
