@@ -8,4 +8,5 @@ export SKIGGETY_UTILS_DIR="$HARDCODED_SKIGGETY_UTILS_DIR"                    # F
 # Default debug setting. Set it to "true" above this section in your bashrc  # FROM_SKIGGETY_UTILS
 # to see debug messages:                                                     # FROM_SKIGGETY_UTILS
 export SKIGGETY_DEBUG=${SKIGGETY_DEBUG:-false}                               # FROM_SKIGGETY_UTILS
-export SKIGGETY_BLINKY_DEBUG=${SKIGGETY_DEBUG:-false}                        # FROM_SKIGGETY_UTILS
+export SKIGGETY_BLINKY_DEBUG=${SKIGGETY_DEBUG:-false} # help you see 'DEBUG' # FROM_SKIGGETY_UTILS
+# export PATH="${PATH}:${SKIGGETY_UTILS_DIR}/bin/silliness" # very optional  # FROM_SKIGGETY_UTILS
