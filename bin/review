@@ -69,7 +69,7 @@ class ReviewProgram
     @output = ''
     fill_screen_interactive(command)
 
-    start_wake_on_filesystem_change # TODO^2: should this depend on a command line flag?
+    start_wake_on_filesystem_change # TODO^3: this should depend on a command line flag
 
     while wakeable_sleep_verbose(@delay)
       if @interactive

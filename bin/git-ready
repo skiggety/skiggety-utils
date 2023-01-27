@@ -25,7 +25,7 @@ function main {
 
     # TODO^3: if the remote branch doesn't exist yet, we should skip trying git pull, since it will fail anyway
     echo
-    hesitate-and-run git pull
+    git pull
 
     echo
     hesitate-and-run-or-fail git push -u
@@ -37,10 +37,12 @@ function main {
     echo "...finished '$(basename "$0")'."
 }
 
+# TODO: move/reuse?
 function run-or-fail {
    $@ || exit_with_error "Command \"$@\" FAILED"
 }
 
+# TODO: move/reuse?
 function hesitate-and-run-or-fail {
    hesitate-and-run $@ || exit_with_error "Command \"$@\" FAILED"
 }
