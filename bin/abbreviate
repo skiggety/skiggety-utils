@@ -15,16 +15,11 @@ while [[ "$1" == -* ]]; do
 done
 
 INPUT="$(cat "$@")" # I think this will work with piped in input or with a filename
-echo_debug "==========================================================================="
-echo_debug "$(basename $0) was called with $@"
-debug_eval MAX_LINES
 if [ "$INPUT" == '' ];then
     INPUT_LINES='0'
 else
     INPUT_LINES="$(( 0 + $(echo "$INPUT" | wc -l) ))"
 fi
-debug_eval INPUT_LINES
-echo_debug "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
 
 if [ $INPUT_LINES -gt $MAX_LINES ]; then
     echo "    ( showing last $MAX_LINES lines out of $INPUT_LINES: )"
