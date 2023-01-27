@@ -50,6 +50,7 @@ class ReviewProgram
   def initialize
     @stop_on_failure = false
     @stop_on_success = false
+    @should_clear_screen = true
     # TODO: min_delay, interactive, etc.
   end
 
@@ -92,8 +93,6 @@ class ReviewProgram
 
   # rubocop:disable Metrics/MethodLength
   def parse_args
-    # TODO: how about a flag to turn off screen clearing. I might like to run: review --no-clear -m 300 git pretty-pull
-
     # NOTE: this is an example of what NOT to do, because we need to distinguish between arguments that are meant for
     # this program, and arguments that are part of the command: $interactive = !ARGV.delete('--non-interactive')
 
@@ -101,6 +100,7 @@ class ReviewProgram
     ENV['POSIXLY_CORRECT'] = 'true'
 
     @interactive = false
+    # rubocop:disable Metrics/BlockLength
     OptionParser.new do |parser|
       parser.banner = "Usage: #{$PROGRAM_NAME} [options] command ..."
       parser.on('-h', '--help', 'show this help') do
@@ -125,7 +125,11 @@ class ReviewProgram
       parser.on('--until', 'keep looping only until commmand succeeds') do
         @stop_on_success = true
       end
+      parser.on('--no-clear', "Don't clear the screen on each run") do
+        @should_clear_screen = false
+      end
     end.parse!(ARGV)
+    # rubocop:enable Metrics/BlockLength
 
     # ...and I need to set it back or it screws up the output of pretty sleep and echo divider since they go back to the
     # beginning of the line
@@ -167,7 +171,7 @@ class ReviewProgram
       @output = `#{non_interactive_command}`
       @exit_val = $CHILD_STATUS.exitstatus
     end
-    system('clear')
+    system('clear') if @should_clear_screen
     puts @output
     show_footer(command)
     exit_if_loop_condition_flag
