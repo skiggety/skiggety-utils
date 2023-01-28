@@ -2,4 +2,5 @@
 
 # This script continuously checks out fresh code and tries it out
 
+# TODO: consider splitting to default_ and normal version like dashboard and lint
 review -m 60 -M 7200 ci

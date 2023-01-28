@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-# The point of this is to be something that runs your dev cycle for you in one window, so you can stay in your editor in
-# the other window and not have to keep switching windows.
-
-# TODO: consider splitting to default_ and normal version like dashboard and lint
-
-review -m 4 -M 900 dev
