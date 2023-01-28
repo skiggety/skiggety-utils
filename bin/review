@@ -63,7 +63,7 @@ class ReviewProgram
 
     command = ARGV.map{ |a| "\"#{a}\"" }.join(' ')
 
-    # TODO: possibly RENAME "delay" to sleep_interval or wait_time or something and use the terminology consistently.
+    # TODO^2: possibly RENAME "delay" to sleep_interval or wait_time or something and use the terminology consistently.
     @delay = minimum_delay
 
     @output = ''
@@ -152,7 +152,7 @@ class ReviewProgram
     ENV['RBENV_DIR'] = nil
   end
 
-  # TODO: probably RENAME these two "fill screen" methods, and maybe DRY the insides of them too:
+  # TODO^2: probably RENAME these two "fill screen" methods, and maybe DRY the insides of them too:
   def fill_screen_interactive(command)
     clear_screen_if_needed
     time_command do

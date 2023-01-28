@@ -41,6 +41,6 @@ banner='########################################################################
 # ding
 tput bel
 
-# TODO^3: can I rename these aliases to something more convenient? I mean "yes_shellask"? seriously?:
+# TODO^4: can I RENAME these aliases to something more convenient? I mean "yes_shellask"? seriously?:
 bash --rcfile <(if [ -f ~/.bashrc ]; then cat ~/.bashrc;fi;echo "alias yup='exit 0'" ;echo "alias nope='exit 1'" ;echo "PS1=\"${newline}$banner${newline}# TODO:${newline}# 1.) ${DOUBLE_ESCAPED_TASK_DESCRIPTION}${newline}# 2.) Run \\\"yup\\\" for success/yes, or \\\"nope\\\" to say failure/no.${newline}$banner${newline}\$PS1\"") - # IGNORE_TODO
 exit $?

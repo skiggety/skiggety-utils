@@ -101,7 +101,7 @@ module InstallableSkiggetyUtil
     File.exist?(current_install_marker_file_path)
   end
 
-  # TODO: RENAME:
+  # TODO^2: RENAME:
   # call another installer besides this one, for prerequisites
   def call_peer_installer(name)
     # TODO^3: perhaps if the installer contains 'include InstallableSkiggetyUtil', we should call it in the same process
@@ -248,7 +248,7 @@ module InstallableSkiggetyUtil
     system(command) or raise "Failed to run command: \"#{command}\""
   end
 
-  # TODO^2: RENAME?
+  # TODO^3: RENAME?
   def program_version_option_output_matches?(program, version_regex)
     version_output = `#{program} --version | head -n 1`.chomp
     (version_output =~ version_regex).is_a?(Numeric) # TODO^2: update desired vim version

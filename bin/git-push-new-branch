@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# TODO^2: RENAME this script
+# TODO^3: RENAME this script
 git checkout -b "$@" && git push -u
 # TODO: capture output and open browser to new pull request automatically

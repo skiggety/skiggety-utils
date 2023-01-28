@@ -22,7 +22,7 @@ debug_here "update-skiggety-utils completed successfully"; echo
 # TODO: this is something similar that I'm also not sure is a good idea: ./bin/start_in_env.bash || exit_with_error "Could not run \"./bin/start_in_env.bash\"" # TODO: don't use relative path # TODO^2: move most things in here, including any interactive stuff
 
 shellask "let's take a look at the README.md, ok?" && less README.md || echo "...that's ok, we can skip the README.md"
-# help_with_skiggety_utils # TODO^3: RENAME, test/implement something to show the help system if I do more with it.
+# help_with_skiggety_utils # TODO^4: RENAME, test/implement something to show the help system if I do more with it.
 
 debug_here "let's try running dev:"
 debug_here "---------------------------"

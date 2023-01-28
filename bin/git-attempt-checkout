@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# TODO^5: RENAME this script
+# TODO^6: RENAME this script
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash
 

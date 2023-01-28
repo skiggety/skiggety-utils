@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# TODO^5: maybe rename, e.g. 'git-pull-verbose'
+# TODO^6: maybe RENAME, e.g. 'git-pull-verbose'
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash
 
