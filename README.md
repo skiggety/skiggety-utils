@@ -113,9 +113,7 @@ So anyway, you don't really need to look a t the full list, just a screen-full o
 
 These ideas don't have a code location, so they go here:
 
-- TODO: with Kevin: do rust things ...
-  - TODO^15: do [rust koans](https://github.com/crazymykl/rust-koans) (with Kevin) so we can prepare to...
-  - TODO^11: ...rewrite todo in rust with parallelization (with Kevin)
+  - TODO^11: ...rewrite todo in rust with parallelization (with Kevin), but after [rust koans](https://github.com/crazymykl/rust-koans)
 - TODO^6: some tools for setting up information radiators
   - TODO^2: inforad (chrome extension?) information radiator
   - TODO: "playbot", a program that tunes in youtube livestreams, video meetings, watch later, podcasts and your personal dashboards, automatically. Great as an information radiator.
@@ -133,7 +131,7 @@ These ideas don't have a code location, so they go here:
   "X X X" (without the spaces), irrespective of any other commit hooks. That hook might be shared by a team or
   individual to me, and I'd like to be able to support both kinds without conflicts. use
   https://github.com/pre-commit/pre-commit
-  - TODO^11: precommit to prevent committing X X X or B R E A D C R U M B (without the spaces)
+  - TODO^12: precommit to prevent committing X X X or B R E A D C R U M B (without the spaces)
 - TODO^2: automatically graph gmail progress outstanding messages, by writing a program that takes a url or gmail search string and monitors it. You can check in on the graph periodically to make sure you're on track.
   - TODO: find a tool that can show graphs of provided data on the command line
 - TODO^4: music rotator thingy (Neighbor Shawn might beta test)
