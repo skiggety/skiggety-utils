@@ -14,6 +14,8 @@
 
 # TODO: I think this script should save the output of dev and simply cat it if there is no update from git
 
+# TODO^2: what if there are updates to the top-level ci script? should it re-exec itself?
+
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/include_in_bashrc.bash || exit 1
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
