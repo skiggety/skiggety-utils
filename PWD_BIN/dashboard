@@ -13,6 +13,9 @@ if ! [ -z "$SKIGGETY_UTILS_DONOR_DIR" ]; then
     diff -rq --exclude=.DS_Store --exclude=.git $THIS_DIR/.. $SKIGGETY_UTILS_DONOR_DIR | grep -v "^Only in $THIS_DIR/.." | grep --color=always '\(differ\|Only\)' | abbreviate -n 5
 fi
 
+bin/default_dashboard || accumulate_error "default_dashboard FAILED"
+
+# show todo's:
 if [ -f ./todo_report/README_in_color.txt ]; then
     cat ./todo_report/README_in_color.txt
 else
@@ -20,8 +23,6 @@ else
     # purposely call whatever 'todo' is in the path in case you are overriding it with a 'PWD_BIN/todo' script:
     todo --color always | abbreviate -n 5 || exit_with_error "todo FAILED" # TODO^2: abbreviate -n 5 todo
 fi
-
-bin/default_dashboard || accumulate_error "default_dashboard FAILED"
 
 # TODO?: tell you what command to run to commit changes or whatever
 # TODO?: graph score over time (see program "progress")
