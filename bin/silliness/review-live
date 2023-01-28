@@ -2,6 +2,6 @@
 
 # TODO: schedule this program in a terminal in the morning
 
-while shellask "should you be doing stuff?" || ! shellask "have you checked off all habits today" ;do
+while shellask "Should you be doing stuff?" || ! shellask "Have you checked off all habits today?" ;do
     editfirst live
 done
