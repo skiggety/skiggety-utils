@@ -22,6 +22,7 @@ fi
 
 alias tmux="TERM=screen-256color-bce tmux"
 alias vw="vimwhich"
+alias be="bundle exec"
 
 # TODO: use more stuff from older bashrc files I've used
 
