@@ -26,6 +26,7 @@ from todo_line import TodoLine
 
 # TODO^2: maybe accept --vote 'substring', --downvote 'substring', or --delete 'substring'  to find
 # a matching todo and change the vote count without doing anything else
+#  TODO^3: in particular '--vote' would be a timesaver, especially if you could use it with today_todo
 #  TODO: once we have a --delete option, you could write a script that goes through your todo's in
 #  priority order, and prompts you to do each one with shellask, and deletes them if you say you
 #  have done it.
@@ -155,7 +156,7 @@ def main():
                     Style.RESET_ALL + line_color)
             for line in lines[:-1]:
                 print(re.sub(find_todo_entry_pattern, highlight_todo_entry, str(line)))
-                # TODO: the yellow line should really be everything that's tied for highest votes,
+                # TODO^2: the yellow line should really be everything that's tied for highest votes,
                 # so something like:
                 # if line.votecount = max_votecout
                 #     print_highlighted_colorful_line(line)

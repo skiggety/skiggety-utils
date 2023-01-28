@@ -11,6 +11,7 @@
 # TODO: this program needs to display some instructions so the user knows how to use it.
 # TODO: maybe during business hours, show results with "BUSINESS_HOURS" more prominently, and hide them otherwise
 
+# TODO^3: add a mode to quickly upvote one particular thing, that would call "todo --vote 'substring of my todo line'"
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
 function main {
