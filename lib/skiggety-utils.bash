@@ -160,7 +160,7 @@ function echo_divider_with_text {
     pattern="$1"
     text="$2"
     echo_divider_without_newline "$pattern"
-    echo -ne "\r"
+    echo -ne "\r" # TODO^3: cut this bs out and do it properly, in some places this looks like a newline
     echo_pattern_n_length "$pattern" 4
     echo -e " $text "
 }

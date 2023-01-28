@@ -155,6 +155,12 @@ def main():
                     Style.RESET_ALL + line_color)
             for line in lines[:-1]:
                 print(re.sub(find_todo_entry_pattern, highlight_todo_entry, str(line)))
+                # TODO: the yellow line should really be everything that's tied for highest votes,
+                # so something like:
+                # if line.votecount = max_votecout
+                #     print_highlighted_colorful_line(line)
+                # else
+                #     print_colorful_line
             line_color = Style.BRIGHT + Fore.YELLOW
             print_debug(f"we have {len(lines)} lines")
             if len(lines) > 0:
