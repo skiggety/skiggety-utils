@@ -4,27 +4,45 @@
 # entails, printing concise useful output, and exit on 0 only on success. This script does that for skiggety-utils. Use
 # "review ci" or "review-ci" to make it run continuously.
 
-# TODO^2: possible script renaming--ci means continuos. This is just the integration part. "review-ci" could become "ci"
+# TODO^3: possible script renaming--ci means continuos. This is just the integration part. "review-ci" could become "ci"
 # and this would become what? "i"? Or maybe every scrtipt that does one cycle and is meant to be changed and used with
 # review has a name that ends in "-cycle"? I dunno. Something to think about.
+#  # TODO: one idea is that 'ci' is something very high level that uses review heavily but probably uses it once to wait
+#  for a commit, and overall is responsible for doing a git pull and calling something like 'integrate' (like what this
+#  script is now) that mostly manages the running of 'dev', maybe specifying read-only mode or whatever. 'ci' should
+#  also keep a prominent display of the latest commit or two with timestamps.
+
+# TODO: I think this script should save the output of dev and simply cat it if there is no update from git
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/include_in_bashrc.bash || exit 1
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
-# TODO^3: deal with any local changes...delete them? ...error out? both? I think it would be best to stash any at the
-# beginning and then treat any created by dev as errors (but clean up after them)
+# TODO^4: accumulate error if any local changes are found, i.e. "maybe you want to run 'dev' instead of 'ci'? Do you want
+# to commit these changes?'
 
 git-pretty-pull || exit_with_error "git-pretty-pull FALED"
 
-git restore --staged .
+# TODO: ???: git restore --staged .
 
 # TODO^4: ensure that the mere act of running ci doesn't cause local changes. I'm looking at PWD_BIN/lint .
 dev && echo "dev SUCCEEDED" || accumulate_error "dev FAILED"
 
+# TODO: if there are git changes, complain that dev is not read-only
+
 git restore todo_report
 
-# TODO: accumulate error if any local changes are found, i.e. "maybe you want to run 'dev' instead of 'ci'? Do you want
-# to commit these changes?'
+# SKIGGETY_DEBUG=true # TODO: come up with a format like what I have but with a timestamp and author included, then save
+# the git log argument somewhere so I can use it in other git log commands like in git-pretty-pull, etc
+echo_debug git log oneline:
+git -c color.ui=always --no-pager log --oneline --decorate=short origin/HEAD~..HEAD -n 2
+# echo_debug git log pretty oneline:
+# git -c color.ui=always --no-pager log --pretty=oneline --decorate=short origin/HEAD~..HEAD -n 2
+# echo_debug git log reference:
+# git -c color.ui=always --no-pager log --pretty=reference --decorate=short origin/HEAD~..HEAD -n 2
+# echo_debug stack overflow answer:
+# git -c color.ui=always --no-pager log --pretty=format:"%h%x09%an%x09%ad%x09%s" origin/HEAD~..HEAD -n 2
+# echo_debug colorful stack overflow answer from comment:
+# git -c color.ui=always --no-pager log --pretty=format:'%C(yellow)%h|%Cred%ad|%Cblue%an|%Cgreen%d %Creset%s' origin/HEAD~..HEAD -n 2
 
 exit_with_any_accumulated_errors

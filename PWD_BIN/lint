@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# TODO^6: make this read-only by default, split the write version into another script if necessary
+# TODO^7: make this read-only by default, split the write version into another script if necessary
 # TODO^4: run shellcheck
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"

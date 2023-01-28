@@ -3,6 +3,8 @@
 # This script performs one development cycle, whatever that means in any individual project. For this project, it means
 # running unit-test and showing the dashboard.
 
+# TODO: ci has to be able to call this in read-only mode
+
 # TODO: in bin/, should there be a dev and a default-dev like with dashboard?
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
