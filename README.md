@@ -76,6 +76,8 @@ For the safe docker demo:
 - [grim](bin/grim) - GRep for string and open in vIM. This is what you use when you can remember a unique key word or
   phrase in the text location where you want to edit quicker than you can remember the file name. Also good for shotgun
   surgery since you can find all occurrences quickly.
+- [newbin](bin/newbin) - The quickest way to start editing a new script in your path. Try "newbin myscript env ruby" or
+  "newbin myscript".
 - [review](bin/review) - A program that displays output of other programs and refreshes on a delay with a backoff.
 - [shebang](bin/shebang) - quickly produces a shebang line for the top of your script. Try
 'shebang env bash > my_new_script' to get the idea

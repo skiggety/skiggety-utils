@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+# Just a fast way to start editing a new script
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+SKIGGETY_DEBUG=true
+
+if [ "$1" == "$(basename $1)" ];then
+    new_file="$SKIGGETY_UTILS_DIR/bin/$1"
+else
+    new_file="$1"
+fi
+debug_eval new_file
+shift
+
+if [ x"$@"x == x""x ]; then
+    debug_here
+    shebang_args="env bash"
+else
+    debug_here
+    shebang_args="$@"
+fi
+
+if ! [ -f $new_file ]; then
+    debug_eval_here shebang_args
+    shebang $shebang_args > $new_file
+    chmod +x $new_file
+
+    # TODO: frozen string literal thingy if ruby
+
+    if [ "$shebang_args" == "env bash" ];then
+        debug_here
+        echo >> $new_file
+        echo "# This script (...TODO, describe your script here)" >> $new_file
+        echo >> $new_file
+        echo ". \$SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1" >> $new_file
+        echo >> $new_file
+    fi
+fi
+
+$EDITOR $new_file
