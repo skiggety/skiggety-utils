@@ -58,7 +58,7 @@ class VimInstaller
     git_clone_latest('https://github.com/junegunn/fzf.vim.git', "#{bundle_dir}/fzf.vim")
     # TODO?: vim-ripgrep & learn to use it (be careful, it seems to have it's own :Rg command that's different from
     # fzf.vim's)
-    # TODO^5: learn to use nerdcommenter:
+    # TODO^6: learn to use nerdcommenter:
     git_clone_latest('https://github.com/preservim/nerdcommenter.git', "#{bundle_dir}/nerdcommenter")
     # TODO: nerdtree
     # TODO: https://github.com/tpope/vim-dispatch

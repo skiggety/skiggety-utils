@@ -2,6 +2,9 @@
 
 # Just a fast way to start editing a new script
 
+# TODO: DRY functionality with vimwhich, there is or at least should be some overlap. Maybe vimwhich should call newbin
+# if it doesn't find the right script?
+
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 SKIGGETY_DEBUG=true
 
