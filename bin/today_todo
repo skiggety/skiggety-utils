@@ -14,11 +14,18 @@
 # TODO^3: add a mode to quickly upvote one particular thing, that would call "todo --vote 'substring of my todo line'"
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
+USAGE='today_todo [options]
+
+OPTIONS:
+  -n or --non-interactive means to skip the editing part and just show the output immediately
+  -h or -? or --help shows this message'
+
 function main {
     for arg in "$@"; do
         shift
         case "$arg" in
             --non-interactive) set -- "$@" "-n" ;;
+            --help) set -- "$@" "-h" ;;
             *)                 set -- "$@" "$arg" ;;
         esac
     done
@@ -31,8 +38,8 @@ function main {
         case "$opt" in
             "i") interactive=true ;;
             "n") interactive=false ;;
-            "h") exit_with_error "TODO: print usage" ;;
-            "?") exit_with_error "TODO: print usage" ;;
+            "h") echo "$USAGE"; exit ;;
+            "?") echo "$USAGE"; exit ;;
             *) ;;
         esac
     done
@@ -62,7 +69,7 @@ function main {
 
     echo "It's time to compact todo's in $0"
     todo -wfq $EXCLUDE_DIR_ARGS
-    PAUSE_TO_READ=1
+    PAUSE_TO_READ=0
     if $interactive; then
         clear
     fi
