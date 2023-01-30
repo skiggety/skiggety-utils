@@ -9,3 +9,4 @@
 #   TODO: call_peer_installer('todo')
 #   TODO: call_peer_installer('review')
 #   TODO: install shellcheck if I start using it
+#   TODO^13: install pre-commit hook from ./devkit.config
