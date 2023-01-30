@@ -37,14 +37,14 @@ git restore todo_report
 # SKIGGETY_DEBUG=true # TODO: come up with a format like what I have but with a timestamp and author included, then save
 # the git log argument somewhere so I can use it in other git log commands like in git-pretty-pull, etc
 echo_debug git log oneline:
-git -c color.ui=always --no-pager log --oneline --decorate=short origin/HEAD~..HEAD -n 2
+git -c color.ui=always --no-pager log --oneline --decorate=short origin/HEAD~~..HEAD -n 3
 # echo_debug git log pretty oneline:
-# git -c color.ui=always --no-pager log --pretty=oneline --decorate=short origin/HEAD~..HEAD -n 2
+# git -c color.ui=always --no-pager log --pretty=oneline --decorate=short origin/HEAD~~..HEAD -n 3
 # echo_debug git log reference:
-# git -c color.ui=always --no-pager log --pretty=reference --decorate=short origin/HEAD~..HEAD -n 2
+# git -c color.ui=always --no-pager log --pretty=reference --decorate=short origin/HEAD~~..HEAD -n 3
 # echo_debug stack overflow answer:
-# git -c color.ui=always --no-pager log --pretty=format:"%h%x09%an%x09%ad%x09%s" origin/HEAD~..HEAD -n 2
+# git -c color.ui=always --no-pager log --pretty=format:"%h%x09%an%x09%ad%x09%s" origin/HEAD~~..HEAD -n 3
 # echo_debug colorful stack overflow answer from comment:
-# git -c color.ui=always --no-pager log --pretty=format:'%C(yellow)%h|%Cred%ad|%Cblue%an|%Cgreen%d %Creset%s' origin/HEAD~..HEAD -n 2
+# git -c color.ui=always --no-pager log --pretty=format:'%C(yellow)%h|%Cred%ad|%Cblue%an|%Cgreen%d %Creset%s' origin/HEAD~~..HEAD -n 3
 
 exit_with_any_accumulated_errors

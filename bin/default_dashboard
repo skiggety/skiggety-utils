@@ -23,7 +23,7 @@ fi
 # TODO: why is this producing so much output lately, like in content manager, even when there have only been a few
 # commits in the feature branch?:
 echo_divider_with_text "-=" "git log: (most recent commit and un-pushed commits)"
-git -c color.ui=always --no-pager log --oneline --decorate=short origin/HEAD~..HEAD -n 7
+git -c color.ui=always --no-pager log --oneline --decorate=short origin/HEAD~~..HEAD -n 7
 
 unset GIT_EXTERNAL_DIFF # if call this from inside a git-vimdiff, we still want "git diff" to behave normally
 # echo_divider_with_text "-" "git diff of unstaged files:"
