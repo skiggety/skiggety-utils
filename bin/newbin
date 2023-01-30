@@ -35,11 +35,11 @@ if ! [ -f $new_file ]; then
         # TODO: copy a template file:
         debug_here
         echo >> $new_file
-        echo "# This script (...TODO, describe your script here)" >> $new_file
+        echo "# This script (...TODO, describe your script here)" >> $new_file # IGNORE_TODO
         echo >> $new_file
         echo ". \$SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1" >> $new_file
         echo >> $new_file
-        echo "exit_with_error \"TODO: IMPLEMENT\"" >> $new_file
+        echo "exit_with_error \"TODO: IMPLEMENT\"" >> $new_file # IGNORE_TODO
     fi
 fi
 
