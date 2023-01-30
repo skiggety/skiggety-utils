@@ -12,6 +12,8 @@
 /installers/.markers/*.updated_with_version.*
 lib/coverage_links/*
 
+/logs/*
+
 __pycache__/
 
 /coverage/
