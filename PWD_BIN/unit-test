@@ -18,7 +18,7 @@ echo_divider_with_text "+-=======-" "ruby_setup"
 
 echo_divider_with_text "+-=======-" "'todo' tests"
 ./test/test_todo.bash || accumulate_error "shell integration tests for 'todo' FAILED"
-# TODO: ./test/test_todo_5.bash || accumulate_error "shell integration tests for 'todo_5' FAILED"
+# TODO: ./test/test_todo_4.bash || accumulate_error "shell integration tests for 'todo_4' FAILED"
 # TODO: save todo versions with numbers in the names and wrap one of them in todo (a bash script that sets pyenv and
 # runs it)
 
