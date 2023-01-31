@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# This script (...TODO, describe your script here)
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+exit_with_error "TODO^6: IMPLEMENT"

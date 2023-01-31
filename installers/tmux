@@ -36,6 +36,12 @@ class TmuxInstaller
       ask_user 'Have you confirmed that your tmux.conf is good enough?'
   end
 
+  # TODO^2: learn tmux better and develop the config. Here's some stuff to check out:
+  #   _ https://tmuxcheatsheet.com/
+  #   - https://www.bugsnag.com/blog/tmux-and-vim#:~:text=Vimux%20essential%20commands&text=Pressing%20enter%20will%20run%20the,the%20command%20to%20run%20in.&text=Now%2C%20from%20normal%20mode%20you,issue%20commands%2C%20as%20shown%20here.
+  #   - https://michaelsoolee.com/resize-tmux-panes/
+  #   - https://github.com/reedns/dotfiles/blob/master/.tmux.conf
+
   def configure!
     if $interactive
       # TODO^8: maybe use shellask, but don't assume user is ready to be launched into vim:

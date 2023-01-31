@@ -64,6 +64,8 @@ def main():
     arg_parser.add_argument('-f', '--force', action='store_true', help = 'TODO')
     arg_parser.add_argument('-d', '--debug', action='store_true', help = 'TODO')
     arg_parser.add_argument('-q', '--quiet', action='store_true', help = 'TODO')
+    # TODO: have a way to also show a graph that helps you understand how many votes you have across
+    # how many todos
 
     arg_parser.add_argument('--color', action='store', choices=['never', 'auto', 'always'],  help = 'TODO')
 

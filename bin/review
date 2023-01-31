@@ -28,7 +28,7 @@ require 'colorize'
 # instead strive to make the default behavior of this, and review-dev, so reasonable that it's not required? Also, can I
 # make this exit gracefully when pkill runs (possibly with -HUP)?
 
-# TODO^2: a control key to wake it up and make it refresh immediately (accept a control character or signal to
+# TODO^3: a control key to wake it up and make it refresh immediately (accept a control character or signal to
 # refresh now)
 
 # TODO: accept a flag to stop running if the wait gets longer than some specified amount
@@ -64,7 +64,7 @@ class ReviewProgram
     command = ARGV.map{ |a| "\"#{a}\"" }.join(' ')
 
     # TODO^2: possibly RENAME "delay" to sleep_interval or wait_time or something and use the terminology consistently.
-    @delay = minimum_delay
+    @delay = minimum_delay # TODO: we don't have to start with the minimum, we could take a flag
 
     @output = ''
     fill_screen_interactive(command)
@@ -198,6 +198,7 @@ class ReviewProgram
     end
   end
 
+  # TODO^2: this needs to be switchable by command line
   # TODO: maybe skip files that are gitignored?:
   def start_wake_on_filesystem_change
     listener = Listen.to('.') do |_modified, _added, _removed|
@@ -220,6 +221,7 @@ class ReviewProgram
       delay_remaining -= 1
       @slept_already += 1
     end
+    # TODO: show time as hh:mm:ss or something like that:
     print " ...slept for #{@slept_already}/#{delay} seconds#{running_message}.#{woke_up_message}\033[0K\r"
     true
   end
@@ -279,6 +281,7 @@ class ReviewProgram
     end
   end
 
+  # TODO: reverse color order:
   def rotate_rainbow(text)
     @rainbow_colors ||= %i[light_yellow light_red light_magenta light_blue light_cyan light_green]
     @rainbow_index ||= rand(@rainbow_colors.size)

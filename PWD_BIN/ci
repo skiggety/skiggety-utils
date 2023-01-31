@@ -20,7 +20,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/include_in_bashrc.bash || exit 1
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
-# TODO^4: accumulate error if any local changes are found, i.e. "maybe you want to run 'dev' instead of 'ci'? Do you want
+# TODO^5: accumulate error if any local changes are found, i.e. "maybe you want to run 'dev' instead of 'ci'? Do you want
 # to commit these changes?'
 
 git-pretty-pull || exit_with_error "git-pretty-pull FALED"
@@ -30,7 +30,7 @@ git-pretty-pull || exit_with_error "git-pretty-pull FALED"
 # TODO^4: ensure that the mere act of running ci doesn't cause local changes. I'm looking at PWD_BIN/lint .
 dev && echo "dev SUCCEEDED" || accumulate_error "dev FAILED"
 
-# TODO: if there are git changes, complain that dev is not read-only
+# TODO^2: if there are git changes, complain that dev is not read-only
 
 git restore todo_report
 
