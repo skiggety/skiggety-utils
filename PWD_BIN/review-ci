@@ -5,4 +5,4 @@
 # TODO^2: after the RENAME/redesign of 'ci', this script probably will get DELETEd
 
 # TODO: consider splitting to default_ and normal version like dashboard and lint
-review -m 60 -M 7200 ci
+review -m 60 -M 900 ci
