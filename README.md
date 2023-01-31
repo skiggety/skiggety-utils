@@ -61,6 +61,7 @@ For the safe docker demo:
 - [duh](bin/duh) - Show Directory, Username, and Hostname (in scp format). Useful in prompts.
 - [dashboard](PWD_BIN/dashboard) A overrideable program that summarizes the overall status for one directory location.
 - [default_dashboard](bin/default_dashboard) - Show a bunch of useful information for the current directory, especially if it's a git project. Also can be called by calling 'dashboard' if you don't implement your own ./PWD_BIN/dashboard 
+- [devkit installer](installers/devkit) - Install just what's needed to work on these programs
 - various *git* subcommands:
   - [git-attempt-checkout](bin/git-attempt-checkout) - finds a branch by substring and checks it out quickly
   - [git-pretty-pull](bin/git-pretty-pull) - git pull with a little bit of extra information.
@@ -114,6 +115,7 @@ So anyway, you don't really need to look a t the full list, just a screen-full o
 These ideas don't have a code location, so they go here:
 
   - TODO^11: ...rewrite todo in rust with parallelization (with Kevin), but after [rust koans](https://github.com/crazymykl/rust-koans)
+- TODO^3: toy rails site, need a good idea, maybe it can help with information radiating?
 - TODO^6: some tools for setting up information radiators
   - TODO^2: inforad (chrome extension?) information radiator
   - TODO: "playbot", a program that tunes in youtube livestreams, video meetings, watch later, podcasts and your personal dashboards, automatically. Great as an information radiator.

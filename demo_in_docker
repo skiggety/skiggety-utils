@@ -3,6 +3,8 @@
 # Safely try out a docker container with skiggety utils installed, to see what it's like
 # without affecting your machine
 
+# TODO^2: TEST on windows
+
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 SKIGGETY_UTILS_DIR="$THIS_DIR"
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash
@@ -29,19 +31,22 @@ rm -rf "$TMP_MARKER_DIR"
 mkdir -p "$TMP_MARKER_DIR"
 touch "$TMP_MARKER_DIR/.keep"  #So it doesn't show as missing in docker
 
+echo
+echo
+echo
+echo "This todo list is shown because it's up-to-date with what features are coming up next:"
 cat todo_report/README_in_color.txt
 echo
-ls
+echo "So here you are in this demo machine with skiggety utils not fully installed yet:"
 echo
-echo "So here you are in this demo machine with skiggety utils not fully installed yet. Todo's and files in '.' are above to help you see what's what, and running the suggestions below will get you started:"
-echo
-echo "Run './start'"
-echo
-echo "...or if you want to skip the demo parts and get up and running fast, run 'PWD_BIN/install-skiggety-utils' then run 'exec bash'"
-echo "...then try running 'chbs', 'todo', or 'review-dev', for example"
+echo "Run './start' for the full install and introduction. (then run 'exec bash')"
+echo "  ...or..."
+echo "Run 'PWD_BIN/install-skiggety-utils' for the just the full install. (then run 'exec bash')"
+echo "  ...or..."
+echo "Run 'installers/devkit' and any other installers you want to be more selective. You might not even need to run 'exec bash'."
 
 # TODO: maybe run it in the background and then tell you how to connect more to it, then connect, then clean up:
-# TODO: can I set the hostname to something friendly so it appears in the prompt?:
+# TODO^2: can I set the hostname to something friendly so it appears in the prompt?:
 # TODO^3: try using docker compose for this:
 CONTAINED_UTILS_DIR="/root/code/skiggety-utils"
 docker run --rm -it --entrypoint bash \

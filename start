@@ -26,13 +26,16 @@ shellask "let's take a look at the README.md, ok?" && less README.md || echo "..
 
 debug_here "let's try running dev:"
 debug_here "---------------------------"
-shellask "let's run 'dev', ok?" && ./PWD_BIN/dev
-
-echo
-echo "You may want to run 'exec bash', to get a fresh shell now that you've set up some shell stuff"
+shellask "Would you like to see 'dev' run? It is one full development cycle for skiggety-utils, and running it tests a few things and contains a lot of dense information about the current state of development." && ./PWD_BIN/dev
 
 echo
 debug_here "dev completed successfully"
+echo
+echo "You may want to run 'exec bash', to get a fresh shell now that you've set up some shell stuff"
+echo "...then try running 'chbs', 'todo', or 'review-dev', for example"
+
+echo
+
 debug_here "exiting..."
 exit 0
 

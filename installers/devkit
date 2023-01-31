@@ -2,11 +2,32 @@
 # frozen_string_literal: true
 
 # Install just what's needed to work on the programs in here, without any skiggety-ish preferences inflicted on you.
+# TODO: make sure there is a way to run this inside demo_in_docker and then to be able to run 'todo' or at least
+# something like '/usr/local/bin/pyenv exec bin/todo' afterwards
 
-# TODO^5: IMPLEMENT:
-#   TODO: document this in README
-#   TODO: what's minimally-invasive that someone else could install to work on todo or review?
-#   TODO: call_peer_installer('todo')
-#   TODO: call_peer_installer('review')
-#   TODO: install shellcheck if I start using it
-#   TODO^13: install pre-commit hook from ./devkit.config
+require_relative '../lib/installable_skiggety_util'
+
+class DevKitInstaller
+
+  include InstallableSkiggetyUtil
+
+  def apparently_installed?
+    false # will mark installed manually, I think there's too many things to check on
+  end
+
+  def apparently_configured?
+    true # I guess
+  end
+
+  def install!
+    call_peer_installer('basic_prerequisites')
+    call_peer_installer('todo')
+    call_peer_installer('review')
+    # TODO: call_peer_installer('shellcheck') if I start using it
+    # TODO^13: install pre-commit hook from ./devkit.config
+    mark_installed!
+  end
+
+end
+
+DevKitInstaller.run

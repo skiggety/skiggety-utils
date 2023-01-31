@@ -28,8 +28,8 @@ require 'colorize'
 # instead strive to make the default behavior of this, and review-dev, so reasonable that it's not required? Also, can I
 # make this exit gracefully when pkill runs (possibly with -HUP)?
 
-# TODO^3: a control key to wake it up and make it refresh immediately (accept a control character or signal to
-# refresh now)
+# TODO^4: a control key to wake it up and make it refresh immediately (accept a control character or signal to refresh
+# now)
 
 # TODO: accept a flag to stop running if the wait gets longer than some specified amount
 # TODO: accept log file that logs output, changes, frequencies/counts, etc.
@@ -109,6 +109,7 @@ class ReviewProgram
         puts parser
         exit
       end
+      # TODO: should be able to specify min/max delay from the command line as hh:mm:ss if you want:
       parser.on('-m', '--min-delay MINIMUM', 'specify minimum delay in seconds') do |min|
         @min_delay = min.to_i
       end
@@ -265,7 +266,7 @@ class ReviewProgram
     @min_delay || DEFAULT_MINIMUM_DELAY
   end
 
-  # TODO: maybe format the timestamp differently, it's a little cluttered:
+  # TODO^2: cleanup timestamp formatting:
   # Now, in color!
   def show_footer(command)
     system("echo_divider_with_text \"#\" \"\\\"#{command}\\\" exited with #{red_unless_zero(@exit_val)} after " \
@@ -281,7 +282,7 @@ class ReviewProgram
     end
   end
 
-  # TODO: reverse color order:
+  # TODO^3: reverse color order so it actually looks like a rainbow:
   def rotate_rainbow(text)
     @rainbow_colors ||= %i[light_yellow light_red light_magenta light_blue light_cyan light_green]
     @rainbow_index ||= rand(@rainbow_colors.size)

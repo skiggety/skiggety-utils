@@ -11,6 +11,7 @@
 #  for a commit, and overall is responsible for doing a git pull and calling something like 'integrate' (like what this
 #  script is now) that mostly manages the running of 'dev', maybe specifying read-only mode or whatever. 'ci' should
 #  also keep a prominent display of the latest commit or two with timestamps.
+#    TODO^2: ...so rename this script 'integrate' to get the ball rolling?
 
 # TODO: I think this script should save the output of dev and simply cat it if there is no update from git
 
