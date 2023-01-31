@@ -20,7 +20,7 @@ echo_divider_with_text "+-=======-" "pylint:"
 # TODO: abbreviate output?:
 # TODO^4 automatically scan all python files:
 # TODO^5: get in the habit of keeping everything clean and then use accumulate_error here:
-pylint --rcfile .pylintrc bin/todo_4 lib/todo_line.py bin/silliness/demo_python_version_hack || warn_here 'TEMPORARILY IGNORING the fact that pylint reported ERRORS'
+pylint --rcfile .pylintrc 'bin/todo_v0.4' lib/todo_line.py bin/silliness/demo_python_version_hack || warn_here 'TEMPORARILY IGNORING the fact that pylint reported ERRORS'
 
 echo_divider_with_text "+-=======-" "rubocop:"
 # TODO: call rupocop with -a OR -P depending on whether this script is in write mode or not (this script should have
