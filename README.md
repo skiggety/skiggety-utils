@@ -23,6 +23,9 @@ For the safe docker demo:
 - run "./start"
 - Follow the prompts, instructions, and read the output. By the end, you should know what's going on.
 
+### Prerequisites:
+- bash
+
 ## Design
 
   This is a sandbox and a miscellaneous bin among other things, so there is no one design per se, but there are some
