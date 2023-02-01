@@ -37,12 +37,12 @@ function main {
     echo "...finished '$(basename "$0")'."
 }
 
-# TODO: move/reuse?
+# TODO^2: move/reuse?
 function run-or-fail {
    $@ || exit_with_error "Command \"$@\" FAILED"
 }
 
-# TODO: move/reuse?
+# TODO^2: move/reuse?
 function hesitate-and-run-or-fail {
    hesitate-and-run $@ || exit_with_error "Command \"$@\" FAILED"
 }

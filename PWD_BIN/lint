@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-# TODO^7: make this read-only by default, split the write version into another script if necessary
+# TODO^8: make this read-only by default, split the write version into another script if necessary
+#   TODO^8: I think the way to handle this is to support a '-w' or '--fix' option
 # TODO^5: run shellcheck
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
