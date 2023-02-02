@@ -3,5 +3,5 @@
 # TODO: schedule this program in a terminal in the morning
 
 while shellask "Should you be doing stuff?" || ! shellask "Have you checked off all habits today?" ;do
-    editfirst live
+    vimfirst live
 done

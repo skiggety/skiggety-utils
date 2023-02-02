@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # usually my first three guesses are %w[laugh cried stony]
 #
-# you generally want to run "editfirst cheat_at_wordle.bash" to edit this script changing the indivual letters in the
+# you generally want to run "vimfirst cheat_at_wordle.bash" to edit this script changing the indivual letters in the
 # variables and brackets below, then let it run to show you possible answers.
 USUAL_UNUSED=qwpfjkzxvbm
 

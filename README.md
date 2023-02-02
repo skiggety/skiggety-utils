@@ -92,7 +92,9 @@ For the safe docker demo:
   I can work on that.
 - [sleep-verbose](bin/sleep-verbose) - like 'sleep' but with a visual countdown, because I want details if I have to
   wait.
-- [vimwhich](bin/vimwhich) - quickly edit files that are in your path (and new files)
+- [vimfirst](bin/vimfirst) - it's just vimwhich and run. with my alias to shorten it, commands like 'vf todo -w' are
+  useful to quickly edit an run an override script or program
+- [vimwhich](bin/vimwhich) - quickly edit files that are in your path (and new files). Also "vw" is an alias.
 
 ## TODO list <!-- IGNORE_TODO -->
 
