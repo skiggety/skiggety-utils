@@ -38,7 +38,7 @@ require 'colorize'
 # TODO: rubocop says this class is long (see .rubocop_todo.yml), is parse_args the part to extract?
 
 # TODO: BUG watch out for this program pinning the cpu
-# TODO^4: BUG make sure child processes get killed when you use CTRL + C on this program to stop it
+# TODO^5: BUG make sure child processes get killed when you use CTRL + C on this program to stop it
 
 class ReviewProgram
 
@@ -69,7 +69,7 @@ class ReviewProgram
     @output = ''
     fill_screen_interactive(command)
 
-    start_wake_on_filesystem_change # TODO^3: this should depend on a command line flag
+    start_wake_on_filesystem_change # TODO^4: this should depend on a command line flag
 
     while wakeable_sleep_verbose(@delay)
       if @interactive
@@ -109,6 +109,7 @@ class ReviewProgram
         puts parser
         exit
       end
+      # TODO: --timeout <n>, or in other words kill commands after this many seconds..
       # TODO: should be able to specify min/max delay from the command line as hh:mm:ss if you want:
       parser.on('-m', '--min-delay MINIMUM', 'specify minimum delay in seconds') do |min|
         @min_delay = min.to_i
@@ -282,7 +283,7 @@ class ReviewProgram
     end
   end
 
-  # TODO^5: reverse color order so it actually looks like a rainbow:
+  # TODO^7: reverse color order so it actually looks like a rainbow:
   def rotate_rainbow(text)
     @rainbow_colors ||= %i[light_yellow light_red light_magenta light_blue light_cyan light_green]
     @rainbow_index ||= rand(@rainbow_colors.size)
