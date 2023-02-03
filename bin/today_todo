@@ -117,6 +117,9 @@ function main {
             only_showing=''
         fi
 
+        # TODO: show BUSINESS_HOURS stuff during business hours
+        # TODO: maybe a cronjob to remind me to do that stuff on my lunch hour
+
         echo
         echo "Found $todo_now_count todos to do right NOW$only_showing:" | grep --color=always \\d
         echo "$todo_now_output" | tail -n 3
@@ -127,7 +130,7 @@ function main {
     echo "$(( $todo_count + $todo_prog_count )) combined score, $todo_prog_count todos IN_PROGRESS"
 
     if $interactive; then
-        # graph how many are done each day
+        # TODO^4: graph how many are done each day
         # TODO: what date format should I use?:
         echo "$isotoday,$todo_count,$todo_prog_count,$todo_later_count,$(( $todo_count + $todo_prog_count ))" >> graph.csv
     fi

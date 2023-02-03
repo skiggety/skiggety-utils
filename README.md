@@ -53,7 +53,7 @@ For the safe docker demo:
 
   - This project uses and enables TODO's in code, ranked so that "TODO TODO" is equal to "TODO^2" and outranks "TODO". This way you can easily add a vote when something becomes and impediment or whatever, and the cream will rise to the top. The "todo" program is a key part of this and is shown in the "default_dashboard". You can also put "IGNORE_TODO" on the same line as "TODO" if you want to mention "TODO" without it being on the list (like this).
 
-## Programs you'll find in here:
+## Thing you can run, a.k.a. Programs, scripts, and shortcuts you'll find in here:
 
 - [chbs](bin/chbs) A password generator based on xkcd's memorable "correct horse battery staple" cartoon for the few
   passwords that must be remembered so they can get you into your computer or password manager.
