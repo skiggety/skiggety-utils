@@ -283,9 +283,8 @@ class ReviewProgram
     end
   end
 
-  # TODO^7: reverse color order so it actually looks like a rainbow:
   def rotate_rainbow(text)
-    @rainbow_colors ||= %i[light_yellow light_red light_magenta light_blue light_cyan light_green]
+    @rainbow_colors ||= %i[light_red light_yellow light_green light_cyan light_blue light_magenta]
     @rainbow_index ||= rand(@rainbow_colors.size)
     color_method_name = @rainbow_colors[@rainbow_index]
 
