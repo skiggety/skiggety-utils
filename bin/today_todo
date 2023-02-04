@@ -89,11 +89,6 @@ function main {
     echo "$todo_output" | tail -n 10 | grep --color=always TODO
     if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
 
-    # only collected for graph, not displayed # TODO: rethink this keyword entirely
-    todo_later_output="$(echo "$todo_output" | grep LATER)"
-    todo_later_count=$(( 0 + $(echo "$todo_later_output" | wc -l) ))
-    # TODO: do something with $todo_later_output, or get rid of this paragraph
-
     todo_prog_output="$(echo "$todo_output" | grep IN_PROGRESS | grep -v LATER)"
     todo_prog_count=$(( 0 + $(echo "$todo_prog_output" | wc -l) ))
     echo
@@ -106,11 +101,27 @@ function main {
     # TODO^2: if it's around new years:
     display_grep_for_keyword NEW_YEARS_RESOLUTION "$todo_output"
 
+    todo_later_output="$(echo "$todo_output" | grep --color=always LATER)"
+    todo_later_count=$(( 0 + $(echo "$todo_later_output" | wc -l) ))
+    if [ "$todo_later_output" != '' ]; then
+        if (( $todo_later_count > 3 )); then
+            only_showing=", only showing 3"
+        else
+            only_showing=''
+        fi
+
+        echo
+        echo "Found $todo_later_count todos to do LATER$only_showing:" | grep --color=always \\d
+        echo "$todo_later_output" | tail -n 3
+        if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
+    fi
+
+
     # TODO^4: add NOW count to graph:
     # TODO^2: NOW output should be highlighted.
     todo_now_output="$(echo "$todo_output" | grep --color=always NOW)"
     todo_now_count=$(( 0 + $(echo "$todo_now_output" | wc -l) ))
-    if [ "$todo_now_output" != "" ]; then
+    if [ "$todo_now_output" != '' ]; then
         if (( $todo_now_count > 3 )); then
             only_showing=", only showing 3"
         else
