@@ -23,6 +23,7 @@ class DevKitInstaller
     call_peer_installer('basic_prerequisites')
     call_peer_installer('todo')
     call_peer_installer('review')
+    call_peer_installer('ripgrep') # grim depends on this now
     # TODO: call_peer_installer('shellcheck') if I start using it
     mark_installed!
   end
