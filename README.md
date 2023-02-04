@@ -136,9 +136,8 @@ These ideas don't have a code location, so they go here:
 - TODO^3: try some editable vim macros
 - TODO^4: set up a git hook system so you can add multiple scripts. For example, I'd like to block commits that include
   "X X X" (without the spaces), irrespective of any other commit hooks. That hook might be shared by a team or
-  individual to me, and I'd like to be able to support both kinds without conflicts. use
+  individual to me, and I'd like to be able to support both kinds without conflicts. Look at
   https://github.com/pre-commit/pre-commit
-  - TODO^12: precommit to prevent committing X X X or B R E A D C R U M B (without the spaces)
 - TODO^2: automatically graph gmail progress outstanding messages, by writing a program that takes a url or gmail search string and monitors it. You can check in on the graph periodically to make sure you're on track.
   - TODO: find a tool that can show graphs of provided data on the command line
 - TODO^4: music rotator thingy (Neighbor Shawn might beta test)

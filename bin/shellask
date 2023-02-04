@@ -20,7 +20,6 @@
 # the computer.
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
-
 # including with THIS_DIR instead of SKIGGETY_UTILS_DIR so we can use it in demo_in_docker:
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 

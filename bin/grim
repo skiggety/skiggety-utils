@@ -7,7 +7,7 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-# TODO^6: consider setting this program up to use rg instead of grep, maybe optionally, because it would be so much faster
+# TODO^9: consider setting this program up to use rg instead of grep, maybe optionally, because it would be so much faster
 
 VIM_OPTIONS="-on"
 GREP_OPTIONS="-RlI -D skip"

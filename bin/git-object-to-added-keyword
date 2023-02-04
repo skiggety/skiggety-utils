@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# This script errors if you add the keyword you give it
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+if [ -z "$1" ]; then
+    exit_with_error "keyword not given"
+else
+    keyword="$1"
+fi
+
+DO_NOT_COMMIT="$(git diff --staged --inter-hunk-context=1 | grep "^[+].*${keyword}")"
+if ! [ -z "$DO_NOT_COMMIT" ]; then
+    echo_divider_with_text "!" "${RED}DO NOT COMMIT${no_color} these git added files with (\"${RED}X""XX${no_color}\"):"
+    echo_error "$DO_NOT_COMMIT"
+    # TODO: echoing the line number this is coming from is distracting:
+    exit_with_error "You have staged lines including '${keyword}'. fix with: git restore --staged <file>..."
+fi

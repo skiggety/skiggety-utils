@@ -1,5 +1,5 @@
 ======================================================================================================== TODOs, ascending. Do not edit, run 'generate_todo_report' to generate. 
-    ( showing last 3 lines out of 453: )
+    ( showing last 3 lines out of 452: )
+./installers/tmux:47:      # TODO^8: maybe use shellask, but don't assume user is ready to be launched into vim:
+./bin/grim:10:# TODO^9: consider setting this program up to use rg instead of grep, maybe optionally, because it would be so much faster
 ./README.md:122:  - TODO^11: ...rewrite todo in rust with parallelization (with Kevin), but after [rust koans](https://github.com/crazymykl/rust-koans)
-./README.md:141:  - TODO^12: precommit to prevent committing X X X or B R E A D C R U M B (without the spaces)
-./installers/devkit:27:    # TODO^13: install pre-commit hook from ./devkit.config

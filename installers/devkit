@@ -16,7 +16,7 @@ class DevKitInstaller
   end
 
   def apparently_configured?
-    true # I guess
+    false # will mark manually
   end
 
   def install!
@@ -24,8 +24,33 @@ class DevKitInstaller
     call_peer_installer('todo')
     call_peer_installer('review')
     # TODO: call_peer_installer('shellcheck') if I start using it
-    # TODO^13: install pre-commit hook from ./devkit.config
     mark_installed!
+  end
+
+  def configure!
+    FileUtils.copy(template_basic_pre_commit_hook_path, actual_basic_pre_commit_hook_path)
+    FileUtils.copy(template_pre_commit_hook_path, actual_pre_commit_hook_path)
+    mark_configured!
+  end
+
+  def template_pre_commit_hook_path
+    self_config_path('pre-commit')
+  end
+
+  def actual_pre_commit_hook_path
+    File.join(actual_pre_commit_hook_dir_path, 'pre-commit')
+  end
+
+  def template_basic_pre_commit_hook_path
+    "#{actual_pre_commit_hook_path}.sample"
+  end
+
+  def actual_basic_pre_commit_hook_path
+    "#{actual_pre_commit_hook_path}.basic"
+  end
+
+  def actual_pre_commit_hook_dir_path
+    File.join(skiggety_utils_path, '.git/hooks')
   end
 
 end

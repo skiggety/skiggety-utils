@@ -24,7 +24,7 @@ require 'optparse'
 require 'listen'
 require 'colorize'
 
-# TODO^4: would it be smart to have a cron job that runs 'pkill review' every day at ~7pm on my work laptop? Or should I
+# TODO^5: would it be smart to have a cron job that runs 'pkill review' every day at ~7pm on my work laptop? Or should I
 # instead strive to make the default behavior of this, and review-dev, so reasonable that it's not required? Also, can I
 # make this exit gracefully when pkill runs (possibly with -HUP)?
 

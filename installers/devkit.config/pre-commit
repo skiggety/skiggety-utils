@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# NOTE: this script is intended to be moved to skiggety-utils/.git/hooks and run there, not run in place. devkit
+# installation should take care of this.
+
+THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
+# including with THIS_DIR instead of SKIGGETY_UTILS_DIR so we can use it in demo_in_docker:
+. $THIS_DIR/../../lib/skiggety-utils.bash || { echo "ERROR: could not include skiggety-utils.bash" 1>&2; exit 1; }
+
+$THIS_DIR/pre-commit.basic || exit_with_error "pre-commit.basic FAILED"
+
+for keyword in 'XX''X' 'BREAD''CRUMB'; do
+    $THIS_DIR/../../bin/git-object-to-added-keyword "$keyword" || exit_with_error "'git-object-to-added-keyword $keyword' FAILED"
+done

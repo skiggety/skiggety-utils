@@ -208,6 +208,10 @@ module InstallableSkiggetyUtil
     File.dirname(installer_file_path)
   end
 
+  def skiggety_utils_path
+    File.dirname(installer_directory_path)
+  end
+
   def installer_file_hash
     `git hash-object \"#{installer_file_path}\"`.chomp
   end
