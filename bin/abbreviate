@@ -6,14 +6,24 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
+DIVIDER=false
 while [[ "$1" == -* ]]; do
     if [ "$1" == '-n' ]; then
         shift
         MAX_LINES="$1"
         shift
+    elif [ "$1" == '-t' ]; then
+        shift
+        TITLE="$1"
+        shift
+    elif [ "$1" == '-d' ]; then
+        DIVIDER=true
+        shift
     fi
     # TODO^2: an alternate option to specify in terms of how many of the original lines to show instead of how many lines
     # on screen to use
+    # TODO: help option should explain that -n tells it how many lines of screen space to use, including the explanation
+    # if necessary.
 done
 
 INPUT="$(cat "$@")" # I think this will work with piped in input or with a filename
@@ -24,8 +34,20 @@ else
 fi
 
 if [ $INPUT_LINES -gt $MAX_LINES ]; then
-    echo "    ( showing last $MAX_LINES lines out of $INPUT_LINES: )"
-    echo -e "$INPUT" | tail -n $MAX_LINES
+    LINES_TO_SHOW="$(( $MAX_LINES - 1 ))" # becasue the explanation takes up 1 line
+    if [ -z "$TITLE" ];then
+        explanation="( showing last $LINES_TO_SHOW lines out of $INPUT_LINES: )"
+    else
+        explanation="( showing last $LINES_TO_SHOW lines out of $INPUT_LINES for '$TITLE': )"
+    fi
+
+    if $DIVIDER; then
+        echo_divider_with_text '^' "$explanation"
+    else
+        echo "$explanation"
+    fi
+
+    echo -e "$INPUT" | tail -n $LINES_TO_SHOW
 else
     echo -e "$INPUT"
 fi

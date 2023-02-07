@@ -21,7 +21,7 @@ if [ -f ./todo_report/README_in_color.txt ]; then
 else
     echo_divider_with_text "=" "TODO's" # IGNORE_TODO
     # purposely call whatever 'todo' is in the path in case you are overriding it with a 'PWD_BIN/todo' script:
-    todo --color always | abbreviate -n 5 || exit_with_error "todo FAILED" # TODO^2: abbreviate -n 5 todo
+    todo --color always | abbreviate -n 4 -t "TODO's" -d || exit_with_error "todo FAILED"
 fi
 
 # TODO?: tell you what command to run to commit changes or whatever

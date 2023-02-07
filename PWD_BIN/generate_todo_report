@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-TODO_REPORT_LINES=3 # IGNORE_TODO
+# TODO: specify to abbreviate in terms of how many todo's to show (3) instead of how many lines to take up on the
+# screen:
+TODO_REPORT_LINES=4 # IGNORE_TODO
+
 TODO_REPORT_DIR="todo_report" # IGNORE_TODO
 TODO_REPORT_FILE="$TODO_REPORT_DIR/README.txt" # IGNORE_TODO
 TODO_REPORT_COLOR_FILE="$TODO_REPORT_DIR/README_in_color.txt" # IGNORE_TODO
@@ -13,9 +16,12 @@ mkdir -p "$TODO_REPORT_DIR" # IGNORE_TODO
 
 todo_report_whole="$(todo --exclude-dir "$TODO_REPORT_DIR" | grep -v ".gitignored." | grep -v 'X''XX')"
 todo_report_whole_in_color="$(todo --color always --exclude-dir "$TODO_REPORT_DIR" | grep -v ".gitignored." | grep -v 'X''XX')"
-todo_report_body="$(echo "$todo_report_whole" | abbreviate -n $TODO_REPORT_LINES )"
-todo_report_body_in_color="$(echo "$todo_report_whole_in_color" | abbreviate -n $TODO_REPORT_LINES )"
-todo_report_linecount=$(echo "$todo_report_whole" | wc -l | sed 's/^[ \t]*//') # TODO^2: graph this over time
+todo_report_body="$(echo "$todo_report_whole" | abbreviate -n $TODO_REPORT_LINES -t 'todo' )"
+todo_report_body_in_color="$(echo "$todo_report_whole_in_color" | abbreviate -n $TODO_REPORT_LINES -t 'todo' )"
+
+# TODO^3: graph this over time, also maybe total votecount and how many votes the topvoted todo has:
+todo_report_linecount=$(echo "$todo_report_whole" | wc -l | sed 's/^[ \t]*//')
+
 todo_header="$(SKIGGETY_DIVIDER_LENGTH=100 echo_divider_with_text "=" "TODOs, ascending. Do not edit, run '$(basename $0)' to generate.")" # IGNORE_TODO
 
 echo "$todo_header" > $TODO_REPORT_FILE
