@@ -23,6 +23,9 @@ function main {
     echo
     hesitate-and-run-or-fail git commit $GIT_COMMIT_OPTIONS
 
+    # TODO: just exit 0 right here unless there are changes staged (yes, we're checking again because the user might
+    # have changed something during shellask
+
     # TODO^3: if the remote branch doesn't exist yet, we should skip trying git pull, since it will fail anyway
     echo
     git pull
