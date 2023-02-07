@@ -58,10 +58,12 @@ class VimInstaller
     git_clone_latest('https://github.com/junegunn/fzf.vim.git', "#{bundle_dir}/fzf.vim")
     # TODO?: vim-ripgrep & learn to use it (be careful, it seems to have it's own :Rg command that's different from
     # fzf.vim's)
-    # TODO^6: learn to use nerdcommenter:
+    # TODO^7: learn to use nerdcommenter:
     git_clone_latest('https://github.com/preservim/nerdcommenter.git', "#{bundle_dir}/nerdcommenter")
     # TODO: nerdtree
     # TODO: https://github.com/tpope/vim-dispatch
+
+    mark_installed!
   end
 
   def bundle_dir
@@ -79,9 +81,7 @@ class VimInstaller
   def configure!
     if $interactive
       # TODO: prompt the user with something to explain what they need to do:
-      # TODO^7: maybe use shellask, but don't assume user is ready to be launched into vim. Even though you are
-      # installing vim, you might not be proficient yet:
-      assert_system("vim -d #{user_vimrc_path} #{template_vimrc_path}")
+      delegate_diff_to_user(user_vimrc_path, template_vimrc_path) || raise('User did not configure vim.')
       mark_configured! # force this, since you might want to leave some differences between your .vimrc and the template
     else
       raise_interactive_only_configuration
