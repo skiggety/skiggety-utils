@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Just gives you a harmless place to type
+
+# TODO: move to 'kid-utils'?
+
+cat >/dev/null

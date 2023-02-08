@@ -86,6 +86,7 @@ def main():
     # set up condtions from command line arguments:
 
     exclude_dirs = command_line_args.exclude_dir or []
+    # TODO: clean up exclude dirs so you can pass './todo_report/' and it still means 'todo_report'
     exclude_files = command_line_args.exclude or []
     exclude_files = [re.sub(r'^\.\/', '', i) for i in exclude_files]
 

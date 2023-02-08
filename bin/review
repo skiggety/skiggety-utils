@@ -28,7 +28,7 @@ require 'colorize'
 # instead strive to make the default behavior of this, and review-dev, so reasonable that it's not required? Also, can I
 # make this exit gracefully when pkill runs (possibly with -HUP)?
 
-# TODO^5: a control key to wake it up and make it refresh immediately (accept a control character or signal to refresh
+# TODO^6: a control key to wake it up and make it refresh immediately (accept a control character or signal to refresh
 # now). This might even want to re-start and already running command.
 
 # TODO: accept a flag to stop running if the wait gets longer than some specified amount
