@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # TODO: consider #!/usr/bin/env python3 OR #!/usr/bin/env ruby
 
-# TODO^5: consider renaming or extracting to git-default-dashboard or git-dashboard considering what this script actually does
+# TODO TODO^5: consider renaming or extracting to git-default-dashboard or git-dashboard considering what this script actually does
 
 # This script provides a general purpose status report that is sensitive to the current directory. If you are in a git repo for a coding project, it'll give you an idea of høw tests are doing, what's left to do/commit, etc. It will usuually be called from that directory's ./PWD_BIN/dashboard script to form the bulk of the output
 

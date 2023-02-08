@@ -57,7 +57,7 @@ class CHBS
     lines << intro_message
     lines << divider_same_length_as(intro_message)
 
-    passphrase_count.times{ lines << generate_passphrase }
+    passphrase_count.times{ lines << "'#{generate_passphrase}'" }
 
     lines << divider_same_length_as(entropy_report)
     lines << entropy_report
@@ -90,6 +90,7 @@ class CHBS
     Math.log(possible_passphrase_count, 2)
   end
 
+  # lol
   def lost_entropy_when_user_inevitably_picks_the_weakest_passphrase_shown
     Math.log(passphrase_count, 2)
   end
@@ -99,7 +100,7 @@ class CHBS
   end
 
   private def passphrase_count
-    21 # TODO: UN-HARDCODE
+    10 # TODO: UN-HARDCODE
   end
 
   private def possible_passphrase_count
@@ -134,5 +135,5 @@ def random_element(array)
   array[choose(array.length)]
 end
 
-generator = CHBS.new(max_word_length: 7)
+generator = CHBS.new(max_word_length: 8)
 puts generator.report
