@@ -2,6 +2,7 @@
 
 # TODO^8: make this read-only by default, split the write version into another script if necessary
 #   TODO^8: I think the way to handle this is to support a '-w', '--fix', '-n' or '--ro' option
+#     TODO: '-n' seems good because the command to fix stuff is short, 'lint', and it's short for '--no-changes'
 # TODO^5: run shellcheck
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"

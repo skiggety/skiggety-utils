@@ -32,7 +32,7 @@ function main {
         esac
     done
 
-    # TODO^3: check for marker file to avoid re-running, like in './basic_prerequisites'
+    # TODO^4: check for marker file to avoid re-running, like in './basic_prerequisites'
     # set up bash_profile for macs
     if uname -a | grep Darwin > /dev/null; then
         if ! grep bashrc ~/.bash_profile > /dev/null; then
