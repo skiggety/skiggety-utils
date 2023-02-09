@@ -28,17 +28,17 @@ require 'colorize'
 # instead strive to make the default behavior of this, and review-dev, so reasonable that it's not required? Also, can I
 # make this exit gracefully when pkill runs (possibly with -HUP)?
 
-# TODO^6: a control key to wake it up and make it refresh immediately (accept a control character or signal to refresh
+# TODO^7: a control key to wake it up and make it refresh immediately (accept a control character or signal to refresh
 # now). This might even want to re-start and already running command.
 
-# TODO: accept a flag to stop running if the wait gets longer than some specified amount
+# TODO^2: accept a flag to stop running if the wait gets longer than some specified amount
 # TODO: accept log file that logs output, changes, frequencies/counts, etc.
 # TODO: ensure we never mess with the colors, test with "review git diff"
 
 # TODO: rubocop says this class is long (see .rubocop_todo.yml), is parse_args the part to extract?
 
 # TODO: BUG watch out for this program pinning the cpu
-# TODO^5: BUG make sure child processes get killed when you use CTRL + C on this program to stop it
+# TODO^6: BUG make sure child processes get killed when you use CTRL + C on this program to stop it
 
 class ReviewProgram
 
@@ -209,7 +209,7 @@ class ReviewProgram
     listener.start
   end
 
-  # TODO^7: soft-minimun, where it always *tries* to wait, say, long enough for you to react, but then still wakes up
+  # TODO^8: soft-minimun, where it always *tries* to wait, say, long enough for you to react, but then still wakes up
   # when the filesystem has changes (because you made an edit). This could make a huge difference in making review
   # actually efficient to use in many circumstances, say a script that takes 60 seconds to run and 15-60 seconds to
   # react to, like running tests and debugging in another window:
