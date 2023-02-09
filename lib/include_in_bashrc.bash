@@ -26,6 +26,7 @@ alias be="bundle exec"
 alias vw="vimwhich"
 alias vf="vimfirst"
 alias gir="git" # common enough typo for me
+alias gac="git-attempt-checkout" # common enough typo for me
 
 # TODO: use more stuff from older bashrc files I've used
 
