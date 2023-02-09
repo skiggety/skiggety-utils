@@ -209,6 +209,11 @@ class ReviewProgram
     listener.start
   end
 
+  # TODO^7: soft-minimun, where it always *tries* to wait, say, long enough for you to react, but then still wakes up
+  # when the filesystem has changes (because you made an edit). This could make a huge difference in making review
+  # actually efficient to use in many circumstances, say a script that takes 60 seconds to run and 15-60 seconds to
+  # react to, like running tests and debugging in another window:
+
   def wakeable_sleep_verbose(delay)
     # TODO: think about how it would be nice to set @wake_up_now = false before the command runs to catch filesystem
     # changes during the command run, but the command you're running will often touch the filesystem so it may be not
