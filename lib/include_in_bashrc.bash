@@ -25,6 +25,7 @@ alias tmux="TERM=screen-256color-bce tmux"
 alias be="bundle exec"
 alias vw="vimwhich"
 alias vf="vimfirst"
+alias gir="git" # common enough typo for me
 
 # TODO: use more stuff from older bashrc files I've used
 
