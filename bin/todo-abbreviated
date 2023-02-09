@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# runs todo, but uses abbreviate so you know what you are missing offscreen
+
+todo --color always | abbreviate -n $(( $(tput lines) - 4 )) -t todo -d
