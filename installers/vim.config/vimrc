@@ -3,6 +3,10 @@ execute pathogen#infect()
 set nocp
 syntax enable
 
+" BEWARE auto-save
+:au FocusLost * :wa        " auto-save when focus is lost
+:au FocusLost * silent! wa " ignore errors when above command is triggerd for unsaved buffer
+
 let mapleader = ","
 
 set hlsearch
