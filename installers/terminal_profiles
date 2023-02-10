@@ -28,9 +28,8 @@ class TerminalProfileConfigurer
   def configure!
     if $interactive
       if on_mac_os?
-        # TODO: deal with the extra clutter of profiles like "skiggterm 1",
-        # "skiggterm 2", etc. that pile up sometimes. I'm not sure how much of
-        # a problem this is going to be in practice
+        # TODO: deal with the extra clutter of profiles like "skiggterm 1", "skiggterm 2", etc.  that pile up sometimes.
+        # I'm not sure how much of a problem this is going to be in practice
         assert_system("open #{skiggterm_mac_profile_path}")
         delegate_to_user 'confirm that a terminal window just opened and has skiggterm in the title (you may close ' \
                          'that window)'

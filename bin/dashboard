@@ -2,7 +2,8 @@
 
 # This script allows 'default_dashboard' to be called as 'dashboard' if '$PWD/PWD_BIN/dashboard' is not present.
 
-# TODO: some convenience for copying this to start a new dashboard (for some other project). Something like: mkdir -p ./PWD_BIN/;cp `which dashboard` ./PWD_BIN;echo edit PWD_BIN/dashboard
+# TODO: some convenience for copying this to start a new dashboard (for some other project).  Something like:
+#   mkdir -p ./PWD_BIN/;cp `which dashboard` ./PWD_BIN;echo edit PWD_BIN/dashboard
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1

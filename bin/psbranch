@@ -15,7 +15,8 @@ function main {
     YOUNG_ANCESTOR=$(get_oldest_consecutive_same_user_ancestor $$)
     debug_eval YOUNG_ANCESTOR
 
-    # TODO: command line switch to show only what' in your one terminal bypassing $YOUNG_ANCESTOR instead of $OLD_ANCESTOR to pstree. Could play off the name, 'branch(es)', 'limb', I dunno.:
+    # TODO: command line switch to show only what' in your one terminal bypassing $YOUNG_ANCESTOR instead of
+    # $OLD_ANCESTOR to pstree.  Could play off the name, 'branch(es)', 'limb', I dunno.:
 
     PSTREE_COMMAND="pstree -p $OLD_ANCESTOR -g 2"
     debug_eval PSTREE_COMMAND

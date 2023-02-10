@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# This script is a place for doing pointless things, to be used sparingly and with self-awareness.
+
+clear
+
+# Find sentences in comments with single spaces between them.
+rg -n --color=always '#.*\. [^ $\[|."-]' . | sort | \
+    grep -v '^[^:\w]*version.txt' | \
+    grep -v '^[^:\w]*./bin/git-pretty-pull' | \
+    abbreviate -n 19 -t 'find single spaces between sentences' -d

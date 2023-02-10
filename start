@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
-# This script makes sure everything is installed, familiarizes you with what's here, and maybe even displays the dashboard
+# This script makes sure everything is installed, familiarizes you with what's here, and maybe even displays the
+# dashboard.
 
-echo "starting at $(date) ..."
+echo "Starting at $(date) ..."
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 export SKIGGETY_UTILS_DIR="$THIS_DIR"
@@ -17,7 +18,10 @@ debug_here "--------------------------"
 
 debug_here "update-skiggety-utils completed successfully"; echo
 
-# TODO: I'm not even sure this is a good idea, but maybe reload ~/.bashrc and stuff now that it's been updated by ./install-skiggety-utils ? :       . ./lib/reload_env || exit_with_error "could not source \"./lib/reload_env\"" # TODO: don't use relative path
+# TODO: I'm not even sure this is a good idea, but maybe reload ~/.bashrc and stuff now that it's been updated by
+# ./install-skiggety-utils ? :
+#   . ./lib/reload_env || exit_with_error "could not source \"./lib/reload_env\"" # TODO: don't use relative path
+
 # debug_here
 # TODO: this is something similar that I'm also not sure is a good idea: ./bin/start_in_env.bash || exit_with_error "Could not run \"./bin/start_in_env.bash\"" # TODO: don't use relative path # TODO^2: move most things in here, including any interactive stuff
 

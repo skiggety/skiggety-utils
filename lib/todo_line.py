@@ -24,11 +24,11 @@ class TodoLine:
     def __str__(self): # TODO: implement __repr__ too, for use in exceptions
         return self.file_path + ":" + str(self.line_number) + ":" + self.text
 
-    # inside a todo_line is one or more groups of TODO's and TODO^n's (IGNORE_TODO) called a
-    # todo_entry. The votecount of the todo_line comes from the max votecount of the todo_entries.
+    # Inside a todo_line is one or more groups of TODO's and TODO^n's (IGNORE_TODO) called a
+    # todo_entry.  The votecount of the todo_line comes from the max votecount of the todo_entries.
 
-    # inside a todo_entry is one or more todo_words, such as 'TODO' or "TODO^2 (IGNORE_TODO). They
-    # each have their own votecount, as indicated by the number after the caret. They are summed to
+    # Inside a todo_entry is one or more todo_words, such as 'TODO' or "TODO^2 (IGNORE_TODO).  They
+    # each have their own votecount, as indicated by the number after the caret.  They are summed to
     # make the votecount of the todo_entry.
 
     def collapse_todo_entry(self, todo_entry):
@@ -62,7 +62,7 @@ class TodoLine:
         """TODO: why the heck am I enforcing doc strings on self-explanatory methods like this?"""
         return self.text != self.original_text
 
-    # TODO: make this more efficient. Writing a file once per line is silly.
+    # TODO: make this more efficient.  Writing a file once per line is silly:
     def write(self):
         """write the TodoLine back to the original file with simplifying changes"""
         with open(self.file_path, 'r') as file:

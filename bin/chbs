@@ -19,7 +19,7 @@ class CHBS
   # TODO: consider a --dense (a.k.a. --troubador a.k.a. -d) mode to generate secure passwords in the traditional style
   # that doesn't need to be as long but is harder to remember.
 
-  # TODO: maybe accept a flag that makes this print one and only one passphrase, with no other output. It could be used
+  # TODO: maybe accept a flag that makes this print one and only one passphrase, with no other output.  It could be used
   # by other programs.
 
   # TODO^2: accept and pass through options for min/max words/characters/characters-per-word, plus whether it should

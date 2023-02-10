@@ -51,7 +51,7 @@ ADD . .
 
 RUN rm -f installers/.markers/*_with_version*
 
-# If I'm brave enough to make sure it doesn't loop forever. It better run only on login shells:
+# If I'm brave enough to make sure it doesn't loop forever.  It better run only on login shells:
 # TODO: RUN echo "install-skiggety-utils;less README.md;dev" >> /root/.bashrc
 
 # TODO: set up something helpful to display on the screen when the user logs in with bash

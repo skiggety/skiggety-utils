@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-# this script prints a summary of the status of development (or whatever) in the current directory, including information about git, todo's, tests, etc. it can often simply call default_dashboard from the path
+# This script prints a summary of the status of development (or whatever) in the current directory, including
+# information about git, todo's, tests, etc.  It can often simply call default_dashboard from the path.
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# NOTE: this script is intended to be moved to skiggety-utils/.git/hooks and run there, not run in place. devkit
+# NOTE: this script is intended to be moved to skiggety-utils/.git/hooks and run there, not run in place.  'devkit'
 # installation should take care of this.
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"

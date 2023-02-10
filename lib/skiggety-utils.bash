@@ -1,6 +1,9 @@
-# WARNING: Changes to this file will make ./demo_in_docker very slow to start on the next run. Hesitate to commit!
+# WARNING: Changes to this file will make ./demo_in_docker very slow to start on the next run.
+# Hesitate to commit!
 
-# TODO^2: . $THIS_DIR/shelper.bash || exit 1 # TODO^2: extract & include shelper.bash which checks bash version, and provides utility functions. Figure out how to distribute it as a shell library.
+# TODO^2: extract & include shelper.bash which checks bash version, and provides utility functions.
+# Figure out how to distribute it as a shell library:
+# TODO^2: . $THIS_DIR/shelper.bash || exit 1
 
 red='\033[0;31m'
 RED='\033[1;31m'
@@ -171,7 +174,10 @@ function echo_divider {
     echo
 }
 
-# for divider length, use last value, or current column count, or 80. Using last value over current means you might have to restart a review commond or other program for dividers to look perfect after resizing a terminal, but it also means that commands run inside review will fill the terminal properly instead of sensing 80
+# for divider length, use last value, or current column count, or 80.  Using last value over current
+# means you might have to restart a review commond or other program for dividers to look perfect
+# after resizing a terminal, but it also means that commands run inside review will fill the
+# terminal properly instead of sensing 80:
 calc_columns="$(tput cols)"
 calc_columns="${calc_columns:-80}"
 export SKIGGETY_DIVIDER_LENGTH="${SKIGGETY_DIVIDER_LENGTH:-$calc_columns}"

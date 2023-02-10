@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
-# This script is a very fancy version of running "vim `which NAME`". You can edit a number of scripts whether they exist in the path, at the path given, or need to be created new (in which case it starts from a template).
+# This script is a very fancy version of running "vim `which NAME`".  You can edit a number of
+# scripts whether they exist in the path, at the path given, or need to be created new (in which
+# case it starts from a template).
 
-# TODO^3: accept a "-a" option, and use "which -a" in that case. This would be useful for "vimwhich -a dashboard",
-# since you would usually have a custom "dashboard" script in $your_project/PWD_BIN/
+# TODO^3: accept a "-a" option, and use "which -a" in that case.  This would be useful for "vimwhich
+# -a dashboard", since you would usually have a custom "dashboard" script in $your_project/PWD_BIN/
 
 # TODO^2: consider making this into a generic "editwhich" program, that supports other editors
 
@@ -31,8 +33,8 @@ for target in "$@";do
     fi
     destinations+=( "$destination" )
 
-    # TODO^4: create $destination file from template if it doesn't exist and mark it executable. Use 'newbin',
-    # maybe with a mode that doesn't open the editor.
+    # TODO^4: create $destination file from template if it doesn't exist and mark it executable.
+    # Use 'newbin', maybe with a mode that doesn't open the editor.
 
 done
 vim -o "${destinations[@]}"

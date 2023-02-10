@@ -9,7 +9,8 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 
 pushd $SKIGGETY_UTILS_DIR >/dev/null
 
-git restore todo_report # These are generated, and can always be re-generated. Ditching changes here avoids conflicts.
+# These are generated, and can always be re-generated.  Ditching changes here avoids conflicts:
+git restore todo_report
 
 git-pretty-pull || exit_with_error "git-pretty-pull FALED"
 

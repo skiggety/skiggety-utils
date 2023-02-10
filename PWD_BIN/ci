@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
 # A script with this name in a PWD_BIN directory should do a complete continuous integration cycle, whatever that
-# entails, printing concise useful output, and exit on 0 only on success. This script does that for skiggety-utils. Use
-# "review ci" or "review-ci" to make it run continuously.
+# entails, printing concise useful output, and exit on 0 only on success.  This script does that for skiggety-utils.
+# Use "review ci" or "review-ci" to make it run continuously.
 
-# TODO^3: possible script renaming--ci means continuos. This is just the integration part. "review-ci" could become "ci"
-# and this would become what? "i"? Or maybe every scrtipt that does one cycle and is meant to be changed and used with
-# review has a name that ends in "-cycle"? I dunno. Something to think about.
+# TODO^3: possible script renaming--ci means continuos.  This is just the integration part. "review-ci" could become
+# "ci" and this would become what? "i"? Or maybe every scrtipt that does one cycle and is meant to be changed and used
+# with review has a name that ends in "-cycle"? I dunno.  Something to think about.
 #  # TODO: one idea is that 'ci' is something very high level that uses review heavily but probably uses it once to wait
 #  for a commit, and overall is responsible for doing a git pull and calling something like 'integrate' (like what this
-#  script is now) that mostly manages the running of 'dev', maybe specifying read-only mode or whatever. 'ci' should
+#  script is now) that mostly manages the running of 'dev', maybe specifying read-only mode or whatever.  'ci' should
 #  also keep a prominent display of the latest commit or two with timestamps.
 #    TODO^2: ...so rename this script 'integrate' to get the ball rolling?
 
@@ -28,7 +28,7 @@ git-pretty-pull || exit_with_error "git-pretty-pull FALED"
 
 # TODO: ???: git restore --staged .
 
-# TODO^4: ensure that the mere act of running ci doesn't cause local changes. I'm looking at PWD_BIN/lint .
+# TODO^5: ensure that the mere act of running ci doesn't cause local changes.  I'm looking at PWD_BIN/lint .
 dev && echo "dev SUCCEEDED" || accumulate_error "dev FAILED"
 
 # TODO^2: if there are git changes, complain that dev is not read-only

@@ -6,8 +6,8 @@
 # about pyenv and packaging...
 
 # WARNING: This is a bad idea because python can fail on syntax lower down if it doesn't recognize
-# something from a newer version before it even runs the hack. This happened to me with a match/case
-# statement below a hack that was meant to get us to python 3.11.1 instead of 3.8 .
+# something from a newer version before it even runs the hack.  This happened to me with a
+# match/case statement below a hack that was meant to get us to python 3.11.1 instead of 3.8 .
 
 # Because the CURRENT directory should not determine the python version, which I think of as a
 # property of the script itself:

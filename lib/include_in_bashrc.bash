@@ -1,6 +1,6 @@
 # This should be included into the user's .bashrc file)
 
-# WARNING: Changes to this file will make ./demo_in_docker very slow to start on the next run. Hesitate to commit!
+# WARNING: Changes to this file will make ./demo_in_docker very slow to start on the next run.  Hesitate to commit!
 
 # TODO: somebody please set this to nano and then submit a pr to make other stuff work with nano, lol
 export EDITOR="vim"

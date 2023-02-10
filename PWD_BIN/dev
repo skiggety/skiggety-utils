@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# This script performs one development cycle, whatever that means in any individual project. For this project, it means
+# This script performs one development cycle, whatever that means in any individual project.  For this project, it means
 # running unit-test and showing the dashboard.
 
 # TODO: ci has to be able to call this in read-only mode

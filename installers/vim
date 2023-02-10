@@ -21,10 +21,11 @@ class VimInstaller
     # TODO: Dir.exist?("#{bundle_dir}/vim-dispatch")
   end
 
-  # TODO^4: we need some way of watching other files. If they are newer than our marker file, we need a reinstall. Like
-  # ~/.vimrc for example. This will need to be a common installer feature.
-  # err on the side of returning false...if these files don't match perfectly
-  # the user will have a chance to make sure it's set up right.
+  # TODO^4: we need some way of watching other files.  If they are newer than our marker file, we need a reinstall.
+  # Like ~/.vimrc for example.  This will need to be a common installer feature.
+
+  # Err on the side of returning false...if these files don't match perfectly
+  # the user will have a chance to make sure it's set up right:
   def apparently_configured?
     return false unless File.exist?(user_vimrc_path)
 

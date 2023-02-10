@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# WARNING: Changes to this file will make ./demo_in_docker very slow to start on the next run. Hesitate to commit!
+# WARNING: Changes to this file will make ./demo_in_docker very slow to start on the next run.  Hesitate to commit!
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 export SKIGGETY_UTILS_DIR="$THIS_DIR/.."

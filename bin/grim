@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # TODO^2: make this (and others like it) a printable help message:
-# This script, "grim" is GRep into vIM. It is a handy way to find instances of a keyword (with grep) across a directory
-# tree, and then open those files at the right location with vim. For example, if you run "grim someuniquegobbledygook"
+# This script, "grim" is GRep into vIM.  It is a handy way to find instances of a keyword (with grep) across a directory
+# tree, and then open those files at the right location with vim.  For example, if you run "grim someuniquegobbledygook"
 # from within your $SKIGGETY_UTILS_DIR, it should bring you right here.
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1

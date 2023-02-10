@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # This script is merely a way to control where and how and how often to run demo_python_version_hack &
-# demo_ruby_version_hack to do whatever testing I need to do. And control where the output goes, etc.
+# demo_ruby_version_hack to do whatever testing I need to do.  And control where the output goes, etc.
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 

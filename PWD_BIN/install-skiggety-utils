@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-# This script installs skiggety-utils, and does all setup necessary to set up a workstation the way skiggety likes it. Some of this is automatic, and some of this will be delegated back to the user to do manually with guidance.
+# This script installs skiggety-utils, and does all setup necessary to set up a workstation the way skiggety likes it.
+# Some of this is automatic, and some of this will be delegated back to the user to do manually with guidance.
 
 # NOTE: This is in bash because other scripting languages might not be installed yet
 
@@ -9,7 +10,7 @@
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
-# TODO^5: careful/tentative/untrusting mode, ask user for confirmation as you go. Might make it easier for others. It
+# TODO^5: careful/tentative/untrusting mode, ask user for confirmation as you go.  Might make it easier for others.  It
 # should allow you to skip UHK installation if you don't have one, or set your EDITOR to nanoe for example. ./start
 # should use this mode.
 

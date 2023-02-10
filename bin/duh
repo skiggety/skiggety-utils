@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# This script shows Directory, Username, and Hostname (in scp format). Useful in prompts.
+# This script shows Directory, Username, and Hostname (in scp format).  Useful in prompts.
 
 PWD_PRETTY="${PWD/#$HOME/~}"
 

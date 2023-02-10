@@ -27,11 +27,14 @@ function main {
     done
 
     # TODO?: echo "Installing $(basename $0)"
-    # TODO^2: maybe install git? at this point we're assuming it's already installed and just going ahead with configuration. So...maybe just check the version and demand that the user take care of it? This should probably be lumped in with basic prerequisites, but maybe this installer could remain separate for setup only
-    #   TODO^4: thinking about this further, asking the user to install the latest git would fit in perfectly with the basic
-    #   prerequisites script because of the potential bootstrapping problems, but configuration would really benefit
-    #   from marker files so we don't see 'Configuring git' every darn time we run update-skiggety-utils. We probably
-    #   need to split this up, and we could call the installer git_configuration_only or something like that
+
+    # TODO^2: maybe install git? at this point we're assuming it's already installed and just going ahead with
+    # configuration.  So...maybe just check the version and demand that the user take care of it? This should probably
+    # be lumped in with basic prerequisites, but maybe this installer could remain separate for setup only
+    #   TODO^4: thinking about this further, asking the user to install the latest git would fit in perfectly with the
+    #   basic prerequisites script because of the potential bootstrapping problems, but configuration would really
+    #   benefit from marker files so we don't see 'Configuring git' every darn time we run update-skiggety-utils.  We
+    #   probably need to split this up, and we could call the installer git_configuration_only or something like that
 
     # TODO: install gitk? (brew install git-gui) on mac
 

@@ -28,7 +28,7 @@ module UserDelegation
     shellask(question_text) # TODO: real implementation at some point
   end
 
-  # TODO^2: maybe shellask isn't always the best way to ask the user a question. Change calls to this to call the
+  # TODO^2: maybe shellask isn't always the best way to ask the user a question.  Change calls to this to call the
   # shellask method or something like ask_user_yn:
   def ask_user(request_text)
     if $interactive
@@ -41,7 +41,7 @@ module UserDelegation
   def delegate_download_and_install_to_user(download_url, name)
     if $interactive
       open_in_browser(download_url)
-      delegate_to_user("Download/install #{name} manually. The download page should be open now.")
+      delegate_to_user("Download/install #{name} manually.  The download page should be open now.")
     else
       raise_interactive_only_install
     end

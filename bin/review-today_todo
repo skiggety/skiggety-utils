@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# TODO^2: gotta RENAME this and today_todo. Underscores in the name are just too weird, especially when mixed with hyphens
+# TODO^2: gotta RENAME this and today_todo.  Underscores in the name are just too weird, especially when mixed with hyphens
 
 cd ~/today_todo
 review today_todo --non-interactive

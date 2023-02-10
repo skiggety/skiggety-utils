@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# This is how I trick myself into getting things done. It basically helps organize and display a series of text files
+# This is how I trick myself into getting things done.  It basically helps organize and display a series of text files
 # containing a todo list with the usual keyword and voting (see 'todo' program).
 
 # TODO^6: RENAME? ("todo-today"?, "todoy")
@@ -43,8 +43,8 @@ function main {
             *) ;;
         esac
     done
-    # TODO: accept a keyword argument, e.g. "-k WOODSHOP". When you open the editor it's already searching for it and it
-    # prints much like CONFIRMING on the report. Could accept multiple keyword arguments.
+    # TODO: accept a keyword argument, e.g. "-k WOODSHOP".  When you open the editor it's already searching for it and
+    # it prints much like CONFIRMING on the report.  Could accept multiple keyword arguments.
 
     isotoday="$(isotoday)"
 
@@ -81,7 +81,9 @@ function main {
     todo -k DONE $EXCLUDE_DIR_ARGS | tail -n 3 | grep --color=always DONE
     if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
 
-    todo_output="$(todo --color always $EXCLUDE_DIR_ARGS)" # TODO: -n 5 # TODO^2: todo should accept an option for the number of lines. like "-n 3". Maybe if we pass an option in?
+    # TODO: -n 5 # TODO^2: todo should accept an option for the number of lines.  like "-n 3".  Maybe if we pass an
+    # option in?:
+    todo_output="$(todo --color always $EXCLUDE_DIR_ARGS)"
 
     todo_count=$(( 0 + $(echo "$todo_output" | wc -l) ))
     echo

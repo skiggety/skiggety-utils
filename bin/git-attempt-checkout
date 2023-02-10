@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# TODO^8: RENAME this script. How about "git-findout"?
+# TODO^8: RENAME this script.  How about "git-findout"?
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash
 
