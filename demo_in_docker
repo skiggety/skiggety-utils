@@ -45,6 +45,8 @@ echo "Run 'PWD_BIN/install-skiggety-utils' for the just the full install. (then 
 echo "  ...or..."
 echo "Run 'installers/devkit' and any other installers you want to be more selective. You might not even need to run 'exec bash'."
 
+# TODO^5: IMPLEMENT and UNCOMMENT: echo "You can run 'TODO' in another terminal to connect to this container, but the container will stop when this session ends"
+
 # TODO: maybe run it in the background and then tell you how to connect more to it, then connect, then clean up:
 # TODO^2: can I set the hostname to something friendly so it appears in the prompt?:
 # TODO^3: try using docker compose for this:

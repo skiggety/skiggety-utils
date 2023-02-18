@@ -9,6 +9,8 @@
 # are not random because humans are choosing to come up with arbitrary words out of their own head instead, which is
 # exactly the problem this program addresses.
 
+# TODO^5 Consider making a website that runs this script in the browswer, using https://opalrb.com/
+
 # NOTE: If you like reading code top-down as I do, start reading outside the class at the end of the script, which will
 # quickly bring you back to CHBS#initialize and CHBS#report just a little ways below here.
 
