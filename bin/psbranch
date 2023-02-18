@@ -27,7 +27,7 @@ function main {
     # DISPLAY=$(echo "$DISPLAY" | grep -v "$PSTREE_COMMAND" | grep -v "root ps -axwwo user,pid,ppid,pgid,command$")
 
     # highlight the key points
-    for keyword in "0*$PPID\>" "0*$YOUNG_ANCESTOR\>" "0*$OLD_ANCESTOR\>" "$(basename $0)"; do
+    for keyword in "0*$PPID\>" "0*$YOUNG_ANCESTOR\>" "0*$OLD_ANCESTOR\>" "$(basename $0)" "$1"; do
         DISPLAY=$(echo "$DISPLAY" | highlight "$keyword" )
     done
 
