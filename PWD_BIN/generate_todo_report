@@ -28,5 +28,6 @@ echo "$todo_header" > $TODO_REPORT_FILE
 echo "$todo_header" > $TODO_REPORT_COLOR_FILE
 echo "$todo_report_body" >> $TODO_REPORT_FILE
 echo "$todo_report_body_in_color" >> $TODO_REPORT_COLOR_FILE
+echo "$todo_report_whole" > "$TODO_REPORT_DIR/raw_temp.txt" # TODO: DELETE this line and the resulting file after comparison
 
 cat $TODO_REPORT_COLOR_FILE
