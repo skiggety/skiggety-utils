@@ -29,6 +29,7 @@ alias gir="git" # common enough typo for me
 alias gac="git-attempt-checkout"
 alias gvds="git vimdiff --staged"
 alias gpnb='git push-new-branch'
+alias gp='git pretty-pull'
 
 # TODO: use more stuff from older bashrc files I've used
 
