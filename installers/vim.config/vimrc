@@ -7,6 +7,8 @@ syntax enable
 :au FocusLost * :wa        " auto-save when focus is lost
 :au FocusLost * silent! wa " ignore errors when above command is triggerd for unsaved buffer
 
+" TODO^3: similar auto-load on focus gain?
+
 let mapleader = ","
 
 set hlsearch

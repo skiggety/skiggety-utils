@@ -92,7 +92,7 @@ function main {
         done
     fi
 
-    # TODO^6: consider replacing rbenv and pyenv with asdf
+    # TODO^7: consider replacing rbenv and pyenv with asdf
     #   TODO^4: ...but first, make sure you have learned how to make version hacks play nice with them
     #   TODO^4: ...but first, reorganize this script so rbenv and pyenv happen before ruby and python
     debug_here "rbenv:"
