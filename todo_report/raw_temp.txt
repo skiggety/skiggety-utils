@@ -241,7 +241,7 @@
 ./installers/vim.config/vimrc:46:set rtp+=/usr/local/opt/fzf "TODO: make this cross-platform, this is just where fzf gets installed with brew on mac
 ./lib/include_in_bashrc.bash:5:# TODO: somebody please set this to nano and then submit a pr to make other stuff work with nano, lol
 ./lib/include_in_bashrc.bash:14:export PS1="\$(duh)\$(git branch 2>/dev/null|grep '^*'|sed 's/^\\*/ \\*/') - \D{%F %T}\n\$ " # TODO: add colors (besides duh)
-./lib/include_in_bashrc.bash:33:# TODO: use more stuff from older bashrc files I've used
+./lib/include_in_bashrc.bash:34:# TODO: use more stuff from older bashrc files I've used
 ./lib/installable_skiggety_util.rb:5:# TODO: mark more of these methods private
 ./lib/installable_skiggety_util.rb:7:# TODO: implement uninstall
 ./lib/installable_skiggety_util.rb:33:    # TODO: also have other files you can watch for changes since last marker file, like this one:
