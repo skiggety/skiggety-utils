@@ -4,8 +4,8 @@
 ./Dockerfile:57:# TODO: set up something helpful to display on the screen when the user logs in with bash
 ./PWD_BIN/ci:10:#  # TODO: one idea is that 'ci' is something very high level that uses review heavily but probably uses it once to wait
 ./PWD_BIN/ci:16:# TODO: I think this script should save the output of dev and simply cat it if there is no update from git
-./PWD_BIN/ci:29:# TODO: ???: git restore --staged .
-./PWD_BIN/ci:38:# SKIGGETY_DEBUG=true # TODO: come up with a format like what I have but with a timestamp and author included, then save
+./PWD_BIN/ci:31:# TODO: ???: git restore --staged .
+./PWD_BIN/ci:40:# SKIGGETY_DEBUG=true # TODO: come up with a format like what I have but with a timestamp and author included, then save
 ./PWD_BIN/dashboard:28:# TODO?: tell you what command to run to commit changes or whatever
 ./PWD_BIN/dashboard:29:# TODO?: graph score over time (see program "progress")
 ./PWD_BIN/debug.occasional_shellask_without_prompt.bash:3:# This script (...TODO, describe your script here)
@@ -291,7 +291,7 @@
 ./test/lib/installable_skiggety_util_test.rb:117:  # TODO: test program_version_option_output_matches?(program, version_regex)
 ./PWD_BIN/ci:14:#    TODO^2: ...so rename this script 'integrate' to get the ball rolling?
 ./PWD_BIN/ci:18:# TODO^2: what if there are updates to the top-level ci script? should it re-exec itself?
-./PWD_BIN/ci:34:# TODO^2: if there are git changes, complain that dev is not read-only
+./PWD_BIN/ci:36:# TODO^2: if there are git changes, complain that dev is not read-only
 ./PWD_BIN/debug_CFPVOM.bash:36:# TODO^2: DELETE this script when done
 ./PWD_BIN/install-skiggety-utils:20:    # TODO^2: install custom list app (opens dedicated browser window "as an app") (huh?)
 ./PWD_BIN/install-skiggety-utils:21:    # TODO^2: install a music player of some sort
@@ -428,7 +428,7 @@
 ./lib/skiggety-utils.bash:166:    echo -ne "\r" # TODO^4: cut this bs out and do it properly, in some places this looks like a newline
 ./start:29:# help_with_skiggety_utils # TODO^4: RENAME, test/implement something to show the help system if I do more with it.
 ./PWD_BIN/ci:24:# TODO^5: accumulate error if any local changes are found, i.e. "maybe you want to run 'dev' instead of 'ci'? Do you want
-./PWD_BIN/ci:31:# TODO^5: ensure that the mere act of running ci doesn't cause local changes.  I'm looking at PWD_BIN/lint .
+./PWD_BIN/ci:33:# TODO^5: ensure that the mere act of running ci doesn't cause local changes.  I'm looking at PWD_BIN/lint .
 ./PWD_BIN/dashboard:11:# show diff with old mac files: # TODO^5: work on this diff:
 ./PWD_BIN/install-skiggety-utils:13:# TODO^5: careful/tentative/untrusting mode, ask user for confirmation as you go.  Might make it easier for others.  It
 ./PWD_BIN/lint:5:#     TODO^5: '-n' seems good because the command to fix stuff is short, 'lint', and it's short for '--no-changes'
