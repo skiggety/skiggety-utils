@@ -56,6 +56,39 @@ function main {
     fi
     # fi
 
+    install_homebrew
+
+    # TODO^3: install latest bash and make sure other scripts are compatible...
+
+    install_pyenv_and_rbenv_prerequisites
+
+    # TODO^11: consider replacing rbenv and pyenv with asdf
+    install_rbenv
+
+    debug_here "pyenv:"
+    install_pyenv
+
+    debug_here "got rbenv and pyenv, time for ruby and python"
+    install_python
+
+    # ruby
+    install_ruby
+    do_ruby_basics
+
+    update_pip
+    install_nose2
+    install_pylint
+
+    exit_with_any_accumulated_errors # before marking complete
+
+    # mark complete
+    debug_here "marking $0 complete"
+    rm "$completed_markers_start_with"*
+    touch "$completed_marker"
+}
+
+function install_homebrew {
+    debug_here 'Homebrew:'
     # Homebrew
     if on_mac_os;then
         echo "Installing latest Homebrew"
@@ -72,9 +105,9 @@ function main {
         fi
         # TO-NOT-DO: brew upgrade # to just update everything in homebrew
     fi
+}
 
-    # TODO^3: install latest bash and make sure other scripts are compatible...
-
+function install_pyenv_and_rbenv_prerequisites {
     debug_here "time for pyenv and rbenv prerequisites"
     # install pyenv and rbenv prerequisites
     if ! on_mac_os;then
@@ -91,10 +124,9 @@ function main {
             fi
         done
     fi
+}
 
-    # TODO^11: consider replacing rbenv and pyenv with asdf
-    #   TODO^4: ...but first, make sure you have learned how to make version hacks play nice with them
-    #   TODO^4: ...but first, reorganize this script so rbenv and pyenv happen before ruby and python
+function install_rbenv {
     debug_here "rbenv:"
     # rbenv
         # some rbenv reading material:
@@ -132,44 +164,10 @@ function main {
             fi
         fi
     fi
-    debug_here "got rbenv, time for ruby"
     # TODO^2: install rbenv-aliases?
+}
 
-    # ruby
-    main_ruby_version="$(cat $SKIGGETY_UTILS_DIR/.ruby-version)"
-
-    # TODO: could do something fancy involving grep -R DESIRED_RUBY_VERSION to avoid hardcoding version numbers here,
-    # but it's probably a bad idea.  Still, maybe there is some way to round up all the versions I need somewhere
-    # without too much duplicated information:
-    ruby_versions="$main_ruby_version" # TODO: add " 3.1.3" when you need it for demo_ruby_version_hack
-    for ruby_version in $ruby_versions;do
-        debug_eval_here ruby_version
-        . $THIS_DIR/../lib/include_in_bashrc.bash
-        if rbenv versions | grep " ${ruby_version}\( \|$\)" > /dev/null; then
-            echo "ruby $ruby_version is already installed."
-        else
-            echo "Installing ruby $ruby_version:"
-            rbenv install $ruby_version || accumulate_error "FAILED to install ruby"
-            rbenv versions
-        fi
-    done
-
-    if ! [ -f /.in_docker_demo ]; then
-        debug_here "got ruby, time to try to fix bundler?"
-        gem update --system || run_only_if_interactive sudo gem update --system || exit_with_error "gem FAILED to update system"
-    fi
-
-    debug_here "got ruby, time to make sure bundler is installed?"
-    gem install bundler || run_only_if_interactive sudo gem install bundler || exit_with_error "FAILED to install bundler"
-
-    debug_here "let's make sure bundler is ok:"
-    bundle --version || exit_with_error "bundler is not working"
-
-    debug_here "time for ruby_setup"
-    $THIS_DIR/../PWD_BIN/ruby_setup || exit_with_error "FAILED to set up prerequisites for my ruby code, such as gems"
-
-    debug_here "pyenv:"
-    # pyenv
+function install_pyenv {
     debug_here "Installing latest pyenv"
     echo "Installing latest pyenv"
     if on_mac_os;then
@@ -184,9 +182,28 @@ function main {
         git pretty-pull
         popd
     fi
+}
 
-    debug_here "got pyenv, time for python"
-    # python
+function install_ruby {
+    # TODO: could do something fancy involving grep -R DESIRED_RUBY_VERSION to avoid hardcoding version numbers here,
+    # but it's probably a bad idea.  Still, maybe there is some way to round up all the versions I need somewhere
+    # without too much duplicated information:
+    main_ruby_version="$(cat $SKIGGETY_UTILS_DIR/.ruby-version)"
+    ruby_versions="$main_ruby_version" # TODO: add " 3.1.3" when you need it for demo_ruby_version_hack
+    for ruby_version in $ruby_versions;do
+        debug_eval_here ruby_version
+        . $THIS_DIR/../lib/include_in_bashrc.bash
+        if rbenv versions | grep " ${ruby_version}\( \|$\)" > /dev/null; then
+            echo "ruby $ruby_version is already installed."
+        else
+            echo "Installing ruby $ruby_version:"
+            rbenv install $ruby_version || accumulate_error "FAILED to install ruby"
+            rbenv versions
+        fi
+    done
+}
+
+function install_python {
     python_version="$(cat $SKIGGETY_UTILS_DIR/.python-version)"
     if pyenv versions | grep "\* $python_version" > /dev/null; then
         echo "python $python_version is already installed."
@@ -195,27 +212,39 @@ function main {
         pyenv install $python_version || accumulate_error "FAILED to install python"
         pyenv versions
     fi
+}
 
+function do_ruby_basics {
+    if ! [ -f /.in_docker_demo ]; then
+        debug_here "got ruby, time to try to fix bundler?"
+        gem update --system || run_only_if_interactive sudo gem update --system || exit_with_error "gem FAILED to update system"
+    fi
+    debug_here "got ruby, time to make sure bundler is installed?"
+    gem install bundler || run_only_if_interactive sudo gem install bundler || exit_with_error "FAILED to install bundler"
+    debug_here "let's make sure bundler is ok:"
+    bundle --version || exit_with_error "bundler is not working"
+    debug_here "time for ruby_setup"
+    $THIS_DIR/../PWD_BIN/ruby_setup || exit_with_error "FAILED to set up prerequisites for my ruby code, such as gems"
+}
+
+function update_pip {
     debug_here "pip:"
     echo "Updating pip..."
     python -m pip install --upgrade pip
+}
 
+function install_nose2 {
     debug_here "nose2:"
     echo "Installing nose2" # TODO: move
     pip install nose2
+}
 
+function install_pylint {
     debug_here "pylint:"
     if ! pylint --version> /dev/null; then
         echo "Installing pylint"
         python -m pip install pylint
     fi
-
-    exit_with_any_accumulated_errors # before marking complete
-
-    # mark complete
-    debug_here "marking $0 complete"
-    rm "$completed_markers_start_with"*
-    touch "$completed_marker"
 }
 
 function run_only_if_interactive {
