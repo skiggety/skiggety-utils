@@ -244,12 +244,12 @@ class ReviewProgram
     end
     # TODO^2: show time as hh:mm:ss or something like that:
     print " ...slept for #{@slept_already}/#{delay} seconds#{running_message}." \
-          "#{woke_up_message.gsub('TIME', Time.now.to_s)}\033[0K\r"
+          "#{woke_up_message} at #{Time.now}\033[0K\r"
     true
   end
 
   def woke_up_message
-    @wake_up_now ? ' (WOKE UP on filesystem change at TIME)' : ''
+    @wake_up_now ? ' (WOKE UP on filesystem change)' : ''
   end
 
   def running_message
