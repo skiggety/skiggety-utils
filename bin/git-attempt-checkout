@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # TODO^6: RENAME this script.  How about "git-findout"?
-#   TODO^4: maybe set up git tab completion first ( see: https://apple.stackexchange.com/questions/55875/git-auto-complete-for-branches-at-the-command-line )
+#   TODO^10: maybe set up git tab completion first ( see: https://apple.stackexchange.com/questions/55875/git-auto-complete-for-branches-at-the-command-line )
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash
 

@@ -39,7 +39,6 @@
 ./PWD_BIN/install-skiggety-utils:46:            "h") exit_with_error "TODO: print usage" ;;
 ./PWD_BIN/install-skiggety-utils:47:            "?") exit_with_error "TODO: print usage" ;;
 ./PWD_BIN/install-skiggety-utils:57:        # TODO: make sure that when you run "review install-skiggety-utils", this is in non-interactive mode:
-./PWD_BIN/lint:5:#     TODO: '-n' seems good because the command to fix stuff is short, 'lint', and it's short for '--no-changes'
 ./PWD_BIN/lint:28:# TODO: call rupocop with -a OR -P depending on whether this script is in write mode or not (this script should have
 ./PWD_BIN/review-ci:7:# TODO: consider splitting to default_ and normal version like dashboard and lint
 ./PWD_BIN/skiggety-skip-installer:1:# TODO: something like: touch installers/.markers/.skip.$1
@@ -56,14 +55,14 @@
 ./README.md:142:  - TODO: find a tool that can show graphs of provided data on the command line
 ./README.md:145:  - TODO: set up router
 ./README.md:149:- TODO: systematized config (automate the configuration I always want anyway)
-./README.md:152:- TODO: document usage of commands
-./README.md:153:- TODO: help set up home data center?
-./README.md:154:- TODO: put a directory in skigg-utils that contains reference/demo code that shows you how to do certain things
-./README.md:155:- TODO: implement ratcheting that can be used for code coverage, number of intstances of a string, number of lint failures, etc. It should be usable as part of a pre-merge hook for git and/or blocking a github pull request
-./README.md:156:- TODO: is there a way to commit TODO's somewhere other than local, but not show them publicly on github (I have gitignore files available, but a branching convention might be ghood for keeping them in code)?
-./README.md:157:- TODO: An [opinionated] tool for automatically seeding/templating new projects
-./README.md:158:- TODO: utility for timestamping [log] output like this: https://serverfault.com/questions/310098/how-to-add-a-timestamp-to-bash-script-log
-./README.md:159:- TODO?: gol - Short for "Git Off my Lawn", this would be an opinionated command-line front end for git.
+./README.md:153:- TODO: document usage of commands
+./README.md:154:- TODO: help set up home data center?
+./README.md:155:- TODO: put a directory in skigg-utils that contains reference/demo code that shows you how to do certain things
+./README.md:156:- TODO: implement ratcheting that can be used for code coverage, number of intstances of a string, number of lint failures, etc. It should be usable as part of a pre-merge hook for git and/or blocking a github pull request
+./README.md:157:- TODO: is there a way to commit TODO's somewhere other than local, but not show them publicly on github (I have gitignore files available, but a branching convention might be ghood for keeping them in code)?
+./README.md:158:- TODO: An [opinionated] tool for automatically seeding/templating new projects
+./README.md:159:- TODO: utility for timestamping [log] output like this: https://serverfault.com/questions/310098/how-to-add-a-timestamp-to-bash-script-log
+./README.md:160:- TODO?: gol - Short for "Git Off my Lawn", this would be an opinionated command-line front end for git.
 ./bin/abbreviate:25:    # TODO: help option should explain that -n tells it how many lines of screen space to use, including the explanation
 ./bin/chbs:21:  # TODO: consider a --dense (a.k.a. --troubador a.k.a. -d) mode to generate secure passwords in the traditional style
 ./bin/chbs:24:  # TODO: maybe accept a flag that makes this print one and only one passphrase, with no other output.  It could be used
@@ -105,9 +104,10 @@
 ./bin/review:52:# TODO: rubocop says this class is long (see .rubocop_todo.yml), is parse_args the part to extract?:
 ./bin/review:62:    # TODO: minimum_delay, etc.
 ./bin/review:77:    @delay = minimum_delay # TODO: we don't have to start with the minimum, we could take a flag
-./bin/review:127:      # TODO: --timeout <n>, or in other words kill commands after this many seconds..
-./bin/review:128:      # TODO: should be able to specify min/max delay from the command line as hh:mm:ss if you want:
-./bin/review:229:    # TODO: think about how it would be nice to set @wake_up_now = false before the command runs to catch filesystem
+./bin/review:127:      # TODO: have a flag that lets you specify which path on the filesystem to listen to. Probably oughta have a flag
+./bin/review:130:      # TODO: --timeout <n>, or in other words kill commands after this many seconds..
+./bin/review:131:      # TODO: should be able to specify min/max delay from the command line as hh:mm:ss if you want:
+./bin/review:232:    # TODO: think about how it would be nice to set @wake_up_now = false before the command runs to catch filesystem
 ./bin/review-dev:4:# TODO: consider renaming this to template_review-dev or default something
 ./bin/scratch:5:# TODO: move to 'kid-utils'?
 ./bin/shellask:28:#     TODO: figure out roughly what % of the time it happens, maybe with a test harness that repeats and logs 1000 times
@@ -122,12 +122,11 @@
 ./bin/today_todo:11:# TODO: this program needs to display some instructions so the user knows how to use it.
 ./bin/today_todo:12:# TODO: maybe during business hours, show results with "BUSINESS_HOURS" more prominently, and hide them otherwise
 ./bin/today_todo:46:    # TODO: accept a keyword argument, e.g. "-k WOODSHOP".  When you open the editor it's already searching for it and
-./bin/today_todo:67:    # TODO: maybe automate the archiving, too?
-./bin/today_todo:77:    # TODO: consider extracting the rest of this script to "today_todo_display", which can be overridden with PWD_BIN, or
-./bin/today_todo:91:    echo "$todo_output" | tail -n 10 | grep --color=always TODO
-./bin/today_todo:133:        # TODO: show BUSINESS_HOURS stuff during business hours
-./bin/today_todo:134:        # TODO: maybe a cronjob to remind me to do that stuff on my lunch hour
-./bin/today_todo:148:        # TODO: what date format should I use?:
+./bin/today_todo:68:    # TODO: maybe automate the archiving, too?
+./bin/today_todo:78:    # TODO: consider extracting the rest of this script to "today_todo_display", which can be overridden with PWD_BIN, or
+./bin/today_todo:92:    echo "$todo_output" | tail -n 10 | grep --color=always TODO
+./bin/today_todo:132:        # TODO: show BUSINESS_HOURS stuff during business hours
+./bin/today_todo:133:        # TODO: maybe a cronjob to remind me to do that stuff on my lunch hour
 ./bin/todo_v0.1:3:# TODO: probably should get rid of this old todo version, but it's pretty funny
 ./bin/todo_v0.4:26:# TODO: consider supporting an alternate format for votes, something that rubocop won't complain
 ./bin/todo_v0.4:34:#  TODO: once we have a --delete option, you could write a script that goes through your todo's in
@@ -322,20 +321,19 @@
 ./bin/review:44:# TODO^2: do I need to export LINES and COLUMNS as the output of 'tput lines' and 'tput cols' respectively so the
 ./bin/review:47:# TODO^2: Accept a flag to stop running if the wait gets longer than some specified amount
 ./bin/review:76:    # TODO^2: possibly RENAME "delay" to sleep_interval or wait_time or something and use the terminology consistently.
-./bin/review:173:  # TODO^2: probably RENAME these two "fill screen" methods, and maybe DRY the insides of them too:
-./bin/review:180:      @output = "TODO^2: consider pulling some BS with tee to get output, meanwhile #{rand(99)} should keep it snappy"
-./bin/review:219:  # TODO^2: this needs to be switchable by command line
-./bin/review:242:    # TODO^2: show time as hh:mm:ss or something like that:
-./bin/review:285:  # TODO^2: cleanup timestamp formatting:
+./bin/review:176:  # TODO^2: probably RENAME these two "fill screen" methods, and maybe DRY the insides of them too:
+./bin/review:183:      @output = "TODO^2: consider pulling some BS with tee to get output, meanwhile #{rand(99)} should keep it snappy"
+./bin/review:222:  # TODO^2: this needs to be switchable by command line
+./bin/review:245:    # TODO^2: show time as hh:mm:ss or something like that:
+./bin/review:288:  # TODO^2: cleanup timestamp formatting:
 ./bin/review-today_todo:3:# TODO^2: gotta RENAME this and today_todo.  Underscores in the name are just too weird, especially when mixed with hyphens
 ./bin/shellask:43:# TODO^2: can we do something to make the terminal tab blink?:
 ./bin/silliness/demo_python_version_hack:61:    # TODO^2: is there something slightly cleaner I could do like run the child in a fresh login shell
 ./bin/silliness/demo_ruby_version_hack:41:  # TODO^2: is there something slightly cleaner I could do like run the child in a fresh login shell or something to
 ./bin/sleep-verbose:6:# TODO^2?: show a clock, optionally
 ./bin/sleep-verbose:7:# TODO^2?: integrate into a banner
-./bin/today_todo:84:    # TODO: -n 5 # TODO^2: todo should accept an option for the number of lines.  like "-n 3".  Maybe if we pass an
-./bin/today_todo:103:    # TODO^2: if it's around new years:
-./bin/today_todo:123:    # TODO^2: NOW output should be highlighted.
+./bin/today_todo:85:    # TODO: -n 5 # TODO^2: todo should accept an option for the number of lines.  like "-n 3".  Maybe if we pass an
+./bin/today_todo:104:    # TODO^2: if it's around new years:
 ./bin/todo_v0.4:31:# TODO^2: maybe accept --vote 'substring', --downvote 'substring', or --delete 'substring'  to find
 ./bin/todo_v0.4:119:    # TODO^2: parallelization might make this a lot faster (learn from rg)
 ./bin/todo_v0.4:217:    # TODO^2: it is inefficient to re-create these every time, so make them an instance
@@ -381,7 +379,7 @@
 ./bin/chbs:29:  # TODO^3:  and pass through options for min/max word length (--mwl/--Mwl)
 ./bin/git-push-new-branch:2:# TODO^3: RENAME this script
 ./bin/git-ready:30:    # TODO^3: if the remote branch doesn't exist yet, we should skip trying git pull, since it will fail anyway
-./bin/review:205:    # TODO^3: maybe instead of using to_i, convert to decimal with 2-3 places:
+./bin/review:208:    # TODO^3: maybe instead of using to_i, convert to decimal with 2-3 places:
 ./bin/today_todo:14:# TODO^3: add a mode to quickly upvote one particular thing, that would call "todo --vote 'substring of my todo line'"
 ./bin/todo_v0.4:29:# TODO^3: accept piped-in grep output for sorting, like grep does
 ./bin/todo_v0.4:33:#  TODO^3: in particular '--vote' would be a timesaver, especially if you could use it with today_todo
@@ -410,13 +408,11 @@
 ./README.md:137:- TODO^4: set up a git hook system so you can add multiple scripts. For example, I'd like to block commits that include
 ./README.md:143:- TODO^4: music rotator thingy (Neighbor Shawn might beta test)
 ./bin/abbreviate:5:# and run tail otherwise.  TODO^4: # Maybe could RENAME it to 'tailmax', 'tail-verbose', or something?
-./bin/git-attempt-checkout:4:#   TODO^4: maybe set up git tab completion first ( see: https://apple.stackexchange.com/questions/55875/git-auto-complete-for-branches-at-the-command-line )
 ./bin/git-ready:19:    # TODO^4: just exit 0 right here unless there are changes staged
 ./bin/review:82:    start_wake_on_filesystem_change # TODO^4: this should depend on a command line flag
 ./bin/shellask:49:# TODO^4: can I RENAME these aliases to something more convenient? I mean "yes_shellask"? seriously?:
-./bin/today_todo:122:    # TODO^4: add NOW count to graph:
-./bin/today_todo:142:    # TODO^4: add NOW count to this output?:
-./bin/today_todo:146:        # TODO^4: graph how many are done each day
+./bin/today_todo:141:    # TODO^4: add NOW count to this output?:
+./bin/today_todo:145:        # TODO^4: graph how many are done each day
 ./bin/todo_v0.4:113:    interactive = True # TODO^4: detect if output is to a terminal
 ./bin/todo_v0.4:147:                        # TODO^4: write more efficiently (all changes from one file at once):
 ./bin/todo_v0.4:182:    # TODO^4: print summary with TODO count, maybe a vote count
@@ -434,6 +430,7 @@
 ./PWD_BIN/ci:31:# TODO^5: ensure that the mere act of running ci doesn't cause local changes.  I'm looking at PWD_BIN/lint .
 ./PWD_BIN/dashboard:11:# show diff with old mac files: # TODO^5: work on this diff:
 ./PWD_BIN/install-skiggety-utils:13:# TODO^5: careful/tentative/untrusting mode, ask user for confirmation as you go.  Might make it easier for others.  It
+./PWD_BIN/lint:5:#     TODO^5: '-n' seems good because the command to fix stuff is short, 'lint', and it's short for '--no-changes'
 ./PWD_BIN/lint:6:# TODO^5: run shellcheck
 ./PWD_BIN/lint:24:# TODO^5: get in the habit of keeping everything clean and then use accumulate_error here:
 ./bin/chbs:12:# TODO^5 Consider making a website that runs this script in the browswer, using https://opalrb.com/
@@ -451,14 +448,16 @@
 ./bin/git-pretty-pull:3:# TODO^6: maybe RENAME, e.g. 'git-pull-verbose'
 ./bin/pretty_sleep:30:# TODO^6: DELETE this script once you're sure it's not used
 ./bin/today_todo:6:# TODO^6: RENAME? ("todo-today"?, "todoy")
-./bin/today_todo:64:        vim -o $files_to_open '+/\.\.\.' # TODO^6: here and elsewhere, use $EDITOR, not vim
+./bin/today_todo:65:        vim -o $files_to_open '+/\.\.\.' # TODO^6: here and elsewhere, use $EDITOR, not vim
 ./README.md:47:    - TODO^7: by the way, figure out how to tack one git repo on to another so you don't have ./PWD_BIN always showing up in the
+./README.md:152:# TODO^7: set up bash tab completion ( see: https://apple.stackexchange.com/questions/55875/git-auto-complete-for-branches-at-the-command-line )
 ./bin/review:35:# TODO^7: a control key to wake it up and make it refresh immediately (accept a control character or signal to refresh
 ./bin/review:42:# TODO^7: BUG make sure child processes get killed when you use CTRL + C on this program to stop it
 ./bin/shellask:26:# TODO^7: figure out why this script occasionally fails to set the prompt.  It seems to still get as far as producing a
 ./bin/todo_v0.4:5:#   TODO^7: RENAME this (with Kevin), or at least the next version, to something a bit more unique
-./installers/basic_prerequisites:95:    # TODO^7: consider replacing rbenv and pyenv with asdf
 ./installers/vim:62:    # TODO^7: learn to use nerdcommenter:
-./PWD_BIN/lint:3:# TODO^8: make this read-only by default, split the write version into another script if necessary
-./PWD_BIN/lint:4:#   TODO^8: I think the way to handle this is to support a '-w', '--fix', '-n' or '--ro' option
+./PWD_BIN/lint:3:# TODO^9: make this read-only by default, split the write version into another script if necessary
+./PWD_BIN/lint:4:#   TODO^10: I think the way to handle this is to support a '-w', '--fix', '-n' or '--ro' option
+./bin/git-attempt-checkout:4:#   TODO^10: maybe set up git tab completion first ( see: https://apple.stackexchange.com/questions/55875/git-auto-complete-for-branches-at-the-command-line )
 ./README.md:122:  - TODO^11: ...rewrite todo in rust with parallelization (with Kevin), but after [rust koans](https://github.com/crazymykl/rust-koans)
+./installers/basic_prerequisites:95:    # TODO^11: consider replacing rbenv and pyenv with asdf

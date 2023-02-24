@@ -120,8 +120,6 @@ function main {
     fi
 
 
-    # TODO^4: add NOW count to graph:
-    # TODO^2: NOW output should be highlighted.
     todo_now_output="$(echo "$todo_output" | grep --color=always NOW)"
     todo_now_count=$(( 0 + $(echo "$todo_now_output" | wc -l) ))
     if [ "$todo_now_output" != '' ]; then
@@ -145,7 +143,6 @@ function main {
 
     if $interactive; then
         # TODO^4: graph how many are done each day
-        # TODO: what date format should I use?:
         if ! [ -f graph.csv ]; then
             echo "date,total todos,todos in progress,todos for later,todos for NOW,combined score" > graph.csv
         fi

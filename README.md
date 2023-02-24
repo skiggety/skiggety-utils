@@ -149,6 +149,7 @@ These ideas don't have a code location, so they go here:
 - TODO: systematized config (automate the configuration I always want anyway)
     - TODO^2: hook up to google drive
 - TODO^2: mini-project: raspberry pi backup machine, and the software to run it.
+# TODO^7: set up bash tab completion ( see: https://apple.stackexchange.com/questions/55875/git-auto-complete-for-branches-at-the-command-line )
 - TODO: document usage of commands
 - TODO: help set up home data center?
 - TODO: put a directory in skigg-utils that contains reference/demo code that shows you how to do certain things
