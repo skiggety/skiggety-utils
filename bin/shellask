@@ -23,10 +23,14 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 # including with THIS_DIR instead of SKIGGETY_UTILS_DIR so we can use it in demo_in_docker:
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
-# TODO^7: figure out why this script occasionally fails to set the prompt.  It seems to still get as far as producing a
-# reasonable looking DOUBLE_ESCAPED_TASK_DESCRIPTION, but doesn't actually set the prompt :
+# TODO^8: figure out why this script occasionally fails to set the prompt.  It seems to still get as far as producing a
+# reasonable looking DOUBLE_ESCAPED_TASK_DESCRIPTION, but doesn't actually set the prompt or the aliases:
 #     TODO: figure out roughly what % of the time it happens, maybe with a test harness that repeats and logs 1000 times
 #     or something, then you can test if changing certain things fixes across 1000 runs (or whatever the number is).
+
+SKIGGETY_DEBUG=true # TODO: DELETE once shellask sets the prompt reliably
+
+echo_debug "Debugging was turned on with SKIGGETY_DEBUG=true because $(basename $0) is a little unreliable." # TODO: DELETE once fixed
 
 debug_here "\$\* is: '$*'"
 TASK_DESCRIPTION="$*"
@@ -45,6 +49,6 @@ tput bel
 
 debug_eval_here TASK_DESCRIPTION
 echo_debug "Remember, exit 0 for yes/success or exit 1 for no/failure, will always work."
-# TODO^4: can I RENAME these aliases to something more convenient? I mean "yes_shellask"? seriously?:
+
 bash --rcfile <(if [ -f ~/.bashrc ]; then cat ~/.bashrc;fi;echo "alias yup='exit 0'" ;echo "alias nope='exit 1'";echo "PS1=\"${newline}$banner${newline}# TODO:${newline}# 1.) ${DOUBLE_ESCAPED_TASK_DESCRIPTION}${newline}# 2.) Run \\\"yup\\\" for success/yes, or \\\"nope\\\" to say failure/no.${newline}$banner${newline}\$PS1\"") - # IGNORE_TODO
 exit $?

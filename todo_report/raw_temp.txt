@@ -111,6 +111,8 @@
 ./bin/review-dev:4:# TODO: consider renaming this to template_review-dev or default something
 ./bin/scratch:5:# TODO: move to 'kid-utils'?
 ./bin/shellask:28:#     TODO: figure out roughly what % of the time it happens, maybe with a test harness that repeats and logs 1000 times
+./bin/shellask:31:SKIGGETY_DEBUG=true # TODO: DELETE once shellask sets the prompt reliably
+./bin/shellask:33:echo_debug "Debugging was turned on with SKIGGETY_DEBUG=true because $(basename $0) is a little unreliable." # TODO: DELETE once fixed
 ./bin/silliness/blow_up:3:# TODO: take piped in input?
 ./bin/silliness/demo_python_version_hack:17:# TODO: THIS SHOULD NOT BE NECESSARY! WHY? OH, WHY?!?! (maybe learn more about pyenv and how python
 ./bin/silliness/demo_python_version_hack:64:    # TODO: probably should only do this if pyenv shims are in the path somewhere
@@ -327,7 +329,7 @@
 ./bin/review:245:    # TODO^2: show time as hh:mm:ss or something like that:
 ./bin/review:288:  # TODO^2: cleanup timestamp formatting:
 ./bin/review-today_todo:3:# TODO^2: gotta RENAME this and today_todo.  Underscores in the name are just too weird, especially when mixed with hyphens
-./bin/shellask:43:# TODO^2: can we do something to make the terminal tab blink?:
+./bin/shellask:46:# TODO^2: can we do something to make the terminal tab blink?:
 ./bin/silliness/demo_python_version_hack:61:    # TODO^2: is there something slightly cleaner I could do like run the child in a fresh login shell
 ./bin/silliness/demo_ruby_version_hack:41:  # TODO^2: is there something slightly cleaner I could do like run the child in a fresh login shell or something to
 ./bin/sleep-verbose:6:# TODO^2?: show a clock, optionally
@@ -410,7 +412,6 @@
 ./bin/abbreviate:5:# and run tail otherwise.  TODO^4: # Maybe could RENAME it to 'tailmax', 'tail-verbose', or something?
 ./bin/git-ready:19:    # TODO^4: just exit 0 right here unless there are changes staged
 ./bin/review:82:    start_wake_on_filesystem_change # TODO^4: this should depend on a command line flag
-./bin/shellask:49:# TODO^4: can I RENAME these aliases to something more convenient? I mean "yes_shellask"? seriously?:
 ./bin/today_todo:141:    # TODO^4: add NOW count to this output?:
 ./bin/today_todo:145:        # TODO^4: graph how many are done each day
 ./bin/todo_v0.4:113:    interactive = True # TODO^4: detect if output is to a terminal
@@ -453,9 +454,9 @@
 ./README.md:152:# TODO^7: set up bash tab completion ( see: https://apple.stackexchange.com/questions/55875/git-auto-complete-for-branches-at-the-command-line )
 ./bin/review:35:# TODO^7: a control key to wake it up and make it refresh immediately (accept a control character or signal to refresh
 ./bin/review:42:# TODO^7: BUG make sure child processes get killed when you use CTRL + C on this program to stop it
-./bin/shellask:26:# TODO^7: figure out why this script occasionally fails to set the prompt.  It seems to still get as far as producing a
 ./bin/todo_v0.4:5:#   TODO^7: RENAME this (with Kevin), or at least the next version, to something a bit more unique
 ./installers/vim:62:    # TODO^7: learn to use nerdcommenter:
+./bin/shellask:26:# TODO^8: figure out why this script occasionally fails to set the prompt.  It seems to still get as far as producing a
 ./PWD_BIN/lint:3:# TODO^9: make this read-only by default, split the write version into another script if necessary
 ./PWD_BIN/lint:4:#   TODO^10: I think the way to handle this is to support a '-w', '--fix', '-n' or '--ro' option
 ./bin/git-attempt-checkout:4:#   TODO^10: maybe set up git tab completion first ( see: https://apple.stackexchange.com/questions/55875/git-auto-complete-for-branches-at-the-command-line )
