@@ -20,8 +20,6 @@ while [[ "$1" == -* ]]; do
         DIVIDER=true
         shift
     fi
-    # TODO^2: an alternate option to specify in terms of how many of the original lines to show instead of how many lines
-    # on screen to use
     # TODO: help option should explain that -n tells it how many lines of screen space to use, including the explanation
     # if necessary.
 done
