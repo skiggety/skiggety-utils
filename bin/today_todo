@@ -46,6 +46,7 @@ function main {
     # TODO: accept a keyword argument, e.g. "-k WOODSHOP".  When you open the editor it's already searching for it and
     # it prints much like CONFIRMING on the report.  Could accept multiple keyword arguments.
 
+    csv_date="$(date +'%m/%d/%Y %T')"
     isotoday="$(isotoday)"
 
     todo_list_file_name="TODO.$isotoday.txt" # IGNORE_TODO
@@ -145,7 +146,10 @@ function main {
     if $interactive; then
         # TODO^4: graph how many are done each day
         # TODO: what date format should I use?:
-        echo "$isotoday,$todo_count,$todo_prog_count,$todo_later_count,$(( $todo_count + $todo_prog_count ))" >> graph.csv
+        if ! [ -f graph.csv ]; then
+            echo "date,total todos,todos in progress,todos for later,todos for NOW,combined score" > graph.csv
+        fi
+        echo "$csv_date,$todo_count,$todo_prog_count,$todo_later_count,$todo_now_count,$(( $todo_count + $todo_prog_count + $todo_later_count + $todo_now_count ))" >> graph.csv
     fi
 }
 
