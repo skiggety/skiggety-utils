@@ -4,4 +4,5 @@
 
 # TODO: move to 'kid-utils'?
 
+clear
 cat >/dev/null
