@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# This script sets the upstream branch so you can pull again
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+SKIGGETY_DEBUG=true
+current_branch="$(git branch --show-current)"
+debug_eval current_branch
+git branch --set-upstream-to="origin/$current_branch" "$current_branch"
