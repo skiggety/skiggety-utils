@@ -84,7 +84,6 @@ function install_basic_prerequisites {
         fi
     done
 
-
     install_asdf
 
     asdf plugin-add direnv

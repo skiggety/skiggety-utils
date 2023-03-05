@@ -1,6 +1,9 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# TODO^13: make sure with asdf, 'review' uses the right version and continues not to force it's ruby version on anything
+# it calls.
+
 # This program displays output of a given command and refreshes periodically.  By default, the delay is dynamic so you
 # don't use up too many resources when nothing is changing but it is responsive when the output is changing.
 
