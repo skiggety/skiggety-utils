@@ -1,9 +1,6 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# TODO^13: make sure with asdf, 'review' uses the right version and continues not to force it's ruby version on anything
-# it calls.
-
 # This program displays output of a given command and refreshes periodically.  By default, the delay is dynamic so you
 # don't use up too many resources when nothing is changing but it is responsive when the output is changing.
 
@@ -72,9 +69,9 @@ class ReviewProgram
 
   def run
     parse_args
+
     cleanup_rbenv_influence
-    # TODO???: cleanup_asdf_influence # I'll have to keep an eye out for this program messing with called program's ruby
-    # version to see if I need this.
+    cleanup_asdf_influence
 
     command = ARGV.map{ |a| "\"#{a}\"" }.join(' ')
 
@@ -176,6 +173,15 @@ class ReviewProgram
     end
     ENV['RBENV_VERSION'] = nil
     ENV['RBENV_DIR'] = nil
+  end
+
+  def cleanup_asdf_influence
+      clean_path_as_array = []
+      ENV.fetch('PATH').split(':').each do |path_element|
+        clean_path_as_array << path_element unless path_element =~ /\/\.asdf\/installs\//
+      end
+      ENV['PATH'] = clean_path_as_array.join(':')
+      ENV['ASDF_RUBY_VERSION'] = nil
   end
 
   # TODO^2: probably RENAME these two "fill screen" methods, and maybe DRY the insides of them too:
