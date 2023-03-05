@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
-# I need skiggety.bash and homebrew for rbenv, and I need rbenv for the latest
-# ruby, and I need the a known recent ruby to test/write/run the rest of the
-# installers, hence this bootstrapping script to get us up to the point of
-# having a recent ruby.
+# I need skiggety.bash and homebrew for asdf, and I need asdf for the latest ruby, and I need the a known recent ruby to
+# test/write/run the rest of the installers, hence this bootstrapping script to get us up to the point of having a
+# recent ruby.
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 
@@ -47,37 +46,16 @@ function main {
         if find $completed_marker -mtime -1 | grep $completed_marker >/dev/null; then # TODO: explanatory comment
             completed_marker_time="$(ls -l $completed_marker| awk '{print $6" "$7" "$8}')"
             debug_here "$(basename $(dirname $0))/$(basename $0) has already completed in the last day (at $completed_marker_time), so skipping updates in non-interactive mode."
-            # TODO: maybe exiting early should also be conditional on whether .python-version has been updated since the
-            # marker file.  Probably check .ruby-version and other files, too.  Another alternative would be to separate
-            # out the python and ruby installers and handle this sort of situation in installable_skiggety_utils,
-            # although that would create a circular dependency with ruby...
+            # TODO: maybe exiting early should also be conditional on whether .tools-versions and maybe other files have
+            # been updated since the marker file.    Another alternative would be to separate out the python and ruby
+            # installers and handle this sort of situation in installable_skiggety_utils, although that would create a
+            # circular dependency with ruby...
             exit 0
         fi
     fi
     # fi
 
-    install_homebrew
-
-    # TODO^3: install latest bash and make sure other scripts are compatible...
-
-    install_pyenv_and_rbenv_prerequisites
-
-    # TODO^11: consider replacing rbenv and pyenv with asdf
-    install_rbenv
-
-    debug_here "pyenv:"
-    install_pyenv
-
-    debug_here "got rbenv and pyenv, time for ruby and python"
-    install_python
-
-    # ruby
-    install_ruby
-    do_ruby_basics
-
-    update_pip
-    install_nose2
-    install_pylint
+    install_basic_prerequisites
 
     exit_with_any_accumulated_errors # before marking complete
 
@@ -85,6 +63,51 @@ function main {
     debug_here "marking $0 complete"
     rm "$completed_markers_start_with"*
     touch "$completed_marker"
+}
+
+function install_basic_prerequisites {
+    install_homebrew
+
+    # TODO^3: install latest bash and make sure other scripts are compatible...
+
+    install_asdf_prerequisites
+
+    if rvm --version 2>/dev/null; then
+        shellask to uninstall rvm with rvm implode || exit_with_error "cannot proceed with rvm installed"
+    fi
+    for old_tool_version_manager in rbenv pyenv;do
+        if which $old_tool_version_manager 2>/dev/null; then
+            exit_with_error: "$old_tool_version_manager is still installed. Please uninstall it and try again"
+        fi
+        if [ -d ~/.${old_tool_version_manager} ];then
+            exit_with_error: "Please remove '~/.${old_tool_version_manager}' directory before proceeding"
+        fi
+    done
+
+
+    install_asdf
+
+    asdf plugin-add direnv
+    asdf direnv setup --shell bash --version latest
+    asdf global direnv latest
+
+    # ruby
+    install_ruby
+
+    do_ruby_basics
+
+    debug_here "got tool version manager(s), time for ruby, python, and rust"
+    install_python
+
+    update_pip
+    install_nose2
+    install_pylint
+
+    # TODO: install_rust
+
+    # set global tools versions:
+    asdf global ruby 3.2.0
+    asdf global python 3.11.1
 }
 
 function install_homebrew {
@@ -107,9 +130,11 @@ function install_homebrew {
     fi
 }
 
-function install_pyenv_and_rbenv_prerequisites {
-    debug_here "time for pyenv and rbenv prerequisites"
-    # install pyenv and rbenv prerequisites
+# TODO: pare down the list for asdf (in Dockerfile too), as this list was really created as prerequisites for rbenv and
+# pyenv. asdf says it just needs curl and git, but the different plugins can have their own prerequisites which might be
+# similar to this list::
+function install_asdf_prerequisites {
+    debug_here "time for asdf prerequisites"
     if ! on_mac_os;then
         # TODO^4: un-loop, it's too slow:
         for package in make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libyaml-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev;do
@@ -126,92 +151,27 @@ function install_pyenv_and_rbenv_prerequisites {
     fi
 }
 
-function install_rbenv {
-    debug_here "rbenv:"
-    # rbenv
-        # some rbenv reading material:
-        ### https://medium.com/@namangupta01/replacing-rvm-with-rbenv-in-os-x-9dea622bd639#:~:text=Both%20rbenv%20and%20RVM%20are,lightweight%20Ruby%20version%20management%20tool.
-        ### https://github.com/rbenv/rbenv/issues/1100
-        ### https://javierjulio.com/rbenv/#section_3.2
-    echo "Installing latest rbenv"
-    rvm --version 2>/dev/null && shellask to uninstall rvm with rvm implode
-    if on_mac_os;then
-        homebrew_install_latest rbenv
-        homebrew_install_latest ruby-build # plugin for rbenv
-    else # TODO: if on linux
-        local rbenv_dir="$HOME/.rbenv"
-        if ! [ -d $rbenv_dir ]; then
-            git clone https://github.com/rbenv/rbenv.git $rbenv_dir
-        fi
-        pushd $rbenv_dir
-        git pretty-pull
-        popd
-
-        local ruby_build_dir="$rbenv_dir/plugins/ruby-build"
-        if ! [ -d $ruby_build_dir ]; then
-            git clone https://github.com/rbenv/ruby-build.git $ruby_build_dir
-        fi
-        pushd $ruby_build_dir
-        git pretty-pull
-        popd
-        if ! bundler --version 2>/dev/null;then
-            if $interactive || [ "$(whoami)" == 'root' ] ;then
-                echo "You will need to type your password for sudo access..."
-                sudo apt-get install -y bundler ||
-                    exit_with_error "FAILED to install bundler!"
-            else
-                exit_with_error "must run $(basename $0) interactively to install bundler"
-            fi
-        fi
+function install_asdf {
+    debug_here "asdf:"
+    echo "Installing asdf"
+    local asdf_dir="$HOME/.asdf"
+    if ! [ -d $asdf_dir ]; then
+        git clone https://github.com/asdf-vm/asdf.git "$asdf_dir" --branch v0.11.2 || accumulate_error "Could not clone asdf"
     fi
-    # TODO^2: install rbenv-aliases?
-}
-
-function install_pyenv {
-    debug_here "Installing latest pyenv"
-    echo "Installing latest pyenv"
-    if on_mac_os;then
-        homebrew_install_latest pyenv
-    else
-        local pyenv_dir="$HOME/.pyenv"
-        if ! [ -d $pyenv_dir ]; then
-            git clone https://github.com/pyenv/pyenv.git $pyenv_dir
-        fi
-        pushd $pyenv_dir
-        git config pull.rebase true
-        git pretty-pull
-        popd
-    fi
+    asdf update --head
 }
 
 function install_ruby {
-    # TODO: could do something fancy involving grep -R DESIRED_RUBY_VERSION to avoid hardcoding version numbers here,
-    # but it's probably a bad idea.  Still, maybe there is some way to round up all the versions I need somewhere
-    # without too much duplicated information:
-    main_ruby_version="$(cat $SKIGGETY_UTILS_DIR/.ruby-version)"
-    ruby_versions="$main_ruby_version" # TODO: add " 3.1.3" when you need it for demo_ruby_version_hack
-    for ruby_version in $ruby_versions;do
-        debug_eval_here ruby_version
-        . $THIS_DIR/../lib/include_in_bashrc.bash
-        if rbenv versions | grep " ${ruby_version}\( \|$\)" > /dev/null; then
-            echo "ruby $ruby_version is already installed."
-        else
-            echo "Installing ruby $ruby_version:"
-            rbenv install $ruby_version || accumulate_error "FAILED to install ruby"
-            rbenv versions
-        fi
-    done
+    asdf plugin-add ruby
+    asdf plugin-update ruby
+
+    asdf install ruby
 }
 
 function install_python {
-    python_version="$(cat $SKIGGETY_UTILS_DIR/.python-version)"
-    if pyenv versions | grep "\* $python_version" > /dev/null; then
-        echo "python $python_version is already installed."
-    else
-        echo "Installing python $python_version:"
-        pyenv install $python_version || accumulate_error "FAILED to install python"
-        pyenv versions
-    fi
+    asdf plugin-add python
+    asdf plugin-update python
+    asdf install python
 }
 
 function do_ruby_basics {
@@ -241,7 +201,7 @@ function install_nose2 {
 
 function install_pylint {
     debug_here "pylint:"
-    if ! pylint --version> /dev/null; then
+    if ! pylint --version >/dev/null; then
         echo "Installing pylint"
         python -m pip install pylint
     fi

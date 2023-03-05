@@ -70,6 +70,8 @@ class ReviewProgram
   def run
     parse_args
     cleanup_rbenv_influence
+    # TODO???: cleanup_asdf_influence # I'll have to keep an eye out for this program messing with called program's ruby
+    # version to see if I need this.
 
     command = ARGV.map{ |a| "\"#{a}\"" }.join(' ')
 
@@ -162,7 +164,7 @@ class ReviewProgram
 
   # avoid forcing the same version of ruby on programs that this may call (be careful not to pass rbenv-related
   # environment variables down).  Because it would be nice to be able to use "review dev" in other ruby projects
-  # sometimes, like at work.
+  # sometimes, like at work. I'm keeping this around in case someone else uses rbenv, because I've moved to asdf.
   def cleanup_rbenv_influence
     rbenv_root_dir = ENV.fetch('RBENV_ROOT', nil)
     ["#{rbenv_root_dir}/bin", "#{rbenv_root_dir}/shims"].each do |dir|

@@ -1,9 +1,11 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# Install just what's needed to work on the programs in here, without any skiggety-ish preferences inflicted on you.
-# TODO: make sure there is a way to run this inside demo_in_docker and then to be able to run 'todo' or at least
-# something like '/usr/local/bin/pyenv exec bin/todo' afterwards
+# Install just what's needed to work on the programs in here, without any skiggety-ish preferences
+# inflicted on you.
+
+# TODO: make sure there is a way to run this inside demo_in_docker and then to be able to run 'todo'
+# afterwards.
 
 require_relative '../lib/installable_skiggety_util'
 

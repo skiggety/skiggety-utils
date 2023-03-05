@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
-export PYENV_VERSION='3.11.1'
-"$SKIGGETY_UTILS_DIR/bin/todo_v0.4" "$@"
+export PYENV_VERSION='3.11.1' # might as well keep this in case anyone uses it with pyenv...
+ASDF_COMMAND_PREFIX=''
+if which asdf >/dev/null;then
+    export DIRENV_LOG_FORMAT='' # Silence asdf direnv
+    ASDF_COMMAND_PREFIX='asdf direnv shell python 3.11.1 --'
+fi
+$ASDF_COMMAND_PREFIX "$SKIGGETY_UTILS_DIR/bin/todo_v0.4" "$@"

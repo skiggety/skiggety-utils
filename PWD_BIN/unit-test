@@ -19,8 +19,6 @@ echo_divider_with_text "+-=======-" "ruby_setup"
 echo_divider_with_text "+-=======-" "'todo' tests"
 ./test/test_todo.bash || accumulate_error "shell integration tests for 'todo' FAILED"
 # TODO: ./test/test_todo_v0.4.bash || accumulate_error "shell integration tests for 'todo_v0.4' FAILED"
-# TODO: save todo versions with numbers in the names and wrap one of them in todo (a bash script that sets pyenv and
-# runs it)
 
 # run ruby unit tests
 echo_divider_with_text "+-=======-" "rake test"
@@ -33,10 +31,8 @@ echo "$rake_test_output" | grep -v " --seed" | grep -v "^Finished" | grep -v "^$
 echo_divider_with_text "+-=======-" "run all python tests"
 function run_all_python_tests {
     pushd $THIS_DIR/../test/python/integration/ > /dev/null
-    # I choose to specify PYENV_VERSION here so I can control which libraries get installed for
-    # which pythons:
-    PYENV_VERSION=3.11.1 pip install nose2 || exit_with_error "could not install nose2"
-    test_output_text=$(PYENV_VERSION=3.11.1 python -m nose2 2>&1)
+    pip install nose2 || exit_with_error "could not install nose2"
+    test_output_text=$(python -m nose2 2>&1)
     test_exit_value="$?"
 
     echo "$test_output_text" | sed 's/ in [0-9.]*s//' # get rid of time report to keep output deterministic
