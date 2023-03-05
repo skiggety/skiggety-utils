@@ -264,6 +264,8 @@ class ReviewProgram
   def calc_change_detected
     change_detected = true
     change_detected = false if @output == @last_output
+    # TODO^3: get output in interactive mode with tee into a tempfile so interactive mode won't always choose change
+    # detected:
     change_detected = true if @exit_val != @last_exit_val
     change_detected
   end

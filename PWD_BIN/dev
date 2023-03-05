@@ -19,7 +19,7 @@ lint && echo "lint SUCCEEDED" || exit_with_error "lint FAILED"
 
 dashboard || accumulate_error "dashboard FAILED"
 
-# TODO: ask Kevin to test if this generation is working for him and if it shows up in his 'todo' output:
+# TODO^2: ask Kevin to test if this generation is working for him and if it shows up in his 'todo' output:
 experiment_script="./PWD_BIN/experiment.gitignored.bash"
 if ! [ -f "$experiment_script" ]; then
     echo "#!$(which env) bash" > "$experiment_script"

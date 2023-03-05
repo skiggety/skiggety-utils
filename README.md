@@ -4,6 +4,9 @@ My collection of convenience scripts and configuration. Basically I checkout thi
 './start' to get everything the way I like it, including 3rd-party programs and my own stuff. I expect to use this as a
 spawning ground for other projects that will move on to their own repos.
 
+## Requirements
+* bash
+
 ## How to get started:
 
 There are two options, a docker demo to try it safely, or a normal mode to install skiggety-utils and other preferrred
