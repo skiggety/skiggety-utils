@@ -92,7 +92,7 @@ function main {
     echo "$todo_output" | tail -n 10 | grep --color=always TODO
     if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
 
-    todo_prog_output="$(echo "$todo_output" | grep IN_PROGRESS | grep -v LATER)"
+    todo_prog_output="$(echo "$todo_output" | grep IN_PROGRESS)"
     todo_prog_count=$(( 0 + $(echo "$todo_prog_output" | wc -l) ))
     echo
     echo "Found $todo_prog_count todos IN_PROGRESS:"
