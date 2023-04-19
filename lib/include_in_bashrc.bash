@@ -25,9 +25,13 @@ alias tmux="TERM=screen-256color-bce tmux"
 alias be="bundle exec"
 alias vw="vimwhich"
 alias vf="vimfirst"
+
 alias gir="git" # common enough typo for me
 alias gac="git-attempt-checkout"
+alias gvd="git vimdiff"
 alias gvds="git vimdiff --staged"
+alias gvc="git vimchanged"
+alias gvcs="git vimchanged --staged"
 alias gpnb='git push-new-branch'
 alias gp='git pretty-pull'
 
