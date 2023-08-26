@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO^5: RENAME firstlife-*
+
+# TODO^4: gradually un-redact and extract
+# EASY TODO^64: inside this script, use 'review-delegate --with-reward' instead of calling 'shellask' directly
 live.gitignored.bash # REDACTED
