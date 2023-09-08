@@ -34,6 +34,7 @@ alias gvc="git vimchanged"
 alias gvcs="git vimchanged --staged"
 alias gpnb='git push-new-branch'
 alias gp='git pretty-pull'
+alias gat='git add-theirs'
 
 # TODO: use more stuff from older bashrc files I've used
 

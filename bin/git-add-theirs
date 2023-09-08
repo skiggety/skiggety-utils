@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# This script accepts changes from the other branch in a merge conflict
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+for file in $*;do
+    git checkout --theirs $file
+    git add $file
+done
+
+git status
