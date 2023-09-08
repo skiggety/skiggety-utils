@@ -244,11 +244,12 @@ class ReviewProgram
     # changes during the command run, but the command you're running will often touch the filesystem so it may be not
     # practical:
     @wake_up_now = false
-    delay = delay.to_i # just making sure, don't want to get confused
+    delay = [delay.to_i, uninteruptable_minimum_delay].max # just making sure it's an integer, don't want to get confused
     delay_remaining = delay
     @slept_already = 0
     while delay_remaining.positive? && (@wake_up_now == false || @slept_already < uninteruptable_minimum_delay)
-      print " ...sleeping for #{delay_remaining}/#{delay} seconds...\033[0K\r"
+      total_delay_summary = uninteruptable_minimum_delay == delay ? delay.to_s : "#{uninteruptable_minimum_delay}-#{delay}"
+      print " ...sleeping for #{delay_remaining}/#{total_delay_summary} seconds...\033[0K\r"
       sleep 1
       delay_remaining -= 1
       @slept_already += 1
