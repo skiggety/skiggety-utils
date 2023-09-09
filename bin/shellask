@@ -23,31 +23,32 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 # including with THIS_DIR instead of SKIGGETY_UTILS_DIR so we can use it in demo_in_docker:
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
-# TODO^8: figure out why this script occasionally fails to set the prompt.  It seems to still get as far as producing a
+# TODO^20: figure out why this script occasionally fails to set the prompt.  It seems to still get as far as producing a
 # reasonable looking DOUBLE_ESCAPED_TASK_DESCRIPTION, but doesn't actually set the prompt or the aliases:
 #     TODO: figure out roughly what % of the time it happens, maybe with a test harness that repeats and logs 1000 times
 #     or something, then you can test if changing certain things fixes across 1000 runs (or whatever the number is).
 
+# TODO: learn a better pattern for configuration/design from Darren
 SKIGGETY_DEBUG=true # TODO: DELETE once shellask sets the prompt reliably
 
-echo_debug "Debugging was turned on with SKIGGETY_DEBUG=true because $(basename $0) is a little unreliable." # TODO: DELETE once fixed
 
-debug_here "\$\* is: '$*'"
+echo_debug "shellask should ask you to: $*" # TODO^61: (IN_PROGRESS, NOW) use this instead of other stuff lower down, to clean up shellask
+# TODO?: debug_here "\$\* is: '$*'"
 TASK_DESCRIPTION="$*"
-debug_eval_here TASK_DESCRIPTION
+# TODO?: debug_eval_here TASK_DESCRIPTION
 ESCAPED_TASK_DESCRIPTION="$(echo "$TASK_DESCRIPTION" | sed 's/\(["\$]\)/\\\1/g')"
-debug_eval_here ESCAPED_TASK_DESCRIPTION
+# TODO?: debug_eval_here ESCAPED_TASK_DESCRIPTION
 
 # Try running the following to see why this is necessary: shellask 'spend $0 on "stuff"'.
 DOUBLE_ESCAPED_TASK_DESCRIPTION="$(echo "$ESCAPED_TASK_DESCRIPTION" | sed 's/\(["\$]\)/\\\1/g')"
-debug_eval_here DOUBLE_ESCAPED_TASK_DESCRIPTION
+# TODO?: debug_eval_here DOUBLE_ESCAPED_TASK_DESCRIPTION
 banner='########################################################################'
 
 # TODO^2: can we do something to make the terminal tab blink?:
 # ding
 tput bel
 
-debug_eval_here TASK_DESCRIPTION
+# TODO?: debug_eval_here TASK_DESCRIPTION
 echo_debug "Remember, exit 0 for yes/success or exit 1 for no/failure, will always work."
 
 bash --rcfile <(if [ -f ~/.bashrc ]; then cat ~/.bashrc;fi;echo "alias yup='exit 0'" ;echo "alias nope='exit 1'";echo "PS1=\"${newline}$banner${newline}# TODO:${newline}# 1.) ${DOUBLE_ESCAPED_TASK_DESCRIPTION}${newline}# 2.) Run \\\"yup\\\" for success/yes, or \\\"nope\\\" to say failure/no.${newline}$banner${newline}\$PS1\"") - # IGNORE_TODO

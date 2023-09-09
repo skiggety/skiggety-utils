@@ -1,0 +1,332 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# This program displays output of a given command and refreshes periodically.  By default, the delay is dynamic so you
+# don't use up too many resources when nothing is changing but it is responsive when the output is changing.
+
+# Ok, that's the dry version.  Here's the real version.  There's this common pattern where you have one window with your
+# editor, and another terminal window where you run the thing.  You know, whatever it is.  It could be as simple as
+# 'ls', but usually it's something like 'rspec spec/this/one/file.rb' or 'pylint <BLAH> <BLAH>' or
+# 'do-my-usual-stuff.bash'.  So, the point of 'review' is that it will manage that terminal window for you so you don't
+# have to keep switching back and forth.  you run 'review my-command my commands args' and it takes care of running it
+# over and over, so you don't have to.  Often 'my-command' would be a script you have open in your editor, so you really
+# don't have to switch windows.
+
+# For example, lets say you want to grep your text files for trailing spaces, you could do so with the command 'grep -RI
+# " $" .', but it might be nice to keep running that command and updating a terminal with fresh output while you
+# eliminate the trailing spaces in another terminal.  In that case, prepend "review" to the command to get 'review grep
+# -RI " $" .'.  The grep will run repeatedly until you stop it, waiting a few seconds in between each run (this time
+# will adjust automatically.
+
+# MULTIPLY_BY_DELAY has been dialed in based on real usage.  There is no magic number.  It should always be greater
+# than 0.  Make it bigger to save cpu, and smaller to make this program more responsive.  Now that we wake up on
+# filesystem changes, this can be a little bit larger than it once was:
+MULTIPLY_BY_SLEPT_ALREADY = 0.25
+
+DEFAULT_MINIMUM_DELAY = 1 # second
+DEFAULT_UNINTERUPTABLE_MINIMUM_DELAY = 0 # seconds
+
+require 'English' # needed for: $CHILD_STATUS.exitstatus
+
+require 'optparse'
+require 'listen'
+require 'colorize'
+
+# TODO^7: a control key to wake it up and make it refresh immediately (accept a control character or signal to refresh
+# now).  This might even want to re-start and already running command.
+
+# TODO^5: Would it be smart to have a cron job that runs 'pkill review' every day at ~7pm on my work laptop? Or should I
+# instead strive to make the default behavior of this, and review-dev, so reasonable that it's not required? Also, can I
+# make this exit gracefully when pkill runs (possibly with -HUP)?
+
+# TODO^7: BUG make sure child processes get killed when you use CTRL + C on this program to stop it
+
+# TODO^2: do I need to export LINES and COLUMNS as the output of 'tput lines' and 'tput cols' respectively so the
+# dividers in my other programs come out looking right?
+
+# TODO^2: Accept a flag to stop running if the wait gets longer than some specified amount
+# TODO: BUG watch out for this program pinning the cpu
+# TODO: accept log file that logs output, changes, frequencies/counts, etc.
+# TODO: ensure we never mess with the colors, test with "review git diff"
+
+# TODO: rubocop says this class is long (see .rubocop_todo.yml), is parse_args the part to extract?:
+class ReviewProgram
+
+  def self.run
+    new.run
+  end
+
+  attr_reader :ran_in_seconds
+
+  def initialize
+    # TODO: minimum_delay, etc.
+    @stop_on_failure = false
+    @stop_on_success = false
+    @slept_already = 0
+    @should_clear_screen = true
+    @interactive = false
+  end
+
+  def run
+    parse_args
+
+    cleanup_rbenv_influence
+    cleanup_asdf_influence
+
+    command = ARGV.map{ |a| "\"#{a}\"" }.join(' ')
+
+    # TODO^2: possibly RENAME "delay" to sleep_interval or wait_time or something and use the terminology consistently.
+    @delay = minimum_delay # TODO: we don't have to start with the minimum, we could take a flag
+
+    @output = ''
+    fill_screen_interactive(command)
+
+    start_wake_on_filesystem_change # TODO^4: this should depend on a command line flag
+
+    while wakeable_sleep_verbose(@delay)
+      if @interactive
+        fill_screen_interactive(command)
+      else
+        fill_screen_non_interactive(command)
+      end
+      change_detected = calc_change_detected
+      adjust_delay!(change_detected)
+    end
+  end
+
+  def exit_if_loop_condition_flag
+    if @exit_val.zero?
+      if @stop_on_success
+        puts "'#{File.basename($PROGRAM_NAME)}' stopping on command success, was called with '--until'"
+        exit(@exit_val)
+      end
+    elsif @stop_on_failure
+      puts "'#{File.basename($PROGRAM_NAME)}' stopping on command failure, was called with '--while'"
+      exit(@exit_val)
+    end
+  end
+
+  def parse_args # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
+    # NOTE: this is an example of what NOT to do, because we need to distinguish between arguments that are meant for
+    # this program, and arguments that are part of the command: $interactive = !ARGV.delete('--non-interactive')
+
+    # turns out this is important so the rest of the options get left alone and passed on to the next comand:
+    ENV['POSIXLY_CORRECT'] = 'true'
+
+    OptionParser.new do |parser| # rubocop:disable Metrics/BlockLength
+      parser.banner = "Usage: #{$PROGRAM_NAME} [options] command ..."
+      parser.on('-h', '--help', 'show this help') do
+        puts parser
+        exit
+      end
+
+      # The minimum delay is a soft minimum, where it always *tries* to wait, say, long enough for you to react, but
+      # then still wakes up when the filesystem has changes (because you made an edit). This could make a huge
+      # difference in making review actually efficient to use in many circumstances, say a script that takes 60 seconds
+      # to run and 15-60 seconds to react to, like running tests and debugging in another window. You may want to also
+      # set a shorter uninterruptable delay to guarantee you always have a few seconds to react.
+
+      # TODO: have a flag that lets you specify which path on the filesystem to listen to.
+      # - TODO^2: Probably oughta have a flag to turn it off too.
+      # - TODO: Probably ought to then have a flag to set that multiplier.
+
+      # TODO: --timeout <n>, or in other words kill commands after this many seconds..
+      # TODO: should be able to specify min/max delay from the command line as hh:mm:ss if you want:
+      parser.on('-m', '--min-delay MINIMUM', 'specify minimum delay in seconds') do |min|
+        @minimum_delay = min.to_i
+      end
+      parser.on('-u', '--uninteruptable-min-delay MINIMUM', 'specify uninteruptable minimum delay in seconds') do |min|
+        @uninteruptable_minimum_delay = min.to_i
+      end
+      parser.on('-M', '--max-delay MAXIMUM', 'specify maximum delay in seconds') do |max|
+        @maximum_delay = max.to_i
+      end
+      parser.on('-i', '--interactive', 'interactive mode') do
+        @interactive = true
+      end
+      parser.on('-n', '--non-interactive', 'non-interactive (normal) mode') do
+        @interactive = false
+      end
+      parser.on('--while', 'keep looping only while commmand succeeds') do
+        @stop_on_failure = true
+      end
+      parser.on('--until', 'keep looping only until commmand succeeds') do
+        @stop_on_success = true
+      end
+      parser.on('--no-clear', "Don't clear the screen on each run") do
+        @should_clear_screen = false
+      end
+    end.parse!(ARGV)
+
+    # ...and I need to set it back or it screws up the output of pretty sleep and echo divider since they go back to the
+    # beginning of the line
+    ENV['POSIXLY_CORRECT'] = nil
+  end
+
+  # avoid forcing the same version of ruby on programs that this may call (be careful not to pass rbenv-related
+  # environment variables down).  Because it would be nice to be able to use "review dev" in other ruby projects
+  # sometimes, like at work. I'm keeping this around in case someone else uses rbenv, because I've moved to asdf.
+  def cleanup_rbenv_influence
+    rbenv_root_dir = ENV.fetch('RBENV_ROOT', nil)
+    ["#{rbenv_root_dir}/bin", "#{rbenv_root_dir}/shims"].each do |dir|
+      path_as_array = ENV.fetch('PATH').split(':')
+      ENV['PATH'] = "#{dir}:#{ENV.fetch('PATH')}" if path_as_array.include?(dir)
+    end
+    ENV['RBENV_VERSION'] = nil
+    ENV['RBENV_DIR'] = nil
+  end
+
+  def cleanup_asdf_influence
+      clean_path_as_array = []
+      ENV.fetch('PATH').split(':').each do |path_element|
+        clean_path_as_array << path_element unless path_element =~ /\/\.asdf\/installs\//
+      end
+      ENV['PATH'] = clean_path_as_array.join(':')
+      ENV['ASDF_RUBY_VERSION'] = nil
+  end
+
+  # TODO^2: probably RENAME these two "fill screen" methods, and maybe DRY the insides of them too:
+  def fill_screen_interactive(command)
+    clear_screen_if_needed
+    time_command do
+      @last_output = @output
+      @last_exit_val = @exit_val
+      system(command)
+      @output = "TODO^2: consider pulling some BS with tee to get output, meanwhile #{rand(99)} should keep it snappy"
+      @exit_val = $CHILD_STATUS.exitstatus
+    end
+    show_footer(command)
+    exit_if_loop_condition_flag
+  end
+
+  def fill_screen_non_interactive(command)
+    time_command do
+      @last_output = @output
+      @last_exit_val = @exit_val
+      non_interactive_command = "#{command} 2>&1"
+      @output = `#{non_interactive_command}`
+      @exit_val = $CHILD_STATUS.exitstatus
+    end
+    clear_screen_if_needed
+    puts @output
+    show_footer(command)
+    exit_if_loop_condition_flag
+  end
+
+  def time_command
+    @last_start_timestamp = Time.now
+    yield
+    @last_end_timestamp = Time.now
+    # TODO^3: maybe instead of using to_i, convert to decimal with 2-3 places:
+    @ran_in_seconds = (@last_end_timestamp - @last_start_timestamp).to_i
+  end
+
+  def clear_screen_if_needed
+    if ran_in_seconds # Don't clear screen until the command has run before
+      if @should_clear_screen
+        system('clear')
+      else
+        puts ''
+      end
+    end
+  end
+
+  # TODO^2: this needs to be switchable by command line
+  # TODO: maybe skip files that are gitignored?:
+  def start_wake_on_filesystem_change
+    listener = Listen.to('.') do |_modified, _added, _removed|
+      @wake_up_now = true if @wake_up_now == false
+    end
+    listener.start
+  end
+
+  def wakeable_sleep_verbose(delay)
+    # TODO: think about how it would be nice to set @wake_up_now = false before the command runs to catch filesystem
+    # changes during the command run, but the command you're running will often touch the filesystem so it may be not
+    # practical:
+    @wake_up_now = false
+    delay = [delay.to_i, uninteruptable_minimum_delay].max # just making sure it's an integer, don't want to get confused
+    delay_remaining = delay
+    @slept_already = 0
+    while delay_remaining.positive? && (@wake_up_now == false || @slept_already < uninteruptable_minimum_delay)
+      total_delay_summary = uninteruptable_minimum_delay == delay ? delay.to_s : "#{uninteruptable_minimum_delay}-#{delay}"
+      print " ...sleeping for #{delay_remaining}/#{total_delay_summary} seconds...\033[0K\r"
+      sleep 1
+      delay_remaining -= 1
+      @slept_already += 1
+    end
+    # TODO^2: show time as hh:mm:ss or something like that:
+    print " ...slept for #{@slept_already}/#{delay} seconds#{running_message}." \
+          "#{woke_up_message} at #{Time.now}\033[0K\r"
+    true
+  end
+
+  def woke_up_message
+    @wake_up_now ? ' (WOKE UP on filesystem change)' : ''
+  end
+
+  def running_message
+    @interactive ? '' : ', RUNNING again'
+  end
+
+  def calc_change_detected
+    change_detected = true
+    change_detected = false if @output == @last_output
+    # TODO^3: get output in interactive mode with tee into a tempfile so interactive mode won't always choose change
+    # detected:
+    change_detected = true if @exit_val != @last_exit_val
+    change_detected
+  end
+
+  def adjust_delay!(change_detected)
+    if change_detected
+      @delay = minimum_delay
+    else
+      # Using ran_in_seconds time in here means commands that take longer will backoff for longer, which seems
+      # appropriate, since we can run quick things more often without using too much cpu/battery:
+      add_to_delay = (ran_in_seconds * 0.5).to_i + 1
+      result = (@delay + (MULTIPLY_BY_SLEPT_ALREADY * @slept_already)).floor + add_to_delay
+      result = [result, @minimum_delay].max if @minimum_delay
+      result = [result, @maximum_delay].min if @maximum_delay
+      @delay = result
+    end
+  end
+
+  def minimum_delay
+    @minimum_delay || DEFAULT_MINIMUM_DELAY
+  end
+
+  def uninteruptable_minimum_delay
+    @uninteruptable_minimum_delay || DEFAULT_UNINTERUPTABLE_MINIMUM_DELAY
+  end
+
+  # TODO^2: cleanup timestamp formatting:
+  # Now, in color!
+  def show_footer(command)
+    system("echo_divider_with_text \"#\" \"\\\"#{command}\\\" exited with #{red_unless_zero(@exit_val)} after " \
+           "#{ran_in_seconds} seconds, having started at " + rotate_rainbow(@last_start_timestamp) + '"')
+  end
+
+  def red_unless_zero(text)
+    text = text.to_s
+    if text == '0'
+      text
+    else
+      text.light_red
+    end
+  end
+
+  def rotate_rainbow(text)
+    @rainbow_colors ||= %i[light_red light_yellow light_green light_cyan light_blue light_magenta]
+    @rainbow_index ||= rand(@rainbow_colors.size)
+    color_method_name = @rainbow_colors[@rainbow_index]
+
+    @rainbow_index += 1
+    @rainbow_index %= @rainbow_colors.size
+
+    text.to_s.send(color_method_name)
+  end
+
+end
+
+ReviewProgram.run

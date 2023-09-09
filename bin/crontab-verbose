@@ -12,6 +12,7 @@ function main {
     debug_eval_here COMPLETED_MARKER
 
     CONF="$HOME/.crontab"
+    $EDITOR "$CONF" || exit_with_error "did not edit crontab"
     cat "$CONF"
 
     exit_if_marker_is_more_recent_than_other_files "$COMPLETED_MARKER" $HOME/.crontab

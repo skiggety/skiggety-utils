@@ -3,4 +3,4 @@
 # This script continuously displays and refreshes the dashboard
 # TODO: consider renaming this to template_review-dev or default something
 
-review -u 3 -m 15 dev
+SKIGGETY_DIVIDER_LENGTH=121 review -u 4 -m 20 dev

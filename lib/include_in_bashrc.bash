@@ -34,6 +34,7 @@ alias gvc="git vimchanged"
 alias gvcs="git vimchanged --staged"
 alias gpnb='git push-new-branch'
 alias gp='git pretty-pull'
+alias gat='git add-theirs'
 
 # TODO: use more stuff from older bashrc files I've used
 
@@ -41,18 +42,9 @@ alias gp='git pretty-pull'
 # window/tab open with the same visual settings
 trap 'if [ "login" == "$(ps -o comm= $PPID)" ];then echo holding this window open for a short interval just in case you exited prematurely;sleep-verbose 10;fi' EXIT
 
-# rbenv stuff (should be at the bottom of this file):
-export PATH="$HOME/.rbenv/bin:$PATH"
-if which rbenv > /dev/null;then
-    eval "$(rbenv init -)"
-fi
-
-# pyenv stuff (should be at the bottom of this file):
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-    if pyenv init --help | grep path >/dev/null; then
-        eval "$(pyenv init --path)"
-    fi
-    eval "$(pyenv init -)"
+# asdf stuff (should be at the bottom of this file):
+. "$HOME/.asdf/asdf.sh"
+. "$HOME/.asdf/completions/asdf.bash"
+if asdf current | grep '^direnv' >/dev/null; then
+    . "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/bashrc"
 fi

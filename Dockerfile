@@ -25,24 +25,25 @@ WORKDIR "$SKIGGETY_UTILS_DIR"
 ENV PATH="${PATH}:./PWD_BIN:$SKIGGETY_UTILS_DIR/bin"
 
 # optimizations, stuff to do before runnining installers/basic_prerequisites so it doesn't have to work as hard:
-RUN git clone https://github.com/rbenv/rbenv.git /root/.rbenv
-RUN git clone https://github.com/rbenv/ruby-build.git /root/.rbenv/plugins/ruby-build
-RUN git clone https://github.com/pyenv/pyenv.git /root/.pyenv
+RUN git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.2
 RUN apt install -y bundler
 ADD ./bin/skiggety_env_exec ./bin/skiggety_env_exec
 ADD ./lib/include_in_bashrc.bash ./lib/include_in_bashrc.bash
 ADD ./lib/skiggety-utils.bash ./lib/skiggety-utils.bash
+ADD .tool-versions .tool-versions
+RUN ./bin/skiggety_env_exec asdf plugin-add direnv
+RUN ./bin/skiggety_env_exec asdf plugin-add ruby
 RUN echo "The next step might take a while the first time...."
-RUN ./bin/skiggety_env_exec rbenv install 3.2.0
+RUN ./bin/skiggety_env_exec asdf install ruby 3.2.0
+RUN ./bin/skiggety_env_exec asdf plugin-add python
 RUN echo "The next step might take a while the first time...."
-# RUN ./bin/skiggety_env_exec rbenv install 3.1.3
-RUN ./bin/skiggety_env_exec pyenv install 3.11.1
+RUN ./bin/skiggety_env_exec asdf install python 3.11.1
+
 RUN gem install bundler
 ADD Gemfile Gemfile
 ADD Gemfile.lock Gemfile.lock
 ADD ./PWD_BIN/ruby_setup ./PWD_BIN/ruby_setup
 RUN ./bin/skiggety_env_exec ./PWD_BIN/ruby_setup
-ENV PYENV_VERSION=3.11.1
 RUN ./bin/skiggety_env_exec python -m pip install --upgrade pip
 RUN ./bin/skiggety_env_exec pip install nose2
 RUN ./bin/skiggety_env_exec python -m pip install pylint

@@ -1,5 +1,5 @@
 ======================================================================================================== TODOs, ascending. Do not edit, run 'generate_todo_report' to generate. 
-( showing last 3 lines out of 460 for 'todo': )
-./bin/git-attempt-checkout:4:#   TODO^10: maybe set up git tab completion first ( see: https://apple.stackexchange.com/questions/55875/git-auto-complete-for-branches-at-the-command-line )
-./README.md:122:  - TODO^11: ...rewrite todo in rust with parallelization (with Kevin), but after [rust koans](https://github.com/crazymykl/rust-koans)
-./installers/basic_prerequisites:65:    # TODO^11: consider replacing rbenv and pyenv with asdf
+( showing last 3 lines out of 469 for 'todo': )
+./bin/shellask:35:echo_debug "shellask should ask you to: $*" # TODO^61: (IN_PROGRESS, NOW) use this instead of other stuff lower down, to clean up shellask
+./bin/today_todo:56:    todo_list_dir_path="$HOME/$(basename $0)" # TODO^61: (IN_PROGRESS, NOW) promote this to a login shell var, so skiggety utils can dump it's todo report there
+./bin/silliness/live:6:# EASY TODO^64: inside this script, use 'review-delegate --with-reward' instead of calling 'shellask' directly

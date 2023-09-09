@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# This script (...TODO, describe your script here)
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+exit_with_error "TODO: IMPLEMENT"
+# TODO: open a tmux with predefined windows with specific sizes, running specific review commands
+# - run tests and lint in one panel
+# - run dashboard in another panel
+# - break up more if needed

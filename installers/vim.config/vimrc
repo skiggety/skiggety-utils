@@ -47,6 +47,7 @@ map <Leader>rb :Dispatch bin/rspec %<CR>
 " most of this fzf section is from https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko :
 set rtp+=/usr/local/opt/fzf "TODO: make this cross-platform, this is just where fzf gets installed with brew on mac
 nnoremap <Leader>f :Rg<CR>
+nnoremap <silent> <Leader>k :Rg <C-R><C-W><CR>
 nnoremap <C-f> :Files<CR>
 nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>/ :BLines<CR>

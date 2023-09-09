@@ -3,6 +3,7 @@
 # This is how I trick myself into getting things done.  It basically helps organize and display a series of text files
 # containing a todo list with the usual keyword and voting (see 'todo' program).
 
+# TODO^12: have a way to postpone things to a certain date
 # TODO^6: RENAME? ("todo-today"?, "todoy")
 # TODO: flag to grep for and count a specific word, sort of like what I do for "NOW"
 # TODO: "-q" or "-n" flag to be quick, and skip the editor phase
@@ -11,7 +12,9 @@
 # TODO: this program needs to display some instructions so the user knows how to use it.
 # TODO: maybe during business hours, show results with "BUSINESS_HOURS" more prominently, and hide them otherwise
 
-# TODO^3: add a mode to quickly upvote one particular thing, that would call "todo --vote 'substring of my todo line'"
+# TODO^24: add a mode to quickly add a todo, ideally it would let you specify a votecount too
+# TODO: report on tags and their frequency?
+# TODO^5: add a mode to quickly upvote one particular thing, that would call "todo --vote 'substring of my todo line'"
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
 USAGE='today_todo [options]
@@ -50,7 +53,7 @@ function main {
     isotoday="$(isotoday)"
 
     todo_list_file_name="TODO.$isotoday.txt" # IGNORE_TODO
-    todo_list_dir_path="$HOME/$(basename $0)"
+    todo_list_dir_path="$HOME/$(basename $0)" # TODO^61: (IN_PROGRESS, NOW) promote this to a login shell var, so skiggety utils can dump it's todo report there
 
     mkdir -p "$todo_list_dir_path"
     cd "$todo_list_dir_path"
@@ -92,7 +95,7 @@ function main {
     echo "$todo_output" | tail -n 10 | grep --color=always TODO
     if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
 
-    todo_prog_output="$(echo "$todo_output" | grep IN_PROGRESS | grep -v LATER)"
+    todo_prog_output="$(echo "$todo_output" | grep IN_PROGRESS)"
     todo_prog_count=$(( 0 + $(echo "$todo_prog_output" | wc -l) ))
     echo
     echo "Found $todo_prog_count todos IN_PROGRESS:"
@@ -104,6 +107,7 @@ function main {
     # TODO^2: if it's around new years:
     display_grep_for_keyword NEW_YEARS_RESOLUTION "$todo_output"
 
+    # TODO^51: instead of NOW and LATER, tag things with MORNING, EVENING, WEEKEND, BUSINESS_HOURS, etc, and have today_todo watch the clock to know which to highlight
     todo_later_output="$(echo "$todo_output" | grep --color=always LATER)"
     todo_later_count=$(( 0 + $(echo "$todo_later_output" | wc -l) ))
     if [ "$todo_later_output" != '' ]; then
@@ -142,7 +146,7 @@ function main {
     echo "$(( $todo_count + $todo_prog_count )) combined score, $todo_prog_count todos IN_PROGRESS"
 
     if $interactive; then
-        # TODO^4: graph how many are done each day
+        # TODO^7: graph how many are done each day
         if ! [ -f graph.csv ]; then
             echo "date,total todos,todos in progress,todos for later,todos for NOW,combined score" > graph.csv
         fi
