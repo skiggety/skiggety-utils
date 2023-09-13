@@ -1,5 +1,5 @@
-======================================================================================================== TODOs, ascending. Do not edit, run 'generate_todo_report' to generate. 
-( showing last 3 lines out of 469 for 'todo': )
-./bin/shellask:35:echo_debug "shellask should ask you to: $*" # [1m[31mTODO^61[0m[0m: (IN_PROGRESS, NOW) use this instead of other stuff lower down, to clean up shellask
-./bin/today_todo:56:    todo_list_dir_path="$HOME/$(basename $0)" # [1m[31mTODO^61[0m[0m: (IN_PROGRESS, NOW) promote this to a login shell var, so skiggety utils can dump it's todo report there
-[1m[33m./bin/silliness/live:6:# EASY [1m[31mTODO^64[0m[1m[33m: inside this script, use 'review-delegate --with-reward' instead of calling 'shellask' directly[0m
+==== TODOs, ascending, so you know what's likely to change next. Do not edit, run 'generate_todo_report' to generate. ====
+( showing last 3 lines out of 655 for 'todo': )
+./bin/firstlife-work:32:# NOW [1m[31mTODO^89[0m[0m: make the mechanism for using a custom script based on a template reusable, as we will need it in the evening routine, too
+./bin/templates/firstlife-multitask.routine.TEMPLATE:19:# EASY [1m[31mTODO^89[0m[0m: inside this script and elsewhere, use 'firstlife-delegate --with-reward' instead of calling 'shellask' directly:
+[1m[33m./bin/firstlife-work:33:# NOW [1m[31mTODO^90[0m[1m[33m: TEST and use: PERSONAL_ROUTINE_SCRIPT="$(personal_inner_routine_script $0)"[0m

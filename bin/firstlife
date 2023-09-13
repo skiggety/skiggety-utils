@@ -18,7 +18,7 @@ SKIGGETY_DEBUG='true'
 # - TODO^23 (IN_PROGRESS, NOW): it should set the terminal title
 
 function update_todo_graph {
-    # TODO^93 (IN_PROGRESS, EASY): make sure it exists in an environment variable so you don't commit it:
+    # TODO^86: (IN_PROGRESS, EASY) make sure TODO graph exists in an environment variable so you don't commit it:
     open $TODAY_todo_DIR
     # TODO^3: do something with error count:
     firstlife-delegate --with-reward "check today_todo graph import $TODAY_todo_DIR/graph.csv with 'replace current sheet' by uploading" || accumulate_error "did not check today_todo graph"
@@ -30,7 +30,7 @@ function update_todo_graph {
 function handle-alarm-mission {
   shellask "Please fullscreen this terminal window if you have an alarm to satisfy, otherwise say 'nope'" || return 0
   echo '|<--------125-characters-wide---------------------------------------------------------------------------------------------->|'
-  shellask "use CTRL-plus/minus to change font size so the bar above just barely fits"
+  shellask "use CTRL/COMMAND-plus/minus to change font size so the 125-character wide bar above just barely fits"
   echo '*==========================================================*'
   echo '|----------------------------------------------------------|'
   echo '|----------------------------------------------------------|'

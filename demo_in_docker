@@ -58,5 +58,4 @@ docker run --rm -it --entrypoint bash \
 
 # TODO: run a shell with a helpful intro message in the docker container
 
-# TODO: after you implement this, figure out what the shortest one liner is to checkout skiggety utils, and run this
-# script.
+# TODO: after you implement this, figure out what the shortest one liner is to both checkout skiggety utils and run this script.
