@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# This script registers one error for firstlife.
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+exit_with_error "TODO^48: IMPLEMENT: count errors, much like rewards, with a log file, and wrap 'accumulate_error'."

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# This script annoys the user until they respond, usually for a stated purpose
+
+# EASY TODO^42: just take all arguments as a message like firstlife-reward
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+exit_with_error "EASY TODO^80: IMPLEMENT: make annoying sound and bring terminal to the front in a loop until killed"

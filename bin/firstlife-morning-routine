@@ -1,0 +1,105 @@
+#!/usr/bin/env bash
+
+# This script asks you to do things as a routine in the morning.
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
+
+# EASY TODO^88: IMPLEMENT to look like other custom firstlife scripts
+
+# EASY TODO^26: use personal script, starting from template
+# - TODO^22: the template script should be a laundry list of ideas
+
+# TODO^57: (IN_PROGRESS, NOW) 'IMPLEMENT $0': ..."
+
+# TODO^22: help user set up crontab like I did (use crontab-verbose?)
+
+SKIGGETY_DEBUG=true
+
+# TODO^35: with this and other firstlife scripts, make a distinction between the template and a personal one.
+
+THIS_SCRIPT_RAN_MARKER_FILE="$FIRSTLIFE_DIR/markers/firstlife_morning_routine_ran_on_${FIRSTLIFE_ISOTODAY}"
+# TODO^2: use this to make sure we don't ask for the alarm too often: FIRSTLIFE_ALARM_MARKER_FILE="$FIRSTLIFE_DIR/markers/firstlife_outside_alarm_confirmed"
+
+# make sure this script only runs once a day:
+# TODO^4: method extract firstlife-exit-if-this-ran-today <task_name> so we can mark other things
+if [ -f $THIS_SCRIPT_RAN_MARKER_FILE ]; then
+    echo "'$(basename $0)' already ran today ($FIRSTLIFE_ISOTODAY), exiting without error..."
+    sleep-verbose 15
+    exit 0
+fi
+
+exit_if_day_is_over
+# TODO^67: make sure this only gets asked perhaps once a week:
+shellask 'make sure you have a phone alarm that ensures you log into this laptop in time for your cron job to fire (for tomorrow)' || accumulate_error 'BASIC AUTOMATION PROBLEM: alarm not set' # TODO^67: (EASY) use 'firstlife-delegate' instead
+exit_if_day_is_over
+# TODO: figure out how to keep this stuff on a schedule:
+firstlife-delegate 'make sure you have taken any morning medications' || accumulate_error 'did not medicate'
+exit_if_day_is_over
+
+# EASY TODO^42: build a timer into firstlife-delegate, keep stats on how long things take, just pairs of task names and times
+# - TODO^41: then make the logs daily, graph the daily linecount
+# EASY TODO^85: open youtube playlist, or better yet, manage the list of videos here and randomize.
+open "$SCOTTS_MEDITATION_PLAYLIST"
+firstlife-delegate '5-minute meditation' || accumulate_error 'did not meditate'
+exit_if_day_is_over
+# - TODO?:: wait until a certain time, 5 minutes after start
+
+# EASY TODO^70: kick off a morning playlist to keep on track for time with the rest of this stuff
+
+exit_if_day_is_over
+
+# - TODO^40: remind yourself what you care about, maybe play a motivational video?
+
+
+firstlife-delegate --with-reward 'mentally review any habits you are breaking today (negative habits in the tracker)' \
+    || accumulate_error 'did not think about breaking habits'
+# TODO^2: maybe in parallel:
+firstlife-delegate --with-reward 'Put on exercise clothes (and make sure you have your housekey/earbuds, etc.) ' || accumulate_error 'not ready exercise' # TODO: --with-timer $(( 2 * 60 ))
+firstlife-delegate --with-reward 'Exercise! (Or schedule it for later today)' || accumulate_error 'did not exercise' # TODO^2: --with-timer $(( 30 * 60 ))
+exit_if_day_is_over
+
+firstlife-delegate --with-reward 'Hit the shower' || accumulate_error 'did not shower'
+exit_if_day_is_over
+# TODO: listen to podcasts
+exit_if_day_is_over
+
+firstlife-delegate --with-reward 'finish morning habits' || accumulate_error 'did not finish morning habits' # TODO: list them out individually instead
+exit_if_day_is_over
+
+firstlife-delegate --with-reward 'put away any temptations or distractions' \
+    || accumulate_error 'did not clear distractions'
+exit_if_day_is_over
+
+# TODO^67: (EASY) check calendar script should be the one to call 'firstlife-reward', at least if you called it with '--with-reward':
+firstlife-check-calendar && firstlife-reward 'calendar check' || accumulate_error 'did not check calendar'
+exit_if_day_is_over
+
+firstlife-delegate --with-reward 'get dressed' || accumulate_error 'did not get dressed'
+exit_if_day_is_over
+
+firstlife-delegate --with-reward 'break your fast' || accumulate_error 'skipped breakfast'
+
+exit_if_day_is_over
+
+firstlife-delegate 'keep the tunes pumping (you can use "firstlife-music")' || accumulate_error 'did not DJ for yourself'
+
+exit_if_day_is_over
+
+exit_with_any_accumulated_errors
+
+# TODO^12: make exit_if_day_is_over aware of errors?
+
+# TODO^4: method extract firstlife-mark-done <task_name> so we can mark other things
+mkdir -p "$(dirname $THIS_SCRIPT_RAN_MARKER_FILE)"
+debug_here "marking morning routine done with command: touch $THIS_SCRIPT_RAN_MARKER_FILE"
+touch $THIS_SCRIPT_RAN_MARKER_FILE
+
+shellask "your calendar is about to come up. When it does, mark how long your morning routine took, OK?"
+firstlife-check-calendar && firstlife-reward 'calendar check' || accumulate_error 'did not check calendar'
+
+# TODO: do I want this here? do I want it in other high-level firstlife scripts?:
+echo "$(basename $0) succeeded!"
+firstlife-reward $(basename $0)
+
+exit 0

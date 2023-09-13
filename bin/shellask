@@ -3,6 +3,8 @@
 # This script asks the user to do the task described and report status back.  It is a great way of stubbing out
 # functionality, setting yourself one-off reminders, or....
 
+# TODO?: rename "shellegate"? (something called 'shellask' could accept more than boolean response maybe)
+
 # BONUS!!: It's also a good debug breakpoint.  Just write something like this in your code (let's say a bash script but
 # you could call it from other languages and inspect environment variables, technically):
 #
@@ -28,14 +30,12 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 #     TODO: figure out roughly what % of the time it happens, maybe with a test harness that repeats and logs 1000 times
 #     or something, then you can test if changing certain things fixes across 1000 runs (or whatever the number is).
 
-# TODO: learn a better pattern for configuration/design from Darren
 SKIGGETY_DEBUG=true # TODO: DELETE once shellask sets the prompt reliably
 
-
-echo_debug "shellask should ask you to: $*" # TODO^61: (IN_PROGRESS, NOW) use this instead of other stuff lower down, to clean up shellask
-# TODO?: debug_here "\$\* is: '$*'"
+echo_debug "shellask should ask you to: $*"
+debug_here "\$\* is: '$*'"
 TASK_DESCRIPTION="$*"
-# TODO?: debug_eval_here TASK_DESCRIPTION
+debug_eval_here TASK_DESCRIPTION
 ESCAPED_TASK_DESCRIPTION="$(echo "$TASK_DESCRIPTION" | sed 's/\(["\$]\)/\\\1/g')"
 # TODO?: debug_eval_here ESCAPED_TASK_DESCRIPTION
 
@@ -44,9 +44,13 @@ DOUBLE_ESCAPED_TASK_DESCRIPTION="$(echo "$ESCAPED_TASK_DESCRIPTION" | sed 's/\([
 # TODO?: debug_eval_here DOUBLE_ESCAPED_TASK_DESCRIPTION
 banner='########################################################################'
 
+# TODO^6: can we do something to bring the terminal to the foreground/front?:
+
 # TODO^2: can we do something to make the terminal tab blink?:
-# ding
-tput bel
+
+
+# TODO: should I quiet this down, quiet optionally, what? maybe firstlife can alert and this should abstain?:
+tput bel # a.k.a. ding, bell (for searchability)
 
 # TODO?: debug_eval_here TASK_DESCRIPTION
 echo_debug "Remember, exit 0 for yes/success or exit 1 for no/failure, will always work."

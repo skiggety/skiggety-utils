@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# This script opens some music in the background so you have something to listen to.
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+SCOTTS_MUSIC='https://www.youtube.com/watch?v=8Pa9x9fZBtY&list=PLbyyOcHfeHIrQGN_tEnOybFtV6Qbn2vfJ'
+
+$FIRSTLIFE_DIR/bin/firstlife-music \
+    || open "$SCOTTS_MUSIC"

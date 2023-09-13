@@ -31,4 +31,5 @@ fi
 # More important than the output of default_dashboard:
 
 echo_divider_with_text "O-=======-" "END of 'dashboard' for $(duh) :"
+
 exit_with_any_accumulated_errors

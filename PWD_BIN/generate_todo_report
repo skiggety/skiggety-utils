@@ -22,7 +22,7 @@ todo_report_body_in_color="$(echo "$todo_report_whole_in_color" | abbreviate -n 
 # TODO^3: graph this over time, also maybe total votecount and how many votes the topvoted todo has:
 todo_report_linecount=$(echo "$todo_report_whole" | wc -l | sed 's/^[ \t]*//')
 
-todo_header="$(SKIGGETY_DIVIDER_LENGTH=100 echo_divider_with_text "=" "TODOs, ascending. Do not edit, run '$(basename $0)' to generate.")" # IGNORE_TODO
+todo_header="$(SKIGGETY_DIVIDER_LENGTH=100 echo_divider_with_text "=" "TODOs, ascending, so you know what's likely to change next. Do not edit, run '$(basename $0)' to generate.")" # IGNORE_TODO
 
 echo "$todo_header" > $TODO_REPORT_FILE
 echo "$todo_header" > $TODO_REPORT_COLOR_FILE

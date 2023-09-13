@@ -54,6 +54,7 @@ else
 fi
 echo "$GIT_STATUS_LINECOUNT files with changes on branch '$(git branch --show-current)'"
 
-for keyword in 'XX''X' 'BREAD''CRUMB'; do
-    git-object-to-added-keyword "$keyword" || exit_with_error "'git-object-to-added-keyword $keyword' FAILED"
+for keyword in 'DO_NOT''_COMMIT' 'XX''X' 'BREAD''CRUMB'; do
+    git-object-to-added-keyword "$keyword" || accumulate_error "'git-object-to-added-keyword $keyword' FAILED"
 done
+exit_with_any_accumulated_errors

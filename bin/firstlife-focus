@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+# This script (TODO...)
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
+
+# TODO^2?: exit if a script with identical name and path is in parent tree
+
+exit_if_day_is_over # EASY to chip away at TODO^84: infect this and called scripts with this line all over the place to clean up windows (for ORGANIZATION)
+
+################################################################################
+# EASY TODO^86: normalize scripts with names like:
+# - firstlife-focus
+#   - firstlife-focus.routine.<username>
+#   - firstlife-focus.routine.TEMPLATE
+
+PERSONAL_ROUTINE_SCRIPT_NAME="$(personal_inner_routine_script_name $0)"
+TEMPLATE_ROUTINE_SCRIPT_NAME="$(template_inner_routine_script $0)"
+# NOW TODO^89: make the mechanism for using a custom script based on a template reusable, as we will need it in the evening routine, too
+TEMPLATE_ROUTINE_SCRIPT_NAME="$(basename $0).routine.TEMPLATE"
+PERSONAL_ROUTINE_SCRIPT="$FIRSTLIFE_BIN/$PERSONAL_ROUTINE_SCRIPT_NAME"
+TEMPLATE_ROUTINE_SCRIPT="$SKIGGETY_UTILS_DIR/bin/templates/$TEMPLATE_ROUTINE_SCRIPT_NAME"
+
+# TODO: this should go in the inner script eventually:
+today_todo -n | grep --color=always POINT
+open 'https://youtu.be/ddL3y1saEJs?si=UjSZicdCMYsVoIjV&t=00' # EASY TODO^87: use firstlife-pomodoro instead
+firstlife-delegate --with-reward "do a full pomodoro on most important stuff worth POINTS" || accumulate_error "skipped pomodoro worth POINTS" # IGNORE_TODO
+
+# TODO: this should go in the inner script eventually:
+today_todo -n | grep --color=always POINT
+open 'https://youtu.be/ddL3y1saEJs?si=UjSZicdCMYsVoIjV&t=00' # EASY TODO^87: use firstlife-pomodoro instead
+firstlife-delegate --with-reward "do a full pomodoro on most important stuff worth POINTS" || accumulate_error "skipped pomodoro worth POINTS" # IGNORE_TODO
+
+# TODO: (in template) try to mix in some work pomodoros until there are 16 on a weekday? maybe ask the user how many work pomodoros to do, with a default of 16, and then have you ask for a purpose for each
+exit

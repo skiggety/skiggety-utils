@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# This script logs something for firstlife, usually to a specific log for scoring with the --type flag
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
+
+LOG_TYPE='log'
+
+while [[ "$1" == -* ]]; do
+    if [ "$1" == '--type' ]; then
+        shift
+        LOG_TYPE="$1"
+        shift
+    fi
+done
+
+mkdir -p $FIRSTLIFE_LOG_DIR
+
+LOG_FILE="$(log_file_for_type ${LOG_TYPE})"
+
+echo "$(date):$*" >> "${LOG_FILE}"

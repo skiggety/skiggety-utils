@@ -102,7 +102,7 @@ function install_basic_prerequisites {
     install_nose2
     install_pylint
 
-    # TODO: install_rust
+    # EASY TODO^22: install_rust
 
     # set global tools versions:
     asdf global ruby 3.2.0

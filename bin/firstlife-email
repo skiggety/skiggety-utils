@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# This script reminds you to do one email iteration.
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+WITH_REWARD=''
+
+while [[ "$1" == -* ]]; do
+    # accept a -i option for case insensitive grep
+    if [ "$1" == "--with-reward" ]; then
+        WITH_REWARD='--with-reward'
+        shift
+    fi
+done
+
+# EASY TODO^24: should firstlife/bin/ be in the path before skiggety_utils so you can override firstlife code?
+
+# EASY TODO^24: inner custom script, at least call it instead if it exists in firstlife/bin..
+# EASY TODO^44: run only once to completion per day
+# EASY TODO^46: use this script widely
+
+open 'https://mail.google.com/mail/u/0/#inbox'
+firstlife-delegate $WITH_REWARD 'take care of 2 new emails, 2 old emails, and one starred email' || accumulate_error 'ignored email'
+
+exit_with_any_accumulated_errors

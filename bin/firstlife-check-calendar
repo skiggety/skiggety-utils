@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# This script encourages you to check your calendar.
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+open 'https://www.google.com/calendar/render' # TODO: script extract
+shellask 'look at your calendar, make sure you are doing the right thing' || exit_with_error 'did not check calendar'

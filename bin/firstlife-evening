@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+# This script runs in the evening to help you wrap up your day.
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
+
+# TODO^2?: exit if a script with identical name and path is in parent tree
+
+# TODO^88: NOW call this from main firstlife script after you are done with daytime activities so it flow better, instead of running this in a cron job.
+
+exit_if_day_is_over # EASY to chip away at TODO^84: infect this and called scripts with this line all over the place to clean up windows (for ORGANIZATION)
+
+################################################################################
+# EASY TODO^86: normalize scripts with names like:
+# - firstlife-evening
+#   - firstlife-evening.routine.<username>
+#   - firstlife-evening.routine.TEMPLATE
+
+# TODO^86: RENAME this variable so I can decide whether or not to use it in different scripts with inner routines:
+THIS_SCRIPT_RAN_MARKER_FILE="$FIRSTLIFE_DIR/markers/firstlife_evening_ran_on_${FIRSTLIFE_ISOTODAY}"
+
+# make sure this script only runs once a day:
+# EASY TODO^25: method extract firstlife-exit-if-this-ran-today <task_name> so we can mark other things
+if [ -f $THIS_SCRIPT_RAN_MARKER_FILE ]; then
+    echo "'$(basename $0)' already ran today ($FIRSTLIFE_ISOTODAY), exiting without error..."
+    sleep-verbose 15
+    exit 0
+fi
+
+exit_if_day_is_over # EASY to chip away at TODO^86: infect this and called scripts with this line all over the place to clean up windows (for ORGANIZATION)
+
+# - EASY TODO^64: I think mplayer an annoying sound for a minute, in a 3 minute loop, until I shut it up, called firstlife-alarm
+
+PERSONAL_ROUTINE_SCRIPT_NAME="$(personal_inner_routine_script_name $0)"
+TEMPLATE_ROUTINE_SCRIPT_NAME="$(template_inner_routine_script $0)"
+# NOW TODO^89: make the mechanism for using a custom script based on a template reusable, as we will need it in the evening routine, too. Just run this script to do the diff.
+
+firstlife-delegate --with-reward 'find your book' || accumulate_error "You don't even know where your book is" # TODO?: MOVE to the inner routine
+
+exit_if_day_is_over
+
+# EASY TODO^71: use firstlife-evening-routine.<USER>.bash and firstlife-evening-routine.TEMPLATE.bash
+shellask 'do you want to do your evening routine now?' && firstlife-evening-routine || exit_with_error "evening routine failed"
+
+# EASY TODO^25: method extract firstlife-mark-done <task_name> so we can mark other things:
+mkdir -p "$(dirname $THIS_SCRIPT_RAN_MARKER_FILE)"
+touch $THIS_SCRIPT_RAN_MARKER_FILE
+
+firstlife-work # TODO^2?: || exit_with_error "firstlife-work FAILED"
+
+exit

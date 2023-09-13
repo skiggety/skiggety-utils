@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+# Self, program thyself (TODO^88: move this to the script that calls this one?). This is a prototype of gamification for
+# everyday productivity.
+
+# This script (TODO...)
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
+
+# TODO^2?: exit if a script with identical name and path is in parent tree
+
+exit_if_day_is_over # EASY to chip away at TODO^84: infect this and called scripts with this line all over the place to clean up windows (for ORGANIZATION)
+
+################################################################################
+# EASY TODO^86: normalize scripts with names like:
+# - firstlife-work
+#   - firstlife-work.routine.<username> (this should call firstlife-multitask and firstlife-focus)
+#   - firstlife-work.routine.TEMPLATE (this should call firstlife-multitask and firstlife-focus)
+
+function show_recently_done_todos {
+    today_todo -n | grep 'DO'NE # TODO: function extract
+}
+
+show_recently_done_todos
+
+PERSONAL_ROUTINE_SCRIPT_NAME="$(personal_inner_routine_script_name $0)"
+TEMPLATE_ROUTINE_SCRIPT_NAME="$(template_inner_routine_script $0)"
+# NOW TODO^89: make the mechanism for using a custom script based on a template reusable, as we will need it in the evening routine, too
+# EASY TODO^47: I need different criteria for whether to continue...is it the same day? do you have enough points? Do you want
+# to do more?:
+
+# EASY to get started TODO^53: (IN_PROGRESS) ask about if you have done enough productivity points. Maybe ask how many done today and how many left in the
+# week, and make sure you do more than a day's share...
+while shellask "Should you still be doing productive stuff on this beautiful day $FIRSTLIFE_ISOTODAY?" ;do
+    exit_if_day_is_over # EASY TODO^87: TEST
+    firstlife-multitask # TODO^11: || accumulate_error ... and make sure it comes out with 'exit_if_day_is_over'
+    exit_if_day_is_over
+    firstlife-focus || accumulate_error 'did not focus on important stuff'
+    exit_if_day_is_over
+
+    show_recently_done_todos
+    exit_if_day_is_over # EASY TODO^87: TEST
+done
+
+exit

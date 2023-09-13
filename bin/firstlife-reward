@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+
+# This script attempts to reward the user somehow
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
+VERBOSE=false
+
+while [[ "$1" == -* ]]; do
+    # accept a -i option for case insensitive grep
+    if [ "$1" == "-v" ]; then
+        VERBOSE=true
+        shift
+    fi
+done
+
+# TODO^13: in a shell open a video or play a sound that reminds you about an open shellask to take 1 reward
+# TODO?: we need a custom video: ding-toaster
+# EASY TODO^50: emit a characteristic "reward" sound, and get all pavlovian about it
+
+request="take 1 REWARD please (for: $*)"
+if [ -z "$*" ]; then
+    request='take 1 REWARD please'
+fi
+
+# TODO?: DELETE?: shellask "$request" # no error checking on purpose
+firstlife-log --type reward "$request"
+
+echo
+echo
+echo "   $request"
+
+# show the linecount as your reward count for the day, watch it pile up!:
+reward_log="$(log_file_for_type reward)"
+reward_score="$(wc -l $reward_log | awk '{print $1}')"
+if $VERBOSE;then
+    cat $reward_log
+fi
+j=1
+k=1
+for i in $(seq $reward_score); do
+    if [ $j -eq $k ];then
+        j=0
+        k=$(($k+1))
+        echo '.'
+    else
+        echo -n '.'
+    fi
+    j=$(($j+1))
+done
+
+SECONDS_ELAPSED_TODAY="$( echo "((( $(date +'%H') * 60.0 ) + $(date +'%M') ) * 60.0 ) + $(date +'%S')" | bc ) "
+SECONDS_PER_REWARD="$( echo "$SECONDS_ELAPSED_TODAY / $reward_score" | bc )"
+SECONDS_PER_REWARD_EXPLANATION="at $SECONDS_PER_REWARD seconds each"
+echo "You have earned $reward_score rewards today, $SECONDS_PER_REWARD_EXPLANATION!"
+tput bel # a.k.a. ding, bell (for searchability)
+echo
+echo
+sleep-verbose 3 # so you have a chance to notice and feel good before anything else pops up.
+
+# TODO?: (after above) || firstlife-save-reward-for-later
+
+exit 0

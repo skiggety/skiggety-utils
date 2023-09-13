@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-# TODO^2: gotta RENAME this and today_todo.  Underscores in the name are just too weird, especially when mixed with hyphens
+# This script shows a continually updated todo list report
 
-cd ~/today_todo
-review today_todo --non-interactive
+# TODO^3: gotta RENAME this and today_todo.  Underscores in the name are just too weird, especially when mixed with hyphens
+
+. $SKIGGETY_UTILS_DIR/lib/today_todo.bash || exit_with_error 'could not include today_todo.bash'
+
+cd $TODAY_todo_DIR # so 'review' watches the right part of the disk:
+review -u 10 -m 180 today_todo --non-interactive
