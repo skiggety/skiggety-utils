@@ -33,13 +33,17 @@ exit_if_day_is_over
 # TODO^67: make sure this only gets asked perhaps once a week:
 shellask 'make sure you have a phone alarm that ensures you log into this laptop in time for your cron job to fire (for tomorrow)' || accumulate_error 'BASIC AUTOMATION PROBLEM: alarm not set' # TODO^67: (EASY) use 'firstlife-delegate' instead
 exit_if_day_is_over
+
 # TODO: figure out how to keep this stuff on a schedule:
+
 firstlife-delegate 'make sure you have taken any morning medications' || accumulate_error 'did not medicate'
 exit_if_day_is_over
 
 # EASY TODO^42: build a timer into firstlife-delegate, keep stats on how long things take, just pairs of task names and times
 # - TODO^41: then make the logs daily, graph the daily linecount
-# EASY TODO^85: open youtube playlist, or better yet, manage the list of videos here and randomize.
+
+# EASY TODO^85: Or better yet, manage the list of videos here and randomize:
+SCOTTS_MEDITATION_PLAYLIST='https://www.youtube.com/playlist?list=PLbyyOcHfeHIqCKsHI62oWS6i4JQfdtcfd'
 open "$SCOTTS_MEDITATION_PLAYLIST"
 firstlife-delegate '5-minute meditation' || accumulate_error 'did not meditate'
 exit_if_day_is_over
@@ -51,6 +55,9 @@ exit_if_day_is_over
 
 # - TODO^40: remind yourself what you care about, maybe play a motivational video?
 
+# Use your own morning playlist, here's mine for starters:
+SCOTTS_MORNING_SOUNDTRACK='https://www.youtube.com/watch?v=ovH_0ORhC9c&list=PLbyyOcHfeHIr8GvkrJ8aieGtcmPER6bvY&index=1'
+open "$SCOTTS_MORNING_SOUNDTRACK"
 
 firstlife-delegate --with-reward 'mentally review any habits you are breaking today (negative habits in the tracker)' \
     || accumulate_error 'did not think about breaking habits'
