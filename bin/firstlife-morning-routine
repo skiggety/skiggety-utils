@@ -54,7 +54,7 @@ exit_if_day_is_over
 SCOTTS_MORNING_SOUNDTRACK='https://www.youtube.com/watch?v=ovH_0ORhC9c&list=PLbyyOcHfeHIr8GvkrJ8aieGtcmPER6bvY&index=1'
 open "$SCOTTS_MORNING_SOUNDTRACK"
 
-firstlife-delegate --with-reward 'mentally review any habits you are breaking today (negative habits in the tracker)' \
+firstlife-delegate --with-reward 'Review any habits you working on breaking today (negative habits in the tracker)' \
     || accumulate_error 'did not think about breaking habits'
 # TODO^2: maybe in parallel:
 firstlife-delegate --with-reward 'Put on exercise clothes (and make sure you have your housekey/earbuds, etc.) ' || accumulate_error 'not ready exercise' # TODO: --with-timer $(( 2 * 60 ))
@@ -69,11 +69,11 @@ exit_if_day_is_over
 firstlife-delegate --with-reward 'finish morning habits' || accumulate_error 'did not finish morning habits' # TODO: list them out individually instead
 exit_if_day_is_over
 
-firstlife-delegate --with-reward 'put away any temptations or distractions' \
-    || accumulate_error 'did not clear distractions'
+firstlife-delegate --with-reward 'get dressed' || accumulate_error 'did not get dressed'
 exit_if_day_is_over
 
-firstlife-delegate --with-reward 'get dressed' || accumulate_error 'did not get dressed'
+firstlife-delegate --with-reward 'put away any temptations or distractions' \
+    || accumulate_error 'did not clear distractions'
 exit_if_day_is_over
 
 firstlife-delegate --with-reward 'break your fast' || accumulate_error 'skipped breakfast'
@@ -97,7 +97,7 @@ mkdir -p "$(dirname $THIS_SCRIPT_RAN_MARKER_FILE)"
 debug_here "marking morning routine done with command: touch $THIS_SCRIPT_RAN_MARKER_FILE"
 touch $THIS_SCRIPT_RAN_MARKER_FILE
 
-shellask "your calendar is about to come up. When it does, mark how long your morning routine took, OK?"
+shellask "your calendar is about to come up. When it does, mark how long your morning routine took, and plan your day, OK?"
 firstlife-check-calendar && firstlife-reward 'calendar check' || accumulate_error 'did not check calendar'
 
 # TODO^67: make sure this only gets asked perhaps once a week:
