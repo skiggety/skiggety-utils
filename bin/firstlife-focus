@@ -15,22 +15,24 @@ exit_if_day_is_over # EASY to chip away at TODO^84: infect this and called scrip
 #   - firstlife-focus.routine.<username>
 #   - firstlife-focus.routine.TEMPLATE
 
-PERSONAL_ROUTINE_SCRIPT_NAME="$(personal_inner_routine_script_name $0)"
-TEMPLATE_ROUTINE_SCRIPT_NAME="$(template_inner_routine_script $0)"
-# NOW TODO^89: make the mechanism for using a custom script based on a template reusable, as we will need it in the evening routine, too
-TEMPLATE_ROUTINE_SCRIPT_NAME="$(basename $0).routine.TEMPLATE"
-PERSONAL_ROUTINE_SCRIPT="$FIRSTLIFE_BIN/$PERSONAL_ROUTINE_SCRIPT_NAME"
-TEMPLATE_ROUTINE_SCRIPT="$SKIGGETY_UTILS_DIR/bin/templates/$TEMPLATE_ROUTINE_SCRIPT_NAME"
+PERSONAL_ROUTINE_SCRIPT_NAME="$(personal_inner_routine_script_name $0)" # TODO^2: DELETE? (do I need this?)
+PERSONAL_ROUTINE_SCRIPT="$(personal_inner_routine_script $0)" # TODO: DELETE? (do I need this?)
+
+TEMPLATE_ROUTINE_SCRIPT_NAME="$(template_inner_routine_script_name $0)" # TODO^2: DELETE? (do I need this?)
+TEMPLATE_ROUTINE_SCRIPT="$(template_inner_routine_script $0)" # TODO: DELETE? (do I need this?)
+
+# NOW TODO^89: make the mechanism for using a custom script based on a template reusable -------- (it's good from here up) -----------------
+# - NOW TODO^91: new migration plan. move existing scripts to be templates, use templates if custom script doesn't exist, and always offer to start or tweak a custom one at the end of the cycle so you're ready for next time.
 
 # TODO: this should go in the inner script eventually:
-today_todo -n | grep --color=always POINT
-open 'https://youtu.be/ddL3y1saEJs?si=UjSZicdCMYsVoIjV&t=00' # EASY TODO^87: use firstlife-pomodoro instead
-firstlife-delegate --with-reward "do a full pomodoro on most important stuff worth POINTS" || accumulate_error "skipped pomodoro worth POINTS" # IGNORE_TODO
+today_todo -n | grep --color=always '\(POINT\|--------\|^$\)' # TODO^7: EXTRACT and REUSE this approach that includes the headings
+firstlife-pomodoro 'most important stuff worth POINTS' || accumulate_error 'skipped pomodoro worth POINTS'
 
-# TODO: this should go in the inner script eventually:
-today_todo -n | grep --color=always POINT
-open 'https://youtu.be/ddL3y1saEJs?si=UjSZicdCMYsVoIjV&t=00' # EASY TODO^87: use firstlife-pomodoro instead
-firstlife-delegate --with-reward "do a full pomodoro on most important stuff worth POINTS" || accumulate_error "skipped pomodoro worth POINTS" # IGNORE_TODO
+# EASY TODO^2: this should go in the inner script eventually:
+today_todo -n | grep --color=always '\(POINT\|--------\|^$\)'
+firstlife-pomodoro 'most important stuff worth POINTS (another one)' || accumulate_error 'skipped pomodoro worth POINTS'
 
-# TODO: (in template) try to mix in some work pomodoros until there are 16 on a weekday? maybe ask the user how many work pomodoros to do, with a default of 16, and then have you ask for a purpose for each
+exit_with_error "TODO^86: IMPLEMENT and use"
+
+# TODO^2: (in template) try to mix in some work pomodoros until there are 16 on a weekday? maybe ask the user how many work pomodoros to do, with a default of 16, and then have you ask for a purpose for each
 exit
