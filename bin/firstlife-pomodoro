@@ -20,4 +20,3 @@ firstlife-delegate "$task_description" || exit_with_error "skipped pomodoro for:
 firstlife-break
 
 firstlife-reward "$task_description" # no error checking
-shellask "EASY TODO^84: TEST to make sure this ends up logging a reward (above)"

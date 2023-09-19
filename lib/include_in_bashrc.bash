@@ -2,11 +2,12 @@
 
 # WARNING: Changes to this file will make ./demo_in_docker very slow to start on the next run.  Hesitate to commit!
 
-# TODO: somebody please set this to nano and then submit a pr to make other stuff work with nano, lol
-export EDITOR="vim"
-
 export BASH_SILENCE_DEPRECATION_WARNING=1
 export SHELL_SESSION_HISTORY=0
+
+# default value used only if EDITOR not otherwise set:
+EDITOR=${EDITOR:-'vim'}
+export EDITOR
 
 # ./PWD_BIN comes before $SKIGGETY_UTILS_DIR/bin so that you can override scripts like "dashboard"
 export PATH="$PATH:./PWD_BIN:$SKIGGETY_UTILS_DIR/bin:$HOME/bin"

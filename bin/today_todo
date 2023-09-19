@@ -157,7 +157,7 @@ function main {
         fi
 
         echo
-        echo "Found $todo_later_count todos to do LATER$only_showing:" | grep --color=always \\d
+        echo "-------- Found $todo_later_count todos to do LATER$only_showing:" | grep --color=always \\d
         echo "$todo_later_output" | tail -n 3
         if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
     fi
