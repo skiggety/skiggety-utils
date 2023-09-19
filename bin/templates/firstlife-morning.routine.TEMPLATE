@@ -5,10 +5,7 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
-# EASY TODO^88: IMPLEMENT to look like other custom firstlife scripts
-
-# EASY TODO^26: use personal script, starting from template
-# - TODO^22: the template script should be a laundry list of ideas
+# TODO^22: this template script should be a laundry list of ideas
 
 # TODO^22: help user set up crontab like I did (use crontab-verbose?)
 
