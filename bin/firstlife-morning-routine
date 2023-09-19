@@ -30,16 +30,20 @@ if [ -f $THIS_SCRIPT_RAN_MARKER_FILE ]; then
 fi
 
 # TODO: figure out how to keep this stuff on a schedule:
+# - EASY TODO^42: build a timer into firstlife-delegate, keep stats on how long things take, just pairs of task names and times
+#   - TODO^41: then make the logs daily, graph the daily linecount
 
 # Use your own morning playlist, here's mine for starters:
-SCOTTS_MORNING_SOUNDTRACK='https://www.youtube.com/watch?v=ovH_0ORhC9c&list=PLbyyOcHfeHIr8GvkrJ8aieGtcmPER6bvY&index=1'
+SCOTTS_MORNING_SOUNDTRACK='https://www.youtube.com/watch?v=6jRh2PRa1tU&list=PLbyyOcHfeHIr8GvkrJ8aieGtcmPER6bvY&index=1'
 open "$SCOTTS_MORNING_SOUNDTRACK"
 
 firstlife-delegate 'make sure you have taken any morning medications' || accumulate_error 'did not medicate'
 exit_if_day_is_over
 
-# EASY TODO^42: build a timer into firstlife-delegate, keep stats on how long things take, just pairs of task names and times
-# - TODO^41: then make the logs daily, graph the daily linecount
+# - TODO^40: remind yourself what you care about, maybe play a motivational video?
+
+firstlife-delegate --with-reward 'Review any habits you working on breaking today (negative habits in the tracker)' \
+    || accumulate_error 'did not think about breaking habits'
 
 # EASY TODO^85: Or better yet, manage the list of videos here and randomize:
 SCOTTS_MEDITATION_PLAYLIST='https://www.youtube.com/playlist?list=PLbyyOcHfeHIqCKsHI62oWS6i4JQfdtcfd'
@@ -52,11 +56,6 @@ exit_if_day_is_over
 
 exit_if_day_is_over
 
-# - TODO^40: remind yourself what you care about, maybe play a motivational video?
-
-firstlife-delegate --with-reward 'Review any habits you working on breaking today (negative habits in the tracker)' \
-    || accumulate_error 'did not think about breaking habits'
-# TODO^2: maybe in parallel:
 firstlife-delegate --with-reward 'Put on exercise clothes (and make sure you have your housekey/earbuds, etc.) ' || accumulate_error 'not ready exercise' # TODO: --with-timer $(( 2 * 60 ))
 firstlife-delegate --with-reward 'Exercise! (Or schedule it for later today)' || accumulate_error 'did not exercise' # TODO^2: --with-timer $(( 30 * 60 ))
 exit_if_day_is_over

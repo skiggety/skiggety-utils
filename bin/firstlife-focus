@@ -25,7 +25,7 @@ TEMPLATE_ROUTINE_SCRIPT="$(template_inner_routine_script $0)" # TODO: DELETE? (d
 # - NOW TODO^91: new migration plan. move existing scripts to be templates, use templates if custom script doesn't exist, and always offer to start or tweak a custom one at the end of the cycle so you're ready for next time.
 
 # TODO: this should go in the inner script eventually:
-today_todo -n | grep --color=always '\(POINT\|--------\|^$\)' # TODO^7: EXTRACT and REUSE this approach that includes the headings
+today_todo -n | grep --color=always '\(POINT\|--------\|^$\)' # TODO^8: EXTRACT and REUSE this approach that includes the headings
 firstlife-pomodoro 'most important stuff worth POINTS' || accumulate_error 'skipped pomodoro worth POINTS'
 
 # EASY TODO^2: this should go in the inner script eventually:
