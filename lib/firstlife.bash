@@ -57,3 +57,25 @@ function template_inner_routine_script {
 function template_inner_routine_script_name {
     echo "$(basename $1).routine.TEMPLATE"
 }
+
+function use_and_maintain_inner_routine_based_on_template {
+    nickname="$1"
+    outer_script="$2"
+
+    PERSONAL_ROUTINE_SCRIPT="$(personal_inner_routine_script $outer_script)"
+    TEMPLATE_ROUTINE_SCRIPT="$(template_inner_routine_script $outer_script)"
+
+    if shellask "Do you want to run the $nickname routine now?"; then
+        if [ -f $PERSONAL_ROUTINE_SCRIPT ]; then
+                chmod +x $PERSONAL_ROUTINE_SCRIPT
+                $PERSONAL_ROUTINE_SCRIPT || exit_with_error "$PERSONAL_ROUTINE_SCRIPT FAILED"
+        elif [ -f $TEMPLATE_ROUTINE_SCRIPT ];then
+            $TEMPLATE_ROUTINE_SCRIPT || exit_with_error "$TEMPLATE_ROUTINE_SCRIPT FAILED"
+        else
+            exit_with_error "inner routine not found $(echo_here)"
+        fi
+    fi
+
+    shellask "Want to tune up $(basename $PERSONAL_ROUTINE_SCRIPT) for next time?" \
+        && vimdiff -o $PERSONAL_ROUTINE_SCRIPT $TEMPLATE_ROUTINE_SCRIPT
+}
