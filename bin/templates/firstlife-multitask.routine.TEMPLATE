@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 # Use this script as a basis for your personal multitasking routine, uncommenting what's useful without making it too
 # complicated. This is a very loose example, feel free to rearrange and comment/uncomment stuff, usually a paragraph at
 # a time.
@@ -9,7 +8,8 @@
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 . $SKIGGETY_UTILS_DIR/lib/today_todo.bash || exit_with_error 'could not include today_todo.bash'
 
-MULTITASKING_COUNT=5 # EASY TODO^86: use this!!!
+MULTITASKING_COUNT=3
+PASSES_AT_TODO_LIST=2
 
 ####################################################################################################
 
@@ -18,22 +18,16 @@ MULTITASKING_COUNT=5 # EASY TODO^86: use this!!!
 exit_if_day_is_over
 
 # EASY TODO^50: use firstlife-reward with description argument(s), generally
-shellask 'make sure phone is charged/charging' && firstlife-reward || accumulate_error 'should have charged your TODO' # TODO: don't ask more than once every 3 hours
+shellask 'make sure various devices including this one are charged/charging' && firstlife-reward || accumulate_error 'should have charged your TODO' # TODO: don't ask more than once every 3 hours
 exit_if_day_is_over
 
-firstlife-check-calendar && firstlife-reward || accumulate_error 'did not check calendar' # TODO^71: TEST NOW
+firstlife-check-calendar || accumulate_error 'did not check calendar' # TODO^71: TEST NOW
 exit_if_day_is_over
 
 shellask 'do one act of self care or something on the habit tracker' && firstlife-reward || accumulate_error 'missed a habit'
 exit_if_day_is_over
 
-shellask 'make sure tablet is charged/charging' && firstlife-reward || accumulate_error 'should have charged your tablet' # TODO^3: don't ask more than once every 8 hours
-exit_if_day_is_over
-
 shellask 'do another act of self care or something on the habit tracker' && firstlife-reward || accumulate_error 'missed a habit'
-exit_if_day_is_over
-
-shellask 'make sure this device is charged/charging' && firstlife-reward || accumulate_error 'should have charged this device' # TODO: don't ask more than once every 4 hours
 exit_if_day_is_over
 
 shellask 'put a few things away' && firstlife-reward || accumulate_error 'did not put things away'
@@ -52,7 +46,7 @@ for num in $(seq $PASSES_AT_TODO_LIST); do
     # EASY TODO^85:     today_todo
     # EASY TODO^85:     shellask 'work on your one of your top 3 todos and downvote it if appropriate'
 
-    shellask 'do something from your paper list if you have one, or put one item from paper into today_todo' && firstlife-reward || accumulate_error 'ignored paper todo list'
+    shellask 'Handle 1 important item from from any paper lists, possibly by putting it into today_todo' && firstlife-reward || accumulate_error 'ignored paper todo list'
     exit_if_day_is_over
 
     # TODO^14: only do this if you haven't yet cleared them all today yet:
@@ -103,8 +97,7 @@ for num in $(seq $PASSES_AT_TODO_LIST); do
     shellask 'do one act of self care or something on the habit tracker' && firstlife-reward || accumulate_error 'missed a habit'
     exit_if_day_is_over
 
-    # EASY TODO^88: Use firstlife-email like this with '--with-reward' everywhere:
-    firstlife-email --with-reward || accumulate_error 'ignored email'
+    firstlife-check-email --with-reward || accumulate_error 'ignored email'
     exit_if_day_is_over
 
     firstlife-break
@@ -120,15 +113,15 @@ for num in $(seq $PASSES_AT_TODO_LIST); do
     # TODO: fi
     exit_if_day_is_over
 
-    firstlife-email --with-reward || accumulate_error 'ignored email' # EASY TODO^87: REUSE
+    firstlife-check-email --with-reward || accumulate_error 'ignored email'
     exit_if_day_is_over
 
     today_todo -n | grep CONFIRMING # TODO: TEST
     firstlife-delegate --with-reward 'mark something DONE that is "CONFIRMING" in today_todo (if you can)' || accumulate_error 'Did not confirm anything' # TODO: TEST
     exit_if_day_is_over
 
-    today_todo -n | grep --color=auto '\(NOW\|LATER\)' # TODO: TEST
-    firstlife-delegate --with-reward 'see if you can work on something "NOW" that is marked "LATER" (or vise-versa) in today_todo' || accumulate_error 'Did not confirm anything' # TODO: TEST
+    today_todo -n | grep --color=auto '\(NOW\|LATER\|--------\|^$\)' # EASY TODO^84: EXTRACT, and REUSE
+    firstlife-delegate --with-reward 'See if you can work on something "NOW" that is marked "LATER" (or vise-versa) in today_todo' || accumulate_error 'Did not maintain NOW and LATER tags'
     exit_if_day_is_over
 
 done
@@ -162,7 +155,7 @@ fi
 
 firstlife-break
 
-today_todo -n | grep --color=always '\(FUN\|EASY\)'
+today_todo -n | grep --color=always '\(FUN\|EASY\|--------\|^$\)'
 firstlife-delegate --with-reward "work on something FUN/EASY (is enough stuff tagged? --run \"today_todo -n | grep '\\(FUN\\|EASY\\)'\")"
 
 clear

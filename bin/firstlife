@@ -19,6 +19,7 @@ SKIGGETY_DEBUG='true'
 
 function update_todo_graph {
     # TODO^86: (IN_PROGRESS, EASY) make sure TODO graph exists in an environment variable so you don't commit it:
+    # - TODO^87 (IN_PROGRESS, EASY): if there's no environment variable, suggest the user start a new one and save the link in their bashrc, where the template should be ready.
     open $TODAY_todo_DIR
     # TODO^3: do something with error count:
     firstlife-delegate --with-reward "check today_todo graph import $TODAY_todo_DIR/graph.csv with 'replace current sheet' by uploading" || accumulate_error "did not check today_todo graph"
