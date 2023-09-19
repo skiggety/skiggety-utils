@@ -24,7 +24,6 @@ THIS_SCRIPT_RAN_MARKER_FILE="$FIRSTLIFE_DIR/markers/firstlife_evening_ran_on_${F
 # EASY TODO^25: method extract firstlife-exit-if-this-ran-today <task_name> so we can mark other things
 if [ -f $THIS_SCRIPT_RAN_MARKER_FILE ]; then
     echo "'$(basename $0)' already ran today ($FIRSTLIFE_ISOTODAY), exiting without error..."
-    sleep-verbose 15
     exit 0
 fi
 
@@ -32,16 +31,15 @@ exit_if_day_is_over # EASY to chip away at TODO^86: infect this and called scrip
 
 # - EASY TODO^64: I think mplayer an annoying sound for a minute, in a 3 minute loop, until I shut it up, called firstlife-alarm
 
-PERSONAL_ROUTINE_SCRIPT_NAME="$(personal_inner_routine_script_name $0)"
-TEMPLATE_ROUTINE_SCRIPT_NAME="$(template_inner_routine_script $0)"
-# NOW TODO^89: make the mechanism for using a custom script based on a template reusable, as we will need it in the evening routine, too. Just run this script to do the diff.
+use_and_maintain_inner_routine_based_on_template 'evening' "$0"
+
+# NOW TODO^89: make the mechanism for using a custom script based on a template reusable -------- (it's good from here up) -----------------
+# - NOW TODO^91: new migration plan. move existing scripts to be templates, use templates if custom script doesn't exist, and always offer to start or tweak a custom one at the end of the cycle so you're ready for next time.
 
 firstlife-delegate --with-reward 'find your book' || accumulate_error "You don't even know where your book is" # TODO?: MOVE to the inner routine
 
 exit_if_day_is_over
 
-# EASY TODO^71: use firstlife-evening-routine.<USER>.bash and firstlife-evening-routine.TEMPLATE.bash
-shellask 'do you want to do your evening routine now?' && firstlife-evening-routine || exit_with_error "evening routine failed"
 
 # EASY TODO^25: method extract firstlife-mark-done <task_name> so we can mark other things:
 mkdir -p "$(dirname $THIS_SCRIPT_RAN_MARKER_FILE)"
