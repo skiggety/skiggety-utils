@@ -18,17 +18,23 @@ exit_if_day_is_over # EASY to chip away at TODO^84: infect this and called scrip
 #   - firstlife-work.routine.<username> (this should call firstlife-multitask and firstlife-focus)
 #   - firstlife-work.routine.TEMPLATE (this should call firstlife-multitask and firstlife-focus)
 
+PERSONAL_ROUTINE_SCRIPT_NAME="$(personal_inner_routine_script_name $0)"
+PERSONAL_ROUTINE_SCRIPT="$(personal_inner_routine_script $0)"
+
+TEMPLATE_ROUTINE_SCRIPT_NAME="$(template_inner_routine_script_name $0)"
+TEMPLATE_ROUTINE_SCRIPT="$(template_inner_routine_script $0)"
+
+# NOW TODO^89: make the mechanism for using a custom script based on a template reusable, as we will need it in the evening routine, too
+# - NOW TODO^90: new migration plan. move existing scripts to be templates, use templates if custom script doesn't exist, and always offer to start or tweak a custom one at the end of the cycle so you're ready for next time.
+# NOW TODO^90: TEST and use: PERSONAL_ROUTINE_SCRIPT="$(personal_inner_routine_script $0)"
+# EASY TODO^47: I need different criteria for whether to continue...is it the same day? do you have enough points? Do you want
+# to do more?:
+
 function show_recently_done_todos {
     today_todo -n | grep 'DO'NE # TODO: function extract
 }
 
 show_recently_done_todos
-
-PERSONAL_ROUTINE_SCRIPT_NAME="$(personal_inner_routine_script_name $0)"
-TEMPLATE_ROUTINE_SCRIPT_NAME="$(template_inner_routine_script $0)"
-# NOW TODO^89: make the mechanism for using a custom script based on a template reusable, as we will need it in the evening routine, too
-# EASY TODO^47: I need different criteria for whether to continue...is it the same day? do you have enough points? Do you want
-# to do more?:
 
 # EASY to get started TODO^53: (IN_PROGRESS) ask about if you have done enough productivity points. Maybe ask how many done today and how many left in the
 # week, and make sure you do more than a day's share...

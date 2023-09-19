@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-# This program uses shellask to prompt you to do a tolerable mix of productive stuff. meant for running repeatedly.
+# This program uses shellask to prompt you to do a tolerable mix of productive stuff. It's good to use in moderation and
+# as a warm-up for focused work.
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'

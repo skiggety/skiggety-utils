@@ -15,7 +15,7 @@
 # TODO: this program needs to display some instructions so the user knows how to use it.
 # TODO: maybe during business hours, show results with "BUSINESS_HOURS" more prominently, and hide them otherwise
 
-# EASY TODO^58: add a mode to quickly add a todo, ideally it would let you specify a votecount too
+# EASY FUN TODO^67: add a mode to quickly add a todo, ideally it would let you specify a votecount too
 # - TODO^30?: search for $1 and if it's not found, add one, if it is found, open the file searching for that string
 # TODO^19: add a mode to quickly upvote one particular thing, that would call "todo --vote 'substring of my todo line'"
 # - TODO^16: ..and another mode to vote for everything matching a string
@@ -100,8 +100,7 @@ function main {
         files_to_open="$todo_list_file_name $done_list_file_name"
 
         echo "- TODO: ..." >> "$todo_list_file_name" # IGNORE_TODO
-        vim -o $files_to_open '+/\.\.\.' # TODO^6: here and elsewhere, use $EDITOR, not vim
-        vim -d $files_to_open_to_check_order '+/META' # TODO^6: here and elsewhere, use $EDITOR, not vim
+        vim -o $files_to_open '+/\.\.\.' # TODO^84: here and elsewhere, use $EDITOR, not vim
     fi
 
     # TODO: maybe automate the archiving, too?
@@ -121,7 +120,7 @@ function main {
     # TODO^3: consider extracting the rest of this script to "today_todo_display", which can be overridden with PWD_BIN, or
     # alternatively we could do like 'todo' and use flags to turn editing and reporting on and off:
 
-    echo "Last few todos DONE:"
+    echo "-------- Last few todos DONE:"
     todo -k DONE $EXCLUDE_DIR_ARGS | tail -n 3 | grep --color=always DONE
     if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
 
@@ -131,14 +130,14 @@ function main {
 
     todo_count=$(( 0 + $(echo "$todo_output" | wc -l) ))
     echo
-    echo "Found $todo_count todos, showing 10:"
+    echo "-------- Found $todo_count todos, showing 10:"
     echo "$todo_output" | tail -n 10 | grep --color=always TODO
     if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
 
     todo_prog_output="$(echo "$todo_output" | grep IN_PROGRESS)"
     todo_prog_count=$(( 0 + $(echo "$todo_prog_output" | wc -l) ))
     echo
-    echo "Found $todo_prog_count todos IN_PROGRESS:" # TODO: use dividers for things like this so I can do things like: today_todo -n | grep \(====\|ERRAND\)
+    echo "-------- Found $todo_prog_count todos IN_PROGRESS:" # using dividers for things like this so I can do things like: today_todo -n | grep \(--------\|ERRAND\)
     echo "$todo_prog_output" | grep --color=always IN_PROGRESS
     if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
 
@@ -177,12 +176,12 @@ function main {
         # TODO: maybe a cronjob to remind me to do that stuff on my lunch hour
 
         echo
-        echo "Found $todo_now_count todos to do right NOW (or tagged EASY)$only_showing:" | grep --color=always \\d
-        echo "$todo_now_output" | tail -n 4
+        echo "-------- Found $todo_now_count todos to do right NOW (or tagged EASY)$only_showing:" | grep --color=always \\d
+        echo "$todo_now_output" | tail -n 6
         if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
     fi
 
-    # TODO^4: add NOW count to this output?:
+    # TODO^6: add NOW count to this output?:
     echo "$(( $todo_count + $todo_prog_count )) combined score, $todo_prog_count todos IN_PROGRESS"
 
     if $interactive; then
@@ -202,7 +201,7 @@ function display_grep_for_keyword {
     todo_keyword_count=$(( 0 + $(echo "$todo_keyword_output" | wc -l) ))
     if [ "$todo_keyword_output" != "" ]; then
         echo
-        echo "Found $todo_keyword_count todos with \"$KEYWORD\":" | grep --color=always \\d
+        echo "-------- Found $todo_keyword_count todos with \"$KEYWORD\":" | grep --color=always \\d
         echo "$todo_keyword_output"
     fi
 }

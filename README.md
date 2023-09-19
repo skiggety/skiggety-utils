@@ -52,7 +52,7 @@ For the safe docker demo:
       about ./PWD_BIN/todo instead of finding $SKIGGETY_UTILS_DIR/bin/todo. 'exec bash' is the workaround.
       uncommitted files in other git repos. This is also important so git-vimchanged can work properly when you add
       your own PWD_BIN with convenience scripts to another repo
-    - (?) How can I make this safer? (TODO^4: consider direnv: "https://direnv.net/docs/hook.html") Put ./users_safeword/../PWD_BIN" in the path instead? make everything in PWD a subcommand of some other command? Come up with some handy way to add/remove it from the path quickly (or add it temporarily)? I put skiggety-utils/PWD_BIN_FIREWALL in your path before ./PWD_BIN if I wanted to block certain things
+    - (?) How can I make this safer? (TODO^4: consider direnv: "https://direnv.net/docs/hook.html") and dotenv. Put ./users_safeword/../PWD_BIN" in the path instead? make everything in PWD a subcommand of some other command? Come up with some handy way to add/remove it from the path quickly (or add it temporarily)? I put skiggety-utils/PWD_BIN_FIREWALL in your path before ./PWD_BIN if I wanted to block certain things
 
   - This project uses and enables TODO's in code, ranked so that "TODO TODO" is equal to "TODO^2" and outranks "TODO". This way you can easily add a vote when something becomes and impediment or whatever, and the cream will rise to the top. The "todo" program is a key part of this and is shown in the "default_dashboard". You can also put "IGNORE_TODO" on the same line as "TODO" if you want to mention "TODO" without it being on the list (like this).
 

@@ -43,9 +43,9 @@ shellask 'put away any temptations or distractions' && firstlife-reward || accum
 firstlife-delegate 'keep the tunes pumping (you can use "firstlife-music")' || accumulate_error 'did not DJ for yourself'
 exit_if_day_is_over
 
-#### Today's Todo List #############################################################################
+firstlife-break # TODO: -t 120 # seconds
 
-PASSES_AT_TODO_LIST=2
+#### Today's Todo List #############################################################################
 
 for num in $(seq $PASSES_AT_TODO_LIST); do
     # EASY TODO^85: maybe the inside of the loop could be more like merely:
@@ -86,11 +86,11 @@ for num in $(seq $PASSES_AT_TODO_LIST); do
 
         # EASY TODO^52: loop through known tags:
         # TODO^85: something like this needs to happen actually before you do the task:
-        if echo $todo_line | grep ERRAND >/dev/null; then
+        if echo $todo_line | grep ERRAND > /dev/null; then
             today_todo -n | grep ERRAND
             firstlife-delegate --with-reward "Maybe handle some other errands"
         fi
-        if echo $todo_line | grep PURCHASE >/dev/null; then
+        if echo $todo_line | grep PURCHASE > /dev/null; then
             today_todo -n | grep PURCHASE
             firstlife-delegate --with-reward "Maybe handle some other purchases"
         fi
@@ -118,8 +118,7 @@ for num in $(seq $PASSES_AT_TODO_LIST); do
     # TODO: fi
     exit_if_day_is_over
 
-    firstlife-email --with-reward || accumulate_error 'ignored email'
-    shellask "EASY TODO^86: TEST previous line and REUSE ($(echo_here))"
+    firstlife-email --with-reward || accumulate_error 'ignored email' # EASY TODO^87: REUSE
     exit_if_day_is_over
 
     today_todo -n | grep CONFIRMING # TODO: TEST

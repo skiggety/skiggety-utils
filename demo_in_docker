@@ -7,7 +7,10 @@
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 SKIGGETY_UTILS_DIR="$THIS_DIR"
-. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+# TODO^93: help the user with mapping the disk through, so he can edit files with any editor, for firstlife's sake
+# TODO^93: make sure (for firstlife demo'ing) that we can get through enough of the demo_in_docker script with an alternate $EDITOR
 
 if [ -f /.in_docker_demo ]; then
     exit_with_error "You are already in the docker demo."
@@ -16,7 +19,7 @@ fi
 # TODO: also, use a lock file to ensure you're not accidentally running multiple instances of this
 
 if ! ls installers/.markers/docker.configured_with_* installers/.markers/docker.installed_with_* 2>/dev/null; then
-    ./bin/shellask "Make sure Docker is installed and running in the background" || exit_with_error "Could not install Docker"
+    ./bin/shellask "Make sure Docker is installed and running in the background" || exit_with_error "You didn't set up Docker"
 fi
 
 cd $SKIGGETY_UTILS_DIR || exit_with_error "Could not find \$SKIGGETY_UTILS_DIR"
@@ -34,7 +37,6 @@ touch "$TMP_MARKER_DIR/.keep"  #So it doesn't show as missing in docker
 echo
 echo
 echo
-echo "This todo list is shown because it's up-to-date with what features are coming up next:"
 cat todo_report/README_in_color.txt
 echo
 echo "So here you are in this demo machine with skiggety utils not fully installed yet:"
