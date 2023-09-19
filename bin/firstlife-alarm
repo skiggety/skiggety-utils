@@ -2,8 +2,13 @@
 
 # This script annoys the user until they respond, usually for a stated purpose
 
-# EASY TODO^42: just take all arguments as a message like firstlife-reward
+# EASY TODO^7: use this more widely
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
-exit_with_error "EASY TODO^81: IMPLEMENT: make annoying sound and bring terminal to the front in a loop until killed"
+MIN_SNOOZE_SECONDS=30
+
+review -u $MIN_SNOOZE_SECONDS --non-interactive --no-clear --while firstlife-single-alarm "$*"
+
+exit 0

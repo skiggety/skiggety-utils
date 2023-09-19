@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# This script (...TODO, describe your script here)
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+ALARM_SOUND="$FIRSTLIFE_DIR/sounds/alarm.wav"
+while ! [ -f $ALARM_SOUND ]; do
+    mkdir -p "$(dirname $ALARM_SOUND)"
+    shellask "Please download an alarm sound of your choice and put it at $ALARM_SOUND" \
+        || exit_with_error "No alarm sound available"
+done
+
+message="Use CTRL+C to cancel this ALARM"
+if [ -n "$*" ]; then
+    message="$message for: $*"
+fi
+
+echo_divider_with_text "#" "$message"
+mplayer $ALARM_SOUND >/dev/null 2>&1
+exit 0
