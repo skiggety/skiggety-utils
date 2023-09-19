@@ -68,11 +68,11 @@ function use_and_maintain_inner_routine_based_on_template {
     if shellask "Do you want to run the $nickname routine now?"; then
         if [ -f $PERSONAL_ROUTINE_SCRIPT ]; then
                 chmod +x $PERSONAL_ROUTINE_SCRIPT
-                $PERSONAL_ROUTINE_SCRIPT || exit_with_error "$PERSONAL_ROUTINE_SCRIPT FAILED"
+                $PERSONAL_ROUTINE_SCRIPT || accumulate_error "$PERSONAL_ROUTINE_SCRIPT FAILED"
         elif [ -f $TEMPLATE_ROUTINE_SCRIPT ];then
-            $TEMPLATE_ROUTINE_SCRIPT || exit_with_error "$TEMPLATE_ROUTINE_SCRIPT FAILED"
+            $TEMPLATE_ROUTINE_SCRIPT || accumulate_error "$TEMPLATE_ROUTINE_SCRIPT FAILED"
         else
-            exit_with_error "inner routine not found $(echo_here)"
+            accumulate_error "Inner routine not found $(echo_here) (neither '$PERSONAL_ROUTINE_SCRIPT' nor '$TEMPLATE_ROUTINE_SCRIPT' )"
         fi
     fi
 

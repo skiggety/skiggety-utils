@@ -10,24 +10,11 @@
 # EASY TODO^26: use personal script, starting from template
 # - TODO^22: the template script should be a laundry list of ideas
 
-# TODO^57: (IN_PROGRESS, NOW) 'IMPLEMENT $0': ..."
-
 # TODO^22: help user set up crontab like I did (use crontab-verbose?)
-
-SKIGGETY_DEBUG=true
 
 # TODO^35: with this and other firstlife scripts, make a distinction between the template and a personal one.
 
-THIS_SCRIPT_RAN_MARKER_FILE="$FIRSTLIFE_DIR/markers/firstlife_morning_routine_ran_on_${FIRSTLIFE_ISOTODAY}"
 # TODO^2: use this to make sure we don't ask for the alarm too often: FIRSTLIFE_ALARM_MARKER_FILE="$FIRSTLIFE_DIR/markers/firstlife_outside_alarm_confirmed"
-
-# make sure this script only runs once a day:
-# TODO^4: method extract firstlife-exit-if-this-ran-today <task_name> so we can mark other things
-if [ -f $THIS_SCRIPT_RAN_MARKER_FILE ]; then
-    echo "'$(basename $0)' already ran today ($FIRSTLIFE_ISOTODAY), exiting without error..."
-    sleep-verbose 15
-    exit 0
-fi
 
 # TODO: figure out how to keep this stuff on a schedule:
 # - EASY TODO^42: build a timer into firstlife-delegate, keep stats on how long things take, just pairs of task names and times
@@ -90,11 +77,6 @@ exit_if_day_is_over
 exit_with_any_accumulated_errors
 
 # TODO^12: make exit_if_day_is_over aware of errors?
-
-# TODO^4: method extract firstlife-mark-done <task_name> so we can mark other things
-mkdir -p "$(dirname $THIS_SCRIPT_RAN_MARKER_FILE)"
-debug_here "marking morning routine done with command: touch $THIS_SCRIPT_RAN_MARKER_FILE"
-touch $THIS_SCRIPT_RAN_MARKER_FILE
 
 shellask "your calendar is about to come up. When it does, mark how long your morning routine took, and plan your day, OK?"
 firstlife-check-calendar && firstlife-reward 'calendar check' || accumulate_error 'did not check calendar'

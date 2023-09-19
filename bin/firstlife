@@ -61,9 +61,8 @@ function handle-alarm-mission {
 
 handle-alarm-mission || accumulate_error "failed to handle alarm" # for 'Alarmy'
 
-# EASY TODO^87: this is where you should call firstlife-morning, which should call the inner routine ('firstlife-morning-routine' currently) and then update_todo_graph
-# TODO: make sure you call firstlife-morning again later, maybe from firstlife-multitask. It should be a no-op if you've done it already, but catch you otherwise.
-shellask "Do you want to do your morning routine now?" && firstlife-morning-routine || accumulate_error "morning routine had errors" # TODO: error checking
+# TODO^2: make sure you call firstlife-morning again later, maybe from firstlife-multitask. It should be a no-op if you've done it already, but catch you otherwise.
+firstlife-morning || accumulate_error "morning routine had errors"
 
 exit_if_day_is_over
 # TODO: exit_if_another_terminal_took_over
