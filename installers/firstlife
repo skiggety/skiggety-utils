@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
+. $THIS_DIR/../lib/skiggety-utils.bash || exit 1
+
+if [ -n "$SKIGGETY_UTILS_DIR" ]; then
+    exit_with_error "Please add 'export=SKIGGETY_UTILS_DIR=$(basename $THIS_DIR)' to the end of your ~/.bashrc file, then restart bash and try this script again"
+fi
+
+exit_with_error "TODO^95: (FUN, IN_PROGRESS, NOW) IMPLEMENT/TEST this for Darren, by running it in demo_in_docker, then firstlife"
