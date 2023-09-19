@@ -31,6 +31,10 @@ fi
 
 # TODO: figure out how to keep this stuff on a schedule:
 
+# Use your own morning playlist, here's mine for starters:
+SCOTTS_MORNING_SOUNDTRACK='https://www.youtube.com/watch?v=ovH_0ORhC9c&list=PLbyyOcHfeHIr8GvkrJ8aieGtcmPER6bvY&index=1'
+open "$SCOTTS_MORNING_SOUNDTRACK"
+
 firstlife-delegate 'make sure you have taken any morning medications' || accumulate_error 'did not medicate'
 exit_if_day_is_over
 
@@ -49,10 +53,6 @@ exit_if_day_is_over
 exit_if_day_is_over
 
 # - TODO^40: remind yourself what you care about, maybe play a motivational video?
-
-# Use your own morning playlist, here's mine for starters:
-SCOTTS_MORNING_SOUNDTRACK='https://www.youtube.com/watch?v=ovH_0ORhC9c&list=PLbyyOcHfeHIr8GvkrJ8aieGtcmPER6bvY&index=1'
-open "$SCOTTS_MORNING_SOUNDTRACK"
 
 firstlife-delegate --with-reward 'Review any habits you working on breaking today (negative habits in the tracker)' \
     || accumulate_error 'did not think about breaking habits'

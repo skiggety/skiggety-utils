@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# This script gamifies life to help get stuff done, and it's just a prototype.
+# Self, program thyself. This script gamifies life to help get everyday stuff done, and it's just a prototype.
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 SKIGGETY_DEBUG='true'
@@ -77,4 +77,4 @@ firstlife-work # TODO^2?: || exit_with_error "firstlife-work FAILED"
 firstlife-evening || accumulate_error "need to wrap up habits in the evening"
 
 # EASY TODO^3: every time I do this graph update should be in a routine like morning or evening so it can get skipped:
-update_todo_graph
+update_todo_graph # TODO: only if using today_todo

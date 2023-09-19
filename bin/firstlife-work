@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# Self, program thyself (TODO^88: move this to the script that calls this one?). This is a prototype of gamification for
-# everyday productivity.
-
 # This script (TODO...)
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
