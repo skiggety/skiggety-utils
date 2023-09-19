@@ -107,6 +107,8 @@ for num in $(seq $PASSES_AT_TODO_LIST); do
     firstlife-email --with-reward || accumulate_error 'ignored email'
     exit_if_day_is_over
 
+    firstlife-break
+
     shellask 'do one act of self care or something on the habit tracker' && firstlife-reward || accumulate_error 'missed a habit'
     exit_if_day_is_over
 
@@ -157,6 +159,8 @@ if [ -n "$SKIGGETY_UTILS_DIR" ] && [ -d "$SKIGGETY_UTILS_DIR" ]; then
     firstlife-delegate --with-reward "vote up a TODO in firstlife unless firstlife is working great already" || accumulate_error "not voting for firstlife features" # IGNORE_TODO
     popd
 fi
+
+firstlife-break
 
 today_todo -n | grep --color=always '\(FUN\|EASY\)'
 firstlife-delegate --with-reward "work on something FUN/EASY (is enough stuff tagged? --run \"today_todo -n | grep '\\(FUN\\|EASY\\)'\")"

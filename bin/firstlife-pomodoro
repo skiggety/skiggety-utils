@@ -17,7 +17,7 @@ firstlife-delegate "$task_description" || exit_with_error "skipped pomodoro for:
 
 # TODO: or should this be a 5-minute timer from youtube?:
 # TODO: break should be optional with '--without-break' or some such switch
-shellask 'ready for a break' && sleep-verbose 300
+firstlife-break
 
 firstlife-reward "$task_description" # no error checking
 shellask "EASY TODO^84: TEST to make sure this ends up logging a reward (above)"
