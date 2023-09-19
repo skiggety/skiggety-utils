@@ -2,7 +2,7 @@
 
 # This script annoys the user until they respond, usually for a stated purpose
 
-# EASY TODO^7: use this more widely
+# EASY TODO^83: use this more widely
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
