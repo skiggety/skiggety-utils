@@ -68,8 +68,6 @@ exit_if_day_is_over
 # TODO: exit_if_another_terminal_took_over
 # - TODO: ultimately, combine for exit_if_another_terminal_or_day_took_over_with_accumulated_errors
 
-# TODO^86: instead, loop through "firstlife-multitask" for as long as it's still today.
-
 # EASY TODO^86: use 'firstlife-delegate --with-reward' pretty much universally, instead of calling shellask directly
 
 # TODO^60: make this program aware of your productivity points, as in, keep going until you have enough:
