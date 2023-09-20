@@ -464,7 +464,6 @@
 ./README.md:142:- TODO^4: set up a git hook system so you can add multiple scripts. For example, I'd like to block commits that include
 ./README.md:148:- TODO^4: music rotator thingy (Neighbor Shawn might beta test)
 ./bin/abbreviate:5:# and run tail otherwise.  TODO^4: # Maybe could RENAME it to 'tailmax', 'tail-verbose', or something?
-./bin/git-ready:19:    # TODO^4: just exit 0 right here unless there are changes staged
 ./bin/review_v0.1:86:    start_wake_on_filesystem_change # TODO^4: this should depend on a command line flag
 ./bin/todo_v0.4:112:    interactive = True # TODO^4: detect if output is to a terminal
 ./bin/todo_v0.4:146:                        # TODO^4: write more efficiently (all changes from one file at once):
@@ -484,6 +483,7 @@
 ./PWD_BIN/lint:6:# TODO^5: run shellcheck
 ./PWD_BIN/lint:31:# TODO^5: get in the habit of keeping everything clean and then use accumulate_error here:
 ./bin/chbs:12:# TODO^5 Consider making a website that runs this script in the browswer, using https://opalrb.com/
+./bin/git-ready:19:    # TODO^5: just exit 0 right here unless there are changes staged
 ./bin/review_v0.1:40:# TODO^5: Would it be smart to have a cron job that runs 'pkill review' every day at ~7pm on my work laptop? Or should I
 ./bin/todo_v0.4:4:# TODO^5: break out the next version into it's own project/repo
 ./demo_in_docker:50:# TODO^5: IMPLEMENT and UNCOMMENT: echo "You can run 'TODO' in another terminal to connect to this container, but the container will stop when this session ends"
