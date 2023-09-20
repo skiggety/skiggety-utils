@@ -9,7 +9,7 @@
 . $SKIGGETY_UTILS_DIR/lib/today_todo.bash || exit_with_error 'could not include today_todo.bash'
 
 MULTITASKING_COUNT=3
-PASSES_AT_TODO_LIST=2
+PASSES_AT_TODO_LIST=2 # IGNORE_TODO
 
 ####################################################################################################
 
@@ -78,7 +78,7 @@ for num in $(seq $PASSES_AT_TODO_LIST); do
             firstlife-reward || \
             accumulate_error "Didn't work on todo: $todo_line"
 
-        # EASY TODO^52: loop through known tags:
+        # EASY TODO^54: loop through known tags:
         # TODO^85: something like this needs to happen actually before you do the task:
         if echo $todo_line | grep ERRAND > /dev/null; then
             today_todo -n | grep ERRAND
@@ -94,7 +94,7 @@ for num in $(seq $PASSES_AT_TODO_LIST); do
     IFS="$ORIGINAL_IFS"
     popd > /dev/null
 
-    shellask 'do one act of self care or something on the habit tracker' && firstlife-reward || accumulate_error 'missed a habit'
+    shellask 'Do one act of self care or something on the habit tracker' && firstlife-reward || accumulate_error 'missed a habit'
     exit_if_day_is_over
 
     firstlife-check-email --with-reward || accumulate_error 'ignored email'
@@ -102,22 +102,22 @@ for num in $(seq $PASSES_AT_TODO_LIST); do
 
     firstlife-break
 
-    shellask 'do one act of self care or something on the habit tracker' && firstlife-reward || accumulate_error 'missed a habit'
+    shellask 'Do one act of self care or something on the habit tracker' && firstlife-reward || accumulate_error 'missed a habit'
     exit_if_day_is_over
 
     # TODO^86: if you have not finished all dishes at least once today
-    firstlife-delegate --with-reward 'put away 2 dry dishes if needed' || accumulate_error 'Did not put away dishes'
+    firstlife-delegate --with-reward 'Put away 2 dry dishes if needed' || accumulate_error 'Did not put away dishes'
     exit_if_day_is_over
 
-    firstlife-delegate --with-reward 'wash 1 dish' || accumulate_error 'Did not wash a dish'
+    firstlife-delegate --with-reward 'Wash 1 dish' || accumulate_error 'Did not wash a dish'
     # TODO: fi
     exit_if_day_is_over
 
     firstlife-check-email --with-reward || accumulate_error 'ignored email'
     exit_if_day_is_over
 
-    today_todo -n | grep CONFIRMING # TODO: TEST
-    firstlife-delegate --with-reward 'mark something DONE that is "CONFIRMING" in today_todo (if you can)' || accumulate_error 'Did not confirm anything' # TODO: TEST
+    today_todo -n | grep '\(CONFIRMING\|--------\|^$\)' # TODO: TEST
+    firstlife-delegate --with-reward 'Mark something DONE that is "CONFIRMING" in today_todo (if you can)' || accumulate_error 'Did not confirm anything' # TODO: TEST
     exit_if_day_is_over
 
     today_todo -n | grep --color=auto '\(NOW\|LATER\|--------\|^$\)' # EASY TODO^84: EXTRACT, and REUSE
@@ -128,28 +128,28 @@ done
 
 ################################################################################
 
-shellask "catch up on communicating with people" && firstlife-reward || accumulate_error "Did not communicate"
+shellask "Catch up on communicating with people" && firstlife-reward || accumulate_error "Did not communicate"
 exit_if_day_is_over
 
 pushd $SKIGGETY_UTILS_DIR
 git add -p
-shellask "commit some code" && firstlife-reward || accumulate_error "Did not commit"
+shellask "Commit some code" && firstlife-reward || accumulate_error "Did not commit"
 popd
 exit_if_day_is_over
 
-shellask "close a 2-4 browser tabs unless they are reasonable already" && firstlife-reward || accumulate_error "Did not clean up browser tabs"
+shellask "Close a 2-4 browser tabs unless they are reasonable already" && firstlife-reward || accumulate_error "Did not clean up browser tabs"
 exit_if_day_is_over
 
-shellask "close a couple unecessary terminals, if any" && firstlife-reward || accumulate_error "Did not clean up terminals" # TODO^2: DELETE once firstlife behaves better
+shellask "Close a couple unecessary terminals, if any" && firstlife-reward || accumulate_error "Did not clean up terminals" # TODO^2: DELETE once firstlife behaves better
 exit_if_day_is_over
 
-shellask 'put a few things away' && firstlife-reward || accumulate_error 'did not put things away'
+shellask 'Put a few things away' && firstlife-reward || accumulate_error 'did not put things away'
 exit_if_day_is_over
 
 if [ -n "$SKIGGETY_UTILS_DIR" ] && [ -d "$SKIGGETY_UTILS_DIR" ]; then
     pushd $SKIGGETY_UTILS_DIR
     todo | grep --color=always firstlife
-    firstlife-delegate --with-reward "vote up a TODO in firstlife unless firstlife is working great already" || accumulate_error "not voting for firstlife features" # IGNORE_TODO
+    firstlife-delegate --with-reward "Vote up a TODO in firstlife unless firstlife is working great already" || accumulate_error "not voting for firstlife features" # IGNORE_TODO
     popd
 fi
 
