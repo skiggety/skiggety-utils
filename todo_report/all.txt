@@ -144,13 +144,12 @@
 ./bin/templates/firstlife-morning.routine.TEMPLATE:49:# TODO: listen to podcasts
 ./bin/templates/firstlife-morning.routine.TEMPLATE:52:firstlife-delegate --with-reward 'finish morning habits' || accumulate_error 'did not finish morning habits' # TODO: list them out individually instead
 ./bin/templates/firstlife-morning.routine.TEMPLATE:85:# TODO: do I want this here? do I want it in other high-level firstlife scripts?:
-./bin/templates/firstlife-multitask.routine.TEMPLATE:12:PASSES_AT_TODO_LIST=2
 ./bin/templates/firstlife-multitask.routine.TEMPLATE:21:shellask 'make sure various devices including this one are charged/charging' && firstlife-reward || accumulate_error 'should have charged your TODO' # TODO: don't ask more than once every 3 hours
 ./bin/templates/firstlife-multitask.routine.TEMPLATE:40:firstlife-break # TODO: -t 120 # seconds
 ./bin/templates/firstlife-multitask.routine.TEMPLATE:44:for num in $(seq $PASSES_AT_TODO_LIST); do
 ./bin/templates/firstlife-multitask.routine.TEMPLATE:113:    # TODO: fi
-./bin/templates/firstlife-multitask.routine.TEMPLATE:119:    today_todo -n | grep CONFIRMING # TODO: TEST
-./bin/templates/firstlife-multitask.routine.TEMPLATE:120:    firstlife-delegate --with-reward 'mark something DONE that is "CONFIRMING" in today_todo (if you can)' || accumulate_error 'Did not confirm anything' # TODO: TEST
+./bin/templates/firstlife-multitask.routine.TEMPLATE:119:    today_todo -n | grep '\(CONFIRMING\|--------\|^$\)' # TODO: TEST
+./bin/templates/firstlife-multitask.routine.TEMPLATE:120:    firstlife-delegate --with-reward 'Mark something DONE that is "CONFIRMING" in today_todo (if you can)' || accumulate_error 'Did not confirm anything' # TODO: TEST
 ./bin/templates/firstlife-work.routine.TEMPLATE:3:# This script (TODO...)
 ./bin/templates/firstlife-work.routine.TEMPLATE:9:    today_todo -n | grep 'DO'NE # TODO: function extract
 ./bin/tmux_dashboard_experimental:3:# This script (...TODO, describe your script here)
@@ -380,7 +379,7 @@
 ./bin/sleep-verbose:7:# TODO^2?: integrate into a banner
 ./bin/templates/firstlife-morning.routine.TEMPLATE:14:# TODO^2: use this to make sure we don't ask for the alarm too often: FIRSTLIFE_ALARM_MARKER_FILE="$FIRSTLIFE_DIR/markers/firstlife_outside_alarm_confirmed"
 ./bin/templates/firstlife-morning.routine.TEMPLATE:44:firstlife-delegate --with-reward 'Exercise! (Or schedule it for later today)' || accumulate_error 'did not exercise' # TODO^2: --with-timer $(( 30 * 60 ))
-./bin/templates/firstlife-multitask.routine.TEMPLATE:143:shellask "close a couple unecessary terminals, if any" && firstlife-reward || accumulate_error "Did not clean up terminals" # TODO^2: DELETE once firstlife behaves better
+./bin/templates/firstlife-multitask.routine.TEMPLATE:143:shellask "Close a couple unecessary terminals, if any" && firstlife-reward || accumulate_error "Did not clean up terminals" # TODO^2: DELETE once firstlife behaves better
 ./bin/today_todo:127:    # TODO: -n 5 # TODO^2: todo should accept an option for the number of lines.  like "-n 3".  Maybe if we pass an
 ./bin/today_todo:146:    # TODO^2: if it's around new years:
 ./bin/todo_v0.4:31:# TODO^2: maybe accept --vote 'substring', --downvote 'substring', or --delete 'substring'  to find
@@ -567,8 +566,8 @@
 ./bin/firstlife-reward:19:# EASY TODO^50: emit a characteristic "reward" sound, and get all pavlovian about it
 ./bin/templates/firstlife-multitask.routine.TEMPLATE:20:# EASY TODO^50: use firstlife-reward with description argument(s), generally
 ./bin/today_todo:149:    # TODO^51: instead of NOW and LATER, tag things with MORNING, EVENING, WEEKEND, BUSINESS_HOURS, etc, and have today_todo watch the clock to know which to highlight
-./bin/templates/firstlife-multitask.routine.TEMPLATE:81:        # EASY TODO^52: loop through known tags:
 ./bin/templates/firstlife-work.routine.TEMPLATE:17:# EASY to get started TODO^53: (IN_PROGRESS) ask about if you have done enough productivity points. Maybe ask how many done today and how many left in the
+./bin/templates/firstlife-multitask.routine.TEMPLATE:81:        # EASY TODO^54: loop through known tags:
 ./README.md:125:  - TODO^55: firstlife
 ./bin/firstlife:59:# - EASY TODO^58: I think i should play (with mplayer) an annoying sound for a minute, in a 3 minute loop, until I shut it up, called firstlife-alarm
 ./bin/firstlife:73:# TODO^60: make this program aware of your productivity points, as in, keep going until you have enough:
