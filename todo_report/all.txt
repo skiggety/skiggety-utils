@@ -580,6 +580,8 @@
 ./bin/firstlife-work:10:exit_if_day_is_over # EASY to chip away at TODO^84: infect this and called scripts with this line all over the place to clean up windows (for ORGANIZATION)
 ./bin/templates/firstlife-multitask.routine.TEMPLATE:124:    today_todo -n | grep --color=auto '\(NOW\|LATER\|--------\|^$\)' # EASY TODO^84: EXTRACT, and REUSE
 ./bin/today_todo:103:        vim -o $files_to_open '+/\.\.\.' # TODO^84: here and elsewhere, use $EDITOR, not vim
+./demo_in_docker:12:# TODO^84: help the user with mapping a volume for firstlife and today_todo, so he can edit files with any editor, for firstlife's sake
+./demo_in_docker:13:# TODO^84: make sure (for firstlife demo'ing) that we can get through enough of the demo_in_docker script with an alternate $EDITOR
 ./bin/firstlife:12:# TODO^85: ======== Another real demo with Darren using firstlife himself with some decent code readability ============
 ./bin/templates/firstlife-morning.routine.TEMPLATE:33:# EASY TODO^85: Or better yet, manage the list of videos here and randomize:
 ./bin/templates/firstlife-multitask.routine.TEMPLATE:47:    # EASY TODO^85: maybe the inside of the loop could be more like merely:
@@ -610,5 +612,3 @@
 ./bin/templates/firstlife-multitask.routine.TEMPLATE:69:    # EASY TODO^88: extract this bit that works on a few todos to firstlife-work-on-top-n-todos -n $MULTITASKING_CONSTANT
 ./bin/firstlife:25:    # - TODO^89 (IN_PROGRESS, EASY): if there's no environment variable, suggest the user start a new one and save the link in their bashrc, where the template should be ready.
 ./bin/templates/firstlife-multitask.routine.TEMPLATE:16:# EASY TODO^89: inside this script and elsewhere, use 'firstlife-delegate --with-reward' instead of calling 'shellask' directly:
-./demo_in_docker:12:# TODO^93: help the user with mapping the disk through, so he can edit files with any editor, for firstlife's sake
-./demo_in_docker:13:# TODO^93: make sure (for firstlife demo'ing) that we can get through enough of the demo_in_docker script with an alternate $EDITOR
