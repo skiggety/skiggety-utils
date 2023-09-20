@@ -112,7 +112,6 @@ for num in $(seq $PASSES_AT_TODO_LIST); do
     exit_if_day_is_over
 
     firstlife-delegate --with-reward 'Wash 1 dish' || accumulate_error 'Did not wash a dish'
-    # TODO: fi
     exit_if_day_is_over
 
     firstlife-check-email --with-reward || accumulate_error 'ignored email'
