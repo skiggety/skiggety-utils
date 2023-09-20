@@ -18,7 +18,9 @@ PASSES_AT_TODO_LIST=2 # IGNORE_TODO
 exit_if_day_is_over
 
 # EASY TODO^50: use firstlife-reward with description argument(s), generally
-shellask 'make sure various devices including this one are charged/charging' && firstlife-reward || accumulate_error 'should have charged your TODO' # TODO: don't ask more than once every 3 hours
+shellask 'make sure various devices including this one are charged/charging' \
+    && firstlife-reward \
+    || accumulate_error 'should have charged your devices' # TODO: don't ask more than once every 3 hours
 exit_if_day_is_over
 
 firstlife-check-calendar || accumulate_error 'did not check calendar' # TODO^71: TEST NOW
@@ -148,7 +150,7 @@ exit_if_day_is_over
 
 if [ -n "$SKIGGETY_UTILS_DIR" ] && [ -d "$SKIGGETY_UTILS_DIR" ]; then
     pushd $SKIGGETY_UTILS_DIR
-    todo | grep --color=always firstlife
+    todo | grep --color=always '\(firstlife\|--------\|^$\)'
     firstlife-delegate --with-reward "Vote up a TODO in firstlife unless firstlife is working great already" || accumulate_error "not voting for firstlife features" # IGNORE_TODO
     popd
 fi

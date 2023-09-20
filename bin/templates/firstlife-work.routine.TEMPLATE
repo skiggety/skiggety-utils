@@ -18,7 +18,7 @@ show_recently_done_todos
 # week, and make sure you do more than a day's share...
 while shellask "Should you still be doing productive stuff on this beautiful day $FIRSTLIFE_ISOTODAY?" ;do
     exit_if_day_is_over
-    firstlife-multitask | accumulate_error 'multitasking ERRORS'
+    firstlife-multitask | accumulate_error 'multitasking ERRORS' # TODO: at least once, maybe longer if there is time
     exit_if_day_is_over
     firstlife-focus || accumulate_error 'did not focus on important stuff'
     exit_if_day_is_over

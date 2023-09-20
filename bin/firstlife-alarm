@@ -7,8 +7,11 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
-MIN_SNOOZE_SECONDS=30
+SNOOZE_SECONDS=60
 
-review -u $MIN_SNOOZE_SECONDS --non-interactive --no-clear --while firstlife-single-alarm "$*"
+while firstlife-single-alarm "$*";do
+    sleep-verbose $SNOOZE_SECONDS
+done
+echo 'Alarm stopped'
 
 exit 0

@@ -65,17 +65,45 @@ function use_and_maintain_inner_routine_based_on_template {
     PERSONAL_ROUTINE_SCRIPT="$(personal_inner_routine_script $outer_script)"
     TEMPLATE_ROUTINE_SCRIPT="$(template_inner_routine_script $outer_script)"
 
-    if shellask "Do you want to run the $nickname routine now?"; then
-        if [ -f $PERSONAL_ROUTINE_SCRIPT ]; then
-                chmod +x $PERSONAL_ROUTINE_SCRIPT
-                $PERSONAL_ROUTINE_SCRIPT || accumulate_error "$PERSONAL_ROUTINE_SCRIPT FAILED"
-        elif [ -f $TEMPLATE_ROUTINE_SCRIPT ];then
-            $TEMPLATE_ROUTINE_SCRIPT || accumulate_error "$TEMPLATE_ROUTINE_SCRIPT FAILED"
-        else
-            accumulate_error "Inner routine not found $(echo_here) (neither '$PERSONAL_ROUTINE_SCRIPT' nor '$TEMPLATE_ROUTINE_SCRIPT' )"
-        fi
+    echo "...starting '$nickname' routine..."
+    if [ -f $PERSONAL_ROUTINE_SCRIPT ]; then
+            chmod +x $PERSONAL_ROUTINE_SCRIPT
+            $PERSONAL_ROUTINE_SCRIPT || accumulate_error "$PERSONAL_ROUTINE_SCRIPT FAILED"
+    elif [ -f $TEMPLATE_ROUTINE_SCRIPT ];then
+        $TEMPLATE_ROUTINE_SCRIPT || accumulate_error "$TEMPLATE_ROUTINE_SCRIPT FAILED"
+    else
+        accumulate_error "Inner routine not found $(echo_here) (neither '$PERSONAL_ROUTINE_SCRIPT' nor '$TEMPLATE_ROUTINE_SCRIPT' )"
     fi
 
     shellask "Want to tune up $(basename $PERSONAL_ROUTINE_SCRIPT) for next time?" \
         && vimdiff -o $PERSONAL_ROUTINE_SCRIPT $TEMPLATE_ROUTINE_SCRIPT
+}
+
+# Show an image for your alarm to match to, first thing:
+function handle-alarmy-photo-mission {
+  shellask "Please fullscreen this terminal window if you have an alarm to satisfy, otherwise say 'nope'" || return 0
+  echo '|<--------125-characters-wide---------------------------------------------------------------------------------------------->|'
+  shellask "use CTRL/COMMAND-plus/minus to change font size so the 125-character wide bar above just barely fits"
+  echo '*==========================================================*'
+  echo '|----------------------------------------------------------|'
+  echo '|----------------------------------------------------------|'
+  echo '|------*==========================*------------------------|'
+  echo '|------|                          |------------------------|'
+  echo '|------|  Please Photograph this  |------------------------|'
+  echo '|------|  (outer) box, not        |------------------------|'
+  echo '|------|  including anything      |------------------------|'
+  echo '|------|  outside the box, to     |------------------------|'
+  echo '|------|  satisfy your alarmy     |------------------------|'
+  echo '|------|  mission.                |------------------------|'
+  echo '|------|                          |------------------------|'
+  echo '|------|==========================|------------------------|'
+  echo '|----------------------------------------------------------|'
+  echo '|----------------------------------------------------------|'
+  echo '|----------------------------------------------------------|'
+  echo '*==========================================================*'
+  firstlife-delegate --with-reward "take a photo of this screen to satisfy your alarmy mission" || return 1
+  clear
+  echo 'You may now un-fullscreen and/or resize window as you please'
+  sleep-verbose 3
+  return 0
 }

@@ -8,60 +8,29 @@ SKIGGETY_DEBUG='true'
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 . $SKIGGETY_UTILS_DIR/lib/today_todo.bash || exit_with_error 'could not include today_todo.bash'
 
+# TODO^88: ======== First real demo with Darren using firstlife himself ================
+# TODO^85: ======== Another real demo with Darren using firstlife himself with some decent code readability ============
 # TODO^31: track stats of all kinds
 # TODO^43: and firstlife needs a way to keep you on pace, too
 # TODO: if a second firstlife pops up, maybe it should take over and the old one gracefully exits?
 
 # EASY TODO^83: prompt user to back up ~/firstlife ( $FIRSTLIFE_DIR ) as part of setup/maintenance
 
-# TODO^24: help user start firstlife (including morning routine) with cron like I did, automate ensuring a line in local crontab, and use 'crontab-verbose'?
+# EASY TODO^86: help user start firstlife (including morning routine) with cron like I did, automate ensuring a line in local crontab, and use 'crontab-verbose'?
 # - TODO^23 (IN_PROGRESS, NOW): it should set the terminal title
 
+# EASY TODO^86: move elsewhere:
 function update_todo_graph {
-    # TODO^86: (IN_PROGRESS, EASY) make sure TODO graph exists in an environment variable so you don't commit it:
-    # - TODO^87 (IN_PROGRESS, EASY): if there's no environment variable, suggest the user start a new one and save the link in their bashrc, where the template should be ready.
+    # TODO^88: (IN_PROGRESS, EASY) make sure TODO graph exists in an environment variable so you don't commit it:
+    # - TODO^89 (IN_PROGRESS, EASY): if there's no environment variable, suggest the user start a new one and save the link in their bashrc, where the template should be ready.
     open $TODAY_todo_DIR
     # TODO^3: do something with error count:
     firstlife-delegate --with-reward "check today_todo graph import $TODAY_todo_DIR/graph.csv with 'replace current sheet' by uploading" || accumulate_error "did not check today_todo graph"
 }
 
-# EASY TODO: extract into a script called firstlife-satisfy-alarmy so you can call it later if you start the program
-# early:
-# Show an image for your alarm to match to, first thing:
-function handle-alarm-mission {
-  shellask "Please fullscreen this terminal window if you have an alarm to satisfy, otherwise say 'nope'" || return 0
-  echo '|<--------125-characters-wide---------------------------------------------------------------------------------------------->|'
-  shellask "use CTRL/COMMAND-plus/minus to change font size so the 125-character wide bar above just barely fits"
-  echo '*==========================================================*'
-  echo '|----------------------------------------------------------|'
-  echo '|----------------------------------------------------------|'
-  echo '|------*==========================*------------------------|'
-  echo '|------|                          |------------------------|'
-  echo '|------|  Please Photograph this  |------------------------|'
-  echo '|------|  (outer) box, not        |------------------------|'
-  echo '|------|  including anything      |------------------------|'
-  echo '|------|  outside the box, to     |------------------------|'
-  echo '|------|  satisfy your alarmy     |------------------------|'
-  echo '|------|  mission.                |------------------------|'
-  echo '|------|                          |------------------------|'
-  echo '|------|==========================|------------------------|'
-  echo '|----------------------------------------------------------|'
-  echo '|----------------------------------------------------------|'
-  echo '|----------------------------------------------------------|'
-  echo '*==========================================================*'
-  firstlife-delegate --with-reward "take a photo of this screen to satisfy your alarmy mission" || return 1
-  shellask 'un-fullscreen and/or resize window as you please'
-  return 0
-}
+firstlife-wake || accumulate-error "I am not sure you are awake"
 
-# TODO^36: alert user with sound, queue videos? mplayer? toaster-ding?
-# - TODO^36: but first, bring terminal to the front, maybe just as part of firstlife-delegate, too
-# - EASY TODO^58: I think i should play (with mplayer) an annoying sound for a minute, in a 3 minute loop, until I shut it up, called firstlife-alarm
-#   - TODO: make sure volume is up
-
-handle-alarm-mission || accumulate_error "failed to handle alarm" # for 'Alarmy'
-
-# TODO^2: make sure you call firstlife-morning again later, maybe from firstlife-multitask. It should be a no-op if you've done it already, but catch you otherwise.
+# EASY TODO^86: make sure you call firstlife-morning again later, maybe from firstlife-multitask. It should be a no-op if you've done it already, but catch you otherwise.
 firstlife-morning || accumulate_error "morning routine had errors"
 
 exit_if_day_is_over
