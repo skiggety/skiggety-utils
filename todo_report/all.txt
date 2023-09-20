@@ -95,6 +95,7 @@
 ./bin/firstlife-wake:19:#   - TODO: make sure volume is up
 ./bin/firstlife-work:3:# This script (TODO...)
 ./bin/git-attempt-merge:3:# TODO: IMPLEMENT: like git-attempt-checkout, but for merge
+./bin/git-log-recent:7:# TODO: default to 3 and take an '-n' option:
 ./bin/git-object-to-added-keyword:17:    # TODO: echoing the line number this is coming from is distracting:
 ./bin/git-push-new-branch:4:# TODO: capture output and open browser to new pull request automatically
 ./bin/git-ready:11:        # TODO: -m "commit comment"
@@ -358,7 +359,7 @@
 ./bin/firstlife-pomodoro:6:# TODO^2: exit early if you've done enough pomodoros in a day
 ./bin/firstlife-work:8:# TODO^2?: exit if a script with identical name and path is in parent tree
 ./bin/git-autobisect:3:# TODO^2: Does the thing that you probably want to do with git bisect without having to remember the subcommands or
-./bin/git-pretty-pull:9:# TODO^2: make this show the timestamp, too:
+./bin/git-log-recent:8:# TODO^2: make this show the timestamp, too:
 ./bin/git-ready:44:# TODO^2: move/reuse?
 ./bin/git-ready:49:# TODO^2: move/reuse?
 ./bin/grim:3:# TODO^2: make this (and others like it) a printable help message:
