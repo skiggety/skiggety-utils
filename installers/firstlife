@@ -6,3 +6,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 if [ -z "$SKIGGETY_UTILS_DIR" ]; then
     exit_with_error "Please add \"export=SKIGGETY_UTILS_DIR='$(dirname $THIS_DIR)'\" to the end of your ~/.bashrc file, then restart bash and try this script again"
 fi
+
+if ! mplayer -v; then
+    exit_with_error "Please install mplayer ('brew install mplayer'?) and try again"
+fi
