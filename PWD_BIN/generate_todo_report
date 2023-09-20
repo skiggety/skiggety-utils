@@ -5,6 +5,7 @@
 TODO_REPORT_LINES=4 # IGNORE_TODO
 
 TODO_REPORT_DIR="todo_report" # IGNORE_TODO
+TODO_MASTER_LIST="$TODO_REPORT_DIR/all.txt" # IGNORE_TODO
 TODO_REPORT_FILE="$TODO_REPORT_DIR/README.txt" # IGNORE_TODO
 TODO_REPORT_COLOR_FILE="$TODO_REPORT_DIR/README_in_color.txt" # IGNORE_TODO
 
@@ -24,6 +25,7 @@ todo_report_linecount=$(echo "$todo_report_whole" | wc -l | sed 's/^[ \t]*//')
 
 todo_header="==== TODOs, ascending, so you know what's likely to change next. Do not edit, run '$(basename $0)' to generate. ====" # IGNORE_TODO
 
+echo "$todo_report_whole" > $TODO_MASTER_LIST
 echo "$todo_header" > $TODO_REPORT_FILE
 echo "$todo_header" > $TODO_REPORT_COLOR_FILE
 echo "$todo_report_body" >> $TODO_REPORT_FILE
