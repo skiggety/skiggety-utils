@@ -4,6 +4,9 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
+SNOOZE_SECONDS=60
+trap "exit 1" INT # seems to be necessary to cancel the alarm cleanly
+
 ALARM_SOUND="$FIRSTLIFE_DIR/sounds/alarm.wav"
 while ! [ -f $ALARM_SOUND ]; do
     mkdir -p "$(dirname $ALARM_SOUND)"
@@ -17,5 +20,5 @@ if [ -n "$*" ]; then
 fi
 
 echo_divider_with_text "#" "$message"
-mplayer $ALARM_SOUND >/dev/null 2>&1
-exit
+mplayer $ALARM_SOUND >/dev/null 2>&1 && sleep-verbose $SNOOZE_SECONDS || exit 1
+exit 0
