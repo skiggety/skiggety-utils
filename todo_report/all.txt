@@ -35,7 +35,6 @@
 ./PWD_BIN/install-skiggety-utils:46:            "h") exit_with_error "TODO: print usage" ;;
 ./PWD_BIN/install-skiggety-utils:47:            "?") exit_with_error "TODO: print usage" ;;
 ./PWD_BIN/install-skiggety-utils:57:        # TODO: make sure that when you run "review install-skiggety-utils", this is in non-interactive mode:
-./PWD_BIN/lint:35:# TODO: call rupocop with -a OR -P depending on whether this script is in write mode or not (this script should have
 ./PWD_BIN/review-ci:7:# TODO: consider splitting to default_ and normal version like dashboard and lint
 ./PWD_BIN/skiggety-skip-installer:1:# TODO: something like: touch installers/.markers/.skip.$1
 ./PWD_BIN/unit-test:5:# TODO: make output more concise, it takes up a lot of screen space when running 'review-dev' (or 'dev').  Maybe show
@@ -78,6 +77,7 @@
 ./bin/firstlife:37:# TODO: exit_if_another_terminal_took_over
 ./bin/firstlife:38:# - TODO: ultimately, combine for exit_if_another_terminal_or_day_took_over_with_accumulated_errors
 ./bin/firstlife:49:update_todo_graph # TODO: only if using today_todo
+./bin/firstlife-alarm:10:# TODO: make sure volume is up
 ./bin/firstlife-break:3:# This script (...TODO, describe your script here)
 ./bin/firstlife-check-calendar:7:open 'https://www.google.com/calendar/render' # TODO: UN-HARDCODE
 ./bin/firstlife-delegate:6:# TODO: maybe keep track of what time of day tasks by certain names get completed, so you can start showing information
@@ -88,11 +88,10 @@
 ./bin/firstlife-pomodoro:11:# TODO: or should this be done right in ther terminal with sleep-verbose? instead of youtube and shellask:
 ./bin/firstlife-pomodoro:18:# TODO: or should this be a 5-minute timer from youtube?:
 ./bin/firstlife-pomodoro:19:# TODO: break should be optional with '--without-break' or some such switch
-./bin/firstlife-reward:18:# TODO?: we need a custom video: ding-toaster
-./bin/firstlife-reward:26:# TODO?: DELETE?: shellask "$request" # no error checking on purpose
-./bin/firstlife-reward:61:# TODO?: (after above) || firstlife-save-reward-for-later
+./bin/firstlife-reward:20:# TODO?: we need a custom video: ding-toaster
+./bin/firstlife-reward:28:# TODO?: DELETE?: shellask "$request" # no error checking on purpose
+./bin/firstlife-reward:63:# TODO?: (after above) || firstlife-save-reward-for-later
 ./bin/firstlife-single-alarm:3:# This script (...TODO, describe your script here)
-./bin/firstlife-wake:19:#   - TODO: make sure volume is up
 ./bin/firstlife-work:3:# This script (TODO...)
 ./bin/git-attempt-merge:3:# TODO: IMPLEMENT: like git-attempt-checkout, but for merge
 ./bin/git-log-recent:7:# TODO: default to 3 and take an '-n' option:
@@ -139,19 +138,18 @@
 ./bin/silliness/blow_up:3:# TODO: take piped in input?
 ./bin/templates/firstlife-focus.routine.TEMPLATE:3:# This script (TODO...)
 ./bin/templates/firstlife-morning.routine.TEMPLATE:16:# TODO: figure out how to keep this stuff on a schedule:
-./bin/templates/firstlife-morning.routine.TEMPLATE:38:# - TODO?:: wait until a certain time, 5 minutes after start
-./bin/templates/firstlife-morning.routine.TEMPLATE:44:firstlife-delegate --with-reward 'Put on exercise clothes (and make sure you have your housekey/earbuds, etc.) ' || accumulate_error 'not ready exercise' # TODO: --with-timer $(( 2 * 60 ))
-./bin/templates/firstlife-morning.routine.TEMPLATE:50:# TODO: listen to podcasts
-./bin/templates/firstlife-morning.routine.TEMPLATE:53:firstlife-delegate --with-reward 'finish morning habits' || accumulate_error 'did not finish morning habits' # TODO: list them out individually instead
+./bin/templates/firstlife-morning.routine.TEMPLATE:42:# - TODO?:: wait until a certain time, 5 minutes after start
+./bin/templates/firstlife-morning.routine.TEMPLATE:54:# TODO: listen to podcasts
+./bin/templates/firstlife-morning.routine.TEMPLATE:57:firstlife-delegate --with-reward 'Finish morning habits' || accumulate_error 'did not finish morning habits' # TODO: list them out individually instead
 ./bin/templates/firstlife-morning.routine.TEMPLATE:86:# TODO: do I want this here? do I want it in other high-level firstlife scripts?:
 ./bin/templates/firstlife-multitask.routine.TEMPLATE:23:    || accumulate_error 'should have charged your devices' # TODO: don't ask more than once every 3 hours
-./bin/templates/firstlife-multitask.routine.TEMPLATE:42:firstlife-break # TODO: -t 120 # seconds
-./bin/templates/firstlife-multitask.routine.TEMPLATE:46:for num in $(seq $PASSES_AT_TODO_LIST); do
-./bin/templates/firstlife-multitask.routine.TEMPLATE:120:    today_todo -n | grep '\(CONFIRMING\|--------\|^$\)' # TODO: TEST
-./bin/templates/firstlife-multitask.routine.TEMPLATE:121:    firstlife-delegate --with-reward 'Mark something DONE that is "CONFIRMING" in today_todo (if you can)' || accumulate_error 'Did not confirm anything' # TODO: TEST
+./bin/templates/firstlife-multitask.routine.TEMPLATE:39:firstlife-break # TODO: -t 120 # seconds
+./bin/templates/firstlife-multitask.routine.TEMPLATE:43:for num in $(seq $PASSES_AT_TODO_LIST); do
+./bin/templates/firstlife-multitask.routine.TEMPLATE:117:    today_todo -n | grep '\(CONFIRMING\|--------\|^$\)' # TODO: TEST
+./bin/templates/firstlife-multitask.routine.TEMPLATE:118:    firstlife-delegate --with-reward 'Mark something DONE that is "CONFIRMING" in today_todo (if you can)' || accumulate_error 'Did not confirm anything' # TODO: TEST
 ./bin/templates/firstlife-work.routine.TEMPLATE:3:# This script (TODO...)
 ./bin/templates/firstlife-work.routine.TEMPLATE:9:    today_todo -n | grep 'DO'NE # TODO: function extract
-./bin/templates/firstlife-work.routine.TEMPLATE:21:    firstlife-multitask || accumulate_error 'multitasking ERRORS' # TODO: at least once, maybe longer if there is time
+./bin/templates/firstlife-work.routine.TEMPLATE:17:firstlife-multitask || accumulate_error 'multitasking ERRORS' # TODO: at least once, maybe longer if there is time
 ./bin/tmux_dashboard_experimental:3:# This script (...TODO, describe your script here)
 ./bin/tmux_dashboard_experimental:7:exit_with_error "TODO: IMPLEMENT"
 ./bin/tmux_dashboard_experimental:8:# TODO: open a tmux with predefined windows with specific sizes, running specific review commands
@@ -280,9 +278,9 @@
 ./installers/vim.config/vimrc:48:set rtp+=/usr/local/opt/fzf "TODO: make this cross-platform, this is just where fzf gets installed with brew on mac
 ./lib/include_in_bashrc.bash:16:export PS1="\$(duh)\$(git branch 2>/dev/null|grep '^*'|sed 's/^\\*/ \\*/') - \D{%F %T}\n\$ " # TODO: add colors (besides duh)
 ./lib/include_in_bashrc.bash:41:# TODO: use more stuff from older bashrc files I've used
-./lib/installable_skiggety_util.rb:5:# TODO: mark more of these methods private
-./lib/installable_skiggety_util.rb:7:# TODO: implement uninstall
-./lib/installable_skiggety_util.rb:33:    # TODO: also have other files you can watch for changes since last marker file, like this one:
+./lib/installable_skiggety_util.rb:8:# TODO: mark more of these methods private
+./lib/installable_skiggety_util.rb:10:# TODO: implement uninstall
+./lib/installable_skiggety_util.rb:36:    # TODO: also have other files you can watch for changes since last marker file, like this one:
 ./lib/today_todo.bash:1:TODAY_todo_DIR=${TODAY_todo_DIR:-"$HOME/today_todo"} # TODO: maybe help the user with place to change it in the bashrc template
 ./lib/todo_line.py:6:# TODO: traditional unit tests for this library
 ./lib/todo_line.py:16:        def replace_todo_entry(matchobj): # TODO: can I move this method?:
@@ -334,6 +332,7 @@
 ./PWD_BIN/install-skiggety-utils:20:    # TODO^2: install custom list app (opens dedicated browser window "as an app") (huh?)
 ./PWD_BIN/install-skiggety-utils:21:    # TODO^2: install a music player of some sort
 ./PWD_BIN/lint:29:# TODO^2: abbreviate output:
+./PWD_BIN/lint:35:# TODO^2: call rupocop with -a OR -P depending on whether this script is in write mode or not (this script should have
 ./PWD_BIN/review-ci:5:# TODO^2: after the RENAME/redesign of 'ci', this script probably will get DELETEd
 ./PWD_BIN/unit-test:8:# TODO^2: I think I should be using SKIGGETY_UTILS_DIR more widely instead of THIS_DIR:
 ./PWD_BIN/unit-test:28:# TODO^2: what can I do to make coverage results be trustworthy and meaningful?
@@ -377,8 +376,8 @@
 ./bin/sleep-verbose:6:# TODO^2?: show a clock, optionally
 ./bin/sleep-verbose:7:# TODO^2?: integrate into a banner
 ./bin/templates/firstlife-morning.routine.TEMPLATE:14:# TODO^2: use this to make sure we don't ask for the alarm too often: FIRSTLIFE_ALARM_MARKER_FILE="$FIRSTLIFE_DIR/markers/firstlife_outside_alarm_confirmed"
-./bin/templates/firstlife-morning.routine.TEMPLATE:45:firstlife-delegate --with-reward 'Exercise! (Or schedule it for later today)' || accumulate_error 'did not exercise' # TODO^2: --with-timer $(( 30 * 60 ))
-./bin/templates/firstlife-multitask.routine.TEMPLATE:144:shellask "Close a couple unecessary terminals, if any" && firstlife-reward || accumulate_error "Did not clean up terminals" # TODO^2: DELETE once firstlife behaves better
+./bin/templates/firstlife-morning.routine.TEMPLATE:49:firstlife-delegate --with-reward 'Exercise! (Or schedule it for later today)' || accumulate_error 'did not exercise' # TODO^2: --with-timer $(( 30 * 60 ))
+./bin/templates/firstlife-multitask.routine.TEMPLATE:141:shellask "Close a couple unecessary terminals, if any" && firstlife-reward || accumulate_error "Did not clean up terminals" # TODO^2: DELETE once firstlife behaves better
 ./bin/today_todo:127:    # TODO: -n 5 # TODO^2: todo should accept an option for the number of lines.  like "-n 3".  Maybe if we pass an
 ./bin/today_todo:146:    # TODO^2: if it's around new years:
 ./bin/todo_v0.4:31:# TODO^2: maybe accept --vote 'substring', --downvote 'substring', or --delete 'substring'  to find
@@ -403,11 +402,11 @@
 ./installers/vim:7:# TODO^2: install vim rake plugin with vim pathogen
 ./installers/vim:45:    # TODO^2: install gvim (gui) for linux
 ./lib/installable_skiggety_util.rb:3:# TODO^2: assert ruby version # puts "DEBUG: in #{name} installer, RUBY_VERSION is \"#{RUBY_VERSION}\"."
-./lib/installable_skiggety_util.rb:25:    # TODO^2: should we catch exceptions and print them without a full stack trace?
-./lib/installable_skiggety_util.rb:43:        install! # TODO^2: catch exception and wrap in: raise "install! command failed for #{self.class}"
-./lib/installable_skiggety_util.rb:104:  # TODO^2: RENAME:
-./lib/installable_skiggety_util.rb:178:        # TODO^2: we could return something random so it's different each
-./lib/installable_skiggety_util.rb:259:    (version_output =~ version_regex).is_a?(Numeric) # TODO^2: update desired vim version
+./lib/installable_skiggety_util.rb:28:    # TODO^2: should we catch exceptions and print them without a full stack trace?
+./lib/installable_skiggety_util.rb:46:        install! # TODO^2: catch exception and wrap in: raise "install! command failed for #{self.class}"
+./lib/installable_skiggety_util.rb:107:  # TODO^2: RENAME:
+./lib/installable_skiggety_util.rb:181:        # TODO^2: we could return something random so it's different each
+./lib/installable_skiggety_util.rb:262:    (version_output =~ version_regex).is_a?(Numeric) # TODO^2: update desired vim version
 ./lib/skiggety-utils.bash:4:# TODO^2: extract & include shelper.bash which checks bash version, and provides utility functions.
 ./lib/skiggety-utils.bash:6:# TODO^2: . $THIS_DIR/shelper.bash || exit 1
 ./lib/user_delegation.rb:31:  # TODO^2: maybe shellask isn't always the best way to ask the user a question.  Change calls to this to call the
@@ -448,9 +447,9 @@
 ./installers/vim:6:# TODO^3: install and set up vimpager as your pager, but maybe not in this installer
 ./installers/vim:75:  # TODO^3: maybe move to installable_skiggety_util.rb:
 ./installers/vim.config/vimrc:10:" TODO^3: similar auto-load on focus gain?
-./lib/installable_skiggety_util.rb:107:    # TODO^3: perhaps if the installer contains 'include InstallableSkiggetyUtil', we should call it in the same process
-./lib/installable_skiggety_util.rb:181:        #   TODO^3: maybe just use the latest timestamp, from anywhere in the tree?
-./lib/installable_skiggety_util.rb:256:  # TODO^3: RENAME?
+./lib/installable_skiggety_util.rb:110:    # TODO^3: perhaps if the installer contains 'include InstallableSkiggetyUtil', we should call it in the same process
+./lib/installable_skiggety_util.rb:184:        #   TODO^3: maybe just use the latest timestamp, from anywhere in the tree?
+./lib/installable_skiggety_util.rb:259:  # TODO^3: RENAME?
 ./test/lib/installable_skiggety_util_test.rb:38:  # TODO^3: write more tests
 ./.rubocop_todo.yml:9:# TODO^4: Eliminate this file, bit by bit
 ./PWD_BIN/install-skiggety-utils:71:    # TODO^4: set up a naming convention for installers, because install-vim might make more sense than vim
@@ -487,8 +486,9 @@
 ./bin/todo_v0.4:4:# TODO^5: break out the next version into it's own project/repo
 ./demo_in_docker:50:# TODO^5: IMPLEMENT and UNCOMMENT: echo "You can run 'TODO' in another terminal to connect to this container, but the container will stop when this session ends"
 ./installers/git:41:    # TODO^5: what's with the sporadic syntax error sometime after this?
-./lib/installable_skiggety_util.rb:36:        # TODO^5: but what if it is apparently installed, but marked for an old hash (installer has changed), we should
-./lib/installable_skiggety_util.rb:146:  # TODO^5: consider changing the naming convention in the installers directory to avoid the
+./lib/installable_skiggety_util.rb:5:# TODO^5: make certain installers skippable, like UHK and maybe ardour. They'll ask you if you want it on this computer,
+./lib/installable_skiggety_util.rb:39:        # TODO^5: but what if it is apparently installed, but marked for an old hash (installer has changed), we should
+./lib/installable_skiggety_util.rb:149:  # TODO^5: consider changing the naming convention in the installers directory to avoid the
 ./lib/skiggety-utils.bash:84:# TODO^5: consistent debug/echo function names
 ./PWD_BIN/install-skiggety-utils:17:# TODO^6: move to bin? I need to make sure I can run it independently of $PWD, though
 ./PWD_BIN/lint:5:#     TODO^6: '-n' seems good because the command to fix stuff is short, 'lint', and it's short for '--no-changes'
@@ -508,15 +508,16 @@
 ./bin/templates/firstlife-focus.routine.TEMPLATE:12:today_todo --non-interactive | grep --color=always '\(NOW\|EASY\|--------\|^$\)' # TODO^9: EXTRACT and REUSE this approach that includes the headings
 ./bin/todo_v0.4:5:#   TODO^9: RENAME this (with Kevin), or at least the next version, to something a bit more unique
 ./installers/vim:62:    # TODO^9: learn to use nerdcommenter:
-./PWD_BIN/lint:4:#   TODO^10: I think the way to handle this is to support a '-w', '--fix', '-n' or '--ro' option
 ./PWD_BIN/review-ci:8:review -u 600 -m 1800 -M $(( 24 * 60 * 60)) ci # TODO^10: review --ignore-disk (pass a flag for 'review' to ignore filesystem changes, since it is affected by git pull)
 ./bin/git-attempt-checkout:4:#   TODO^10: maybe set up git tab completion first ( see: https://apple.stackexchange.com/questions/55875/git-auto-complete-for-branches-at-the-command-line )
-./PWD_BIN/lint:3:# TODO^11: make this read-only by default, split the write version into another script if necessary
 ./installers/skiggety.bash.config/bashrc_section.bash:7:# TODO^11: try to at least support nano or vscode:                                                 # FROM_SKIGGETY_UTILS
 ./bin/templates/firstlife-morning.routine.TEMPLATE:77:# TODO^12: make exit_if_day_is_over aware of errors?
-./bin/firstlife-reward:17:# TODO^13: in a shell open a video or play a sound that reminds you about an open shellask to take 1 reward
+./PWD_BIN/lint:3:# TODO^13: make this read-only by default, split the write version into another script if necessary
+./bin/firstlife-reward:19:# TODO^13: in a shell open a video or play a sound that reminds you about an open shellask to take 1 reward
 ./bin/todo_v0.4:142:            for line in reversed(lines): # start with the highest-voted ones # TODO^13: optionally, reverse sort all lines
-./bin/templates/firstlife-multitask.routine.TEMPLATE:54:    # TODO^14: only do this if you haven't yet cleared them all today yet:
+./PWD_BIN/lint:4:#   TODO^14: I think the way to handle this is to support a '-w', '--fix', '-n' or '--ro' option
+./bin/templates/firstlife-multitask.routine.TEMPLATE:51:    # TODO^14: only do this if you haven't yet cleared them all today yet:
+./bin/firstlife-reward:5:# EASY FUN TODO^16: we need a way to watch the rewards pile up, so create a display only mode and run in in the prompt like you do with duh
 ./bin/today_todo:21:# - TODO^16: ..and another mode to vote for everything matching a string
 ./bin/today_todo:23:#   - TODO^17: .. e.g.: "today_todo --upvote 'truck oil change'"
 ./bin/today_todo:24:#   - TODO^17: .. e.g.: "today_todo --vote 99 'truck oil change'"
@@ -543,8 +544,6 @@
 ./bin/today_todo:19:# - TODO^30?: search for $1 and if it's not found, add one, if it is found, open the file searching for that string
 ./bin/firstlife:13:# TODO^31: track stats of all kinds
 ./bin/templates/firstlife-morning.routine.TEMPLATE:12:# TODO^35: with this and other firstlife scripts, make a distinction between the template and a personal one.
-./bin/firstlife-wake:16:# TODO^36: alert user with sound, queue videos? mplayer? toaster-ding?
-./bin/firstlife-wake:17:# - TODO^36: but first, bring terminal to the front, maybe just as part of firstlife-delegate, too
 ./bin/firstlife-delegate:24:# - TODO^38: use mplayer in a loop to play something incessantly until you shut it up, optionally
 ./bin/templates/firstlife-morning.routine.TEMPLATE:28:# - TODO^40: remind yourself what you care about, maybe play a motivational video?
 ./bin/templates/firstlife-morning.routine.TEMPLATE:18:#   - TODO^41: then make the logs daily, graph the daily linecount
@@ -557,20 +556,19 @@
 ./bin/templates/firstlife-work.routine.TEMPLATE:14:# EASY TODO^47: I need different criteria for whether to continue...is it the same day? do you have enough points? Do you want
 ./bin/firstlife-error:7:exit_with_error "TODO^48: IMPLEMENT: count errors, much like rewards, with a log file, and wrap 'accumulate_error'."
 ./bin/firstlife-delegate:23:# TODO^50: shellask --alert, inside it try something like ''osascript -e 'display notification "Done!" with title "Long-running shell command" sound name "Hero"' like you saw at 'https://stackoverflow.com/questions/40814932/is-there-a-way-to-bring-terminal-to-front-when-command-is-finished', to bring window to foreground, especially after popping a web page, and do something similar in firstlife-reward if it works:
-./bin/firstlife-reward:19:# EASY TODO^50: emit a characteristic "reward" sound, and get all pavlovian about it
+./bin/firstlife-reward:21:# EASY TODO^50: emit a characteristic "reward" sound, and get all pavlovian about it
 ./bin/templates/firstlife-multitask.routine.TEMPLATE:20:# EASY TODO^50: use firstlife-reward with description argument(s), generally
 ./bin/today_todo:149:    # TODO^51: instead of NOW and LATER, tag things with MORNING, EVENING, WEEKEND, BUSINESS_HOURS, etc, and have today_todo watch the clock to know which to highlight
-./bin/templates/firstlife-work.routine.TEMPLATE:17:# EASY to get started TODO^53: (IN_PROGRESS) ask about if you have done enough productivity points. Maybe ask how many done today and how many left in the
-./bin/templates/firstlife-multitask.routine.TEMPLATE:83:        # EASY TODO^54: loop through known tags:
+./bin/templates/firstlife-work.routine.TEMPLATE:28:# EASY to get started TODO^53: (IN_PROGRESS) ask about if you have done enough productivity points. Maybe ask how many done today and how many left in the
+./bin/templates/firstlife-multitask.routine.TEMPLATE:80:        # EASY TODO^54: loop through known tags:
 ./README.md:125:  - TODO^55: firstlife
-./bin/firstlife-wake:18:# - EASY TODO^58: I think i should play (with mplayer) an annoying sound for a minute, in a 3 minute loop, until I shut it up, called firstlife-alarm
 ./bin/firstlife:42:# TODO^60: make this program aware of your productivity points, as in, keep going until you have enough:
 ./bin/firstlife-delegate:26:shellask "$*" || exit_with_error "$0 FAILED to do: $*" # EASY TODO^67: TEST exit_with_error
 ./bin/templates/firstlife-morning.routine.TEMPLATE:65:# TODO^67: (EASY) check calendar script should be the one to call 'firstlife-reward', at least if you called it with '--with-reward':
 ./bin/templates/firstlife-morning.routine.TEMPLATE:82:# TODO^67: make sure this only gets asked perhaps once a week:
 ./bin/templates/firstlife-morning.routine.TEMPLATE:83:shellask 'make sure you have a phone alarm that ensures you log into this laptop in time for your cron job to fire (for tomorrow)' || accumulate_error 'BASIC AUTOMATION PROBLEM: alarm not set' # TODO^67: (EASY) use 'firstlife-delegate' instead
 ./bin/today_todo:18:# EASY FUN TODO^67: add a mode to quickly add a todo, ideally it would let you specify a votecount too
-./bin/templates/firstlife-morning.routine.TEMPLATE:40:# EASY TODO^70: kick off a morning playlist to keep on track for time with the rest of this stuff
+./bin/templates/firstlife-morning.routine.TEMPLATE:44:# EASY TODO^70: kick off a morning playlist to keep on track for time with the rest of this stuff
 ./bin/firstlife-pomodoro:5:# EASY TODO^71: use this script more often, maybe against your todo list
 ./bin/templates/firstlife-multitask.routine.TEMPLATE:26:firstlife-check-calendar || accumulate_error 'did not check calendar' # TODO^71: TEST NOW
 ./bin/firstlife-pomodoro:16:# EASY TODO^73: successful pomodoros should keep log and count and show score, like rewards and errors. also, count POINTs similarly from lines with 'POINT' in todays todo file.
@@ -579,16 +577,16 @@
 ./bin/firstlife-evening:10:exit_if_day_is_over # EASY to chip away at TODO^84: infect this and called scripts with this line all over the place to clean up windows (for ORGANIZATION)
 ./bin/firstlife-multitask:11:exit_if_day_is_over # EASY to chip away at TODO^84: infect this and called scripts with this line all over the place to clean up windows (for ORGANIZATION)
 ./bin/firstlife-work:10:exit_if_day_is_over # EASY to chip away at TODO^84: infect this and called scripts with this line all over the place to clean up windows (for ORGANIZATION)
-./bin/templates/firstlife-multitask.routine.TEMPLATE:124:    today_todo -n | grep --color=auto '\(NOW\|LATER\|--------\|^$\)' # EASY TODO^84: EXTRACT, and REUSE
+./bin/templates/firstlife-multitask.routine.TEMPLATE:121:    today_todo -n | grep --color=auto '\(NOW\|LATER\|--------\|^$\)' # EASY TODO^84: EXTRACT, and REUSE
 ./bin/today_todo:103:        vim -o $files_to_open '+/\.\.\.' # TODO^84: here and elsewhere, use $EDITOR, not vim
 ./demo_in_docker:12:# TODO^84: help the user with mapping a volume for firstlife and today_todo, so he can edit files with any editor, for firstlife's sake
 ./demo_in_docker:13:# TODO^84: make sure (for firstlife demo'ing) that we can get through enough of the demo_in_docker script with an alternate $EDITOR
 ./bin/firstlife:12:# TODO^85: ======== Another real demo with Darren using firstlife himself with some decent code readability ============
-./bin/templates/firstlife-morning.routine.TEMPLATE:33:# EASY TODO^85: Or better yet, manage the list of videos here and randomize:
-./bin/templates/firstlife-multitask.routine.TEMPLATE:47:    # EASY TODO^85: maybe the inside of the loop could be more like merely:
-./bin/templates/firstlife-multitask.routine.TEMPLATE:48:    # EASY TODO^85:     today_todo
-./bin/templates/firstlife-multitask.routine.TEMPLATE:49:    # EASY TODO^85:     shellask 'work on your one of your top 3 todos and downvote it if appropriate'
-./bin/templates/firstlife-multitask.routine.TEMPLATE:84:        # TODO^85: something like this needs to happen actually before you do the task:
+./bin/templates/firstlife-morning.routine.TEMPLATE:37:# EASY TODO^85: Or better yet, manage the list of videos here and randomize:
+./bin/templates/firstlife-multitask.routine.TEMPLATE:44:    # EASY TODO^85: maybe the inside of the loop could be more like merely:
+./bin/templates/firstlife-multitask.routine.TEMPLATE:45:    # EASY TODO^85:     today_todo
+./bin/templates/firstlife-multitask.routine.TEMPLATE:46:    # EASY TODO^85:     shellask 'work on your one of your top 3 todos and downvote it if appropriate'
+./bin/templates/firstlife-multitask.routine.TEMPLATE:81:        # TODO^85: something like this needs to happen actually before you do the task:
 ./bin/today_todo:169:        if (( $todo_now_count > 4 )); then # EASY TODO^85: UN-HARDCODE
 ./bin/firstlife:19:# EASY TODO^86: help user start firstlife (including morning routine) with cron like I did, automate ensuring a line in local crontab, and use 'crontab-verbose'?
 ./bin/firstlife:22:# EASY TODO^86: move elsewhere:
@@ -600,16 +598,16 @@
 ./bin/firstlife-morning:13:# EASY TODO^86: method extract firstlife-exit-if-this-ran-today <task_name> so we can mark other things
 ./bin/firstlife-morning:26:# EASY FUN TODO^86: method extract firstlife-mark-done <task_name> so we can mark other things: 'firstlife-mark-done-today $0'
 ./bin/firstlife-wake:9:# EASY TODO^86: method extract firstlife-exit-if-this-ran-today <task_name> so we can mark other things
-./bin/firstlife-wake:27:# EASY FUN TODO^86: method extract firstlife-mark-done <task_name> so we can mark other things: 'firstlife-mark-done-today $0'
+./bin/firstlife-wake:22:# EASY FUN TODO^86: method extract firstlife-mark-done <task_name> so we can mark other things: 'firstlife-mark-done-today $0'
 ./bin/review_v0.1:256:      # EASY TODO^86: make sleep-verbose message look more like this?:
-./bin/templates/firstlife-multitask.routine.TEMPLATE:55:    open 'https://www.google.com/calendar/render' # EASY TODO^86: script extract
-./bin/templates/firstlife-multitask.routine.TEMPLATE:110:    # TODO^86: if you have not finished all dishes at least once today
+./bin/templates/firstlife-multitask.routine.TEMPLATE:52:    open 'https://www.google.com/calendar/render' # EASY TODO^86: script extract
+./bin/templates/firstlife-multitask.routine.TEMPLATE:107:    # TODO^86: if you have not finished all dishes at least once today
 ./bin/firstlife-evening:13:# EASY TODO^87: normalize scripts with names like:
-./bin/templates/firstlife-work.routine.TEMPLATE:27:    exit_if_day_is_over # EASY TODO^87: TEST
+./bin/templates/firstlife-work.routine.TEMPLATE:40:    exit_if_day_is_over # EASY TODO^87: TEST
 ./bin/firstlife:11:# TODO^88: ======== First real demo with Darren using firstlife himself ================
 ./bin/firstlife:24:    # TODO^88: (IN_PROGRESS, EASY) make sure TODO graph exists in an environment variable so you don't commit it:
 ./bin/firstlife-delegate:5:# EASY TODO^88: use this script widely in firstlife instead of shellask
 ./bin/firstlife-morning:5:# EASY TODO^88: make sure only firstlife-morning and firstlife-evening limit to running once a day, not other scripts
-./bin/templates/firstlife-multitask.routine.TEMPLATE:69:    # EASY TODO^88: extract this bit that works on a few todos to firstlife-work-on-top-n-todos -n $MULTITASKING_CONSTANT
+./bin/templates/firstlife-multitask.routine.TEMPLATE:66:    # EASY TODO^88: extract this bit that works on a few todos to firstlife-work-on-top-n-todos -n $MULTITASKING_CONSTANT
 ./bin/firstlife:25:    # - TODO^89 (IN_PROGRESS, EASY): if there's no environment variable, suggest the user start a new one and save the link in their bashrc, where the template should be ready.
 ./bin/templates/firstlife-multitask.routine.TEMPLATE:16:# EASY TODO^89: inside this script and elsewhere, use 'firstlife-delegate --with-reward' instead of calling 'shellask' directly:
