@@ -2,6 +2,8 @@
 
 # This script attempts to reward the user somehow
 
+# EASY FUN TODO^16: we need a way to watch the rewards pile up, so create a display only mode and run in in the prompt like you do with duh
+
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 VERBOSE=false

@@ -27,8 +27,12 @@ exit_if_day_is_over
 
 # - TODO^40: remind yourself what you care about, maybe play a motivational video?
 
-firstlife-delegate --with-reward 'Review any habits you working on breaking today (negative habits in the tracker)' \
-    || accumulate_error 'did not think about breaking habits'
+firstlife-delegate --with-reward "Review any habits you working on breaking ('negative' habits in the tracker)" \
+    || accumulate_error 'did not work on breaking habits'
+exit_if_day_is_over
+
+firstlife-delegate --with-reward 'Put away any temptations or distractions'
+exit_if_day_is_over
 
 # EASY TODO^85: Or better yet, manage the list of videos here and randomize:
 SCOTTS_MEDITATION_PLAYLIST='https://www.youtube.com/playlist?list=PLbyyOcHfeHIqCKsHI62oWS6i4JQfdtcfd'
@@ -41,7 +45,7 @@ exit_if_day_is_over
 
 exit_if_day_is_over
 
-firstlife-delegate --with-reward 'Put on exercise clothes (and make sure you have your housekey/earbuds, etc.) ' || accumulate_error 'not ready exercise' # TODO: --with-timer $(( 2 * 60 ))
+firstlife-delegate --with-reward 'Put on exercise clothes (and make sure you have your housekey/earbuds, etc.) '
 firstlife-delegate --with-reward 'Exercise! (Or schedule it for later today)' || accumulate_error 'did not exercise' # TODO^2: --with-timer $(( 30 * 60 ))
 exit_if_day_is_over
 
@@ -50,17 +54,13 @@ exit_if_day_is_over
 # TODO: listen to podcasts
 exit_if_day_is_over
 
-firstlife-delegate --with-reward 'finish morning habits' || accumulate_error 'did not finish morning habits' # TODO: list them out individually instead
+firstlife-delegate --with-reward 'Finish morning habits' || accumulate_error 'did not finish morning habits' # TODO: list them out individually instead
 exit_if_day_is_over
 
-firstlife-delegate --with-reward 'get dressed' || accumulate_error 'did not get dressed'
+firstlife-delegate --with-reward 'Get dressed' || accumulate_error 'did not get dressed'
 exit_if_day_is_over
 
-firstlife-delegate --with-reward 'put away any temptations or distractions' \
-    || accumulate_error 'did not clear distractions'
-exit_if_day_is_over
-
-firstlife-delegate --with-reward 'break your fast' || accumulate_error 'skipped breakfast'
+firstlife-delegate --with-reward 'Break your fast' || accumulate_error 'skipped breakfast'
 
 # TODO^67: (EASY) check calendar script should be the one to call 'firstlife-reward', at least if you called it with '--with-reward':
 firstlife-check-calendar && firstlife-reward 'calendar check' || accumulate_error 'did not check calendar'
@@ -68,7 +68,7 @@ exit_if_day_is_over
 
 exit_if_day_is_over
 
-firstlife-delegate 'keep the tunes pumping (you can use "firstlife-music")' || accumulate_error 'did not DJ for yourself'
+firstlife-delegate 'Keep the tunes pumping (you can use "firstlife-music")'
 
 exit_if_day_is_over
 

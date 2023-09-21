@@ -18,7 +18,7 @@ PASSES_AT_TODO_LIST=2 # IGNORE_TODO
 exit_if_day_is_over
 
 # EASY TODO^50: use firstlife-reward with description argument(s), generally
-shellask 'make sure various devices including this one are charged/charging' \
+shellask 'Make sure various devices including this one are charged/charging' \
     && firstlife-reward \
     || accumulate_error 'should have charged your devices' # TODO: don't ask more than once every 3 hours
 exit_if_day_is_over
@@ -27,9 +27,6 @@ firstlife-check-calendar || accumulate_error 'did not check calendar' # TODO^71:
 exit_if_day_is_over
 
 shellask 'do one act of self care or something on the habit tracker' && firstlife-reward || accumulate_error 'missed a habit'
-exit_if_day_is_over
-
-shellask 'do another act of self care or something on the habit tracker' && firstlife-reward || accumulate_error 'missed a habit'
 exit_if_day_is_over
 
 shellask 'put a few things away' && firstlife-reward || accumulate_error 'did not put things away'

@@ -47,3 +47,5 @@ firstlife-evening || accumulate_error "need to wrap up habits in the evening"
 
 # EASY TODO^3: every time I do this graph update should be in a routine like morning or evening so it can get skipped:
 update_todo_graph # TODO: only if using today_todo
+
+exit_with_any_accumulated_errors
