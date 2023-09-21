@@ -2,6 +2,9 @@
 
 # TODO^2: assert ruby version # puts "DEBUG: in #{name} installer, RUBY_VERSION is \"#{RUBY_VERSION}\"."
 
+# TODO^5: make certain installers skippable, like UHK and maybe ardour. They'll ask you if you want it on this computer,
+# and just mark it done and skip it if not
+
 # TODO: mark more of these methods private
 
 # TODO: implement uninstall
