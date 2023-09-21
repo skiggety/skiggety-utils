@@ -7,6 +7,8 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
+# TODO: make sure volume is up
+tput bel # a.k.a. ding, bell (for searchability)
 while firstlife-single-alarm "$*";do
     echo
 done

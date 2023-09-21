@@ -13,11 +13,6 @@ if [ -f $THIS_SCRIPT_RAN_MARKER_FILE ]; then
     exit 0
 fi
 
-# TODO^36: alert user with sound, queue videos? mplayer? toaster-ding?
-# - TODO^36: but first, bring terminal to the front, maybe just as part of firstlife-delegate, too
-# - EASY TODO^58: I think i should play (with mplayer) an annoying sound for a minute, in a 3 minute loop, until I shut it up, called firstlife-alarm
-#   - TODO: make sure volume is up
-
 exit_if_day_is_over
 
 use_and_maintain_inner_routine_based_on_template 'wake' "$0"
