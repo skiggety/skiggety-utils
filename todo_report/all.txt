@@ -158,14 +158,14 @@
 ./bin/today_todo:15:# TODO: this program needs to display some instructions so the user knows how to use it.
 ./bin/today_todo:16:# TODO: maybe during business hours, show results with "BUSINESS_HOURS" more prominently, and hide them otherwise
 ./bin/today_todo:29:# TODO: report on tags and their frequency?
-./bin/today_todo:38:# TODO: take an option to pass all displayed output through 'grep --color=always <KEYWORD>' so you can just see for example, errands.
-./bin/today_todo:62:    # TODO: accept a keyword argument, e.g. "-k WOODSHOP".  When you open the editor it's already searching for it and
-./bin/today_todo:87:            $todo_program --non-interactive --color never --exclude-dir log > "${TODAY_todo_DIR}/TODO.$(basename $dir).todo_report.txt"
-./bin/today_todo:106:    # TODO: maybe automate the archiving, too?
-./bin/today_todo:115:    PAUSE_TO_READ=0 # TODO: set to 10 if passed '--slow' or '-s'
-./bin/today_todo:134:    echo "$todo_output" | tail -n 10 | grep --color=always TODO
-./bin/today_todo:175:        # TODO: show BUSINESS_HOURS stuff during business hours
-./bin/today_todo:176:        # TODO: maybe a cronjob to remind me to do that stuff on my lunch hour
+./bin/today_todo:40:# TODO: take an option to pass all displayed output through 'grep --color=always <KEYWORD>' so you can just see for example, errands.
+./bin/today_todo:64:    # TODO: accept a keyword argument, e.g. "-k WOODSHOP".  When you open the editor it's already searching for it and
+./bin/today_todo:89:            $todo_program --non-interactive --color never --exclude-dir log > "${TODAY_todo_DIR}/TODO.$(basename $dir).todo_report.txt"
+./bin/today_todo:108:    # TODO: maybe automate the archiving, too?
+./bin/today_todo:117:    PAUSE_TO_READ=0 # TODO: set to 10 if passed '--slow' or '-s'
+./bin/today_todo:136:    echo "$todo_output" | tail -n 10 | grep --color=always TODO
+./bin/today_todo:177:        # TODO: show BUSINESS_HOURS stuff during business hours
+./bin/today_todo:178:        # TODO: maybe a cronjob to remind me to do that stuff on my lunch hour
 ./bin/todo_v0.1:3:# TODO: probably should get rid of this old todo version, but it's pretty funny
 ./bin/todo_v0.4:26:# TODO: consider supporting an alternate format for votes, something that rubocop won't complain
 ./bin/todo_v0.4:34:#  TODO: once we have a --delete option, you could write a script that goes through your todo's in
@@ -376,8 +376,8 @@
 ./bin/templates/firstlife-morning.routine.TEMPLATE:16:# TODO^2: use this to make sure we don't ask for the alarm too often: FIRSTLIFE_ALARM_MARKER_FILE="$FIRSTLIFE_DIR/markers/firstlife_outside_alarm_confirmed"
 ./bin/templates/firstlife-morning.routine.TEMPLATE:49:firstlife-delegate --with-reward 'Exercise! (Or schedule it for later today)' || accumulate_error 'did not exercise' # TODO^2: --with-timer $(( 30 * 60 ))
 ./bin/templates/firstlife-multitask.routine.TEMPLATE:142:shellask "Close a couple unecessary terminals, if any" && firstlife-reward || accumulate_error "Did not clean up terminals" # TODO^2: DELETE once firstlife behaves better
-./bin/today_todo:127:    # TODO: -n 5 # TODO^2: todo should accept an option for the number of lines.  like "-n 3".  Maybe if we pass an
-./bin/today_todo:146:    # TODO^2: if it's around new years:
+./bin/today_todo:129:    # TODO: -n 5 # TODO^2: todo should accept an option for the number of lines.  like "-n 3".  Maybe if we pass an
+./bin/today_todo:148:    # TODO^2: if it's around new years:
 ./bin/todo_v0.4:31:# TODO^2: maybe accept --vote 'substring', --downvote 'substring', or --delete 'substring'  to find
 ./bin/todo_v0.4:118:    # TODO^2: parallelization might make this a lot faster (learn from rg)
 ./bin/todo_v0.4:216:    # TODO^2: it is inefficient to re-create these every time, so make them an instance
@@ -432,7 +432,7 @@
 ./bin/review_v0.1:222:    # TODO^3: maybe instead of using to_i, convert to decimal with 2-3 places:
 ./bin/review_v0.1:278:    # TODO^3: get output in interactive mode with tee into a tempfile so interactive mode won't always choose change
 ./bin/templates/firstlife-focus.routine.TEMPLATE:10:# TODO^3: try to mix in some work pomodoros until there are 16 on a weekday? maybe ask the user how many work pomodoros to do, with a default of 16, and then have you ask for a purpose for each
-./bin/today_todo:120:    # TODO^3: consider extracting the rest of this script to "today_todo_display", which can be overridden with PWD_BIN, or
+./bin/today_todo:122:    # TODO^3: consider extracting the rest of this script to "today_todo_display", which can be overridden with PWD_BIN, or
 ./bin/todo_v0.4:59:    # TODO^3: how about an argument/mode for the linter that complains about non-compacted todo
 ./bin/todo_v0.4:165:                # TODO^3: the yellow line should really be everything that's tied for highest votes,
 ./bin/todo_v0.4:183:# TODO^3: RENAME, remove, move to a new library, or use an existing library?
@@ -501,8 +501,8 @@
 ./README.md:158:# TODO^7: set up bash tab completion ( see: https://apple.stackexchange.com/questions/55875/git-auto-complete-for-branches-at-the-command-line )
 ./bin/review_v0.1:37:# TODO^7: a control key to wake it up and make it refresh immediately (accept a control character or signal to refresh
 ./bin/review_v0.1:44:# TODO^7: BUG make sure child processes get killed when you use CTRL + C on this program to stop it
-./bin/today_todo:184:    # EASY TODO^7: add NOW count to this output?:
-./bin/today_todo:188:        # TODO^7: graph how many are done each day
+./bin/today_todo:186:    # EASY TODO^7: add NOW count to this output?:
+./bin/today_todo:190:        # TODO^7: graph how many are done each day
 ./bin/templates/firstlife-focus.routine.TEMPLATE:12:today_todo --non-interactive | grep --color=always '\(NOW\|EASY\|--------\|^$\)' # TODO^9: EXTRACT and REUSE this approach that includes the headings
 ./bin/todo_v0.4:5:#   TODO^9: RENAME this (with Kevin), or at least the next version, to something a bit more unique
 ./installers/vim:62:    # TODO^9: learn to use nerdcommenter:
@@ -535,9 +535,9 @@
 ./bin/firstlife:20:# - TODO^23 (IN_PROGRESS, NOW): it should set the terminal title
 ./bin/firstlife-check-email:17:# EASY TODO^24: should firstlife/bin/ be in the path before skiggety_utils so you can override firstlife code?
 ./bin/firstlife-check-email:19:# EASY TODO^24: inner custom script, at least call it instead if it exists in firstlife/bin..
-./bin/today_todo:68:    # EASY TODO^24: graph "CONFIRMING" and Done
-./bin/today_todo:69:    # EASY TODO^24: graph total anxiety score, total votecount of all todos
-./bin/today_todo:70:    # EASY TODO^25: graph max votecount
+./bin/today_todo:70:    # EASY TODO^24: graph "CONFIRMING" and Done
+./bin/today_todo:71:    # EASY TODO^24: graph total anxiety score, total votecount of all todos
+./bin/today_todo:72:    # EASY TODO^25: graph max votecount
 ./bin/today_todo:19:# - TODO^30?: search for $1 and if it's not found, add one, if it is found, open the file searching for that string
 ./bin/firstlife:15:# TODO^31: track stats of all kinds
 ./bin/templates/firstlife-morning.routine.TEMPLATE:8:# TODO^32: this template script should be a laundry list of ideas
@@ -557,7 +557,7 @@
 ./bin/firstlife-reward:21:# EASY TODO^50: emit a characteristic "reward" sound, and get all pavlovian about it
 ./bin/templates/firstlife-multitask.routine.TEMPLATE:21:# EASY TODO^50: use firstlife-reward with description argument(s), generally
 ./bin/firstlife-delegate:23:# TODO^51: shellask --alert, inside it try something like ''osascript -e 'display notification "Done!" with title "Long-running shell command" sound name "Hero"' like you saw at 'https://stackoverflow.com/questions/40814932/is-there-a-way-to-bring-terminal-to-front-when-command-is-finished', to bring window to foreground, especially after popping a web page, and do something similar in firstlife-reward if it works:
-./bin/today_todo:149:    # TODO^51: instead of NOW and LATER, tag things with MORNING, EVENING, WEEKEND, BUSINESS_HOURS, etc, and have today_todo watch the clock to know which to highlight
+./bin/today_todo:151:    # TODO^51: instead of NOW and LATER, tag things with MORNING, EVENING, WEEKEND, BUSINESS_HOURS, etc, and have today_todo watch the clock to know which to highlight
 ./bin/templates/firstlife-work.routine.TEMPLATE:28:# EASY to get started TODO^53: (IN_PROGRESS) ask about if you have done enough productivity points. Maybe ask how many done today and how many left in the
 ./bin/templates/firstlife-multitask.routine.TEMPLATE:81:        # EASY TODO^54: loop through known tags:
 ./README.md:125:  - TODO^55: firstlife
@@ -579,7 +579,7 @@
 ./bin/firstlife-pomodoro:6:# - EASY TODO^84: successful pomodoros should keep log and count and show score, like rewards and errors. also, count POINTs similarly from lines with 'POINT' in todays todo file.
 ./bin/firstlife-work:10:exit_if_day_is_over # EASY to chip away at TODO^84: infect this and called scripts with this line all over the place to clean up windows (for ORGANIZATION)
 ./bin/templates/firstlife-multitask.routine.TEMPLATE:122:    today_todo -n | grep --color=auto '\(NOW\|LATER\|--------\|^$\)' # EASY TODO^84: EXTRACT, and REUSE
-./bin/today_todo:103:        vim -o $files_to_open '+/\.\.\.' # TODO^84: here and elsewhere, use $EDITOR, not vim
+./bin/today_todo:105:        vim -o $files_to_open '+/\.\.\.' # TODO^84: here and elsewhere, use $EDITOR, not vim
 ./bin/firstlife:12:# TODO^85: ======== Another real demo with Darren using firstlife himself with some decent code readability ============
 ./bin/firstlife-reward:5:# EASY FUN TODO^85: we need a way to watch the rewards (and pomodoros) pile up, so create a display only mode and maybe run in in the prompt like you do with duh or run it as part of delegate
 ./bin/templates/firstlife-morning.routine.TEMPLATE:37:# EASY TODO^85: Or better yet, manage the list of videos here and randomize:
@@ -587,7 +587,6 @@
 ./bin/templates/firstlife-multitask.routine.TEMPLATE:46:    # EASY TODO^85:     today_todo
 ./bin/templates/firstlife-multitask.routine.TEMPLATE:47:    # EASY TODO^85:     shellask 'work on your one of your top 3 todos and downvote it if appropriate'
 ./bin/templates/firstlife-multitask.routine.TEMPLATE:82:        # TODO^85: something like this needs to happen actually before you do the task:
-./bin/today_todo:169:        if (( $todo_now_count > 4 )); then # EASY TODO^85: UN-HARDCODE
 ./demo_in_docker:12:# TODO^85: help the user with mapping a volume for firstlife and today_todo, so he can edit files with any editor, for firstlife's sake
 ./bin/firstlife:19:# EASY TODO^86: help user start firstlife (including morning routine) with cron like I did, automate ensuring a line in local crontab, and use 'crontab-verbose'?
 ./bin/firstlife:22:# EASY TODO^86: move elsewhere:
