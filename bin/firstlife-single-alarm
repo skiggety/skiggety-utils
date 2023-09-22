@@ -10,7 +10,7 @@ trap "exit 1" INT # seems to be necessary to cancel the alarm cleanly
 ALARM_SOUND="$FIRSTLIFE_DIR/sounds/alarm.wav"
 while ! [ -f $ALARM_SOUND ]; do
     mkdir -p "$(dirname $ALARM_SOUND)"
-    shellask "Please download an alarm sound of your choice and put it at $ALARM_SOUND" \
+    shellask "Please download an alarm sound of your choice and put it at $ALARM_SOUND, e.g. \"wget 'sphere.chronosempire.org.uk/~HEx/tmp/h8s4.mp3' -O $ALARM_SOUND\"" \
         || exit_with_error "No alarm sound available"
 done
 
