@@ -506,7 +506,6 @@
 ./bin/templates/firstlife-focus.routine.TEMPLATE:12:today_todo --non-interactive | grep --color=always '\(NOW\|EASY\|--------\|^$\)' # TODO^9: EXTRACT and REUSE this approach that includes the headings
 ./bin/todo_v0.4:5:#   TODO^9: RENAME this (with Kevin), or at least the next version, to something a bit more unique
 ./installers/vim:62:    # TODO^9: learn to use nerdcommenter:
-./PWD_BIN/review-ci:8:review -u 600 -m 1800 -M $(( 24 * 60 * 60)) ci # TODO^10: review --ignore-disk (pass a flag for 'review' to ignore filesystem changes, since it is affected by git pull)
 ./bin/git-attempt-checkout:4:#   TODO^10: maybe set up git tab completion first ( see: https://apple.stackexchange.com/questions/55875/git-auto-complete-for-branches-at-the-command-line )
 ./bin/templates/firstlife-morning.routine.TEMPLATE:83:# TODO^11: mention and help with alarmy and cron:
 ./installers/skiggety.bash.config/bashrc_section.bash:7:# TODO^11: try to at least support nano or vscode:                                                 # FROM_SKIGGETY_UTILS
@@ -515,6 +514,7 @@
 ./bin/firstlife-reward:19:# TODO^13: in a shell open a video or play a sound that reminds you about an open shellask to take 1 reward
 ./bin/todo_v0.4:142:            for line in reversed(lines): # start with the highest-voted ones # TODO^13: optionally, reverse sort all lines
 ./PWD_BIN/lint:4:#   TODO^14: I think the way to handle this is to support a '-w', '--fix', '-n' or '--ro' option
+./PWD_BIN/review-ci:8:review -u 600 -m 1800 -M $(( 24 * 60 * 60)) ci # EASY TODO^14: review --ignore-disk (pass a flag for 'review' to ignore filesystem changes, since it is affected by git pull)
 ./bin/templates/firstlife-multitask.routine.TEMPLATE:52:    # TODO^14: only do this if you haven't yet cleared them all today yet:
 ./bin/today_todo:21:# - TODO^16: ..and another mode to vote for everything matching a string
 ./bin/today_todo:23:#   - TODO^17: .. e.g.: "today_todo --upvote 'truck oil change'"
