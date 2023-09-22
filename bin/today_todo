@@ -34,6 +34,8 @@ OPTIONS:
   -n or --non-interactive means to skip the editing part and just show the output immediately
   -h or -? or --help shows this message'
 
+today_todo_now_max_count=${today_todo_now_max_count:-3}
+
 function main {
 # TODO: take an option to pass all displayed output through 'grep --color=always <KEYWORD>' so you can just see for example, errands.
 
@@ -166,8 +168,8 @@ function main {
     todo_now_output="$(echo "$todo_output" | grep --color=always '\(NOW\|EASY\)')"
     todo_now_count=$(( 0 + $(echo "$todo_now_output" | wc -l) ))
     if [ "$todo_now_output" != '' ]; then
-        if (( $todo_now_count > 4 )); then # EASY TODO^85: UN-HARDCODE
-            only_showing=", only showing 4"
+        if (( $todo_now_count > $today_todo_now_max_count )); then
+            only_showing=", only showing $today_todo_now_max_count"
         else
             only_showing=''
         fi
@@ -177,7 +179,7 @@ function main {
 
         echo
         echo "-------- Found $todo_now_count todos to do right NOW (or tagged EASY)$only_showing:" | grep --color=always \\d
-        echo "$todo_now_output" | tail -n 6
+        echo "$todo_now_output" | tail -n $today_todo_now_max_count
         if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
     fi
 
