@@ -15,7 +15,7 @@
 # TODO: this program needs to display some instructions so the user knows how to use it.
 # TODO: maybe during business hours, show results with "BUSINESS_HOURS" more prominently, and hide them otherwise
 
-# EASY FUN TODO^67: add a mode to quickly add a todo, ideally it would let you specify a votecount too
+# EASY FUN TODO^70: add a mode to quickly add a todo, ideally it would let you specify a votecount too
 # - TODO^30?: search for $1 and if it's not found, add one, if it is found, open the file searching for that string
 # TODO^19: add a mode to quickly upvote one particular thing, that would call "todo --vote 'substring of my todo line'"
 # - TODO^16: ..and another mode to vote for everything matching a string
@@ -181,7 +181,7 @@ function main {
         if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
     fi
 
-    # TODO^6: add NOW count to this output?:
+    # EASY TODO^7: add NOW count to this output?:
     echo "$(( $todo_count + $todo_prog_count )) combined score, $todo_prog_count todos IN_PROGRESS"
 
     if $interactive; then

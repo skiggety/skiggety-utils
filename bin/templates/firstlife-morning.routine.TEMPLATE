@@ -5,7 +5,9 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
-# TODO^22: this template script should be a laundry list of ideas
+# TODO^32: this template script should be a laundry list of ideas
+# - TODO^33: ..but first I should start using a local version
+#   - TODO^34: ..but first I should simplify readability a lot
 
 # TODO^22: help user set up crontab like I did (use crontab-verbose?)
 
@@ -24,8 +26,6 @@ exit_if_day_is_over
 
 firstlife-delegate 'make sure you have taken any morning medications' || accumulate_error 'did not medicate'
 exit_if_day_is_over
-
-# - TODO^40: remind yourself what you care about, maybe play a motivational video?
 
 firstlife-delegate --with-reward "Review any habits you working on breaking ('negative' habits in the tracker)" \
     || accumulate_error 'did not work on breaking habits'
@@ -80,6 +80,7 @@ shellask "your calendar is about to come up. When it does, mark how long your mo
 firstlife-check-calendar && firstlife-reward 'calendar check' || accumulate_error 'did not check calendar'
 
 # TODO^67: make sure this only gets asked perhaps once a week:
+# TODO^11: mention and help with alarmy and cron:
 shellask 'make sure you have a phone alarm that ensures you log into this laptop in time for your cron job to fire (for tomorrow)' || accumulate_error 'BASIC AUTOMATION PROBLEM: alarm not set' # TODO^67: (EASY) use 'firstlife-delegate' instead
 exit_if_day_is_over
 

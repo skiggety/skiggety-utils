@@ -2,8 +2,10 @@
 
 # This script coordinates one pomodoro for you
 
-# EASY TODO^71: use this script more often, maybe against your todo list
-# TODO^2: exit early if you've done enough pomodoros in a day
+# EASY TODO^81: (IN_PROGRESS, NOW) use this script more often, maybe against your todo list
+# - EASY TODO^84: successful pomodoros should keep log and count and show score, like rewards and errors. also, count POINTs similarly from lines with 'POINT' in todays todo file.
+
+# TODO^3?: exit early if you've done enough pomodoros in a day
 # TODO?: maybe accept a '--without-reward' option
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
@@ -12,8 +14,6 @@
 open 'https://youtu.be/ddL3y1saEJs?si=UjSZicdCMYsVoIjV&t=00' # generic 25 minute timer on youtube
 task_description="do a POMODORO: $*"
 firstlife-delegate "$task_description" || exit_with_error "skipped pomodoro for: $*"
-
-# EASY TODO^73: successful pomodoros should keep log and count and show score, like rewards and errors. also, count POINTs similarly from lines with 'POINT' in todays todo file.
 
 # TODO: or should this be a 5-minute timer from youtube?:
 # TODO: break should be optional with '--without-break' or some such switch

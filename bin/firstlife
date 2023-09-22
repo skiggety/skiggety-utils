@@ -10,9 +10,9 @@ SKIGGETY_DEBUG='true'
 
 # TODO^88: ======== First real demo with Darren using firstlife himself ================
 # TODO^85: ======== Another real demo with Darren using firstlife himself with some decent code readability ============
-# TODO^31: track stats of all kinds
+# TODO^74: if a second firstlife pops up, maybe it should take over and the old one gracefully exits? (PPID in a marker file?)
 # TODO^43: and firstlife needs a way to keep you on pace, too
-# TODO: if a second firstlife pops up, maybe it should take over and the old one gracefully exits?
+# TODO^31: track stats of all kinds
 
 # EASY TODO^83: prompt user to back up ~/firstlife ( $FIRSTLIFE_DIR ) as part of setup/maintenance
 
@@ -33,11 +33,13 @@ firstlife-wake || accumulate-error "I am not sure you are awake"
 # EASY TODO^86: make sure you call firstlife-morning again later, maybe from firstlife-multitask. It should be a no-op if you've done it already, but catch you otherwise.
 firstlife-morning || accumulate_error "morning routine had errors"
 
+# TODO^88: (EASY): Do something with DAILY todos/tasks in firstlife, every day
+
 exit_if_day_is_over
 # TODO: exit_if_another_terminal_took_over
 # - TODO: ultimately, combine for exit_if_another_terminal_or_day_took_over_with_accumulated_errors
 
-# EASY TODO^86: use 'firstlife-delegate --with-reward' pretty much universally, instead of calling shellask directly
+# EASY TODO^87: use 'firstlife-delegate --with-reward' pretty much universally, instead of calling shellask directly
 
 # TODO^60: make this program aware of your productivity points, as in, keep going until you have enough:
 firstlife-work # TODO^2?: || exit_with_error "firstlife-work FAILED"

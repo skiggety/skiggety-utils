@@ -9,11 +9,12 @@
 . $SKIGGETY_UTILS_DIR/lib/today_todo.bash || exit_with_error 'could not include today_todo.bash'
 
 MULTITASKING_COUNT=3
+export today_todo_now_max_count="$MULTITASKING_COUNT"
 PASSES_AT_TODO_LIST=2 # IGNORE_TODO
 
 ####################################################################################################
 
-# EASY TODO^89: inside this script and elsewhere, use 'firstlife-delegate --with-reward' instead of calling 'shellask' directly:
+# EASY TODO^90: inside this script and elsewhere, use 'firstlife-delegate --with-reward' instead of calling 'shellask' directly:
 
 exit_if_day_is_over
 
