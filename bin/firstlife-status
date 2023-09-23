@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# This script displays progress on firstlife
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+# TODO: abbreviated today_todo
+firstlife-reward -n
+# TODO^2: firstlife-pomodoro -n

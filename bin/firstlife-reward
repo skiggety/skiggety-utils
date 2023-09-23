@@ -9,11 +9,15 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 VERBOSE=false
+ADD_REWARD=true
 
 while [[ "$1" == -* ]]; do
     # accept a -i option for case insensitive grep
     if [ "$1" == "-v" ]; then
         VERBOSE=true
+        shift
+    elif [ "$1" == "-n" ]; then
+        ADD_REWARD=false
         shift
     fi
 done
@@ -22,14 +26,15 @@ done
 # TODO?: we need a custom video: ding-toaster
 # EASY TODO^50: emit a characteristic "reward" sound, and get all pavlovian about it
 
-reward_for="$(echo "$*" | tr "$newline" ' ')"
-request="Please take 1 REWARD (for: $reward_for)"
-if [ -z "$*" ]; then
-    request='take 1 REWARD please'
+if $ADD_REWARD; then
+    reward_for="$(echo "$*" | tr "$newline" ' ')"
+    request="Please take 1 REWARD (for: $reward_for)"
+    if [ -z "$*" ]; then
+        request='take 1 REWARD please'
+    fi
+    firstlife-log --type reward "$request"
 fi
 
-# TODO?: DELETE?: shellask "$request" # no error checking on purpose
-firstlife-log --type reward "$request"
 
 # show the linecount as your reward count for the day, watch it pile up!:
 reward_log="$(log_file_for_type reward)"
@@ -40,7 +45,10 @@ fi
 j=1
 k=1
 for i in $(seq $reward_score); do
-    sleep 0.01
+    if $ADD_REWARD; then
+        sleep 0.01
+    fi
+
     if [ $j -eq $k -o $i -eq $reward_score ];then
         j=0
         k=$(($k+1))
@@ -51,15 +59,21 @@ for i in $(seq $reward_score); do
     j=$(($j+1))
 done
 
+if $ADD_REWARD; then
+    echo "$request"
+    tput bel # a.k.a. ding, bell (for searchability)
+fi
+
 SECONDS_ELAPSED_TODAY="$( echo "((( $(date +'%H') * 60.0 ) + $(date +'%M') ) * 60.0 ) + $(date +'%S')" | bc ) "
 SECONDS_PER_REWARD="$( echo "$SECONDS_ELAPSED_TODAY / $reward_score" | bc )"
 SECONDS_PER_REWARD_EXPLANATION="at $SECONDS_PER_REWARD seconds each"
-echo "$request"
+
 echo "You have earned $reward_score rewards today, $SECONDS_PER_REWARD_EXPLANATION!"
-tput bel # a.k.a. ding, bell (for searchability)
 echo
 echo
-sleep-verbose 2 # so you have a chance to notice and feel good before anything else pops up.
+if $ADD_REWARD; then
+    sleep-verbose 2 # so you have a chance to notice and feel good before anything else pops up.
+fi
 
 # TODO?: (after above) || firstlife-save-reward-for-later
 

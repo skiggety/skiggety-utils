@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# This script continuously monitors firstlife progess, and can be used in a side terminal to watch the points rack up
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
+
+# - TODO^4?: kill previous instance of same script, or maybe do that in the cron job
+
+cd $FIRSTLIFE_DIR
+review -m 60 firstlife-status
