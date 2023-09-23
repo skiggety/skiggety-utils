@@ -146,10 +146,13 @@ module InstallableSkiggetyUtil
     install_marker_file_name_prefix + installer_file_hash
   end
 
-  # TODO^8: consider changing the naming convention in the installers directory to avoid the
+  # TODO^11: consider changing the naming convention in the installers directory to avoid the
   # confusion of having an executable file called "vim", for example, that is actually only a way to
   # install vim.  This will require messing with these prefixes because the marker filenames rely on
   # them:
+  # - e.g.:
+  #   - installer-helpers/help-install-vim
+  #   - setup_bin/setup-vim
   def install_marker_file_name_prefix
     "#{File.basename(installer_file_path)}.installed_with_version."
   end

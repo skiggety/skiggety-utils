@@ -21,6 +21,6 @@ done
 # EASY TODO^46: use this script widely
 
 open 'https://mail.google.com/mail/u/0/#inbox'
-firstlife-delegate $WITH_REWARD 'take care of 2 new emails, 2 old emails, and one starred email' || accumulate_error 'ignored email'
+firstlife-delegate $WITH_REWARD 'take care of a few emails' || accumulate_error 'ignored email'
 
 exit_with_any_accumulated_errors
