@@ -22,7 +22,8 @@ done
 # TODO?: we need a custom video: ding-toaster
 # EASY TODO^50: emit a characteristic "reward" sound, and get all pavlovian about it
 
-request="Please take 1 REWARD (for: $*)"
+reward_for="$(echo "$*" | tr "$newline" ' ')"
+request="Please take 1 REWARD (for: $reward_for)"
 if [ -z "$*" ]; then
     request='take 1 REWARD please'
 fi
