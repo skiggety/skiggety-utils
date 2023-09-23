@@ -42,7 +42,7 @@ alias gat='git add-theirs'
 
 # This is nice if you suddenly realize you need to copy some information off the screen, or if you want to keep a
 # window/tab open with the same visual settings
-trap 'if [ "login" == "$(ps -o comm= $PPID)" ];then echo holding this window open for a short interval just in case you exited prematurely;sleep-verbose 10;fi' EXIT
+trap 'if [ "login" == "$(ps -o comm= $PPID)" ];then echo holding this window open for a short interval just in case you exited prematurely;sleep-verbose 60;fi' EXIT
 
 # asdf stuff (should be at the bottom of this file):
 . "$HOME/.asdf/asdf.sh"
