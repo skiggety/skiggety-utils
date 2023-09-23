@@ -59,7 +59,7 @@ for num in $(seq $passes_at_todo_list); do
         accumulate_error 'did not get tasks organized'
     exit_if_day_is_over
 
-    today_todo --non-interactive | grep --color=always '\(POINT\|--------\|^$\)'
+    vital-list-by-tag POINT
     shellask 'run today_todo again to tag or upvote something worth productivity POINTS' || \
         accumulate_error 'did not get focus on the important stuff'
     exit_if_day_is_over
