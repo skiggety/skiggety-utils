@@ -3,10 +3,30 @@
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
+# TODO^93: TEST this in docker as a reluctant user starting from fish
+
+echo
+
 if [ -z "$SKIGGETY_UTILS_DIR" ]; then
-    exit_with_error "Please add \"export=SKIGGETY_UTILS_DIR='$(dirname $THIS_DIR)'\" to the end of your ~/.bashrc file, then restart bash and try this script again"
+    exit_with_error "Please add \"export SKIGGETY_UTILS_DIR='$(dirname $THIS_DIR)'\" to the end of your ~/.bashrc file, then frun or restart bash ('exec bash') and try this script again from bash"
 fi
 
-if ! mplayer -v; then
-    exit_with_error "Please install mplayer ('brew install mplayer'?) and try again"
+if ! which firstlife >/dev/null; then
+    exit_with_error "Please add \"\$SKIGGETY_UTILS_DIR/bin\" to your PATH (perhaps in your ~/.bashrc file), then restart bash and try this script again"
 fi
+
+if ! mplayer -v >/dev/null 2>&1; then
+    if which brew >/dev/null && shellask "Want to install mplayer with brew?"; then
+        brew install mplayer
+    elif which apt-get >/dev/null && shellask "Want to install mplayer with apt-get?"; then
+        apt-get -y update
+        apt-get -y install mplayer
+    fi
+fi
+
+if ! mplayer -v >/dev/null 2>&1; then
+    exit_with_error "Please install mplayer and try again"
+fi
+
+echo "$0 SUCCEEDED"
+exit 0
