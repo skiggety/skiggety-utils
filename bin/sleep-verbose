@@ -6,6 +6,8 @@
 # TODO^2?: show a clock, optionally
 # TODO^2?: integrate into a banner
 
+# TODO^2?: take a '-m <message>' option to display a custom message
+
 PRINT_NEWLINE=true
 if [ "$1" == "-n" ];then
     PRINT_NEWLINE=false

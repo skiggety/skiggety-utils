@@ -8,8 +8,9 @@ SKIGGETY_DEBUG='true'
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 . $SKIGGETY_UTILS_DIR/lib/today_todo.bash || exit_with_error 'could not include today_todo.bash'
 
-# TODO^88: ======== First real demo with Darren using firstlife himself ================
-# TODO^85: ======== Another real demo with Darren using firstlife himself with some decent code readability ============
+# TODO^96: (IN_PROGRESS NOW EASY FUN) firstlife should help me with NIGHTLY tasks NIGHTLY, using 'firstlife-iterate-on-vital-tag'
+# TODO^88: ======== First real demo ================
+# TODO^85: ======== Another real demo with some decent code readability ============
 # TODO^74: if a second firstlife pops up, maybe it should take over and the old one gracefully exits? (PPID in a marker file?)
 # - TODO^4: and I could take advantage of this to create a way to exit firstlife early without having to close the terminal
 # TODO^43: and firstlife needs a way to keep you on pace, too
@@ -29,14 +30,16 @@ function update_todo_graph {
     firstlife-delegate --with-reward "check today_todo graph import $TODAY_todo_DIR/graph.csv with 'replace current sheet' by uploading" || accumulate_error "did not check today_todo graph"
 }
 
+# TODO: maybe wake only runs because the cron job calls firstlife --with-wake
 firstlife-wake || accumulate-error "I am not sure you are awake"
+exit_if_day_is_over
 
 # EASY TODO^86: make sure you call firstlife-morning again later, maybe from firstlife-multitask. It should be a no-op if you've done it already, but catch you otherwise.
-firstlife-morning || accumulate_error "morning routine had errors"
-
-# TODO^88: (EASY): Do something with DAILY todos/tasks in firstlife, every day
-
+firstlife-morning || accumulate_error 'morning routine had errors'
 exit_if_day_is_over
+
+firstlife-daily || accumulate_error 'did not complete DAILY tasks'
+
 # TODO: exit_if_another_terminal_took_over
 # - TODO: ultimately, combine for exit_if_another_terminal_or_day_took_over_with_accumulated_errors
 

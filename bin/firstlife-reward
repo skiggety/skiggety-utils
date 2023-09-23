@@ -39,7 +39,7 @@ fi
 j=1
 k=1
 for i in $(seq $reward_score); do
-    sleep 0.02
+    sleep 0.01
     if [ $j -eq $k -o $i -eq $reward_score ];then
         j=0
         k=$(($k+1))

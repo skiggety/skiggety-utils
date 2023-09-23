@@ -5,7 +5,7 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
-# EASY TODO^83: take '-t' flag so you can specify length in seconds, e.g. 'firstlife-break -t 60' between todo list tasks
+# EASY TODO^84: take '-t' flag so you can specify length in seconds, e.g. 'firstlife-break -t 60' between todo list tasks
 
 # TODO: firstlife-reward -n # just display current reward count
 

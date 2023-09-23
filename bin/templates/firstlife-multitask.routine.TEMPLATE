@@ -7,6 +7,7 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 . $SKIGGETY_UTILS_DIR/lib/today_todo.bash || exit_with_error 'could not include today_todo.bash'
+. $SKIGGETY_UTILS_DIR/lib/vital.bash || exit_with_error 'could not include vital.bash'
 
 passes_at_todo_list=2
 FIRSTLIFE_MULTITASKING_COUNT=${FIRSTLIFE_MULTITASKING_COUNT:-4}
@@ -67,18 +68,15 @@ for num in $(seq $passes_at_todo_list); do
     exit_if_day_is_over
 
     # TODO^88: extract this bit that works on a few todos to firstlife-work-on-top-n-todos -n $MULTITASKING_CONSTANT
-    # - TODO^89: or better yet, EXTRACT to 'vital-iterate' for now and eventually 'vital --iterate':
-    #   - TODO^97: (IN_PROGRESS, NOW) and use 'vital-iterate-on-tag' to iterate over DAILY and NIGHTLY todos
+    # - TODO^90: or better yet, EXTRACT to 'firstlife-iterate-on-vital'
     pushd $TODAY_todo_DIR > /dev/null
     todos="$($SKIGGETY_UTILS_DIR/bin/todo|grep '\(NOW\|EASY\)'|tail -n $FIRSTLIFE_MULTITASKING_COUNT|tac)" # lump "EASY" in with "NOW", might as well do easy stuff right away
     ORIGINAL_IFS="$IFS"
     IFS=$'\n'
-    NEWLINE='
-    '
     read -rd '' -a todos_as_array <<<"$todos"
     debug_here "echo \${todos_as_array} contains"
     for todo_line in ${todos_as_array[@]};do
-        shellask "Work on this task (and downvote or mark done using today_todo):${NEWLINE}${todo_line}" && \
+        shellask "Work on this task (and downvote or mark done using today_todo):${newline}${todo_line}" && \
             firstlife-reward || \
             accumulate_error "Didn't work on todo: $todo_line"
 
@@ -146,9 +144,6 @@ popd
 exit_if_day_is_over
 
 shellask "Close a 2-4 browser tabs unless they are reasonable already" && firstlife-reward || accumulate_error "Did not clean up browser tabs"
-exit_if_day_is_over
-
-shellask "Close a couple unecessary terminals, if any" && firstlife-reward || accumulate_error "Did not clean up terminals" # TODO^2: DELETE once firstlife behaves better
 exit_if_day_is_over
 
 shellask 'Put a few things away' && firstlife-reward || accumulate_error 'did not put things away'

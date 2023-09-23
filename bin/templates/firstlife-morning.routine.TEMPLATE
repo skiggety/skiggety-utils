@@ -9,7 +9,7 @@
 # - TODO^33: ..but first I should start using a local version
 #   - TODO^34: ..but first I should simplify readability a lot
 
-# TODO^22: help user set up crontab like I did (use crontab-verbose?)
+# TODO^42: (FUN) help user set up crontab like I did (use crontab-verbose?) (to help test on metrigon)
 
 # TODO^35: with this and other firstlife scripts, make a distinction between the template and a personal one.
 

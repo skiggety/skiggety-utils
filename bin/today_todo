@@ -15,7 +15,7 @@
 # TODO: this program needs to display some instructions so the user knows how to use it.
 # TODO: maybe during business hours, show results with "BUSINESS_HOURS" more prominently, and hide them otherwise
 
-# EASY FUN TODO^70: add a mode to quickly add a todo, ideally it would let you specify a votecount too
+# EASY FUN TODO^71: add a mode to quickly add a todo, ideally it would let you specify a votecount too
 # - TODO^30?: search for $1 and if it's not found, add one, if it is found, open the file searching for that string
 # TODO^19: add a mode to quickly upvote one particular thing, that would call "todo --vote 'substring of my todo line'"
 # - TODO^16: ..and another mode to vote for everything matching a string
@@ -34,7 +34,7 @@ OPTIONS:
   -n or --non-interactive means to skip the editing part and just show the output immediately
   -h or -? or --help shows this message'
 
-today_todo_now_max_count=${today_todo_now_max_count:-3}
+today_todo_now_max_count=${today_todo_now_max_count:-4}
 
 function main {
 # TODO: take an option to pass all displayed output through 'grep --color=always <KEYWORD>' so you can just see for example, errands.
@@ -67,9 +67,9 @@ function main {
     csv_date="$(date +'%m/%d/%Y %T')"
     isotoday="$(isotoday)"
 
-    # EASY TODO^24: graph "CONFIRMING" and Done
+    # EASY TODO^28: graph max votecount
+    # EASY TODO^25: graph "CONFIRMING" and Done
     # EASY TODO^24: graph total anxiety score, total votecount of all todos
-    # EASY TODO^25: graph max votecount
 
     todo_list_file_name="TODO.today.txt" # IGNORE_TODO
     done_list_file_name="DONE.$isotoday.txt"
@@ -105,7 +105,7 @@ function main {
         vim -o $files_to_open '+/\.\.\.' # TODO^84: here and elsewhere, use $EDITOR, not vim
     fi
 
-    # TODO: maybe automate the archiving, too?
+    # TODO^6: maybe automate the archiving, too?
     EXCLUDE_DIR_ARGS="--exclude-dir archive"
 
     echo "It's time to compact todo's in $0"

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# This script is a todo list system
+#
+#   V. - Vote-tracking
+#   I. - Integer-enabled
+#   T. - Todo-reporter
+#   A. - Anxiety-powered
+#   L. - List-maintainer
+#
+# TODO^6: replacement for today_todo
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+exit_with_error "TODO: IMPLEMENT '--add' to add a todo"
+exit_with_error "TODO: IMPLEMENT '--vote' to vote on a todo"
+exit_with_error "TODO: IMPLEMENT '--edit' to edit the todo list"
+exit_with_error "TODO: IMPLEMENT '--report' to print a report, replacing 'today_todo -n'"
+exit_with_error "TODO: IMPLEMENT: make 'vital --edit --report' the default, replacing 'today_todo' (with no options)"

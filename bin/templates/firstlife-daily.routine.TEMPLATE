@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# This script reminds you to do anything that needs to be done daily
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
+
+firstlife-iterate-on-vital-tag 'DAILY' || accumulate_error 'ignored DAILY tasks'
+
+exit_with_any_accumulated_errors
