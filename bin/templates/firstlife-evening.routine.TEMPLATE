@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# This script is your custom evening routine
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
+
+firstlife-delegate --with-reward 'find your book' || accumulate_error "You don't even know where your book is" # TODO?: MOVE to the inner routine
+
+today_todo -n | grep --color=always '\(EVENING\|--------\|^$\)'
+firstlife-delegate --with-reward "Work on something tagged 'EVENING' on your todo list"
+
+firstlife-delegate --with-reward "use vital to edit what happens DAILY or NIGHTLY"
+# TODO: NIGHTLY vital todos
+
+shellask "Charge phone so it's ready to wake you up in the morning" || accumulate_error "charge phone before bed for alarm"
+shellask "finish up all evening habits" || accumulate_error "failed to finish evening habits"
+
+firstlife-delegate --with-reward "Look at your habit tracker graphs and think about what you could automate better in firstlife"
+
+exit_with_accumulated_errors

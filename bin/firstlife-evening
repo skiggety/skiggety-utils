@@ -27,8 +27,6 @@ exit_if_day_is_over # EASY to chip away at TODO^86: infect this and called scrip
 
 use_and_maintain_inner_routine_based_on_template 'evening' "$0"
 
-firstlife-delegate --with-reward 'find your book' || accumulate_error "You don't even know where your book is" # TODO?: MOVE to the inner routine
-
 exit_if_day_is_over
 
 # EASY FUN TODO^86: method extract firstlife-mark-done <task_name> so we can mark other things:
