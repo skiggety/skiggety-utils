@@ -10,8 +10,8 @@ firstlife-delegate --with-reward 'find your book' || accumulate_error "You don't
 today_todo -n | grep --color=always '\(EVENING\|--------\|^$\)'
 firstlife-delegate --with-reward "Work on something tagged 'EVENING' on your todo list"
 
-firstlife-delegate --with-reward "use vital to edit what happens DAILY or NIGHTLY"
-# TODO: NIGHTLY vital todos
+firstlife-delegate --with-reward "use 'today_todo' to edit what happens DAILY or NIGHTLY"
+firstlife-iterate-on-vital-tag 'NIGHTLY' || accumulate_error 'ignored NIGHTLY tasks'
 
 shellask "Charge phone so it's ready to wake you up in the morning" || accumulate_error "charge phone before bed for alarm"
 shellask "finish up all evening habits" || accumulate_error "failed to finish evening habits"

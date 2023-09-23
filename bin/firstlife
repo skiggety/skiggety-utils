@@ -8,7 +8,6 @@ SKIGGETY_DEBUG='true'
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 . $SKIGGETY_UTILS_DIR/lib/today_todo.bash || exit_with_error 'could not include today_todo.bash'
 
-# TODO^96: (IN_PROGRESS NOW EASY FUN) firstlife should help me with NIGHTLY tasks NIGHTLY, using 'firstlife-iterate-on-vital-tag'
 # TODO^88: ======== First real demo ================
 # TODO^85: ======== Another real demo with some decent code readability ============
 # TODO^74: if a second firstlife pops up, maybe it should take over and the old one gracefully exits? (PPID in a marker file?)
