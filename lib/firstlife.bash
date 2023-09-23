@@ -12,7 +12,7 @@ export FIRSTLIFE_ISOTODAY
 
 function log_file_for_type {
     log_type="$1"
-    echo "${FIRSTLIFE_LOG_DIR}/${log_type}.${FIRSTLIFE_ISOTODAY}.log.txt"
+    echo "${FIRSTLIFE_LOG_DIR}/${log_type}.$(isotoday).log.txt"
 }
 
 function is_still_today {
