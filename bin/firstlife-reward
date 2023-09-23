@@ -59,7 +59,7 @@ echo "You have earned $reward_score rewards today, $SECONDS_PER_REWARD_EXPLANATI
 tput bel # a.k.a. ding, bell (for searchability)
 echo
 echo
-sleep-verbose 3 # so you have a chance to notice and feel good before anything else pops up.
+sleep-verbose 2 # so you have a chance to notice and feel good before anything else pops up.
 
 # TODO?: (after above) || firstlife-save-reward-for-later
 
