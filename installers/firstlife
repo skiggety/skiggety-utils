@@ -15,6 +15,17 @@ if ! which firstlife >/dev/null; then
     exit_with_error "Please add \"\$SKIGGETY_UTILS_DIR/bin\" to your PATH (perhaps in your ~/.bashrc file), then restart bash and try this script again"
 fi
 
+if ! bc -v >/dev/null 2>&1; then
+    if which apt-get >/dev/null && shellask "Want to install bc with apt-get?"; then
+        apt-get -y update
+        apt-get -y install bc
+    fi
+fi
+
+if ! bc -v >/dev/null 2>&1; then
+    exit_with_error "Please install bc and try again"
+fi
+
 if ! mplayer -v >/dev/null 2>&1; then
     if which brew >/dev/null && shellask "Want to install mplayer with brew?"; then
         brew install mplayer
