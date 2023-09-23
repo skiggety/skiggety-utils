@@ -31,22 +31,21 @@ firstlife-delegate --with-reward "Review any habits you working on breaking ('ne
     || accumulate_error 'did not work on breaking habits'
 exit_if_day_is_over
 
-firstlife-delegate --with-reward 'Put away any temptations or distractions'
-exit_if_day_is_over
-
 # EASY TODO^85: Or better yet, manage the list of videos here and randomize:
 SCOTTS_MEDITATION_PLAYLIST='https://www.youtube.com/playlist?list=PLbyyOcHfeHIqCKsHI62oWS6i4JQfdtcfd'
 open "$SCOTTS_MEDITATION_PLAYLIST"
-firstlife-delegate '5-minute meditation' || accumulate_error 'did not meditate'
-exit_if_day_is_over
-# - TODO?:: wait until a certain time, 5 minutes after start
-
-# EASY TODO^70: kick off a morning playlist to keep on track for time with the rest of this stuff
-
+firstlife-delegate '5-minute meditation' || accumulate_error 'did not meditate' # TODO^2: --with-timer 330
 exit_if_day_is_over
 
-firstlife-delegate --with-reward 'Put on exercise clothes (and make sure you have your housekey/earbuds, etc.) '
-firstlife-delegate --with-reward 'Exercise! (Or schedule it for later today)' || accumulate_error 'did not exercise' # TODO^2: --with-timer $(( 30 * 60 ))
+firstlife-delegate --with-reward 'Put away any temptations or distractions'
+exit_if_day_is_over
+
+exit_if_day_is_over
+
+# TODO^3: firstlife-delegate --with-reward --with-timer $(( 30 * 60 )) 'blah blah':
+firstlife-delegate --with-reward 'Put on exercise clothes (and make sure you have your housekey/earbuds, etc.)' \
+    && firstlife-delegate --with-reward 'Exercise! (Or schedule it for later today)' \
+    || accumulate_error 'did not exercise'
 exit_if_day_is_over
 
 firstlife-delegate --with-reward 'Hit the shower' || accumulate_error 'did not shower'
@@ -61,11 +60,6 @@ firstlife-delegate --with-reward 'Get dressed' || accumulate_error 'did not get 
 exit_if_day_is_over
 
 firstlife-delegate --with-reward 'Break your fast' || accumulate_error 'skipped breakfast'
-
-# TODO^67: (EASY) check calendar script should be the one to call 'firstlife-reward', at least if you called it with '--with-reward':
-firstlife-check-calendar && firstlife-reward 'calendar check' || accumulate_error 'did not check calendar'
-exit_if_day_is_over
-
 exit_if_day_is_over
 
 firstlife-delegate 'Keep the tunes pumping (you can use "firstlife-music")'
@@ -76,7 +70,9 @@ exit_with_any_accumulated_errors
 
 # TODO^12: make exit_if_day_is_over aware of errors?
 
+# EASY TODO: firstlife-check-calendar could take a message string to override the normal one:
 shellask "your calendar is about to come up. When it does, mark how long your morning routine took, and plan your day, OK?"
+# TODO^67: (EASY) check calendar script should be the one to call 'firstlife-reward', at least if you called it with '--with-reward':
 firstlife-check-calendar && firstlife-reward 'calendar check' || accumulate_error 'did not check calendar'
 
 # TODO^67: make sure this only gets asked perhaps once a week:
