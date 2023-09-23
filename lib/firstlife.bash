@@ -75,13 +75,14 @@ function use_and_maintain_inner_routine_based_on_template {
         accumulate_error "Inner routine not found $(echo_here) (neither '$PERSONAL_ROUTINE_SCRIPT' nor '$TEMPLATE_ROUTINE_SCRIPT' )"
     fi
 
+    # TODO^88: (IN_PROGRESS NOW): allow using vscode here:
     shellask "Want to tune up $(basename $PERSONAL_ROUTINE_SCRIPT) for next time?" \
-        && vimdiff -o $PERSONAL_ROUTINE_SCRIPT $TEMPLATE_ROUTINE_SCRIPT
+        && vimdiff -o $TEMPLATE_ROUTINE_SCRIPT $PERSONAL_ROUTINE_SCRIPT
 }
 
 # Show an image for your alarm to match to, first thing:
 function handle-alarmy-photo-mission {
-  shellask "Please fullscreen this terminal window if you have an alarm to satisfy, otherwise say 'nope'" || return 0
+  shellask "Please fullscreen this terminal window if you have an alarm to satisfy, otherwise say 'nope'" || return 1
   echo '|<--------125-characters-wide---------------------------------------------------------------------------------------------->|'
   shellask "use CTRL/COMMAND-plus/minus to change font size so the 125-character wide bar above just barely fits"
   echo '*==========================================================*'
