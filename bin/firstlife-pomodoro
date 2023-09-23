@@ -15,6 +15,8 @@ open 'https://youtu.be/ddL3y1saEJs?si=UjSZicdCMYsVoIjV&t=00' # generic 25 minute
 task_description="do a POMODORO: $*"
 firstlife-delegate "$task_description" || exit_with_error "skipped pomodoro for: $*"
 
+firstlife-log --type pomodoro "$task_description" # TODO^92 IN_PROGRESS NOW: display like we do with rewards
+
 # TODO: or should this be a 5-minute timer from youtube?:
 # TODO: break should be optional with '--without-break' or some such switch
 firstlife-break

@@ -1,5 +1,5 @@
 ==== TODOs, ascending, so you know what's likely to change next. Do not edit, run 'generate_todo_report' to generate. ====
-( showing last 3 lines out of 653 for 'todo': )
-./bin/templates/firstlife-multitask.routine.TEMPLATE:19:# EASY TODO^90: inside this script and elsewhere, use 'firstlife-delegate --with-reward' instead of calling 'shellask' directly:
-./bin/templates/firstlife-multitask.routine.TEMPLATE:75:    # - TODO^90: or better yet, EXTRACT to 'firstlife-iterate-on-vital'
+( showing last 3 lines out of 648 for 'todo': )
+./bin/templates/firstlife-multitask.routine.TEMPLATE:77:    # - TODO^90: or better yet, EXTRACT to 'firstlife-iterate-on-vital'
+./bin/firstlife-pomodoro:18:firstlife-log --type pomodoro "$task_description" # TODO^92 IN_PROGRESS NOW: display like we do with rewards
 ./installers/firstlife:6:# TODO^93: TEST this in docker as a reluctant user starting from fish
