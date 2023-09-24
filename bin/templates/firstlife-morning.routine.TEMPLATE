@@ -9,8 +9,6 @@
 # - TODO^33: ..but first I should start using a local version
 #   - TODO^34: ..but first I should simplify readability a lot
 
-# TODO^42: (FUN) help user set up crontab like I did (use crontab-verbose?) (to help test on metrigon)
-
 # TODO^35: with this and other firstlife scripts, make a distinction between the template and a personal one.
 
 # TODO^2: use this to make sure we don't ask for the alarm too often: FIRSTLIFE_ALARM_MARKER_FILE="$FIRSTLIFE_DIR/markers/firstlife_outside_alarm_confirmed"
@@ -74,11 +72,6 @@ exit_with_any_accumulated_errors
 shellask "your calendar is about to come up. When it does, mark how long your morning routine took, and plan your day, OK?"
 # TODO^67: (EASY) check calendar script should be the one to call 'firstlife-reward', at least if you called it with '--with-reward':
 firstlife-check-calendar && firstlife-reward 'calendar check' || accumulate_error 'did not check calendar'
-
-# TODO^67: make sure this only gets asked perhaps once a week:
-# TODO^11: mention and help with alarmy and cron:
-shellask 'make sure you have a phone alarm that ensures you log into this laptop in time for your cron job to fire (for tomorrow)' || accumulate_error 'BASIC AUTOMATION PROBLEM: alarm not set' # TODO^67: (EASY) use 'firstlife-delegate' instead
-exit_if_day_is_over
 
 # TODO: do I want this here? do I want it in other high-level firstlife scripts?:
 echo "$(basename $0) succeeded!"
