@@ -7,4 +7,8 @@
 
 firstlife-iterate-on-vital-tag 'DAILY' || accumulate_error 'ignored DAILY tasks'
 
+firstlife-check-calendar
+open "http://facebook.com"
+firstlife-delegate --with-reward "Wish people happy birthday"
+
 exit_with_any_accumulated_errors
