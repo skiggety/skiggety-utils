@@ -9,7 +9,7 @@
 . $SKIGGETY_UTILS_DIR/lib/today_todo.bash || exit_with_error 'could not include today_todo.bash'
 . $SKIGGETY_UTILS_DIR/lib/vital.bash || exit_with_error 'could not include vital.bash'
 
-passes_at_todo_list=2
+passes_at_todo_list=1
 FIRSTLIFE_MULTITASKING_COUNT=${FIRSTLIFE_MULTITASKING_COUNT:-4}
 
 export today_todo_now_max_count="$FIRSTLIFE_MULTITASKING_COUNT"
@@ -17,6 +17,8 @@ export today_todo_now_max_count="$FIRSTLIFE_MULTITASKING_COUNT"
 ####################################################################################################
 
 # EASY TODO^90: inside this script and elsewhere, use 'firstlife-delegate --with-reward' instead of calling 'shellask' directly:
+
+# TODO^81: firstlife should keep an eye on "MAINTENANCE" tag in vital/today_todo
 
 exit_if_day_is_over
 
@@ -113,17 +115,17 @@ for num in $(seq $passes_at_todo_list); do
     exit_if_day_is_over
 
     # TODO^86: if you have not finished all dishes at least once today
-    firstlife-delegate --with-reward 'Put away 2 dry dishes if needed' || accumulate_error 'Did not put away dishes'
+    firstlife-delegate --with-reward 'Put away at least 2 dry dishes (if needed)' || accumulate_error 'Did not put away dishes'
     exit_if_day_is_over
 
-    firstlife-delegate --with-reward 'Wash 1 dish' || accumulate_error 'Did not wash a dish'
+    firstlife-delegate --with-reward 'Wash at least 1 dish' || accumulate_error 'Did not wash a dish'
     exit_if_day_is_over
 
     firstlife-check-email --with-reward || accumulate_error 'ignored email'
     exit_if_day_is_over
 
-    today_todo -n | grep '\(CONFIRMING\|--------\|^$\)'
-    firstlife-delegate --with-reward 'Mark something DONE that is "CONFIRMING" in today_todo (if you can)' || accumulate_error 'Did not confirm anything' # TODO: TEST
+    vital-list-by-tag CONFIRMING
+    firstlife-delegate --with-reward 'Mark something DONE that is "CONFIRMING" in today_todo (if you can)' || accumulate_error 'Did not confirm anything'
     exit_if_day_is_over
 
     today_todo -n | grep --color=auto '\(NOW\|LATER\|--------\|^$\)' # EASY TODO^84: EXTRACT, and REUSE
