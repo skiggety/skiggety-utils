@@ -53,16 +53,16 @@ for num in $(seq $passes_at_todo_list); do
 
     # TODO^14: only do this if you haven't yet cleared them all today yet:
     open 'https://www.google.com/calendar/render' # EASY TODO^87: script extract
-    shellask 'take care of a calendar task, maybe by putting it into today_todo' && firstlife-reward || accumulate_error 'ignored paper todo list'
+    shellask 'Take care of a calendar task, maybe by putting it into today_todo' && firstlife-reward || accumulate_error 'ignored paper todo list'
     exit_if_day_is_over
 
     today_todo --non-interactive
-    shellask 'run today_todo once or twice to make sure you are ready to focus on the right stuff' || \
+    shellask 'Run "vital" once or twice to make sure you are ready to focus on the right stuff' || \
         accumulate_error 'did not get tasks organized'
     exit_if_day_is_over
 
     vital-list-by-tag POINT
-    shellask 'run today_todo again to tag or upvote something worth productivity POINTS' || \
+    shellask 'Run "vital" again to tag or upvote something worth productivity POINTS' || \
         accumulate_error 'did not get focus on the important stuff'
     exit_if_day_is_over
 
