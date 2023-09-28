@@ -3,8 +3,6 @@
 # This script asks the user to do the task described and report status back.  It is a great way of stubbing out
 # functionality, setting yourself one-off reminders, or....
 
-# TODO?: rename "shellegate"? (something called 'shellask' could accept more than boolean response maybe)
-
 # BONUS!!: It's also a good debug breakpoint.  Just write something like this in your code (let's say a bash script but
 # you could call it from other languages and inspect environment variables, technically):
 #

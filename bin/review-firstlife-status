@@ -8,4 +8,5 @@
 # - TODO^4?: kill previous instance of same script, or maybe do that in the cron job
 
 cd $FIRSTLIFE_DIR
+firstlife-status
 review -m 60 firstlife-status

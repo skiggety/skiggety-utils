@@ -38,7 +38,10 @@ fi
 
 # show the linecount as your reward count for the day, watch it pile up!:
 reward_log="$(log_file_for_type reward)"
-reward_score="$(wc -l $reward_log | awk '{print $1}')"
+reward_score=0
+if [ -f $reward_log ]; then
+    reward_score="$(wc -l $reward_log | awk '{print $1}')"
+fi
 if $VERBOSE;then
     cat $reward_log
 fi

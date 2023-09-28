@@ -3,7 +3,28 @@
 # This script displays progress on firstlife
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
 # TODO: abbreviated today_todo
-firstlife-reward -n
-# TODO^2: firstlife-pomodoro -n
+reward_status="$(firstlife-reward -n)"
+echo "$reward_status"
+
+# TODO^3: firstlife-pomodoro -n
+
+BEHIND_SOUND="$FIRSTLIFE_DIR/sounds/behind.mp3"
+while ! [ -f $BEHIND_SOUND ]; do
+    mkdir -p "$(dirname $BEHIND_SOUND)"
+    shellask "Please download an sound to let you know you are behind of your choice and put it at $ALARM_SOUND, e.g. \"wget <some-whip-cracking-sound> -O $BEHIND_SOUND\"" \
+        || exit_with_error "No sound to let you know you are behind available"
+done
+
+spr="$(echo "$reward_status"| grep 'seconds each' | sed 's/.*at \([0-9]*\) seconds each.*/\1/')"
+if [ $spr -gt 600 ] && test "`find $FIRSTLIFE_LOG_DIR/reward.$(isotoday).log.txt -mmin +5`"; then
+    echo
+    echo
+    echo
+    echo "    It seems like you're getting behind, time to emit a sound: $BEHIND_SOUND"
+    echo
+    echo
+    mplayer $BEHIND_SOUND >/dev/null 2>&1
+fi
