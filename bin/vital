@@ -8,11 +8,14 @@
 #   A. - Anxiety-powered
 #   L. - List-maintainer
 #
-# TODO^6: replacement for today_todo
+
+# TODO^13: replacement for today_todo
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-exit_with_error "TODO: IMPLEMENT"
+today_todo # placeholder
+
+exit_with_error "TODO^13: IMPLEMENT"
 exit_with_error "- TODO: IMPLEMENT '--help' with something useful"
 exit_with_error "- TODO: IMPLEMENT '--add' to add a todo"
 exit_with_error "- TODO: IMPLEMENT '--vote' to vote on a todo"

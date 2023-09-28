@@ -37,8 +37,6 @@ exit_if_day_is_over
 firstlife-morning || accumulate_error 'morning routine had errors'
 exit_if_day_is_over
 
-firstlife-daily || accumulate_error 'did not complete DAILY tasks'
-
 # TODO: exit_if_another_terminal_took_over
 # - TODO: ultimately, combine for exit_if_another_terminal_or_day_took_over_with_accumulated_errors
 

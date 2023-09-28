@@ -18,6 +18,9 @@ firstlife-multitask || accumulate_error 'multitasking ERRORS' # TODO: at least o
 show_recently_done_todos
 exit_if_day_is_over
 
+firstlife-daily || accumulate_error 'did not complete DAILY tasks'
+exit_if_day_is_over
+
 firstlife-focus || accumulate_error 'did not focus on important stuff'
 exit_if_day_is_over
 
