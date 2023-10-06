@@ -22,11 +22,11 @@ SKIGGETY_DEBUG='true'
 # TODO^75: if a second firstlife pops up, maybe it should take over and the old one gracefully exits? (PPID in a marker file?)
 # - TODO^4: and I could take advantage of this to create a way to exit firstlife early without having to close the terminal
 # TODO^43: and firstlife needs a way to keep you on pace, too
+# TODO^32: firstlife should do something different on weekends, sundays, any sabbath of choice
 # TODO^31: track stats of all kinds
 
 # EASY TODO^83: prompt user to back up ~/firstlife ( $FIRSTLIFE_DIR ) as part of setup/maintenance
 
-# EASY TODO^86: help user start firstlife (including morning routine) with cron like I did, automate ensuring a line in local crontab, and use 'crontab-verbose'?
 # - TODO^23 (IN_PROGRESS, NOW): it should set the terminal title
 
 # EASY TODO^86: move elsewhere:
