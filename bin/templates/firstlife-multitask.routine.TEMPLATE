@@ -81,8 +81,9 @@ for num in $(seq $passes_at_todo_list); do
         shellask "Work on this task (and downvote or mark done using today_todo):${newline}${todo_line}" && \
             firstlife-reward || \
             accumulate_error "Didn't work on todo: $todo_line"
+        exit_if_day_is_over
 
-        # EASY TODO^55: loop through known tags:
+        # EASY TODO^73: loop through known tags:
         # TODO^86: something like this needs to happen actually before you do the task:
         if echo $todo_line | grep ERRAND > /dev/null; then
             today_todo -n | grep ERRAND
@@ -92,6 +93,7 @@ for num in $(seq $passes_at_todo_list); do
             today_todo -n | grep PURCHASE
             firstlife-delegate --with-reward "Maybe handle some other purchases"
         fi
+        exit_if_day_is_over
 
         firstlife-break # TODO^5: -t 180
 
@@ -110,6 +112,7 @@ for num in $(seq $passes_at_todo_list); do
     exit_if_day_is_over
 
     firstlife-break
+    exit_if_day_is_over
 
     shellask 'Do one act of self care or something on the habit tracker' && firstlife-reward || accumulate_error 'missed a habit'
     exit_if_day_is_over
@@ -159,6 +162,7 @@ if [ -n "$SKIGGETY_UTILS_DIR" ] && [ -d "$SKIGGETY_UTILS_DIR" ]; then
 fi
 
 firstlife-break
+exit_if_day_is_over
 
 today_todo -n | grep --color=always '\(FUN\|EASY\|--------\|^$\)'
 firstlife-delegate --with-reward "Work on something FUN/EASY (is enough stuff tagged? --run \"today_todo -n | grep '\\(FUN\\|EASY\\)'\")"
