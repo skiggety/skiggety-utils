@@ -9,7 +9,7 @@
 # - TODO^33: ..but first I should start using a local version
 #   - TODO^34: ..but first I should simplify readability a lot
 
-# TODO^35: with this and other firstlife scripts, make a distinction between the template and a personal one.
+# TODO^36: with this and other firstlife scripts, make a distinction between the template and a personal one.
 
 # TODO^2: use this to make sure we don't ask for the alarm too often: FIRSTLIFE_ALARM_MARKER_FILE="$FIRSTLIFE_DIR/markers/firstlife_outside_alarm_confirmed"
 

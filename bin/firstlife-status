@@ -11,6 +11,7 @@ echo "$reward_status"
 
 # TODO^3: firstlife-pomodoro -n
 
+# EASY TODO^39: mute during meditation, exercise, shower, pomodoros, breaks, etc.
 BEHIND_SOUND="$FIRSTLIFE_DIR/sounds/behind.mp3"
 while ! [ -f $BEHIND_SOUND ]; do
     mkdir -p "$(dirname $BEHIND_SOUND)"

@@ -4,7 +4,7 @@
 # entails, printing concise useful output, and exit on 0 only on success.  This script does that for skiggety-utils.
 # Use "review ci" or "review-ci" to make it run continuously.
 
-# TODO^3: possible script renaming--ci means continuos.  This is just the integration part. "review-ci" could become
+# TODO^4: possible script renaming--ci means continuous.  This is just the integration part. "review-ci" could become
 # "ci" and this would become what? "i"? Or maybe every scrtipt that does one cycle and is meant to be changed and used
 # with review has a name that ends in "-cycle"? I dunno.  Something to think about.
 #  # TODO: one idea is that 'ci' is something very high level that uses review heavily but probably uses it once to wait

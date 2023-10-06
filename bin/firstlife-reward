@@ -22,9 +22,8 @@ while [[ "$1" == -* ]]; do
     fi
 done
 
-# TODO^13: in a shell open a video or play a sound that reminds you about an open shellask to take 1 reward
-# TODO?: we need a custom video: ding-toaster
-# EASY TODO^50: emit a characteristic "reward" sound, and get all pavlovian about it
+# EASY FUN TODO^67: emit a characteristic "reward" (gong?) sound, and get all pavlovian about it
+# - TODO^8: maybe kill the behind sound first?
 
 if $ADD_REWARD; then
     reward_for="$(echo "$*" | tr "$newline" ' ')"
