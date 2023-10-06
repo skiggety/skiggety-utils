@@ -34,13 +34,13 @@ echo_debug "shellask should ask you to: $*"
 echo_debug "==========================="
 # debug_here "\$\* is: '$*'"
 TASK_DESCRIPTION="$*"
-# TODO?: debug_eval_here TASK_DESCRIPTION
+# debug_eval_here TASK_DESCRIPTION
 ESCAPED_TASK_DESCRIPTION="$(echo "$TASK_DESCRIPTION" | sed 's/\(["\$]\)/\\\1/g')"
-# TODO?: debug_eval_here ESCAPED_TASK_DESCRIPTION
+# debug_eval_here ESCAPED_TASK_DESCRIPTION
 
 # Try running the following to see why this is necessary: shellask 'spend $0 on "stuff"'.
 DOUBLE_ESCAPED_TASK_DESCRIPTION="$(echo "$ESCAPED_TASK_DESCRIPTION" | sed 's/\(["\$]\)/\\\1/g')"
-# TODO?: debug_eval_here DOUBLE_ESCAPED_TASK_DESCRIPTION
+# debug_eval_here DOUBLE_ESCAPED_TASK_DESCRIPTION
 banner='########################################################################'
 
 # TODO^6: can we do something to bring the terminal to the foreground/front?:
