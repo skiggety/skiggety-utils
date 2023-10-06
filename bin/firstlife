@@ -2,6 +2,15 @@
 
 # Self, program thyself. This script gamifies life to help get everyday stuff done, and it's just a prototype.
 
+# Figure out $SKIGGETY_UTILS_DIR and export it if it's not set, in case skiggety-utils setup has not happened:
+THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
+SKIGGETY_UTILS_DIR=${SKIGGETY_UTILS_DIR:-"$(cd $THIS_DIR/..;pwd)"}
+export SKIGGETY_UTILS_DIR
+
+if ! echo $PATH | grep "$SKIGGETY_UTILS_DIR/bin" >/dev/null; then
+    export PATH="$SKIGGETY_UTILS_DIR/bin"
+fi
+
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 SKIGGETY_DEBUG='true'
 
