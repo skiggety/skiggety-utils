@@ -20,12 +20,15 @@ while ! [ -f $BEHIND_SOUND ]; do
 done
 
 spr="$(echo "$reward_status"| grep 'seconds each' | sed 's/.*at \([0-9]*\) seconds each.*/\1/')"
-if [ $spr -gt 600 ] && test "`find $FIRSTLIFE_LOG_DIR/reward.$(isotoday).log.txt -mmin +5`"; then
+if [ $spr -gt 600 ] && test "`find $FIRSTLIFE_LOG_DIR/reward.$(isotoday).log.txt -mmin +9`"; then
     echo
     echo
     echo
     echo "    It seems like you're getting behind, time to emit a sound: $BEHIND_SOUND"
-    echo
-    echo
     mplayer $BEHIND_SOUND >/dev/null 2>&1
+    echo
+    echo "        Also, here's the file with the last timestamp for a reward:"
+    ls -lh $FIRSTLIFE_LOG_DIR/reward.$(isotoday).log.txt
+    echo
+    echo
 fi

@@ -22,8 +22,8 @@ while [[ "$1" == -* ]]; do
     fi
 done
 
-# EASY FUN TODO^67: emit a characteristic "reward" (gong?) sound, and get all pavlovian about it
-# - TODO^8: maybe kill the behind sound first?
+# EASY FUN TODO^70: emit a characteristic "reward" (gong?) sound, and get all pavlovian about it
+# - TODO^10: maybe kill the behind sound first?
 
 if $ADD_REWARD; then
     reward_for="$(echo "$*" | tr "$newline" ' ')"
@@ -44,6 +44,12 @@ fi
 if $VERBOSE;then
     cat $reward_log
 fi
+
+SECONDS_ELAPSED_TODAY="$( echo "((( $(date +'%H') * 60.0 ) + $(date +'%M') ) * 60.0 ) + $(date +'%S')" | bc ) "
+SECONDS_PER_REWARD="$( echo "$SECONDS_ELAPSED_TODAY / $reward_score" | bc )"
+SPACES_PER_DOT="$(echo "$SECONDS_PER_REWARD / 300" | bc )"
+SECONDS_PER_REWARD_EXPLANATION="at $SECONDS_PER_REWARD seconds each"
+
 j=1
 k=1
 for i in $(seq $reward_score); do
@@ -51,7 +57,13 @@ for i in $(seq $reward_score); do
         sleep 0.01
     fi
 
-    if [ $j -eq $k -o $i -eq $reward_score ];then
+    if ! [ $SPACES_PER_DOT -eq 0 ]; then
+        for space_num in $(seq $SPACES_PER_DOT); do
+            echo -n ' '
+        done
+    fi
+
+    if [ $j -eq $k -o $i -eq $reward_score ]; then
         j=0
         k=$(($k+1))
         echo '.'
@@ -63,12 +75,8 @@ done
 
 if $ADD_REWARD; then
     echo "$request"
-    tput bel # a.k.a. ding, bell (for searchability)
+    tput bel # a.k.a. ding, bell (for searchability) # EASY TODO^35: DELETE after we have a better sound
 fi
-
-SECONDS_ELAPSED_TODAY="$( echo "((( $(date +'%H') * 60.0 ) + $(date +'%M') ) * 60.0 ) + $(date +'%S')" | bc ) "
-SECONDS_PER_REWARD="$( echo "$SECONDS_ELAPSED_TODAY / $reward_score" | bc )"
-SECONDS_PER_REWARD_EXPLANATION="at $SECONDS_PER_REWARD seconds each"
 
 echo "You have earned $reward_score rewards today, $SECONDS_PER_REWARD_EXPLANATION!"
 echo
