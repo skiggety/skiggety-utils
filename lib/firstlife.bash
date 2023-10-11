@@ -42,6 +42,25 @@ function exit_if_day_is_over {
     fi
 }
 
+function exit_if_script_succeeded_today {
+    THIS_SCRIPT_RAN_MARKER_FILE="$(succeeded_today_marker_script $1)"
+    if [ -f $THIS_SCRIPT_RAN_MARKER_FILE ]; then
+        echo "'$(basename $1)' already succeeded today ($FIRSTLIFE_ISOTODAY), exiting without error..."
+        exit 0
+    fi
+}
+
+function mark_script_succeeded_today {
+    THIS_SCRIPT_RAN_MARKER_FILE="$(succeeded_today_marker_script $1)"
+    mkdir -p "$(dirname $THIS_SCRIPT_RAN_MARKER_FILE)"
+    debug_here "marking morning routine done with command: touch $THIS_SCRIPT_RAN_MARKER_FILE"
+    touch $THIS_SCRIPT_RAN_MARKER_FILE
+}
+
+function succeeded_today_marker_script {
+ echo "$FIRSTLIFE_DIR/markers/$(basename $1).succeeded_on_${FIRSTLIFE_ISOTODAY}"
+}
+
 function personal_inner_routine_script {
     echo "$FIRSTLIFE_BIN/$(personal_inner_routine_script_name $1)"
 }

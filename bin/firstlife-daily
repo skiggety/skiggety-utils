@@ -7,13 +7,7 @@
 
 # TODO^2?: exit if a script with identical name and path is in parent tree
 
-# make sure this script only runs once a day:
-# EASY TODO^92: method extract firstlife-exit-if-this-ran-today <task_name> so we can mark other things
-THIS_SCRIPT_RAN_MARKER_FILE="$FIRSTLIFE_DIR/markers/$(basename $0).ran_on_${FIRSTLIFE_ISOTODAY}"
-if [ -f $THIS_SCRIPT_RAN_MARKER_FILE ]; then
-    echo "'$(basename $0)' already ran today ($FIRSTLIFE_ISOTODAY), exiting without error..."
-    exit 0
-fi
+exit_if_script_succeeded_today $0 # make sure this script only runs once a day
 
 exit_if_day_is_over
 
@@ -21,9 +15,6 @@ use_and_maintain_inner_routine_based_on_template 'daily' "$0"
 
 exit_with_any_accumulated_errors
 
-# EASY FUN TODO^92: method extract firstlife-mark-done <task_name> so we can mark other things: 'firstlife-mark-done-today $0'
-mkdir -p "$(dirname $THIS_SCRIPT_RAN_MARKER_FILE)"
-debug_here "marking daily routine done with command: touch $THIS_SCRIPT_RAN_MARKER_FILE"
-touch $THIS_SCRIPT_RAN_MARKER_FILE
+mark_script_succeeded_today $0 # make sure this script only runs once a day
 
 exit

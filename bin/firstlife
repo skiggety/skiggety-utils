@@ -42,7 +42,6 @@ function update_todo_graph {
 firstlife-wake || accumulate-error "I am not sure you are awake"
 exit_if_day_is_over
 
-# EASY TODO^86: make sure you call firstlife-morning again later, maybe from firstlife-multitask. It should be a no-op if you've done it already, but catch you otherwise.
 firstlife-morning || accumulate_error 'morning routine had errors'
 exit_if_day_is_over
 
