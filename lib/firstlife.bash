@@ -95,8 +95,14 @@ function use_and_maintain_inner_routine_based_on_template {
     fi
 
     # TODO^88: (IN_PROGRESS NOW): allow using vscode here:
-    shellask "Want to tune up $(basename $PERSONAL_ROUTINE_SCRIPT) for next time?" \
-        && vimdiff -o $TEMPLATE_ROUTINE_SCRIPT $PERSONAL_ROUTINE_SCRIPT
+    if [ -f $PERSONAL_ROUTINE_SCRIPT ]; then
+        shellask "Want to tune up $(basename $PERSONAL_ROUTINE_SCRIPT) for next time?" \
+            && vimdiff -o $TEMPLATE_ROUTINE_SCRIPT $PERSONAL_ROUTINE_SCRIPT # TODO^2: GTVO (get the vim out)
+    else
+        shellask "Would you like to start a local version of '$TEMPLATE_ROUTINE_SCRIPT'?" \
+            && cp $TEMPLATE_ROUTINE_SCRIPT $PERSONAL_ROUTINE_SCRIPT \
+            && shellask "Edit $PERSONAL_ROUTINE_SCRIPT as you like for next time"
+    fi
 }
 
 # Show an image for your alarm to match to, first thing:
