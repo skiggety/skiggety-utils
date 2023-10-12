@@ -11,10 +11,9 @@ exit_if_day_is_over
 handle-alarmy-photo-mission || exit_with_error "failed to handle alarm" # for 'Alarmy'
 exit_if_day_is_over
 
-# TODO^67: make sure this only gets asked perhaps once a week:
-# TODO^11: mention and help with alarmy and cron:
-# EASY TODO^86: help user start firstlife (including morning routine) with cron like I did, automate ensuring a line in local crontab, and use 'crontab-verbose'? (FUN) help user set up crontab like I did (use crontab-verbose?) (to help test on metrigon)
-shellask 'Make sure you have a phone alarm that ensures you log into this laptop in time for your cron job to fire (for tomorrow). There is one called "Alarmy" that can require a matching photo to what "firstlife-wake" will present in the morning.' || accumulate_error 'BASIC AUTOMATION PROBLEM: alarm not set' # TODO^67: (EASY) use 'firstlife-delegate' instead
+# Use your own morning playlist, here's mine for starters:
+SCOTTS_MORNING_SOUNDTRACK='https://www.youtube.com/watch?v=6jRh2PRa1tU&list=PLbyyOcHfeHIr8GvkrJ8aieGtcmPER6bvY&index=1'
+open "$SCOTTS_MORNING_SOUNDTRACK"
 exit_if_day_is_over
 
 exit 0
