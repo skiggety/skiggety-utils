@@ -65,6 +65,7 @@ For the safe docker demo:
   on to linting, then dashboard, etc. Good when combined with review as in 'review dev'. Prone to lots of change but I
   try to keep it fast, deterministic, and concise.
 - [duh](bin/duh) - Show Directory, Username, and Hostname (in scp format). Useful in prompts.
+- [abbreviate](bin/abbreviate) - A verbose alternative to tail, that displays a helpful method when output gets cut off
 - [dashboard](PWD_BIN/dashboard) A overrideable program that summarizes the overall status for one directory location.
 - [default_dashboard](bin/default_dashboard) - Show a bunch of useful information for the current directory, especially if it's a git project. Also can be called by calling 'dashboard' if you don't implement your own ./PWD_BIN/dashboard 
 - [devkit installer](installers/devkit) - Install just what's needed to work on these programs
@@ -133,8 +134,6 @@ These ideas don't have a code location, so they go here:
   - TODO: 'rod' would be a good name for a transparent screen locker. It would stand for "Read-Only Display"
 - TODO^4: output license summary in interactive programs (like you're supposed to)??
 - TODO^4: commit initial skigg-utils, to get to parity with what I already like to use
-- TODO^3: write a program to abbreviate output for use in the dashboard. You should be able to specify a maximum number of lines and pipe output through it, and it will do something like "head" or "tail" if necessary, but also display information about how many lines were removed/kept/found-in-total
-  - TODO^2: once we can abbreviate, maybe choose the linecounts for different things dynamically depending on the terminal size
 - TODO^4: consider supporting other shells:
   - TODO^4: consider supporting zsh
   - TODO: consider trying/supporting fish

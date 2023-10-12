@@ -2,7 +2,7 @@
 
 # TODO: specify to abbreviate in terms of how many todo's to show (3) instead of how many lines to take up on the
 # screen:
-TODO_REPORT_LINES=4 # IGNORE_TODO
+TODO_REPORT_LINES=5 # IGNORE_TODO
 
 TODO_REPORT_DIR="todo_report" # IGNORE_TODO
 TODO_REPORT_FILE="$TODO_REPORT_DIR/README.txt" # IGNORE_TODO

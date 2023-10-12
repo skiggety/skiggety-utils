@@ -83,8 +83,8 @@ for num in $(seq $passes_at_todo_list); do
             accumulate_error "Didn't work on todo: $todo_line"
         exit_if_day_is_over
 
-        # EASY TODO^74: loop through known tags:
-        # EASY TODO^87: something like this needs to happen actually before you do the task:
+        # EASY TODO^75: loop through known tags:
+        # EASY TODO^89: something like this needs to happen actually before you do the task:
         if echo $todo_line | grep ERRAND > /dev/null; then
             today_todo -n | grep ERRAND
             firstlife-delegate --with-reward "Maybe handle some other errands"

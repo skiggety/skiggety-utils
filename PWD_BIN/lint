@@ -26,9 +26,9 @@ echo "The most important todo is currently:"
 tail -n 1 todo_report/README.txt
 
 echo_divider_with_text "+-=======-" "pylint:"
-# TODO^2: abbreviate output:
-# TODO^4 automatically scan all python files:
 # TODO^5: get in the habit of keeping everything clean and then use accumulate_error here:
+# TODO^4 automatically scan all python files:
+# TODO^3: abbreviate output:
 pylint --rcfile .pylintrc 'bin/todo_v0.4' lib/todo_line.py bin/silliness/demo_python_version_hack || warn_here 'TEMPORARILY IGNORING the fact that pylint reported ERRORS'
 
 echo_divider_with_text "+-=======-" "rubocop:"
