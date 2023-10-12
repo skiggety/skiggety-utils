@@ -24,8 +24,8 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 # TODO^5: accumulate error if any local changes are found, i.e. "maybe you want to run 'dev' instead of 'ci'? Do you want
 # to commit these changes?'
 
+# TODO: extract this paragraph into... 'git-safe-pull' or 'PWD_BIN/git-pretty-pull' or something
 git restore todo_report
-
 git-pretty-pull || exit_with_error "git-pretty-pull FALED"
 
 # TODO: ???: git restore --staged .

@@ -7,5 +7,7 @@
 
 # - TODO^4?: kill previous instance of same script, or maybe do that in the cron job
 
+# TODO: make a template for setting up variables like BEDTIME after which firstlife-status should just fail and this script should exit
+
 cd $FIRSTLIFE_DIR
 firstlife-status && clear && review -m 120 firstlife-status

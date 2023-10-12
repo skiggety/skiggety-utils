@@ -6,6 +6,8 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/today_todo.bash || exit_with_error 'could not include today_todo.bash'
 
+# TODO^6: replace this with 'vital'. Move over all functionality and todo's
+
 # TODO^22: have a way to postpone things to a certain date
 # TODO^6: RENAME? ("todo-today"?, "todoy")
 # TODO: flag to grep for and count a specific word, sort of like what I do for "NOW"
@@ -15,10 +17,10 @@
 # TODO: this program needs to display some instructions so the user knows how to use it.
 # TODO: maybe during business hours, show results with "BUSINESS_HOURS" more prominently, and hide them otherwise
 
-# EASY FUN TODO^71: add a mode to quickly add a todo, ideally it would let you specify a votecount too
+# EASY FUN TODO^75: add a mode to quickly add a todo, ideally it would let you specify a votecount too
 # - TODO^30?: search for $1 and if it's not found, add one, if it is found, open the file searching for that string
-# TODO^19: add a mode to quickly upvote one particular thing, that would call "todo --vote 'substring of my todo line'"
-# - TODO^16: ..and another mode to vote for everything matching a string
+# TODO^20: add a mode to quickly upvote one particular thing, that would call "todo --vote 'substring of my todo line'"
+# - TODO^19: ..and another mode to vote for everything matching a string
 # - TODO^19: ..which means todo has to support voting from the command line, and voting for all, and today_todo will pass options through
 #   - TODO^17: .. e.g.: "today_todo --upvote 'truck oil change'"
 #   - TODO^17: .. e.g.: "today_todo --vote 99 'truck oil change'"

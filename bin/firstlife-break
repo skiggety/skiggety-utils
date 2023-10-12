@@ -16,8 +16,10 @@ while [[ "$1" == -* ]]; do
     fi
 done
 
-# TODO^9: mute here for DURATION_IN_SECONDS: firstlife-mute-behind-noise $DURATION_IN_SECONDS
-
 firstlife-status
 
-shellask 'Ready for a break?' && sleep-verbose $DURATION_IN_SECONDS && firstlife-alarm "break is over"
+shellask 'Ready for a break?' || exit 0
+
+# TODO^13: mute here for DURATION_IN_SECONDS: firstlife-mute-behind-noise $DURATION_IN_SECONDS
+
+sleep-verbose $DURATION_IN_SECONDS && firstlife-alarm "break is over"

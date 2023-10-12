@@ -39,4 +39,5 @@ while shellask "Should you still be doing productive stuff on this beautiful day
     firstlife-multitask || accumulate_error 'multitasking ERRORS'
     show_recently_done_todos
     exit_if_day_is_over
+    # TODO: exit loop if you've already done it twice
 done

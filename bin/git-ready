@@ -16,7 +16,7 @@ function main {
 
     run-or-fail git add -p
 
-    # TODO^5: just exit 0 right here unless there are changes staged
+    # EASY TODO^10: just exit 0 right here unless there are changes staged
 
     shellask "Are your changes what you want? (use 'git diff --staged' or 'git vimdiff --staged')" || \
         exit_with_error "Prepare your changes the way you want and then try $(basename $0) again."
@@ -24,8 +24,8 @@ function main {
     echo
     run-or-fail git commit $GIT_COMMIT_OPTIONS
 
-    # TODO: just exit 0 right here unless there are changes staged (yes, we're checking again because the user might
-    # have changed something during shellask
+    # EASY TODO^10: just exit 0 right here unless there are changes staged (yes, we're checking again because the user might
+    # have changed something during shellask)
 
     # TODO^3: if the remote branch doesn't exist yet, we should skip trying git pull, since it will fail anyway
     echo

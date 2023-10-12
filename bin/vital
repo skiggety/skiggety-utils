@@ -16,9 +16,9 @@
 today_todo # placeholder
 
 exit_with_error "TODO^13: IMPLEMENT"
-exit_with_error "- EASY TODO^97: IMPLEMENT '--add' to add a todo"
+exit_with_error "- EASY TODO^98: IMPLEMENT '--add' to add a todo"
 exit_with_error "- TODO^26: IMPLEMENT '--vote' to vote on a todo"
-exit_with_error "- TODO^22: IMPLEMENT '--find <STRING>' to open EDITOR searching for a particular string"
+exit_with_error "- TODO^23: IMPLEMENT '--find <STRING>' to open EDITOR searching for a particular string"
 exit_with_error "- TODO^11: IMPLEMENT '--edit' to edit the todo list"
 exit_with_error "- TODO^7: IMPLEMENT '--report' to print a report, replacing 'today_todo -n'"
 exit_with_error "- TODO: IMPLEMENT '--help' with something useful"

@@ -16,7 +16,7 @@ export today_todo_now_max_count="$FIRSTLIFE_MULTITASKING_COUNT"
 
 ####################################################################################################
 
-# EASY TODO^90: inside this script and elsewhere, use 'firstlife-delegate --with-reward' instead of calling 'shellask' directly:
+# EASY TODO^91: inside this script and elsewhere, use 'firstlife-delegate --with-reward' instead of calling 'shellask' directly:
 
 # TODO^81: firstlife should keep an eye on "MAINTENANCE" tag in vital/today_todo
 

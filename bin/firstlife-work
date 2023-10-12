@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-# This script (TODO...)
+# This script defines your main activities to be productive during the day
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
-# TODO^2?: exit if a script with identical name and path is in parent tree
+# TODO^4?: exit if a script with identical name and path is in parent tree
 
 exit_if_day_is_over
 
