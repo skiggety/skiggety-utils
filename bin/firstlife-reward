@@ -46,39 +46,49 @@ if $VERBOSE;then
 fi
 
 SECONDS_ELAPSED_TODAY="$( echo "((( $(date +'%H') * 60.0 ) + $(date +'%M') ) * 60.0 ) + $(date +'%S')" | bc ) "
-SECONDS_PER_REWARD="$( echo "$SECONDS_ELAPSED_TODAY / $reward_score" | bc )"
+
+# defaults for when $reward_score is 0:
+SECONDS_PER_REWARD="$( echo "$SECONDS_ELAPSED_TODAY * 2" | bc )" # avoid division by zero at the cost of accuracy
+SECONDS_PER_REWARD_EXPLANATION=''
+
+if [ $reward_score -gt 0 ]; then
+    SECONDS_PER_REWARD="$( echo "$SECONDS_ELAPSED_TODAY / $reward_score" | bc )"
+    SECONDS_PER_REWARD_EXPLANATION=", at $SECONDS_PER_REWARD seconds each"
+fi
+
 SPACES_PER_DOT="$(echo "$SECONDS_PER_REWARD / 300" | bc )"
-SECONDS_PER_REWARD_EXPLANATION="at $SECONDS_PER_REWARD seconds each"
 
-j=1
-k=1
-for i in $(seq $reward_score); do
-    if $ADD_REWARD; then
-        sleep 0.01
-    fi
+if [ $reward_score -gt 0 ]; then
+    j=1
+    k=1
+    for i in $(seq $reward_score); do
+        if $ADD_REWARD; then
+            sleep 0.01
+        fi
 
-    if ! [ $SPACES_PER_DOT -eq 0 ]; then
-        for space_num in $(seq $SPACES_PER_DOT); do
-            echo -n ' '
-        done
-    fi
+        if ! [ $SPACES_PER_DOT -eq 0 ]; then
+            for space_num in $(seq $SPACES_PER_DOT); do
+                echo -n ' '
+            done
+        fi
 
-    if [ $j -eq $k -o $i -eq $reward_score ]; then
-        j=0
-        k=$(($k+1))
-        echo '.'
-    else
-        echo -n '.'
-    fi
-    j=$(($j+1))
-done
+        if [ $j -eq $k -o $i -eq $reward_score ]; then
+            j=0
+            k=$(($k+1))
+            echo '.'
+        else
+            echo -n '.'
+        fi
+        j=$(($j+1))
+    done
+fi
 
 if $ADD_REWARD; then
     echo "$request"
     tput bel # a.k.a. ding, bell (for searchability) # EASY TODO^35: DELETE after we have a better sound
 fi
 
-echo "You have earned $reward_score rewards today, $SECONDS_PER_REWARD_EXPLANATION!"
+echo "You have earned $reward_score rewards today$SECONDS_PER_REWARD_EXPLANATION!"
 echo
 echo
 if $ADD_REWARD; then
