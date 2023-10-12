@@ -99,7 +99,7 @@ function use_and_maintain_inner_routine_based_on_template {
         shellask "Want to tune up $(basename $PERSONAL_ROUTINE_SCRIPT) for next time?" \
             && vimdiff -o $TEMPLATE_ROUTINE_SCRIPT $PERSONAL_ROUTINE_SCRIPT # TODO^2: GTVO (get the vim out)
     else
-        shellask "Would you like to start a local version of '$TEMPLATE_ROUTINE_SCRIPT'?" \
+        shellask "Would you like to start maintaining a local script for your $nickname routine?" \
             && cp $TEMPLATE_ROUTINE_SCRIPT $PERSONAL_ROUTINE_SCRIPT \
             && shellask "Edit $PERSONAL_ROUTINE_SCRIPT as you like for next time"
     fi
