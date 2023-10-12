@@ -1,12 +1,23 @@
 #!/usr/bin/env bash
 
-# This script (...TODO, describe your script here)
+# This script guides you through taking a short break, then calls your attention back
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
-# EASY TODO^84: take '-t' flag so you can specify length in seconds, e.g. 'firstlife-break -t 60' between todo list tasks
+DURATION_IN_SECONDS=300
+while [[ "$1" == -* ]]; do
 
-# TODO: firstlife-reward -n # just display current reward count
+    # take '-t' flag so you can specify break duration in seconds, e.g. 'firstlife-break -t 60' between todo list tasks
+    if [ "$1" == "-t" ]; then
+        shift
+        DURATION_IN_SECONDS="$1"
+        shift
+    fi
+done
 
-shellask 'Ready for a break?' && sleep-verbose 300 && firstlife-alarm "break is over"
+# TODO^9: mute here for DURATION_IN_SECONDS: firstlife-mute-behind-noise $DURATION_IN_SECONDS
+
+firstlife-status
+
+shellask 'Ready for a break?' && sleep-verbose $DURATION_IN_SECONDS && firstlife-alarm "break is over"
