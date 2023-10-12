@@ -12,7 +12,6 @@ VERBOSE=false
 ADD_REWARD=true
 
 while [[ "$1" == -* ]]; do
-    # accept a -i option for case insensitive grep
     if [ "$1" == "-v" ]; then
         VERBOSE=true
         shift
@@ -54,6 +53,14 @@ SECONDS_PER_REWARD_EXPLANATION=''
 if [ $reward_score -gt 0 ]; then
     SECONDS_PER_REWARD="$( echo "$SECONDS_ELAPSED_TODAY / $reward_score" | bc )"
     SECONDS_PER_REWARD_EXPLANATION=", at $SECONDS_PER_REWARD seconds each"
+    if [ $SECONDS_PER_REWARD -gt 60 ]; then
+        MINUTES_PER_REWARD="$( echo "$SECONDS_PER_REWARD / 60" | bc )"
+        SECONDS_PER_REWARD_EXPLANATION="$SECONDS_PER_REWARD_EXPLANATION, or about $MINUTES_PER_REWARD minutes"
+    fi
+    if [ $SECONDS_PER_REWARD -gt 3600 ]; then
+        HOURS_PER_REWARD="$( echo "$SECONDS_PER_REWARD / 3600" | bc )"
+        SECONDS_PER_REWARD_EXPLANATION="$SECONDS_PER_REWARD_EXPLANATION, or about $HOURS_PER_REWARD hours"
+    fi
 fi
 
 SPACES_PER_DOT="$(echo "$SECONDS_PER_REWARD / 300" | bc )"
