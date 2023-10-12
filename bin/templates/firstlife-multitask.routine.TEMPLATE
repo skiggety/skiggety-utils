@@ -83,8 +83,8 @@ for num in $(seq $passes_at_todo_list); do
             accumulate_error "Didn't work on todo: $todo_line"
         exit_if_day_is_over
 
-        # EASY TODO^73: loop through known tags:
-        # TODO^86: something like this needs to happen actually before you do the task:
+        # EASY TODO^74: loop through known tags:
+        # EASY TODO^87: something like this needs to happen actually before you do the task:
         if echo $todo_line | grep ERRAND > /dev/null; then
             today_todo -n | grep ERRAND
             firstlife-delegate --with-reward "Maybe handle some other errands"
@@ -95,7 +95,7 @@ for num in $(seq $passes_at_todo_list); do
         fi
         exit_if_day_is_over
 
-        firstlife-break # TODO^5: -t 180
+        firstlife-break # TODO^6: -t 180
 
         exit_if_day_is_over
     done
@@ -138,6 +138,9 @@ for num in $(seq $passes_at_todo_list); do
 done
 
 ################################################################################
+
+shellask 'put a few things away' && firstlife-reward || accumulate_error 'did not put things away'
+exit_if_day_is_over
 
 shellask "Catch up on communicating with people" && firstlife-reward || accumulate_error "Did not communicate"
 exit_if_day_is_over
