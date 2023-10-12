@@ -5,6 +5,11 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
+# push everything to the bottom of the terminal
+for blank_line_i in $(seq $(tput lines));do
+    echo
+done
+
 # TODO: abbreviated today_todo
 reward_status="$(firstlife-reward -n)"
 echo "$reward_status"
@@ -23,13 +28,8 @@ spr="$(echo "$reward_status"| grep 'seconds each' | sed 's/.*at \([0-9]*\) secon
 spr=${spr:-'100000'}
 if [ $spr -gt 600 ] && test "`find $FIRSTLIFE_LOG_DIR/reward.$(isotoday).log.txt -mmin +9 2>/dev/null`"; then
     echo
-    echo
-    echo
-    echo "    It seems like you're getting behind, time to emit a sound: $BEHIND_SOUND"
+    echo "UH-OH! It seems like you're getting BEHIND, time to emit a sound: $BEHIND_SOUND"
     mplayer $BEHIND_SOUND >/dev/null 2>&1
-    echo
-    echo "        Also, here's the file with the last timestamp for a reward:"
+    echo "...Also, here's the file with the last timestamp for a reward:"
     ls -lh $FIRSTLIFE_LOG_DIR/reward.$(isotoday).log.txt
-    echo
-    echo
 fi
