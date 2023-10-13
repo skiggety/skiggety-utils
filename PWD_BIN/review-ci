@@ -5,4 +5,4 @@
 # TODO^2: after the RENAME/redesign of 'ci', this script probably will get DELETEd
 
 # TODO: consider splitting to default_ and normal version like dashboard and lint
-review -u 600 -m 1800 -M $(( 24 * 60 * 60)) ci # EASY TODO^15: review --ignore-disk (pass a flag for 'review' to ignore filesystem changes, since it is affected by git pull)
+review -u 600 -m 1800 -M $(( 24 * 60 * 60)) ci # EASY TODO^37: review --ignore-disk (pass a flag for 'review' to ignore filesystem changes, since it is affected by git pull), necessary for this script to be genuinely useful
