@@ -30,6 +30,8 @@ alias vf="vimfirst"
 
 alias gir="git" # common enough typo for me
 alias gac="git-attempt-checkout"
+alias gd="git diff"
+alias gds="git diff --staged"
 alias gvd="git vimdiff"
 alias gvds="git vimdiff --staged"
 alias gvc="git vimchanged"
