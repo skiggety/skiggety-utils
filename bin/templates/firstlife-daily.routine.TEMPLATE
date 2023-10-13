@@ -5,10 +5,11 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
-firstlife-check-calendar
+firstlife-check-calendar # TODO: just open the calendar to look at birthdays
 open "http://facebook.com"
-firstlife-delegate --with-reward "Wish people 'Happy Birthday!'."
+firstlife-delegate --with-reward "Wish people 'Happy Birthday!' (look at google calendar and facebook)."
 
+# TODO: use this for IN_PROGRESS tasks WEEKLY:
 firstlife-iterate-on-vital-tag 'DAILY' || accumulate_error 'ignored DAILY tasks'
 
 exit_with_any_accumulated_errors

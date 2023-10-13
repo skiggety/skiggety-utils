@@ -158,7 +158,6 @@ exit_if_day_is_over
 shellask 'Put a few things away' && firstlife-reward || accumulate_error 'did not put things away'
 exit_if_day_is_over
 
-
 firstlife-break
 exit_if_day_is_over
 
