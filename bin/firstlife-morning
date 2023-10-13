@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# This script runs and manages your morning routine
+# This script runs and manages your morning routine.
 
 # EASY TODO^88: make sure only firstlife-morning and firstlife-evening limit to running once a day, not other scripts
 
@@ -13,6 +13,7 @@ exit_if_script_succeeded_today $0 # make sure this script only runs once a day
 
 exit_if_day_is_over
 
+# This calls $SKIGGETY_UTILS_DIR/bin/templates/firstlife-morning.routine.TEMPLATE based on the name of this calling script:
 use_and_maintain_inner_routine_based_on_template 'morning' "$0"
 
 exit_with_any_accumulated_errors
