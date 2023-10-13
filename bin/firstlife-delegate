@@ -11,7 +11,7 @@
 
 REWARD='false'
 while [[ "$1" == -* ]]; do
-    if [[ "$1" == '--with-reward' ]]; then
+    if [[ "$1" == '--with-reward' ]]; then # TODO^10: take --without-reward instead
         REWARD='true'
         shift
     else

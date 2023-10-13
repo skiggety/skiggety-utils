@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# This script (TODO...)
+# This script guides you through doing productive stuff during the day for firstlife.
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
@@ -39,5 +39,5 @@ while shellask "Should you still be doing productive stuff on this beautiful day
     firstlife-multitask || accumulate_error 'multitasking ERRORS'
     show_recently_done_todos
     exit_if_day_is_over
-    # TODO: exit loop if you've already done it twice
+    # TODO^2: exit loop if you've already done it twice
 done

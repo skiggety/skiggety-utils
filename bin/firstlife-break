@@ -20,6 +20,6 @@ firstlife-status
 
 shellask "Ready for a break? ($DURATION_IN_SECONDS seconds)" || exit 0
 
-# TODO^13: mute here for DURATION_IN_SECONDS: firstlife-mute-behind-noise $DURATION_IN_SECONDS
+# TODO^14: mute here for DURATION_IN_SECONDS: firstlife-mute-behind-noise $DURATION_IN_SECONDS
 
 sleep-verbose $DURATION_IN_SECONDS && firstlife-alarm "break is over"
