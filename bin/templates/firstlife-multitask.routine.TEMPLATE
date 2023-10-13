@@ -22,12 +22,11 @@ export today_todo_now_max_count="$FIRSTLIFE_MULTITASKING_COUNT"
 
 exit_if_day_is_over
 
-# EASY TODO^50: use firstlife-reward with description argument(s), generally
-shellask 'Make sure various devices including this one are charged/charging' \
-    && firstlife-reward \
+firstlife-delegate --with-reward 'Make sure various devices including this one are charged/charging' \
     || accumulate_error 'should have charged your devices' # TODO: don't ask more than once every 3 hours
 exit_if_day_is_over
 
+# EASY TODO^91: (IN_PROGRESS, NOW) Use firstlife-delegate --with-reward, or failing that, use firstlife-reward with description argument(s)
 shellask 'put a few things away' && firstlife-reward || accumulate_error 'did not put things away'
 exit_if_day_is_over
 
@@ -157,12 +156,6 @@ exit_if_day_is_over
 shellask 'Put a few things away' && firstlife-reward || accumulate_error 'did not put things away'
 exit_if_day_is_over
 
-if [ -n "$SKIGGETY_UTILS_DIR" ] && [ -d "$SKIGGETY_UTILS_DIR" ]; then
-    pushd $SKIGGETY_UTILS_DIR
-    todo | grep --color=always '\(firstlife\|--------\|^$\)'
-    firstlife-delegate --with-reward "Vote up a TODO in firstlife unless firstlife is working great already" || accumulate_error "not voting for firstlife features" # IGNORE_TODO
-    popd
-fi
 
 firstlife-break
 exit_if_day_is_over
