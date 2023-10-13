@@ -9,41 +9,53 @@
 #   L. - List-maintainer
 #
 
-# TODO^13: IMPLEMENT this replacement for today_todo
-
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/vital.bash || exit_with_error 'could not include vital.bash'
+
+# TODO^14: IMPLEMENT this replacement for today_todo
+# - TODO^32: IMPLEMENT '--find <STRING>' to open EDITOR searching for a particular string
+# - TODO^11: IMPLEMENT '--edit' to edit the todo list
+# - TODO^7: IMPLEMENT '--report' to print a report, replacing 'today_todo -n'
+# - TODO^2: IMPLEMENT '--help' with something useful, especially to explain the 'vital --add --vote <n> <description>' syntax
+# - TODO: IMPLEMENT: make 'vital --edit --report' the default, replacing 'today_todo' (with no options)
 
 # TODO: DELETE once we are no longer reliant on old implementation:
 FALLBACK_ON_TODAY_TODO=true
 
 SHOULD_ADD_TASK=false
+SHOULD_ALTER_VOTE=false
+VOTECOUNT=""
 while [[ "$1" == -* ]]; do
     if [ "$1" == '-a' -o "$1" == '--add' ]; then
         shift
         FALLBACK_ON_TODAY_TODO=false # TODO: DELETE once we are no longer reliant on old implementation
         SHOULD_ADD_TASK=true
-        TASK_DESCRIPTION="$1"
+    elif [ "$1" == '-v' -o "$1" == '--vote' ]; then
+        shift
+        VOTECOUNT="$1"
+        SHOULD_ALTER_VOTE=true
         shift
     fi
     # TODO^3: help option
 done
+TASK_DESCRIPTION="$1"
+shift
 
 if $SHOULD_ADD_TASK; then
-    # TODO^97: (IN_PROGRESS, NOW) IMPLEMENT '--add' to add a todo":
-    # TODO^98: (IN_PROGRESS, NOW) how to specify a votecount and tags (maybe don't include 'TODO' if it's already in the TASK_DESCRIPTION:
-    echo "- TODO: $TASK_DESCRIPTION" >> "$vital_todo_list_file_path" # IGNORE_TODO
+    SHOULD_ALTER_VOTE=false
+    FULL_TODO_LINE="- TODO^$VOTECOUNT: $TASK_DESCRIPTION"
+    if [ -z "$VOTECOUNT" ]; then
+        FULL_TODO_LINE="- TODO: $TASK_DESCRIPTION"
+    fi
+    echo "$FULL_TODO_LINE" >> "$vital_todo_list_file_path" # IGNORE_TODO
+fi
+
+if $SHOULD_ALTER_VOTE; then
+    FALLBACK_ON_TODAY_TODO=false # TODO: DELETE once we are no longer reliant on old implementation
+    exit_with_error "- TODO^27: IMPLEMENT '--vote' to vote on a todo matching TASK_DESCRIPTION"
 fi
 
 # TODO^2: DELETE once we are no longer reliant on old implementation:
 if $FALLBACK_ON_TODAY_TODO; then
     today_todo
 fi
-
-exit_with_error "TODO^13: IMPLEMENT"
-exit_with_error "- TODO^26: IMPLEMENT '--vote' to vote on a todo"
-exit_with_error "- TODO^25: IMPLEMENT '--find <STRING>' to open EDITOR searching for a particular string"
-exit_with_error "- TODO^11: IMPLEMENT '--edit' to edit the todo list"
-exit_with_error "- TODO^7: IMPLEMENT '--report' to print a report, replacing 'today_todo -n'"
-exit_with_error "- TODO: IMPLEMENT '--help' with something useful"
-exit_with_error "- TODO: IMPLEMENT: make 'vital --edit --report' the default, replacing 'today_todo' (with no options)"
