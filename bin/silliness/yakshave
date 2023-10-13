@@ -3,8 +3,19 @@
 
 clear
 
+pushd $SKIGGETY_UTILS_DIR >/dev/null
+
 # Find sentences in comments with single spaces between them.
 rg -n --color=always '#.*\. [^ $\[|."-]' . | sort | \
     grep -v '^[^:\w]*version.txt' | \
     grep -v '^[^:\w]*./bin/git-pretty-pull' | \
     abbreviate -n 19 -t 'find single spaces between sentences' -d
+firstlife-delegate --with-reward 'fix a single space between sentences (see above)'
+
+dashboard
+firstlife-delegate --with-reward 'commit something, probably using "ci;git ready && yup".'
+
+popd >/dev/null
+
+today_todo -n | grep --color=always '\(META\|--------\|^$\)' | abbreviate -l 20 # EASY TODO^84: EXTRACT, and REUSE
+firstlife-delegate --with-reward 'work on META tasks'

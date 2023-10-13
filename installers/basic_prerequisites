@@ -130,8 +130,9 @@ function install_homebrew {
 }
 
 # TODO: pare down the list for asdf (in Dockerfile too), as this list was really created as prerequisites for rbenv and
-# pyenv. asdf says it just needs curl and git, but the different plugins can have their own prerequisites which might be
-# similar to this list::
+# pyenv.  'asdf' says it just needs curl and git, but the different plugins can have their own prerequisites which might
+# be similar to this list::
+
 function install_asdf_prerequisites {
     debug_here "time for asdf prerequisites"
     if ! on_mac_os;then
