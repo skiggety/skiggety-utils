@@ -45,6 +45,9 @@ exit_if_day_is_over
 firstlife-delegate --with-reward 'Put away any temptations or distractions'
 exit_if_day_is_over
 
+firstlife-delegate 'Start up some podcasts'
+exit_if_day_is_over
+
 # TODO^3: firstlife-delegate --with-reward --with-timer $(( 30 * 60 )) 'blah blah':
 firstlife-delegate --with-reward 'Put on exercise clothes (and make sure you have your housekey/earbuds, etc.)' \
     && firstlife-delegate --with-reward 'Exercise!' \
@@ -52,9 +55,11 @@ firstlife-delegate --with-reward 'Put on exercise clothes (and make sure you hav
     || accumulate_error 'did not exercise'
 exit_if_day_is_over
 
+# TODO: maybe make a 'delegate' function that calls both firstlife-delegate --with-reward and exit_if_day_is_over:
 firstlife-delegate --with-reward 'Hit the shower' || accumulate_error 'did not shower'
 exit_if_day_is_over
-# TODO: listen to podcasts
+
+firstlife-delegate --with-reward 'Make your bed' || accumulate_error 'did not make your bed'
 exit_if_day_is_over
 
 firstlife-delegate --with-reward 'Finish morning habits' || accumulate_error 'did not finish morning habits' # TODO: list them out individually instead
