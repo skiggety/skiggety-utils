@@ -6,17 +6,14 @@
 
 # Figure out $SKIGGETY_UTILS_DIR and export it if it's not set, in case skiggety-utils setup has not happened:
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
-# EASY TODO^94: TEST with review-open-clean-fish-docker:
 SKIGGETY_UTILS_DIR=${SKIGGETY_UTILS_DIR:-"$(cd $THIS_DIR/..;pwd)"}
 export SKIGGETY_UTILS_DIR
 
 # EASY TODO^5: archive markers and log files more than a month old
 
-# EASY TODO^94: TEST with review-open-clean-fish-docker:
 if ! echo $PATH | grep "$SKIGGETY_UTILS_DIR/bin" >/dev/null; then
-    export PATH="$SKIGGETY_UTILS_DIR/bin"
+    export PATH="$SKIGGETY_UTILS_DIR/bin:$PATH"
 fi
-# TODO^2: TEST with review-open-clean-fish-docker:
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 SKIGGETY_DEBUG='true'
@@ -33,9 +30,9 @@ SKIGGETY_DEBUG='true'
 # TODO^33: routinely check if it's time to jump to evening stuff, based on how much you did (rewards and productivity points)
 # TODO^31: track stats of all kinds
 
-# EASY TODO^83: prompt user to back up ~/firstlife ( $FIRSTLIFE_DIR ) as part of setup/maintenance
-
 # - TODO^23 (IN_PROGRESS, NOW): it should set the terminal title
+
+$SKIGGETY_UTILS_DIR/installers/firstlife || exit_with_error "could not set up firstlife"
 
 # EASY TODO^86: move elsewhere:
 function update_todo_graph {
@@ -60,6 +57,8 @@ fi
 
 firstlife-morning || accumulate_error 'morning routine had errors'
 exit_if_day_is_over
+
+# EASY TODO^83: prompt user to back up ~/firstlife ( $FIRSTLIFE_DIR ) as part of setup/maintenance
 
 # TODO: exit_if_another_terminal_took_over
 # - TODO: ultimately, combine for exit_if_another_terminal_or_day_took_over_with_accumulated_errors

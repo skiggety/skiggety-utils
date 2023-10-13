@@ -7,16 +7,6 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 
 echo
 
-# EASY TODO^94: TEST with review-open-clean-fish-docker:
-if [ -z "$SKIGGETY_UTILS_DIR" ]; then
-    exit_with_error "Please add \"export SKIGGETY_UTILS_DIR='$(dirname $THIS_DIR)'\" to the end of your ~/.bashrc file, then frun or restart bash ('exec bash') and try this script again from bash"
-fi
-
-# EASY TODO^94: TEST with review-open-clean-fish-docker:
-if ! which firstlife >/dev/null; then
-    exit_with_error "Please add \"\$SKIGGETY_UTILS_DIR/bin\" to your PATH (perhaps in your ~/.bashrc file), then restart bash and try this script again"
-fi
-
 if ! bc -v >/dev/null 2>&1; then
     if which apt-get >/dev/null && shellask "Want to install bc with apt-get?"; then
         apt-get -y update
