@@ -5,19 +5,29 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
-exit_if_day_is_over # EASY to chip away at TODO^86: infect this and called scripts with this line all over the place to clean up windows (for ORGANIZATION)
+exit_if_day_is_over
 
-firstlife-delegate --with-reward 'find your book' || accumulate_error "You don't even know where your book is" # TODO?: MOVE to the inner routine
+firstlife-delegate --with-reward 'find your book' || accumulate_error "You don't even know where your book is"
+exit_if_day_is_over
 
 today_todo -n | grep --color=always '\(EVENING\|--------\|^$\)'
 firstlife-delegate --with-reward "Work on something tagged 'EVENING' on your todo list"
+exit_if_day_is_over
 
-firstlife-delegate --with-reward "use 'today_todo' to edit what happens DAILY or NIGHTLY"
+firstlife-delegate --with-reward "use 'vital' to edit what happens DAILY or NIGHTLY"
 firstlife-iterate-on-vital-tag 'NIGHTLY' || accumulate_error 'ignored NIGHTLY tasks'
+exit_if_day_is_over
+
+firstlife-delegate --with-reward "Look at your habit tracker graphs and work on whatever you could automate better in firstlife (approximately$(echo_here))"
+exit_if_day_is_over
 
 shellask "Charge phone so it's ready to wake you up in the morning" || accumulate_error "charge phone before bed for alarm"
-shellask "finish up all evening habits" || accumulate_error "failed to finish evening habits"
+exit_if_day_is_over
 
-firstlife-delegate --with-reward "Look at your habit tracker graphs and think about what you could automate better in firstlife"
+firstlife-pomodoro --without-break "Read a book in bed."
+shellask "finish up all evening habits" || accumulate_error "failed to finish evening habits"
+exit_if_day_is_over
 
 exit_with_accumulated_errors
+
+exit 0
