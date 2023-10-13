@@ -38,6 +38,8 @@ alias gpnb='git push-new-branch'
 alias gp='git pretty-pull'
 alias gat='git add-theirs'
 
+alias cdsu="cd $SKIGGETY_UTILS_DIR"
+
 # TODO: use more stuff from older bashrc files I've used
 
 # This is nice if you suddenly realize you need to copy some information off the screen, or if you want to keep a
