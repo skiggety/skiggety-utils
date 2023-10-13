@@ -6,5 +6,5 @@
 
 . $SKIGGETY_UTILS_DIR/lib/today_todo.bash || exit_with_error 'could not include today_todo.bash'
 
-cd $TODAY_todo_DIR # so 'review' watches the right part of the disk:
+cd $VITAL_DIR # so 'review' watches the right part of the disk:
 review -u 10 -m 180 today_todo --non-interactive

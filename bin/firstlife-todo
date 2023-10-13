@@ -5,6 +5,6 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/today_todo.bash || exit_with_error "could not include \$SKIGGETY_UTILS_DIR/lib/today_todo.bash"
 
-cd $TODAY_todo_DIR
+cd $VITAL_DIR
 today_todo -n > /dev/null # to get it to re-fetch firstlife and skiggety-utils todo lists...
 todo -n --color always | grep --color=always '\(firstlife\|today_todo\|vital\)' | cat -n

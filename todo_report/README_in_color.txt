@@ -1,5 +1,5 @@
 ==== TODOs, ascending, so you know what's likely to change next. Do not edit, run 'generate_todo_report' to generate. ====
-( showing last 5 lines out of 656 for 'todo': )
+( showing last 5 lines out of 655 for 'todo': )
 ./installers/firstlife:6:# [1m[31mTODO^93[0m[0m NOW: TEST this in docker as a reluctant user starting from fish
 ./bin/firstlife:9:# EASY [1m[31mTODO^94[0m[0m: TEST with review-open-clean-fish-docker:
 ./bin/firstlife:16:# EASY [1m[31mTODO^94[0m[0m: TEST with review-open-clean-fish-docker:
