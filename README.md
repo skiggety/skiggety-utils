@@ -134,9 +134,9 @@ These ideas don't have a code location, so they go here:
   - TODO: 'rod' would be a good name for a transparent screen locker. It would stand for "Read-Only Display"
 - TODO^4: output license summary in interactive programs (like you're supposed to)??
 - TODO^4: commit initial skigg-utils, to get to parity with what I already like to use
-- TODO^4: consider supporting other shells:
+- TODO^9: consider supporting other shells:
+  - TODO^6: consider trying/supporting fish
   - TODO^4: consider supporting zsh
-  - TODO: consider trying/supporting fish
 - TODO^3: try some editable vim macros
 - TODO^4: set up a git hook system so you can add multiple scripts. For example, I'd like to block commits that include
   "X X X" (without the spaces), irrespective of any other commit hooks. That hook might be shared by a team or

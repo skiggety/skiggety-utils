@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# In this case, an override script for review that doesn't even call review, since it doesn't yet have an interactive
+# mode.  This is a way to do development, just run this in one terminal.
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+
+echo "Ready to run open-clean-fish-docker ? (CTRL+C if not)"
+while sleep-verbose 5;do
+    open-clean-fish-docker
+    echo "after a short pause, running open-clean-fish-docker again, CTRL+C to quit"
+done
