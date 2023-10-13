@@ -13,7 +13,7 @@ done
 # TODO: exit if after CHILL_TIME, BEDTIME, or maybe control bedtime with a cron marker file, or maybe just be silent
 # instead of exiting
 
-today-todo --non-interactive | abbreviate -l 20 # TODO: vital --report | abbreviate -l 20
+today_todo --non-interactive | abbreviate -l 20 # TODO: vital --report | abbreviate -l 20
 
 reward_status="$(firstlife-reward -n)"
 echo "$reward_status"
