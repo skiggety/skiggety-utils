@@ -55,14 +55,22 @@ for num in $(seq $passes_at_todo_list); do
     shellask 'Take care of a calendar task, maybe by putting it into today_todo' && firstlife-reward || accumulate_error 'ignored paper todo list'
     exit_if_day_is_over
 
-    today_todo --non-interactive
-    shellask 'Run "vital" once or twice to make sure you are ready to focus on the right stuff' || \
-        accumulate_error 'did not get tasks organized'
-    exit_if_day_is_over
-
     vital-list-by-tag POINT
     shellask 'Run "vital" again to tag or upvote something worth productivity POINTS' || \
         accumulate_error 'did not get focus on the important stuff'
+    exit_if_day_is_over
+
+    vital-list-by-tag CONFIRMING
+    firstlife-delegate --with-reward 'Mark something DONE that is "CONFIRMING" in today_todo (if you can)' || accumulate_error 'Did not confirm anything'
+    exit_if_day_is_over
+
+    today_todo -n | grep --color=always '\(NOW\|LATER\|--------\|^$\)' # EASY TODO^84: EXTRACT, and REUSE
+    firstlife-delegate --with-reward 'See if you can work on something "NOW" that is marked "LATER" (or vise-versa) in today_todo' || accumulate_error 'Did not maintain NOW and LATER tags'
+    exit_if_day_is_over
+
+    today_todo --non-interactive
+    shellask 'Run "vital" once or twice to make sure you are ready to focus on the right stuff' || \
+        accumulate_error 'did not get tasks organized'
     exit_if_day_is_over
 
     firstlife-check-calendar || accumulate_error 'did not check calendar'
@@ -124,14 +132,6 @@ for num in $(seq $passes_at_todo_list); do
     exit_if_day_is_over
 
     firstlife-check-email --with-reward || accumulate_error 'ignored email'
-    exit_if_day_is_over
-
-    vital-list-by-tag CONFIRMING
-    firstlife-delegate --with-reward 'Mark something DONE that is "CONFIRMING" in today_todo (if you can)' || accumulate_error 'Did not confirm anything'
-    exit_if_day_is_over
-
-    today_todo -n | grep --color=always '\(NOW\|LATER\|--------\|^$\)' # EASY TODO^84: EXTRACT, and REUSE
-    firstlife-delegate --with-reward 'See if you can work on something "NOW" that is marked "LATER" (or vise-versa) in today_todo' || accumulate_error 'Did not maintain NOW and LATER tags'
     exit_if_day_is_over
 
 done
