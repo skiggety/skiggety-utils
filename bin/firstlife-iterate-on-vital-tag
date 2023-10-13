@@ -5,6 +5,7 @@
 # Usage: firstlife-iterate-on-vital-tag <tag> # where <tag> might be 'DAILY' or some such
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
 tagged_todos="$(vital-list-by-tag "$1" | tac)"
 ORIGINAL_IFS="$IFS"
