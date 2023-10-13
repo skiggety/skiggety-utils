@@ -94,7 +94,6 @@ function main {
             echo 'Done:' > $vital_done_list_file_name
             echo '----------------------------------------' >> $vital_done_list_file_name
         fi
-        files_to_open_to_check_order="$vital_todo_list_file_name $tmp_sorted_list"
         files_to_open="$vital_todo_list_file_name $vital_done_list_file_name"
 
         echo "- TODO: ..." >> "$vital_todo_list_file_path" # IGNORE_TODO
