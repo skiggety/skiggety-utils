@@ -73,7 +73,6 @@ firstlife-delegate --with-reward 'Break your fast' || accumulate_error 'skipped 
 exit_if_day_is_over
 
 firstlife-delegate 'Keep the tunes pumping (you can use "firstlife-music")'
-
 exit_if_day_is_over
 
 exit_with_any_accumulated_errors
