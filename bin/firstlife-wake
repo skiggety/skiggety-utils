@@ -18,4 +18,4 @@ exit_with_any_accumulated_errors
 
 mark_script_succeeded_today $0 # make sure this script only runs once a day
 
-exit
+exit 0

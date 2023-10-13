@@ -20,4 +20,4 @@ exit_if_day_is_over
 
 mark_script_succeeded_today $0 # make sure this script only runs once a day
 
-exit
+exit 0

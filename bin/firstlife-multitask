@@ -17,4 +17,4 @@ exit_with_any_accumulated_errors
 
 exit_if_day_is_over
 
-exit
+exit 0
