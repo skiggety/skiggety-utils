@@ -13,4 +13,8 @@ exit_if_day_is_over
 # This calls $SKIGGETY_UTILS_DIR/bin/templates/firstlife-multitask.routine.TEMPLATE based on the name of this calling script:
 use_and_maintain_inner_routine_based_on_template 'multitask' "$0"
 
+exit_with_any_accumulated_errors
+
+exit_if_day_is_over
+
 exit
