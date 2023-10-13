@@ -4,7 +4,7 @@
 
 # EASY TODO^81: (IN_PROGRESS, NOW) use this script more often, maybe against your todo list
 # - EASY TODO^91: (IN_PROGRESS, NOW, POINT, META, SOFTWARE) successful pomodoros should keep log and count and show score, so I can count them and confirm I'm doing them consistently
-# - EASY TODO^45: also, count POINTs similarly from lines with 'POINT' in todays todo file.
+# - EASY TODO^46: also, count POINTs similarly from lines with 'POINT' in todays todo file.
 
 # TODO^3?: exit early if you've done enough pomodoros in a day
 # TODO?: maybe accept a '--without-reward' option
@@ -19,7 +19,7 @@ firstlife-delegate "$task_description" || exit_with_error "skipped pomodoro for:
 firstlife-log --type pomodoro "$task_description" # TODO^92: (IN_PROGRESS, NOW) display this output and productivity point count in firstlife-statuslike we do with rewards
 
 # TODO?: or should this be a 5-minute timer from youtube?:
-# TODO^2: break should be optional with '--without-break' or some such switch
+# EASY TODO^23: break should be optional with '--without-break'
 firstlife-break -t 300
 
 firstlife-reward "$task_description" # no error checking

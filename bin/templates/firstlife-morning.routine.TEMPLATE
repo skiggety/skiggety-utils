@@ -23,6 +23,7 @@ shellask "Your calendar is about to come up. When it does, mark your morning rou
     && firstlife-check-calendar && firstlife-reward 'calendar check' || accumulate_error 'did not check calendar'
 exit_if_day_is_over
 
+# FUN TODO^16: do something like this, and use widely: delegate_once_daily 'make sure you have taken any morning medications' || accumulate_error 'did not medicate'
 firstlife-delegate --with-reward 'make sure you have taken any morning medications' || accumulate_error 'did not medicate'
 exit_if_day_is_over
 

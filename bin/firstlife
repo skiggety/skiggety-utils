@@ -29,8 +29,8 @@ SKIGGETY_DEBUG='true'
 # TODO^75: if a second firstlife pops up, maybe it should take over and the old one gracefully exits? (PPID in a marker file?)
 # - TODO^4: and I could take advantage of this to create a way to exit firstlife early without having to close the terminal
 # TODO^43: and firstlife needs a way to keep you on pace, too
+# TODO^36: firstlife should do something different on weekends, sundays, any sabbath of choice, letting you control it with a template
 # TODO^33: routinely check if it's time to jump to evening stuff, based on how much you did (rewards and productivity points)
-# TODO^33: firstlife should do something different on weekends, sundays, any sabbath of choice
 # TODO^31: track stats of all kinds
 
 # EASY TODO^83: prompt user to back up ~/firstlife ( $FIRSTLIFE_DIR ) as part of setup/maintenance
@@ -66,7 +66,7 @@ exit_if_day_is_over
 
 # EASY TODO^87: use 'firstlife-delegate --with-reward' pretty much universally, instead of calling shellask directly
 
-# TODO^62: make this program aware of your productivity points, as in, keep going until you have enough:
+# TODO^63: make this program aware of your productivity points, as in, keep going until you have enough:
 firstlife-work || accumulate_error "firstlife-work had ERRORS"
 exit_if_day_is_over
 
