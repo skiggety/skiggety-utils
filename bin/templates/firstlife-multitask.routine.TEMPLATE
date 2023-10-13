@@ -131,7 +131,7 @@ for num in $(seq $passes_at_todo_list); do
     firstlife-delegate --with-reward 'Mark something DONE that is "CONFIRMING" in today_todo (if you can)' || accumulate_error 'Did not confirm anything'
     exit_if_day_is_over
 
-    today_todo -n | grep --color=auto '\(NOW\|LATER\|--------\|^$\)' # EASY TODO^84: EXTRACT, and REUSE
+    today_todo -n | grep --color=always '\(NOW\|LATER\|--------\|^$\)' # EASY TODO^84: EXTRACT, and REUSE
     firstlife-delegate --with-reward 'See if you can work on something "NOW" that is marked "LATER" (or vise-versa) in today_todo' || accumulate_error 'Did not maintain NOW and LATER tags'
     exit_if_day_is_over
 
