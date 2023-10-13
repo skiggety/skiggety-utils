@@ -17,7 +17,7 @@
 # - EASY TODO^42: build a timer into firstlife-delegate, keep stats on how long things take, just pairs of task names and times
 #   - TODO^41: then make the logs daily, graph the daily linecount
 
-# EASY TODO^2: firstlife-check-calendar could take a message string to override the normal one:
+# EASY TODO^5: firstlife-check-calendar could take a message string to override the normal one:
 # TODO^68: (EASY) check calendar script should be the one to call 'firstlife-reward', at least if you called it with '--with-reward':
 shellask "Your calendar is about to come up. When it does, mark your morning routine as starting now, OK?" \
     && firstlife-check-calendar && firstlife-reward 'calendar check' || accumulate_error 'did not check calendar'

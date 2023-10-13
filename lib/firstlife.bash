@@ -84,15 +84,21 @@ function use_and_maintain_inner_routine_based_on_template {
     PERSONAL_ROUTINE_SCRIPT="$(personal_inner_routine_script $outer_script)"
     TEMPLATE_ROUTINE_SCRIPT="$(template_inner_routine_script $outer_script)"
 
+    # default to something that will fail so it would fail if you didn't find a real one and it got called somehow:
+    INNER_ROUTINE_SCRIPT='false'
+
     echo "...starting '$nickname' routine..."
     if [ -f $PERSONAL_ROUTINE_SCRIPT ]; then
-            chmod +x $PERSONAL_ROUTINE_SCRIPT
-            $PERSONAL_ROUTINE_SCRIPT || accumulate_error "$PERSONAL_ROUTINE_SCRIPT FAILED"
+        INNER_ROUTINE_SCRIPT="$PERSONAL_ROUTINE_SCRIPT"
     elif [ -f $TEMPLATE_ROUTINE_SCRIPT ];then
-        $TEMPLATE_ROUTINE_SCRIPT || accumulate_error "$TEMPLATE_ROUTINE_SCRIPT FAILED"
+        INNER_ROUTINE_SCRIPT="$TEMPLATE_ROUTINE_SCRIPT"
     else
-        accumulate_error "Inner routine not found $(echo_here) (neither '$PERSONAL_ROUTINE_SCRIPT' nor '$TEMPLATE_ROUTINE_SCRIPT' )"
+        exit_with_error "Inner $nickname routine not found $(echo_here) (neither '$PERSONAL_ROUTINE_SCRIPT' nor '$TEMPLATE_ROUTINE_SCRIPT' )"
     fi
+
+    $INNER_ROUTINE_SCRIPT \
+        && firstlife-reward "completed $INNER_ROUTINE_SCRIPT" \
+        || accumulate_error "inner $nickname routine '$INNER_ROUTINE_SCRIPT' FAILED"
 
     # TODO^88: (IN_PROGRESS NOW): allow using vscode here:
     if [ -f $PERSONAL_ROUTINE_SCRIPT ]; then
