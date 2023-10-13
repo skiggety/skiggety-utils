@@ -10,7 +10,7 @@
 . $SKIGGETY_UTILS_DIR/lib/vital.bash || exit_with_error 'could not include vital.bash'
 
 passes_at_todo_list=1
-FIRSTLIFE_MULTITASKING_COUNT=${FIRSTLIFE_MULTITASKING_COUNT:-4}
+FIRSTLIFE_MULTITASKING_COUNT=${FIRSTLIFE_MULTITASKING_COUNT:-4} # TODO: make this overridable in firstlife config template
 
 export today_todo_now_max_count="$FIRSTLIFE_MULTITASKING_COUNT"
 
@@ -84,7 +84,7 @@ for num in $(seq $passes_at_todo_list); do
 
         # EASY TODO^75: loop through known tags:
         # EASY TODO^89: something like this needs to happen actually before you do the task:
-        if echo $todo_line | grep ERRAND > /dev/null; then
+        if echo $todo_line | grep ERRAND >/dev/null; then
             today_todo -n | grep ERRAND
             firstlife-delegate --with-reward "Maybe handle some other errands"
         fi
