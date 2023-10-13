@@ -89,7 +89,7 @@ for num in $(seq $passes_at_todo_list); do
             today_todo -n | grep ERRAND
             firstlife-delegate --with-reward "Maybe handle some other errands"
         fi
-        if echo $todo_line | grep PURCHASE > /dev/null; then
+        if echo $todo_line | grep PURCHASE >/dev/null; then
             today_todo -n | grep PURCHASE
             firstlife-delegate --with-reward "Maybe handle some other purchases"
         fi

@@ -18,7 +18,7 @@ done
 
 firstlife-status
 
-shellask 'Ready for a break?' || exit 0
+shellask "Ready for a break? ($DURATION_IN_SECONDS seconds)" || exit 0
 
 # TODO^13: mute here for DURATION_IN_SECONDS: firstlife-mute-behind-noise $DURATION_IN_SECONDS
 

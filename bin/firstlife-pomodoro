@@ -10,7 +10,7 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-# TODO: or should this be done right in ther terminal with sleep-verbose? instead of youtube and shellask:
+# EASY TODO^11: or should this be done right in the terminal with sleep-verbose or firstlife-break instead of youtube and shellask:
 open 'https://youtu.be/ddL3y1saEJs?si=UjSZicdCMYsVoIjV&t=00' # generic 25 minute timer on youtube
 task_description="do a POMODORO: $*"
 firstlife-delegate "$task_description" || exit_with_error "skipped pomodoro for: $*"
