@@ -73,6 +73,7 @@ function main {
     cd "$TODAY_todo_DIR"
 
     # generate todo reports for external directories, including firstlife and skiggety_utils
+    # TODO: only put code todos in with main todos if you have configured firstlife to do so, and don't do this on metrigon
     for dir in $HOME/firstlife $SKIGGETY_UTILS_DIR;do
         if [ -d $dir ]; then
             pushd $dir > /dev/null
@@ -96,7 +97,6 @@ function main {
         files_to_open_to_check_order="$vital_todo_list_file_name $tmp_sorted_list"
         files_to_open="$vital_todo_list_file_name $vital_done_list_file_name"
 
-        # TODO^100: (IN_PROGRESS, NOW) refactor this functionalityfor working on 'vital --add '<task>':
         echo "- TODO: ..." >> "$vital_todo_list_file_path" # IGNORE_TODO
         vim -o $files_to_open '+/\.\.\.' # TODO^84: here and elsewhere, use $EDITOR, not vim
     fi

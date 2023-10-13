@@ -18,9 +18,9 @@
 #   - TODO^41: then make the logs daily, graph the daily linecount
 
 # EASY TODO^2: firstlife-check-calendar could take a message string to override the normal one:
-shellask "Your calendar is about to come up. When it does, mark your morning routine as starting now, OK?"
 # TODO^68: (EASY) check calendar script should be the one to call 'firstlife-reward', at least if you called it with '--with-reward':
-firstlife-check-calendar && firstlife-reward 'calendar check' || accumulate_error 'did not check calendar'
+shellask "Your calendar is about to come up. When it does, mark your morning routine as starting now, OK?" \
+    && firstlife-check-calendar && firstlife-reward 'calendar check' || accumulate_error 'did not check calendar'
 exit_if_day_is_over
 
 firstlife-delegate --with-reward 'make sure you have taken any morning medications' || accumulate_error 'did not medicate'
@@ -43,8 +43,6 @@ firstlife-delegate --with-reward "Review any habits you working on breaking ('ne
 exit_if_day_is_over
 
 firstlife-delegate --with-reward 'Put away any temptations or distractions'
-exit_if_day_is_over
-
 exit_if_day_is_over
 
 # TODO^3: firstlife-delegate --with-reward --with-timer $(( 30 * 60 )) 'blah blah':
@@ -77,9 +75,9 @@ exit_with_any_accumulated_errors
 # TODO^12: make exit_if_day_is_over aware of errors?
 
 # EASY TODO^2: firstlife-check-calendar could take a message string to override the normal one:
-shellask "Your calendar is about to come up. When it does, mark how long your morning routine took, and plan your day, OK?"
 # TODO^68: (EASY) check calendar script should be the one to call 'firstlife-reward', at least if you called it with '--with-reward':
-firstlife-check-calendar && firstlife-reward 'calendar check' || accumulate_error 'did not check calendar'
+shellask "Your calendar is about to come up. When it does, mark how long your morning routine took, and plan your day, OK?" \
+    && firstlife-check-calendar && firstlife-reward 'calendar check' || accumulate_error 'did not check calendar'
 
 # TODO: do I want this here? do I want it in other high-level firstlife scripts?:
 echo "$(basename $0) succeeded!"
