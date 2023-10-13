@@ -66,11 +66,11 @@ exit_if_day_is_over
 # EASY TODO^87: use 'firstlife-delegate --with-reward' pretty much universally, instead of calling shellask directly
 
 # TODO^62: make this program aware of your productivity points, as in, keep going until you have enough:
-firstlife-work # TODO^2?: || exit_with_error "firstlife-work FAILED"
+firstlife-work || accumulate_error "firstlife-work had ERRORS"
 exit_if_day_is_over
 
 # EASY TODO^43: (TEST) help with evening routine (maybe only use exit_if_day_is_over in child scripts, or call this from inside # exit_if_day_is_over)
-firstlife-evening || accumulate_error "need to wrap up habits in the evening"
+firstlife-evening || accumulate_error "firstlife-evening had ERRORS"
 exit_if_day_is_over
 
 # EASY TODO^3: every time I do this graph update should be in a routine like morning or evening so it can get skipped:
@@ -78,3 +78,5 @@ update_todo_graph # TODO: only if using today_todo
 exit_if_day_is_over
 
 exit_with_any_accumulated_errors
+
+exit 0
