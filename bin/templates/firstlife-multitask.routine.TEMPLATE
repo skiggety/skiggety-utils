@@ -20,6 +20,8 @@ export today_todo_now_max_count="$FIRSTLIFE_MULTITASKING_COUNT"
 
 # TODO^81: firstlife should keep an eye on "MAINTENANCE" tag in vital/today_todo
 
+# TODO: shorten this routine so it doesn't take so long
+
 exit_if_day_is_over
 
 firstlife-delegate --with-reward 'Make sure various devices including this one are charged/charging' \

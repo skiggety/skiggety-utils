@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# This script (TODO...)
+# This script guides you through a period of focused work, meant to be used up to a few times per day.
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'

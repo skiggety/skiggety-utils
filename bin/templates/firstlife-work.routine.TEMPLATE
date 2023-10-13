@@ -11,7 +11,7 @@ function show_recently_done_todos {
 
 show_recently_done_todos
 
-# EASY TODO^47: I need different criteria for whether to continue...is it the same day? do you have enough points? Do you want
+# EASY TODO^48: I need different criteria for whether to continue...is it the same day? do you have enough points? Do you want
 # to do more?:
 
 firstlife-multitask || accumulate_error 'multitasking ERRORS' # TODO: at least once, maybe longer if there is time
