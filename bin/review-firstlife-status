@@ -10,4 +10,4 @@
 # TODO: make a template for setting up variables like BEDTIME after which firstlife-status should just fail and this script should exit
 
 cd $FIRSTLIFE_DIR
-firstlife-status && clear && review -m 120 firstlife-status
+firstlife-status && clear && review -u 5 -m 90 --while firstlife-status
