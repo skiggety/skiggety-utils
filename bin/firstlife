@@ -51,7 +51,7 @@ exit_if_day_is_over
 # to make sure firstlife has the latest code:
 if shellask "Would you like to update skiggety-utils (including firstlife) now?"; then
     pushd $SKIGGETY_UTILS_DIR > /dev/null
-    ./PWD_BIN/ci # TODO: extract from ci just the part that restores certain things and then does a git pull
+    ./PWD_BIN/git-safe-pull
     popd > /dev/null
 fi
 

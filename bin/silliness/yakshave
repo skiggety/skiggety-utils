@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 # This script is a place for doing pointless things, to be used sparingly and with self-awareness.
 
 clear
@@ -13,7 +14,7 @@ rg -n --color=always '#.*\. [^ $\[|."-]' . | sort | \
 firstlife-delegate --with-reward 'fix a single space between sentences (see above)'
 
 dashboard
-firstlife-delegate --with-reward 'commit something, probably using "ci;git ready && yup".'
+firstlife-delegate --with-reward 'commit something, probably using "ci && git ready && yup".'
 
 popd >/dev/null
 
