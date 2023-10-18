@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO^102: (NOW) shorten this routine so it doesn't take so long
+
 # Use this script as a basis for your personal multitasking routine, uncommenting what's useful without making it too
 # complicated. This is a very loose example, feel free to rearrange and comment/uncomment stuff, usually a paragraph at
 # a time.
@@ -19,8 +21,6 @@ export today_todo_now_max_count="$FIRSTLIFE_MULTITASKING_COUNT"
 # EASY TODO^91: inside this script and elsewhere, use 'firstlife-delegate --with-reward' instead of calling 'shellask' directly:
 
 # TODO^81: firstlife should keep an eye on "MAINTENANCE" tag in vital/today_todo
-
-# TODO: shorten this routine so it doesn't take so long
 
 exit_if_day_is_over
 
@@ -45,7 +45,7 @@ firstlife-break -t 120
 # EASY TODO^85: maybe the inside of the loop could be more like merely:
 # EASY TODO^85:     today_todo
 # EASY TODO^85:     # shellask 'work on your one of your top 3 todos and downvote it if appropriate'
-# EASY TODO^85:     vital --iterate -n $FIRSTLIFE_MULTITASKING_COUNT
+# EASY TODO^86:     vital --iterate -n $FIRSTLIFE_MULTITASKING_COUNT
 #### Today's Todo List #############################################################################
 for num in $(seq $passes_at_todo_list); do
 
