@@ -35,7 +35,7 @@ SKIGGETY_DEBUG='true'
 $SKIGGETY_UTILS_DIR/installers/firstlife || exit_with_error "could not set up firstlife"
 
 # EASY TODO^86: move elsewhere:
-function update_todo_graph {
+function update_vital_graph {
     # TODO^88: (IN_PROGRESS, EASY) make sure TODO graph exists in an environment variable so you don't commit it:
     # - TODO^89 (IN_PROGRESS, EASY): if there's no environment variable, suggest the user start a new one and save the link in their bashrc, where the template should be ready.
     # TODO: wherever you use 'open', use firstlife-open instead, which can use shellask if you're in a docker container:
@@ -74,7 +74,7 @@ firstlife-evening || accumulate_error "firstlife-evening had ERRORS"
 exit_if_day_is_over
 
 # EASY TODO^3: every time I do this graph update should be in a routine like morning or evening so it can get skipped:
-update_todo_graph # TODO: only if using today_todo
+update_vital_graph # TODO^21: only if using 'vital'
 exit_if_day_is_over
 
 exit_with_any_accumulated_errors
