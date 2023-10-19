@@ -30,7 +30,8 @@ done
 
 spr="$(echo "$reward_status"| grep 'seconds each' | sed 's/.*at \([0-9]*\) seconds each.*/\1/')"
 spr=${spr:-'100000'}
-if [ $spr -gt 600 ] && test "`find $FIRSTLIFE_LOG_DIR/reward.$(isotoday).log.txt -mmin +9 2>/dev/null`"; then
+MINUTES_OF_INACTIVITY_ALLOWED=9
+if [ $spr -gt 600 ] && test "`find $FIRSTLIFE_LOG_DIR/reward.$(isotoday).log.txt -mmin +$MINUTES_OF_INACTIVITY_ALLOWED 2>/dev/null`"; then
     echo
     echo "UH-OH! It seems like you're getting BEHIND, time to emit a sound: $BEHIND_SOUND"
     mplayer $BEHIND_SOUND >/dev/null 2>&1
