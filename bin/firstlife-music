@@ -9,5 +9,5 @@ if [ -f $FIRSTLIFE_DIR/bin/firstlife-music ]; then
     $FIRSTLIFE_DIR/bin/firstlife-music
 else
     SCOTTS_MUSIC='https://www.youtube.com/watch?v=8Pa9x9fZBtY&list=PLbyyOcHfeHIrQGN_tEnOybFtV6Qbn2vfJ'
-    open "$SCOTTS_MUSIC"
+    open "$SCOTTS_MUSIC" 2>/dev/null &
 fi

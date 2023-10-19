@@ -35,7 +35,7 @@ exit_if_day_is_over
 
 # EASY TODO^85: Or better yet, manage the list of videos here and randomize:
 SCOTTS_MEDITATION_PLAYLIST='https://www.youtube.com/playlist?list=PLbyyOcHfeHIqCKsHI62oWS6i4JQfdtcfd'
-open "$SCOTTS_MEDITATION_PLAYLIST"
+open "$SCOTTS_MEDITATION_PLAYLIST" 2>/dev/null &
 firstlife-delegate --with-reward '5-minute meditation' || accumulate_error 'did not meditate' # TODO^2: --with-timer 330
 exit_if_day_is_over
 
