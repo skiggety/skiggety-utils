@@ -22,6 +22,7 @@ echo "$reward_status"
 
 # EASY TODO^66: mute during meditation, exercise, shower, pomodoros, breaks, evenings, etc.
 BEHIND_SOUND="$FIRSTLIFE_DIR/sounds/behind.mp3"
+BEHIND_SOUND_VOLUME='20'
 while ! [ -f $BEHIND_SOUND ]; do
     mkdir -p "$(dirname $BEHIND_SOUND)"
     shellask "Please download an sound to let you know you are behind of your choice and put it at $ALARM_SOUND, e.g. \"wget <some-whip-cracking-sound> -O $BEHIND_SOUND\"" \
@@ -34,7 +35,7 @@ MINUTES_OF_INACTIVITY_ALLOWED=9
 if [ $spr -gt 600 ] && test "`find $FIRSTLIFE_LOG_DIR/reward.$(isotoday).log.txt -mmin +$MINUTES_OF_INACTIVITY_ALLOWED 2>/dev/null`"; then
     echo
     echo "UH-OH! It seems like you're getting BEHIND, time to emit a sound: $BEHIND_SOUND"
-    mplayer $BEHIND_SOUND >/dev/null 2>&1
+    mplayer -volume $BEHIND_SOUND_VOLUME $BEHIND_SOUND >/dev/null 2>&1
     echo "...Also, here's the file with the last timestamp for a reward:"
     ls -lh $FIRSTLIFE_LOG_DIR/reward.$(isotoday).log.txt
 fi
