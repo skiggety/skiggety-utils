@@ -3,7 +3,7 @@
 # TODO^102: (NOW) shorten this routine so it doesn't take so long
 
 # Use this script as a basis for your personal multitasking routine, uncommenting what's useful without making it too
-# complicated. This is a very loose example, feel free to rearrange and comment/uncomment stuff, usually a paragraph at
+# complicated.  This is a very loose example, feel free to rearrange and comment/uncomment stuff, usually a paragraph at
 # a time.
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
@@ -79,7 +79,7 @@ for num in $(seq $passes_at_todo_list); do
     exit_if_day_is_over
 
     # TODO^88: extract this bit that works on a few todos to firstlife-work-on-top-n-todos -n $MULTITASKING_CONSTANT
-    # - TODO^90: or better yet, EXTRACT to 'firstlife-iterate-on-vital'
+    # - TODO^91: or better yet, EXTRACT to 'firstlife-iterate-on-vital'
     pushd $VITAL_DIR > /dev/null
     todos="$($SKIGGETY_UTILS_DIR/bin/todo|grep '\(NOW\|EASY\)'|tail -n $FIRSTLIFE_MULTITASKING_COUNT|tac)" # lump "EASY" in with "NOW", might as well do easy stuff right away
     ORIGINAL_IFS="$IFS"

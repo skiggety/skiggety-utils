@@ -7,7 +7,22 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
+LIMIT=""
+while [[ "$1" == -* ]]; do
+    # accept -n for git commit -n
+    if [ "$1" == "-n" ]; then
+        shift
+        LIMIT="$1"
+        shift
+    fi
+done
+
 tagged_todos="$(vital-list-by-tag "$1" | tac)"
+if ! [ -z "$LIMIT" ]; then
+    echo_debug "$(basename $0) - limiting to $LIMIT iterations"
+    tagged_todos="$(echo "$tagged_todos" | head -n $LIMIT)"
+fi
+
 ORIGINAL_IFS="$IFS"
 IFS=$'\n'
 read -rd '' -a tagged_todos_as_array <<<"$tagged_todos"

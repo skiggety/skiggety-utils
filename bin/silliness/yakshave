@@ -18,5 +18,5 @@ firstlife-delegate --with-reward 'commit something, probably using "ci && git re
 
 popd >/dev/null
 
-today_todo -n | grep --color=always '\(META\|--------\|^$\)' | abbreviate -l 20 # EASY TODO^84: EXTRACT, and REUSE
-firstlife-delegate --with-reward 'work on META tasks'
+today_todo -n | grep --color=always '\(ME''TA\|--------\|^$\)' | abbreviate -l 20 # EASY TODO^85: EXTRACT, and REUSE
+firstlife-delegate --with-reward 'work on META tasks (maybe use "vf firstlife-iterate-on-vital-tag -n 3 META")'
