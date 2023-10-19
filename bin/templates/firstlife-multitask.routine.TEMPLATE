@@ -39,7 +39,7 @@ exit_if_day_is_over
 shellask 'do one act of self care or something on the habit tracker' && firstlife-reward || accumulate_error 'missed a habit'
 exit_if_day_is_over
 
-firstlife-break -t 120
+firstlife-break -t 150
 
 #### Today's Todo List #############################################################################
 # EASY TODO^85: maybe the inside of the loop could be more like merely:
@@ -104,7 +104,7 @@ for num in $(seq $passes_at_todo_list); do
         fi
         exit_if_day_is_over
 
-        firstlife-break -t 180
+        firstlife-break -t 120
 
         exit_if_day_is_over
     done
@@ -120,7 +120,7 @@ for num in $(seq $passes_at_todo_list); do
     firstlife-check-email --with-reward || accumulate_error 'ignored email'
     exit_if_day_is_over
 
-    firstlife-break
+    firstlife-break -t 240
     exit_if_day_is_over
 
     shellask 'Do one act of self care or something on the habit tracker' && firstlife-reward || accumulate_error 'missed a habit'
