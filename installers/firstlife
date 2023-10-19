@@ -8,9 +8,9 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 echo
 
 if ! bc -v >/dev/null 2>&1; then
-    if which apt-get >/dev/null && shellask "Want to install bc with apt-get?"; then
-        apt-get -y update
-        apt-get -y install bc
+    if which apt-get >/dev/null && shellask "Want to install bc with apt-get? (as root)?"; then
+        sudo aapt-get -y update
+        sudo aapt-get -y install bc
     fi
 fi
 
