@@ -21,9 +21,9 @@ fi
 if ! mplayer -v >/dev/null 2>&1; then
     if which brew >/dev/null && shellask "Want to install mplayer with brew?"; then
         brew install mplayer
-    elif which apt-get >/dev/null && shellask "Want to install mplayer with apt-get?"; then
-        apt-get -y update
-        apt-get -y install mplayer
+    elif which apt-get >/dev/null && shellask "Want to install mplayer with apt-get (as root)?"; then
+        sudo apt-get -y update
+        sudo apt-get -y install mplayer
     fi
 fi
 
