@@ -22,7 +22,7 @@ echo "$reward_status"
 
 # EASY TODO^66: mute during meditation, exercise, shower, pomodoros, breaks, evenings, etc.
 BEHIND_SOUND="$FIRSTLIFE_DIR/sounds/behind.mp3"
-BEHIND_SOUND_VOLUME='20'
+BEHIND_SOUND_VOLUME='20' # TODO: put in config
 while ! [ -f $BEHIND_SOUND ]; do
     mkdir -p "$(dirname $BEHIND_SOUND)"
     shellask "Please download an sound to let you know you are behind of your choice and put it at $ALARM_SOUND, e.g. \"wget <some-whip-cracking-sound> -O $BEHIND_SOUND\"" \
