@@ -6,12 +6,14 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
 MINUTES_LEFT="15"
+debug_eval_here MINUTES_LEFT
 TITLE="Attend the event on your calendar"
 
 while [[ "$1" == -* ]]; do
     if [ "$1" == "-m" ]; then
         shift
         MINUTES_LEFT="$1"
+        debug_eval_here MINUTES_LEFT
         shift
     fi
 done
@@ -20,9 +22,12 @@ TITLE="$*"
 TIME_MARKER_FILE="/tmp/$(basename $0).$PPID.marked.time"
 
 echo "$MINUTES_LEFT minutes until '$TITLE' at $(date)"
+debug_eval_here MINUTES_LEFT
 while [ $MINUTES_LEFT -gt 0 ];do
+    debug_eval_here MINUTES_LEFT
     LAST_TIME_MINUTES_LEFT="$MINUTES_LEFT"
     MINUTES_LEFT="$(( ($MINUTES_LEFT * 40) / 100 ))"
+    # TODO^104: (IN_PROGRESS NOW) TEST, I don't think this works
     if [ $MINUTES_LEFT -lt 0 ]; then
         MINUTES_LEFT=0
     fi
@@ -33,7 +38,9 @@ while [ $MINUTES_LEFT -gt 0 ];do
     sleep-verbose "$(( $MINUTES_TO_SLEEP * 60 ))"
 
     touch "$TIME_MARKER_FILE"
+    debug_eval_here MINUTES_LEFT
     firstlife-alarm "$MINUTES_LEFT minutes until '$TITLE' at $(date)"
+    debug_eval_here MINUTES_LEFT
 
     # TODO: for linux:
     # # ALARM_ELAPSED_SECONDS="$(($(date +%s) - $(date +%s -r "$TIME_MARKER_FILE")))"
@@ -44,11 +51,14 @@ while [ $MINUTES_LEFT -gt 0 ];do
 
     MINUTES_TO_SUBTRACT_FOR_ALARM="$(( ($ALARM_ELAPSED_SECONDS + 60 ) / 60 ))"
     MINUTES_LEFT="$(( $MINUTES_LEFT - $MINUTES_TO_SUBTRACT_FOR_ALARM ))"
+    debug_eval_here MINUTES_LEFT
     if [ $MINUTES_LEFT -ge 0 ]; then
-        MISSING_SECONDS="$(( ( 60 - $ALARM_ELAPSED_SECONDS ) % 60))"
+        MISSING_SECONDS="$(( 60 - ( $ALARM_ELAPSED_SECONDS % 60 ) ))"
+        debug_eval_here MISSING_SECONDS
         sleep-verbose "$(( 60 - $ALARM_ELAPSED_SECONDS))"
     fi
     echo "$MINUTES_LEFT minutes until '$TITLE' at $(date)"
+    debug_eval_here MINUTES_LEFT
 done
 
 echo_divider_with_text "=" "Time for '$TITLE' NOW!"
