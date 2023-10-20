@@ -5,4 +5,4 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
 open 'https://www.google.com/calendar/render' 2>/dev/null & # TODO: UN-HARDCODE
-firstlife-delegate 'look at your calendar, make sure you are doing the right thing' || exit_with_error 'did not check calendar'
+firstlife-delegate 'look at your calendar, make sure you are doing the right thing (and use "firstlife-reminder-countdown" in another window if you need a reminder)' || exit_with_error 'did not check calendar'

@@ -1,5 +1,5 @@
 ==== TODOs, ascending, so you know what's likely to change next. Do not edit, run 'generate_todo_report' to generate. ====
-( showing last 5 lines out of 642 for 'todo': )
+( showing last 5 lines out of 643 for 'todo': )
 ./bin/firstlife-pomodoro:19:firstlife-log --type pomodoro "$task_description" # [1m[31mTODO^92[0m[0m: (IN_PROGRESS, NOW) display this output and productivity point count in firstlife-statuslike we do with rewards
 ./bin/firstlife:5:# [1m[31mTODO^93[0m[0m NOW: TEST this in docker as a reluctant user starting from fish
 ./installers/firstlife:6:# [1m[31mTODO^93[0m[0m NOW: TEST this in docker as a reluctant user starting from fish

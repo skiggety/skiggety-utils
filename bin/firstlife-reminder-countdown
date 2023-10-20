@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+# This script reminds you of future events, more frequently as they get closer.
+
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+MINUTES_LEFT="15"
+TITLE="Attend the event on your calendar"
+
+while [[ "$1" == -* ]]; do
+    if [ "$1" == "-m" ]; then
+        shift
+        MINUTES_LEFT="$1"
+        shift
+    fi
+done
+TITLE="$*"
+
+TIME_MARKER_FILE="/tmp/$(basename $0).$PPID.marked.time"
+
+echo "$MINUTES_LEFT minutes until '$TITLE' at $(date)"
+while [ $MINUTES_LEFT -gt 0 ];do
+    LAST_TIME_MINUTES_LEFT="$MINUTES_LEFT"
+    MINUTES_LEFT="$(( ($MINUTES_LEFT * 40) / 100 ))"
+    if [ $MINUTES_LEFT -lt 0 ]; then
+        MINUTES_LEFT=0
+    fi
+    MINUTES_TO_SLEEP="$(( $LAST_TIME_MINUTES_LEFT - $MINUTES_LEFT))"
+
+    echo "Sleeping for $MINUTES_TO_SLEEP minutes at $(date) ..."
+    debug_here sleep-verbose "$(( $MINUTES_TO_SLEEP * 60 ))"
+    sleep-verbose "$(( $MINUTES_TO_SLEEP * 60 ))"
+
+    touch "$TIME_MARKER_FILE"
+    firstlife-alarm "$MINUTES_LEFT minutes until '$TITLE' at $(date)"
+
+    # TODO: for linux:
+    # # ALARM_ELAPSED_SECONDS="$(($(date +%s) - $(date +%s -r "$TIME_MARKER_FILE")))"
+
+    # TODO: only for OSX:
+    ALARM_ELAPSED_SECONDS="$(($(date +%s) - $(stat -t %s -f %m -- "$TIME_MARKER_FILE")))"
+    debug_eval_here ALARM_ELAPSED_SECONDS
+
+    MINUTES_TO_SUBTRACT_FOR_ALARM="$(( ($ALARM_ELAPSED_SECONDS + 60 ) / 60 ))"
+    MINUTES_LEFT="$(( $MINUTES_LEFT - $MINUTES_TO_SUBTRACT_FOR_ALARM ))"
+    if [ $MINUTES_LEFT -ge 0 ]; then
+        MISSING_SECONDS="$(( ( 60 - $ALARM_ELAPSED_SECONDS ) % 60))"
+        sleep-verbose "$(( 60 - $ALARM_ELAPSED_SECONDS))"
+    fi
+    echo "$MINUTES_LEFT minutes until '$TITLE' at $(date)"
+done
+
+echo_divider_with_text "=" "Time for '$TITLE' NOW!"
+
+exit 0
