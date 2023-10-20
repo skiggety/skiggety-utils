@@ -7,4 +7,7 @@
 
 cd $VITAL_DIR
 today_todo -n > /dev/null # to get it to re-fetch firstlife and skiggety-utils todo lists...
-todo -n --color always | grep --color=always '\(firstlife\|today_todo\|vital\)' | cat -n
+
+for i in $(seq 15); do echo;done
+
+todo -n --color always | grep --color=always '\(firstlife\|today_todo\|vital\)' | cat -n | abbreviate -n 10 -t "Firstlife todo list"
