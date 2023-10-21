@@ -18,9 +18,9 @@ today_todo --non-interactive | abbreviate -l 20 # TODO: vital --report | abbrevi
 reward_status="$(firstlife-reward -n)"
 echo "$reward_status"
 
-# TODO^3: firstlife-pomodoro -n
+# TODO^6: firstlife-pomodoro -n
 
-# EASY TODO^66: mute during meditation, exercise, shower, pomodoros, breaks, evenings, etc.
+# EASY TODO^72: mute during meditation, exercise, shower, pomodoros, breaks, evenings, etc.
 BEHIND_SOUND="$FIRSTLIFE_DIR/sounds/behind.mp3"
 BEHIND_SOUND_VOLUME='20' # TODO: put in config
 while ! [ -f $BEHIND_SOUND ]; do

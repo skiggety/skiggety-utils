@@ -8,6 +8,7 @@
 SNOOZE_SECONDS=60
 trap "exit 1" INT # seems to be necessary to cancel the alarm cleanly
 
+# TODO^2: tolerate wav or mp3, don't suggest downloading one and renaming it to the other
 ALARM_SOUND=${ALARM_SOUND:-"$FIRSTLIFE_DIR/sounds/alarm.wav"}
 while ! [ -f $ALARM_SOUND ]; do
     mkdir -p "$(dirname $ALARM_SOUND)"

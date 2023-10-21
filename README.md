@@ -137,23 +137,24 @@ These ideas don't have a code location, so they go here:
 - TODO^9: consider supporting other shells:
   - TODO^6: consider trying/supporting fish
   - TODO^4: consider supporting zsh
-- TODO^3: try some editable vim macros
+- TODO^5: use bash linter of some sort
 - TODO^4: set up a git hook system so you can add multiple scripts. For example, I'd like to block commits that include
+- TODO^3: try some editable vim macros
   "X X X" (without the spaces), irrespective of any other commit hooks. That hook might be shared by a team or
   individual to me, and I'd like to be able to support both kinds without conflicts. Look at
   https://github.com/pre-commit/pre-commit
-- TODO^2: automatically graph gmail progress outstanding messages, by writing a program that takes a url or gmail search string and monitors it. You can check in on the graph periodically to make sure you're on track.
-  - TODO: find a tool that can show graphs of provided data on the command line
 - TODO^4: music rotator thingy (Neighbor Shawn might beta test)
 - TODO^3: maybe skiggety-utils should help set up /Users/skiggety/PWD_BIN/dashboard from a template
+- TODO^2: automatically graph gmail progress outstanding messages, by writing a program that takes a url or gmail search string and monitors it. You can check in on the graph periodically to make sure you're on track.
+  - TODO: find a tool that can show graphs of provided data on the command line
 - TODO^2: collect data on email inbox, etc. and auto-generate graphs for the dashboard
   - TODO: set up router
     - TODO^2: help set up local dns
   - TODO^2: set up NAS
 - TODO^2: have a way to open the github webpage from inside a git repo from the command line. You can use "open <URL>" on a mac, for example, and scripts like what you use for automatic git pushing can use it to help you get PR's going fast.
+- TODO^2: mini-project: raspberry pi backup machine, and the software to run it.
 - TODO: systematized config (automate the configuration I always want anyway)
     - TODO^2: hook up to google drive
-- TODO^2: mini-project: raspberry pi backup machine, and the software to run it.
 # TODO^7: set up bash tab completion ( see: https://apple.stackexchange.com/questions/55875/git-auto-complete-for-branches-at-the-command-line )
 - TODO: document usage of commands
 - TODO: help set up home data center?

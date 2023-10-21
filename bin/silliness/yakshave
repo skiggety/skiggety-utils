@@ -6,6 +6,7 @@ clear
 
 pushd $SKIGGETY_UTILS_DIR >/dev/null
 
+# TODO^2? : turn this into a linter:
 # Find sentences in comments with single spaces between them.
 rg -n --color=always '#.*\. [^ $\[|."-]' . | sort | \
     grep -v '^[^:\w]*version.txt' | \
