@@ -27,8 +27,7 @@ while [ $MINUTES_LEFT -gt 0 ];do
     debug_eval_here MINUTES_LEFT
     LAST_TIME_MINUTES_LEFT="$MINUTES_LEFT"
     MINUTES_LEFT="$(( ($MINUTES_LEFT * 40) / 100 ))"
-    # TODO^104: (IN_PROGRESS NOW) TEST, I don't think this works
-    if [ $MINUTES_LEFT -lt 0 ]; then
+    if [[ "$MINUTES_LEFT" == -* ]]; then
         MINUTES_LEFT=0
     fi
     MINUTES_TO_SLEEP="$(( $LAST_TIME_MINUTES_LEFT - $MINUTES_LEFT))"
