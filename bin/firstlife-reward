@@ -99,7 +99,7 @@ echo "You have earned $reward_score rewards today$SECONDS_PER_REWARD_EXPLANATION
 echo
 echo
 if $ADD_REWARD; then
-    sleep-verbose 2 # so you have a chance to notice and feel good before anything else pops up.
+    sleep 1.5 # so you have a chance to notice and feel good before anything else pops up.
 fi
 
 # TODO?: (after above) || firstlife-save-reward-for-later
