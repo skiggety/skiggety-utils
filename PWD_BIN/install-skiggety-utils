@@ -68,7 +68,7 @@ function main {
     debug_here "reloading environment..."
     . ~/.bashrc # reload environment
 
-    # TODO^4: set up a naming convention for installers, because install-vim might make more sense than vim
+    # TODO^25: set up a naming convention for installers, because install-vim might make more sense than vim
 
     debug_here "running installer: $INSTALLERS_DIR/basic_prerequisites"
     use_installer_unsafe "$INSTALLERS_DIR/basic_prerequisites" $INSTALLER_ARGS || exit_with_error "failed to set up basic prerequisites for other installers to run"

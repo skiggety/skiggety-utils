@@ -1,0 +1,107 @@
+#!/usr/bin/env bash
+
+# This script attempts to reward the user somehow
+
+# EASY FUN TODO^85: we need a way to watch the rewards (and pomodoros) pile up, so create a display only mode and maybe run in in the prompt like you do with duh or run it as part of delegate
+
+# TODO^5: develop the idea of rewards a bit.  Maybe a way to cash them in?  It needs to be motivating.
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
+VERBOSE=false
+ADD_REWARD=true
+
+while [[ "$1" == -* ]]; do
+    if [ "$1" == "-v" ]; then
+        VERBOSE=true
+        shift
+    elif [ "$1" == "-n" ]; then
+        ADD_REWARD=false
+        shift
+    fi
+done
+
+# EASY FUN TODO^71: emit a characteristic "reward" (gong?) sound, and get all pavlovian about it
+# - TODO^10: maybe kill the behind sound first?
+
+if $ADD_REWARD; then
+    reward_for="$(echo "$*" | tr "$newline" ' ')"
+    request="Please take 1 REWARD (for: $reward_for)"
+    if [ -z "$*" ]; then
+        request='take 1 REWARD please'
+    fi
+    firstlife-log --type reward "$request"
+fi
+
+
+# show the linecount as your reward count for the day, watch it pile up!:
+reward_log="$(log_file_for_type reward)"
+reward_score=0
+if [ -f $reward_log ]; then
+    reward_score="$(wc -l $reward_log | awk '{print $1}')"
+fi
+if $VERBOSE;then
+    cat $reward_log
+fi
+
+SECONDS_ELAPSED_TODAY="$( echo "((( $(date +'%H') * 60.0 ) + $(date +'%M') ) * 60.0 ) + $(date +'%S')" | bc ) "
+
+# defaults for when $reward_score is 0:
+SECONDS_PER_REWARD="$( echo "$SECONDS_ELAPSED_TODAY * 2" | bc )" # avoid division by zero at the cost of accuracy
+SECONDS_PER_REWARD_EXPLANATION=''
+
+if [ $reward_score -gt 0 ]; then
+    SECONDS_PER_REWARD="$( echo "$SECONDS_ELAPSED_TODAY / $reward_score" | bc )"
+    SECONDS_PER_REWARD_EXPLANATION=", at $SECONDS_PER_REWARD seconds each"
+    if [ $SECONDS_PER_REWARD -gt 60 ]; then
+        MINUTES_PER_REWARD="$( echo "$SECONDS_PER_REWARD / 60" | bc )"
+        SECONDS_PER_REWARD_EXPLANATION="$SECONDS_PER_REWARD_EXPLANATION, or about $MINUTES_PER_REWARD minutes"
+    fi
+    if [ $SECONDS_PER_REWARD -gt 3600 ]; then
+        HOURS_PER_REWARD="$( echo "$SECONDS_PER_REWARD / 3600" | bc )"
+        SECONDS_PER_REWARD_EXPLANATION="$SECONDS_PER_REWARD_EXPLANATION, or about $HOURS_PER_REWARD hours"
+    fi
+fi
+
+SPACES_PER_DOT="$(echo "$SECONDS_PER_REWARD / 300" | bc )"
+
+if [ $reward_score -gt 0 ]; then
+    j=1
+    k=1
+    for i in $(seq $reward_score); do
+        if $ADD_REWARD; then
+            sleep 0.01
+        fi
+
+        if ! [ $SPACES_PER_DOT -eq 0 ]; then
+            for space_num in $(seq $SPACES_PER_DOT); do
+                echo -n ' '
+            done
+        fi
+
+        if [ $j -eq $k -o $i -eq $reward_score ]; then
+            j=0
+            k=$(($k+1))
+            echo '.'
+        else
+            echo -n '.'
+        fi
+        j=$(($j+1))
+    done
+fi
+
+if $ADD_REWARD; then
+    echo "$request"
+    tput bel # a.k.a. ding, bell (for searchability) # EASY TODO^35: DELETE after we have a better sound
+fi
+
+echo "You have earned $reward_score rewards today$SECONDS_PER_REWARD_EXPLANATION!"
+echo
+echo
+if $ADD_REWARD; then
+    sleep 1.5 # so you have a chance to notice and feel good before anything else pops up.
+fi
+
+# TODO?: (after above) || firstlife-save-reward-for-later
+
+exit 0

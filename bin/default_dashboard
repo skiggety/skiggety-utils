@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # TODO: consider #!/usr/bin/env python3 OR #!/usr/bin/env ruby
 
-# TODO^6: consider renaming or extracting to git-default-dashboard or git-dashboard considering what this script actually does
+# TODO^8: consider renaming or extracting to git-default-dashboard or git-dashboard considering what this script actually does
 
 # This script provides a general purpose status report that is sensitive to the current directory.  If you are in a git
 # repo for a coding project, it'll give you an idea of høw tests are doing, what's left to do/commit, etc.  It will
@@ -17,9 +17,9 @@ if [ "$git_stash_list" != "" ]; then
     echo_divider_with_text "-=" "git stash list"
     echo "$git_stash_list"
     echo_divider_with_text "-" "git stash show"
-    git stash show
+    git -c color.ui=always --no-pager stash show
     echo_divider_with_text "-" "git stash show -p | head -n 10"
-    git -c color.ui=always stash show -p | head -n 10
+    git -c color.ui=always --no-pager stash show -p | head -n 10
 fi
 
 # TODO: why is this producing so much output lately, like in content manager, even when there have only been a few
@@ -54,6 +54,7 @@ else
 fi
 echo "$GIT_STATUS_LINECOUNT files with changes on branch '$(git branch --show-current)'"
 
-for keyword in 'XX''X' 'BREAD''CRUMB'; do
-    git-object-to-added-keyword "$keyword" || exit_with_error "'git-object-to-added-keyword $keyword' FAILED"
+for keyword in 'DO_NOT''_COMMIT' 'XX''X' 'BREAD''CRUMB'; do
+    git-object-to-added-keyword "$keyword" || accumulate_error "'git-object-to-added-keyword $keyword' FAILED"
 done
+exit_with_any_accumulated_errors

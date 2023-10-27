@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+
+# Self, program thyself. This script gamifies life to help get everyday stuff done, and it's just a prototype.
+
+# TODO^93 NOW: TEST this in docker as a reluctant user starting from fish
+
+# Figure out $SKIGGETY_UTILS_DIR and export it if it's not set, in case skiggety-utils setup has not happened:
+THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
+SKIGGETY_UTILS_DIR=${SKIGGETY_UTILS_DIR:-"$(cd $THIS_DIR/..;pwd)"}
+export SKIGGETY_UTILS_DIR
+
+# EASY TODO^5: archive markers and log files more than a month old
+
+if ! echo $PATH | grep "$SKIGGETY_UTILS_DIR/bin" >/dev/null; then
+    export PATH="$SKIGGETY_UTILS_DIR/bin:$PATH"
+fi
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
+. $SKIGGETY_UTILS_DIR/lib/today_todo.bash || exit_with_error 'could not include today_todo.bash'
+
+# TODO^88: ======== First real demo ================
+# TODO^85: ======== Another real demo with some decent code readability ============
+# TODO^76: if a second firstlife pops up, maybe it should take over and the old one gracefully exits? (PPID in a marker file?)
+# - TODO^4: and I could take advantage of this to create a way to exit firstlife early without having to close the terminal
+# TODO^43: and firstlife needs a way to keep you on pace, too
+# TODO^36: firstlife should do something different on weekends, sundays, any sabbath of choice, letting you control it with a template
+# TODO^33: routinely check if it's time to jump to evening stuff, based on how much you did (rewards and productivity points)
+# TODO^31: track stats of all kinds
+
+# - TODO^23 (IN_PROGRESS, NOW): it should set the terminal title
+
+$SKIGGETY_UTILS_DIR/installers/firstlife || exit_with_error "could not set up firstlife"
+
+# EASY TODO^86: move elsewhere:
+function update_vital_graph {
+    # TODO^88: (IN_PROGRESS, EASY) make sure TODO graph exists in an environment variable so you don't commit it:
+    # - TODO^89 (IN_PROGRESS, EASY): if there's no environment variable, suggest the user start a new one and save the link in their bashrc, where the template should be ready.
+    # TODO: wherever you use 'open', use firstlife-open instead, which can use shellask if you're in a docker container:
+    open $VITAL_DIR
+    # TODO^3: do something with error count:
+    firstlife-delegate --with-reward "check today_todo graph import $VITAL_DIR/graph.csv with 'replace current sheet' by uploading" || accumulate_error "did not check today_todo graph"
+}
+
+# TODO: maybe wake only runs because the cron job calls firstlife --with-wake
+firstlife-wake || accumulate-error "I am not sure you are awake"
+exit_if_day_is_over
+
+# to make sure firstlife has the latest code:
+if shellask "Would you like to update skiggety-utils (including firstlife) now?"; then
+    pushd $SKIGGETY_UTILS_DIR > /dev/null
+    ./PWD_BIN/git-safe-pull
+    popd > /dev/null
+fi
+
+firstlife-morning || accumulate_error 'morning routine had errors'
+exit_if_day_is_over
+
+# EASY TODO^83: prompt user to back up ~/firstlife ( $FIRSTLIFE_DIR ) as part of setup/maintenance
+
+# TODO: exit_if_another_terminal_took_over
+# - TODO: ultimately, combine for exit_if_another_terminal_or_day_took_over_with_accumulated_errors
+
+# EASY TODO^87: use 'firstlife-delegate --with-reward' pretty much universally, instead of calling shellask directly
+
+# TODO^63: make this program aware of your productivity points, as in, keep going until you have enough:
+firstlife-work || accumulate_error "firstlife-work had ERRORS"
+exit_if_day_is_over
+
+# EASY TODO^43: (TEST) help with evening routine (maybe only use exit_if_day_is_over in child scripts, or call this from inside # exit_if_day_is_over)
+firstlife-evening || accumulate_error "firstlife-evening had ERRORS"
+exit_if_day_is_over
+
+# EASY TODO^3: every time I do this graph update should be in a routine like morning or evening so it can get skipped:
+update_vital_graph # TODO^21: only if using 'vital'
+exit_if_day_is_over
+
+exit_with_any_accumulated_errors
+
+exit 0

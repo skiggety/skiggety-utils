@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# This script makes a cancellable alarm sound and snoozes, only once.  Used by firstlife-alarm.
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
+
+SNOOZE_SECONDS=60
+trap "exit 1" INT # seems to be necessary to cancel the alarm cleanly
+
+# TODO^2: tolerate wav or mp3, don't suggest downloading one and renaming it to the other
+ALARM_SOUND=${ALARM_SOUND:-"$FIRSTLIFE_DIR/sounds/alarm.wav"}
+while ! [ -f $ALARM_SOUND ]; do
+    mkdir -p "$(dirname $ALARM_SOUND)"
+    shellask "Please download an alarm sound of your choice and put it at $ALARM_SOUND, e.g. \"wget 'sphere.chronosempire.org.uk/~HEx/tmp/h8s4.mp3' -O $ALARM_SOUND\"" \
+        || exit_with_error "No alarm sound available"
+done
+
+message="Use CTRL+C to cancel this ALARM"
+if [ -n "$*" ]; then
+    message="$message for: $*"
+fi
+
+echo_divider_with_text "#" "$message"
+mplayer $ALARM_SOUND >/dev/null 2>&1 \
+    && echo "Snoozing for $SNOOZE_SECONDS seconds, you can still use CTRL+C to cancel this ALARM" \
+    && sleep-verbose $SNOOZE_SECONDS \
+    || exit 1
+exit 0

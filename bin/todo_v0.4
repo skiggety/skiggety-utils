@@ -2,7 +2,7 @@
 """show TODO's in code (unless they say IGNORE_TODO on the same line, like this), sorted by votes"""
 
 # TODO^5: break out the next version into it's own project/repo
-#   TODO^7: RENAME this (with Kevin), or at least the next version, to something a bit more unique
+#   TODO^9: RENAME this (with Kevin), or at least the next version, to something a bit more unique
 #   so it can stand as its own project.
 
 # In skiggety-utils, this program basically takes the place of a bug tracking system.  It's a
@@ -26,11 +26,11 @@ from todo_line import TodoLine
 # TODO: consider supporting an alternate format for votes, something that rubocop won't complain
 # about
 
-# TODO^3: accept piped-in grep output for sorting, like grep does
+# TODO^5: accept piped-in grep output for sorting, like grep does
 
 # TODO^2: maybe accept --vote 'substring', --downvote 'substring', or --delete 'substring'  to find
 # a matching todo and change the vote count without doing anything else
-#  TODO^3: in particular '--vote' would be a timesaver, especially if you could use it with today_todo
+#  TODO^19: in particular '--vote' would be a timesaver, especially if you could use it with today_todo
 #  TODO: once we have a --delete option, you could write a script that goes through your todo's in
 #  priority order, and prompts you to do each one with shellask, and deletes them if you say you
 #  have done it.
@@ -62,8 +62,7 @@ def main():
     # TODO: maybe todo should suggest running todo -w when it notices simplifications it could be
     # making.
 
-    # TODO: what's the one-character version of the '--non-interactive' flag?:
-    arg_parser.add_argument('--non-interactive', action='store_true', help = 'TODO')
+    arg_parser.add_argument('-n', '--non-interactive', action='store_true', help = 'TODO')
     arg_parser.add_argument('-w', '--write', action='store_true', help = 'TODO')
     arg_parser.add_argument('-f', '--force', action='store_true', help = 'TODO')
     arg_parser.add_argument('-d', '--debug', action='store_true', help = 'TODO')
@@ -140,7 +139,7 @@ def main():
         if (should_force or interactive):
             writecount = 0
             print_debug('Writing changes to disk...')
-            for line in reversed(lines): # start with the highest-voted ones
+            for line in reversed(lines): # start with the highest-voted ones # TODO^13: optionally, reverse sort all lines
                 if line.has_changes_to_write():
                     print_debug('There are changes to write for line: \'' + str(line) + '\'')
                     if (should_force or (interactive and ask_user_to_confirm_this_line_write(line))):

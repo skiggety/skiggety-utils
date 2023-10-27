@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# This script continuously displays the firstlife todo list
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+cd $SKIGGETY_UTILS_DIR
+review -u 10 -m 60 firstlife-todo

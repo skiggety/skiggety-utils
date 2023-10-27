@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+# This script displays progress on firstlife
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
+
+# push everything to the bottom of the terminal
+for blank_line_i in $(seq $(tput lines));do
+    echo
+done
+
+# TODO: exit if after CHILL_TIME, BEDTIME, or maybe control bedtime with a cron marker file, or maybe just be silent
+# instead of exiting
+
+today_todo --non-interactive | abbreviate -l 20 # TODO: vital --report | abbreviate -l 20
+
+reward_status="$(firstlife-reward -n)"
+echo "$reward_status"
+
+# TODO^6: firstlife-pomodoro -n
+
+# EASY TODO^72: mute during meditation, exercise, shower, pomodoros, breaks, evenings, etc.
+BEHIND_SOUND="$FIRSTLIFE_DIR/sounds/behind.mp3"
+BEHIND_SOUND_VOLUME='20' # TODO: put in config
+while ! [ -f $BEHIND_SOUND ]; do
+    mkdir -p "$(dirname $BEHIND_SOUND)"
+    shellask "Please download an sound to let you know you are behind of your choice and put it at $ALARM_SOUND, e.g. \"wget <some-whip-cracking-sound> -O $BEHIND_SOUND\"" \
+        || exit_with_error "No sound to let you know you are behind available"
+done
+
+spr="$(echo "$reward_status"| grep 'seconds each' | sed 's/.*at \([0-9]*\) seconds each.*/\1/')"
+spr=${spr:-'100000'}
+MINUTES_OF_INACTIVITY_ALLOWED=9
+if [ $spr -gt 600 ] && test "`find $FIRSTLIFE_LOG_DIR/reward.$(isotoday).log.txt -mmin +$MINUTES_OF_INACTIVITY_ALLOWED 2>/dev/null`"; then
+    echo
+    echo "UH-OH! It seems like you're getting BEHIND, time to emit a sound: $BEHIND_SOUND"
+    mplayer -volume $BEHIND_SOUND_VOLUME $BEHIND_SOUND >/dev/null 2>&1
+    echo "...Also, here's the file with the last timestamp for a reward:"
+    ls -lh $FIRSTLIFE_LOG_DIR/reward.$(isotoday).log.txt
+fi
+
+if is_another_day; then
+    exit_with_error "The day is over, get a run review-firstlife-status again to monitor today's firstlife status"
+fi

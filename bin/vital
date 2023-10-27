@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+
+# This script is a todo list system
+#
+#   V. - Vote-tracking
+#   I. - Integer-enabled
+#   T. - Todo-reporter
+#   A. - Anxiety-powered
+#   L. - List-maintainer
+#
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/vital.bash || exit_with_error 'could not include vital.bash'
+
+# TODO^14: IMPLEMENT this replacement for today_todo
+# - TODO^45: IMPLEMENT '--find <STRING>' to open EDITOR searching for a particular string
+# - TODO^11: IMPLEMENT '--edit' to edit the todo list
+# - TODO^8: IMPLEMENT '--report' to print a report, replacing 'today_todo -n'
+# - TODO^2: IMPLEMENT '--help' with something useful, especially to explain the 'vital --add --vote <n> <description>' syntax
+# - TODO: IMPLEMENT: make 'vital --edit --report' the default, replacing 'today_todo' (with no options)
+
+# TODO: DELETE once we are no longer reliant on old implementation:
+FALLBACK_ON_TODAY_TODO=true
+
+SHOULD_ADD_TASK=false
+SHOULD_ALTER_VOTE=false
+VOTECOUNT=""
+while [[ "$1" == -* ]]; do
+    if [ "$1" == '-a' -o "$1" == '--add' ]; then
+        shift
+        FALLBACK_ON_TODAY_TODO=false # TODO: DELETE once we are no longer reliant on old implementation
+        SHOULD_ADD_TASK=true
+    elif [ "$1" == '-v' -o "$1" == '--vote' ]; then
+        shift
+        VOTECOUNT="$1"
+        SHOULD_ALTER_VOTE=true
+        shift
+    fi
+    # TODO^3: help option
+done
+TASK_DESCRIPTION="$1"
+shift
+
+if $SHOULD_ADD_TASK; then
+    SHOULD_ALTER_VOTE=false
+    FULL_TODO_LINE="- TODO^$VOTECOUNT: $TASK_DESCRIPTION"
+    if [ -z "$VOTECOUNT" ]; then
+        FULL_TODO_LINE="- TODO: $TASK_DESCRIPTION"
+    fi
+    echo "$FULL_TODO_LINE" >> "$vital_todo_list_file_path" # IGNORE_TODO
+    # TODO: print somethint to confirm what was added
+fi
+
+if $SHOULD_ALTER_VOTE; then
+    FALLBACK_ON_TODAY_TODO=false # TODO: DELETE once we are no longer reliant on old implementation
+    exit_with_error "- TODO^29: IMPLEMENT '--vote' to vote on a todo matching TASK_DESCRIPTION"
+fi
+
+# TODO^2: DELETE once we are no longer reliant on old implementation:
+if $FALLBACK_ON_TODAY_TODO; then
+    today_todo
+fi

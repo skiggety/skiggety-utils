@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# This script shows firstlife-related processes as a tree
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+psbranch | grep --color=always [f]irstlife

@@ -2,10 +2,12 @@
 
 # WARNING: Changes to this file will make ./demo_in_docker very slow to start on the next run.  Hesitate to commit!
 
-# TODO: somebody please set this to nano and then submit a pr to make other stuff work with nano, lol
-export EDITOR="vim"
-
+export BASH_SILENCE_DEPRECATION_WARNING=1
 export SHELL_SESSION_HISTORY=0
+
+# default value used only if EDITOR not otherwise set:
+EDITOR=${EDITOR:-'vim'}
+export EDITOR
 
 # ./PWD_BIN comes before $SKIGGETY_UTILS_DIR/bin so that you can override scripts like "dashboard"
 export PATH="$PATH:./PWD_BIN:$SKIGGETY_UTILS_DIR/bin:$HOME/bin"
@@ -28,6 +30,8 @@ alias vf="vimfirst"
 
 alias gir="git" # common enough typo for me
 alias gac="git-attempt-checkout"
+alias gd="git diff"
+alias gds="git diff --staged"
 alias gvd="git vimdiff"
 alias gvds="git vimdiff --staged"
 alias gvc="git vimchanged"
@@ -36,11 +40,13 @@ alias gpnb='git push-new-branch'
 alias gp='git pretty-pull'
 alias gat='git add-theirs'
 
+alias cdsu="cd $SKIGGETY_UTILS_DIR"
+
 # TODO: use more stuff from older bashrc files I've used
 
 # This is nice if you suddenly realize you need to copy some information off the screen, or if you want to keep a
 # window/tab open with the same visual settings
-trap 'if [ "login" == "$(ps -o comm= $PPID)" ];then echo holding this window open for a short interval just in case you exited prematurely;sleep-verbose 10;fi' EXIT
+trap 'if [ "login" == "$(ps -o comm= $PPID)" ];then echo holding this window open for a short interval just in case you exited prematurely;sleep-verbose 60;fi' EXIT
 
 # asdf stuff (should be at the bottom of this file):
 . "$HOME/.asdf/asdf.sh"

@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative '../lib/installable_skiggety_util'
+
+class VisualStudioCodeInstaller
+
+  include InstallableSkiggetyUtil
+
+  def apparently_installed?
+    if on_mac_os?
+      raise NotImplementedError, 'TODO^86: implement this for this OS'
+    else
+      raise NotImplementedError, 'TODO: implement this for this OS'
+    end
+  end
+
+  def apparently_configured?
+    true
+  end
+
+  def install!
+    if $interactive
+      delegate_download_and_install_to_user(
+        'https://code.visualstudio.com/download',
+        'Visual Studio Code'
+      )
+    else
+      raise_interactive_only_install
+    end
+  end
+
+end
+
+VisualStudioCodeInstaller.run

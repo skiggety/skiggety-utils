@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# This script annoys the user until they respond, usually for a stated purpose
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
+
+# TODO: make sure volume is up
+tput bel # a.k.a. ding, bell (for searchability) # TODO?: DELETE now that we have another sound
+while firstlife-single-alarm "$*";do
+    echo
+done
+echo
+echo 'Alarm stopped'
+
+exit 0

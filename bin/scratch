@@ -2,7 +2,7 @@
 
 # Just gives you a harmless place to type
 
-# TODO: move to 'kid-utils'?
+# TODO?: move to 'kid-utils'?
 
 clear
 cat >/dev/null

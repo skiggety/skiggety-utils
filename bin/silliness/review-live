@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-# TODO: schedule this program in a terminal in the morning
-
-while shellask "Should you be doing stuff?" || shellask "Are you going to do any more habits today?" ;do
-    vimfirst live
-done
