@@ -123,9 +123,9 @@ class ReviewProgram
       end
 
       # The minimum delay is a soft minimum, where it always *tries* to wait, say, long enough for you to react, but
-      # then still wakes up when the filesystem has changes (because you made an edit). This could make a huge
+      # then still wakes up when the filesystem has changes (because you made an edit).  This could make a huge
       # difference in making review actually efficient to use in many circumstances, say a script that takes 60 seconds
-      # to run and 15-60 seconds to react to, like running tests and debugging in another window. You may want to also
+      # to run and 15-60 seconds to react to, like running tests and debugging in another window.  You may want to also
       # set a shorter uninterruptable delay to guarantee you always have a few seconds to react.
 
       # TODO: have a flag that lets you specify which path on the filesystem to listen to.

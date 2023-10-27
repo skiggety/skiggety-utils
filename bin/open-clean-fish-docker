@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# This script opens a clean docker container running fish, where skiggety utils has not been installed. It is intended
+# This script opens a clean docker container running fish, where skiggety utils has not been installed.  It is intended
 # to help test 'bin/firstlife'.
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
