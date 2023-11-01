@@ -17,14 +17,14 @@
 # - EASY TODO^42: build a timer into firstlife-delegate, keep stats on how long things take, just pairs of task names and times
 #   - TODO^41: then make the logs daily, graph the daily linecount
 
-# FUN TODO^36: do something like this, and use widely: delegate_once_daily 'make sure you have taken any morning medications' || accumulate_error 'did not medicate'
-firstlife-delegate --with-reward 'Make sure you have taken any morning medications' || accumulate_error 'did not medicate'
-exit_if_day_is_over
-
 # EASY TODO^5: firstlife-check-calendar could take a message string to override the normal one:
 # TODO^68: (EASY) check calendar script should be the one to call 'firstlife-reward', at least if you called it with '--with-reward':
 shellask "Your calendar is about to come up. When it does, mark your morning routine as starting now, OK?" \
     && firstlife-check-calendar && firstlife-reward 'calendar check' || accumulate_error 'did not check calendar'
+exit_if_day_is_over
+
+# FUN TODO^36: do something like this, and use widely: delegate_once_daily 'make sure you have taken any morning medications' || accumulate_error 'did not medicate'
+firstlife-delegate --with-reward 'Make sure you have taken any morning medications' || accumulate_error 'did not medicate'
 exit_if_day_is_over
 
 # TODO^67: make sure this only gets asked perhaps once a week:
