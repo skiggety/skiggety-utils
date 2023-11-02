@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Self, program thyself. This script gamifies life to help get everyday stuff done, and it's just a prototype.
+# Self, program thyself.  This script gamifies life to help get everyday stuff done, and it's just a prototype.
 
 # TODO^93 NOW: TEST this in docker as a reluctant user starting from fish
 
@@ -23,7 +23,7 @@ fi
 # TODO^85: ======== Another real demo with some decent code readability ============
 # TODO^76: if a second firstlife pops up, maybe it should take over and the old one gracefully exits? (PPID in a marker file?)
 # - TODO^4: and I could take advantage of this to create a way to exit firstlife early without having to close the terminal
-# TODO^43: and firstlife needs a way to keep you on pace, too
+# TODO^73: and firstlife needs a way to keep you on pace, too
 # TODO^36: firstlife should do something different on weekends, sundays, any sabbath of choice, letting you control it with a template
 # TODO^33: routinely check if it's time to jump to evening stuff, based on how much you did (rewards and productivity points)
 # TODO^31: track stats of all kinds
@@ -58,7 +58,7 @@ exit_if_day_is_over
 
 # EASY TODO^83: prompt user to back up ~/firstlife ( $FIRSTLIFE_DIR ) as part of setup/maintenance
 
-# TODO: exit_if_another_terminal_took_over
+# TODO^21: exit_if_another_terminal_took_over
 # - TODO: ultimately, combine for exit_if_another_terminal_or_day_took_over_with_accumulated_errors
 
 # EASY TODO^87: use 'firstlife-delegate --with-reward' pretty much universally, instead of calling shellask directly

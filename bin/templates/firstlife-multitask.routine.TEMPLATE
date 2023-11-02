@@ -18,7 +18,7 @@ export today_todo_now_max_count="$FIRSTLIFE_MULTITASKING_COUNT"
 
 ####################################################################################################
 
-# EASY TODO^91: inside this script and elsewhere, use 'firstlife-delegate --with-reward' instead of calling 'shellask' directly:
+# EASY TODO^92: inside this script and elsewhere, use 'firstlife-delegate --with-reward' instead of calling 'shellask' directly:
 
 # TODO^81: firstlife should keep an eye on "MAINTENANCE" tag in vital/today_todo
 
@@ -165,7 +165,7 @@ today_todo -n | grep --color=always '\(FUN\|EASY\|--------\|^$\)'
 firstlife-delegate --with-reward "Work on something FUN/EASY (is enough stuff tagged? --run \"today_todo -n | grep '\\(FUN\\|EASY\\)'\")"
 
 # call firstlife-morning again just in case it hasn't been done, since it only needs to be done once:
-firstlife-morning || accumulate_error 'morning routine had errors'
+firstlife-morning || accumulate_error 'Morning routine had errors'
 exit_if_day_is_over
 
 exit_with_any_accumulated_errors

@@ -13,7 +13,7 @@
 . $SKIGGETY_UTILS_DIR/lib/vital.bash || exit_with_error 'could not include vital.bash'
 
 # TODO^14: IMPLEMENT this replacement for today_todo
-# - TODO^45: IMPLEMENT '--find <STRING>' to open EDITOR searching for a particular string
+# - TODO^59: IMPLEMENT '--find <STRING>' to open EDITOR searching for a particular string
 # - TODO^11: IMPLEMENT '--edit' to edit the todo list
 # - TODO^8: IMPLEMENT '--report' to print a report, replacing 'today_todo -n'
 # - TODO^2: IMPLEMENT '--help' with something useful, especially to explain the 'vital --add --vote <n> <description>' syntax
@@ -48,12 +48,12 @@ if $SHOULD_ADD_TASK; then
         FULL_TODO_LINE="- TODO: $TASK_DESCRIPTION"
     fi
     echo "$FULL_TODO_LINE" >> "$vital_todo_list_file_path" # IGNORE_TODO
-    # TODO: print somethint to confirm what was added
+    # TODO^6: print somethint to confirm what was added
 fi
 
 if $SHOULD_ALTER_VOTE; then
     FALLBACK_ON_TODAY_TODO=false # TODO: DELETE once we are no longer reliant on old implementation
-    exit_with_error "- TODO^29: IMPLEMENT '--vote' to vote on a todo matching TASK_DESCRIPTION"
+    exit_with_error "- TODO^37: IMPLEMENT '--vote' to vote on a todo matching TASK_DESCRIPTION"
 fi
 
 # TODO^2: DELETE once we are no longer reliant on old implementation:
