@@ -61,10 +61,10 @@ exit_if_day_is_over
 firstlife-delegate --with-reward 'Hit the shower' || accumulate_error 'did not shower'
 exit_if_day_is_over
 
-firstlife-delegate --with-reward 'Make your bed' || accumulate_error 'did not make your bed'
+firstlife-delegate --with-reward 'Finish morning habits' || accumulate_error 'did not finish morning habits' # TODO: list them out individually instead
 exit_if_day_is_over
 
-firstlife-delegate --with-reward 'Finish morning habits' || accumulate_error 'did not finish morning habits' # TODO: list them out individually instead
+firstlife-delegate --with-reward 'Make your bed' || accumulate_error 'did not make your bed'
 exit_if_day_is_over
 
 firstlife-delegate --with-reward 'Get dressed' || accumulate_error 'did not get dressed'
