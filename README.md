@@ -117,7 +117,7 @@ everything you can, doing the things that come up often enough earn some votes. 
 that more explicit, and it turns out writing "TODO^0" <!-- IGNORE_TODO --> works just fine for those cases when you
 really want to make sure you remember not do it.
 
-So anyway, you don't really need to look a t the full list, just a screen-full or so.
+So anyway, you don't really need to look at the full list, just a screen-full or so.
 
 ### Miscellaneous
 
