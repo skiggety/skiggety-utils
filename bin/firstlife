@@ -52,6 +52,7 @@ if shellask "Would you like to update skiggety-utils (including firstlife) now?"
     ./PWD_BIN/git-safe-pull
     popd > /dev/null
 fi
+exit_if_day_is_over
 
 firstlife-morning || accumulate_error 'morning routine had errors'
 exit_if_day_is_over
