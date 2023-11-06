@@ -8,12 +8,12 @@
 firstlife-alarm "Welcome to today's firstlife terminal, please pay attention"
 exit_if_day_is_over
 
-handle-alarmy-photo-mission || exit_with_error "failed to handle alarm" # for 'Alarmy'
-exit_if_day_is_over
-
 # Use your own morning playlist, here's mine for starters:
 SCOTTS_MORNING_SOUNDTRACK='https://www.youtube.com/watch?v=6jRh2PRa1tU&list=PLbyyOcHfeHIr8GvkrJ8aieGtcmPER6bvY&index=1'
 open "$SCOTTS_MORNING_SOUNDTRACK" 2>/dev/null &
+exit_if_day_is_over
+
+handle-alarmy-photo-mission || exit_with_error "failed to handle alarm" # for 'Alarmy'
 exit_if_day_is_over
 
 exit 0
