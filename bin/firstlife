@@ -43,7 +43,7 @@ function update_vital_graph {
 }
 
 # TODO: maybe wake only runs because the cron job calls firstlife --with-wake
-firstlife-wake || accumulate-error "I am not sure you are awake"
+firstlife-wake && firstlife-reward "Waking up" || accumulate_error "I am not sure you are awake"
 exit_if_day_is_over
 
 # to make sure firstlife has the latest code:
