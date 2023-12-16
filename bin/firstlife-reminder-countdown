@@ -7,7 +7,7 @@
 
 MINUTES_LEFT="15"
 debug_eval_here MINUTES_LEFT
-TITLE="Attend the event on your calendar"
+TITLE="Do what's on your calendar"
 
 while [[ "$1" == -* ]]; do
     if [ "$1" == "-m" ]; then
