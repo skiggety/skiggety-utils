@@ -60,6 +60,7 @@ while [ $MINUTES_LEFT -gt 0 ];do
     debug_eval_here MINUTES_LEFT
 done
 
+firstlife-alarm "Time for '$TITLE' NOW!"
 echo_divider_with_text "=" "Time for '$TITLE' NOW!"
 
 exit 0
