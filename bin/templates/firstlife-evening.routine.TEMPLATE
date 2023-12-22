@@ -2,6 +2,8 @@
 
 # This script is your custom evening routine
 
+# TODO^25: separate out bedtime routine and cron them both
+
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 

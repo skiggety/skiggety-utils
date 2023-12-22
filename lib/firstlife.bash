@@ -53,7 +53,7 @@ function exit_if_script_succeeded_today {
 function mark_script_succeeded_today {
     THIS_SCRIPT_RAN_MARKER_FILE="$(succeeded_today_marker_script $1)"
     mkdir -p "$(dirname $THIS_SCRIPT_RAN_MARKER_FILE)"
-    debug_here "marking morning routine done with command: touch $THIS_SCRIPT_RAN_MARKER_FILE"
+    debug_here "marking routine done with command: touch $THIS_SCRIPT_RAN_MARKER_FILE"
     touch $THIS_SCRIPT_RAN_MARKER_FILE
 }
 
