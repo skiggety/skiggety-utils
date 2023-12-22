@@ -27,7 +27,7 @@ exit_if_day_is_over
 firstlife-delegate --with-reward 'Make sure you have taken any morning medications' || accumulate_error 'did not medicate'
 exit_if_day_is_over
 
-# TODO^67: make sure this only gets asked perhaps once a week:
+# TODO^72: make sure this only gets asked perhaps once a week:
 # TODO^21: mention and help with alarmy and cron:
 # EASY TODO^86: help user start firstlife (including morning routine) with cron like I did, automate ensuring a line in local crontab, and use 'crontab-verbose'? (FUN) help user set up crontab like I did (use crontab-verbose?) (to help test on metrigon)
 # TODO: move out of inner routine, and actually help user set up alarms and cron:
@@ -37,7 +37,7 @@ exit_if_day_is_over
 # EASY TODO^85: Or better yet, manage the list of videos here and randomize:
 SCOTTS_MEDITATION_PLAYLIST='https://www.youtube.com/playlist?list=PLbyyOcHfeHIqCKsHI62oWS6i4JQfdtcfd'
 open "$SCOTTS_MEDITATION_PLAYLIST" 2>/dev/null &
-firstlife-delegate --with-reward '5-minute meditation' || accumulate_error 'did not meditate' # TODO^2: --with-timer 330
+firstlife-delegate --with-reward '5-minute meditation' || accumulate_error 'did not meditate' # TODO^82: --with-timer 330 (and use timers widely)
 exit_if_day_is_over
 
 firstlife-delegate --with-reward "Review any habits you working on breaking ('negative' habits in the tracker)" \

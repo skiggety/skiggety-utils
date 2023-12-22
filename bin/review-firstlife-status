@@ -5,9 +5,10 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
-# - TODO^4?: kill previous instance of same script, or maybe do that in the cron job
-
 # TODO: make a template for setting up variables like BEDTIME after which firstlife-status should just fail and this script should exit
 
 cd $FIRSTLIFE_DIR
-firstlife-status && clear && review -u 5 -m 90 --while firstlife-status
+
+echo $PPID > $FIRSTLIFE_DIR/.review-firstlife-status_PPID
+
+firstlife-status && clear && review -u 5 -m 60 --while firstlife-status --while-review-pid-latest $PPID

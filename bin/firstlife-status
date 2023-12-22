@@ -5,6 +5,15 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
+EXPECTED_PPID=""
+while [[ "$1" == -* ]]; do
+    if [[ "$1" == '--while-review-pid-latest' ]]; then
+        shift
+        EXPECTED_PPID="$1"
+        shift
+    fi
+done
+
 # push everything to the bottom of the terminal
 for blank_line_i in $(seq $(tput lines));do
     echo
@@ -44,4 +53,14 @@ fi
 
 if is_another_day; then
     exit_with_error "The day is over, get a run review-firstlife-status again to monitor today's firstlife status"
+fi
+
+if ! [ -z "$EXPECTED_PPID" ]; then
+    debug_eval EXPECTED_PPID
+    echo_debug expecting pid to be the latest review-firstlife-status
+    latest_review_ppid=$(cat $FIRSTLIFE_DIR/.review-firstlife-status_PPID)
+    debug_eval latest_review_ppid
+    if ! [ "$latest_review_ppid" -eq "$EXPECTED_PPID" ]; then
+        exit_with_error "Exiting since process $latest_review_ppid has taken over"
+    fi
 fi
