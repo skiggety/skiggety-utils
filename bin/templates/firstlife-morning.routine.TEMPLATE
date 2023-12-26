@@ -47,6 +47,9 @@ exit_if_day_is_over
 firstlife-delegate --with-reward 'Put away any temptations or distractions'
 exit_if_day_is_over
 
+firstlife-delegate --with-reward 'Make sure your phone is at least 25% charged (so you can walk outside with it soon)''
+exit_if_day_is_over
+
 firstlife-delegate 'Start up some podcasts'
 exit_if_day_is_over
 
