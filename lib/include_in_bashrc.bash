@@ -44,6 +44,7 @@ alias cdsu="cd $SKIGGETY_UTILS_DIR"
 
 # TODO: use more stuff from older bashrc files I've used
 
+# TODO^2: TEST on linux:
 # This is nice if you suddenly realize you need to copy some information off the screen, or if you want to keep a
 # window/tab open with the same visual settings
 trap 'if [ "login" == "$(ps -o comm= $PPID)" ];then echo holding this window open for a short interval just in case you exited prematurely;sleep-verbose 60;fi' EXIT

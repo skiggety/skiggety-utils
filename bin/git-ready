@@ -8,7 +8,7 @@ function main {
         if [ "$1" == "-n" ]; then
             GIT_COMMIT_OPTIONS="$GIT_COMMIT_OPTIONS $1"
             shift
-        # TODO: -m "commit comment"
+        # TODO^2: -m "commit comment"
         else
             exit_with_error "option not supported: $1"
         fi

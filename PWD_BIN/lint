@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # TODO^13: make this read-only by default, split the write version into another script if necessary
-#   TODO^25: I think the way to handle this is to support a '-w', '--fix', '-n' or '--ro' option, and suggest using it in the error message if lint fails
+#   TODO^28: I think the way to handle this is to support a '--fix', '-w', '-n' or '--ro' option, and suggest using it #   in the error message if lint fails (look at command line options for different linters to see what's common
 # TODO^5: run shellcheck
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
