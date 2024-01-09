@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-# This script continuously displays and refreshes the dashboard
-# TODO: consider renaming this to template_review-dev or default something
+# This script continuously runs the 'dev' script/cycle
 
 SKIGGETY_DIVIDER_LENGTH=121 review -u 10 -m 120 $* dev

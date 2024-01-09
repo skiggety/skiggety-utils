@@ -170,9 +170,13 @@ class ReviewProgram
   # sometimes, like at work.  I'm keeping this around in case someone else uses rbenv, because I've moved to asdf.
   def cleanup_rbenv_influence
     rbenv_root_dir = ENV.fetch('RBENV_ROOT', nil)
-    ["#{rbenv_root_dir}/bin", "#{rbenv_root_dir}/shims"].each do |dir|
-      path_as_array = ENV.fetch('PATH').split(':')
-      ENV['PATH'] = "#{dir}:#{ENV.fetch('PATH')}" if path_as_array.include?(dir)
+    if rbenv_root_dir
+      ["#{rbenv_root_dir}/bin", "#{rbenv_root_dir}/shims"].each do |dir|
+        if File.directory?(dir)
+          path_as_array = ENV.fetch('PATH').split(':')
+          ENV['PATH'] = "#{dir}:#{ENV.fetch('PATH')}" if path_as_array.include?(dir)
+        end
+      end
     end
     ENV['RBENV_VERSION'] = nil
     ENV['RBENV_DIR'] = nil
