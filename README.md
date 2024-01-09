@@ -123,8 +123,9 @@ So anyway, you don't really need to look at the full list, just a screen-full or
 
 These ideas don't have a code location, so they go here:
 
-  - TODO^55: firstlife
-  - TODO^46: spin off kid-utils
+  - TODO^110: (IN_PROGRESS, NOW) move firstlife to 'zerothlife' repo
+  - TODO^109: (IN_PROGRESS) move 'vital' data (to do list) to private repo (skiggety utils should help set up)
+  - TODO^48: spin off kid-utils
   - TODO^21: ...rewrite todo in rust with parallelization (maybe with Kevin), but after [rust koans](https://github.com/crazymykl/rust-koans)
 - TODO^6: some tools for setting up information radiators
 - TODO^3: toy rails site, need a good idea, maybe it can help with information radiating?
