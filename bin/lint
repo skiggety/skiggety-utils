@@ -4,7 +4,7 @@
 
 # TODO: split into default_lint and lint like with dashboard
 
-PWD_BIN/lint || accumulate_error "Please create a runnable script at './PWD_BIN/lint', then try again. Whatever linter(s) you want to run. Look at $SKIGGETY_UTILS_DIR/PWD_BIN/lint for an example."
+PWD_BIN/lint $* || accumulate_error "Please create a runnable script at './PWD_BIN/lint', then try again. Whatever linter(s) you want to run. Look at $SKIGGETY_UTILS_DIR/PWD_BIN/lint for an example."
 
 echo_divider_with_text "+-=======-" "misc_lint:"
 misc_lint || accumulate_error "misc_lint FAILED"

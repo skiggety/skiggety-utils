@@ -126,6 +126,7 @@ These ideas don't have a code location, so they go here:
   - TODO^111: (IN_PROGRESS, NOW) limit how often 'NOW' and 'IN_PROGRESS' appear in code
   - TODO^109: (IN_PROGRESS) move firstlife to 'zerothlife' repo
     - TODO^110: (IN_PROGRESS) at least check out the repo, maybe with a skiggety-utils installer
+    - TODO^108: see what else in ./bin/silliness might belong in zerothlife repo
   - TODO^109: (IN_PROGRESS) move 'vital' data (to do list) to private repo (skiggety utils should help set up)
   - TODO^48: spin off kid-utils
   - TODO^21: ...rewrite todo in rust with parallelization (maybe with Kevin), but after [rust koans](https://github.com/crazymykl/rust-koans)
