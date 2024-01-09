@@ -9,7 +9,8 @@ exit_if_day_is_over
 
 # TODO^13: try to mix in some work pomodoros until there are 16 on a weekday? maybe ask the user how many work pomodoros to do, with a default of 16, and then have you ask for a purpose for each
 
-today_todo --non-interactive | grep --color=always '\(NOW\|EASY\|--------\|^$\)' # TODO^9: EXTRACT and REUSE this approach that includes the headings
+# TODO^10: EXTRACT and REUSE this approach that includes the headings:
+today_todo --non-interactive | grep --color=always '\(NOW\|EASY\|--------\|^$\)'
 firstlife-pomodoro 'most important stuff tagged NOW or EASY' || accumulate_error 'skipped pomodoro worth POINTS'
 exit_if_day_is_over
 
