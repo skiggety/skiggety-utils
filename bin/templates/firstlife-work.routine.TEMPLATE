@@ -28,7 +28,7 @@ firstlife-multitask || accumulate_error 'multitasking ERRORS'
 show_recently_done_todos
 exit_if_day_is_over
 
-# EASY to get started TODO^54: ask about if you have done enough productivity points.  Maybe ask how many done today and how many left in the
+# EASY to get started TODO^55: ask about if you have done enough productivity points.  Maybe ask how many done today and how many left in the
 # week, and make sure you do more than a day's share...
 while shellask "Should you still be doing productive stuff on this beautiful day $FIRSTLIFE_ISOTODAY?" ;do
     exit_if_day_is_over

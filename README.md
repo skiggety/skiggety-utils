@@ -123,7 +123,6 @@ So anyway, you don't really need to look at the full list, just a screen-full or
 
 These ideas don't have a code location, so they go here:
 
-  - TODO^111: (IN_PROGRESS, NOW) limit how often 'NOW' and 'IN_PROGRESS' appear in code
   - TODO^109: (IN_PROGRESS) move firstlife to 'zerothlife' repo
     - TODO^110: (IN_PROGRESS) at least check out the repo, maybe with a skiggety-utils installer
     - TODO^108: see what else in ./bin/silliness might belong in zerothlife repo
