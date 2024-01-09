@@ -7,7 +7,7 @@ export SKIGGETY_UTILS_DIR="$HARDCODED_SKIGGETY_UTILS_DIR"                       
 # TODO^11: try to at least support nano or vscode:                                                 # FROM_SKIGGETY_UTILS
 export EDITOR='vim' # Use any editor you want, it'll be pretty well supported if it's vim.         # FROM_SKIGGETY_UTILS
                                                                                                    # FROM_SKIGGETY_UTILS
-. $SKIGGETY_UTILS_DIR/lib/include_in_bashrc.bash                                                   # FROM_SKIGGETY_UTILS
+source $SKIGGETY_UTILS_DIR/lib/include_in_bashrc.bash                                              # FROM_SKIGGETY_UTILS
                                                                                                    # FROM_SKIGGETY_UTILS
 # Default debug setting.  Set it to "true" above this section in your ~/.bashrc to see debug       # FROM_SKIGGETY_UTILS
 # messages:                                                                                        # FROM_SKIGGETY_UTILS
