@@ -1,7 +1,7 @@
 ==== TODOs, ascending, so you know what's likely to change next. Do not edit, run 'generate_todo_report' to generate. ====
-( showing last 5 lines out of 650 for 'todo': )
-./bin/firstlife-evening:8:# TODO^98 NOW: Call this directly from cron, and try to get through the main one in time to have a gap in between
-./bin/templates/firstlife-multitask.routine.TEMPLATE:3:# TODO^102: (NOW) shorten this routine so it doesn't take so long
-./bin/firstlife-status:32:# EASY TODO^107: (IN_PROGRESS, NOW) mute during meditation, exercise, shower, pomodoros, breaks, evenings, etc.
-./README.md:127:  - TODO^109: (IN_PROGRESS) move 'vital' data (to do list) to private repo (skiggety utils should help set up)
-./README.md:126:  - TODO^110: (IN_PROGRESS, NOW) move firstlife to 'zerothlife' repo
+( showing last 5 lines out of 689 for 'todo': )
+./README.md:127:  - TODO^109: (IN_PROGRESS) move firstlife to 'zerothlife' repo
+./README.md:130:  - TODO^109: (IN_PROGRESS) move 'vital' data (to do list) to private repo (skiggety utils should help set up)
+./README.md:128:    - TODO^110: (IN_PROGRESS) at least check out the repo, maybe with a skiggety-utils installer
+./bin/templates/firstlife-morning.routine.TEMPLATE:15:# - EASY TODO^110: (IN_PROGRESS) (manually) cron more stuff instead of chaining everything off the morning
+./README.md:126:  - TODO^111: (IN_PROGRESS, NOW) limit how often 'NOW' and 'IN_PROGRESS' appear in code

@@ -100,7 +100,7 @@ function use_and_maintain_inner_routine_based_on_template {
         && firstlife-reward "completed $INNER_ROUTINE_SCRIPT" \
         || accumulate_error "inner $nickname routine '$INNER_ROUTINE_SCRIPT' FAILED"
 
-    # TODO^88: (IN_PROGRESS NOW): allow using vscode here:
+    # TODO^88: allow using vscode here:
     if [ -f $PERSONAL_ROUTINE_SCRIPT ]; then
         shellask "Want to tune up $(basename $PERSONAL_ROUTINE_SCRIPT) for next time?" \
             && vimdiff -o $TEMPLATE_ROUTINE_SCRIPT $PERSONAL_ROUTINE_SCRIPT # TODO^2: GTVO (get the vim out)

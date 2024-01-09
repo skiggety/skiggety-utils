@@ -2,7 +2,7 @@
 
 # This script runs and manages your morning routine.
 
-# EASY TODO^88: make sure only firstlife-morning and firstlife-evening limit to running once a day, not other scripts
+# EASY TODO^89: make sure only firstlife-morning and firstlife-evening limit to running once a day, not other scripts
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'

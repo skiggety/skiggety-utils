@@ -9,7 +9,7 @@
 # TODO^6: replace this with 'vital'.  Move over all functionality and todo's
 
 # TODO^22: have a way to postpone things to a certain date
-# TODO^11: flag to grep for and count a specific word, sort of like what I do for "NOW"
+# TODO^11: flag to grep for and count a specific word, sort of like what I do for the (capitalized) "now" keyword
 
 # TODO: this program needs to display some instructions so the user knows how to use it.
 # TODO: maybe during business hours, show results with "BUSINESS_HOURS" more prominently, and hide them otherwise
@@ -143,7 +143,7 @@ function main {
     # TODO^2: if it's around new years:
     display_grep_for_keyword NEW_YEARS_RESOLUTION "$todo_output"
 
-    # TODO^51: instead of NOW and LATER, tag things with MORNING, EVENING, WEEKEND, BUSINESS_HOURS, etc, and have today_todo watch the clock to know which to highlight
+    # TODO^51: instead of now and LATER, tag things with MORNING, EVENING, WEEKEND, BUSINESS_HOURS, etc, and have today_todo watch the clock to know which to highlight
     todo_later_output="$(echo "$todo_output" | grep --color=always LATER)"
     todo_later_count=$(( 0 + $(echo "$todo_later_output" | wc -l) ))
     if [ "$todo_later_output" != '' ]; then
@@ -159,7 +159,7 @@ function main {
         if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
     fi
 
-
+    # TODO: function extract to do with other keywords
     todo_now_output="$(echo "$todo_output" | grep --color=always '\(NOW\|EASY\)')"
     todo_now_count=$(( 0 + $(echo "$todo_now_output" | wc -l) ))
     if [ "$todo_now_output" != '' ]; then
@@ -178,7 +178,7 @@ function main {
         if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
     fi
 
-    # EASY TODO^7: add NOW count to this output?:
+    # EASY TODO^8: add now count to this output?:
     echo "$(( $todo_count + $todo_prog_count )) combined score, $todo_prog_count todos IN_PROGRESS"
 
     if $interactive; then

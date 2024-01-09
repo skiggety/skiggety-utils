@@ -26,6 +26,7 @@ SHOULD_ADD_TASK=false
 SHOULD_ALTER_VOTE=false
 VOTECOUNT=""
 while [[ "$1" == -* ]]; do
+    # TODO^96: and make an alias to help add todo's quick:
     if [ "$1" == '-a' -o "$1" == '--add' ]; then
         shift
         FALLBACK_ON_TODAY_TODO=false # TODO: DELETE once we are no longer reliant on old implementation
@@ -53,7 +54,8 @@ fi
 
 if $SHOULD_ALTER_VOTE; then
     FALLBACK_ON_TODAY_TODO=false # TODO: DELETE once we are no longer reliant on old implementation
-    exit_with_error "- TODO^37: IMPLEMENT '--vote' to vote on a todo matching TASK_DESCRIPTION"
+    exit_with_error "- TODO^39: IMPLEMENT '--vote' to vote on a todo matching TASK_DESCRIPTION"
+    #                  - TODO^38: and make an alias to help vote quick
 fi
 
 # TODO^2: DELETE once we are no longer reliant on old implementation:

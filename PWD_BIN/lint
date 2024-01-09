@@ -9,6 +9,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 
 echo_divider_with_text "O-=======-" "lint:"
 
+# TODO^8: if in write mode...
 echo_divider_with_text "+-=======-" "collapse todo votes:"
 todo -wfq --non-interactive --exclude-dir .git || accumulate_error "could not write simplified TODO entries, todo exited with $?" # IGNORE_TODO
 

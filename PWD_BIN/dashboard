@@ -15,6 +15,8 @@ if ! [ -z "$SKIGGETY_UTILS_DONOR_DIR" ]; then
 fi
 
 bin/default_dashboard || accumulate_error "default_dashboard FAILED"
+# Everything after this point in the script should be more important than the output of default_dashboard since it can
+# bump it off the screen....:
 
 # show todo's:
 if [ -f ./todo_report/README_in_color.txt ]; then
@@ -25,10 +27,36 @@ else
     todo --color always | abbreviate -n 4 -t "TODO's" -d || exit_with_error "todo FAILED" # IGNORE_TODO
 fi
 
-# TODO?: tell you what command to run to commit changes or whatever
-# TODO?: graph score over time (see program "progress")
+# TODO^2?: tell you what command to run to commit changes or whatever
+# TODO^2?: graph score over time (see program "progress")
 
-# More important than the output of default_dashboard:
+# TODO^10: maybe use this in 'vital' to keep your tag count under control:
+function limit-todo-with-keyword-count {
+    MAX_COUNT="$1"
+    KEYWORD="$2"
+
+    KEYWORD_USAGES="$(todo | grep $KEYWORD )"
+    KEYWORD_USAGE_COUNT=$(echo "$KEYWORD_USAGES" | wc -l | bc )
+
+    echo "$KEYWORD_USAGE_COUNT todo's found marked '$KEYWORD'"
+    if [ "$KEYWORD_USAGE_COUNT" -gt "$MAX_COUNT" ]; then
+        EXCESS_COUNT="$(( $KEYWORD_USAGE_COUNT - $MAX_COUNT))"
+        echo
+        echo_error "$KEYWORD_USAGE_COUNT is ($EXCESS_COUNT) too many todo's marked '$KEYWORD' (the max is $MAX_COUNT):"
+
+        echo "---------------------------------------------------------"
+        echo "$KEYWORD_USAGES" | head -n $EXCESS_COUNT
+        echo_error "---- $KEYWORD LIMIT ---- (everything above here is excessive todo's marked '$KEYWORD')"
+        echo "$KEYWORD_USAGES" | tail -n $MAX_COUNT
+        echo "---------------------------------------------------------"
+
+        accumulate_error "$EXCESS_COUNT too many $KEYWORD todo's found, such as: $(echo "$KEYWORD_USAGES" | head -n 1)"
+    fi
+}
+
+limit-todo-with-keyword-count 8 'IN_''PROGRESS' # TODO^31: fine tunethis number
+limit-todo-with-keyword-count 2 'N''OW'
+# TODO^5: maybe also make sure that lines that contain (all capitalized, not shown here so as not to tag this todo) 'todo' and 'now' also contain 'in_progress
 
 echo_divider_with_text "O-=======-" "END of 'dashboard' for $(duh) :"
 

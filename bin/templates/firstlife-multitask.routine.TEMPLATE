@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# TODO^102: (NOW) shorten this routine so it doesn't take so long
+# TODO^102: shorten this routine so it doesn't take so long
 
 # Use this script as a basis for your personal multitasking routine, uncommenting what's useful without making it too
 # complicated.  This is a very loose example, feel free to rearrange and comment/uncomment stuff, usually a paragraph at
@@ -28,7 +28,7 @@ firstlife-delegate --with-reward 'Make sure various devices including this one a
     || accumulate_error 'should have charged your devices' # TODO: don't ask more than once every 3 hours
 exit_if_day_is_over
 
-# EASY TODO^91: (IN_PROGRESS, NOW) Use firstlife-delegate --with-reward, or failing that, use firstlife-reward with description argument(s)
+# EASY TODO^92: Use firstlife-delegate --with-reward, or failing that, use firstlife-reward with description argument(s)
 shellask 'put a few things away' && firstlife-reward || accumulate_error 'did not put things away'
 exit_if_day_is_over
 
@@ -66,7 +66,8 @@ for num in $(seq $passes_at_todo_list); do
     firstlife-delegate --with-reward 'Mark something DONE that is "CONFIRMING" in today_todo (if you can)' || accumulate_error 'Did not confirm anything'
     exit_if_day_is_over
 
-    today_todo -n | grep --color=always '\(NOW\|LATER\|--------\|^$\)' # EASY TODO^84: EXTRACT, and REUSE
+    # EASY TODO^84: EXTRACT, and REUSE
+    todo -n | grep --color=always '\(NOW\|LATER\|--------\|^$\)'
     firstlife-delegate --with-reward 'See if you can work on something "NOW" that is marked "LATER" (or vise-versa) in today_todo' || accumulate_error 'Did not maintain NOW and LATER tags'
     exit_if_day_is_over
 

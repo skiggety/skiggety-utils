@@ -2,7 +2,7 @@
 
 # Self, program thyself.  This script gamifies life to help get everyday stuff done, and it's just a prototype.
 
-# TODO^93 NOW: TEST this in docker as a reluctant user starting from fish
+# TODO^93: TEST this in docker as a reluctant user starting from fish
 
 # Figure out $SKIGGETY_UTILS_DIR and export it if it's not set, in case skiggety-utils setup has not happened:
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
@@ -23,19 +23,19 @@ fi
 # TODO^85: ======== Another real demo with some decent code readability ============
 # TODO^76: if a second firstlife pops up, maybe it should take over and the old one gracefully exits? (PPID in a marker file?)
 # - TODO^4: and I could take advantage of this to create a way to exit firstlife early without having to close the terminal
-# TODO^91: and firstlife needs a way to keep you on pace, too
+# TODO^104: and firstlife needs a way to keep you on pace, too
 # TODO^56: firstlife should do something different on weekends, sundays, any sabbath of choice, letting you control it with a template
 # TODO^33: routinely check if it's time to jump to evening stuff, based on how much you did (rewards and productivity points)
 # TODO^31: track stats of all kinds
 
-# - TODO^23 (IN_PROGRESS, NOW): it should set the terminal title
+# - TODO^23: it should set the terminal title
 
 $SKIGGETY_UTILS_DIR/installers/firstlife || exit_with_error "could not set up firstlife"
 
 # EASY TODO^86: move elsewhere:
 function update_vital_graph {
-    # TODO^88: (IN_PROGRESS, EASY) make sure TODO graph exists in an environment variable so you don't commit it:
-    # - TODO^89 (IN_PROGRESS, EASY): if there's no environment variable, suggest the user start a new one and save the link in their bashrc, where the template should be ready.
+    # TODO^88: (EASY) make sure TODO graph exists in an environment variable so you don't commit it:
+    # - TODO^89 (EASY): if there's no environment variable, suggest the user start a new one and save the link in their bashrc, where the template should be ready.
     # TODO: wherever you use 'open', use firstlife-open instead, which can use shellask if you're in a docker container:
     open $VITAL_DIR
     # TODO^3: do something with error count:

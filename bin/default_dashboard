@@ -38,6 +38,7 @@ if [ "$git_diff_output" != "" ]; then
     echo "$git_diff_output"
 fi
 
+# TODO^4: make 'do not add' and 'do not commit' keywords consistent, maybe script extract 'git-warn-against-adding-keyword'
 DO_NOT_ADD="$(git diff --inter-hunk-context=1 | grep '^[+].*[X]XX')"
 if ! [ -z "$DO_NOT_ADD" ]; then
     echo_divider_with_text '!' "DO NOT ADD (${RED}X""XX${no_color}) :"
@@ -57,4 +58,5 @@ echo "$GIT_STATUS_LINECOUNT files with changes on branch '$(git branch --show-cu
 for keyword in 'DO_NOT''_COMMIT' 'XX''X' 'BREAD''CRUMB'; do
     git-object-to-added-keyword "$keyword" || accumulate_error "'git-object-to-added-keyword $keyword' FAILED"
 done
+
 exit_with_any_accumulated_errors

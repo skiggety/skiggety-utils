@@ -2,8 +2,8 @@
 
 # This script coordinates one pomodoro for you
 
-# EASY TODO^86: (IN_PROGRESS, NOW) use this script more often, maybe against your todo list
-# - EASY TODO^97: (IN_PROGRESS, NOW, POINT) successful pomodoros should keep log and count and show score, so I can count them and confirm I'm doing them consistently
+# EASY TODO^86: use this script more often, maybe against your todo list
+# - EASY TODO^97: (POINT) successful pomodoros should keep log and count and show score, so I can count them and confirm I'm doing them consistently
 # - EASY TODO^46: also, count POINTs similarly from lines with 'POINT' in todays todo file.
 
 # TODO^8?: exit early if you've done enough pomodoros in a day
@@ -18,7 +18,7 @@ open 'https://youtu.be/ddL3y1saEJs?si=UjSZicdCMYsVoIjV&t=00' 2>/dev/null & # gen
 task_description="do a POMODORO: $*"
 firstlife-delegate --with-reward "$task_description" || exit_with_error "skipped pomodoro for: $*"
 
-firstlife-log --type pomodoro "$task_description" # TODO^97: (IN_PROGRESS, NOW, FUN) display this output and productivity point count in firstlife-status like we do with rewards
+firstlife-log --type pomodoro "$task_description" # TODO^98: (EASY, FUN) display this output and productivity point count in firstlife-status like we do with rewards
 
 # TODO?: or should this be a 5-minute timer from youtube?:
 # EASY TODO^23: break should be optional with '--without-break'
