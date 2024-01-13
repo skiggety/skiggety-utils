@@ -14,10 +14,10 @@ rg -n --color=always '#.*\. [^ $\[|."a-z-]' . | sort | \
     abbreviate -n 19 -t 'find single spaces between sentences' -d
 firstlife-delegate --with-reward 'fix a single space between sentences (see above)'
 
-dashboard
-firstlife-delegate --with-reward 'commit something, probably using "ci && git ready && yup".'
-
 popd >/dev/null
 
 today_todo -n | grep --color=always '\(ME''TA\|--------\|^$\)' | abbreviate -l 20 # EASY TODO^88: EXTRACT, and REUSE
 firstlife-delegate --with-reward 'work on META tasks (maybe use "vf firstlife-iterate-on-vital-tag -n 3 META && yup")'
+
+dashboard
+clean-up-su-repo

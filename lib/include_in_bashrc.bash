@@ -13,6 +13,7 @@ export EDITOR
 export PATH="$PATH:./PWD_BIN:$SKIGGETY_UTILS_DIR/bin:$HOME/bin"
 
 # this weird way of getting the git branch works even when not in a git repo:
+# TODO: extract the part that shows the git branch?:
 export PS1="\$(duh)\$(git branch 2>/dev/null|grep '^*'|sed 's/^\\*/ \\*/') - \D{%F %T}\n\$ " # TODO: add colors (besides duh)
 
 export CLICOLOR='xterm-color' # colorize ls output and such in mac xterm

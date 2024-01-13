@@ -10,6 +10,7 @@ debug_eval_here MINUTES_LEFT
 TITLE="Do what's on your calendar"
 
 while [[ "$1" == -* ]]; do
+    # TODO: don't use "-m" for minutes, it's too confusing since git and other skiggety utils use it to pass a message:
     if [ "$1" == "-m" ]; then
         shift
         MINUTES_LEFT="$1"
