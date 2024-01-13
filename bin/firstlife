@@ -2,7 +2,10 @@
 
 # Self, program thyself.  This script gamifies life to help get everyday stuff done, and it's just a prototype.
 
-# TODO^93: TEST this in docker as a reluctant user starting from fish
+# TODO^11: call firstlife-setup, which should generate a crontab and guide you through setting it up to call the other
+# routines, then exit
+
+# TODO^92: TEST this in docker as a reluctant user starting from fish
 
 # Figure out $SKIGGETY_UTILS_DIR and export it if it's not set, in case skiggety-utils setup has not happened:
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"

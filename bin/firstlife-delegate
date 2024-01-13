@@ -9,10 +9,11 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
-REWARD='false'
+WITH_REWARD='false'
 while [[ "$1" == -* ]]; do
+    # FUN TODO^40: --pester-after-seconds n # probably will have to fork off a watcher process
     if [[ "$1" == '--with-reward' ]]; then # TODO^10: take --without-reward instead
-        REWARD='true'
+        WITH_REWARD='true'
         shift
     else
         exit_with_error "unrecognized option: '$1'"
@@ -25,7 +26,7 @@ done
 # TODO: test with different input, quoted or not:
 shellask "$*" || exit_with_error "$0 FAILED to do: $*" # EASY TODO^67: TEST exit_with_error
 
-if $REWARD; then
+if $WITH_REWARD; then
     firstlife-reward "$*" # no error checking
 fi
 

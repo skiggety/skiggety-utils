@@ -20,8 +20,13 @@
 # EASY TODO^5: firstlife-check-calendar could take a message string to override the normal one:
 # TODO^68: (EASY) check calendar script should be the one to call 'firstlife-reward', at least if you called it with '--with-reward':
 shellask "Your calendar is about to come up. When it does, mark your morning routine as starting now, OK?" \
-    && firstlife-check-calendar && firstlife-reward 'calendar check' || accumulate_error 'did not check calendar'
+    && firstlife-check-calendar --with-reward || accumulate_error 'did not check calendar'
 exit_if_day_is_over
+
+firstlife-delegate --with-reward 'Make coffee'
+exit_if_day_is_over
+
+firstlife-break # TODO TEST
 
 # FUN TODO^36: do something like this, and use widely: delegate_once_daily 'make sure you have taken any morning medications' || accumulate_error 'did not medicate'
 firstlife-delegate --with-reward 'Make sure you have taken any morning medications' || accumulate_error 'did not medicate'
@@ -30,7 +35,7 @@ exit_if_day_is_over
 # TODO^72: make sure this only gets asked perhaps once a week:
 # TODO^21: mention and help with alarmy and cron:
 # EASY TODO^86: help user start firstlife (including morning routine) with cron like I did, automate ensuring a line in local crontab, and use 'crontab-verbose'? (FUN) help user set up crontab like I did (use crontab-verbose?) (to help test on metrigon)
-# TODO: move out of inner routine, and actually help user set up alarms and cron:
+# TODO^91: move out of inner routine, and actually help user set up alarms and cron:
 shellask 'Make sure you have a phone alarm that ensures you log into this laptop in time for your cron job to fire (for tomorrow). There is one called "Alarmy" that can require a matching photo to what "firstlife-wake" will present in the morning.' || accumulate_error 'BASIC AUTOMATION PROBLEM: alarm not set' # TODO^67: (EASY) use 'firstlife-delegate' instead
 exit_if_day_is_over
 
@@ -47,7 +52,7 @@ exit_if_day_is_over
 firstlife-delegate --with-reward 'Put away any temptations or distractions'
 exit_if_day_is_over
 
-firstlife-delegate --with-reward 'Make sure your phone is at least 25% charged (so you can walk outside with it soon)''
+firstlife-delegate --with-reward 'Make sure your phone is at least 25% charged (so you can walk outside with it soon)'
 exit_if_day_is_over
 
 firstlife-delegate 'Start up some podcasts'
@@ -60,7 +65,7 @@ firstlife-delegate --with-reward 'Put on exercise clothes (and make sure you hav
     || accumulate_error 'did not exercise'
 exit_if_day_is_over
 
-# TODO: maybe make a 'delegate' function that calls both firstlife-delegate --with-reward and exit_if_day_is_over:
+# TODO^2: maybe make a 'delegate' function that calls both firstlife-delegate --with-reward and exit_if_day_is_over:
 firstlife-delegate --with-reward 'Hit the shower' || accumulate_error 'did not shower'
 exit_if_day_is_over
 
@@ -86,7 +91,7 @@ exit_with_any_accumulated_errors
 # EASY TODO^2: firstlife-check-calendar could take a message string to override the normal one:
 # TODO^68: (EASY) check calendar script should be the one to call 'firstlife-reward', at least if you called it with '--with-reward':
 shellask "Your calendar is about to come up. When it does, mark how long your morning routine took, and plan your day, OK?" \
-    && firstlife-check-calendar && firstlife-reward 'calendar check' || accumulate_error 'did not check calendar'
+    && firstlife-check-calendar --with-reward || accumulate_error 'did not check calendar'
 
 # TODO: do I want this here? do I want it in other high-level firstlife scripts?:
 echo "$(basename $0) succeeded!"

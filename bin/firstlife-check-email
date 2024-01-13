@@ -4,12 +4,10 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-WITH_REWARD=''
-
+WITH_REWARD_ARG=''
 while [[ "$1" == -* ]]; do
-    # accept a -i option for case insensitive grep
     if [ "$1" == "--with-reward" ]; then
-        WITH_REWARD='--with-reward'
+        WITH_REWARD_ARG="$1"
         shift
     fi
 done
@@ -21,6 +19,6 @@ done
 # EASY TODO^46: use this script widely
 
 open 'https://mail.google.com/mail/u/0/#inbox' 2>/dev/null & # TODO: UN-HARDCODE
-firstlife-delegate $WITH_REWARD 'take care of a few emails' || accumulate_error 'ignored email'
+firstlife-delegate $WITH_REWARD_ARG 'take care of a few emails' || accumulate_error 'ignored email'
 
 exit_with_any_accumulated_errors
