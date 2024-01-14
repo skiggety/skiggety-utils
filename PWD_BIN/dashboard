@@ -38,7 +38,7 @@ function limit-todo-with-keyword-count {
     KEYWORD_USAGES="$(todo | grep $KEYWORD )"
     KEYWORD_USAGE_COUNT=$(echo "$KEYWORD_USAGES" | wc -l | bc )
 
-    echo "$KEYWORD_USAGE_COUNT todo's found marked '$KEYWORD'"
+    echo_debug "$KEYWORD_USAGE_COUNT todo's found marked '$KEYWORD'"
     if [ "$KEYWORD_USAGE_COUNT" -gt "$MAX_COUNT" ]; then
         EXCESS_COUNT="$(( $KEYWORD_USAGE_COUNT - $MAX_COUNT))"
         echo
