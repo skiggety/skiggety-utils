@@ -29,7 +29,7 @@ echo "$reward_status"
 
 # TODO^11: firstlife-pomodoro -n
 
-# EASY TODO^107: (IN_PROGRESS) mute during meditation, exercise, shower, pomodoros, breaks, evenings, etc.
+# EASY TODO^107: mute during meditation, exercise, shower, pomodoros, breaks, evenings, etc.
 # - EASY TODO^11: can also use mute at will
 BEHIND_SOUND="$FIRSTLIFE_DIR/sounds/behind.mp3"
 BEHIND_SOUND_VOLUME='20' # TODO: put in config

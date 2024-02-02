@@ -15,6 +15,7 @@ function main {
     done
 
     run-or-fail git add -p
+    # TODO: touch some of the relevant files, so 'review-dev' notices
 
     # EASY TODO^10: just exit 0 right here unless there are changes staged
 

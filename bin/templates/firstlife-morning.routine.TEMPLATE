@@ -12,7 +12,7 @@
 # TODO^2: use this to make sure we don't ask for the alarm too often: FIRSTLIFE_ALARM_MARKER_FILE="$FIRSTLIFE_DIR/markers/firstlife_outside_alarm_confirmed"
 
 # TODO: figure out how to keep this stuff on a schedule:
-# - EASY TODO^110: (IN_PROGRESS, NOW) (manually) cron more stuff instead of chaining everything off the morning
+# - EASY TODO^110: (IN_PROGRESS) (manually) cron more stuff instead of chaining everything off the morning
 #   - FUN TODO^100: help user set up crontab with a sample file
 # - EASY TODO^42: build a timer into firstlife-delegate, keep stats on how long things take, just pairs of task names and times
 #   - TODO^41: then make the logs daily, graph the daily linecount
