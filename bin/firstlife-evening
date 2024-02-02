@@ -5,7 +5,7 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
-# TODO^107: (IN_PROGRESS, NOW) Call this directly from cron, and try to get through the main one in time to have a gap in between
+# TODO^107: (IN_PROGRESS) Call this directly from cron, and try to get through the main one in time to have a gap in between
 
 # TODO^6?: exit if a script with identical name and path is in parent tree
 

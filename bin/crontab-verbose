@@ -2,8 +2,8 @@
 
 # Call 'review crontab-verbose' to get the real benefit.  It'll watch for changes.
 
-# TODO^5: TEST this script on linux
-# - TODO^2: add some high level comments to make it easier to understand what's going on.
+# TODO^8: TEST this script on linux
+# - TODO^3: add some high level comments to make it easier to understand what's going on.
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
@@ -15,13 +15,16 @@ function main {
     debug_eval_here COMPLETED_MARKER
 
     CONF="$HOME/.crontab"
+    debug_eval_here CONF
+
+    # TODO^111: (IN_PROGRESS, NOW) also open example files, if available (so 'firstlife' can suggest an example crontab file)
     $EDITOR "$CONF" || exit_with_error "did not edit crontab"
     cat "$CONF"
 
-    exit_if_marker_is_more_recent_than_other_files "$COMPLETED_MARKER" $HOME/.crontab
+    exit_if_marker_is_more_recent_than_other_files "$COMPLETED_MARKER" "$CONF"
 
     echo "Running: crontab $CONF ..."
-    crontab "$CONF"
+    crontab "$CONF" || exit_with_error "crontab FAILED"
     exit_with_any_accumulated_errors
 
     touch $COMPLETED_MARKER
@@ -38,7 +41,7 @@ function exit_if_marker_is_more_recent_than_other_files {
         # If the marker file is newest out of the ones we care about, you can skip the rest of the script
         # TODO^2: if the most recent thing to change is this script, we should also run it:
         if ls -lht $watched_files | head -n 1 | grep $completed_marker >/dev/null;then
-            echo "$(basename "$0") has already run recently, exiting early"
+            echo "$(basename "$0") has already run since latest changes, exiting early"
             exit 0
         else
             debug_here "found stuff more recent than the marker file, continuing..."
