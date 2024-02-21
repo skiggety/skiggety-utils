@@ -27,7 +27,7 @@ function main {
     fi
 }
 
-# TODO^6: DELETE this script once you're sure it's not used
+# TODO^7: DELETE this script once you're sure it's not used
 SKIGGETY_DEBUG=true
 debug_here "# oops, ran \"$0 $*\" at $(date)"
 echo "# oops, ran \"$0 $*\" at $(date)" >> $0

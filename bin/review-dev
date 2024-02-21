@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
 # This script continuously runs the 'dev' script/cycle
+# TODO: consider renaming this to template_review-dev or default something
 
 SKIGGETY_DIVIDER_LENGTH=121 review -u 8 -m 120 $* dev
