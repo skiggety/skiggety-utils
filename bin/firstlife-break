@@ -22,4 +22,4 @@ shellask "Ready for a break? ($DURATION_IN_SECONDS seconds)" || exit 0
 
 # TODO^14: mute here for DURATION_IN_SECONDS: firstlife-mute-behind-noise $DURATION_IN_SECONDS
 
-sleep-verbose $DURATION_IN_SECONDS && firstlife-alarm "break is over"
+sleep-verbose $DURATION_IN_SECONDS && firstlife-alarm "Your break is now over."
