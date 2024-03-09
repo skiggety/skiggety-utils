@@ -31,7 +31,7 @@ fi
 # TODO^33: routinely check if it's time to jump to evening stuff, based on how much you did (rewards and productivity points)
 # TODO^31: track stats of all kinds
 
-# - TODO^23: it should set the terminal title
+# TODO^23: this script should set the terminal title
 
 $SKIGGETY_UTILS_DIR/installers/firstlife || exit_with_error "could not set up firstlife"
 

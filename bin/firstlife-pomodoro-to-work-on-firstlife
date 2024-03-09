@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# This script encourages you to work on this codebase for a bit
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
+
+firstlife-pomodoro --with-alarms --without-break "Work on firstlife, making sure to test and commit as you go, and following the todo list"
+
+exit_if_day_is_over
+
+while ! clean-up-su-local-changes; do
+    exit_if_day_is_over
+    firstlife-alarm "Hey, you need to commit something!"
+done
+
+exit_if_day_is_over
+
+firstlife-break -t 300

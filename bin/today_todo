@@ -54,7 +54,7 @@ function main {
     while getopts ":inhi?" opt; do
         case "$opt" in
             "i") interactive=true ;;
-            "n") interactive=false ;;
+            "n") interactive=false ;; # TODO: support/move to/in 'vital', (and also move this whole implementation)
             "h") echo "$USAGE"; exit ;;
             "?") echo "$USAGE"; exit ;;
             *) ;;
