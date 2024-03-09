@@ -16,13 +16,20 @@
 
 WITH_BREAK='true'
 WITH_ALARMS='false'
+SLEEP_FOR="$(( 25 * 60 ))"
 while [[ "$1" == -* ]]; do
-    # TODO^9: accept an option for a different length of time, use it for 1-hour woodworking sessions for example (schedule like 6 times on a Saturday and 2 on a Sunday if you're at the woodshop)
+    # TODO^112: (IN_PROGRESS, NOW) accept an option for a different length of time, use it for 1-hour woodworking sessions for example (schedule like 6 times on a Saturday and 2 on a Sunday if you're at the woodshop)
     if [[ "$1" == '--with-alarms' ]]; then
         WITH_ALARMS='true'
         shift
     elif [[ "$1" == '--without-break' ]]; then
         WITH_BREAK='false'
+        shift
+    elif [[ "$1" == '--time-in-minutes' ]]; then
+        shift
+        # TODO: could make sure it's a number...
+        SLEEP_FOR="$(( $1 * 60 ))"
+        # TODO: change out for a different youtube link...
         shift
     # TODO^10: elif [[ "$1" == '-n' ]]; then
     # TODO^10:     do n pomodoros
@@ -42,7 +49,7 @@ firstlife-reward "Start the POMODORO: $@"
 # EASY TODO^11: or should this be done right in the terminal with sleep-verbose or firstlife-break instead of youtube and shellask:
 open 'https://youtu.be/ddL3y1saEJs?si=UjSZicdCMYsVoIjV&t=00' 2>/dev/null & # generic 25 minute timer on youtube
 
-sleep-verbose $(( 25 * 60 )) # TODO?: UN-HARDCODE
+sleep-verbose $SLEEP_FOR || exit_with_error "ended pomodoro early for: $*"
 if $WITH_ALARMS; then
     firstlife-alarm "OK, you can stop working on '$@' now if you need to!"
 fi

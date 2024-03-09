@@ -23,6 +23,8 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 # including with THIS_DIR instead of SKIGGETY_UTILS_DIR so we can use it in demo_in_docker:
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
+# TODO: create an alternative, 'yn_ask', for when you want to keep the ui simple, and use it widely
+
 # TODO^20: figure out why this script occasionally fails to set the prompt.  It seems to still get as far as producing a
 # reasonable looking DOUBLE_ESCAPED_TASK_DESCRIPTION, but doesn't actually set the prompt or the aliases:
 #     TODO: figure out roughly what % of the time it happens, maybe with a test harness that repeats and logs 1000 times
