@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# This script reminds you of something after a certain number of minutes.
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+MINUTES_LEFT="15"
+TITLE="Do what's on your calendar"
+
+while [[ "$1" == -* ]]; do
+    if [ "$1" == "-m" ]; then
+        shift
+        MINUTES_LEFT="$1"
+        debug_eval_here MINUTES_LEFT
+        shift
+    elif [ "$1" == "-h" -o "$1" == "--help" ]; then
+        exit_with_error "TODO: implement help"
+    fi
+done
+TITLE="$*"
+
+echo "Sleeping for $MINUTES_TO_SLEEP minutes at $(date) ..."
+debug_here sleep-verbose "$(( $MINUTES_LEFT * 60 ))"
+sleep-verbose "$(( $MINUTES_LEFT * 60 ))"
+
+firstlife-alarm "Time for '$TITLE' NOW!"
+echo_divider_with_text "=" "Time for '$TITLE' NOW!"
