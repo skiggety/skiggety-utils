@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# This script mutes all firstlife sounds for a certain duration
+
+# EASY TODO^108: mute during meditation, exercise, shower, pomodoros, breaks, evenings, etc. (We need to mute # behind sounds, alarms, everything)
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+# TODO: try calling this script in the background with '&', like in firstlife-pomodoro
+
+firstlife-mute-in-foreground "$@" || exit_with_error "TODO^63: IMPLEMENT"

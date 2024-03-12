@@ -51,6 +51,8 @@ firstlife-reward "Start the POMODORO: $@"
 # EASY TODO^11: or should this be done right in the terminal with sleep-verbose or firstlife-break instead of youtube and shellask:
 open 'https://youtu.be/ddL3y1saEJs?si=UjSZicdCMYsVoIjV&t=00' 2>/dev/null & # generic 25 minute timer on youtube
 
+
+# EASY TODO^109: also MUTE for $SLEEP_FOR seconds
 sleep-verbose $SLEEP_FOR || exit_with_error "ended pomodoro early for: $*"
 if $WITH_ALARMS; then
     firstlife-alarm "OK, you can stop working on '$@' now if you need to!"

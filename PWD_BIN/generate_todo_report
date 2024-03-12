@@ -2,20 +2,34 @@
 
 # TODO: specify to abbreviate in terms of how many todo's to show (3) instead of how many lines to take up on the
 # screen:
-TODO_REPORT_LINES=5 # IGNORE_TODO
+TODO_REPORT_LINES=8 # IGNORE_TODO
 
 TODO_REPORT_DIR="todo_report" # IGNORE_TODO
+TODO_REPORT_BY_STATUS_FILE="$TODO_REPORT_DIR/todos_by_status.txt" # IGNORE_TODO
 TODO_REPORT_FILE="$TODO_REPORT_DIR/README.txt" # IGNORE_TODO
 TODO_REPORT_COLOR_FILE="$TODO_REPORT_DIR/README_in_color.txt" # IGNORE_TODO
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash
 
+debug_eval_here TODO_REPORT_BY_STATUS_FILE # IGNORE_TODO
 debug_eval_here TODO_REPORT_FILE # IGNORE_TODO
 debug_eval_here TODO_REPORT_COLOR_FILE # IGNORE_TODO
 mkdir -p "$TODO_REPORT_DIR" # IGNORE_TODO
 
 todo_report_whole="$(todo --exclude-dir "$TODO_REPORT_DIR" | grep -v ".gitignored." | grep -v 'X''XX')"
 todo_report_whole_in_color="$(todo --color always --exclude-dir "$TODO_REPORT_DIR" | grep -v ".gitignored." | grep -v 'X''XX')"
+
+todos_in_progress_header="---- IN_PROGRESS: --------------------------------------------------------------"
+debug_eval todos_in_progress_header
+todos_in_progress="$(echo "$todo_report_whole" | grep --color=always "IN_PROGRESS" )"
+debug_eval todos_in_progress
+todos_now_header="---- TODOs for right NOW: ------------------------------------------------------" # IGNORE_TODO
+debug_eval todos_now_header
+todos_now="$(echo "$todo_report_whole" | grep --color=always "NOW")" # IGNORE_TODO
+debug_eval todos_now
+todo_by_status_whole="${todos_in_progress_header}${newline}${todos_in_progress}${newline}${todos_now_header}${newline}${todos_now}"
+debug_eval todo_by_status_whole
+
 todo_report_body="$(echo "$todo_report_whole" | abbreviate -n $TODO_REPORT_LINES -t 'todo' )"
 todo_report_body_in_color="$(echo "$todo_report_whole_in_color" | abbreviate -n $TODO_REPORT_LINES -t 'todo' )"
 
@@ -24,9 +38,14 @@ todo_report_linecount=$(echo "$todo_report_whole" | wc -l | sed 's/^[ \t]*//')
 
 todo_header="==== TODOs, ascending, so you know what's likely to change next. Do not edit, run '$(basename $0)' to generate. ====" # IGNORE_TODO
 
-echo "$todo_header" > $TODO_REPORT_FILE
-echo "$todo_header" > $TODO_REPORT_COLOR_FILE
-echo "$todo_report_body" >> $TODO_REPORT_FILE
-echo "$todo_report_body_in_color" >> $TODO_REPORT_COLOR_FILE
+# TODO^2: in color also so the top-voted item stands out:
+echo "$todo_by_status_whole" > $TODO_REPORT_BY_STATUS_FILE #IGNORE_TODO
 
-cat $TODO_REPORT_COLOR_FILE
+echo "$todo_header" > $TODO_REPORT_FILE # IGNORE_TODO
+echo "$todo_header" > $TODO_REPORT_COLOR_FILE # IGNORE_TODO
+
+echo "$todo_report_body" >> $TODO_REPORT_FILE # IGNORE_TODO
+echo "$todo_report_body_in_color" >> $TODO_REPORT_COLOR_FILE # IGNORE_TODO
+
+cat $TODO_REPORT_COLOR_FILE # IGNORE_TODO
+cat $TODO_REPORT_BY_STATUS_FILE # IGNORE_TODO

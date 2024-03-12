@@ -20,6 +20,10 @@ else
     # purposely call whatever 'todo' is in the path in case you are overriding it with a 'PWD_BIN/todo' script:
     todo --color always | abbreviate -n 4 -t "TODO's" -d || exit_with_error "todo FAILED" # IGNORE_TODO
 fi
+if [ -f ./todo_report/todos_by_status.txt ]; then
+    echo_divider_with_text "=" "TODO's by status" # IGNORE_TODO
+    cat ./todo_report/todos_by_status.txt # TODO: prefer the color version if you find it
+fi
 
 # TODO^2?: tell you what command to run to commit changes or whatever
 # TODO^2?: graph score over time (see program "progress")

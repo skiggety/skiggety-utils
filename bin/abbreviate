@@ -16,6 +16,7 @@ while [[ "$1" == -* ]]; do
         MAX_LINES="$1"
         MAX_SCREEN_LINES="$(( $MAX_LINES + 1 ))" # because the explanation takes up 1 line
         shift
+    # TODO: elif [ "$1" == '--headlines' ]; then # show a few lines with "head" at the top, still use the right total amount of space on screen
     elif [ "$1" == '-l' ]; then
         shift
         MAX_SCREEN_LINES="$1"

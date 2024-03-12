@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+exit_with_error "TODO^33: IMPLEMENT"
+#   - TODO^5: -t takes number of seconds to sleep for
+#   - TODO: accept other argument as a message
+#   - TODO: touch file incorporating message in the name, sleep, delete file
+#   - TODO: firstlife-status respects file

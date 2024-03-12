@@ -1,0 +1,10 @@
+---- IN_PROGRESS: --------------------------------------------------------------
+./README-firstlife.md:6:  - TODO^108: ([01;31m[KIN_PROGRESS[m[K) try firstlife on 'hobo' computer
+./bin/firstlife-evening:8:# TODO^108: ([01;31m[KIN_PROGRESS[m[K) Call this directly from cron, and try to get through the main one in time to have a gap in between
+./README.md:130:  - TODO^110: ([01;31m[KIN_PROGRESS[m[K) move 'vital' data (to do list) to private repo (skiggety utils should help set up)
+./README.md:128:      - TODO^111: ([01;31m[KIN_PROGRESS[m[K) at least check out the repo, maybe with a skiggety-utils installer
+./bin/crontab-verbose:20:    # TODO^111: ([01;31m[KIN_PROGRESS[m[K, NOW) also open example files, if available (so 'firstlife' can suggest an example crontab file)
+./bin/firstlife-pomodoro:28:        # TODO^111: ([01;31m[KIN_PROGRESS[m[K) use this option in crontab for 1-hour woodworking sessions for example (6 times on a Saturday and 2 on a Sunday but only if you're at the woodshop)
+./bin/firstlife-do-something:7:# TODO^160: ([01;31m[KIN_PROGRESS[m[K) make sure URGENT stuff gets done, possibly by cron'ing this script with the "URGENT" tag or one that calls
+---- TODOs for right NOW: ------------------------------------------------------
+./bin/crontab-verbose:20:    # TODO^111: (IN_PROGRESS, [01;31m[KNOW[m[K) also open example files, if available (so 'firstlife' can suggest an example crontab file)

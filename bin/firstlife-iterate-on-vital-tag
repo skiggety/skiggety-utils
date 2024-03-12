@@ -7,6 +7,8 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
+# EASY TODO^10: take an option to use pomodoros for each item, for much increased focus
+
 LIMIT=""
 while [[ "$1" == -* ]]; do
     # accept -n to accept a number of tasks to work on:

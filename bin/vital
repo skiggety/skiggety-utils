@@ -15,7 +15,9 @@
 # TODO^14: IMPLEMENT this replacement for today_todo
 # - TODO^60: IMPLEMENT '--find <STRING>' to open EDITOR searching for a particular string
 # - TODO^11: IMPLEMENT '--edit' to edit the todo list
-# - TODO^8: IMPLEMENT '--report' to print a report, replacing 'today_todo -n'
+# - TODO^11: IMPLEMENT '--report' to print a report, replacing 'today_todo -n'
+#   - TODO^3: IMPLEMENT: 'vital -n' to do the same thing
+#   - TODO^2: IMPLEMENT: 'vital --non-interactive' to do the same thing
 # - TODO^3: IMPLEMENT '--help' with something useful, especially to explain the 'vital --add --vote <n> <description>' syntax
 # - TODO: IMPLEMENT: make 'vital --edit --report' the default, replacing 'today_todo' (with no options)
 
