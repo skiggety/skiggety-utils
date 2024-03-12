@@ -8,15 +8,9 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 
 echo_divider_with_text "O-=======-" "'dashboard' for $(duh) :"
 
-# show diff with old mac files: # TODO^5: work on this diff:
-if ! [ -z "$SKIGGETY_UTILS_DONOR_DIR" ]; then
-    echo_divider_with_text "+-=======-" "diff summary for \"$SKIGGETY_UTILS_DONOR_DIR\":"
-    diff -rq --exclude=.DS_Store --exclude=.git $THIS_DIR/.. $SKIGGETY_UTILS_DONOR_DIR | grep -v "^Only in $THIS_DIR/.." | grep --color=always '\(differ\|Only\)' | abbreviate -l 5
-fi
-
 bin/default_dashboard || accumulate_error "default_dashboard FAILED"
-# Everything after this point in the script should be more important than the output of default_dashboard since it can
-# bump it off the screen....:
+# Anything after this point better be more important than the output of default_dashboard since it could bump it off the
+# screen....:
 
 # show todo's:
 if [ -f ./todo_report/README_in_color.txt ]; then
