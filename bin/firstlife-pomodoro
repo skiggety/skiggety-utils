@@ -18,7 +18,6 @@ WITH_BREAK='true'
 WITH_ALARMS='false'
 SLEEP_FOR="$(( 25 * 60 ))"
 while [[ "$1" == -* ]]; do
-    # TODO^112: (IN_PROGRESS, NOW) accept an option for a different length of time, use it for 1-hour woodworking sessions for example (schedule like 6 times on a Saturday and 2 on a Sunday if you're at the woodshop)
     if [[ "$1" == '--with-alarms' ]]; then
         WITH_ALARMS='true'
         shift
@@ -26,6 +25,7 @@ while [[ "$1" == -* ]]; do
         WITH_BREAK='false'
         shift
     elif [[ "$1" == '--time-in-minutes' ]]; then
+        # TODO^111: (IN_PROGRESS) use this option in crontab for 1-hour woodworking sessions for example (6 times on a Saturday and 2 on a Sunday but only if you're at the woodshop)
         shift
         # TODO: could make sure it's a number...
         SLEEP_FOR="$(( $1 * 60 ))"
@@ -37,6 +37,8 @@ while [[ "$1" == -* ]]; do
         exit_with_error "unrecognized option: '$1'"
     fi
 done
+
+# TODO^80: wait for other pomodoros to be done, (use a mutex?)
 
 if $WITH_ALARMS; then
     firstlife-alarm "Time for a pomodoro for '$@'!"
@@ -59,7 +61,7 @@ exit_if_day_is_over
 task_description="Finish the POMODORO: $@"
 firstlife-delegate --with-reward "$task_description" || exit_with_error "skipped pomodoro for: $*"
 
-firstlife-log --type pomodoro "$task_description" # TODO^98: (EASY, FUN) display this output and productivity point count in firstlife-status like we do with rewards
+firstlife-log --type pomodoro "$task_description" # TODO^99: (EASY, FUN) display this output and productivity point count in firstlife-status like we do with rewards
 
 exit_if_day_is_over
 
@@ -68,6 +70,6 @@ if $WITH_BREAK; then
     firstlife-break -t 300
 fi
 
-# redundant? TODO DELETE?: firstlife-alarm "This is the end of your post-pomodoro break. Go do something!"
+# redundant? TODO DELETE?: firstlife-alarm "This is the end of your post-pomodoro break.  Go do something!"
 
 exit 0

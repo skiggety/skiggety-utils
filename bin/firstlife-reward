@@ -21,8 +21,8 @@ while [[ "$1" == -* ]]; do
     fi
 done
 
-# EASY FUN TODO^71: emit a characteristic "reward" (gong?) sound, and get all pavlovian about it
-# - TODO^10: maybe kill the behind sound first?
+# EASY FUN TODO^86: emit a characteristic "reward" (gong?) sound, and get all pavlovian about it
+# - TODO^12: maybe kill the behind sound first?
 
 if $ADD_REWARD; then
     reward_for="$(echo "$*" | tr "$newline" ' ')"

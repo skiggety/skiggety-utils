@@ -9,10 +9,13 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
-WITH_REWARD='false'
+WITH_REWARD='true'
 while [[ "$1" == -* ]]; do
     # FUN TODO^40: --pester-after-seconds n # probably will have to fork off a watcher process
-    if [[ "$1" == '--with-reward' ]]; then # TODO^10: take --without-reward instead
+    if [[ "$1" == '--without-reward' ]]; then
+        WITH_REWARD='false'
+        shift
+    elif [[ "$1" == '--with-reward' ]]; then
         WITH_REWARD='true'
         shift
     else

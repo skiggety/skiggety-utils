@@ -48,7 +48,7 @@ function limit-todo-with-keyword-count {
     fi
 }
 
-limit-todo-with-keyword-count 8 'IN_''PROGRESS' # TODO^31: fine tunethis number
+limit-todo-with-keyword-count 7 'IN_''PROGRESS' # TODO^31: fine tune this number
 limit-todo-with-keyword-count 2 'N''OW'
 # TODO^5: maybe also make sure that lines that contain (all capitalized, not shown here so as not to tag this todo) 'todo' and 'now' also contain 'in_progress
 

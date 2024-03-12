@@ -65,7 +65,7 @@ exit_if_day_is_over
 # TODO^21: exit_if_another_terminal_took_over
 # - TODO: ultimately, combine for exit_if_another_terminal_or_day_took_over_with_accumulated_errors
 
-# EASY TODO^87: use 'firstlife-delegate --with-reward' pretty much universally, instead of calling shellask directly
+# EASY TODO^90: use 'firstlife-delegate --with-reward' pretty much universally, instead of calling shellask directly
 
 # TODO^63: make this program aware of your productivity points, as in, keep going until you have enough:
 firstlife-work || accumulate_error "firstlife-work had ERRORS"
