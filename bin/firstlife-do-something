@@ -4,10 +4,8 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-# TODO^160: (IN_PROGRESS) make sure URGENT stuff gets done, possibly by cron'ing this script with the "URGENT" tag or one that calls
-# it
 
-exit_with_error "TODO^11: IMPLEMENT"
+exit_with_error "TODO^12: IMPLEMENT"
 
 # TODO^5: accept an optianal tag for vital,
 # like "URGENT", "NOW", or "FUN". Pick randomly from vital tasks with the tag,

@@ -26,9 +26,9 @@ if ! [ -f "$experiment_script" ]; then
 fi
 
 if [ -f "$experiment_script" ]; then
-    echo_divider_with_text "=" "Running \"$experiment_script\" ..."
-    $experiment_script || exit_with_error "experimental script \"$experiment_script\" FAILED"
-    echo_divider_with_text "=" "...DONE running \"$experiment_script\" ."
+    echo_divider_with_text "=" "Running \"$experiment_script\" (1/2) ..."
+    $experiment_script || accumulate_error "experimental script \"$experiment_script\" 1st run FAILED"
+    echo_divider_with_text "=" "...DONE running \"$experiment_script\" (1/2)."
 fi
 
 unit-test && echo "unit-test SUCCEEDED" || exit_with_error "unit-test FAILED"
@@ -36,6 +36,12 @@ unit-test && echo "unit-test SUCCEEDED" || exit_with_error "unit-test FAILED"
 lint && echo "lint SUCCEEDED" || exit_with_error "lint FAILED"
 
 dashboard || accumulate_error "dashboard FAILED"
+
+if [ -f "$experiment_script" ]; then
+    echo_divider_with_text "=" "Running \"$experiment_script\" (2/2) ..."
+    $experiment_script || exit_with_error "experimental script \"$experiment_script\" 2nd run FAILED"
+    echo_divider_with_text "=" "...DONE running \"$experiment_script\" (2/2)."
+fi
 
 echo_divider_with_text "#" "END of 'dev'."
 exit_with_any_accumulated_errors

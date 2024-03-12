@@ -28,9 +28,7 @@ firstlife-delegate --with-reward 'Make sure various devices including this one a
     || accumulate_error 'should have charged your devices' # TODO: don't ask more than once every 3 hours
 exit_if_day_is_over
 
-# EASY TODO^92: Use firstlife-delegate --with-reward, or failing that, use firstlife-reward with description argument(s)
-shellask 'put a few things away' && firstlife-reward || accumulate_error 'did not put things away'
-exit_if_day_is_over
+# TODO^4: (IN_PROGRESS) pop out terminal for firstlife-cleaning-game instead of this or cron: shellask 'put a few things away' && firstlife-reward || accumulate_error 'did not put things away'
 
 shellask 'put away any temptations or distractions' && firstlife-reward || accumulate_error 'did not clear distractions'
 firstlife-delegate 'keep the tunes pumping (you can use "firstlife-music")' || accumulate_error 'did not DJ for yourself'

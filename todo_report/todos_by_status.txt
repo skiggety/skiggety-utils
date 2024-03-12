@@ -1,10 +1,11 @@
 ---- IN_PROGRESS: --------------------------------------------------------------
-./README-firstlife.md:6:  - TODO^108: ([01;31m[KIN_PROGRESS[m[K) try firstlife on 'hobo' computer
-./bin/firstlife-evening:8:# TODO^108: ([01;31m[KIN_PROGRESS[m[K) Call this directly from cron, and try to get through the main one in time to have a gap in between
-./README.md:130:  - TODO^110: ([01;31m[KIN_PROGRESS[m[K) move 'vital' data (to do list) to private repo (skiggety utils should help set up)
+./bin/templates/firstlife-multitask.routine.TEMPLATE:31:# TODO^4: ([01;31m[KIN_PROGRESS[m[K) pop out terminal for firstlife-cleaning-game instead of this or cron: shellask 'put a few things away' && firstlife-reward || accumulate_error 'did not put things away'
 ./README.md:128:      - TODO^111: ([01;31m[KIN_PROGRESS[m[K) at least check out the repo, maybe with a skiggety-utils installer
-./bin/crontab-verbose:20:    # TODO^111: ([01;31m[KIN_PROGRESS[m[K, NOW) also open example files, if available (so 'firstlife' can suggest an example crontab file)
-./bin/firstlife-pomodoro:28:        # TODO^111: ([01;31m[KIN_PROGRESS[m[K) use this option in crontab for 1-hour woodworking sessions for example (6 times on a Saturday and 2 on a Sunday but only if you're at the woodshop)
-./bin/firstlife-do-something:7:# TODO^160: ([01;31m[KIN_PROGRESS[m[K) make sure URGENT stuff gets done, possibly by cron'ing this script with the "URGENT" tag or one that calls
+./bin/crontab-verbose:20:    # TODO^111: ([01;31m[KIN_PROGRESS[m[K) also open example files, if available (so 'firstlife' can suggest an example crontab file)
+./bin/firstlife-morning:6:# TODO^113: ([01;31m[KIN_PROGRESS[m[K) have a way for a new instance and a running instance to avoid interfering. The new one could take over and the old one could exit gracefully.
+./bin/templates/firstlife-morning.routine.TEMPLATE:39:exit_if_day_is_over # TODO^114: ([01;31m[KIN_PROGRESS[m[K, NOW) # ; exit_if_this_script_is_running_elsewhere # after we make sure common tasks only run once, we could do this, like what ../*firstlife-status scripts do with $FIRSTLIFE_DIR/.review-firstlife-status_PPID
+./bin/templates/firstlife-work.routine.TEMPLATE:21:firstlife-reward "looked at URGENT stuff" # TODO^114: ([01;31m[KIN_PROGRESS[m[K) this is important, TEST against getting to this point (URGENT stuff done) as a benchmark
+./bin/templates/firstlife-morning.routine.TEMPLATE:41:# FUN TODO^115: ([01;31m[KIN_PROGRESS[m[K, NOW) do something like this, and use widely, so you can shedule the morning routine multiple times as a backup: delegate_once_daily 'make sure you have taken any morning medications' || accumulate_error 'did not medicate'
 ---- TODOs for right NOW: ------------------------------------------------------
-./bin/crontab-verbose:20:    # TODO^111: (IN_PROGRESS, [01;31m[KNOW[m[K) also open example files, if available (so 'firstlife' can suggest an example crontab file)
+./bin/templates/firstlife-morning.routine.TEMPLATE:39:exit_if_day_is_over # TODO^114: (IN_PROGRESS, [01;31m[KNOW[m[K) # ; exit_if_this_script_is_running_elsewhere # after we make sure common tasks only run once, we could do this, like what ../*firstlife-status scripts do with $FIRSTLIFE_DIR/.review-firstlife-status_PPID
+./bin/templates/firstlife-morning.routine.TEMPLATE:41:# FUN TODO^115: (IN_PROGRESS, [01;31m[KNOW[m[K) do something like this, and use widely, so you can shedule the morning routine multiple times as a backup: delegate_once_daily 'make sure you have taken any morning medications' || accumulate_error 'did not medicate'

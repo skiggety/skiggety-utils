@@ -7,7 +7,7 @@
 # - EASY TODO^46: also, count POINTs similarly from lines with 'POINT' in todays todo file.
 
 # TODO^8?: exit early if you've done enough pomodoros in a day
-# TODO?: maybe accept a '--without-reward' option
+# TODO^3: maybe accept a '--without-reward' option
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
@@ -25,7 +25,7 @@ while [[ "$1" == -* ]]; do
         WITH_BREAK='false'
         shift
     elif [[ "$1" == '--time-in-minutes' ]]; then
-        # TODO^111: (IN_PROGRESS) use this option in crontab for 1-hour woodworking sessions for example (6 times on a Saturday and 2 on a Sunday but only if you're at the woodshop)
+        # TODO^110: use this option in crontab for 1-hour woodworking sessions for example (6 times on a Saturday and 2 on a Sunday but only if you're at the woodshop)
         shift
         # TODO: could make sure it's a number...
         SLEEP_FOR="$(( $1 * 60 ))"

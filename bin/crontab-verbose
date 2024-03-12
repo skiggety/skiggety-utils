@@ -17,7 +17,7 @@ function main {
     CONF="$HOME/.crontab"
     debug_eval_here CONF
 
-    # TODO^111: (IN_PROGRESS, NOW) also open example files, if available (so 'firstlife' can suggest an example crontab file)
+    # TODO^111: (IN_PROGRESS) also open example files, if available (so 'firstlife' can suggest an example crontab file)
     $EDITOR "$CONF" || exit_with_error "did not edit crontab"
     cat "$CONF"
 

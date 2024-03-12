@@ -5,8 +5,6 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
-# TODO^108: (IN_PROGRESS) Call this directly from cron, and try to get through the main one in time to have a gap in between
-
 # TODO^6?: exit if a script with identical name and path is in parent tree
 
 exit_if_script_succeeded_today $0 # make sure this script only runs once a day

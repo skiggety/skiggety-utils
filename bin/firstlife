@@ -24,7 +24,6 @@ fi
 
 # TODO^88: ======== First real demo ================
 # TODO^85: ======== Another real demo with some decent code readability ============
-# TODO^76: if a second firstlife pops up, maybe it should take over and the old one gracefully exits? (PPID in a marker file?)
 # - TODO^4: and I could take advantage of this to create a way to exit firstlife early without having to close the terminal
 # TODO^104: and firstlife needs a way to keep you on pace, too
 # TODO^56: firstlife should do something different on weekends, sundays, any sabbath of choice, letting you control it with a template

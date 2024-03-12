@@ -127,7 +127,7 @@ These ideas don't have a code location, so they go here:
     - TODO^109: move firstlife to 'zerothlife' repo
       - TODO^111: (IN_PROGRESS) at least check out the repo, maybe with a skiggety-utils installer
       - TODO^108: see what else in ./bin/silliness might belong in zerothlife repo
-  - TODO^110: (IN_PROGRESS) move 'vital' data (to do list) to private repo (skiggety utils should help set up)
+  - TODO^115: move 'vital' data (to do list) to private repo (skiggety utils should help set up)
   - TODO^48: spin off kid-utils
   - TODO^21: ...rewrite todo in rust with parallelization (maybe with Kevin), but after [rust koans](https://github.com/crazymykl/rust-koans)
 - TODO^6: some tools for setting up information radiators
