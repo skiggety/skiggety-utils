@@ -7,7 +7,11 @@
 
 # TODO: make sure volume is up
 tput bel # a.k.a. ding, bell (for searchability) # TODO?: DELETE now that we have another sound
+SNOOZE_SECONDS=60
+export SNOOZE_SECONDS
 while firstlife-single-alarm "$*";do
+    SNOOZE_SECONDS="$(( $SNOOZE_SECONDS + 10 ))"
+    export SNOOZE_SECONDS
     echo
 done
 echo
