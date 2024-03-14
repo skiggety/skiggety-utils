@@ -10,7 +10,7 @@ tput bel # a.k.a. ding, bell (for searchability) # TODO?: DELETE now that we hav
 SNOOZE_SECONDS=60
 export SNOOZE_SECONDS
 while firstlife-single-alarm "$*";do
-    SNOOZE_SECONDS="$(( $SNOOZE_SECONDS + 10 ))"
+    SNOOZE_SECONDS="$(( $SNOOZE_SECONDS + 15 ))"
     export SNOOZE_SECONDS
     echo
 done
