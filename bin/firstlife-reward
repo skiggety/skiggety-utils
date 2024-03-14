@@ -8,6 +8,7 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
+
 VERBOSE=false
 ADD_REWARD=true
 
@@ -45,6 +46,8 @@ if $VERBOSE;then
 fi
 
 SECONDS_ELAPSED_TODAY="$( echo "((( $(date +'%H') * 60.0 ) + $(date +'%M') ) * 60.0 ) + $(date +'%S')" | bc ) "
+# TODO^2: better hack. For now we treat the day as starting at 6am:
+SECONDS_ELAPSED_TODAY="$( echo "( $SECONDS_ELAPSED_TODAY - ( 6 * 60 * 60 ) )" | bc )"
 
 # defaults for when $reward_score is 0:
 SECONDS_PER_REWARD="$( echo "$SECONDS_ELAPSED_TODAY * 2" | bc )" # avoid division by zero at the cost of accuracy
