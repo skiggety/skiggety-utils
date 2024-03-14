@@ -15,11 +15,14 @@
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
 WITH_BREAK='true'
-WITH_ALARMS='false'
+WITH_ALARMS='true'
 SLEEP_FOR="$(( 25 * 60 ))"
 while [[ "$1" == -* ]]; do
     if [[ "$1" == '--with-alarms' ]]; then
         WITH_ALARMS='true'
+        shift
+    elif [[ "$1" == '--without-alarms' ]]; then
+        WITH_ALARMS='false'
         shift
     elif [[ "$1" == '--without-break' ]]; then
         WITH_BREAK='false'
@@ -28,8 +31,9 @@ while [[ "$1" == -* ]]; do
         # TODO^110: use this option in crontab for 1-hour woodworking sessions for example (6 times on a Saturday and 2 on a Sunday but only if you're at the woodshop)
         shift
         # TODO: could make sure it's a number...
-        SLEEP_FOR="$(( $1 * 60 ))"
-        # TODO: change out for a different youtube link...
+        SLEEP_FOR_MINUTES="$1"
+        SLEEP_FOR="$(( $SLEEP_FOR_MINUTES * 60 ))"
+        # TODO^11: change out for a different youtube link...
         shift
     # TODO^10: elif [[ "$1" == '-n' ]]; then
     # TODO^10:     do n pomodoros
@@ -44,13 +48,24 @@ if $WITH_ALARMS; then
     firstlife-alarm "Time for a pomodoro for '$@'!"
 fi
 
-shellask "Ready to start a pomodoro for '$*' ?" || exit_with_error "skipped POMODORO for $*"
+if [ -z "$SLEEP_FOR_MINUTES" ]; then
+    PROMPT="Ready to start a pomodoro for '$*' ?"
+else
+    PROMPT="Ready to start a ( $SLEEP_FOR_MINUTES minute ) pomodoro for '$*' ?"
+fi
+shellask "$PROMPT" || exit_with_error "skipped POMODORO for $*"
 
 firstlife-reward "Start the POMODORO: $@"
 
 # EASY TODO^11: or should this be done right in the terminal with sleep-verbose or firstlife-break instead of youtube and shellask:
-open 'https://youtu.be/ddL3y1saEJs?si=UjSZicdCMYsVoIjV&t=00' 2>/dev/null & # generic 25 minute timer on youtube
+# TODO: re-enable with the right duration: # open 'https://youtu.be/ddL3y1saEJs?si=UjSZicdCMYsVoIjV&t=00' 2>/dev/null & # generic 25 minute timer on youtube
 
+clear
+echo;echo;echo;echo
+echo YOU ARE WORKING ON A POMODORO:
+echo;echo
+echo "        $*"
+echo;echo;echo;echo
 
 # EASY TODO^109: also MUTE for $SLEEP_FOR seconds
 sleep-verbose $SLEEP_FOR || exit_with_error "ended pomodoro early for: $*"
