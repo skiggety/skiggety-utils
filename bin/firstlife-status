@@ -25,14 +25,14 @@ done
 today_todo --non-interactive | abbreviate -l 20 # TODO: vital --report | abbreviate -l 20
 
 reward_status="$(firstlife-reward -n)"
-echo "$reward_status"
+echo "$reward_status" | abbreviate -l 6 -t 'firstlife-reward -n'
 
-# TODO^11: firstlife-pomodoro -n
+# EASY? FUN? TODO^52: firstlife-pomodoro -n # to show accumulating pomodoros like rewards for more motivation
 
 # EASY TODO^107: mute during meditation, exercise, shower, pomodoros, breaks, evenings, etc.
 # - EASY TODO^11: can also use mute at will
 BEHIND_SOUND="$FIRSTLIFE_DIR/sounds/behind.mp3"
-BEHIND_SOUND_VOLUME='20' # TODO: put in config
+BEHIND_SOUND_VOLUME='3' # TODO^6: put in local config with this default:
 while ! [ -f $BEHIND_SOUND ]; do
     mkdir -p "$(dirname $BEHIND_SOUND)"
     shellask "Please download an sound to let you know you are behind of your choice and put it at $ALARM_SOUND, e.g. \"wget <some-whip-cracking-sound> -O $BEHIND_SOUND\"" \

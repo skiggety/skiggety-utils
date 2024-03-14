@@ -8,7 +8,7 @@
 DURATION_IN_SECONDS=300
 while [[ "$1" == -* ]]; do
 
-    # take '-t' flag so you can specify break duration in seconds, e.g. 'firstlife-break -t 60' between todo list tasks
+    # take '-t' flag so you can specify break duration in seconds, e.g: 'firstlife-break -t 60' between todo list tasks
     if [ "$1" == "-t" ]; then
         shift
         DURATION_IN_SECONDS="$1"
