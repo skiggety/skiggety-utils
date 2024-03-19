@@ -41,9 +41,13 @@ done
 
 spr="$(echo "$reward_status"| grep 'seconds each' | sed 's/.*at \([0-9]*\) seconds each.*/\1/')"
 spr=${spr:-'100000'}
-MINUTES_OF_INACTIVITY_ALLOWED=9
+
+# TODO^2: make configurable and tune the number:
+MINUTES_OF_INACTIVITY_ALLOWED=30 # TODO^3: you can turn this number down once the mute is working
 # TODO: or if no rewards yet:
-if [ $spr -gt 600 ] && test "`find $FIRSTLIFE_LOG_DIR/reward.$(isotoday).log.txt -mmin +$MINUTES_OF_INACTIVITY_ALLOWED 2>/dev/null`"; then
+TARGET_MINUTES_PER_REWARD=12 # TODO^12: make configurable and tune the number
+
+if [ $spr -gt $(( $TARGET_MINUTES_PER_REWARD * 60 )) ] && test "`find $FIRSTLIFE_LOG_DIR/reward.$(isotoday).log.txt -mmin +$MINUTES_OF_INACTIVITY_ALLOWED 2>/dev/null`"; then
     echo
     echo "UH-OH! It seems like you're getting BEHIND, time to emit a sound: $BEHIND_SOUND"
     mplayer -volume $BEHIND_SOUND_VOLUME $BEHIND_SOUND >/dev/null 2>&1
