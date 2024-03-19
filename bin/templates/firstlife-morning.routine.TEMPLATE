@@ -18,16 +18,15 @@
 
 # EASY TODO^10: firstlife-check-calendar could take a message string to override the normal one:
 # TODO^68: (EASY) check calendar script should be the one to call 'firstlife-reward', at least if you called it with '--with-reward':
-shellask "Your calendar is about to come up. When it does, mark your morning routine as starting now, OK?" \
-    && firstlife-check-calendar --with-reward || accumulate_error 'did not check calendar'
-exit_if_day_is_over
+# TODO: if after 6:37 AM:
+# # Get the current time
 
-firstlife-delegate --with-reward 'Make coffee'
+firstlife-delegate --limit-n-times-per-x 1 day 'Make coffee'
 exit_if_day_is_over # TODO^114: (IN_PROGRESS, NOW) # ; exit_if_this_script_is_running_elsewhere # after we make sure common tasks only run once, we could do this, like what ../*firstlife-status scripts do with $FIRSTLIFE_DIR/.review-firstlife-status_PPID
 
-# FUN TODO^115: (IN_PROGRESS, NOW) do something like this, and use widely, so you can shedule the morning routine multiple times as a backup: delegate_once_daily 'make sure you have taken any morning medications' || accumulate_error 'did not medicate'
-firstlife-delegate --with-reward 'Make sure you have taken any morning medications' || accumulate_error 'did not medicate'
+firstlife-delegate --limit-n-times-per-x 1 day 'Make sure you have taken any morning medications' || accumulate_error 'did not medicate'
 
+# TODO^60: We need away to only do a section of code once per day, kind of like using 'firstlife-delegate --limit-n-times-per-x 1 day', but something we can put around 'firstlife-break'
 firstlife-break
 
 exit_if_day_is_over # TODO^38: exit if another instance has taken over at the same time? (this would allow you to schedule the morning routine multiple times to be extra sure, but avoid it actually doubling up on all the tasks

@@ -67,7 +67,7 @@ echo;echo
 echo "        $*"
 echo;echo;echo;echo
 
-# EASY TODO^109: also MUTE for $SLEEP_FOR seconds
+# EASY TODO^114: also MUTE for $SLEEP_FOR seconds
 sleep-verbose $SLEEP_FOR || exit_with_error "ended pomodoro early for: $*"
 if $WITH_ALARMS; then
     firstlife-alarm "OK, you can stop working on '$@' now if you need to!"

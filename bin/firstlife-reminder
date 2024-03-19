@@ -19,7 +19,7 @@ while [[ "$1" == -* ]]; do
 done
 TITLE="$*"
 
-echo "Sleeping for $MINUTES_TO_SLEEP minutes at $(date) ..."
+echo "Sleeping for $MINUTES_LEFT minutes at $(date) ..."
 debug_here sleep-verbose "$(( $MINUTES_LEFT * 60 ))"
 sleep-verbose "$(( $MINUTES_LEFT * 60 ))"
 
