@@ -2,7 +2,6 @@
 
 # This script asks the user to do something as part of firstlife
 
-# EASY TODO^88: use this script widely in firstlife instead of shellask
 # TODO: maybe keep track of what time of day tasks by certain names get completed, so you can start showing information
 # about how long things should take
 
@@ -10,24 +9,71 @@
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
 WITH_REWARD='true'
+LIMIT_FREQUENCY='false'
 while [[ "$1" == -* ]]; do
     # FUN TODO^40: --pester-after-seconds n # probably will have to fork off a watcher process
     if [[ "$1" == '--without-reward' ]]; then
         WITH_REWARD='false'
         shift
+    elif [[ "$1" == '--no-reward' ]]; then
+        WITH_REWARD='false'
+        shift
     elif [[ "$1" == '--with-reward' ]]; then
         WITH_REWARD='true'
+        shift
+    elif [[ "$1" == '--limit-n-times-per-x' ]]; then
+        LIMIT_FREQUENCY='true'
+        shift
+        FREQUENCY_LIMIT_COUNT="$1"
+        shift
+        FREQUENCY_LIMIT_PERIOD="$1"
         shift
     else
         exit_with_error "unrecognized option: '$1'"
     fi
 done
 
+debug_eval LIMIT_FREQUENCY
+debug_eval FREQUENCY_LIMIT_COUNT
+debug_eval FREQUENCY_LIMIT_PERIOD
+debug_eval FIRSTLIFE_LOG_DIR
+
+SIMPLIFIED_DESCRIPTION="$(echo "$*" | sed 's/[^A-z0-9]/_/g')"
+debug_eval SIMPLIFIED_DESCRIPTION
+
+if $LIMIT_FREQUENCY;then
+    FIND_CTIME_NUM="0"
+    if [ "$FREQUENCY_LIMIT_PERIOD" == 'day' ];then
+        FIND_CTIME_NUM="-1"
+    elif [ "$FREQUENCY_LIMIT_PERIOD" == 'week' ];then
+        FIND_CTIME_NUM="-7"
+    else
+        exit_with_error "TODO: IMPLEMENT SUPPORT FOR TIME PERIOD: '$FREQUENCY_LIMIT_PERIOD'"
+    fi
+    debug_eval FIND_CTIME_NUM
+    FIND_COMMAND="find ${FIRSTLIFE_LOG_DIR} -type f -name limit_freq.\* -mtime $FIND_CTIME_NUM"
+    debug_eval FIND_COMMAND
+    INSTANCES_IN_LIMIT_PERIOD=$(grep "$SIMPLIFIED_DESCRIPTION$" $(find ${FIRSTLIFE_LOG_DIR} -type f -name limit_freq.\* -mtime $FIND_CTIME_NUM ) /dev/null )
+    debug_eval INSTANCES_IN_LIMIT_PERIOD
+    COUNT_PER_LIMIT_PERIOD=$(grep "$SIMPLIFIED_DESCRIPTION$" $(find ${FIRSTLIFE_LOG_DIR} -type f -name limit_freq.\* -mtime $FIND_CTIME_NUM ) /dev/null | wc -l)
+    COUNT_PER_LIMIT_PERIOD=$(( $COUNT_PER_LIMIT_PERIOD ))
+    debug_eval COUNT_PER_LIMIT_PERIOD
+    debug_eval FREQUENCY_LIMIT_COUNT
+    if [ $COUNT_PER_LIMIT_PERIOD -ge $FREQUENCY_LIMIT_COUNT ]; then
+        echo "Task '$*' has already run $COUNT_PER_LIMIT_PERIOD times this $FREQUENCY_LIMIT_PERIOD, exiting $(basename $0) early without error"
+        exit 0
+    fi
+fi
+
 # TODO^20: in a separate shell we don't wait for, wait a minute and then open a video reminding them they have an open # shellask
 # TODO^51: shellask --alert, inside it try something like ''osascript -e 'display notification "Done!" with title "Long-running shell command" sound name "Hero"' like you saw at 'https://stackoverflow.com/questions/40814932/is-there-a-way-to-bring-terminal-to-front-when-command-is-finished', to bring window to foreground, especially after popping a web page, and do something similar in firstlife-reward if it works:
 # - TODO^38: use mplayer in a loop to play something incessantly until you shut it up, optionally
 # TODO: test with different input, quoted or not:
-shellask "$*" || exit_with_error "$0 FAILED to do: $*" # EASY TODO^67: TEST exit_with_error
+shellask "$*" || exit_with_error "$0 FAILED to do: $*"
+
+firstlife-log --type limit_freq $SIMPLIFIED_DESCRIPTION
+LIMIT_LOG_FILE="$(log_file_for_type limit_freq)"
+debug_eval LIMIT_LOG_FILE
 
 if $WITH_REWARD; then
     firstlife-reward "$*" # no error checking

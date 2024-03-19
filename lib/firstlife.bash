@@ -10,6 +10,13 @@ export FIRSTLIFE_LOG_DIR
 FIRSTLIFE_ISOTODAY=${FIRSTLIFE_ISOTODAY:-"$(isotoday)"}
 export FIRSTLIFE_ISOTODAY
 
+debug_here
+FIRSTLIFE_THIS_SCRIPT_PPID_FILE="$FIRSTLIFE_DIR/.current.$(basename $0).PPID"
+debug_here
+touch $FIRSTLIFE_THIS_SCRIPT_PPID_FILE
+debug_here
+export FIRSTLIFE_THIS_SCRIPT_PPID_FILE
+
 function log_file_for_type {
     log_type="$1"
     echo "${FIRSTLIFE_LOG_DIR}/${log_type}.$(isotoday).log.txt"
@@ -25,20 +32,43 @@ function is_still_today {
     exit_with_error 'should never get here'
 }
 
-function is_another_day {
-    if is_still_today; then
-        return 1
-    else
-        return 0
+function firstlife-preempt-same-script {
+    debug_here
+    echo $PPID > $FIRSTLIFE_THIS_SCRIPT_PPID_FILE
+}
+
+# TODO^114: use firstlife_exit_if_needed liberally instead of exit_if_day_is_over (all over the codebase)
+function firstlife_exit_if_needed {
+    exit_if_day_is_over
+    exit_if_this_script_is_running_elsewhere
+}
+
+# after we make sure common tasks only run once, we could do this, like what ../*firstlife-status scripts do with $FIRSTLIFE_DIR/.review-firstlife-status_PPID
+function exit_if_this_script_is_running_elsewhere {
+    debug_here
+    latest_script_ppid=$(cat $FIRSTLIFE_THIS_SCRIPT_PPID_FILE)
+    debug_eval_here latest_script_ppid
+    debug_eval_here PPID
+    if [ $PPID -ne $latest_script_ppid ]; then
+        echo "Another instance of $(basename $0) is running, exiting..."
+        exit_with_any_accumulated_errors
+        exit 0
     fi
 }
 
-# EASY TODO^77: TEST and use 'is_another_day' and/or 'exit_if_day_is_over' liberally, including in live.gitignored.bash
 function exit_if_day_is_over {
     if is_another_day; then
         echo "The day (${FIRSTLIFE_ISOTODAY}) has ended, exiting $(basename $0)"
         exit_with_any_accumulated_errors
         exit 0
+    fi
+}
+
+function is_another_day {
+    if is_still_today; then
+        return 1
+    else
+        return 0
     fi
 }
 

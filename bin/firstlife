@@ -41,7 +41,7 @@ function update_vital_graph {
     # TODO: wherever you use 'open', use firstlife-open instead, which can use shellask if you're in a docker container:
     open $VITAL_DIR
     # TODO^3: do something with error count:
-    firstlife-delegate --with-reward "check today_todo graph import $VITAL_DIR/graph.csv with 'replace current sheet' by uploading" || accumulate_error "did not check today_todo graph"
+    firstlife-delegate --limit-n-times-per-x 1 day "check today_todo graph import $VITAL_DIR/graph.csv with 'replace current sheet' by uploading" || accumulate_error "did not check today_todo graph"
 }
 
 # TODO: maybe wake only runs because the cron job calls firstlife --with-wake
@@ -63,8 +63,6 @@ exit_if_day_is_over
 
 # TODO^21: exit_if_another_terminal_took_over
 # - TODO: ultimately, combine for exit_if_another_terminal_or_day_took_over_with_accumulated_errors
-
-# EASY TODO^90: use 'firstlife-delegate --with-reward' pretty much universally, instead of calling shellask directly
 
 # # TODO^63: make this program aware of your productivity points, as in, keep going until you have enough:
 # firstlife-work || accumulate_error "firstlife-work had ERRORS"

@@ -8,26 +8,31 @@
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
 exit_if_day_is_over
+shellask "Is it still ${FIRSTLIFE_ISOTODAY}?" || exit 0
+exit_if_day_is_over
 
-firstlife-delegate --with-reward 'find your book' || accumulate_error "You don't even know where your book is"
+firstlife-delegate "put your phone on the charger" || accumulate_error "did not put phone on charger"
+
+firstlife-delegate --limit-n-times-per-x 1 day --with-reward 'find your book' || accumulate_error "You don't even know where your book is"
+exit_if_day_is_over
+
+firstlife-delegate --limit-n-times-per-x 2 week --with-reward "Look at your habit tracker graphs and vote for whatever you could automate better in firstlife (approximately$(echo_here))"
 exit_if_day_is_over
 
 today_todo -n | grep --color=always '\(EVENING\|--------\|^$\)'
-firstlife-delegate --with-reward "Work on something tagged 'EVENING' on your todo list"
+# TODO: use iterate script instead:
+firstlife-delegate --limit-n-times-per-x 1 day --with-reward "Work on something tagged 'EVENING' on your todo list"
 exit_if_day_is_over
+
+firstlife-practice-music
 
 firstlife-delegate --with-reward "use 'vital' to edit what happens DAILY or NIGHTLY"
 firstlife-iterate-on-vital-tag 'NIGHTLY' || accumulate_error 'ignored NIGHTLY tasks'
 exit_if_day_is_over
 
-firstlife-delegate --with-reward "Look at your habit tracker graphs and work on whatever you could automate better in firstlife (approximately$(echo_here))"
-exit_if_day_is_over
-
-shellask "Charge phone so it's ready to wake you up in the morning" || accumulate_error "charge phone before bed for alarm"
-exit_if_day_is_over
-
+firstlife-delegate "Charge phone so it's ready to wake you up in the morning" || accumulate_error "did not charge phone before bed for alarm"
 firstlife-pomodoro --without-break "Read a book in bed."
-shellask "finish up all evening habits" || accumulate_error "failed to finish evening habits"
+firstlife-delegate --limit-n-times-per-x 1 day"finish up all evening habits" || accumulate_error "failed to finish evening habits" # TODO: TEST
 exit_if_day_is_over
 
 exit_with_accumulated_errors

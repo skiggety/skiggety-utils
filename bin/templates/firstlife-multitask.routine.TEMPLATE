@@ -42,31 +42,31 @@ firstlife-break -t 150
 #### Today's Todo List #############################################################################
 # EASY TODO^85: maybe the inside of the loop could be more like merely:
 # EASY TODO^85:     today_todo
-# EASY TODO^85:     # shellask 'work on your one of your top 3 todos and downvote it if appropriate'
+# EASY TODO^85:     # firstlife-delegate --limit-n-times-per-x 10 day 'work on your one of your top 3 todos and downvote it if appropriate'
 # EASY TODO^86:     vital --iterate -n $FIRSTLIFE_MULTITASKING_COUNT
 #### Today's Todo List #############################################################################
 for num in $(seq $passes_at_todo_list); do
 
-    shellask 'Handle 1 important item from from any paper lists (if any), possibly by putting it into today_todo' && firstlife-reward || accumulate_error 'ignored paper todo list'
+    firstlife-delegate --limit-n-times-per-x 15 day 'Handle 1 important item from from any paper lists (if any), possibly by putting it into today_todo' && firstlife-reward || accumulate_error 'ignored paper todo list'
     exit_if_day_is_over
 
     # TODO^14: only do this if you haven't yet cleared them all today yet:
     open 'https://www.google.com/calendar/render' # EASY TODO^87: script extract
-    shellask 'Take care of a calendar task, maybe by putting it into today_todo' && firstlife-reward || accumulate_error 'ignored paper todo list'
+    firstlife-delegate --limit-n-times-per-x 10 day 'Take care of a calendar task, maybe by putting it into today_todo' && firstlife-reward || accumulate_error 'ignored paper todo list'
     exit_if_day_is_over
 
     vital-list-by-tag POINT
-    shellask 'Run "vital" again to tag or upvote something worth productivity POINTS' || \
+    firstlife-delegate --limit-n-times-per-x 3 day 'Run "vital" again to tag or upvote something worth productivity POINTS' || \
         accumulate_error 'did not get focus on the important stuff'
     exit_if_day_is_over
 
     vital-list-by-tag CONFIRMING
-    firstlife-delegate --with-reward 'Mark something DONE that is "CONFIRMING" in today_todo (if you can)' || accumulate_error 'Did not confirm anything'
+    firstlife-delegate --limit-n-times-per-x 5 day --with-reward 'Mark something DONE that is "CONFIRMING" in today_todo (if you can)' || accumulate_error 'Did not confirm anything'
     exit_if_day_is_over
 
     # EASY TODO^84: EXTRACT, and REUSE
     todo -n | grep --color=always '\(NOW\|LATER\|--------\|^$\)'
-    firstlife-delegate --with-reward 'See if you can work on something "NOW" that is marked "LATER" (or vise-versa) in today_todo' || accumulate_error 'Did not maintain NOW and LATER tags'
+    firstlife-delegate --limit-n-times-per-x 10 day --with-reward 'See if you can work on something "NOW" that is marked "LATER" (or vise-versa) in vital' || accumulate_error 'Did not maintain NOW and LATER tags'
     exit_if_day_is_over
 
     today_todo --non-interactive
@@ -85,8 +85,8 @@ for num in $(seq $passes_at_todo_list); do
     IFS=$'\n'
     read -rd '' -a todos_as_array <<<"$todos"
     debug_here "echo \${todos_as_array} contains"
-    for todo_line in ${todos_as_array[@]};do
-        shellask "Work on this task (and downvote or mark done using today_todo):${newline}${todo_line}" && \
+    for todo_line in ${todos_as_array[@]};do # EASY TODO^20: use pomodoro instead, for much increased focus
+        firstlife-delegate --limit-n-times-per-x 3 day "Work on this task (and downvote or mark done using today_todo):${newline}${todo_line}" && \
             firstlife-reward || \
             accumulate_error "Didn't work on todo: $todo_line"
         exit_if_day_is_over
@@ -95,11 +95,11 @@ for num in $(seq $passes_at_todo_list); do
         # EASY TODO^89: something like this needs to happen actually before you do the task:
         if echo $todo_line | grep ERRAND >/dev/null; then
             today_todo -n | grep ERRAND
-            firstlife-delegate --with-reward "Maybe handle some other errands"
+            firstlife-delegate --limit-n-times-per-x 2 day --with-reward "Maybe handle some other errands"
         fi
         if echo $todo_line | grep PURCHASE >/dev/null; then
             today_todo -n | grep PURCHASE
-            firstlife-delegate --with-reward "Maybe handle some other purchases"
+            firstlife-delegate --limit-n-times-per-x 2 day --with-reward "Maybe handle some other purchases"
         fi
         exit_if_day_is_over
 
@@ -126,10 +126,10 @@ for num in $(seq $passes_at_todo_list); do
     exit_if_day_is_over
 
     # TODO^86: if you have not finished all dishes at least once today
-    firstlife-delegate --with-reward 'Put away at least 2 dry dishes (if needed)' || accumulate_error 'Did not put away dishes'
+    firstlife-delegate --limit-n-times-per-x 20 day --with-reward 'Put away at least 2 dry dishes (if needed)' || accumulate_error 'Did not put away dishes'
     exit_if_day_is_over
 
-    firstlife-delegate --with-reward 'Wash at least 1 dish' || accumulate_error 'Did not wash a dish'
+    firstlife-delegate --limit-n-times-per-x 10 day --with-reward 'Wash at least 1 dish' || accumulate_error 'Did not wash a dish'
     exit_if_day_is_over
 
     firstlife-check-email --with-reward || accumulate_error 'ignored email'
@@ -139,29 +139,24 @@ done
 
 ################################################################################
 
-shellask 'put a few things away' && firstlife-reward || accumulate_error 'did not put things away'
+firstlife-delegate --limit-n-times-per-x 5 day "Catch up on communicating with people" && firstlife-reward || accumulate_error "Did not communicate"
 exit_if_day_is_over
 
-shellask "Catch up on communicating with people" && firstlife-reward || accumulate_error "Did not communicate"
+if $FIRSTLIFE_DEVELOPMENT_MODE; then
+    pushd $SKIGGETY_UTILS_DIR
+    firstlife-delegate "Commit some code" && firstlife-reward || accumulate_error "Did not commit"
+    popd
+fi
 exit_if_day_is_over
 
-pushd $SKIGGETY_UTILS_DIR
-git add -p
-shellask "Commit some code" && firstlife-reward || accumulate_error "Did not commit"
-popd
-exit_if_day_is_over
-
-shellask "Close a 2-4 browser tabs unless they are reasonable already" && firstlife-reward || accumulate_error "Did not clean up browser tabs"
-exit_if_day_is_over
-
-shellask 'Put a few things away' && firstlife-reward || accumulate_error 'did not put things away'
+firstlife-delegate --limit-n-times-per-x 15 day "Close a 2-4 browser tabs unless they are reasonable already" && firstlife-reward || accumulate_error "Did not clean up browser tabs"
 exit_if_day_is_over
 
 firstlife-break
 exit_if_day_is_over
 
 today_todo -n | grep --color=always '\(FUN\|EASY\|--------\|^$\)'
-firstlife-delegate --with-reward "Work on something FUN/EASY (is enough stuff tagged? --run \"today_todo -n | grep '\\(FUN\\|EASY\\)'\")"
+firstlife-delegate --limit-n-times-per-x 5 day --with-reward "Work on something FUN/EASY (is enough stuff tagged? --run \"today_todo -n | grep '\\(FUN\\|EASY\\)'\")"
 
 # call firstlife-morning again just in case it hasn't been done, since it only needs to be done once:
 firstlife-morning || accumulate_error 'Morning routine had errors'

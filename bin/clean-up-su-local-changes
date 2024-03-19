@@ -4,6 +4,8 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
+# TODO^5: make another one for firstlife-repo instead of su
+
 cd $SKIGGETY_UTILS_DIR
 
 if git-no-unpushed-changes && git-no-uncommitted-changes; then
