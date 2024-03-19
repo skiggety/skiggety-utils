@@ -4,7 +4,7 @@
 # mode.  This is a way to do development, just run this in one terminal.
 
 echo "Ready to run ./demo_in_docker ? (CTRL+C if not)"
-while sleep-verbose 5;do
+while sleep-verbose --with-countdown 5;do
     ./demo_in_docker
     echo "after a short pause, running ./demo_in_docker again, CTRL+C to quit"
 done

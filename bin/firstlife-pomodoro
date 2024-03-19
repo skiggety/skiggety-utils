@@ -54,21 +54,21 @@ else
     PROMPT="Ready to start a ( $SLEEP_FOR_MINUTES minute ) pomodoro for '$*' ?"
 fi
 shellask "$PROMPT" || exit_with_error "skipped POMODORO for $*"
-
-firstlife-reward "Start the POMODORO: $@"
+firstlife-reward "Started the POMODORO: $@"
 
 # EASY TODO^11: or should this be done right in the terminal with sleep-verbose or firstlife-break instead of youtube and shellask:
 # TODO: re-enable with the right duration: # open 'https://youtu.be/ddL3y1saEJs?si=UjSZicdCMYsVoIjV&t=00' 2>/dev/null & # generic 25 minute timer on youtube
 
 clear
+for nli in $(seq $(tput lines));do echo;done # TODO^16: maybe function extract as it wipes the screen and leaves the cursor at the bottom
 echo;echo;echo;echo
 echo YOU ARE WORKING ON A POMODORO:
 echo;echo
 echo "        $*"
 echo;echo;echo;echo
 
-# EASY TODO^114: also MUTE for $SLEEP_FOR seconds
-sleep-verbose $SLEEP_FOR || exit_with_error "ended pomodoro early for: $*"
+# EASY TODO^116: also MUTE for $SLEEP_FOR seconds
+sleep-verbose --with-countdown $SLEEP_FOR || exit_with_error "ended pomodoro early for: $*"
 if $WITH_ALARMS; then
     firstlife-alarm "OK, you can stop working on '$@' now if you need to!"
 fi

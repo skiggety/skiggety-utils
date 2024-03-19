@@ -34,8 +34,8 @@ while [ $MINUTES_LEFT -gt 0 ];do
     MINUTES_TO_SLEEP="$(( $LAST_TIME_MINUTES_LEFT - $MINUTES_LEFT))"
 
     echo "Sleeping for $MINUTES_TO_SLEEP minutes at $(date) ..."
-    debug_here sleep-verbose "$(( $MINUTES_TO_SLEEP * 60 ))"
-    sleep-verbose "$(( $MINUTES_TO_SLEEP * 60 ))"
+    debug_here sleep-verbose --with-countdown "$(( $MINUTES_TO_SLEEP * 60 ))"
+    sleep-verbose --with-countdown "$(( $MINUTES_TO_SLEEP * 60 ))"
 
     touch "$TIME_MARKER_FILE"
     debug_eval_here MINUTES_LEFT

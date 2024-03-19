@@ -85,9 +85,9 @@ exit_if_day_is_over
 
 exit_with_any_accumulated_errors
 
-# TODO^12: make exit_if_day_is_over aware of errors?
+# TODO^22: make sure firstlife_exit_if_needed is aware of errors?
 
-# EASY TODO^2: firstlife-check-calendar could take a message string to override the normal one:
+# EASY TODO^101: (IN_PROGRESS) firstlife-check-calendar could take a message string to override the normal one:
 # TODO^68: (EASY) check calendar script should be the one to call 'firstlife-reward', at least if you called it with '--with-reward':
 shellask "Your calendar is about to come up. When it does, mark how long your morning routine took, and plan your day, OK?" \
     && firstlife-check-calendar --with-reward || accumulate_error 'did not check calendar'

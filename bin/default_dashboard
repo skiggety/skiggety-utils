@@ -54,6 +54,7 @@ else
     echo "$GIT_STATUS"
 fi
 echo "$GIT_STATUS_LINECOUNT files with changes on branch '$(git branch --show-current)'"
+# TODO^3: graph GIT_STATUS_LINECOUNT over time
 
 for keyword in 'DO_NOT''_COMMIT' 'XX''X' 'BREAD''CRUMB'; do
     git-object-to-added-keyword "$keyword" || accumulate_error "'git-object-to-added-keyword $keyword' FAILED"

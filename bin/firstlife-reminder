@@ -20,8 +20,8 @@ done
 TITLE="$*"
 
 echo "Sleeping for $MINUTES_LEFT minutes at $(date) ..."
-debug_here sleep-verbose "$(( $MINUTES_LEFT * 60 ))"
-sleep-verbose "$(( $MINUTES_LEFT * 60 ))"
+debug_here sleep-verbose --with-countdown "$(( $MINUTES_LEFT * 60 ))"
+sleep-verbose --with-countdown "$(( $MINUTES_LEFT * 60 ))"
 
 firstlife-alarm "Time for '$TITLE' NOW!"
 echo_divider_with_text "=" "Time for '$TITLE' NOW!"
