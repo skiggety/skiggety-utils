@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# This script reminds the user to get going again after a long break
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+clear
+echo "Take a long break"
+sleep-verbose --with-countdown $(( 60 * 60 * 4))
+firstlife-alarm "OK, time to get out of the house to get motivated and then do other things"
