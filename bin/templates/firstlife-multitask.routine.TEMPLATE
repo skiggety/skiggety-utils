@@ -18,8 +18,6 @@ export today_todo_now_max_count="$FIRSTLIFE_MULTITASKING_COUNT"
 
 ####################################################################################################
 
-# EASY TODO^92: inside this script and elsewhere, use 'firstlife-delegate --with-reward' instead of calling 'shellask' directly:
-
 # TODO^81: firstlife should keep an eye on "MAINTENANCE" tag in vital/today_todo
 
 exit_if_day_is_over
@@ -28,13 +26,11 @@ firstlife-delegate --with-reward 'Make sure various devices including this one a
     || accumulate_error 'should have charged your devices' # TODO: don't ask more than once every 3 hours
 exit_if_day_is_over
 
-# TODO^4: (IN_PROGRESS) pop out terminal for firstlife-cleaning-game instead of this or cron: shellask 'put a few things away' && firstlife-reward || accumulate_error 'did not put things away'
-
-shellask 'put away any temptations or distractions' && firstlife-reward || accumulate_error 'did not clear distractions'
+firstlife-delegate 'put away any temptations or distractions' && firstlife-reward || accumulate_error 'did not clear distractions'
 firstlife-delegate 'keep the tunes pumping (you can use "firstlife-music")' || accumulate_error 'did not DJ for yourself'
 exit_if_day_is_over
 
-shellask 'do one act of self care or something on the habit tracker' && firstlife-reward || accumulate_error 'missed a habit'
+firstlife-delegate 'do one act of self care or something on the habit tracker' && firstlife-reward || accumulate_error 'missed a habit'
 exit_if_day_is_over
 
 firstlife-break -t 150
@@ -70,7 +66,7 @@ for num in $(seq $passes_at_todo_list); do
     exit_if_day_is_over
 
     today_todo --non-interactive
-    shellask 'Run "vital" once or twice to make sure you are ready to focus on the right stuff' || \
+    firstlife-delegate 'Run "vital" once or twice to make sure you are ready to focus on the right stuff' || \
         accumulate_error 'did not get tasks organized'
     exit_if_day_is_over
 
@@ -110,7 +106,7 @@ for num in $(seq $passes_at_todo_list); do
     IFS="$ORIGINAL_IFS"
     popd > /dev/null
 
-    shellask 'Do one act of self care or something on the habit tracker' && firstlife-reward || accumulate_error 'missed a habit'
+    firstlife-delegate 'Do one act of self care or something on the habit tracker' && firstlife-reward || accumulate_error 'missed a habit'
     exit_if_day_is_over
 
     firstlife-check-calendar || accumulate_error 'did not check calendar'
@@ -119,10 +115,21 @@ for num in $(seq $passes_at_todo_list); do
     firstlife-check-email --with-reward || accumulate_error 'ignored email'
     exit_if_day_is_over
 
+    if $FIRSTLIFE_DEVELOPMENT_MODE; then
+        pushd $SKIGGETY_UTILS_DIR > /dev/null
+        PWD_BIN/dashboard
+        if [ $(git status --short | wc -l) -gt 0 ]; then
+            firstlife-delegate --with-reward "Make 'dev' output look cleaner here in skiggety-utils (commit something) " || accumulate_error "skipped dev work"
+        fi
+        PWD_BIN/dashboard
+        popd > /dev/null
+    fi
+    exit_if_day_is_over
+
     firstlife-break -t 240
     exit_if_day_is_over
 
-    shellask 'Do one act of self care or something on the habit tracker' && firstlife-reward || accumulate_error 'missed a habit'
+    firstlife-delegate 'Do one act of self care or something on the habit tracker' && firstlife-reward || accumulate_error 'missed a habit'
     exit_if_day_is_over
 
     # TODO^86: if you have not finished all dishes at least once today
