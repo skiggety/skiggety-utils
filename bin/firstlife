@@ -66,9 +66,9 @@ exit_if_day_is_over
 
 # EASY TODO^90: use 'firstlife-delegate --with-reward' pretty much universally, instead of calling shellask directly
 
-# TODO^63: make this program aware of your productivity points, as in, keep going until you have enough:
-firstlife-work || accumulate_error "firstlife-work had ERRORS"
-exit_if_day_is_over
+# # TODO^63: make this program aware of your productivity points, as in, keep going until you have enough:
+# firstlife-work || accumulate_error "firstlife-work had ERRORS"
+# exit_if_day_is_over
 
 # EASY TODO^3: every time I do this graph update should be in a routine like morning or evening so it can get skipped:
 update_vital_graph # TODO^21: only if using 'vital'
