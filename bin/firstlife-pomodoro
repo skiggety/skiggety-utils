@@ -42,7 +42,7 @@ while [[ "$1" == -* ]]; do
     fi
 done
 
-# TODO^80: wait for other pomodoros to be done, (use a mutex?)
+# TODO^83: wait for other pomodoros to be done, (use a mutex?)
 
 if $WITH_ALARMS; then
     firstlife-alarm "Time for a pomodoro for '$@'!"
