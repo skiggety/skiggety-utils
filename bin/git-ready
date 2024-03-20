@@ -40,6 +40,10 @@ function main {
     git-log-recent
 
     echo
+    shellask "Please test ci on another machine" || \
+        exit_with_error "Didn't test"
+
+    echo
     echo "...finished '$(basename "$0")'."
 }
 
