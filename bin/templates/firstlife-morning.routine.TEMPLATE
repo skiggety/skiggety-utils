@@ -23,10 +23,16 @@ firstlife-preempt-same-script # TODO^3: use this more widely
 # TODO: if after 6:37 AM:
 # # Get the current time
 
+firstlife-delegate 'Put your phone on the charger'
+firstlife_exit_if_needed
+
 firstlife-delegate --limit-n-times-per-x 1 day 'Make coffee'
 firstlife_exit_if_needed # TODO^114: (IN_PROGRESS) # use this and firstlife-preempt-same-script wiiidely, especially routines that might get scheduled multiple times:
 
 firstlife-delegate --limit-n-times-per-x 1 day 'Make sure you have taken any morning medications' || accumulate_error 'did not medicate'
+
+firstlife-delegate --limit-n-times-per-x 1 day 'Break your fast' || accumulate_error 'skipped breakfast'
+firstlife_exit_if_needed
 
 # TODO^98: (IN_PROGRESS) We need away to only do a section of code once per day, kind of like using 'firstlife-delegate --limit-n-times-per-x 1 day', but something we can put around 'firstlife-break'
 firstlife-break -t 150
