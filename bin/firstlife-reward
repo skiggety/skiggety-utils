@@ -66,7 +66,7 @@ if [ $reward_score -gt 0 ]; then
     fi
 fi
 
-SPACES_PER_DOT="$(echo "$SECONDS_PER_REWARD / 300" | bc )"
+GAPS_PER_POINT="$(echo "$SECONDS_PER_REWARD / 120" | bc )"
 
 if [ $reward_score -gt 0 ]; then
     j=1
@@ -76,18 +76,20 @@ if [ $reward_score -gt 0 ]; then
             sleep 0.01
         fi
 
-        if ! [ $SPACES_PER_DOT -eq 0 ]; then
-            for space_num in $(seq $SPACES_PER_DOT); do
-                echo -n ' '
+        GAP_SYMBOL='.'
+        if ! [ $GAPS_PER_POINT -eq 0 ]; then
+            for space_num in $(seq $GAPS_PER_POINT); do
+                echo -n "$GAP_SYMBOL"
             done
         fi
 
+        POINT_SYMBOL='\'
         if [ $j -eq $k -o $i -eq $reward_score ]; then
             j=0
             k=$(($k+1))
-            echo '.'
+            echo "$POINT_SYMBOL"
         else
-            echo -n '.'
+            echo -n "$POINT_SYMBOL"
         fi
         j=$(($j+1))
     done
