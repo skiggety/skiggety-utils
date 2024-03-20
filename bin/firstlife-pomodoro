@@ -9,6 +9,8 @@
 # TODO^8?: exit early if you've done enough pomodoros in a day
 # TODO^3: maybe accept a '--without-reward' option
 
+# TODO^21: have a way to limit daily or weekly occurrences of the same pomodoro
+
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
 # TODO^2: firstlife should have a linter to make sure this line is always used in bash scripts:

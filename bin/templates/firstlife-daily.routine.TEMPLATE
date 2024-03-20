@@ -9,7 +9,13 @@ firstlife-check-calendar -m "check calendar for birthdays "
 open "http://facebook.com" 2>/dev/null & # TODO: UN-HARDCODE
 firstlife-delegate --limit-n-times-per-x 1 day --with-reward "Wish people 'Happy Birthday!' (look at google calendar and facebook)."
 
-# EASY TODO^10: use this for 'in progress' tasks WEEKLY:, with a limit of how many to work on at a time:
-firstlife-iterate-on-vital-tag 'DAILY' || accumulate_error 'ignored DAILY tasks'
+firstlife-iterate-on-vital-tag -n 2 'URGENT' || accumulate_error 'ignored URGENT tasks' # TODO^4: this is important, TEST against getting to this point as a benchmark
+
+firstlife-practice-music
+
+# TODO^3: use a firstlife-reward category to track DAILY and WEEKLY tasks separately
+# EASY TODO^20: use this for 'in progress' tasks WEEKLY:, with a limit of how many to work on at a time:
+# TODO^5: limit the total number that happens daily:
+firstlife-iterate-on-vital-tag -n 2 'DAILY' || accumulate_error 'ignored DAILY tasks' # TODO^4: this is important, TEST against getting to this point as a benchmark
 
 exit_with_any_accumulated_errors
