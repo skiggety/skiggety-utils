@@ -10,12 +10,11 @@ export FIRSTLIFE_LOG_DIR
 FIRSTLIFE_ISOTODAY=${FIRSTLIFE_ISOTODAY:-"$(isotoday)"}
 export FIRSTLIFE_ISOTODAY
 
-debug_here
 FIRSTLIFE_THIS_SCRIPT_PPID_FILE="$FIRSTLIFE_DIR/.current.$(basename $0).PPID"
-debug_here
 touch $FIRSTLIFE_THIS_SCRIPT_PPID_FILE
-debug_here
 export FIRSTLIFE_THIS_SCRIPT_PPID_FILE
+
+# TODO^4: function seconds_as_hms { # for use in sleep-verbose, so '3627' seconds would be '1:00:27'
 
 function log_file_for_type {
     log_type="$1"
