@@ -63,10 +63,6 @@ function main {
     # TODO: accept a keyword argument, e.g. "-k WOODSHOP".  When you open the editor it's already searching for it and
     # it prints much like CONFIRMING on the report.  Could accept multiple keyword arguments.
 
-    # EASY TODO^28: graph max votecount
-    # EASY TODO^25: graph "CONFIRMING" and Done
-    # EASY TODO^24: graph total anxiety score, total votecount of all todos
-
     csv_datetime="$(date +'%m/%d/%Y %T')"
 
     mkdir -p "$VITAL_DIR"
@@ -181,6 +177,10 @@ function main {
     # EASY TODO^8: add now count to this output?:
     echo "$(( $todo_count + $todo_prog_count )) combined score, $todo_prog_count todos IN_PROGRESS"
 
+    # EASY TODO^28: graph max votecount
+    # EASY TODO^24: graph "CONFIRMING" and Done
+    # EASY TODO^24: graph total anxiety score, total votecount of all todos
+    # generate graph:
     if $interactive; then
         # TODO^8: graph how many are done each day
         if ! [ -f graph.csv ]; then
