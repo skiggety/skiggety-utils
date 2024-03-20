@@ -2,8 +2,12 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-exit_with_error "TODO^33: IMPLEMENT"
-#   - TODO^5: -t takes number of seconds to sleep for
-#   - TODO: accept other argument as a message
-#   - TODO: touch file incorporating message in the name, sleep, delete file
-#   - TODO: firstlife-status respects file
+# TODO^122: (IN_PROGRESS, NOW) Use this script in a bunch of places, esp. firstlife-pomodoro and firstlife-break
+# TODO^122: (IN_PROGRESS, NOW) take -t option for time in seconds
+# - TODO?: accept other argument as a message
+# TODO^122: write ppid in mute file
+# TODO^122: sleep-verbose for time
+# TODO^122: if my ppid is still in the mute file, delete the mute file
+# TODO^122: everywhere that play sounds must be silent if the mute file is present (firstlife-status respects file)
+
+exit_with_error "TODO^121: IMPLEMENT"

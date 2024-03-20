@@ -32,7 +32,7 @@ firstlife-delegate --limit-n-times-per-x 1 day 'Make sure you have taken any mor
 firstlife-delegate --limit-n-times-per-x 1 day 'Break your fast' || accumulate_error 'skipped breakfast'
 firstlife_exit_if_needed
 
-# TODO^98: (IN_PROGRESS) We need away to only do a section of code once per day, kind of like using 'firstlife-delegate --limit-n-times-per-x 1 day', but something we can put around 'firstlife-break'
+# TODO^101: We need a way to only do a section of code once per day, kind of like using 'firstlife-delegate --limit-n-times-per-x 1 day', but something we can put around 'firstlife-break'
 firstlife-break -t 150
 
 firstlife_exit_if_needed # TODO^38: exit if another instance has taken over at the same time? (this would allow you to schedule the morning routine multiple times to be extra sure, but avoid it actually doubling up on all the tasks
@@ -105,11 +105,9 @@ firstlife_exit_if_needed
 
 exit_with_any_accumulated_errors
 
-# TODO^22: make sure firstlife_exit_if_needed is aware of errors?
+# TODO^23: make sure firstlife_exit_if_needed is aware of errors?
 
-# EASY TODO^101: (IN_PROGRESS) firstlife-check-calendar could take a message string to override the normal one:
-# TODO^68: (EASY) check calendar script should be the one to call 'firstlife-reward', at least if you called it with '--with-reward':
-    && firstlife-check-calendar -m 'Your calendar is about to come up. When it does, mark how long your morning routine took, and plan your day, OK?' \
+firstlife-check-calendar -m 'Your calendar is about to come up. When it does, mark how long your morning routine took, and plan your day, OK?' \
     || accumulate_error 'did not check calendar'
 
 # TODO: do I want this here? do I want it in other high-level firstlife scripts?:

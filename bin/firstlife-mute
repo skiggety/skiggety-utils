@@ -6,6 +6,4 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-# TODO: try calling this script in the background with '&', like in firstlife-pomodoro
-
-firstlife-mute-in-foreground "$@" || exit_with_error "TODO^63: IMPLEMENT"
+firstlife-mute-in-foreground "$@" &
