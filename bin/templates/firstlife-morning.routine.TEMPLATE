@@ -5,7 +5,7 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
-firstlife-preempt-same-script
+firstlife-preempt-same-script # TODO^3: use this more widely
 
 # TODO^32: this template script should be a laundry list of ideas
 # - TODO^33: ..but first I should start using a local version
@@ -43,6 +43,7 @@ firstlife_exit_if_needed
 # EASY TODO^84: Or better yet, manage the list of videos here and randomize:
 SCOTTS_MEDITATION_PLAYLIST='https://www.youtube.com/playlist?list=PLbyyOcHfeHIqCKsHI62oWS6i4JQfdtcfd'
 open "$SCOTTS_MEDITATION_PLAYLIST" 2>/dev/null &
+# TODO: mute firstlife for the duration. (When exactly to start it? use a 5-minute pomodoro?):
 firstlife-delegate --limit-n-times-per-x 1 day '5-minute meditation' || accumulate_error 'did not meditate' # TODO^81: --with-timer 330 (and use timers widely)
 firstlife_exit_if_needed
 

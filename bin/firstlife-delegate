@@ -44,18 +44,19 @@ debug_eval SIMPLIFIED_DESCRIPTION
 if $LIMIT_FREQUENCY;then
     FIND_CTIME_NUM="0"
     if [ "$FREQUENCY_LIMIT_PERIOD" == 'day' ];then
-        FIND_CTIME_NUM="-1"
+        FIND_CTIME_NUM="1"
     elif [ "$FREQUENCY_LIMIT_PERIOD" == 'week' ];then
-        FIND_CTIME_NUM="-7"
+        FIND_CTIME_NUM="7"
     else
         exit_with_error "TODO: IMPLEMENT SUPPORT FOR TIME PERIOD: '$FREQUENCY_LIMIT_PERIOD'"
     fi
     debug_eval FIND_CTIME_NUM
-    FIND_COMMAND="find ${FIRSTLIFE_LOG_DIR} -type f -name limit_freq.\* -mtime $FIND_CTIME_NUM"
+    # TODO: DEBUG: at 6:30 am, I'm skipping stuff because I did it at 7:45 yesterday
+    FIND_COMMAND="find ${FIRSTLIFE_LOG_DIR} -type f -name limit_freq.\* -mtime -$FIND_CTIME_NUM"
     debug_eval FIND_COMMAND
-    INSTANCES_IN_LIMIT_PERIOD=$(grep "$SIMPLIFIED_DESCRIPTION$" $(find ${FIRSTLIFE_LOG_DIR} -type f -name limit_freq.\* -mtime $FIND_CTIME_NUM ) /dev/null )
+    INSTANCES_IN_LIMIT_PERIOD=$(grep "$SIMPLIFIED_DESCRIPTION$" $(find ${FIRSTLIFE_LOG_DIR} -type f -name limit_freq.\* -mtime -$FIND_CTIME_NUM | sort -r | head -n $FIND_CTIME_NUM ) /dev/null )
     debug_eval INSTANCES_IN_LIMIT_PERIOD
-    COUNT_PER_LIMIT_PERIOD=$(grep "$SIMPLIFIED_DESCRIPTION$" $(find ${FIRSTLIFE_LOG_DIR} -type f -name limit_freq.\* -mtime $FIND_CTIME_NUM ) /dev/null | wc -l)
+    COUNT_PER_LIMIT_PERIOD=$(grep "$SIMPLIFIED_DESCRIPTION$" $(find ${FIRSTLIFE_LOG_DIR} -type f -name limit_freq.\* -mtime -$FIND_CTIME_NUM | sort -r | head -n $FIND_CTIME_NUM ) /dev/null | wc -l)
     COUNT_PER_LIMIT_PERIOD=$(( $COUNT_PER_LIMIT_PERIOD ))
     debug_eval COUNT_PER_LIMIT_PERIOD
     debug_eval FREQUENCY_LIMIT_COUNT

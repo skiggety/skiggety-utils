@@ -1,9 +1,10 @@
 ---- IN_PROGRESS: --------------------------------------------------------------
-./bin/templates/firstlife-multitask.routine.TEMPLATE:31:# TODO^4: ([01;31m[KIN_PROGRESS[m[K) pop out terminal for firstlife-cleaning-game instead of this or cron: shellask 'put a few things away' && firstlife-reward || accumulate_error 'did not put things away'
+./bin/templates/firstlife-morning.routine.TEMPLATE:51:# TODO^98: ([01;31m[KIN_PROGRESS[m[K) We need away to only do a section of code once per day, kind of like using 'firstlife-delegate --limit-n-times-per-x 1 day', but something we can put around 'firstlife-break'
+./bin/templates/firstlife-morning.routine.TEMPLATE:123:# EASY TODO^101: ([01;31m[KIN_PROGRESS[m[K) firstlife-check-calendar could take a message string to override the normal one:
 ./bin/crontab-verbose:20:    # TODO^111: ([01;31m[KIN_PROGRESS[m[K) also open example files, if available (so 'firstlife' can suggest an example crontab file)
 ./README.md:128:      - TODO^112: ([01;31m[KIN_PROGRESS[m[K) at least check out the repo, maybe with a skiggety-utils installer
 ./bin/firstlife-morning:6:# TODO^113: ([01;31m[KIN_PROGRESS[m[K) have a way for a new instance and a running instance to avoid interfering. The new one could take over and the old one could exit gracefully.
-./bin/templates/firstlife-morning.routine.TEMPLATE:39:exit_if_day_is_over # TODO^114: ([01;31m[KIN_PROGRESS[m[K, NOW) # ; exit_if_this_script_is_running_elsewhere # after we make sure common tasks only run once, we could do this, like what ../*firstlife-status scripts do with $FIRSTLIFE_DIR/.review-firstlife-status_PPID
-./bin/templates/firstlife-work.routine.TEMPLATE:21:firstlife-reward "looked at URGENT stuff" # TODO^114: ([01;31m[KIN_PROGRESS[m[K) this is important, TEST against getting to this point (URGENT stuff done) as a benchmark
+./bin/templates/firstlife-morning.routine.TEMPLATE:44:firstlife_exit_if_needed # TODO^114: ([01;31m[KIN_PROGRESS[m[K) # use this and firstlife-preempt-same-script wiiidely, especially routines that might get scheduled multiple times:
+./bin/templates/firstlife-work.routine.TEMPLATE:21:firstlife-reward "looked at URGENT stuff" # TODO^114: ([01;31m[KIN_PROGRESS[m[K, NOW) this is important, TEST against getting to this point (URGENT stuff done) as a benchmark
 ---- TODOs for right NOW: ------------------------------------------------------
-./bin/templates/firstlife-morning.routine.TEMPLATE:39:exit_if_day_is_over # TODO^114: (IN_PROGRESS, [01;31m[KNOW[m[K) # ; exit_if_this_script_is_running_elsewhere # after we make sure common tasks only run once, we could do this, like what ../*firstlife-status scripts do with $FIRSTLIFE_DIR/.review-firstlife-status_PPID
+./bin/templates/firstlife-work.routine.TEMPLATE:21:firstlife-reward "looked at URGENT stuff" # TODO^114: (IN_PROGRESS, [01;31m[KNOW[m[K) this is important, TEST against getting to this point (URGENT stuff done) as a benchmark

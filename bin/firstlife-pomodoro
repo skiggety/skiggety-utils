@@ -78,7 +78,7 @@ exit_if_day_is_over
 task_description="Finish the POMODORO: $@"
 firstlife-delegate --with-reward "$task_description" || exit_with_error "skipped pomodoro for: $*"
 
-firstlife-log --type pomodoro "$task_description" # TODO^102: (EASY, FUN) display this output and productivity point count in firstlife-status like we do with rewards
+firstlife-log --type pomodoro "$task_description" # TODO^103: (EASY, FUN) display this output and productivity point count in firstlife-status like we do with rewards
 
 exit_if_day_is_over
 

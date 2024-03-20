@@ -6,13 +6,19 @@
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
 function show_recently_done_todos {
-    today_todo -n | grep 'DO'NE # TODO: function extract
+    today_todo -n | grep 'DO'NE # TODO^4: function extract
 }
 
 show_recently_done_todos
 
 # EASY TODO^48: I need different criteria for whether to continue...is it the same day? do you have enough points? Do you want
 # to do more?:
+
+today_todo -n | grep URGENT
+firslife-delegate "run 'vital' to make sure items tagged 'URGENT' are tagged (including 'POINT') and sorted well enough to get on with it"
+firstlife-iterate-on-vital-tag -n 2 'URGENT' || accumulate_error 'ignored URGENT tasks' # TODO: limit the total number that happens daily
+
+firstlife-reward "looked at URGENT stuff" # TODO^114: (IN_PROGRESS, NOW) this is important, TEST against getting to this point (URGENT stuff done) as a benchmark
 
 firstlife-multitask || accumulate_error 'multitasking ERRORS' # TODO: at least once, maybe longer if there is time
 show_recently_done_todos

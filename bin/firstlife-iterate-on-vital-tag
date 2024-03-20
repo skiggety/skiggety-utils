@@ -11,6 +11,7 @@
 
 LIMIT=""
 while [[ "$1" == -* ]]; do
+    # TODO^6: accept -l or --daily-limit to call each delegate with --limit-n-times-per-x
     # accept -n to accept a number of tasks to work on:
     if [ "$1" == "-n" ]; then
         shift
