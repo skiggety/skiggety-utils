@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+# This script is a place for doing pointless things, to be used sparingly and with self-awareness.
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
+
+firstlife-preempt-same-script || exit_with_error "script pre-emption FAILED"
+
+clear
+
+pushd $SKIGGETY_UTILS_DIR >/dev/null
+
+firstlife_exit_if_needed
+
+dashboard
+firstlife-delegate --with-reward 'commit something, probably using "ci && git ready && yup".'
+
+firstlife_exit_if_needed
+
+# TODO^7? : turn this into a linter:
+# Find sentences in comments with single spaces between them.
+rg -n --color=always '#.*\. [^ $\[|."a-z-]' . | sort | \
+    grep -v '^[^:\w]*version.txt' | \
+    grep -v '^[^:\w]*./bin/git-pretty-pull' | \
+    abbreviate -n 19 -t 'find single spaces between sentences' -d
+firstlife-delegate --limit-n-times-per-x 2 day --with-reward 'fix a single space between sentences (see above)'
+
+popd >/dev/null
+
+firstlife_exit_if_needed
+
+today_todo -n | grep --color=always '\(ME''TA\|--------\|^$\)' | abbreviate -l 20 # EASY TODO^89: EXTRACT, and REUSE
+while ! shellask "Do META tasks seem right in 'vital?'"; do
+    firstlife-delegate "Edit 'META' tasks as needed in 'vital'"
+    today_todo -n | grep --color=always '\(ME''TA\|--------\|^$\)' | abbreviate -l 20 # EASY TODO^89: EXTRACT, and REUSE
+done
+
+# firstlife-delegate --with-reward 'work on META tasks (maybe use "vf firstlife-iterate-on-vital-tag -n 4 META && yup")'
+firstlife-iterate-on-vital-tag -n 4 META || accumulate error "Didn't work on meta tasks as requested"
+
+firstlife_exit_if_needed
+
+dashboard
+clean-up-su-local-changes
+
+firstlife_exit_if_needed
+
+$EDITOR $0
+
+firstlife_exit_if_needed
