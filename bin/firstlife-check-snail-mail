@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# This script prompts you to get the mail
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+firstlife-delegate --limit-n-times-per-x 1 day "Go get your (snail) mail from the mailbox" || exit_with_error "Did not get the snail mail"

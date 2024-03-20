@@ -30,9 +30,9 @@ exit_if_day_is_over
 firstlife-focus || accumulate_error 'did not focus on important stuff'
 exit_if_day_is_over
 
-firstlife-multitask || accumulate_error 'multitasking ERRORS'
-show_recently_done_todos
-exit_if_day_is_over
+firstlife-check-snail-mail || accumulate_error 'ignored physical mail'
+
+# TODO^50: work on a few 'WEEKLY' tasks, don't do each one more than once a week
 
 # EASY to get started TODO^55: ask about if you have done enough productivity points.  Maybe ask how many done today and how many left in the
 # week, and make sure you do more than a day's share...
