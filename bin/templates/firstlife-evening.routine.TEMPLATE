@@ -7,33 +7,48 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
-exit_if_day_is_over
+firstlife-preempt-same-script # TODO^3: use this more widely
+
+firstlife_exit_if_needed
 shellask "Is it still ${FIRSTLIFE_ISOTODAY}?" || exit 0
-exit_if_day_is_over
+firstlife_exit_if_needed
 
 firstlife-delegate "put your phone on the charger" || accumulate_error "did not put phone on charger"
 
 firstlife-delegate --limit-n-times-per-x 1 day --with-reward 'find your book' || accumulate_error "You don't even know where your book is"
-exit_if_day_is_over
+firstlife_exit_if_needed
 
 firstlife-delegate --limit-n-times-per-x 2 week --with-reward "Look at your habit tracker graphs and vote for whatever you could automate better in firstlife (approximately$(echo_here))"
-exit_if_day_is_over
+firstlife_exit_if_needed
 
 today_todo -n | grep --color=always '\(EVENING\|--------\|^$\)'
 # TODO: use iterate script instead:
 firstlife-delegate --limit-n-times-per-x 1 day --with-reward "Work on something tagged 'EVENING' on your todo list"
-exit_if_day_is_over
+firstlife_exit_if_needed
 
 firstlife-practice-music
 
+firstlife-delegate --with-reward "use 'vital' to edit what's FUN or EASY"
+firstlife_exit_if_needed
+
+firstlife-iterate-on-vital-tag -n 2 'EASY' || accumulate_error 'ignored EASY tasks'
+firstlife_exit_if_needed
+
+firstlife-iterate-on-vital-tag -n 2 'FUN' || accumulate_error 'ignored FUNtasks'
+firstlife_exit_if_needed
+
+firstlife-delegate --with-reward "use 'vital' to do some voting and sorting, from the bottom of the file up"
+firstlife_exit_if_needed
+
 firstlife-delegate --with-reward "use 'vital' to edit what happens DAILY or NIGHTLY"
+firstlife_exit_if_needed
 firstlife-iterate-on-vital-tag 'NIGHTLY' || accumulate_error 'ignored NIGHTLY tasks'
-exit_if_day_is_over
+firstlife_exit_if_needed
 
 firstlife-delegate "Charge phone so it's ready to wake you up in the morning" || accumulate_error "did not charge phone before bed for alarm"
 firstlife-pomodoro --without-break "Read a book in bed."
-firstlife-delegate --limit-n-times-per-x 1 day"finish up all evening habits" || accumulate_error "failed to finish evening habits" # TODO: TEST
-exit_if_day_is_over
+firstlife-delegate "finish up all evening habits" || accumulate_error "failed to finish evening habits"
+firstlife_exit_if_needed
 
 exit_with_accumulated_errors
 
