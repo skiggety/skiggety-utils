@@ -34,7 +34,6 @@ if $ADD_REWARD; then
     firstlife-log --type reward "$request"
 fi
 
-
 # show the linecount as your reward count for the day, watch it pile up!:
 reward_log="$(log_file_for_type reward)"
 reward_score=0

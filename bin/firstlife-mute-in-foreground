@@ -1,12 +1,25 @@
 #!/usr/bin/env bash
 
-. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+# This script mutes all firstlife sounds for a certain duration (in the foreground).
 
-# TODO^122: (IN_PROGRESS, NOW) Use this script in a bunch of places, esp. firstlife-pomodoro and firstlife-break
-# TODO^122: (IN_PROGRESS, NOW) take -t option for time in seconds
-# - TODO?: accept other argument as a message
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
+
+MUTE_DURATION_IN_SECONDS="300"
+debug_eval_here MUTE_DURATION_IN_SECONDS
+while [[ "$1" == -* ]]; do
+    if [ "$1" == '-t' -o "$1" == '--time-in-seconds' ]; then
+        shift
+        MUTE_DURATION_IN_SECONDS="$1"
+        debug_eval_here MUTE_DURATION_IN_SECONDS
+        shift
+    fi
+    # - TODO?: accept other argument as a message
+done
+
 # TODO^122: write ppid in mute file
-# TODO^122: sleep-verbose for time
+debug_eval_here MUTE_DURATION_IN_SECONDS
+sleep-verbose --with-countdown $MUTE_DURATION_IN_SECONDS
 # TODO^122: if my ppid is still in the mute file, delete the mute file
 # TODO^122: everywhere that play sounds must be silent if the mute file is present (firstlife-status respects file)
 
