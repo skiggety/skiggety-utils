@@ -1,6 +1,6 @@
 ---- IN_PROGRESS: --------------------------------------------------------------
 ./bin/templates/firstlife-morning.routine.TEMPLATE:51:# TODO^98: ([01;31m[KIN_PROGRESS[m[K) We need away to only do a section of code once per day, kind of like using 'firstlife-delegate --limit-n-times-per-x 1 day', but something we can put around 'firstlife-break'
-./bin/templates/firstlife-morning.routine.TEMPLATE:123:# EASY TODO^101: ([01;31m[KIN_PROGRESS[m[K) firstlife-check-calendar could take a message string to override the normal one:
+./bin/templates/firstlife-morning.routine.TEMPLATE:126:# EASY TODO^101: ([01;31m[KIN_PROGRESS[m[K) firstlife-check-calendar could take a message string to override the normal one:
 ./bin/crontab-verbose:20:    # TODO^111: ([01;31m[KIN_PROGRESS[m[K) also open example files, if available (so 'firstlife' can suggest an example crontab file)
 ./README.md:128:      - TODO^112: ([01;31m[KIN_PROGRESS[m[K) at least check out the repo, maybe with a skiggety-utils installer
 ./bin/firstlife-morning:6:# TODO^113: ([01;31m[KIN_PROGRESS[m[K) have a way for a new instance and a running instance to avoid interfering. The new one could take over and the old one could exit gracefully.
