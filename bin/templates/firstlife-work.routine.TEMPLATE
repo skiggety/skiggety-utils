@@ -21,6 +21,7 @@ firstlife_exit_if_needed
 today_todo -n | grep URGENT
 firstlife-delegate --limit-times-per-x 3 day "Run 'vital' to make sure items tagged 'URGENT' are tagged (including 'POINT') and sorted well enough to get on with it"
 firstlife-iterate-on-vital-tag -n 2 'URGENT' || accumulate_error 'ignored URGENT tasks' # TODO: limit the total number that happens daily
+# TODO^101: (TESTing IN_PROGRESS, NOW):
 for i in $(seq 10); do
     firstlife-reward "looked at URGENT stuff ($i/10x rewards)"
 done
