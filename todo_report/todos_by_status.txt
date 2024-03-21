@@ -6,4 +6,4 @@
 ./bin/templates/firstlife-work.routine.TEMPLATE:21:firstlife-reward "looked at URGENT stuff" # TODO^114: ([01;31m[KIN_PROGRESS[m[K) this is important, TEST against getting to this point (URGENT stuff done) as a benchmark
 ./bin/firstlife-mute:7:# TODO^122: ([01;31m[KIN_PROGRESS[m[K) Use this script in a bunch of places:
 ---- TODOs for right NOW: ------------------------------------------------------
-./bin/firstlife-do-something:15:# TODO^7: accept an optianal tag for vital, like "URGENT", "[01;31m[KNOW[m[K", or "FUN".  Pick randomly from vital tasks
+./bin/firstlife-do-something:13:# TODO^7: accept an optianal tag for vital, like "URGENT", "[01;31m[KNOW[m[K", or "FUN".  Pick randomly from vital tasks

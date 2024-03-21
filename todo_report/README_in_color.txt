@@ -1,5 +1,5 @@
 ==== TODOs, ascending, so you know what's likely to change next. Do not edit, run 'generate_todo_report' to generate. ====
-( showing last 8 lines out of 778 for 'todo': )
+( showing last 8 lines out of 777 for 'todo': )
 ./bin/templates/firstlife-work.routine.TEMPLATE:21:firstlife-reward "looked at URGENT stuff" # [1m[31mTODO^114[0m[0m: (IN_PROGRESS) this is important, TEST against getting to this point (URGENT stuff done) as a benchmark
 ./lib/firstlife.bash:45:# [1m[31mTODO^114[0m[0m: use firstlife_exit_if_needed liberally instead of exit_if_day_is_over (all over the codebase)
 ./README.md:130:  - [1m[31mTODO^116[0m[0m: move 'vital' data (to do list) to private repo (skiggety utils should help set up)
