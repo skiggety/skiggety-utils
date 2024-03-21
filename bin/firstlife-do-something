@@ -16,6 +16,7 @@ fi
 # to 'firstlife-iterate-on-vital' or 'firstlife-iterate-on-vital-tag'
 
 debug_eval TAG
+firstlife-delegate "Edit your 'vital' todo list with attention to the tag '$TAG'" || exit_with_error "Not grooming $TAG tasks"
 firstlife-iterate-on-vital-tag -n 1 $TAG || \
     firstlife-delegate "Work on something from your 'vital' todo list tagged '$TAG'" || \
     exit_with_error "skipped doing something tagged '$TAG' from your 'vital' todo list."
