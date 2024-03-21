@@ -5,7 +5,7 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
-firstlife-preempt-same-script # TODO^3: use this more widely
+firstlife-preempt-same-script
 
 # TODO^32: this template script should be a laundry list of ideas
 # - TODO^33: ..but first I should start using a local version
@@ -25,7 +25,7 @@ firstlife-delegate 'Put your phone on the charger'
 firstlife_exit_if_needed
 
 firstlife-delegate --limit-n-times-per-x 1 day 'Make coffee'
-firstlife_exit_if_needed # TODO^114: (IN_PROGRESS) # use this and firstlife-preempt-same-script wiiidely, especially routines that might get scheduled multiple times:
+firstlife_exit_if_needed
 
 firstlife-delegate --limit-n-times-per-x 1 day 'Make sure you have taken any morning medications' || accumulate_error 'did not medicate'
 
@@ -48,7 +48,6 @@ firstlife_exit_if_needed
 SCOTTS_MEDITATION_PLAYLIST='https://www.youtube.com/playlist?list=PLbyyOcHfeHIqCKsHI62oWS6i4JQfdtcfd'
 open "$SCOTTS_MEDITATION_PLAYLIST" 2>/dev/null &
 # TODO^2: mute firstlife for the duration. (When exactly to start it? use a 5-minute pomodoro?):
-# EASY TODO^120: (TESTing IN_PROGRESS) mute during meditation:
 firstlife-mute --time-in-seconds 315
 firstlife-delegate --limit-n-times-per-x 1 day '5-minute meditation' || accumulate_error 'did not meditate' # TODO^81: --with-timer 330 (and use timers widely)
 firstlife_exit_if_needed
@@ -64,14 +63,17 @@ firstlife_exit_if_needed
 
 firstlife-break
 
-firstlife-delegate --limit-n-times-per-x 1 day 'Put away any temptations or distractions'
+firstlife-delegate --limit-n-times-per-x 2 day 'Put away any temptations or distractions'
 firstlife_exit_if_needed
 
 firstlife-delegate --limit-n-times-per-x 1 day 'Start up some podcasts'
 firstlife_exit_if_needed
 
+firstlife-delegate --limit-n-times-per-x 1 day 'Update yesterday in the habit tracker' || accumulate_error 'did not update yesterday in the habit tracker'
+firstlife_exit_if_needed
+
 # TODO^3: firstlife-delegate --with-reward --with-timer $(( 30 * 60 )) 'blah blah':
-firstlife-mute --time-in-seconds $(( 30 * 60 )) # EASY TODO^121: (TESTing IN_PROGRESS) mute during exercise
+firstlife-mute --time-in-seconds $(( 30 * 60 ))
 firstlife-delegate --limit-n-times-per-x 1 day 'Put on exercise clothes (and make sure you have your housekey/earbuds, etc.)' \
     && firstlife-delegate --limit-n-times-per-x 1 day 'Exercise!' \
     || firstlife-delegate --limit-n-times-per-x 1 day 'Schedule exercise for later today' \
@@ -80,17 +82,31 @@ firstlife_exit_if_needed
 
 # TODO^3: maybe make a 'delegate' function that calls both firstlife-delegate --with-reward and firstlife_exit_if_needed:
 
-firstlife-mute --time-in-seconds $(( 10 * 60)) # EASY TODO^122: (TESTing IN_PROGRESS) mute during shower
-firstlife-delegate --limit-n-times-per-x 1 day 'Hit the shower' || accumulate_error 'did not shower'
+firstlife-alarm "Hit the shower"
+firstlife-mute-in-foreground --time-in-seconds $(( 10 * 60))
+firstlife-alarm 'Finish your shower' || accumulate_error 'did not shower'
+firstlife-delegate --limit-n-times-per-x 1 day 'Finish your shower' || accumulate_error 'did not shower'
 firstlife_exit_if_needed
 
-firstlife-delegate --limit-n-times-per-x 1 day 'Finish morning habits in the habit tracker' || accumulate_error 'did not finish morning habits' # TODO: list them out individually instead?
+firstlife-delegate --limit-n-times-per-x 1 2_days 'Shave' || accumulate_error 'did not shave'
+firstlife_exit_if_needed
+
+firstlife-delegate --limit-n-times-per-x 1 day 'apply deodorant' || accumulate_error 'did not apply deodorant'
+firstlife_exit_if_needed
+
+firstlife-delegate --limit-n-times-per-x 1 day 'Use mouthwash' || accumulate_error 'did not use mouthwash'
+firstlife_exit_if_needed
+
+firstlife-delegate --limit-n-times-per-x 1 day 'Floss' || accumulate_error 'did not floss'
+firstlife_exit_if_needed
+
+firstlife-delegate --limit-n-times-per-x 1 day 'Brush teeth' || accumulate_error 'did not brush teeth'
+firstlife_exit_if_needed
+
+firstlife-delegate --limit-n-times-per-x 1 day 'Finish morning habits in the habit tracker' || accumulate_error 'did not finish morning habits'
 firstlife_exit_if_needed
 
 firstlife-delegate --limit-n-times-per-x 1 day 'Get dressed' || accumulate_error 'did not get dressed'
-firstlife_exit_if_needed
-
-firstlife-delegate --limit-n-times-per-x 1 day 'Update yesterday in the habit tracker' || accumulate_error 'did not update yesterday in the habit tracker'
 firstlife_exit_if_needed
 
 firstlife-delegate --limit-n-times-per-x 1 day 'Make coffee again if you want'
@@ -116,6 +132,8 @@ firstlife-check-calendar -m 'Your calendar is about to come up. When it does, ma
     || accumulate_error 'did not check calendar'
 
 firstlife-cleaning-game
+
+exit_with_any_accumulated_errors
 
 # TODO: do I want this here? do I want it in other high-level firstlife scripts?:
 echo "$(basename $0) succeeded!"
