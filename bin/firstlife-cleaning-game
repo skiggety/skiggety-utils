@@ -12,7 +12,7 @@ HOW_MANY_THINGS_TO_PUT_AWAY_EVERY_DAY=30
 HOW_MANY_THINGS_TO_WIPE_EVERY_DAY=4
 
 for i in $(seq $HOW_MANY_THINGS_TO_PUT_AWAY_EVERY_DAY);do
-    sleep-verbose --with-countdown $(( $i * 3 ))
+    sleep-verbose --with-countdown $(( 20 + ( $i * 2 ) ))
     exit_if_day_is_over
     firstlife-alarm "Time for tidying!"
     firstlife-delegate --limit-n-times-per-x 2 day --without-reward "Put away your ${i}th item." || exit_with_error "stopped tidying"
