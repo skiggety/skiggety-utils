@@ -1,7 +1,7 @@
 ---- IN_PROGRESS: --------------------------------------------------------------
 ./bin/crontab-verbose:20:    # TODO^111: ([01;31m[KIN_PROGRESS[m[K) also open example files, if available (so 'firstlife' can suggest an example crontab file)
 ./README.md:128:      - TODO^112: ([01;31m[KIN_PROGRESS[m[K) at least check out the repo, maybe with a skiggety-utils installer
-./bin/firstlife-morning:6:# TODO^113: ([01;31m[KIN_PROGRESS[m[K) have a way for a new instance and a running instance to avoid interfering. The new one could take over and the old one could exit gracefully.
+./bin/firstlife-morning:6:# TODO^113: ([01;31m[KIN_PROGRESS[m[K) have a way for a new instance and a running instance to avoid interfering.  The new one could take over and the old one could exit gracefully.
 ./bin/templates/firstlife-morning.routine.TEMPLATE:28:firstlife_exit_if_needed # TODO^114: ([01;31m[KIN_PROGRESS[m[K) # use this and firstlife-preempt-same-script wiiidely, especially routines that might get scheduled multiple times:
 ./bin/templates/firstlife-work.routine.TEMPLATE:21:firstlife-reward "looked at URGENT stuff" # TODO^114: ([01;31m[KIN_PROGRESS[m[K) this is important, TEST against getting to this point (URGENT stuff done) as a benchmark
 ./bin/firstlife-mute:15:# TODO^121: ([01;31m[KIN_PROGRESS[m[K) Use this script in a bunch of places, esp. firstlife-pomodoro and firstlife-break

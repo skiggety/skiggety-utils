@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# This script prompts you to clean your vehicle in bite-sized blocks of time
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
+
+TRY_COUNT=0
+firstlife-alarm "Time to tidy your vehicle!"
+while ! shellask "Are you feeling good about the state of your vehicle for now?";do
+    firstlife-break -t $(( 60 * ( 5 + ( $TRY_COUNT * 2 ) ) ))
+    firstlife-alarm "Time to tidy your vehicle!"
+    TRY_COUNT=$(( $TRY_COUNT + 1 ))
+    firstlife-pomodoro --without-break --with-alarms --time-in-minutes $(( 4 + $TRY_COUNT))  "Tidy your vehicle"
+done

@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+# This script prompts you to do a certain amount of maintenance level cleaning and tidying.
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
+
+# TODO^7: subject to configuration if you have a max times per day number set, exit this script early if you already have the reward logged for this script enough times today.
+# - TODO^6: similarly, maybe make it optional (ask user) after the first completion each day.
+
+HOW_MANY_THINGS_TO_PUT_AWAY_EVERY_DAY=30
+HOW_MANY_THINGS_TO_WIPE_EVERY_DAY=4
+
+for i in $(seq $HOW_MANY_THINGS_TO_PUT_AWAY_EVERY_DAY);do
+    sleep-verbose --with-countdown $(( $i * 4 ))
+    exit_if_day_is_over
+    firstlife-alarm "Time for tidying!"
+    firstlife-delegate --limit-n-times-per-x 2 day --without-reward "Put away your ${i}th item." || exit_with_error "stopped tidying"
+    for nli in $(seq $(tput lines));do echo;done # TODO^17: maybe function extract as it wipes the screen and leaves the cursor at the bottom
+    if [ "$(( $i % 5 ))" -eq 0 ]; then
+        firstlife-reward "Put 5 things away (up to ${i} items)"
+    fi
+done
+
+for i in $(seq $HOW_MANY_THINGS_TO_WIPE_EVERY_DAY);do
+    sleep-verbose --with-countdown $(( $i * 90 ))
+    exit_if_day_is_over
+    firstlife-alarm "Clean something dirty!"
+    firstlife-delegate --limit-n-times-per-x 2 day --with-reward "Clean something dirty! (#${i})"
+    for nli in $(seq $(tput lines));do echo;done # TODO^16: maybe function extract as it wipes the screen and leaves the cursor at the bottom
+done
+
+shellask "check off cleaning habit in habit tracker" # TODO^17: track internally

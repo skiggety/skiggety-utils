@@ -110,6 +110,8 @@ exit_with_any_accumulated_errors
 firstlife-check-calendar -m 'Your calendar is about to come up. When it does, mark how long your morning routine took, and plan your day, OK?' \
     || accumulate_error 'did not check calendar'
 
+firstlife-cleaning-game
+
 # TODO: do I want this here? do I want it in other high-level firstlife scripts?:
 echo "$(basename $0) succeeded!"
 firstlife-reward $(basename $0)
