@@ -11,6 +11,8 @@
 . $SKIGGETY_UTILS_DIR/lib/today_todo.bash || exit_with_error 'could not include today_todo.bash'
 . $SKIGGETY_UTILS_DIR/lib/vital.bash || exit_with_error 'could not include vital.bash'
 
+firstlife-preempt-same-script
+
 passes_at_todo_list=1
 FIRSTLIFE_MULTITASKING_COUNT=${FIRSTLIFE_MULTITASKING_COUNT:-4} # TODO: make this overridable in firstlife config template
 
@@ -20,20 +22,30 @@ export today_todo_now_max_count="$FIRSTLIFE_MULTITASKING_COUNT"
 
 # TODO^81: firstlife should keep an eye on "MAINTENANCE" tag in vital/today_todo
 
-exit_if_day_is_over
+firstlife_exit_if_needed
+
+firstlife-delegate --limit-n-times-per-x 1 day 'Update yesterday in the habit tracker' || accumulate_error 'did not update yesterday in the habit tracker'
+firstlife_exit_if_needed
 
 firstlife-delegate --with-reward 'Make sure various devices including this one are charged/charging' \
     || accumulate_error 'should have charged your devices' # TODO: don't ask more than once every 3 hours
-exit_if_day_is_over
+firstlife_exit_if_needed
 
 firstlife-delegate 'put away any temptations or distractions' && firstlife-reward || accumulate_error 'did not clear distractions'
 firstlife-delegate 'keep the tunes pumping (you can use "firstlife-music")' || accumulate_error 'did not DJ for yourself'
-exit_if_day_is_over
+firstlife_exit_if_needed
 
 firstlife-delegate 'do one act of self care or something on the habit tracker' && firstlife-reward || accumulate_error 'missed a habit'
-exit_if_day_is_over
+firstlife_exit_if_needed
 
 firstlife-break -t 150
+
+pushd $VITAL_DIR >/dev/null
+# EASY TODO^84: EXTRACT, and REUSE:
+todo -n | grep --color=always '\(NOW\|LATER\|--------\|^$\)'
+popd >/dev/null
+firstlife-delegate --limit-n-times-per-x 10 day --with-reward 'See if you can mark something something "NOW" that is marked "LATER" (or vise-versa) in vital' || accumulate_error 'Did not maintain NOW and LATER tags'
+firstlife_exit_if_needed
 
 #### Today's Todo List #############################################################################
 # EASY TODO^85: maybe the inside of the loop could be more like merely:
@@ -44,34 +56,41 @@ firstlife-break -t 150
 for num in $(seq $passes_at_todo_list); do
 
     firstlife-delegate --limit-n-times-per-x 15 day 'Handle 1 important item from from any paper lists (if any), possibly by putting it into today_todo' && firstlife-reward || accumulate_error 'ignored paper todo list'
-    exit_if_day_is_over
+    firstlife_exit_if_needed
 
     # TODO^14: only do this if you haven't yet cleared them all today yet:
     open 'https://www.google.com/calendar/render' # EASY TODO^87: script extract
     firstlife-delegate --limit-n-times-per-x 10 day 'Take care of a calendar task, maybe by putting it into today_todo' && firstlife-reward || accumulate_error 'ignored paper todo list'
-    exit_if_day_is_over
+    firstlife_exit_if_needed
 
     vital-list-by-tag POINT
     firstlife-delegate --limit-n-times-per-x 3 day 'Run "vital" again to tag or upvote something worth productivity POINTS' || \
         accumulate_error 'did not get focus on the important stuff'
-    exit_if_day_is_over
+    firstlife_exit_if_needed
 
     vital-list-by-tag CONFIRMING
     firstlife-delegate --limit-n-times-per-x 5 day --with-reward 'Mark something DONE that is "CONFIRMING" in today_todo (if you can)' || accumulate_error 'Did not confirm anything'
-    exit_if_day_is_over
+    firstlife_exit_if_needed
 
-    # EASY TODO^84: EXTRACT, and REUSE
+    pushd $VITAL_DIR >/dev/null
+    # EASY TODO^84: EXTRACT, and REUSE:
     todo -n | grep --color=always '\(NOW\|LATER\|--------\|^$\)'
+    popd >/dev/null
     firstlife-delegate --limit-n-times-per-x 10 day --with-reward 'See if you can work on something "NOW" that is marked "LATER" (or vise-versa) in vital' || accumulate_error 'Did not maintain NOW and LATER tags'
-    exit_if_day_is_over
+    firstlife_exit_if_needed
 
     today_todo --non-interactive
     firstlife-delegate 'Run "vital" once or twice to make sure you are ready to focus on the right stuff' || \
         accumulate_error 'did not get tasks organized'
-    exit_if_day_is_over
+    firstlife_exit_if_needed
+
+    today_todo --non-interactive
+    firstlife-delegate 'Run "vital" once to vote/sort/groom a bit from the bottom up' || \
+        accumulate_error 'did not get tasks organized'
+    firstlife_exit_if_needed
 
     firstlife-check-calendar || accumulate_error 'did not check calendar'
-    exit_if_day_is_over
+    firstlife_exit_if_needed
 
     # TODO^88: extract this bit that works on a few todos to firstlife-work-on-top-n-todos -n $MULTITASKING_CONSTANT
     # - TODO^91: or better yet, EXTRACT to 'firstlife-iterate-on-vital'
@@ -81,11 +100,11 @@ for num in $(seq $passes_at_todo_list); do
     IFS=$'\n'
     read -rd '' -a todos_as_array <<<"$todos"
     debug_here "echo \${todos_as_array} contains"
-    for todo_line in ${todos_as_array[@]};do # EASY TODO^20: use pomodoro instead, for much increased focus
+    for todo_line in ${todos_as_array[@]};do # EASY TODO^21: use pomodoro instead, for much increased focus
         firstlife-delegate --limit-n-times-per-x 3 day "Work on this task (and downvote or mark done using today_todo):${newline}${todo_line}" && \
             firstlife-reward || \
             accumulate_error "Didn't work on todo: $todo_line"
-        exit_if_day_is_over
+        firstlife_exit_if_needed
 
         # EASY TODO^75: loop through known tags:
         # EASY TODO^89: something like this needs to happen actually before you do the task:
@@ -97,76 +116,74 @@ for num in $(seq $passes_at_todo_list); do
             today_todo -n | grep PURCHASE
             firstlife-delegate --limit-n-times-per-x 2 day --with-reward "Maybe handle some other purchases"
         fi
-        exit_if_day_is_over
+        firstlife_exit_if_needed
 
         firstlife-break -t 120
 
-        exit_if_day_is_over
+        firstlife_exit_if_needed
     done
     IFS="$ORIGINAL_IFS"
     popd > /dev/null
 
     firstlife-delegate 'Do one act of self care or something on the habit tracker' && firstlife-reward || accumulate_error 'missed a habit'
-    exit_if_day_is_over
+    firstlife_exit_if_needed
 
     firstlife-check-calendar || accumulate_error 'did not check calendar'
-    exit_if_day_is_over
+    firstlife_exit_if_needed
 
     firstlife-check-email --with-reward || accumulate_error 'ignored email'
-    exit_if_day_is_over
+    firstlife_exit_if_needed
 
     if $FIRSTLIFE_DEVELOPMENT_MODE; then
         pushd $SKIGGETY_UTILS_DIR > /dev/null
         PWD_BIN/dashboard
-        if [ $(git status --short | wc -l) -gt 0 ]; then
-            firstlife-delegate --with-reward "Make 'dev' output look cleaner here in skiggety-utils (commit something) " || accumulate_error "skipped dev work"
-        fi
+        clean-up-su-local-changes
         PWD_BIN/dashboard
         popd > /dev/null
     fi
-    exit_if_day_is_over
+    firstlife_exit_if_needed
 
     firstlife-break -t 240
-    exit_if_day_is_over
+    firstlife_exit_if_needed
 
     firstlife-delegate 'Do one act of self care or something on the habit tracker' && firstlife-reward || accumulate_error 'missed a habit'
-    exit_if_day_is_over
+    firstlife_exit_if_needed
 
     # TODO^86: if you have not finished all dishes at least once today
     firstlife-delegate --limit-n-times-per-x 20 day --with-reward 'Put away at least 2 dry dishes (if needed)' || accumulate_error 'Did not put away dishes'
-    exit_if_day_is_over
+    firstlife_exit_if_needed
 
     firstlife-delegate --limit-n-times-per-x 10 day --with-reward 'Wash at least 1 dish' || accumulate_error 'Did not wash a dish'
-    exit_if_day_is_over
+    firstlife_exit_if_needed
 
     firstlife-check-email --with-reward || accumulate_error 'ignored email'
-    exit_if_day_is_over
+    firstlife_exit_if_needed
 
 done
 
 ################################################################################
 
 firstlife-delegate --limit-n-times-per-x 5 day "Catch up on communicating with people" && firstlife-reward || accumulate_error "Did not communicate"
-exit_if_day_is_over
+firstlife_exit_if_needed
 
 if $FIRSTLIFE_DEVELOPMENT_MODE; then
     pushd $SKIGGETY_UTILS_DIR
     firstlife-delegate "Commit some code" && firstlife-reward || accumulate_error "Did not commit"
     popd
 fi
-exit_if_day_is_over
+firstlife_exit_if_needed
 
 firstlife-delegate --limit-n-times-per-x 15 day "Close a 2-4 browser tabs unless they are reasonable already" && firstlife-reward || accumulate_error "Did not clean up browser tabs"
-exit_if_day_is_over
+firstlife_exit_if_needed
 
 firstlife-break
-exit_if_day_is_over
+firstlife_exit_if_needed
 
 today_todo -n | grep --color=always '\(FUN\|EASY\|--------\|^$\)'
 firstlife-delegate --limit-n-times-per-x 5 day --with-reward "Work on something FUN/EASY (is enough stuff tagged? --run \"today_todo -n | grep '\\(FUN\\|EASY\\)'\")"
 
 # call firstlife-morning again just in case it hasn't been done, since it only needs to be done once:
 firstlife-morning || accumulate_error 'Morning routine had errors'
-exit_if_day_is_over
+firstlife_exit_if_needed
 
 exit_with_any_accumulated_errors

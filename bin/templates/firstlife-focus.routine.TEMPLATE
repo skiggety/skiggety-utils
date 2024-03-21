@@ -5,35 +5,38 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
-exit_if_day_is_over
+firstlife-preempt-same-script
+firstlife_exit_if_needed
 
 # TODO^13: try to mix in some work pomodoros until there are 16 on a weekday? maybe ask the user how many work pomodoros to do, with a default of 16, and then have you ask for a purpose for each
 
 firstlife-delegate --limit-n-times-per-x 3 day 'Caffeinate yourself (if you need to)'
 
+# TODO^101: (POINT, META) aim to get to this point, by, say, 10AM.  Iterate.
+
 # TODO^10: EXTRACT and REUSE this approach that includes the headings:
 today_todo --non-interactive | grep --color=always '\(NOW\|EASY\|--------\|^$\)'
 firstlife-pomodoro 'most important stuff tagged NOW or EASY (use "firstlife-iterate-on-vital-tag -n 3 EASY" or "firstlife-iterate-on-vital-tag -n 3 NOW")' || accumulate_error 'skipped pomodoro for NOW/EASY tasks'
-exit_if_day_is_over
+firstlife_exit_if_needed
 
 today_todo --non-interactive | grep --color=always '\(URGENT\|--------\|^$\)'
 firstlife-pomodoro 'most important URGENT stuff (use "firstlife-iterate-on-vital-tag -n 3 URGENT")' || accumulate_error 'skipped pomodoro for URGENT stuff'
-exit_if_day_is_over
+firstlife_exit_if_needed
 
 today_todo --non-interactive | grep --color=always '\(POINT\|--------\|^$\)'
 firstlife-pomodoro 'most important stuff worth POINTS (use "firstlife-iterate-on-vital-tag -n 3 POINT")' || accumulate_error 'skipped pomodoro worth POINTS'
-exit_if_day_is_over
+firstlife_exit_if_needed
 
 today_todo --non-interactive | grep --color=always '\(INCOME\|--------\|^$\)'
 firstlife-pomodoro 'most important stuff tagged "INCOME (use "firstlife-iterate-on-vital-tag -n 3 INCOME")"' || accumulate_error 'skipped pomodoro for stuff tagged "INCOME"'
-exit_if_day_is_over
+firstlife_exit_if_needed
 
 today_todo --non-interactive | grep --color=always '\(POINT\|--------\|^$\)'
 firstlife-pomodoro 'most important stuff worth POINTS (use "firstlife-iterate-on-vital-tag -n 3 POINT")' || accumulate_error 'skipped pomodoro worth POINTS'
-exit_if_day_is_over
+firstlife_exit_if_needed
 
 today_todo --non-interactive
 firstlife-pomodoro 'most important stuff' || accumulate_error 'skipped pomodoro for most important stuff overall'
-exit_if_day_is_over
+firstlife_exit_if_needed
 
-exit
+exit_with_any_accumulated_errors

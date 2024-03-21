@@ -5,7 +5,7 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
-firstlife-alarm "Welcome to today's firstlife terminal, please pay attention"
+firstlife-alarm "firstlife wake up call ($FIRSTLIFE_ISOTODAY), please PAY ATTENTION!"
 exit_if_day_is_over
 
 # Use your own morning playlist, here's mine for starters:
@@ -14,6 +14,10 @@ open "$SCOTTS_MORNING_SOUNDTRACK" 2>/dev/null &
 exit_if_day_is_over
 
 handle-alarmy-photo-mission || exit_with_error "failed to handle alarm" # for 'Alarmy'
+exit_if_day_is_over
+
+# call firstlife-morning again just in case it hasn't been done, since it only needs to be done once:
+firstlife-morning || accumulate_error 'Morning routine had errors'
 exit_if_day_is_over
 
 exit 0
