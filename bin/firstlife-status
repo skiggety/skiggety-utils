@@ -41,18 +41,25 @@ while ! [ -f $BEHIND_SOUND ]; do
         || exit_with_error "No sound to let you know you are behind available"
 done
 
+MINUTES_OF_INACTIVITY_ALLOWED=15 # TODO^3: make configurable and tune the number
+debug_eval_here MINUTES_OF_INACTIVITY_ALLOWED
+
+TARGET_SECONDS_PER_REWARD=$(( 10 * 60 )) # TODO^3: make configurable and tune the number
+debug_eval_here TARGET_SECONDS_PER_REWARD
+
 spr="$(echo "$reward_status"| grep 'seconds each' | sed 's/.*at \([0-9]*\) seconds each.*/\1/')"
 spr=${spr:-'100000'}
+debug_eval_here spr
 
-# TODO^2: make configurable and tune the number:
-MINUTES_OF_INACTIVITY_ALLOWED=30 # TODO^3: you can turn this number down once the mute is working
 # TODO: or if no rewards yet:
-TARGET_MINUTES_PER_REWARD=12 # TODO^12: make configurable and tune the number
-
-if [ $spr -gt $(( $TARGET_MINUTES_PER_REWARD * 60 )) ] && test "`find $FIRSTLIFE_LOG_DIR/reward.$(isotoday).log.txt -mmin +$MINUTES_OF_INACTIVITY_ALLOWED 2>/dev/null`"; then
+if [ $spr -gt $TARGET_SECONDS_PER_REWARD ] && test "`find $FIRSTLIFE_LOG_DIR/reward.$(isotoday).log.txt -mmin +$MINUTES_OF_INACTIVITY_ALLOWED 2>/dev/null`"; then
     echo
-    echo "UH-OH! It seems like you're getting BEHIND, time to emit a sound: $BEHIND_SOUND"
-    mplayer -volume $BEHIND_SOUND_VOLUME $BEHIND_SOUND >/dev/null 2>&1
+    if firstlife-is-muted; then
+        echo "UH-OH! It seems like you're getting BEHIND! (but firstlife is muted, so this won't emit a sound)"
+    else
+        echo "UH-OH! It seems like you're getting BEHIND, time to emit a sound: $BEHIND_SOUND"
+        mplayer -volume $BEHIND_SOUND_VOLUME $BEHIND_SOUND >/dev/null 2>&1
+    fi
     echo "...Also, here's the file with the last timestamp for a reward:"
     ls -lh $FIRSTLIFE_LOG_DIR/reward.$(isotoday).log.txt
 fi
@@ -64,7 +71,7 @@ fi
 if ! [ -z "$EXPECTED_PPID" ]; then
     debug_eval EXPECTED_PPID
     echo_debug expecting pid to be the latest review-firstlife-status
-    latest_review_ppid=$(cat $FIRSTLIFE_DIR/.review-firstlife-status_PPID)
+    latest_review_ppid=$(cat $FIRSTLIFE_MARKER_DIR/.review-firstlife-status_PPID)
     debug_eval latest_review_ppid
     if ! [ "$latest_review_ppid" -eq "$EXPECTED_PPID" ]; then
         exit_with_error "Exiting since process $latest_review_ppid has taken over"

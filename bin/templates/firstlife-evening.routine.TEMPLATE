@@ -2,8 +2,6 @@
 
 # This script is your custom evening routine
 
-# TODO^25: separate out bedtime routine and cron them both
-
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
@@ -46,6 +44,9 @@ firstlife-iterate-on-vital-tag 'NIGHTLY' || accumulate_error 'ignored NIGHTLY ta
 firstlife_exit_if_needed
 
 firstlife-delegate "Charge phone so it's ready to wake you up in the morning" || accumulate_error "did not charge phone before bed for alarm"
+
+# TODO^37: separate out bedtime routine and cron them both
+
 firstlife-pomodoro --without-break "Read a book in bed."
 firstlife-delegate "finish up all evening habits" || accumulate_error "failed to finish evening habits"
 firstlife_exit_if_needed

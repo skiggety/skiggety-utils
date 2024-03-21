@@ -5,9 +5,10 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
 
-exit_with_error "TODO^12: IMPLEMENT"
+if ! [[ -z "$1" ]]; then
+    TAG="$1"
+    shift
+fi
 
-# TODO^5: accept an optianal tag for vital,
-# like "URGENT", "NOW", or "FUN". Pick randomly from vital tasks with the tag,
-# weighted towards the ones with the most votes, and ask the user to get it done or at least put in a pomodoro's worth
-# of time.
+debug_eval TAG
+firstlife-iterate-on-vital-tag -n 1 $TAG || exit_with_error "skipped doing something tagged '$TAG'."

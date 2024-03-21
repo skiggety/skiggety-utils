@@ -17,13 +17,20 @@ while ! [ -f $ALARM_SOUND ]; do
         || exit_with_error "No alarm sound available"
 done
 
-message="Use CTRL+C to cancel this ALARM"
+alarm_volume=100
+silent_message=""
+if firstlife-is-muted; then
+    alarm_volume=0
+    silent_message=" (silent)"
+    debug_here "Firstlife is muted, so this alarm will be silent..."
+fi
+message="Use CTRL+C to cancel this${silent_message} ALARM"
 if [ -n "$*" ]; then
     message="$message for: $*"
 fi
 
 echo_divider_with_text "#" "$message"
-mplayer $ALARM_SOUND >/dev/null 2>&1 \
+mplayer -volume $alarm_volume $ALARM_SOUND >/dev/null 2>&1 \
     && echo "Snoozing for $SNOOZE_SECONDS seconds, you can still use CTRL+C to cancel this ALARM" \
     && sleep-verbose $SNOOZE_SECONDS \
     || exit 1

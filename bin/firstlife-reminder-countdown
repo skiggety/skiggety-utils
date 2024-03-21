@@ -11,7 +11,7 @@ TITLE="Do what's on your calendar"
 
 while [[ "$1" == -* ]]; do
     # TODO: don't use "-m" for minutes, it's too confusing since git and other skiggety utils use it to pass a message:
-    if [ "$1" == "-m" ]; then
+    if [ "$1" == "-m" -o "$1" == "--time-in-minutes" ]; then
         shift
         MINUTES_LEFT="$1"
         debug_eval_here MINUTES_LEFT

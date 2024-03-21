@@ -7,10 +7,16 @@ export FIRSTLIFE_BIN
 FIRSTLIFE_LOG_DIR=${FIRSTLIFE_LOG_DIR:-"$FIRSTLIFE_DIR/log"}
 export FIRSTLIFE_LOG_DIR
 
+FIRSTLIFE_MARKER_DIR="$FIRSTLIFE_DIR/markers"
+export FIRSTLIFE_MARKER_DIR
+
 FIRSTLIFE_ISOTODAY=${FIRSTLIFE_ISOTODAY:-"$(isotoday)"}
 export FIRSTLIFE_ISOTODAY
 
-FIRSTLIFE_THIS_SCRIPT_PPID_FILE="$FIRSTLIFE_DIR/.current.$(basename $0).PPID"
+FIRSTLIFE_MUTE_FILE_PREFIX="$FIRSTLIFE_MARKER_DIR/.firstlife_currently_muted_by_ppid."
+export FIRSTLIFE_MUTE_FILE_PREFIX
+
+FIRSTLIFE_THIS_SCRIPT_PPID_FILE="$FIRSTLIFE_MARKER_DIR/.current.$(basename $0).PPID"
 touch $FIRSTLIFE_THIS_SCRIPT_PPID_FILE
 export FIRSTLIFE_THIS_SCRIPT_PPID_FILE
 
@@ -42,7 +48,7 @@ function firstlife_exit_if_needed {
     exit_if_this_script_is_running_elsewhere
 }
 
-# after we make sure common tasks only run once, we could do this, like what ../*firstlife-status scripts do with $FIRSTLIFE_DIR/.review-firstlife-status_PPID
+# after we make sure common tasks only run once, we could do this, like what ../*firstlife-status scripts do with $FIRSTLIFE_MARKER_DIR/.review-firstlife-status_PPID
 function exit_if_this_script_is_running_elsewhere {
     debug_here
     latest_script_ppid=$(cat $FIRSTLIFE_THIS_SCRIPT_PPID_FILE)
@@ -87,7 +93,7 @@ function mark_script_succeeded_today {
 }
 
 function succeeded_today_marker_script {
- echo "$FIRSTLIFE_DIR/markers/$(basename $1).succeeded_on_${FIRSTLIFE_ISOTODAY}"
+ echo "$FIRSTLIFE_MARKER_DIR/$(basename $1).succeeded_on_${FIRSTLIFE_ISOTODAY}"
 }
 
 function personal_inner_routine_script {

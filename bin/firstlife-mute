@@ -2,19 +2,12 @@
 
 # This script mutes all firstlife sounds for a certain duration (in the background).
 
-# EASY TODO^108: We need to mute 'behind' sounds, alarms, everything)
-
-# EASY TODO^108: mute during meditation
-# EASY TODO^108: mute during exercise
-# EASY TODO^108: mute during shower
-# EASY TODO^108: mute during pomodoros
-# EASY TODO^108: mute during breaks
-# EASY TODO^108: mute during evenings
-
-# EASY TODO^109: mute during meditation, exercise, shower, pomodoros, breaks, evenings, etc. (We need to mute # behind sounds, alarms, everything)
-# TODO^121: (IN_PROGRESS) Use this script in a bunch of places, esp. firstlife-pomodoro and firstlife-break
-
-
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-firstlife-mute-in-foreground "$@" &
+# TODO^122: (IN_PROGRESS) Use this script in a bunch of places:
+# EASY TODO^120: mute during meditation
+# EASY TODO^120: mute during exercise
+# EASY TODO^120: mute during shower
+# EASY TODO^121: mute during breaks
+
+firstlife-mute-in-foreground "$@" >/dev/null 2>&1 &
