@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# This script unmutes firstlife manually
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
+
+rm -f ${FIRSTLIFE_MUTE_FILE_PREFIX}*
