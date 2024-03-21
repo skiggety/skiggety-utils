@@ -1,10 +1,7 @@
 ---- IN_PROGRESS: --------------------------------------------------------------
 ./bin/templates/firstlife-work.routine.TEMPLATE:24:# TODO: (TESTing [01;31m[KIN_PROGRESS[m[K):
+./bin/templates/firstlife-evening.routine.TEMPLATE:8:firstlife-preempt-same-script # TODO^12: ([01;31m[KIN_PROGRESS[m[K) TEST and commit more widespread use of this script
 ./bin/crontab-verbose:20:    # TODO^111: ([01;31m[KIN_PROGRESS[m[K) also open example files, if available (so 'firstlife' can suggest an example crontab file)
 ./README.md:128:      - TODO^113: ([01;31m[KIN_PROGRESS[m[K, NOW) at least check out the repo, maybe with a skiggety-utils installer
-./bin/templates/firstlife-morning.routine.TEMPLATE:51:# EASY TODO^120: (TESTing [01;31m[KIN_PROGRESS[m[K) mute during meditation:
-./bin/templates/firstlife-morning.routine.TEMPLATE:77:firstlife-mute --time-in-seconds $(( 30 * 60 )) # EASY TODO^121: (TESTing [01;31m[KIN_PROGRESS[m[K) mute during exercise
-./bin/firstlife-break:23:shellask "EASY TODO^122: (TESTing [01;31m[KIN_PROGRESS[m[K) mute during breaks ($(echo_here)):"
-./bin/templates/firstlife-morning.routine.TEMPLATE:86:firstlife-mute --time-in-seconds $(( 10 * 60)) # EASY TODO^122: (TESTing [01;31m[KIN_PROGRESS[m[K) mute during shower
 ---- TODOs for right NOW: ------------------------------------------------------
 ./README.md:128:      - TODO^113: (IN_PROGRESS, [01;31m[KNOW[m[K) at least check out the repo, maybe with a skiggety-utils installer
