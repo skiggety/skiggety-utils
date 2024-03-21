@@ -2,14 +2,8 @@
 
 # This script runs and manages your morning routine.
 
-# EASY TODO^90: make sure only firstlife-morning and firstlife-evening limit to running once a day, not other scripts
-# TODO^113: (IN_PROGRESS) have a way for a new instance and a running instance to avoid interfering.  The new one could take over and the old one could exit gracefully.
-# - TODO^111: if a second firstlife pops up, maybe it should take over and the old one gracefully exits? (PPID in a marker file?)
-
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
-
-# TODO^6?: exit if a script with identical name and path is in parent tree
 
 exit_if_script_succeeded_today $0 # make sure this script only runs to completion once a day
 

@@ -5,45 +5,50 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
+firstlife-preempt-same-script
+
 function show_recently_done_todos {
     today_todo -n | grep 'DO'NE # TODO^4: function extract
 }
+firstlife_exit_if_needed
 
 show_recently_done_todos
+firstlife_exit_if_needed
 
 # EASY TODO^48: I need different criteria for whether to continue...is it the same day? do you have enough points? Do you want
 # to do more?:
 
 today_todo -n | grep URGENT
-firslife-delegate "run 'vital' to make sure items tagged 'URGENT' are tagged (including 'POINT') and sorted well enough to get on with it"
+firstlife-delegate --limit-times-per-x 3 day "Run 'vital' to make sure items tagged 'URGENT' are tagged (including 'POINT') and sorted well enough to get on with it"
 firstlife-iterate-on-vital-tag -n 2 'URGENT' || accumulate_error 'ignored URGENT tasks' # TODO: limit the total number that happens daily
 
-firstlife-reward "looked at URGENT stuff" # TODO^114: (IN_PROGRESS) this is important, TEST against getting to this point (URGENT stuff done) as a benchmark
+firstlife-check-snail-mail || accumulate_error 'ignored physical mail'
+firstlife_exit_if_needed
 
 firstlife-multitask || accumulate_error 'multitasking ERRORS' # TODO: at least once, maybe longer if there is time
 show_recently_done_todos
-exit_if_day_is_over
+firstlife_exit_if_needed
 
 firstlife-daily || accumulate_error 'did not complete DAILY tasks'
-exit_if_day_is_over
+firstlife_exit_if_needed
 
 firstlife-focus || accumulate_error 'did not focus on important stuff'
-exit_if_day_is_over
-
-firstlife-check-snail-mail || accumulate_error 'ignored physical mail'
+firstlife_exit_if_needed
 
 # TODO^50: work on a few 'WEEKLY' tasks, don't do each one more than once a week
 
 # EASY to get started TODO^55: ask about if you have done enough productivity points.  Maybe ask how many done today and how many left in the
 # week, and make sure you do more than a day's share...
 while shellask "Should you still be doing productive stuff on this beautiful day $FIRSTLIFE_ISOTODAY?" ;do
-    exit_if_day_is_over
+    firstlife_exit_if_needed
 
     firstlife-focus || accumulate_error 'did not focus on important stuff'
-    exit_if_day_is_over
+    firstlife_exit_if_needed
 
     firstlife-multitask || accumulate_error 'multitasking ERRORS'
     show_recently_done_todos
-    exit_if_day_is_over
+    firstlife_exit_if_needed
     # TODO^2: exit loop if you've already done it twice
 done
+
+exit_with_any_accumulated_errors

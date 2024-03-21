@@ -45,6 +45,8 @@ if $LIMIT_FREQUENCY;then
     FIND_CTIME_NUM="0"
     if [ "$FREQUENCY_LIMIT_PERIOD" == 'day' ];then
         FIND_CTIME_NUM="1"
+    elif [ "$FREQUENCY_LIMIT_PERIOD" == '2_days' ];then
+        FIND_CTIME_NUM="2"
     elif [ "$FREQUENCY_LIMIT_PERIOD" == 'week' ];then
         FIND_CTIME_NUM="7"
     else
