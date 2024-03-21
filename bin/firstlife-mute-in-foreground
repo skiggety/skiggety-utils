@@ -5,6 +5,8 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
+SKIGGETY_DEBUG=true # TODO: DELETE
+
 MUTE_DURATION_IN_SECONDS="300"
 debug_eval_here MUTE_DURATION_IN_SECONDS
 while [[ "$1" == -* ]]; do
