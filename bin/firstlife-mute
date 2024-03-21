@@ -4,10 +4,4 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-# TODO^122: (IN_PROGRESS) Use this script in a bunch of places:
-# EASY TODO^120: mute during meditation
-# EASY TODO^120: mute during exercise
-# EASY TODO^120: mute during shower
-# EASY TODO^121: mute during breaks
-
 firstlife-mute-in-foreground "$@" >/dev/null 2>&1 &

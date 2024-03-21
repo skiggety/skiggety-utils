@@ -19,4 +19,8 @@ mkdir -p $FIRSTLIFE_LOG_DIR
 
 LOG_FILE="$(log_file_for_type ${LOG_TYPE})"
 
-echo "$(date):$*" >> "${LOG_FILE}"
+DATE="$(date)"
+if [ "$LOG_TYPE" == 'log' ]; then
+    echo "$DATE:$*"
+fi
+echo "$DATE:$*" >> "${LOG_FILE}"

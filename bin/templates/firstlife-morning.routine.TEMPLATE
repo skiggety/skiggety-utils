@@ -48,6 +48,8 @@ firstlife_exit_if_needed
 SCOTTS_MEDITATION_PLAYLIST='https://www.youtube.com/playlist?list=PLbyyOcHfeHIqCKsHI62oWS6i4JQfdtcfd'
 open "$SCOTTS_MEDITATION_PLAYLIST" 2>/dev/null &
 # TODO^2: mute firstlife for the duration. (When exactly to start it? use a 5-minute pomodoro?):
+# EASY TODO^120: (TESTing IN_PROGRESS) mute during meditation:
+firstlife-mute --time-in-seconds 315
 firstlife-delegate --limit-n-times-per-x 1 day '5-minute meditation' || accumulate_error 'did not meditate' # TODO^81: --with-timer 330 (and use timers widely)
 firstlife_exit_if_needed
 
@@ -69,6 +71,7 @@ firstlife-delegate --limit-n-times-per-x 1 day 'Start up some podcasts'
 firstlife_exit_if_needed
 
 # TODO^3: firstlife-delegate --with-reward --with-timer $(( 30 * 60 )) 'blah blah':
+firstlife-mute --time-in-seconds $(( 30 * 60 )) # EASY TODO^121: (TESTing IN_PROGRESS) mute during exercise
 firstlife-delegate --limit-n-times-per-x 1 day 'Put on exercise clothes (and make sure you have your housekey/earbuds, etc.)' \
     && firstlife-delegate --limit-n-times-per-x 1 day 'Exercise!' \
     || firstlife-delegate --limit-n-times-per-x 1 day 'Schedule exercise for later today' \
@@ -76,6 +79,8 @@ firstlife-delegate --limit-n-times-per-x 1 day 'Put on exercise clothes (and mak
 firstlife_exit_if_needed
 
 # TODO^3: maybe make a 'delegate' function that calls both firstlife-delegate --with-reward and firstlife_exit_if_needed:
+
+firstlife-mute --time-in-seconds $(( 10 * 60)) # EASY TODO^122: (TESTing IN_PROGRESS) mute during shower
 firstlife-delegate --limit-n-times-per-x 1 day 'Hit the shower' || accumulate_error 'did not shower'
 firstlife_exit_if_needed
 

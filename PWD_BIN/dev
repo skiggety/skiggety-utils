@@ -13,6 +13,8 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 
 echo_divider_with_text "#" "running 'dev':"
 
+# TODO^2?: wait a bit for other instances of "dev" to finish?
+
 # TODO^2: ask Kevin to test if this generation is working for him and if it shows up in his 'todo' output:
 experiment_script="./PWD_BIN/experiment.gitignored.bash"
 if ! [ -f "$experiment_script" ]; then

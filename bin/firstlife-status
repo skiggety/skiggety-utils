@@ -30,7 +30,6 @@ echo "$reward_status" | abbreviate -l 6 -t 'firstlife-reward -n'
 
 # EASY? FUN? TODO^52: firstlife-pomodoro -n # to show accumulating pomodoros like rewards for more motivation
 
-# EASY TODO^107: mute during meditation, exercise, shower, pomodoros, breaks, evenings, etc.
 # - EASY TODO^11: can also use mute at will
 BEHIND_SOUND="$FIRSTLIFE_DIR/sounds/behind.mp3"
 BEHIND_SOUND_VOLUME='3' # TODO^6: put in local config with this default:

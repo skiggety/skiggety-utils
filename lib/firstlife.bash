@@ -177,3 +177,7 @@ function handle-alarmy-photo-mission {
   sleep-verbose 3
   return 0
 }
+
+REWARD_LOG="$(log_file_for_type reward)"
+debug_eval_here REWARD_LOG
+export REWARD_LOG
