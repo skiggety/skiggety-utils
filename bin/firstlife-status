@@ -5,6 +5,11 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
+MINUTES_OF_INACTIVITY_ALLOWED=10 # TODO^4: make configurable and tune the number
+debug_eval_here MINUTES_OF_INACTIVITY_ALLOWED
+TARGET_SECONDS_PER_REWARD=$(( 5 * 60 )) # TODO^4: make configurable and tune the number
+debug_eval_here TARGET_SECONDS_PER_REWARD
+
 EXPECTED_PPID=""
 while [[ "$1" == -* ]]; do
     if [[ "$1" == '--while-review-pid-latest' ]]; then
@@ -40,18 +45,12 @@ while ! [ -f $BEHIND_SOUND ]; do
         || exit_with_error "No sound to let you know you are behind available"
 done
 
-MINUTES_OF_INACTIVITY_ALLOWED=15 # TODO^3: make configurable and tune the number
-debug_eval_here MINUTES_OF_INACTIVITY_ALLOWED
-
-TARGET_SECONDS_PER_REWARD=$(( 10 * 60 )) # TODO^3: make configurable and tune the number
-debug_eval_here TARGET_SECONDS_PER_REWARD
-
 spr="$(echo "$reward_status"| grep 'seconds each' | sed 's/.*at \([0-9]*\) seconds each.*/\1/')"
 spr=${spr:-'100000'}
 debug_eval_here spr
 
 # TODO: or if no rewards yet:
-if [ $spr -gt $TARGET_SECONDS_PER_REWARD ] && test "`find $FIRSTLIFE_LOG_DIR/reward.$(isotoday).log.txt -mmin +$MINUTES_OF_INACTIVITY_ALLOWED 2>/dev/null`"; then
+if [ $spr -gt $TARGET_SECONDS_PER_REWARD ] && test "`find $REWARD_LOG -mmin +$MINUTES_OF_INACTIVITY_ALLOWED 2>/dev/null`"; then
     echo
     if firstlife-is-muted; then
         echo "UH-OH! It seems like you're getting BEHIND! (but firstlife is muted, so this won't emit a sound)"

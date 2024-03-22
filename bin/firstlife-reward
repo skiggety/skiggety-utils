@@ -63,9 +63,11 @@ if [ $reward_score -gt 0 ]; then
         HOURS_PER_REWARD="$( echo "$SECONDS_PER_REWARD / 3600" | bc )"
         SECONDS_PER_REWARD_EXPLANATION="$SECONDS_PER_REWARD_EXPLANATION, or about $HOURS_PER_REWARD hours"
     fi
+    LAST_REWARD_TIME="$(ls -l $REWARD_LOG | awk '{print $8}' )"
+    SECONDS_PER_REWARD_EXPLANATION="$SECONDS_PER_REWARD_EXPLANATION, with the last one at $LAST_REWARD_TIME"
 fi
 
-GAPS_PER_POINT="$(echo "$SECONDS_PER_REWARD / 90" | bc )"
+GAPS_PER_POINT="$(( ( $SECONDS_PER_REWARD / 60 ) - 1 ))"
 
 if [ $reward_score -gt 0 ]; then
     j=1
