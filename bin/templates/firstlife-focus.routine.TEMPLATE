@@ -12,7 +12,7 @@ firstlife_exit_if_needed
 
 firstlife-delegate --limit-n-times-per-x 3 day 'Caffeinate yourself (if you need to)'
 
-# TODO^101: (POINT, META) aim to get to this point, by, say, 10AM.  Iterate.
+# TODO^102: (POINT, META) aim to get to this point, by, say, 10AM.  Iterate.
 
 # TODO^10: EXTRACT and REUSE this approach that includes the headings:
 today_todo --non-interactive | grep --color=always '\(NOW\|EASY\|--------\|^$\)'

@@ -63,6 +63,7 @@ for num in $(seq $passes_at_todo_list); do
     firstlife-delegate --limit-n-times-per-x 10 day 'Take care of a calendar task, maybe by putting it into today_todo' && firstlife-reward || accumulate_error 'ignored paper todo list'
     firstlife_exit_if_needed
 
+    vital-list-by-tag NOW
     vital-list-by-tag POINT
     firstlife-delegate --limit-n-times-per-x 3 day 'Run "vital" again to tag or upvote something worth productivity POINTS' || \
         accumulate_error 'did not get focus on the important stuff'
