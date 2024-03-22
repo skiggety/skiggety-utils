@@ -5,18 +5,36 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
-# TODO^5: subject to configuration if you have a max times per day number set, exit this script early if you already have the reward logged for this script enough times today.
+# TODO^5: subject to configuration if you have a max times per day number set, exit this script early if you already have the reward logged for this script enough times today. In other words, only allow this script to run twice a day
 
 firstlife-alarm "Hooray! Time to practice your musical instrument!"
 shellask "Are you ready to practice your musical instrument?" || exit_with_error "Decided not to practice music"
 
 shellask "TODO IN_PROGRESS DELETE THE LINE WITH lahsdflaksdf in it";cd $SKIGGETY_UTILS_DIR; git add -N $0; git add -p $0
+# TODO^3: IF YOU CAN SEE THIS, VOTE for a TODO, this is also your opportunity to try to correct issues you know # about.
+$EDITOR $0 # TODO^2: DELETE when this is done needing some specific attention
 
 # TODO^4: organize this script with several short pomodoros
 
 # CAPTURE INSPIRATION
+# EASY TODO^26: pick up your instrument and play something without thinking about it
+# - EASY TODO^25: and make sure it's in TUNE while you're at it
+# TODO^10: Is it interesting? Develop it a little and/or write it down if it's warranted
+
 # USE PRACTICE DECK
+# TODO^4: find or invent an excercise you can do on your instrument
+# - TODO: try out the exercise
+# - TODO^2: write down the exercise on a single notecard and add it to your practice deck
+# TODO: shuffle your practice deck and deal yourself two more cards, and do those two exercises
+# TODO: any other ideas for practice exercises? You can add them to your deck now, if you want.
+# TODO^4: put away your practice deck
+
 # BAND PREPAREDNESS
+# TODO^8: spend a few minutes preparing for your next band practice
+
+# TODO^5: record anything new and original for your own, configurable, youtube playlist to draft out your next solo album
+# - TODO^3: pop open that playlist
+
 firstlife-mute-in-foreground --time-in-seconds $(( 20 * 60 ))
 firstlife-alarm "You have practiced enough for now, probably"
 
