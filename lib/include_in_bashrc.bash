@@ -40,6 +40,8 @@ alias gvcs="git vimchanged --staged"
 alias gpnb='git push-new-branch'
 alias gp='git pretty-pull'
 alias gat='git add-theirs'
+# TODO: (IN_PROGRESS) TEST before enabling: alias gr='git ready'
+# TODO^2: (IN_PROGRESS) TEST before enabling: alias cgry='ci && git ready && exit 0'
 
 alias cdsu="cd $SKIGGETY_UTILS_DIR"
 

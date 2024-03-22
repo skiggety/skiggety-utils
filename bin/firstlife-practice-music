@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# This script opens up a custom playlist of music to practice along with.
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
+
+# TODO^5: subject to configuration if you have a max times per day number set, exit this script early if you already have the reward logged for this script enough times today.
+
+firstlife-alarm "Hooray! Time to practice your musical instrument!"
+shellask "Are you ready to practice your musical instrument?" || exit_with_error "Decided not to practice music"
+
+shellask "TODO IN_PROGRESS DELETE THE LINE WITH lahsdflaksdf in it";cd $SKIGGETY_UTILS_DIR; git add -N $0; git add -p $0
+
+# TODO^4: organize this script with several short pomodoros
+
+# CAPTURE INSPIRATION
+# USE PRACTICE DECK
+# BAND PREPAREDNESS
+firstlife-mute-in-foreground --time-in-seconds $(( 20 * 60 ))
+firstlife-alarm "You have practiced enough for now, probably"
+
+firstlife-reward "practiced a musical instrument"
