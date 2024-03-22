@@ -40,9 +40,10 @@ fi
 
 # TODO^4: make 'do not add' and 'do not commit' keywords consistent, maybe script extract 'git-warn-against-adding-keyword'
 DO_NOT_ADD="$(git diff --inter-hunk-context=1 | grep '^[+].*[X]XX')"
+DO_NOT_ADD="$(echo "$DO_NOT_ADD" | sed 's/\\$/\\\\/g')" # because a DO_NOT_ADD line with a trailing backslash can screw up the no_color
 if ! [ -z "$DO_NOT_ADD" ]; then
     echo_divider_with_text '!' "DO NOT ADD (${RED}X""XX${no_color}) :"
-    echo_error "${newline}$DO_NOT_ADD"
+    echo_error "${newline}${DO_NOT_ADD}"
 fi
 
 echo_divider_with_text "-=" "git status:"
