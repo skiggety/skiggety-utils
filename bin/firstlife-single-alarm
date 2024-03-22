@@ -5,7 +5,7 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
-SNOOZE_SECONDS=${SNOOZE_SECONDS:-60}
+SNOOZE_SECONDS=${SNOOZE_SECONDS:-5}
 trap "exit 1" INT # seems to be necessary to cancel the alarm cleanly
 
 # TODO^2: tolerate wav or mp3, don't suggest downloading one and renaming it to the other

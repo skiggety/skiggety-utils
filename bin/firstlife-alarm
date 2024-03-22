@@ -7,10 +7,10 @@
 
 # TODO: make sure volume is up
 
-SNOOZE_SECONDS=10 # TODO^2: make configurable
+SNOOZE_SECONDS=60 # TODO^2: make configurable
 export SNOOZE_SECONDS
 
-SNOOZE_BACKOFF_SECONDS=25 # TODO^3: make configurable
+SNOOZE_BACKOFF_SECONDS=30 # TODO^3: make configurable
 
 while firstlife-single-alarm "$*";do
     tput bel # a.k.a. ding, bell (for searchability) # TODO?: DELETE now that we have another sound
