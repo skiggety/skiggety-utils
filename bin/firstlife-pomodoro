@@ -74,12 +74,8 @@ sleep-verbose --with-countdown $SLEEP_FOR || exit_with_error "ended pomodoro ear
 if $WITH_ALARMS; then
     firstlife-alarm "OK, you can stop working on '$@' now if you need to!"
 fi
-
-exit_if_day_is_over
-
 task_description="Finish the POMODORO: $@"
 firstlife-delegate --with-reward "$task_description" || exit_with_error "skipped pomodoro for: $*"
-
 firstlife-log --type pomodoro "$task_description" # TODO^103: (FUN) display this output and productivity point count in firstlife-status like we do with rewards
 
 exit_if_day_is_over

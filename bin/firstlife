@@ -2,8 +2,8 @@
 
 # Self, program thyself.  This script gamifies life to help get everyday stuff done, and it's just a prototype.
 
-# TODO^108: call firstlife-setup, which should generate a crontab and guide you through setting it up to call the other
-# routines, then exit
+firstlife-setup
+# TODO^110: everything after firstlife-setup should be moved elsewhere after firstlife-setup generates a sample crontab and guide you through setting it up to call the other routines
 
 # TODO^93: TEST this in docker as a reluctant user starting from fish
 

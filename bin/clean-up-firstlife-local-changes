@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# This script helps the user to make sure changes to firstlife get committed and pushed
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+clean-up-su-local-changes #TODO: IMPLEMENT for real, with firstlife in another repo"

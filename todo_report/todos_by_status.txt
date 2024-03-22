@@ -1,7 +1,7 @@
 ---- IN_PROGRESS: --------------------------------------------------------------
 ./bin/templates/firstlife-work.routine.TEMPLATE:24:# TODO^101: (TESTing [01;31m[KIN_PROGRESS[m[K, NOW):
 ./bin/crontab-verbose:20:    # TODO^111: ([01;31m[KIN_PROGRESS[m[K) also open example files, if available (so 'firstlife' can suggest an example crontab file)
-./README.md:128:      - TODO^113: ([01;31m[KIN_PROGRESS[m[K, NOW) at least check out the repo, maybe with a skiggety-utils installer
+./README.md:128:      - TODO^114: ([01;31m[KIN_PROGRESS[m[K, NOW) at least check out the repo, maybe with a skiggety-utils installer
 ---- TODOs for right NOW: ------------------------------------------------------
 ./bin/templates/firstlife-work.routine.TEMPLATE:24:# TODO^101: (TESTing IN_PROGRESS, [01;31m[KNOW[m[K):
-./README.md:128:      - TODO^113: (IN_PROGRESS, [01;31m[KNOW[m[K) at least check out the repo, maybe with a skiggety-utils installer
+./README.md:128:      - TODO^114: (IN_PROGRESS, [01;31m[KNOW[m[K) at least check out the repo, maybe with a skiggety-utils installer
