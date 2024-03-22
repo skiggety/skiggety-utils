@@ -5,10 +5,6 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
-MINUTES_OF_INACTIVITY_ALLOWED=10 # TODO^4: make configurable and tune the number
-debug_eval_here MINUTES_OF_INACTIVITY_ALLOWED
-TARGET_SECONDS_PER_REWARD=$(( 5 * 60 )) # TODO^4: make configurable and tune the number
-debug_eval_here TARGET_SECONDS_PER_REWARD
 
 EXPECTED_PPID=""
 while [[ "$1" == -* ]]; do
@@ -19,11 +15,14 @@ while [[ "$1" == -* ]]; do
     fi
 done
 
-# TODO^16: function extract to firstlife.bash
-# push everything to the bottom of the terminal
-for blank_line_i in $(seq $(tput lines));do
-    echo
-done
+# TODO^16: function extract to firstlife.bash:
+for blank_line_i in $(seq $(tput lines));do echo; done # push everything to the bottom of the terminal
+
+MINUTES_OF_INACTIVITY_ALLOWED=12 # TODO^4: make configurable and tune the number
+debug_eval MINUTES_OF_INACTIVITY_ALLOWED
+debug_here "(...but right now MINUTES_OF_INACTIVITY_ALLOWED is still hardcoded)"
+TARGET_SECONDS_PER_REWARD=$(( 5 * 60 )) # TODO^4: make configurable and tune the number
+debug_eval TARGET_SECONDS_PER_REWARD
 
 # TODO: exit if after CHILL_TIME, BEDTIME, or maybe control bedtime with a cron marker file, or maybe just be silent
 # instead of exiting
@@ -49,7 +48,7 @@ spr="$(echo "$reward_status"| grep 'seconds each' | sed 's/.*at \([0-9]*\) secon
 spr=${spr:-'100000'}
 debug_eval_here spr
 
-# experiment with allowing this to stretch a litle based on current performance
+# BEWARE, experiment with allowing this to stretch a litle based on current performance:
 MINUTES_OF_INACTIVITY_ALLOWED=$(( ( $MINUTES_OF_INACTIVITY_ALLOWED + ( $spr / 60 ) ) / 2 ))
 debug_eval_here MINUTES_OF_INACTIVITY_ALLOWED
 
