@@ -2,7 +2,7 @@
 
 # Self, program thyself.  This script gamifies life to help get everyday stuff done, and it's just a prototype.
 
-firstlife-setup
+firstlife-setup || accumulate_error "firstlife-setup FAILED"
 # TODO^110: everything after firstlife-setup should be moved elsewhere after firstlife-setup generates a sample crontab and guide you through setting it up to call the other routines
 
 # TODO^93: TEST this in docker as a reluctant user starting from fish
@@ -73,5 +73,3 @@ update_vital_graph # TODO^21: only if using 'vital'
 exit_if_day_is_over
 
 exit_with_any_accumulated_errors
-
-exit 0

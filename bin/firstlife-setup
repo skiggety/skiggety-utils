@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# This script gets firstlife ready for later use
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+accumulate_error "TODO^111: IMPLEMENT"
+# TODO^111: - generate example crontab file, including:
+# TODO^110:   - wake up routine
+# TODO^110:   - morning routine
+# TODO:     - make sure firstlife-work-on-calendar gets called in here somewhere
+# TODO^110:   - evening routine
+# TODO^110:   - productivity routines
+# TODO^109:   - ...for the important stuff
+# TODO^2:   - ...and the fun stuff
+# TODO^51:   - ...and the stuff in between
+# TODO^71:   - run firstlife-pomodoro-to-work-on-firstlife (optionally if you have dev mode on)
+# TODO:   - a daily review of your progress graphs
+# TODO:   - maybe a test line, to run 10 minutes from now and then be deleted, just to prove crontab works for you
+# TODO: - call crontab-verbose, or ask the user to do it, to set up their crontab based on an example
