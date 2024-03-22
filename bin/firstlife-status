@@ -49,10 +49,14 @@ spr="$(echo "$reward_status"| grep 'seconds each' | sed 's/.*at \([0-9]*\) secon
 spr=${spr:-'100000'}
 debug_eval_here spr
 
+# experiment with allowing this to stretch a litle based on current performance
+MINUTES_OF_INACTIVITY_ALLOWED=$(( ( $MINUTES_OF_INACTIVITY_ALLOWED + ( $spr / 60 ) ) / 2 ))
+debug_eval_here MINUTES_OF_INACTIVITY_ALLOWED
+
 # TODO: or if no rewards yet:
 if [ $spr -gt $TARGET_SECONDS_PER_REWARD ] && test "`find $REWARD_LOG -mmin +$MINUTES_OF_INACTIVITY_ALLOWED 2>/dev/null`"; then
     echo
-    if firstlife-is-muted; then
+    if firstlife-is-muted >/dev/null 2>&1; then
         echo "UH-OH! It seems like you're getting BEHIND! (but firstlife is muted, so this won't emit a sound)"
     else
         echo "UH-OH! It seems like you're getting BEHIND, time to emit a sound: $BEHIND_SOUND"

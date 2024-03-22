@@ -14,7 +14,7 @@ firstlife-preempt-same-script
 # TODO^2: use this to make sure we don't ask for the alarm too often: FIRSTLIFE_ALARM_MARKER_FILE="$FIRSTLIFE_DIR/markers/firstlife_outside_alarm_confirmed"
 
 # TODO^12: figure out how to keep this stuff on a schedule:
-# - TODO^100: help user set up crontab with a sample file
+# - TODO^103: help user set up crontab with a sample file, maybe mention http://crontab.guru which can help generate crontab lines
 # - EASY TODO^42: build a timer into firstlife-delegate, keep stats on how long things take, just pairs of task names and times
 #   - TODO^41: then make the logs daily, graph the daily linecount
 

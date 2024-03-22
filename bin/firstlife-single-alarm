@@ -19,7 +19,7 @@ done
 
 alarm_volume=100
 silent_message=""
-if firstlife-is-muted; then
+if firstlife-is-muted >/dev/null 2>&1; then
     alarm_volume=0
     silent_message=" (silent)"
     debug_here "Firstlife is muted, so this alarm will be silent..."

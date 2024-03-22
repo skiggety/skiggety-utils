@@ -5,11 +5,11 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
-if ls ${FIRSTLIFE_MUTE_FILE_PREFIX}* > /dev/null 2>&1; then
-    debug_here "Firstlife is muted"
+if ls ${FIRSTLIFE_MUTE_FILE_PREFIX}*; then
+    echo "Firstlife is muted"
     exit 0
 else
-    debug_here "Firstlife is not muted"
+    echo "Firstlife is not muted"
     exit 1
 fi
 

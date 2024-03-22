@@ -20,8 +20,9 @@ while [[ "$1" == -* ]]; do
 done
 
 # write ppid in mute file
-FIRSTLIFE_MUTE_FILE="${FIRSTLIFE_MUTE_FILE_PREFIX}${PPID}"
 debug_eval_here FIRSTLIFE_MUTE_FILE_PREFIX
+# TODO^5: why is $PPID '1' sometimes?
+FIRSTLIFE_MUTE_FILE="${FIRSTLIFE_MUTE_FILE_PREFIX}${PPID}"
 debug_eval_here FIRSTLIFE_MUTE_FILE
 echo $PPID > $FIRSTLIFE_MUTE_FILE
 
