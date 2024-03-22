@@ -11,6 +11,7 @@
 HOW_MANY_THINGS_TO_PUT_AWAY_EVERY_DAY=30
 HOW_MANY_THINGS_TO_WIPE_EVERY_DAY=4
 
+# TODO^2: (FUN) mix the cleaning in with the tidying? #: TIDIES_PER_CLEAN=6; if [ $(( $i % $TIDIES_PER_CLEAN )) -eq 0 ]; then blah blah
 for i in $(seq $HOW_MANY_THINGS_TO_PUT_AWAY_EVERY_DAY);do
     sleep-verbose --with-countdown $(( 20 + ( $i * 2 ) ))
     exit_if_day_is_over

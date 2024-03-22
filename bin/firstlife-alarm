@@ -6,11 +6,16 @@
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
 # TODO: make sure volume is up
-tput bel # a.k.a. ding, bell (for searchability) # TODO?: DELETE now that we have another sound
-SNOOZE_SECONDS=60
+
+SNOOZE_SECONDS=60 # TODO: make configurable
 export SNOOZE_SECONDS
+
+SNOOZE_BACKOFF_SECONDS=20 # TODO: make configurable
+
 while firstlife-single-alarm "$*";do
-    SNOOZE_SECONDS="$(( $SNOOZE_SECONDS + 15 ))"
+    tput bel # a.k.a. ding, bell (for searchability) # TODO?: DELETE now that we have another sound
+
+    SNOOZE_SECONDS="$(( $SNOOZE_SECONDS + $SNOOZE_BACKOFF_SECONDS ))"
     export SNOOZE_SECONDS
     echo
 done

@@ -4,7 +4,10 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-accumulate_error "TODO^111: IMPLEMENT"
+vim $0 # TODO^91: IF YOU CAN SEE THIS MESSAGE, VOTE for a TODO in this file, and DELETE this line when this file is implemented
+
+firstlife-delegate "set up your cron to call firstlife routines with 'crontab-verbose'" || exit_with_error "did not manage to do manual setup, TODO^91: IMPLEMENT a real setup"
+
 # TODO^111: - generate example crontab file, including:
 # TODO^110:   - wake up routine
 # TODO^110:   - morning routine
