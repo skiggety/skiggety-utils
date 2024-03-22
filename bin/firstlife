@@ -44,19 +44,12 @@ function update_vital_graph {
     firstlife-delegate --limit-n-times-per-x 1 day "check today_todo graph import $VITAL_DIR/graph.csv with 'replace current sheet' by uploading" || accumulate_error "did not check today_todo graph"
 }
 
-# TODO: maybe wake only runs because the cron job calls firstlife --with-wake
-firstlife-wake && firstlife-reward "Waking up" || accumulate_error "I am not sure you are awake"
-exit_if_day_is_over
-
 # to make sure firstlife has the latest code:
 if shellask "Would you like to update skiggety-utils (including firstlife) now?"; then
     pushd $SKIGGETY_UTILS_DIR > /dev/null
     ./PWD_BIN/git-safe-pull
     popd > /dev/null
 fi
-exit_if_day_is_over
-
-firstlife-morning || accumulate_error 'morning routine had errors'
 exit_if_day_is_over
 
 # EASY TODO^83: prompt user to back up ~/firstlife ( $FIRSTLIFE_DIR ) as part of setup/maintenance
