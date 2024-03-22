@@ -1,5 +1,5 @@
 ==== TODOs, ascending, so you know what's likely to change next. Do not edit, run 'generate_todo_report' to generate. ====
-( showing last 8 lines out of 776 for 'todo': )
+( showing last 8 lines out of 775 for 'todo': )
 ./bin/firstlife-setup:15:# [1m[31mTODO^110[0m[0m:   - evening routine
 ./bin/firstlife-setup:16:# [1m[31mTODO^110[0m[0m:   - productivity routines
 ./README.md:127:    - [1m[31mTODO^111[0m[0m: move firstlife to 'zerothlife' repo
