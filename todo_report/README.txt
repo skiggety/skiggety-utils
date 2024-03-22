@@ -3,7 +3,7 @@
 ./bin/firstlife-setup:13:# TODO^110:   - productivity routines
 ./README.md:127:    - TODO^111: move firstlife to 'zerothlife' repo
 ./bin/crontab-verbose:20:    # TODO^111: (IN_PROGRESS) also open example files, if available (so 'firstlife' can suggest an example crontab file)
-./bin/firstlife-setup:7:exit_with_error "TODO^111: IMPLEMENT"
+./bin/firstlife-setup:7:accumulate_error "TODO^111: IMPLEMENT"
 ./bin/firstlife-setup:8:# TODO^111: - generate example crontab file, including:
 ./README.md:128:      - TODO^114: (IN_PROGRESS, NOW) at least check out the repo, maybe with a skiggety-utils installer
 ./lib/firstlife.bash:45:# TODO^114: use firstlife_exit_if_needed liberally instead of exit_if_day_is_over (all over the codebase)

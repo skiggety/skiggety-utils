@@ -67,6 +67,7 @@ class ReviewProgram
     @slept_already = 0
     @should_clear_screen = true
     @interactive = false
+    @should_listen = true
   end
 
   def run
@@ -128,12 +129,14 @@ class ReviewProgram
       # to run and 15-60 seconds to react to, like running tests and debugging in another window.  You may want to also
       # set a shorter uninterruptable delay to guarantee you always have a few seconds to react.
 
-      # TODO: have a flag that lets you specify which path on the filesystem to listen to.
-      # - TODO^2: Probably oughta have a flag to turn it off too.
+      # TODO^3: have a flag that lets you specify which path on the filesystem to listen to.
       # - TODO: Probably ought to then have a flag to set that multiplier.
 
       # TODO: --timeout <n>, or in other words kill commands after this many seconds..
       # TODO: should be able to specify min/max delay from the command line as hh:mm:ss if you want:
+      parser.on('--no-listen', 'do not listen to disk activity') do
+        @should_listen = false
+      end
       parser.on('-m', '--min-delay MINIMUM', 'specify minimum delay in seconds') do |min|
         @minimum_delay = min.to_i
       end
@@ -240,10 +243,12 @@ class ReviewProgram
   # TODO^2: this needs to be switchable by command line
   # TODO: maybe skip files that are gitignored?:
   def start_wake_on_filesystem_change
-    listener = Listen.to('.') do |_modified, _added, _removed|
-      @wake_up_now = true if @wake_up_now == false
+    if @should_listen
+      listener = Listen.to('.') do |_modified, _added, _removed|
+        @wake_up_now = true if @wake_up_now == false
+      end
+      listener.start
     end
-    listener.start
   end
 
   def wakeable_sleep_verbose(delay)
