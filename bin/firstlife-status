@@ -5,7 +5,6 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
-
 EXPECTED_PPID=""
 while [[ "$1" == -* ]]; do
     if [[ "$1" == '--while-review-pid-latest' ]]; then

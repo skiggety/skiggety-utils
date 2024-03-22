@@ -1,6 +1,6 @@
 ---- IN_PROGRESS: --------------------------------------------------------------
 ./bin/firstlife-practice-music:13:shellask "TODO [01;31m[KIN_PROGRESS[m[K DELETE THE LINE WITH lahsdflaksdf in it";cd $SKIGGETY_UTILS_DIR; git add -N $0; git add -p $0
-./bin/firstlife-weird-night:14:    shellask "TODO [01;31m[KIN_PROGRESS[m[K DELETE THE LINE WITH lkasjdfoeihe in it";cd $SKIGGETY_UTILS_DIR; git add -N $0; git add -p $0
+./bin/firstlife-weird-night:12:    shellask "TODO [01;31m[KIN_PROGRESS[m[K DELETE THE LINE WITH lkasjdfoeihe in it";cd $SKIGGETY_UTILS_DIR; git add -N $0; git add -p $0
 ./lib/include_in_bashrc.bash:43:# TODO: ([01;31m[KIN_PROGRESS[m[K) TEST before enabling: alias gr='git ready'
 ./lib/include_in_bashrc.bash:44:# TODO^2: ([01;31m[KIN_PROGRESS[m[K) TEST before enabling: alias cgry='ci && git ready && exit 0'
 ./bin/templates/firstlife-work.routine.TEMPLATE:24:# TODO^101: (TESTing [01;31m[KIN_PROGRESS[m[K, NOW):

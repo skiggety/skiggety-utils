@@ -29,7 +29,7 @@ debug_eval_here MINUTES_LEFT
 while [ $MINUTES_LEFT -gt 0 ];do
     debug_eval_here MINUTES_LEFT
     LAST_TIME_MINUTES_LEFT="$MINUTES_LEFT"
-    MINUTES_LEFT="$(( ($MINUTES_LEFT * 40) / 100 ))"
+    MINUTES_LEFT="$(( ($MINUTES_LEFT * 58) / 100 ))"
     if [[ "$MINUTES_LEFT" == -* ]]; then
         MINUTES_LEFT=0
     fi
