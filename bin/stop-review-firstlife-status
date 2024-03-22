@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# This script flags review-firstlife-status to stop, mainly intended for use with cron.
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
+
+echo '0' > $FIRSTLIFE_DIR/.review-firstlife-status_PPID

@@ -52,7 +52,7 @@ function run-or-fail {
    $@ || exit_with_error "Command \"$@\" FAILED"
 }
 
-# TODO^2: move/reuse?
+# TODO^5: move/reuse
 function hesitate-and-run-or-fail {
    hesitate-and-run $@ || exit_with_error "Command \"$@\" FAILED"
 }
