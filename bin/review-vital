@@ -6,3 +6,6 @@
 
 # TODO^100: IMPLEMENT"
 # - TODO^102: but first get your vital data in it's own repo"
+
+# TODO: review vital -n
+review today_todo -n || exit_with_error "Could not get a report using today_todo"
