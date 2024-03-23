@@ -3,7 +3,7 @@
 # This script coordinates one pomodoro for you
 
 # EASY TODO^86: use this script more often, maybe against your todo list
-# - EASY TODO^98: (POINT) successful pomodoros should keep log and count and show score, so I can count them and confirm I'm doing them consistently
+# - EASY TODO^99: (POINT) successful pomodoros should keep log and count and show score, so I can count them and confirm I'm doing them consistently
 # - EASY TODO^47: also, count POINTs similarly from lines with 'POINT' in todays todo file.
 
 # TODO^8?: exit early if you've done enough pomodoros in a day

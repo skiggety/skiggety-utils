@@ -32,6 +32,10 @@ firstlife_exit_if_needed
 
 firstlife-practice-music
 
+for tag in FUN EASY; do
+    echo
+    vital-list-by-tag $tag | abbreviate -l 15 -d -t $tag
+done
 firstlife-delegate --with-reward "use 'vital' to edit what's FUN or EASY"
 firstlife_exit_if_needed
 
