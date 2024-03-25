@@ -36,16 +36,6 @@ fi
 
 $SKIGGETY_UTILS_DIR/installers/firstlife || exit_with_error "could not set up firstlife"
 
-# EASY TODO^86: move elsewhere:
-function update_vital_graph {
-    # TODO^88: (EASY) make sure TODO graph exists in an environment variable so you don't commit it:
-    # - TODO^89 (EASY): if there's no environment variable, suggest the user start a new one and save the link in their bashrc, where the template should be ready.
-    # TODO: wherever you use 'open', use firstlife-open instead, which can use shellask if you're in a docker container:
-    open $VITAL_DIR
-    # TODO^3: do something with error count:
-    firstlife-delegate --limit-n-times-per-x 1 day "check today_todo graph import $VITAL_DIR/graph.csv with 'replace current sheet' by uploading" || accumulate_error "did not check today_todo graph"
-}
-
 # to make sure firstlife has the latest code:
 if shellask "Would you like to update skiggety-utils (including firstlife) now?"; then
     pushd $SKIGGETY_UTILS_DIR > /dev/null
@@ -62,9 +52,5 @@ exit_if_day_is_over
 # # TODO^63: make this program aware of your productivity points, as in, keep going until you have enough:
 # firstlife-work || accumulate_error "firstlife-work had ERRORS"
 # exit_if_day_is_over
-
-# EASY TODO^3: every time I do this graph update should be in a routine like morning or evening so it can get skipped:
-update_vital_graph # TODO^21: only if using 'vital'
-exit_if_day_is_over
 
 exit_with_any_accumulated_errors

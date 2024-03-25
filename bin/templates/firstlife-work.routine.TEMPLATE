@@ -40,7 +40,7 @@ firstlife_exit_if_needed
 firstlife-focus || accumulate_error 'did not focus on important stuff'
 firstlife_exit_if_needed
 
-# TODO^50: work on a few 'WEEKLY' tasks, don't do each one more than once a week
+# TODO^59: work on a few 'WEEKLY' tasks, don't do each one more than once a week
 
 # EASY to get started TODO^55: ask about if you have done enough productivity points.  Maybe ask how many done today and how many left in the
 # week, and make sure you do more than a day's share...

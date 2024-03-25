@@ -7,6 +7,15 @@
 
 firstlife-preempt-same-script
 
+function update_vital_graph {
+    # TODO^88: (EASY) make sure TODO graph exists in an environment variable so you don't commit it:
+    # - TODO^89 (EASY): if there's no environment variable, suggest the user start a new one and save the link in their bashrc, where the template should be ready.
+    # TODO: wherever you use 'open', use firstlife-open instead, which can use shellask if you're in a docker container:
+    open $VITAL_DIR
+    # TODO^3: do something with error count:
+    firstlife-delegate --limit-n-times-per-x 1 day "check today_todo graph import $VITAL_DIR/graph.csv with 'replace current sheet' by uploading" || accumulate_error "did not check today_todo graph"
+}
+
 firstlife_exit_if_needed
 shellask "Is it still ${FIRSTLIFE_ISOTODAY}?" || exit 0
 firstlife_exit_if_needed
@@ -22,7 +31,10 @@ firstlife_exit_if_needed
 firstlife-delegate --with-reward "Check off whatever you can in the habit tracker"
 firstlife_exit_if_needed
 
-firstlife-delegate --limit-n-times-per-x 2 week --with-reward "Look at your habit tracker graphs and vote for whatever you could automate better in firstlife (approximately$(echo_here))"
+update_vital_graph # TODO^21: only if using 'vital'
+firstlife_exit_if_needed
+
+firstlife-delegate --limit-n-times-per-x 2 week --with-reward "Look at your habit tracker graphs and vote for whatever you could automate better in firstlife ($(echo_here))"
 firstlife_exit_if_needed
 
 today_todo -n | grep --color=always '\(EVENING\|--------\|^$\)'
