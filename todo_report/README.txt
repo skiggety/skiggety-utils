@@ -5,6 +5,6 @@
 ./bin/crontab-verbose:20:    # TODO^111: (IN_PROGRESS) also open example files, if available (so 'firstlife' can suggest an example crontab file)
 ./bin/firstlife-setup:11:# TODO^111: - generate example crontab file, including:
 ./README.md:127:    - TODO^113: move firstlife to 'zerothlife' repo
+./lib/firstlife.bash:45:# TODO^113: use firstlife_exit_if_needed liberally instead of exit_if_day_is_over (all over the codebase)
 ./README.md:128:      - TODO^114: (IN_PROGRESS, NOW) at least check out the repo, maybe with a skiggety-utils installer
-./lib/firstlife.bash:45:# TODO^114: use firstlife_exit_if_needed liberally instead of exit_if_day_is_over (all over the codebase)
 ./README.md:130:  - TODO^116: move 'vital' data (to do list) to private repo (skiggety utils should help set up)

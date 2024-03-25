@@ -42,7 +42,7 @@ function firstlife-preempt-same-script {
     echo $PPID > $FIRSTLIFE_THIS_SCRIPT_PPID_FILE
 }
 
-# TODO^114: use firstlife_exit_if_needed liberally instead of exit_if_day_is_over (all over the codebase)
+# TODO^113: use firstlife_exit_if_needed liberally instead of exit_if_day_is_over (all over the codebase)
 function firstlife_exit_if_needed {
     exit_if_day_is_over
     exit_if_this_script_is_running_elsewhere
