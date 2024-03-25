@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# This script helps you start chipping away at a task a few minutes at a time.
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
+
+TITLE="$*"
+
+POMODORO_MINUTES=1
+while ! shellask "Is '$TITLE' done yet (or at least done enough for today)?"; do
+    firstlife-pomodoro --with-alarms --time-in-minutes $POMODORO_MINUTES "Work on '$TITLE' for $POMODORO_MINUTES minutes" # TODO?: --without-reward and do rewards separately
+    POMODORO_MINUTES="$(( $POMODORO_MINUTES + 1 ))"
+    BONUS_SLEEP=$(( $POMODORO_MINUTES * 20 ))
+    echo Bonus sleep $BONUS_SLEEP seconds!
+    sleep-verbose --with-countdown $BONUS_SLEEP
+    exit_if_day_is_over
+    firstlife-alarm "Time to work on: $TITLE"
+done
+
+firstlife-reward "Put in a decent amount of work on '$TITLE' for $FIRSTLIFE_ISOTODAY"
