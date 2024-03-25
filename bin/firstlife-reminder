@@ -8,7 +8,7 @@ MINUTES_LEFT="15"
 TITLE="Do what's on your calendar"
 
 while [[ "$1" == -* ]]; do
-    if [ "$1" == "-m" ]; then
+    if [ "$1" == "-m" -o "$1" == "--time-in-minutes" ]; then # TODO^5: Don't use -m for this...
         shift
         MINUTES_LEFT="$1"
         debug_eval_here MINUTES_LEFT
