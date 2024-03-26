@@ -126,6 +126,7 @@ These ideas don't have a code location, so they go here:
   - TODO^56: firstlife
     - TODO^113: move firstlife to 'zerothlife' repo
       - TODO^114: (IN_PROGRESS, NOW) at least check out the repo, maybe with a skiggety-utils installer
+      - TODO^110: and then start moving over and renaming the actual scripts
       - TODO^109: see what else in ./bin/silliness might belong in zerothlife repo
   - TODO^116: move 'vital' data (to do list) to private repo (skiggety utils should help set up)
   - TODO^48: spin off kid-utils
