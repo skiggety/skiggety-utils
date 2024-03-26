@@ -9,7 +9,7 @@
 # TODO^8?: exit early if you've done enough pomodoros in a day
 # TODO^3: maybe accept a '--without-reward' option
 
-# TODO^21: have a way to limit daily or weekly occurrences of the same pomodoro
+# TODO^30: have a way to limit daily or weekly occurrences of the same pomodoro
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
@@ -91,7 +91,7 @@ exit_if_day_is_over
 
 if $WITH_BREAK; then
     # TODO?: or should this be a 5-minute timer from youtube?:
-    firstlife-break -t 300
+    firstlife-break -t 300 # TODO: break length proportional to length of pomodoro by default?
 fi
 
 # redundant? TODO DELETE?: firstlife-alarm "This is the end of your post-pomodoro break.  Go do something!"

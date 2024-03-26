@@ -5,6 +5,8 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
+# TODO: this should also be able to show the current pomodoro you are on, and maybe information about if/when/why firstlife was muted
+
 EXPECTED_PPID=""
 while [[ "$1" == -* ]]; do
     if [[ "$1" == '--while-review-pid-latest' ]]; then
@@ -74,6 +76,6 @@ if ! [ -z "$EXPECTED_PPID" ]; then
     latest_review_ppid=$(cat $FIRSTLIFE_MARKER_DIR/.review-firstlife-status_PPID)
     debug_eval latest_review_ppid
     if ! [ "$latest_review_ppid" -eq "$EXPECTED_PPID" ]; then
-        exit_with_error "Exiting since process $latest_review_ppid has taken over"
+        exit_with_error "Exiting since process $latest_review_ppid has taken over" # TODO^20: DEBUG THIS, it seems broken
     fi
 fi

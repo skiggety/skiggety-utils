@@ -7,6 +7,8 @@
 
 firstlife-preempt-same-script
 
+# TODO^3: wait for morning routine to finish, and run 'firstlife_exit_if_needed' every so often while you're at it...
+
 firstlife-check-calendar -m "check calendar for birthdays "
 open "http://facebook.com" 2>/dev/null & # TODO: UN-HARDCODE
 firstlife-delegate --limit-n-times-per-x 1 day --with-reward "Wish people 'Happy Birthday!' (look at google calendar and facebook)."
