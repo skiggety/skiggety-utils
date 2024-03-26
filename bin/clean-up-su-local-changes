@@ -10,5 +10,5 @@ if git-no-unpushed-changes && git-no-uncommitted-changes; then
     exit 0
 else
     dashboard
-    firstlife-delegate --with-reward 'commit something, probably using "ci && git ready && yup".'
+    firstlife-delegate --with-reward 'commit something, probably using "ci && git ready && yup" or "cgry" for short.'
 fi
