@@ -277,4 +277,11 @@ module InstallableSkiggetyUtil
       raise "FAILED to upgrade or install cask #{package_name} with homebrew"
   end
 
+  def git_clone_latest(repo, dir)
+    assert_system("git clone #{repo} #{dir}") unless Dir.exist?(dir)
+    Dir.chdir(dir) do
+      assert_system('git pretty-pull')
+    end
+  end
+
 end

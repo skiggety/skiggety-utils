@@ -73,14 +73,6 @@ class VimInstaller
     "#{Dir.home}/.vim/bundle"
   end
 
-  # TODO^119: (IN_PROGRESS, NOW) maybe move to installable_skiggety_util.rb:
-  def git_clone_latest(repo, dir)
-    assert_system("git clone #{repo} #{dir}") unless Dir.exist?(dir)
-    Dir.chdir(dir) do
-      assert_system('git pretty-pull')
-    end
-  end
-
   def configure!
     if $interactive
       # TODO: prompt the user with something to explain what they need to do:
