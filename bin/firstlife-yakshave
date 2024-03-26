@@ -13,9 +13,6 @@ pushd $SKIGGETY_UTILS_DIR >/dev/null
 
 firstlife_exit_if_needed
 
-dashboard
-firstlife-delegate --with-reward 'commit something, probably using "ci && git ready && yup".'
-
 firstlife_exit_if_needed
 
 # TODO^7? : turn this into a linter:
