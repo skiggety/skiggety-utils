@@ -7,29 +7,32 @@
 
 firstlife-preempt-same-script
 
-# TODO^5: subject to configuration if you have a max times per day number set, exit this script early if you already have the reward logged for this script enough times today. In other words, only allow this script to run twice a day
-
-firstlife-alarm "Hooray! Time to practice your musical instrument!"
-firstlife_exit_if_needed
-shellask "Are you ready to practice your musical instrument?" || exit_with_error "Decided not to practice music"
-
 # TODO^3: IF YOU CAN SEE THIS, VOTE for a TODO, this is also your opportunity to try to correct issues you know # about.
 $EDITOR $0 # TODO^2: DELETE when this is done needing some specific attention
 firstlife_exit_if_needed
 
-# TODO^4: organize this script with several short pomodoros
+# TODO^5: subject to configuration if you have a max times per day number set, exit this script early if you already have the reward logged for this script enough times today. In other words, only allow this script to run twice a day
+
+# TODO^10: limit how many times a day this script runs
+firstlife-alarm "Hooray! Time to practice your musical instrument!"
+firstlife_exit_if_needed
+shellask "Are you ready to practice your musical instrument?" || exit_with_error "Decided not to practice music"
+
+# TODO^7: organize this script with several short pomodoros, maybe randomly selct between different options, or
+# alternate, or make different routines
 
 # CAPTURE INSPIRATION
-# EASY TODO^26: pick up your instrument and play something without thinking about it
-# - EASY TODO^25: and make sure it's in TUNE while you're at it
-# TODO^10: Is it interesting? Develop it a little and/or write it down if it's warranted
+firstlife-delegate 'Pick up your instrument and play something without thinking about it'
+firstlife_exit_if_needed
+firstlife-delegate 'Tune your instrument' || exit_with_error "Didn't tune"
+firstlife-delegate 'Did you play anything original & interesting? write it down or record it if there is anything to record'
 firstlife_exit_if_needed
 
 # USE PRACTICE DECK
-# TODO^4: find or invent an excercise you can do on your instrument
+# TODO^4: find or invent an excercise you can do on your instrument (maybe make this a card instead of a todo)
 # - TODO: try out the exercise
 # - TODO^2: write down the exercise on a single notecard and add it to your practice deck
-# TODO: shuffle your practice deck and deal yourself two more cards, and do those two exercises
+# TODO^4: shuffle your practice deck and deal yourself two more cards, and do those two exercises
 # TODO: any other ideas for practice exercises? You can add them to your deck now, if you want.
 # TODO^4: put away your practice deck
 firstlife_exit_if_needed
