@@ -12,15 +12,25 @@ class ZerothLifeInstaller
 
   include InstallableSkiggetyUtil
 
+  def code_dir
+    # Assume that where skiggety utils is parked is where you want to check out code:
+    File.dirname(ENV.fetch('SKIGGETY_UTILS_DIR', nil))
+  end
+
+  def install_dir
+    "#{code_dir}/zerothlife"
+  end
+
   def apparently_installed?
-    raise 'TODO: IMPLEMENT'
+    Dir.exist?(install_dir)
   end
 
   # TODO: Only if you have access: TODO: how about some way to get updates, other than relying on firstlife itself? When
   # should this script do a git-safe-pull?
 
   def install!
-    git_clone_latest('https://github.com/skiggety/zerothlife', "#{code_dir}/zerothlife")
+    # TODO^100: (IN_PROGRESS) DEBUG this: do I need a 'main' branch to have something to check out?
+    git_clone_latest('https://github.com/skiggety/zerothlife', install_dir)
   end
 
 end

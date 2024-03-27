@@ -1,9 +1,10 @@
 ---- IN_PROGRESS: --------------------------------------------------------------
 ./bin/firstlife-weird-night:12:    shellask "TODO [01;31m[KIN_PROGRESS[m[K DELETE THE LINE WITH lkasjdfoeihe in it";cd $SKIGGETY_UTILS_DIR; git add -N $0; git add -p $0
-./lib/include_in_bashrc.bash:43:# TODO: ([01;31m[KIN_PROGRESS[m[K) TEST before enabling: alias gr='git ready'
-./lib/include_in_bashrc.bash:44:# TODO^2: ([01;31m[KIN_PROGRESS[m[K) TEST before enabling: alias cgry='ci && git ready && exit 0'
-./bin/templates/firstlife-focus.routine.TEMPLATE:15:# TODO^103: (POINT, META, TESTing [01;31m[KIN_PROGRESS[m[K) aim to get to this point, by, say, 10AM.  Iterate.
+./installers/zerothlife:32:    # TODO^100: ([01;31m[KIN_PROGRESS[m[K) DEBUG this: do I need a 'main' branch to have something to check out?
+./bin/templates/firstlife-focus.routine.TEMPLATE:15:# TODO^104: (POINT, META, TESTing [01;31m[KIN_PROGRESS[m[K) aim to get to this point, by, say, 10AM.  Iterate.
 ./bin/crontab-verbose:20:    # TODO^111: ([01;31m[KIN_PROGRESS[m[K) also open example files, if available (so 'firstlife' can suggest an example crontab file)
-./README.md:128:      - TODO^114: ([01;31m[KIN_PROGRESS[m[K, NOW) at least check out the repo, maybe with a skiggety-utils installer
+./README.md:128:      - TODO^113: ([01;31m[KIN_PROGRESS[m[K, NOW) skiggety-utils installer
+./installers/zerothlife:6:# TODO^116: ([01;31m[KIN_PROGRESS[m[K, NOW) at least check out the zerothlife repo, maybe with a skiggety-utils installer
 ---- TODOs for right NOW: ------------------------------------------------------
-./README.md:128:      - TODO^114: (IN_PROGRESS, [01;31m[KNOW[m[K) at least check out the repo, maybe with a skiggety-utils installer
+./README.md:128:      - TODO^113: (IN_PROGRESS, [01;31m[KNOW[m[K) skiggety-utils installer
+./installers/zerothlife:6:# TODO^116: (IN_PROGRESS, [01;31m[KNOW[m[K) at least check out the zerothlife repo, maybe with a skiggety-utils installer

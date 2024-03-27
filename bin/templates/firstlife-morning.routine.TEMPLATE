@@ -47,7 +47,7 @@ firstlife_exit_if_needed
 # EASY TODO^84: Or better yet, manage the list of videos here and randomize:
 SCOTTS_MEDITATION_PLAYLIST='https://www.youtube.com/playlist?list=PLbyyOcHfeHIqCKsHI62oWS6i4JQfdtcfd'
 open "$SCOTTS_MEDITATION_PLAYLIST" 2>/dev/null &
-# TODO^2: mute firstlife for the duration. (When exactly to start it? use a 5-minute pomodoro?):
+# TODO^2: mute firstlife for the duration.  (When exactly to start it? use a 5-minute pomodoro?):
 firstlife-mute --time-in-seconds 315
 firstlife-delegate --limit-n-times-per-x 1 day '5-minute meditation' || accumulate_error 'did not meditate' # TODO^81: --with-timer 330 (and use timers widely)
 firstlife_exit_if_needed
