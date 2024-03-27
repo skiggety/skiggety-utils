@@ -13,7 +13,7 @@ firstlife_exit_if_needed
 
 # TODO^5: subject to configuration if you have a max times per day number set, exit this script early if you already have the reward logged for this script enough times today. In other words, only allow this script to run twice a day
 
-# TODO^12: limit how many times a day this script runs
+# TODO^15: limit how many times a day this script runs
 firstlife-alarm "Hooray! Time to practice your musical instrument!"
 firstlife_exit_if_needed
 shellask "Are you ready to practice your musical instrument?" || exit_with_error "Decided not to practice music"

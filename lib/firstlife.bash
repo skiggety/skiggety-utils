@@ -14,12 +14,12 @@ FIRSTLIFE_ISOTODAY=${FIRSTLIFE_ISOTODAY:-"$(isotoday)"}
 export FIRSTLIFE_ISOTODAY
 
 # Including the date in mute file names so they only work for one day even if they get left around by accident:
-FIRSTLIFE_MUTE_FILE_PREFIX="$FIRSTLIFE_MARKER_DIR/.firstlife_currently_muted_on.${FIRSTLIFE_ISOTODAY}.by_ppid."
+FIRSTLIFE_MUTE_FILE_PREFIX="$FIRSTLIFE_MARKER_DIR/.firstlife_currently_muted_on.${FIRSTLIFE_ISOTODAY}.by_pid."
 export FIRSTLIFE_MUTE_FILE_PREFIX
 
-FIRSTLIFE_THIS_SCRIPT_PPID_FILE="$FIRSTLIFE_MARKER_DIR/.current.$(basename $0).PPID"
-touch $FIRSTLIFE_THIS_SCRIPT_PPID_FILE
-export FIRSTLIFE_THIS_SCRIPT_PPID_FILE
+FIRSTLIFE_THIS_SCRIPT_PID_FILE="$FIRSTLIFE_MARKER_DIR/.current.$(basename $0).PID"
+touch $FIRSTLIFE_THIS_SCRIPT_PID_FILE
+export FIRSTLIFE_THIS_SCRIPT_PID_FILE
 
 # TODO^4: function seconds_as_hms { # for use in sleep-verbose, so '3627' seconds would be '1:00:27'
 
@@ -40,8 +40,7 @@ function is_still_today {
 
 function firstlife-preempt-same-script {
     debug_here
-    # TODO^100: (IN_PROGRESS, NOW)  how many places am I using PPID where I probably really mean to use '$$' for the pid? (like right here):
-    echo $PPID > $FIRSTLIFE_THIS_SCRIPT_PPID_FILE
+    echo $$ > $FIRSTLIFE_THIS_SCRIPT_PID_FILE
 }
 
 # TODO^113: use firstlife_exit_if_needed liberally instead of exit_if_day_is_over (all over the codebase)
@@ -50,13 +49,13 @@ function firstlife_exit_if_needed {
     exit_if_this_script_is_running_elsewhere
 }
 
-# after we make sure common tasks only run once, we could do this, like what ../*firstlife-status scripts do with $FIRSTLIFE_MARKER_DIR/.review-firstlife-status_PPID
+# after we make sure common tasks only run once, we could do this, like what ../*firstlife-status scripts do with $FIRSTLIFE_MARKER_DIR/.review-firstlife-status_PID
 function exit_if_this_script_is_running_elsewhere {
     debug_here
-    latest_script_ppid=$(cat $FIRSTLIFE_THIS_SCRIPT_PPID_FILE)
-    debug_eval_here latest_script_ppid
-    debug_eval_here PPID
-    if [ $PPID -ne $latest_script_ppid ]; then
+    latest_script_pid=$(cat $FIRSTLIFE_THIS_SCRIPT_PID_FILE)
+    debug_eval_here latest_script_pid
+    debug_here "\$\$ is '$$'"
+    if [ $$ -ne $latest_script_pid ]; then
         echo "Another instance of $(basename $0) is running, exiting..."
         exit_with_any_accumulated_errors
         exit 0
@@ -138,7 +137,8 @@ function use_and_maintain_inner_routine_based_on_template {
         || accumulate_error "inner $nickname routine '$INNER_ROUTINE_SCRIPT' FAILED"
 
     # TODO^88: allow using vscode here:
-    if [ -f $PERSONAL_ROUTINE_SCRIPT ]; then
+    if [ -f $PERSONAL_ROUTINE_SCRIPT ]; then # TODO^11: and if the files are different, otherwise probably not worth editing:
+        # TODO^3: Encourage editing more strongly if the template has been edited more recently than the local version
         shellask "Want to tune up $(basename $PERSONAL_ROUTINE_SCRIPT) for next time?" \
             && vimdiff -o $TEMPLATE_ROUTINE_SCRIPT $PERSONAL_ROUTINE_SCRIPT # TODO^2: GTVO (get the vim out)
     else

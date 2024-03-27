@@ -22,7 +22,7 @@ TITLE="$*"
 
 # TODO: display minutes as H:MM, by putting a conversion function in skiggety-utils.bash
 
-TIME_MARKER_FILE="/tmp/$(basename $0).$PPID.marked.time"
+TIME_MARKER_FILE="/tmp/$(basename $0).$$.marked.time"
 
 echo "$MINUTES_LEFT minutes until '$TITLE' at $(date)"
 debug_eval_here MINUTES_LEFT
