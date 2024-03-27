@@ -16,7 +16,7 @@ while [[ "$1" == -* ]]; do
     fi
 done
 
-# TODO^16: function extract to firstlife.bash:
+# TODO^25: function extract to firstlife.bash:
 for blank_line_i in $(seq $(tput lines));do echo; done # push everything to the bottom of the terminal
 
 MINUTES_OF_INACTIVITY_ALLOWED=12 # TODO^4: make configurable and tune the number
@@ -65,6 +65,9 @@ if [ $spr -gt $TARGET_SECONDS_PER_REWARD ] && test "`find $REWARD_LOG -mmin +$MI
     echo "...Also, here's the file with the last timestamp for a reward:"
     ls -lh $FIRSTLIFE_LOG_DIR/reward.$(isotoday).log.txt
 fi
+
+firstlife-is-muted
+# TODO^151: similarly, show current alarms, especially if muted!!
 
 if is_another_day; then
     exit_with_error "The day is over, get a run review-firstlife-status again to monitor today's firstlife status"

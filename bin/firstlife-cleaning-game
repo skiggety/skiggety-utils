@@ -5,6 +5,8 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
+# TODO^41: since I'm using mute-in-foreground, I might need to unmute if the script gets killed (trap signal)
+
 # TODO^7: subject to configuration if you have a max times per day number set, exit this script early if you already have the reward logged for this script enough times today.
 # - TODO^6: similarly, maybe make it optional (ask user) after the first completion each day.
 
@@ -13,10 +15,11 @@ HOW_MANY_THINGS_TO_WIPE_EVERY_DAY=4
 
 # TODO^2: (FUN) mix the cleaning in with the tidying? #: TIDIES_PER_CLEAN=6; if [ $(( $i % $TIDIES_PER_CLEAN )) -eq 0 ]; then blah blah
 for i in $(seq $HOW_MANY_THINGS_TO_PUT_AWAY_EVERY_DAY);do
-    firstlife-mute-in-foreground -t $(( 20 + ( $i * 2 ) ))
+    sleep-verbose $(( $i * 2 ))
+    firstlife-mute-in-foreground -t 20 "A short mute in $(basename $0) before putting your ${i}th thing away."
     exit_if_day_is_over
     firstlife-alarm "Time for tidying!"
-    firstlife-mute-in-foreground -t 10
+    firstlife-mute-in-foreground -t 5 "A quiet moment to put something away"
     firstlife-delegate --limit-n-times-per-x 10 week --without-reward "Put away your ${i}th item." || exit_with_error "stopped tidying"
     for nli in $(seq $(tput lines));do echo;done # TODO^17: maybe function extract as it wipes the screen and leaves the cursor at the bottom
     if [ "$(( $i % 5 ))" -eq 0 ]; then
@@ -25,10 +28,11 @@ for i in $(seq $HOW_MANY_THINGS_TO_PUT_AWAY_EVERY_DAY);do
 done
 
 for i in $(seq $HOW_MANY_THINGS_TO_WIPE_EVERY_DAY);do
-    firstlife-mute-in-foreground -t $(( 10 + ( $i * 30 ) ))
+    sleep-verbose $(( $i * 30 ))
+    firstlife-mute-in-foreground -t 20 "A short mute in $(basename $0) before cleaning your ${i}th dirty thing."
     exit_if_day_is_over
     firstlife-alarm "Clean something dirty!"
-    firstlife-mute-in-foreground -t 10
+    firstlife-mute-in-foreground -t 30 "A quiet moment to clean something"
     firstlife-delegate --limit-n-times-per-x 10 week --with-reward "Clean something dirty! (#${i})"
     for nli in $(seq $(tput lines));do echo;done # TODO^16: maybe function extract as it wipes the screen and leaves the cursor at the bottom
 done

@@ -13,7 +13,8 @@ export FIRSTLIFE_MARKER_DIR
 FIRSTLIFE_ISOTODAY=${FIRSTLIFE_ISOTODAY:-"$(isotoday)"}
 export FIRSTLIFE_ISOTODAY
 
-FIRSTLIFE_MUTE_FILE_PREFIX="$FIRSTLIFE_MARKER_DIR/.firstlife_currently_muted_by_ppid."
+# Including the date in mute file names so they only work for one day even if they get left around by accident:
+FIRSTLIFE_MUTE_FILE_PREFIX="$FIRSTLIFE_MARKER_DIR/.firstlife_currently_muted_on.${FIRSTLIFE_ISOTODAY}.by_ppid."
 export FIRSTLIFE_MUTE_FILE_PREFIX
 
 FIRSTLIFE_THIS_SCRIPT_PPID_FILE="$FIRSTLIFE_MARKER_DIR/.current.$(basename $0).PPID"
@@ -39,6 +40,7 @@ function is_still_today {
 
 function firstlife-preempt-same-script {
     debug_here
+    # TODO^100: (IN_PROGRESS, NOW)  how many places am I using PPID where I probably really mean to use '$$' for the pid? (like right here):
     echo $PPID > $FIRSTLIFE_THIS_SCRIPT_PPID_FILE
 }
 

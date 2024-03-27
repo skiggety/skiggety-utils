@@ -5,32 +5,45 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
-SKIGGETY_DEBUG=true # TODO: DELETE
+SKIGGETY_DEBUG=true # TODO^2: DELETE
 
-MUTE_DURATION_IN_SECONDS="300"
-debug_eval_here MUTE_DURATION_IN_SECONDS
+trap 'if [ -f $FIRSTLIFE_MUTE_FILE ]; then rm -f $FIRSTLIFE_MUTE_FILE; fi;exit_with_error "mute interrupted, command was: \"$(basename $0) $@\""' INT # make sure to clean up after yourself...
+
+MY_PID="$$"
+debug_eval_here MY_PID
+
+DURATION_IN_SECONDS="300"
+debug_eval_here DURATION_IN_SECONDS
 while [[ "$1" == -* ]]; do
     if [ "$1" == '-t' -o "$1" == '--time-in-seconds' ]; then
         shift
-        MUTE_DURATION_IN_SECONDS="$1"
-        debug_eval_here MUTE_DURATION_IN_SECONDS
+        DURATION_IN_SECONDS="$1"
+        debug_eval_here DURATION_IN_SECONDS
         shift
     fi
-    # - TODO?: accept other argument as a message
 done
 
-# write ppid in mute file
-debug_eval_here FIRSTLIFE_MUTE_FILE_PREFIX
-# TODO^5: why is $PPID '1' sometimes?
-FIRSTLIFE_MUTE_FILE="${FIRSTLIFE_MUTE_FILE_PREFIX}${PPID}"
-debug_eval_here FIRSTLIFE_MUTE_FILE
-echo $PPID > $FIRSTLIFE_MUTE_FILE
+REASON="$@" # accept other argument as a message
 
-debug_eval_here MUTE_DURATION_IN_SECONDS
-sleep-verbose $MUTE_DURATION_IN_SECONDS
+echo
+echo "MUTING for $DURATION_IN_SECONDS seconds because: '$REASON'"
+echo
+
+# TODO^3?: kill any firstlife-single-alarm process trees, mplayers called by firstlife-status, etc. How best to keep
+# track of them all?
+
+# write pid in mute file
+debug_eval_here FIRSTLIFE_MUTE_FILE_PREFIX
+debug_eval_here MY_PID
+FIRSTLIFE_MUTE_FILE="${FIRSTLIFE_MUTE_FILE_PREFIX}${MY_PID}"
+debug_eval_here FIRSTLIFE_MUTE_FILE
+echo "${MY_PID}:${REASON} (for $DURATION_IN_SECONDS seconds starting at $(date))" > $FIRSTLIFE_MUTE_FILE # TODO^6: should I put the reason in there too so we can show it in firstlife-status?
+
+debug_eval_here DURATION_IN_SECONDS
+sleep-verbose $DURATION_IN_SECONDS
 
 # Un-mute at the end by deleting mute file if this is the last process to mute:
 if [ -f $FIRSTLIFE_MUTE_FILE ]; then
-    firstlife-log "End of mute period for process $PPID, deleting '$FIRSTLIFE_MUTE_FILE'."
+    firstlife-log "End of mute period for process $MY_PID, deleting '$FIRSTLIFE_MUTE_FILE'."
     rm -f $FIRSTLIFE_MUTE_FILE
 fi

@@ -7,6 +7,8 @@
 
 firstlife-preempt-same-script
 
+# TODO^50: (IN_PROGRESS) see what else I can do to keep more focus on the morning routine until it's done
+
 # TODO^32: this template script should be a laundry list of ideas
 # - TODO^33: ..but first I should start using a local version
 #   - TODO^34: ..but first I should simplify readability a lot
@@ -24,11 +26,14 @@ firstlife_exit_if_needed
 firstlife-delegate 'Put your phone on the charger'
 firstlife_exit_if_needed
 
+firstlife-mute --time-in-seconds 240 "Coffee making"
 firstlife-delegate --limit-n-times-per-x 1 day 'Make coffee'
 firstlife_exit_if_needed
 
+firstlife-mute --time-in-seconds 45 "taking medications"
 firstlife-delegate --limit-n-times-per-x 1 day 'Make sure you have taken any morning medications' || accumulate_error 'did not medicate'
 
+firstlife-mute --time-in-seconds 300 "Breakfast"
 firstlife-delegate --limit-n-times-per-x 1 day 'Break your fast' || accumulate_error 'skipped breakfast'
 firstlife_exit_if_needed
 
@@ -41,6 +46,7 @@ firstlife_exit_if_needed # TODO^38: exit if another instance has taken over at t
 # TODO^21: mention and help with alarmy and cron:
 # EASY TODO^86: help user start firstlife (including morning routine) with cron like I did, automate ensuring a line in local crontab, and use 'crontab-verbose'? (FUN) help user set up crontab like I did (use crontab-verbose?) (to help test on metrigon)
 # TODO^91: move out of inner routine, and actually help user set up alarms and cron:
+firstlife-mute --time-in-seconds 30 "check phone alarm"
 firstlife-delegate --limit-n-times-per-x 2 week 'Make sure you have a phone alarm that ensures you log into this laptop in time for your cron job to fire (for tomorrow). There is one called "Alarmy" that can require a matching photo to what "firstlife-wake" will present in the morning.' || accumulate_error 'BASIC AUTOMATION PROBLEM: alarm not set' # TODO^67: (EASY) use 'firstlife-delegate' instead
 firstlife_exit_if_needed
 
@@ -48,12 +54,17 @@ firstlife_exit_if_needed
 SCOTTS_MEDITATION_PLAYLIST='https://www.youtube.com/playlist?list=PLbyyOcHfeHIqCKsHI62oWS6i4JQfdtcfd'
 open "$SCOTTS_MEDITATION_PLAYLIST" 2>/dev/null &
 # TODO^2: mute firstlife for the duration.  (When exactly to start it? use a 5-minute pomodoro?):
-firstlife-mute --time-in-seconds 315
+firstlife-mute --time-in-seconds 315 "Meditation"
 firstlife-delegate --limit-n-times-per-x 1 day '5-minute meditation' || accumulate_error 'did not meditate' # TODO^81: --with-timer 330 (and use timers widely)
+firstlife_exit_if_needed
+
+firstlife-mute --time-in-seconds 180 "planning your day in 'vital'"
+firstlife-delegate --limit-n-times-per-x 1 day 'take a moment to think about what you most want to get done soon and make sure it is in "vital", and tagged properly, and upvoted enough'
 firstlife_exit_if_needed
 
 # TODO: maybe start playlist after meditation instead of right at wake time?
 
+firstlife-mute --time-in-seconds 30 "review negative habits"
 firstlife-delegate --limit-n-times-per-x 1 day "Review any habits you working on breaking ('negative' habits in the tracker)" \
     || accumulate_error 'did not work on breaking habits'
 firstlife_exit_if_needed
@@ -61,20 +72,23 @@ firstlife_exit_if_needed
 firstlife-delegate --limit-n-times-per-x 1 day 'Make sure your phone is at least 25% charged (so you can walk outside with it soon)'
 firstlife_exit_if_needed
 
-firstlife-break
-
+firstlife-pomodoro --time-in-minutes 3 --without-break "Enjoy the distractions around you for a moment to figure out which things are distracting before putting them away"
+firstlife-mute --time-in-seconds 30 'Put away any temptations or distractions'
 firstlife-delegate --limit-n-times-per-x 2 day 'Put away any temptations or distractions'
 firstlife_exit_if_needed
 
+firstlife-mute --time-in-seconds 30 'Start up some podcasts'
 firstlife-delegate --limit-n-times-per-x 1 day 'Start up some podcasts'
 firstlife_exit_if_needed
 
+firstlife-mute --time-in-seconds 60 'Update yesterday in the habit tracker'
 firstlife-delegate --limit-n-times-per-x 1 day 'Update yesterday in the habit tracker' || accumulate_error 'did not update yesterday in the habit tracker'
 firstlife_exit_if_needed
 
 # TODO^3: firstlife-delegate --with-reward --with-timer $(( 30 * 60 )) 'blah blah':
-firstlife-mute --time-in-seconds $(( 30 * 60 ))
+firstlife-mute --time-in-seconds 120 'Put on exercise clothes (and make sure you have your housekey/earbuds, etc.)'
 firstlife-delegate --limit-n-times-per-x 1 day 'Put on exercise clothes (and make sure you have your housekey/earbuds, etc.)' \
+    && firstlife-mute --time-in-seconds $(( 30 * 60 )) "Exercise" \
     && firstlife-delegate --limit-n-times-per-x 1 day 'Exercise!' \
     || firstlife-delegate --limit-n-times-per-x 1 day 'Schedule exercise for later today' \
     || accumulate_error 'did not exercise'
@@ -82,45 +96,54 @@ firstlife_exit_if_needed
 
 # TODO^3: maybe make a 'delegate' function that calls both firstlife-delegate --with-reward and firstlife_exit_if_needed:
 
-firstlife-alarm "Hit the shower"
-firstlife-mute-in-foreground --time-in-seconds $(( 10 * 60))
+firstlife-mute --time-in-seconds 30 'Get ready for the shower'
+firstlife-alarm 'Get ready for the shower'
+firstlife-mute-in-foreground --time-in-seconds $(( 12 * 60)) "Shower"
+firstlife-mute --time-in-seconds 30 'Finish your shower'
 firstlife-alarm 'Finish your shower' || accumulate_error 'did not shower'
 firstlife-delegate --limit-n-times-per-x 1 day 'Finish your shower' || accumulate_error 'did not shower'
 firstlife_exit_if_needed
 
+firstlife-mute --time-in-seconds 90 'Shave'
 firstlife-delegate --limit-n-times-per-x 1 2_days 'Shave' || accumulate_error 'did not shave'
 firstlife_exit_if_needed
 
+firstlife-mute --time-in-seconds 60 'Deodorant'
 firstlife-delegate --limit-n-times-per-x 1 day 'apply deodorant' || accumulate_error 'did not apply deodorant'
 firstlife_exit_if_needed
 
-firstlife-delegate --limit-n-times-per-x 1 day 'Use mouthwash' || accumulate_error 'did not use mouthwash'
+firstlife-mute --time-in-seconds 45 'Moutwash'
+firstlife-delegate --limit-n-times-per-x 1 day 'Use mouthwash'
 firstlife_exit_if_needed
 
-firstlife-delegate --limit-n-times-per-x 1 day 'Floss' || accumulate_error 'did not floss'
+firstlife-mute --time-in-seconds 60 'Floss'
+firstlife-delegate --limit-n-times-per-x 1 day 'Floss'
 firstlife_exit_if_needed
 
+firstlife-mute --time-in-seconds 180 'Brush teeth'
 firstlife-delegate --limit-n-times-per-x 1 day 'Brush teeth' || accumulate_error 'did not brush teeth'
 firstlife_exit_if_needed
 
+firstlife-mute --time-in-seconds 30 'Check off morning habits in tracker'
 firstlife-delegate --limit-n-times-per-x 1 day 'Finish morning habits in the habit tracker' || accumulate_error 'did not finish morning habits'
 firstlife_exit_if_needed
 
+firstlife-mute --time-in-seconds 120 'Get dressed'
 firstlife-delegate --limit-n-times-per-x 1 day 'Get dressed' || accumulate_error 'did not get dressed'
 firstlife_exit_if_needed
 
+firstlife-mute --time-in-seconds 240 "Coffee making"
 firstlife-delegate --limit-n-times-per-x 1 day 'Make coffee again if you want'
 firstlife_exit_if_needed
 
 firstlife-break
 firstlife_exit_if_needed
 
+firstlife-mute --time-in-seconds 120 'Make your bed'
 firstlife-delegate --limit-n-times-per-x 1 day 'Make your bed' || accumulate_error 'did not make your bed'
 firstlife_exit_if_needed
 
-firstlife-delegate --limit-n-times-per-x 1 day 'Break your fast' || accumulate_error 'skipped breakfast'
-firstlife_exit_if_needed
-
+firstlife-mute --time-in-seconds 10 'start music'
 firstlife-delegate 'Keep the tunes pumping (you can use "firstlife-music")'
 firstlife_exit_if_needed
 
@@ -128,6 +151,7 @@ exit_with_any_accumulated_errors
 
 # TODO^23: make sure firstlife_exit_if_needed is aware of errors?
 
+firstlife-mute --time-in-seconds 120 'Look at calendar for today'
 firstlife-check-calendar -m 'Your calendar is about to come up. When it does, mark how long your morning routine took, and plan your day, OK?' \
     || accumulate_error 'did not check calendar'
 

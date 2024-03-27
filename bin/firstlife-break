@@ -21,6 +21,6 @@ firstlife-status
 # TODO^4: log breaks and total break time in seconds much like rewards and pomodoros, as it will be interesting to make sure the total amount is reasonable with some simple tuning variables
 
 shellask "Ready for a break? ($DURATION_IN_SECONDS seconds)" || exit 0
-# TODO^4: put something big and obvious on the screen, like with pomodoros
-firstlife-mute --time-in-seconds $DURATION_IN_SECONDS
+# TODO^6: put something big and obvious on the screen, like with pomodoros
+firstlife-mute --time-in-seconds $DURATION_IN_SECONDS "Taking a ${DURATION_IN_SECONDS}-second break (with $(basename $0))"
 sleep-verbose --with-countdown $DURATION_IN_SECONDS && firstlife-alarm "Your break is now over."
