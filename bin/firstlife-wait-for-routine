@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# This script waits for a routine to finish, like your morning routine, so other routines and such can back off until
+# the right time.
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+WHICH_ROUTINE="$1" # TODO: how about defaulting to 'morning'?
+shift
+
+cd $SKIGGETY_UTILS_DIR && shellask "Ready to work on $(basename $0) just a little?" && vim $0 # TODO: DELETE once IMPLEMENTATION works
+
+# TODO^37: IMPLEMENTATION GOES HERE (use those success marker files? would have to debug the issue with firstlife-morning getting incorrectly marked complete first)
+
+shellask "Please finish $WHICH_ROUTINE routine" # TODO^32: DELETE after real implementation works

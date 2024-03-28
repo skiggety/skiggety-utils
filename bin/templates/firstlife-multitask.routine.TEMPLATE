@@ -13,7 +13,8 @@
 
 firstlife-preempt-same-script
 
-# TODO^12: wait for morning routine to finish, and run 'firstlife_exit_if_needed' every so often while you're at it...
+firstlife-wait-for-routine 'morning'
+firstlife_exit_if_needed
 
 passes_at_todo_list=1
 FIRSTLIFE_MULTITASKING_COUNT=${FIRSTLIFE_MULTITASKING_COUNT:-4} # TODO: make this overridable in firstlife config template
