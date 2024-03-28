@@ -5,9 +5,10 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
 if shellask "Do you have laundry to fold and/or put away?"; then
-    for num in $(seq 15);do
-        sleep-verbose --with-countdown $num
+    for num in $(seq 25);do
+        sleep-verbose --with-countdown $(( 26 - $num ))
         firstlife-alarm "Time to fold something!"
+        firstlife-mute -t 15 "A quiet moment to fold your ${num}th piece of laundry"
         firstlife-delegate --without-reward --limit-n-times-per-x 4 day "Fold and put away your ${num}th piece of laundry" || \
             { shellask "Are you done putting laundry away?" && firstlife-reward "finished folding laundry" && exit 0; } || \
             exit_with_error "stopped folding"
