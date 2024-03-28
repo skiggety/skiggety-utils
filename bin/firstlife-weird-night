@@ -8,9 +8,7 @@ WEIRD_NIGHT_SONG='https://www.youtube.com/watch?v=glgPZmSwC4M'
 if shellask "Is it a weird part of the night?"; then
     open "$WEIRD_NIGHT_SONG" 2>/dev/null &
 
-    firstlife-mute -t 60
-    shellask "TODO IN_PROGRESS DELETE THE LINE WITH lkasjdfoeihe in it";cd $SKIGGETY_UTILS_DIR; git add -N $0; git add -p $0
-    firstlife-mute-in-foreground -t 120
+    firstlife-mute-in-foreground -t 120 "So we can hear that weird song clealy for at least a moment"
 
     firstlife-practice-music
 
