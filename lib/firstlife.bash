@@ -181,6 +181,17 @@ function handle-alarmy-photo-mission {
   return 0
 }
 
+function make_terminal_big {
+    # TODO^3: develop generic way to bump up the font size for emphasis, use as needed
+    # TODO^4: set size according to config/preference:
+    if is_on_mac_os; then
+        osascript -e "tell application \"Terminal\" to set the font size of front window to 16"
+    else
+        shellask "TODO: IMPLEMENT make_terminal_big for this os/terminal, or at least vote $(echo_here)"
+        exit_with_error "NOT IMPLEMENTED"
+    fi
+}
+
 REWARD_LOG="$(log_file_for_type reward)"
 debug_eval_here REWARD_LOG
 export REWARD_LOG

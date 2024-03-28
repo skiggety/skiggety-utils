@@ -208,3 +208,8 @@ function assert_equal {
         exit 1
     fi
 }
+
+# TODO: (TESTING IN_PROGRESS):
+function is_on_mac_os {
+    uname -a | grep Darwin > /dev/null
+}
