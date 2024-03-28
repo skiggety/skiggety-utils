@@ -84,6 +84,7 @@ if $WITH_ALARMS; then
     firstlife-alarm "OK, you can stop working on '$@' now if you need to!"
 fi
 task_description="Finish the POMODORO: $@"
+firstlife-mute --time-in-seconds 60 "$task_description"
 firstlife-delegate --with-reward "$task_description" || exit_with_error "skipped pomodoro for: $*"
 firstlife-log --type pomodoro "$task_description" # TODO^103: (FUN) display this output and productivity point count in firstlife-status like we do with rewards
 
