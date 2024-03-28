@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO^100: move this logic to firstlife-setup!:
+
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 

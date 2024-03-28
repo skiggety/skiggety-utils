@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# This script watches the power level of this machine and gets your attention if necessary.
+
+# TODO^23?: rename to mention "battery"
+# TODO^23?: consider whether this should be integrated into firstlife-status or kept separate, or if there should be a way to do both
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+shellask "TODO^20: VOTE for this to get IMPLEMENTed or work on it a bit ($(echo_here))"
+
+# TODO: DELETE TEMPorary delegation when it's IMPLEMENTed for real:
+firstlife-delegate "Make sure you plug this device in if it needs it!" || \
+    exit_with_error "TODO^19: IMPLEMENT (pattern after firstlife-status), and integrate into review-firstlife-status"
