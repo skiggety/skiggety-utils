@@ -15,8 +15,6 @@ export SNOOZE_SECONDS
 SNOOZE_BACKOFF_SECONDS=30 # TODO^3: make configurable
 
 while firstlife-single-alarm "$*";do
-    tput bel # a.k.a. ding, bell (for searchability) # TODO?: DELETE now that we have another sound
-
     SNOOZE_SECONDS="$(( $SNOOZE_SECONDS + $SNOOZE_BACKOFF_SECONDS ))"
     export SNOOZE_SECONDS
     echo

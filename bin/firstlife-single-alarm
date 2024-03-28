@@ -30,6 +30,9 @@ if [ -n "$*" ]; then
 fi
 
 echo_divider_with_text "#" "$message"
+if ! firstlife-is-muted >/dev/null 2>&1; then
+    tput bel # a.k.a. ding, bell (for searchability) # TODO?: DELETE now that we have another sound
+fi
 mplayer -volume $alarm_volume $ALARM_SOUND >/dev/null 2>&1 \
     && echo "Snoozing for $SNOOZE_SECONDS seconds, you can still use CTRL+C to cancel this ALARM" \
     && sleep-verbose $SNOOZE_SECONDS \
