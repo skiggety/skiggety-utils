@@ -6,13 +6,13 @@
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
 if ls ${FIRSTLIFE_MUTE_FILE_PREFIX}* >/dev/null 2>&1; then
-    echo "Firstlife is muted:"
+    echo " ------ Firstlife is MUTED! ------ :"
     for file in ${FIRSTLIFE_MUTE_FILE_PREFIX}*;do
         cat $file
     done
     exit 0
 else
-    echo "Firstlife is not muted."
+    echo "(Firstlife is not muted.)"
     exit 1
 fi
 
