@@ -77,6 +77,6 @@ if ! [ -z "$EXPECTED_PID" ]; then
     latest_review_pid=$(cat $FIRSTLIFE_MARKER_DIR/.review-firstlife-status_PID)
     debug_eval latest_review_pid
     if ! [ "$latest_review_pid" -eq "$EXPECTED_PID" ]; then
-        exit_with_error "Exiting since process $latest_review_pid has taken over" # TODO^20: DEBUG THIS, it seems broken
+        exit_with_error "Exiting since process $latest_review_pid has taken over" # TODO^40: DEBUG THIS, it seems broken
     fi
 fi
