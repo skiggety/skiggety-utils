@@ -79,7 +79,7 @@ for num in $(seq $passes_at_todo_list); do
     # EASY TODO^84: EXTRACT, and REUSE:
     todo -n | grep --color=always '\(NOW\|LATER\|--------\|^$\)'
     popd >/dev/null
-    firstlife-delegate --limit-n-times-per-x 10 day --with-reward 'See if you can work on something "NOW" that is marked "LATER" (or vise-versa) in vital' || accumulate_error 'Did not maintain NOW and LATER tags'
+    firstlife-delegate --limit-n-times-per-x 10 day --with-reward 'See if you can mark something something "NOW" that is marked "LATER" (or vise-versa) in vital' || accumulate_error 'Did not maintain NOW and LATER tags'
     firstlife_exit_if_needed
 
     today_todo --non-interactive

@@ -26,7 +26,7 @@ firstlife_exit_if_needed
 firstlife-delegate 'Put your phone on the charger'
 firstlife_exit_if_needed
 
-firstlife-mute --time-in-seconds 240 "Coffee making"
+firstlife-mute --time-in-seconds 360 "Coffee making"
 firstlife-delegate --limit-n-times-per-x 1 day 'Make coffee'
 firstlife_exit_if_needed
 
@@ -59,7 +59,7 @@ firstlife-delegate --limit-n-times-per-x 1 day '5-minute meditation' || accumula
 firstlife_exit_if_needed
 
 firstlife-mute --time-in-seconds 180 "planning your day in 'vital'"
-firstlife-delegate --limit-n-times-per-x 1 day 'take a moment to think about what you most want to get done soon and make sure it is in "vital", and tagged properly, and upvoted enough'
+firstlife-delegate --limit-n-times-per-x 1 day 'Take a moment to think about what you most want to get done soon and make sure it is in "vital", and tagged properly, and upvoted enough'
 firstlife_exit_if_needed
 
 # TODO: maybe start playlist after meditation instead of right at wake time?
@@ -81,10 +81,6 @@ firstlife-mute --time-in-seconds 30 'Start up some podcasts'
 firstlife-delegate --limit-n-times-per-x 1 day 'Start up some podcasts'
 firstlife_exit_if_needed
 
-firstlife-mute --time-in-seconds 60 'Update yesterday in the habit tracker'
-firstlife-delegate --limit-n-times-per-x 1 day 'Update yesterday in the habit tracker' || accumulate_error 'did not update yesterday in the habit tracker'
-firstlife_exit_if_needed
-
 # TODO^3: firstlife-delegate --with-reward --with-timer $(( 30 * 60 )) 'blah blah':
 firstlife-mute --time-in-seconds 120 'Put on exercise clothes (and make sure you have your housekey/earbuds, etc.)'
 firstlife-delegate --limit-n-times-per-x 1 day 'Put on exercise clothes (and make sure you have your housekey/earbuds, etc.)' \
@@ -92,6 +88,10 @@ firstlife-delegate --limit-n-times-per-x 1 day 'Put on exercise clothes (and mak
     && firstlife-delegate --limit-n-times-per-x 1 day 'Exercise!' \
     || firstlife-delegate --limit-n-times-per-x 1 day 'Schedule exercise for later today' \
     || accumulate_error 'did not exercise'
+firstlife_exit_if_needed
+
+firstlife-mute --time-in-seconds 60 'Update yesterday in the habit tracker'
+firstlife-delegate --limit-n-times-per-x 1 day 'Update yesterday in the habit tracker' || accumulate_error 'did not update yesterday in the habit tracker'
 firstlife_exit_if_needed
 
 # TODO^3: maybe make a 'delegate' function that calls both firstlife-delegate --with-reward and firstlife_exit_if_needed:
@@ -132,19 +132,16 @@ firstlife-mute --time-in-seconds 120 'Get dressed'
 firstlife-delegate --limit-n-times-per-x 1 day 'Get dressed' || accumulate_error 'did not get dressed'
 firstlife_exit_if_needed
 
-firstlife-mute --time-in-seconds 240 "Coffee making"
+firstlife-mute --time-in-seconds 360 "Coffee making"
 firstlife-delegate --limit-n-times-per-x 1 day 'Make coffee again if you want'
-firstlife_exit_if_needed
-
-firstlife-break
-firstlife_exit_if_needed
-
-firstlife-mute --time-in-seconds 120 'Make your bed'
-firstlife-delegate --limit-n-times-per-x 1 day 'Make your bed' || accumulate_error 'did not make your bed'
 firstlife_exit_if_needed
 
 firstlife-mute --time-in-seconds 10 'start music'
 firstlife-delegate 'Keep the tunes pumping (you can use "firstlife-music")'
+firstlife_exit_if_needed
+
+firstlife-mute --time-in-seconds 120 'Make your bed'
+firstlife-delegate --limit-n-times-per-x 1 day 'Make your bed' || accumulate_error 'did not make your bed'
 firstlife_exit_if_needed
 
 exit_with_any_accumulated_errors
