@@ -18,7 +18,7 @@ firstlife-alarm "Hooray! Time to practice your musical instrument!"
 firstlife_exit_if_needed
 shellask "Are you ready to practice your musical instrument?" || exit_with_error "Decided not to practice music"
 
-# TODO^9: organize this script with several short pomodoros, maybe randomly selct between different options, or
+# TODO^18: organize this script with several short pomodoros, maybe randomly selct between different options, or
 # alternate, or make different routines
 
 # CAPTURE INSPIRATION
