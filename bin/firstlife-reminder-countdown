@@ -20,7 +20,7 @@ while [[ "$1" == -* ]]; do
 done
 TITLE="$*"
 
-# TODO: display minutes as H:MM, by putting a conversion function in skiggety-utils.bash
+# TODO^51: display minutes as H:MM, by putting a conversion function in skiggety-utils.bash
 
 TIME_MARKER_FILE="/tmp/$(basename $0).$$.marked.time"
 
