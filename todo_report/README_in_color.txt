@@ -1,5 +1,5 @@
 ==== TODOs, ascending, so you know what's likely to change next. Do not edit, run 'generate_todo_report' to generate. ====
-( showing last 8 lines out of 799 for 'todo': )
+( showing last 8 lines out of 802 for 'todo': )
 ./installers/zerothlife:7:# - [1m[31mTODO^113[0m[0m: make this, and maybe all installers, optional. We could use marker files to keep track of preferences
 ./lib/firstlife.bash:46:# [1m[31mTODO^113[0m[0m: use firstlife_exit_if_needed liberally instead of exit_if_day_is_over (all over the codebase)
 ./README.md:127:    - [1m[31mTODO^114[0m[0m: move firstlife to 'zerothlife' repo and rename all mentions of 'firstlife' either to 'zerothlife' or 'zl'
