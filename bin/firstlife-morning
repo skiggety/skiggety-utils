@@ -5,6 +5,7 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
+# TODO: (DEBUG IN_PROGRESS) why isn't this ('exit_if_script_succeeded_today') working right? is it working right for firstlife-wake?:
 exit_if_script_succeeded_today $0 # make sure this script only runs to completion once a day
 
 exit_if_day_is_over

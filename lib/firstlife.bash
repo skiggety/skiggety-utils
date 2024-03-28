@@ -78,6 +78,7 @@ function is_another_day {
     fi
 }
 
+# TODO^100: DEBUG false positives on morning routine, in other words this thinks it has finished when it hasn't:
 function exit_if_script_succeeded_today {
     THIS_SCRIPT_RAN_MARKER_FILE="$(succeeded_today_marker_script $1)"
     if [ -f $THIS_SCRIPT_RAN_MARKER_FILE ]; then
