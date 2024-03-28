@@ -8,11 +8,11 @@
 SNOOZE_SECONDS=${SNOOZE_SECONDS:-5}
 trap "exit 1" INT # seems to be necessary to cancel the alarm cleanly
 
-# TODO^2: tolerate wav or mp3, don't suggest downloading one and renaming it to the other
+# TODO^3: tolerate wav or mp3, don't suggest downloading one and renaming it to the other
 ALARM_SOUND=${ALARM_SOUND:-"$FIRSTLIFE_DIR/sounds/alarm.wav"}
 while ! [ -f $ALARM_SOUND ]; do
     mkdir -p "$(dirname $ALARM_SOUND)"
-    # TODO: do this in firstlife-setup:
+    # TODO^4: do this in firstlife-setup, maybe here as well:
     firstlife-delegate "Please download an alarm sound of your choice and put it at $ALARM_SOUND, e.g. \"wget 'sphere.chronosempire.org.uk/~HEx/tmp/h8s4.mp3' -O $ALARM_SOUND\"" \
         || exit_with_error "No alarm sound available"
 done
@@ -24,7 +24,7 @@ if firstlife-is-muted >/dev/null 2>&1; then
     silent_message=" (silent)"
     debug_here "Firstlife is muted, so this alarm will be silent..."
 fi
-message="Use CTRL+C to cancel this${silent_message} ALARM"
+message="Use CTRL+C to cancel this${silent_message} ALARM ( at $(date))"
 if [ -n "$*" ]; then
     message="$message for: $*"
 fi

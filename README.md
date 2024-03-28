@@ -124,7 +124,7 @@ So anyway, you don't really need to look at the full list, just a screen-full or
 These ideas don't have a code location, so they go here:
 
   - TODO^56: firstlife
-    - TODO^113: move firstlife to 'zerothlife' repo
+    - TODO^114: move firstlife to 'zerothlife' repo and rename all mentions of 'firstlife' either to 'zerothlife' or 'zl'
       - TODO^113: (IN_PROGRESS, NOW) skiggety-utils installer
       - TODO^110: and then start moving over and renaming the actual scripts
       - TODO^109: see what else in ./bin/silliness might belong in zerothlife repo
