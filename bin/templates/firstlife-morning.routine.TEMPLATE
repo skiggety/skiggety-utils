@@ -72,7 +72,7 @@ firstlife_exit_if_needed
 firstlife-delegate --limit-n-times-per-x 1 day 'Make sure your phone is at least 25% charged (so you can walk outside with it soon)'
 firstlife_exit_if_needed
 
-firstlife-pomodoro --time-in-minutes 3 --without-break "Enjoy the distractions around you for a moment to figure out which things are distracting before putting them away"
+firstlife-pomodoro --time-in-minutes 3 --without-break "Enjoy the distractions around you briefly to figure out which things are distracting before putting them away"
 firstlife-mute --time-in-seconds 30 'Put away any temptations or distractions'
 firstlife-delegate --limit-n-times-per-x 2 day 'Put away any temptations or distractions'
 firstlife_exit_if_needed
