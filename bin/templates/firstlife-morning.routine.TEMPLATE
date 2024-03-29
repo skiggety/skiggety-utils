@@ -87,7 +87,7 @@ firstlife-delegate --limit-n-times-per-x 1 day 'Put on exercise clothes (and mak
     && firstlife-mute --time-in-seconds $(( 30 * 60 )) "Exercise" \
     && firstlife-delegate --limit-n-times-per-x 1 day 'Exercise!' \
     || firstlife-delegate --limit-n-times-per-x 1 day 'Schedule exercise for later today' \
-    || accumulate_error 'did not exercise'
+    || { firstlife-unmute; accumulate_error 'did not exercise'; }
 firstlife_exit_if_needed
 
 firstlife-mute --time-in-seconds 60 'Update yesterday in the habit tracker'
@@ -100,7 +100,7 @@ firstlife-mute --time-in-seconds 30 'Get ready for the shower'
 firstlife-alarm 'Get ready for the shower'
 firstlife-mute-in-foreground --time-in-seconds $(( 12 * 60)) "Shower"
 firstlife-mute --time-in-seconds 30 'Finish your shower'
-firstlife-alarm 'Finish your shower' || accumulate_error 'did not shower'
+firstlife-alarm 'Finish your shower'
 firstlife-delegate --limit-n-times-per-x 1 day 'Finish your shower' || accumulate_error 'did not shower'
 firstlife_exit_if_needed
 
@@ -132,16 +132,16 @@ firstlife-mute --time-in-seconds 120 'Get dressed'
 firstlife-delegate --limit-n-times-per-x 1 day 'Get dressed' || accumulate_error 'did not get dressed'
 firstlife_exit_if_needed
 
+firstlife-mute --time-in-seconds 120 'Make your bed'
+firstlife-delegate --limit-n-times-per-x 1 day 'Make your bed' || accumulate_error 'did not make your bed'
+firstlife_exit_if_needed
+
 firstlife-mute --time-in-seconds 360 "Coffee making"
 firstlife-delegate --limit-n-times-per-x 1 day 'Make coffee again if you want'
 firstlife_exit_if_needed
 
 firstlife-mute --time-in-seconds 10 'start music'
 firstlife-delegate 'Keep the tunes pumping (you can use "firstlife-music")'
-firstlife_exit_if_needed
-
-firstlife-mute --time-in-seconds 120 'Make your bed'
-firstlife-delegate --limit-n-times-per-x 1 day 'Make your bed' || accumulate_error 'did not make your bed'
 firstlife_exit_if_needed
 
 exit_with_any_accumulated_errors
@@ -151,8 +151,6 @@ exit_with_any_accumulated_errors
 firstlife-mute --time-in-seconds 120 'Look at calendar for today'
 firstlife-check-calendar -m 'Your calendar is about to come up. When it does, mark how long your morning routine took, and plan your day, OK?' \
     || accumulate_error 'did not check calendar'
-
-firstlife-cleaning-game
 
 exit_with_any_accumulated_errors
 
