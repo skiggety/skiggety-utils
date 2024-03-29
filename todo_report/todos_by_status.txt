@@ -3,7 +3,7 @@
 ./lib/skiggety-utils.bash:212:# TODO: (TESTING [01;31m[KIN_PROGRESS[m[K):
 ./bin/firstlife-reminder-countdown:13:    # TODO^3: ([01;31m[KIN_PROGRESS[m[K) don't use "-m" for minutes, it's too confusing since git and other skiggety utils use it to pass a message:
 ./bin/templates/firstlife-morning.routine.TEMPLATE:10:# TODO^50: ([01;31m[KIN_PROGRESS[m[K) see what else I can do to keep more focus on the morning routine until it's done
-./bin/templates/firstlife-focus.routine.TEMPLATE:15:# TODO^104: (POINT, META, TESTing [01;31m[KIN_PROGRESS[m[K) aim to get to this point, by, say, 10AM.  Iterate.
+./bin/templates/firstlife-focus.routine.TEMPLATE:15:# TODO^105: (POINT, META, TESTing [01;31m[KIN_PROGRESS[m[K) aim to get to this point, by, say, 10AM.  Iterate.
 ./README.md:128:      - TODO^113: ([01;31m[KIN_PROGRESS[m[K, NOW) skiggety-utils installer
 ./installers/zerothlife:35:    # TODO^115: ([01;31m[KIN_PROGRESS[m[K, NOW) and add the new repo's bin dir to your path
 ---- TODOs for right NOW: ------------------------------------------------------
