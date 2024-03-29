@@ -8,7 +8,7 @@ WEIRD_NIGHT_SONG='https://www.youtube.com/watch?v=glgPZmSwC4M'
 if shellask "Is it a weird part of the night?"; then
     open "$WEIRD_NIGHT_SONG" 2>/dev/null &
 
-    firstlife-mute-in-foreground -t 120 "So we can hear that weird song clealy for at least a moment"
+    firstlife-mute-in-foreground -t 120 "So we can hear that weird song clearly for at least a moment"
 
     firstlife-practice-music
 
