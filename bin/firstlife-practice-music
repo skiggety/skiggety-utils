@@ -41,8 +41,9 @@ firstlife_exit_if_needed
 # TODO^8: spend a few minutes preparing for your next band practice
 firstlife_exit_if_needed
 
-# TODO^5: record anything new and original for your own, configurable, youtube playlist to draft out your next solo album
-# - TODO^3: pop open that playlist
+# TODO^14: record anything new and original for your own, configurable, youtube playlist to draft out your next solo album
+# - TODO^12: pop open that playlist
+# - TODO^10: firstlife-delegate "Work on your solo album, going for as many songs as possible with good recordings and lead sheets in order
 firstlife_exit_if_needed
 
 firstlife-mute-in-foreground --time-in-seconds $(( 20 * 60 )) "Practice along with your playlist"

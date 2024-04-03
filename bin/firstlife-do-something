@@ -4,6 +4,9 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
+# TODO: use this script more widely
+
+# TODO: accept some sort of option for a duration, so we can set a timer and mute
 TAG="IN_PROGRESS"
 if ! [[ -z "$1" ]]; then
     TAG="$1"
@@ -16,7 +19,7 @@ fi
 # to 'firstlife-iterate-on-vital' or 'firstlife-iterate-on-vital-tag'
 
 vital-list-by-tag $TAG
-firstlife-delegate "Edit your 'vital' todo list with attention to the tag '$TAG'" || exit_with_error "Not grooming $TAG tasks"
+firstlife-delegate "Edit your 'vital' todo list with attention to the tag '$TAG' (use 'vital-list-by-tag $TAG' command to see summary)" || exit_with_error "Not grooming $TAG tasks"
 firstlife-iterate-on-vital-tag -n 1 $TAG || \
     firstlife-delegate "Work on something from your 'vital' todo list tagged '$TAG'" || \
     exit_with_error "skipped doing something tagged '$TAG' from your 'vital' todo list."

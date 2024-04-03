@@ -5,7 +5,7 @@
 # TODO: maybe keep track of what time of day tasks by certain names get completed, so you can start showing information
 # about how long things should take
 
-# TODO^23: consider having a reimplementation of shellask for firstlife, that shows some additional info in the prompt,
+# TODO^32: consider having a reimplementation of shellask for firstlife, that shows some additional info in the prompt,
 # like what routine we're in, what day it is, etc. That way it'll be more obvious which terminals to focus on at first.
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
