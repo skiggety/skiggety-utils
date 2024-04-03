@@ -72,7 +72,7 @@ firstlife_exit_if_needed
 firstlife-delegate --limit-n-times-per-x 1 day 'Make sure your phone is at least 25% charged (so you can walk outside with it soon)'
 firstlife_exit_if_needed
 
-firstlife-pomodoro --time-in-minutes 3 --without-break "Enjoy the distractions around you briefly to figure out which things are distracting before putting them away"
+firstlife-pomodoro --time-in-minutes 2 --without-break "Enjoy the distractions around you briefly to figure out which things are distracting before putting them away"
 firstlife-mute --time-in-seconds 30 'Put away any temptations or distractions'
 firstlife-delegate --limit-n-times-per-x 2 day 'Put away any temptations or distractions'
 firstlife_exit_if_needed
@@ -90,14 +90,21 @@ firstlife-delegate --limit-n-times-per-x 1 day 'Put on exercise clothes (and mak
     || { firstlife-unmute; accumulate_error 'did not exercise'; }
 firstlife_exit_if_needed
 
+# TODO: you could be already doing this while walking:
 firstlife-mute --time-in-seconds 60 'Update yesterday in the habit tracker'
 firstlife-delegate --limit-n-times-per-x 1 day 'Update yesterday in the habit tracker' || accumulate_error 'did not update yesterday in the habit tracker'
+firstlife_exit_if_needed
+
+# TODO: you could be already doing this while walking:
+firstlife-mute --time-in-seconds 120 'Communication'
+firstlife-delegate --limit-n-times-per-x 5 day "Catch up on communicating with people" && firstlife-reward || accumulate_error "Did not communicate"
 firstlife_exit_if_needed
 
 # TODO^3: maybe make a 'delegate' function that calls both firstlife-delegate --with-reward and firstlife_exit_if_needed:
 
 firstlife-mute --time-in-seconds 30 'Get ready for the shower'
 firstlife-alarm 'Get ready for the shower'
+firstlife-delegate 'Get ready for the shower'
 firstlife-mute-in-foreground --time-in-seconds $(( 12 * 60)) "Shower"
 firstlife-mute --time-in-seconds 30 'Finish your shower'
 firstlife-alarm 'Finish your shower'
@@ -130,10 +137,6 @@ firstlife_exit_if_needed
 
 firstlife-mute --time-in-seconds 120 'Get dressed'
 firstlife-delegate --limit-n-times-per-x 1 day 'Get dressed' || accumulate_error 'did not get dressed'
-firstlife_exit_if_needed
-
-firstlife-mute --time-in-seconds 120 'Make your bed'
-firstlife-delegate --limit-n-times-per-x 1 day 'Make your bed' || accumulate_error 'did not make your bed'
 firstlife_exit_if_needed
 
 firstlife-mute --time-in-seconds 360 "Coffee making"
