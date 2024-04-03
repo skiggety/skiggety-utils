@@ -103,6 +103,7 @@ if $ADD_REWARD; then
     tput bel # a.k.a. ding, bell (for searchability) # EASY TODO^35: DELETE after we have a better sound
 fi
 
+# TODO: optionally, colorize the numbers:
 echo "You have earned $reward_score rewards today$SECONDS_PER_REWARD_EXPLANATION!"
 echo
 echo

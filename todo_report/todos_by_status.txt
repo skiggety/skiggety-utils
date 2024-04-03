@@ -1,10 +1,10 @@
 ---- IN_PROGRESS: --------------------------------------------------------------
 ./lib/skiggety-utils.bash:212:# TODO: (TESTING [01;31m[KIN_PROGRESS[m[K):
-./bin/firstlife-reminder-countdown:13:    # TODO^3: ([01;31m[KIN_PROGRESS[m[K) don't use "-m" for minutes, it's too confusing since git and other skiggety utils use it to pass a message:
+./bin/firstlife-reminder-countdown:15:    # TODO^3: ([01;31m[KIN_PROGRESS[m[K) don't use "-m" for minutes, it's too confusing since git and other skiggety utils use it to pass a message:
 ./bin/templates/firstlife-morning.routine.TEMPLATE:10:# TODO^50: ([01;31m[KIN_PROGRESS[m[K) see what else I can do to keep more focus on the morning routine until it's done
 ./bin/templates/firstlife-focus.routine.TEMPLATE:18:# TODO^105: (POINT, META, TESTing [01;31m[KIN_PROGRESS[m[K) aim to get to this point, by, say, 10AM.  Iterate.
 ./installers/zerothlife:35:    # TODO^115: ([01;31m[KIN_PROGRESS[m[K, NOW) and add the new repo's bin dir to your path
-./bin/firstlife-wait-for-routine:18:cd $SKIGGETY_UTILS_DIR && shellask "Ready to work on $(basename $0) just a little before we wait for the '$WHICH_ROUTINE' routine?" && vim $0 # TODO^118: ([01;31m[KIN_PROGRESS[m[K) DELETE once IMPLEMENTATION works
-./bin/firstlife-wait-for-routine:9:# EASY TODO^156: (TESTING [01;31m[KIN_PROGRESS[m[K) can we wait for different routines successfully? (having the evening routine wait for the work routine right now...)
+./bin/firstlife-wait-for-routine:18:cd $SKIGGETY_UTILS_DIR && shellask "Ready to work on $(basename $0) just a little before we wait for the '$WHICH_ROUTINE' routine?" && vim $0 # TODO^121: ([01;31m[KIN_PROGRESS[m[K) DELETE once IMPLEMENTATION works
+./bin/firstlife-wait-for-routine:9:# EASY TODO^159: (TESTING [01;31m[KIN_PROGRESS[m[K) can we wait for different routines successfully? (having the evening routine wait for the work routine right now...)
 ---- TODOs for right NOW: ------------------------------------------------------
 ./installers/zerothlife:35:    # TODO^115: (IN_PROGRESS, [01;31m[KNOW[m[K) and add the new repo's bin dir to your path

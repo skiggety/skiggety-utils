@@ -10,12 +10,18 @@ firstlife-preempt-same-script
 firstlife-wait-for-routine 'firstlife-morning' # TODO: || exit_with_error "..."
 firstlife_exit_if_needed
 
+firstlife-iterate-on-vital-tag -n 2 'URGENT' || accumulate_error 'ignored URGENT tasks' # TODO^4: this is important, TEST against getting to this point as a benchmark
+firstlife_exit_if_needed
+
+firstlife-check-email --with-reward || accumulate_error 'ignored email'
+firstlife_exit_if_needed
+
 firstlife-check-calendar -m "check calendar for birthdays "
 open "http://facebook.com" 2>/dev/null & # TODO: UN-HARDCODE
 firstlife-delegate --limit-n-times-per-x 1 day --with-reward "Wish people 'Happy Birthday!' (look at google calendar and facebook)."
 firstlife_exit_if_needed
 
-firstlife-iterate-on-vital-tag -n 2 'URGENT' || accumulate_error 'ignored URGENT tasks' # TODO^4: this is important, TEST against getting to this point as a benchmark
+firstlife-check-snail-mail --with-reward || accumulate_error 'ignored snail mail'
 firstlife_exit_if_needed
 
 firstlife-practice-music

@@ -5,6 +5,8 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
+# TODO^10: spend some time debugging this, it very often exits early when you try to kill an alarm
+
 MINUTES_LEFT="15"
 debug_eval_here MINUTES_LEFT
 TITLE="Do what's on your calendar"
