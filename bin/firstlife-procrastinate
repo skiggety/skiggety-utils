@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# This script reminds you to come back to the terminal in a specified number of minutes. This is intentional
+# This script reminds you to come back to the terminal in a specified number of minutes.  This is intentional
 # procrastination that holds you accountable to come back to the task.
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1

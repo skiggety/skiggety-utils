@@ -13,7 +13,7 @@ pushd $SKIGGETY_UTILS_DIR >/dev/null
 
 firstlife_exit_if_needed
 
-# TODO^7? : turn this into a linter:
+# TODO^10 : turn this into a linter:
 # Find sentences in comments with single spaces between them.
 rg -n --color=always '#.*\. [^ $\[|."a-z-]' . | sort | \
     grep -v '^[^:\w]*version.txt' | \

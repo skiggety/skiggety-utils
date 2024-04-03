@@ -7,7 +7,7 @@
 
 firstlife-preempt-same-script
 
-firstlife-wait-for-routine 'morning'
+firstlife-wait-for-routine 'firstlife-morning' # TODO: || exit_with_error "..."
 firstlife_exit_if_needed
 
 firstlife-check-calendar -m "check calendar for birthdays "

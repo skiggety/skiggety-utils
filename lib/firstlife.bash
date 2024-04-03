@@ -52,21 +52,22 @@ function firstlife_exit_if_needed {
 # after we make sure common tasks only run once, we could do this, like what ../*firstlife-status scripts do with $FIRSTLIFE_MARKER_DIR/.review-firstlife-status_PID
 function exit_if_this_script_is_running_elsewhere {
     debug_here
-    latest_script_pid=$(cat $FIRSTLIFE_THIS_SCRIPT_PID_FILE)
+    latest_script_pid='0'
+    if [ -f $FIRSTLIFE_THIS_SCRIPT_PID_FILE ]; then
+        latest_script_pid="$(cat $FIRSTLIFE_THIS_SCRIPT_PID_FILE)"
+    fi
     debug_eval_here latest_script_pid
     debug_here "\$\$ is '$$'"
     if [ $$ -ne $latest_script_pid ]; then
-        echo "Another instance of $(basename $0) is running, exiting..."
+        accumulate_error "Another instance of $(basename $0) is running, exiting..."
         exit_with_any_accumulated_errors
-        exit 0
     fi
 }
 
 function exit_if_day_is_over {
     if is_another_day; then
-        echo "The day (${FIRSTLIFE_ISOTODAY}) has ended, exiting $(basename $0)"
+        accumulate_error "The day (${FIRSTLIFE_ISOTODAY}) has ended, exiting $(basename $0)"
         exit_with_any_accumulated_errors
-        exit 0
     fi
 }
 
@@ -84,6 +85,18 @@ function exit_if_script_succeeded_today {
     if [ -f $THIS_SCRIPT_RAN_MARKER_FILE ]; then
         echo "'$(basename $1)' already succeeded today ($FIRSTLIFE_ISOTODAY), exiting without error..."
         exit 0
+    fi
+}
+
+function has_routine_succeeded_today {
+    SUCCESS_TODAY_MARKER_FILE="$(succeeded_today_marker_script $1)"
+    if is_another_day; then
+        return 1 # false
+    fi
+    if [ -f $SUCCESS_TODAY_MARKER_FILE ]; then
+        return 0 # true
+    else
+        return 1 # false
     fi
 }
 

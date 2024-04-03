@@ -7,6 +7,9 @@
 
 firstlife-preempt-same-script
 
+firstlife-wait-for-routine 'firstlife-morning' # TODO: || exit_with_error "..."
+firstlife_exit_if_needed
+
 function show_recently_done_todos {
     today_todo -n | grep 'DO'NE # TODO^4: function extract
 }
@@ -41,7 +44,7 @@ firstlife_exit_if_needed
 
 # EASY to get started TODO^55: ask about if you have done enough productivity points.  Maybe ask how many done today and how many left in the
 # week, and make sure you do more than a day's share...
-while shellask "Should you still be doing productive stuff on this beautiful day $FIRSTLIFE_ISOTODAY?" ;do
+while shellask "Should you still be doing productive stuff on this beautiful day $FIRSTLIFE_ISOTODAY?"; do
     firstlife_exit_if_needed
 
     firstlife-focus || accumulate_error 'did not focus on important stuff'

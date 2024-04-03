@@ -13,7 +13,7 @@
 
 firstlife-preempt-same-script
 
-firstlife-wait-for-routine 'morning'
+firstlife-wait-for-routine 'firstlife-morning' # TODO: || exit_with_error "..."
 firstlife_exit_if_needed
 
 passes_at_todo_list=1

@@ -4,7 +4,7 @@
 
 # EASY TODO^86: use this script more often, maybe against your todo list
 # - EASY TODO^99: (POINT) successful pomodoros should keep log and count and show score, so I can count them and confirm I'm doing them consistently
-# - EASY TODO^47: also, count POINTs similarly from lines with 'POINT' in todays todo file.
+# - EASY TODO^48: also, count POINTs similarly from lines with 'POINT' in todays todo file.
 
 # TODO^8?: exit early if you've done enough pomodoros in a day
 # TODO^3: maybe accept a '--without-reward' option
@@ -60,6 +60,11 @@ firstlife-reward "Started the POMODORO: $@"
 
 # EASY TODO^11: or should this be done right in the terminal with sleep-verbose or firstlife-break instead of youtube and shellask:
 # TODO: re-enable with the right duration: # open 'https://youtu.be/ddL3y1saEJs?si=UjSZicdCMYsVoIjV&t=00' 2>/dev/null & # generic 25 minute timer on youtube
+
+# TODO^24: script-extract the part that shows you what you are doing and mutes, so you can use it anytime you need to
+# focus on something for a few minutes, without necessarily invoking all the full cruft of the "pomodoro". Even
+# firstlife-break can use it, and you can use it on the command line instead of firstlife-mute-in-foreground when you
+# need to shut other alarms up for a few minutes and keep yourself focused on something..
 
 clear
 for nli in $(seq $(tput lines));do echo;done # TODO^16: maybe function extract as it wipes the screen and leaves the cursor at the bottom
