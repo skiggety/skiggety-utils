@@ -26,7 +26,16 @@ debug_eval TARGET_SECONDS_PER_REWARD
 # TODO: exit if after CHILL_TIME, BEDTIME, or maybe control bedtime with a cron marker file, or maybe just be silent
 # instead of exiting
 
-today_todo --non-interactive | abbreviate -l 20 # TODO: vital --report | abbreviate -l 20
+# TODO: dry with '../PWD_BIN/dashboard':
+FIRSTLIFE_CODE_TODO_REPORT="$FIRSTLIFE_CODE_DIR/todo_report/todos_by_status.txt"
+if [ -f $FIRSTLIFE_CODE_TODO_REPORT ]; then
+    echo_divider_with_text "=" "TODO's for the firstlife codebase by status:" # IGNORE_TODO
+    cat $FIRSTLIFE_CODE_TODO_REPORT | abbreviate -n 5 # TODO^10: prefer the color version if you find it
+fi
+
+echo
+echo_divider_with_text "=" 'Your main TODO list frim the "vital" program:'
+today_todo --non-interactive | abbreviate -l 13 # TODO: vital --report | abbreviate -l 13
 
 reward_status="$(firstlife-reward -n)"
 echo "$reward_status" | abbreviate -l 6 -t 'firstlife-reward -n'

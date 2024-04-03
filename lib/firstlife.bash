@@ -1,6 +1,10 @@
 FIRSTLIFE_DIR=${FIRSTLIFE_DIR:-"$HOME/firstlife"}
 export FIRSTLIFE_DIR
 
+# TODO: when this is in it's own repo this will not be based on skiggety-utils:
+FIRSTLIFE_CODE_DIR="$SKIGGETY_UTILS_DIR"
+export FIRSTLIFE_CODE_DIR
+
 FIRSTLIFE_BIN=${FIRSTLIFE_BIN:-"$FIRSTLIFE_DIR/bin"}
 export FIRSTLIFE_BIN
 

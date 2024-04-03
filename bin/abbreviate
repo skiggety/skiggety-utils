@@ -22,7 +22,7 @@ while [[ "$1" == -* ]]; do
         MAX_SCREEN_LINES="$1"
         MAX_LINES="$(( $MAX_SCREEN_LINES - 1 ))" # because the explanation takes up 1 line
         shift
-    elif [ "$1" == '-t' ]; then
+    elif [ "$1" == '-t' -o "$1" == '--title' ]; then
         shift
         TITLE="$1"
         shift
