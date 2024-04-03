@@ -7,7 +7,7 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-shellask "TODO^54: VOTE for this to get IMPLEMENTed or work on it a bit ($(echo_here))" || exit_with_error "not even voting?" # TODO: DELETE once implementation exists
+shellask "TODO^63: VOTE for this to get IMPLEMENTed or work on it a bit ($(echo_here))" || exit_with_error "not even voting?" # TODO: DELETE once implementation exists
 
 # TODO: I think the general plan should be to have something to display that shows how much time is left on battery to
 # roughly 1 sig fig, so it changes more often when there is less time left until battery empty. Then we should emit a

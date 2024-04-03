@@ -14,11 +14,15 @@ debug_eval_here MY_PID
 
 DURATION_IN_SECONDS="300"
 debug_eval_here DURATION_IN_SECONDS
+WITH_COUNTDOWN=''
 while [[ "$1" == -* ]]; do
     if [ "$1" == '-t' -o "$1" == '--time-in-seconds' ]; then
         shift
         DURATION_IN_SECONDS="$1"
         debug_eval_here DURATION_IN_SECONDS
+        shift
+    elif [ "$1" == '--with-countdown' -o "$1" == '--time-in-seconds' ]; then
+        WITH_COUNTDOWN="$1"
         shift
     fi
 done
@@ -40,7 +44,7 @@ debug_eval_here FIRSTLIFE_MUTE_FILE
 echo "${MY_PID}:${REASON} (for $DURATION_IN_SECONDS seconds starting at $(date))" > $FIRSTLIFE_MUTE_FILE # TODO^6: should I put the reason in there too so we can show it in firstlife-status?
 
 debug_eval_here DURATION_IN_SECONDS
-sleep-verbose $DURATION_IN_SECONDS
+sleep-verbose $WITH_COUNTDOWN $DURATION_IN_SECONDS
 
 # Un-mute at the end by deleting mute file if this is the last process to mute:
 if [ -f $FIRSTLIFE_MUTE_FILE ]; then
