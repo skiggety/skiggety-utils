@@ -38,7 +38,7 @@ todo_report_linecount=$(echo "$todo_report_whole" | wc -l | sed 's/^[ \t]*//')
 
 todo_header="==== TODOs, ascending, so you know what's likely to change next. Do not edit, run '$(basename $0)' to generate. ====" # IGNORE_TODO
 
-# TODO^41: in color also so the top-voted item and status tags stand out:
+# TODO^46: in color also so the top-voted item and status tags stand out:
 echo "$todo_by_status_whole" > $TODO_REPORT_BY_STATUS_FILE #IGNORE_TODO
 
 echo "$todo_header" > $TODO_REPORT_FILE # IGNORE_TODO

@@ -15,8 +15,8 @@ HOW_MANY_THINGS_TO_WIPE_EVERY_DAY=4
 
 # TODO^2: (FUN) mix the cleaning in with the tidying? #: TIDIES_PER_CLEAN=6; if [ $(( $i % $TIDIES_PER_CLEAN )) -eq 0 ]; then blah blah
 for i in $(seq $HOW_MANY_THINGS_TO_PUT_AWAY_EVERY_DAY);do
-    sleep-verbose $(( ( ( $HOW_MANY_THINGS_TO_PUT_AWAY_EVERY_DAY + 1 ) - ( $i ) ) * 2 ))
-    firstlife-mute-in-foreground -t 10 "A short mute in $(basename $0) before putting your ${i}th thing away."
+    sleep-verbose $(( ( ( $HOW_MANY_THINGS_TO_PUT_AWAY_EVERY_DAY + 1 ) - ( $i ) ) * 4 ))
+    firstlife-mute-in-foreground -t 10 --with-countdown "A short mute in $(basename $0) before putting your ${i}th thing away."
     exit_if_day_is_over
     firstlife-alarm "Time for tidying!"
     firstlife-mute -t 5 "A quiet moment to put something away"
@@ -27,16 +27,20 @@ for i in $(seq $HOW_MANY_THINGS_TO_PUT_AWAY_EVERY_DAY);do
     fi
 done
 
+exit_if_day_is_over
+
 for i in $(seq $HOW_MANY_THINGS_TO_WIPE_EVERY_DAY);do
     sleep-verbose $(( ( ( $HOW_MANY_THINGS_TO_WIPE_EVERY_DAY + 1 ) - ( $i ) ) * 30 ))
-    firstlife-mute-in-foreground -t 10 "A short mute in $(basename $0) before cleaning your ${i}th dirty thing."
+    firstlife-mute-in-foreground -t 10 --with-countdown "A short mute in $(basename $0) before cleaning your ${i}th dirty thing."
     exit_if_day_is_over
     firstlife-alarm "Clean something dirty!"
     firstlife-mute -t 30 "A quiet moment to clean something"
-    firstlife-delegate --limit-n-times-per-x 10 week --with-reward "Clean something dirty! (#${i})"
+    firstlife-delegate --limit-n-times-per-x 10 week --with-reward "Clean something dirty! (#${i})" || exit_with_error "stopped cleaning"
     for nli in $(seq $(tput lines));do echo;done # TODO^16: maybe function extract as it wipes the screen and leaves the cursor at the bottom
 done
 
 firstlife-delegate --limit-n-times-per-x 10 week "check off cleaning habit in habit tracker" # TODO^17: track internally
+
+exit_if_day_is_over
 
 firstlife-break

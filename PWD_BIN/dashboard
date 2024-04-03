@@ -22,7 +22,7 @@ else
 fi
 if [ -f ./todo_report/todos_by_status.txt ]; then
     echo_divider_with_text "=" "TODO's by status" # IGNORE_TODO
-    cat ./todo_report/todos_by_status.txt | abbreviate -n 8 # TODO: prefer the color version if you find it
+    cat ./todo_report/todos_by_status.txt | abbreviate -n 8 # TODO^10: prefer the color version if you find it
 fi
 
 # TODO^2?: tell you what command to run to commit changes or whatever

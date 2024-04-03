@@ -14,7 +14,7 @@ while [[ "$1" == -* ]]; do
     fi
 done
 
-# TODO^34: function extract to firstlife.bash:
+# TODO^43: function extract to firstlife.bash:
 for blank_line_i in $(seq $(tput lines));do echo; done # push everything to the bottom of the terminal
 
 MINUTES_OF_INACTIVITY_ALLOWED=12 # TODO^4: make configurable and tune the number
