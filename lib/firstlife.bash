@@ -141,7 +141,6 @@ function use_and_maintain_inner_routine_based_on_template {
     # default to something that will fail so it would fail if you didn't find a real one and it got called somehow:
     INNER_ROUTINE_SCRIPT='false'
 
-    echo "...starting '$nickname' routine..."
     if [ -f $PERSONAL_ROUTINE_SCRIPT ]; then
         INNER_ROUTINE_SCRIPT="$PERSONAL_ROUTINE_SCRIPT"
     elif [ -f $TEMPLATE_ROUTINE_SCRIPT ];then
@@ -150,6 +149,7 @@ function use_and_maintain_inner_routine_based_on_template {
         exit_with_error "Inner $nickname routine not found $(echo_here) (neither '$PERSONAL_ROUTINE_SCRIPT' nor '$TEMPLATE_ROUTINE_SCRIPT' )"
     fi
 
+    echo "...starting '$nickname' routine..."
     $INNER_ROUTINE_SCRIPT \
         && firstlife-reward "completed $INNER_ROUTINE_SCRIPT" \
         || accumulate_error "inner $nickname routine '$INNER_ROUTINE_SCRIPT' FAILED"
