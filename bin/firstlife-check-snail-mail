@@ -5,3 +5,4 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
 firstlife-delegate --limit-n-times-per-x 1 day "Go get your (snail) mail from the mailbox" || exit_with_error "Did not get the snail mail"
+firstlife-delegate --limit-n-times-per-x 1 day "Deal with at least one pending piece of mail" || exit_with_error "Did not keep up with snail mail"

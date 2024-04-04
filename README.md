@@ -123,7 +123,7 @@ So anyway, you don't really need to look at the full list, just a screen-full or
 
 These ideas don't have a code location, so they go here:
 
-  - TODO^116: move 'vital' data (to do list) to private repo (skiggety utils should help set up)
+  - TODO^125: move 'vital' data (to do list) to private repo (skiggety utils should help set up)
   - TODO^48: spin off kid-utils
   - TODO^21: ...rewrite todo in rust with parallelization (maybe with Kevin), but after [rust koans](https://github.com/crazymykl/rust-koans)
 - TODO^6: some tools for setting up information radiators
