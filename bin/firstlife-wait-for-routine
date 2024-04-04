@@ -15,8 +15,6 @@ if [ -z "$WHICH_ROUTINE" ]; then
     exit_with_error "you must specify which routine you are waiting for:"
 fi
 
-cd $SKIGGETY_UTILS_DIR && shellask "Ready to work on $(basename $0) just a little before we wait for the '$WHICH_ROUTINE' routine?" && vim $0 # TODO^121: (IN_PROGRESS) DELETE once IMPLEMENTATION works
-
 i=1
 while ! has_routine_succeeded_today $WHICH_ROUTINE;do
     exit_if_day_is_over # NOT 'firstlife_exit_if_needed'!
