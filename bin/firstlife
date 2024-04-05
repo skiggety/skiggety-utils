@@ -4,8 +4,10 @@
 
 # TODO^15: figure out uniform short flags for '--time-in-minutes', '--time-in-seconds', and '--message'. '-m' and '-t', aren't enough, so consider '-s' too, maybe. figure it out and make it uniform.
 
+# EASY TODO^10 crontab mutes for overnight, at least until 5am
+
 firstlife-setup || accumulate_error "firstlife-setup FAILED"
-# TODO^110: everything after firstlife-setup should be moved elsewhere after firstlife-setup generates a sample crontab and guide you through setting it up to call the other routines
+# TODO^113: everything after firstlife-setup should be moved elsewhere after firstlife-setup generates a sample crontab and guide you through setting it up to call the other routines
 
 # TODO^93: TEST this in docker as a reluctant user starting from fish
 
