@@ -6,8 +6,6 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
-# EASY TODO^160: (TESTING IN_PROGRESS) can we wait for different routines successfully? (having the evening routine wait for the work routine right now...)
-
 WHICH_ROUTINE="$1"
 shift
 
@@ -19,7 +17,7 @@ i=1
 while ! has_routine_succeeded_today $WHICH_ROUTINE;do
     exit_if_day_is_over # NOT 'firstlife_exit_if_needed'!
 
-    # TODO^48: function extract to firstlife.bash:
+    # TODO^49: function extract to firstlife.bash:
     for blank_line_i in $(seq $(tput lines));do echo; done # push everything to the bottom of the terminal
 
     echo "Waiting another $i seconds for you to finish '$WHICH_ROUTINE' (successfully)."

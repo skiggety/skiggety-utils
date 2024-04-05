@@ -9,4 +9,5 @@ WHICH_ROUTINE="$1"
 while ! $WHICH_ROUTINE;do
     vim -o $FIRSTLIFE_DIR/bin/*${WHICH_ROUTINE}* $SKIGGETY_UTILS_DIR/bin/templates/*${WHICH_ROUTINE}* $FIRSTLIFE_CODE_DIR/bin/${WHICH_ROUTINE}
     firstlife-break
+    exit_if_day_is_over
 done
