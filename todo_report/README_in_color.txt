@@ -1,5 +1,5 @@
 ==== TODOs, ascending, so you know what's likely to change next. Do not edit, run 'generate_todo_report' to generate. ====
-( showing last 8 lines out of 826 for 'todo': )
+( showing last 8 lines out of 828 for 'todo': )
 ./README-firstlife.md:9:  - [1m[31mTODO^114[0m[0m: move firstlife to 'zerothlife' repo and rename all mentions of 'firstlife' either to 'zerothlife' or 'zl'
 ./installers/zerothlife:27:    false # [1m[31mTODO^114[0m[0m: after install is implemented, call 'firstlife-setup'
 ./installers/zerothlife:35:    # [1m[31mTODO^115[0m[0m: (IN_PROGRESS, NOW) and add the new repo's bin dir to your path

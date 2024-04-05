@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# This script waits for the user to show readiness to interact.  It's a useful building block in other scripts.
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $FIRSTLIFE_CODE_DIR/lib/firstlife.bash || exit_with_error "could not source firstlife.bash"
+
+# TODO^81: use liberally at the beginning of crontab lines or scripts that are usually used with cron
+
+message="Use CTRL+C to wake up this sleeping terminal"
+while echo "$message ( at $(date))"; do
+    sleep-verbose 3600
+done
+# TODO^2: do I need to take a message input from $* or $@ ?
