@@ -11,7 +11,7 @@ firstlife-preempt-same-script
 $EDITOR $0 # TODO^2: DELETE when this is done needing some specific attention
 firstlife_exit_if_needed
 
-# TODO^5: subject to configuration if you have a max times per day number set, exit this script early if you already have the reward logged for this script enough times today. In other words, only allow this script to run twice a day
+# TODO^6: subject to configuration if you have a max times per day number set, exit this script early if you already have the reward logged for this script enough times today.  In other words, only allow this script to run twice a day
 
 # TODO^16: limit how many times a day this script runs
 firstlife-alarm "Hooray! Time to practice your musical instrument!"
@@ -22,9 +22,12 @@ shellask "Are you ready to practice your musical instrument?" || exit_with_error
 # alternate, or make different routines, maybe even use many short pomodoros without breaks for small steps..
 
 # CAPTURE INSPIRATION
+firstlife-mute --time-in-seconds 60
 firstlife-delegate 'Pick up your instrument and play something without thinking about it'
 firstlife_exit_if_needed
+firstlife-mute --time-in-seconds 30
 firstlife-delegate 'Tune your instrument' || exit_with_error "Didn't tune"
+firstlife-mute --time-in-seconds 300
 firstlife-delegate 'Did you play anything original & interesting? write it down or record it if there is anything to record'
 firstlife_exit_if_needed
 
