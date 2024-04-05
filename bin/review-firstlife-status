@@ -15,7 +15,7 @@ if is_on_mac_os; then
     osascript -e "tell application \"Terminal\" to set the font size of front window to 11"
     # for 13 in macbook: osascript -e 'tell application "Terminal" to set bounds of front window to {9, 552, 719, 900}'
     # To find your preference, resize a window to your liking and run: osascript -e 'tell application "Terminal" to get bounds of front window'
-    osascript -e 'tell application "Terminal" to set bounds of front window to {10, 681, 1000, 1046}'
+    osascript -e 'tell application "Terminal" to set bounds of front window to {12, 381, 1002, 1076}'
 fi
 
 echo $$ > $FIRSTLIFE_MARKER_DIR/.review-firstlife-status_PID
