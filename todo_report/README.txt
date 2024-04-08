@@ -1,5 +1,5 @@
 ==== TODOs, ascending, so you know what's likely to change next. Do not edit, run 'generate_todo_report' to generate. ====
-( showing last 8 lines out of 832 for 'todo': )
+( showing last 8 lines out of 833 for 'todo': )
 ./lib/include_in_bashrc.bash:15:# TODO^116: (IN_PROGRESS, NOW): fold in zerothlife config:
 ./bin/templates/firstlife-morning.routine.TEMPLATE:19:# - TODO^117: help user set up crontab with a sample file, maybe mention http://crontab.guru which can help generate crontab lines
 ./installers/zerothlife:32:    # - TODO^118: (IN_PROGRESS, NOW) in config stage, add the new repo's bin dir to your path by copying and allowing

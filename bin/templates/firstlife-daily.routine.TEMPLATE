@@ -10,10 +10,10 @@ firstlife-preempt-same-script
 firstlife-wait-for-routine 'firstlife-morning' # TODO: || exit_with_error "..."
 firstlife_exit_if_needed
 
-firstlife-iterate-on-vital-tag -n 2 'URGENT' || accumulate_error 'ignored URGENT tasks' # TODO^4: this is important, TEST against getting to this point as a benchmark
+firstlife-iterate-on-vital-tag -n 2 'URGENT' || accumulate_error 'ignored URGENT tasks' # TODO^5: this is important, TEST against getting to this point as a benchmark
 firstlife_exit_if_needed
 
-firstlife-check-email --with-reward || accumulate_error 'ignored email'
+firstlife-check-email --with-reward || accumulate_error 'ignored email' # TODO: this is important, TEST against getting to this point as a benchmark
 firstlife_exit_if_needed
 
 firstlife-check-calendar -m "check calendar for birthdays "

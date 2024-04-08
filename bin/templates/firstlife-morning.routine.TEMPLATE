@@ -16,7 +16,7 @@ firstlife-preempt-same-script
 # TODO^2: use this to make sure we don't ask for the alarm too often: FIRSTLIFE_ALARM_MARKER_FILE="$FIRSTLIFE_DIR/markers/firstlife_outside_alarm_confirmed"
 
 # TODO^12: figure out how to keep this stuff on a schedule:
-# - TODO^103: help user set up crontab with a sample file, maybe mention http://crontab.guru which can help generate crontab lines
+# - TODO^117: help user set up crontab with a sample file, maybe mention http://crontab.guru which can help generate crontab lines
 # - EASY TODO^42: build a timer into firstlife-delegate, keep stats on how long things take, just pairs of task names and times
 #   - TODO^41: then make the logs daily, graph the daily linecount
 
@@ -55,7 +55,7 @@ SCOTTS_MEDITATION_PLAYLIST='https://www.youtube.com/playlist?list=PLbyyOcHfeHIqC
 open "$SCOTTS_MEDITATION_PLAYLIST" 2>/dev/null &
 # TODO^2: mute firstlife for the duration.  (When exactly to start it? use a 5-minute pomodoro?):
 firstlife-mute --time-in-seconds 315 "Meditation"
-firstlife-delegate --limit-n-times-per-x 1 day '5-minute meditation' || accumulate_error 'did not meditate' # TODO^81: --with-timer 330 (and use timers widely)
+firstlife-delegate --limit-n-times-per-x 1 day '5-minute meditation' # TODO^81: --with-timer 330 (and use timers widely)
 firstlife_exit_if_needed
 
 firstlife-mute --time-in-seconds 180 "planning your day in 'vital'"
