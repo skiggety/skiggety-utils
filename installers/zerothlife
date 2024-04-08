@@ -24,7 +24,7 @@ class ZerothLifeInstaller
   end
 
   def apparently_configured?
-    false # TODO^114: after install is implemented, call 'firstlife-setup'
+    false # TODO: check for bash include script
   end
 
   # TODO: Only if you have access: TODO: how about some way to get updates, other than relying on firstlife itself? When

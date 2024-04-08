@@ -4,9 +4,10 @@
 
 PWD_PRETTY="${PWD/#$HOME/~}"
 
-COLOR1='' # TODO
-COLOR2='' # TODO
-COLOR3='' # TODO
+# Default to empty, for no colors:
+COLOR1=''
+COLOR2=''
+COLOR3=''
 
 if [ "$CLICOLOR" == 'xterm-color' ]; then # TODO^2: Look at other things that should enable color, CLICOLOR is for mac
     COLOR1='\033[1;33m'
