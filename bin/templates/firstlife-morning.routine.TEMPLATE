@@ -81,6 +81,7 @@ firstlife-mute --time-in-seconds 30 'Start up some podcasts'
 firstlife-delegate --limit-n-times-per-x 1 day 'Start up some podcasts'
 firstlife_exit_if_needed
 
+# TODO^3: I could break out a 'firstlife-exercise' routine, and call it here as an attempt, and only later in the day expect it to succeed:
 # TODO^3: firstlife-delegate --with-reward --with-timer $(( 30 * 60 )) 'blah blah':
 firstlife-mute --time-in-seconds 120 'Put on exercise clothes (and make sure you have your housekey/earbuds, etc.)'
 firstlife-delegate --limit-n-times-per-x 1 day 'Put on exercise clothes (and make sure you have your housekey/earbuds, etc.)' \

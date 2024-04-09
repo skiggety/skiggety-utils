@@ -9,6 +9,8 @@
 WHICH_ROUTINE="$1"
 shift
 
+# TODO^10: this should should display what's waiting and since when
+
 if [ -z "$WHICH_ROUTINE" ]; then
     exit_with_error "you must specify which routine you are waiting for:"
 fi

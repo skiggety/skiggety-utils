@@ -7,6 +7,8 @@
 
 # TODO^90: use liberally at the beginning of crontab lines or scripts that are usually used with cron
 
+# TODO^10: this should should display what's waiting and since when
+
 message="Use CTRL+C to wake up this sleeping terminal"
 while echo "$message ( at $(date))"; do
     sleep-verbose 3600
