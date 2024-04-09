@@ -22,7 +22,6 @@ FIRSTLIFE_MUTE_FILE_PREFIX="$FIRSTLIFE_MARKER_DIR/.firstlife_currently_muted_on.
 export FIRSTLIFE_MUTE_FILE_PREFIX
 
 FIRSTLIFE_THIS_SCRIPT_PID_FILE="$FIRSTLIFE_MARKER_DIR/.current.$(basename $0).PID"
-touch $FIRSTLIFE_THIS_SCRIPT_PID_FILE
 export FIRSTLIFE_THIS_SCRIPT_PID_FILE
 
 # TODO^4: function seconds_as_hms { # for use in sleep-verbose, so '3627' seconds would be '1:00:27'
