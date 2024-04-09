@@ -71,6 +71,8 @@ if $LIMIT_FREQUENCY;then
     fi
 fi
 
+firstlife-mute -t 15 "$(basename $0) automatic mute for: $*"
+
 # TODO^20: in a separate shell we don't wait for, wait a minute and then open a video reminding them they have an open # shellask
 # TODO^51: shellask --alert, inside it try something like ''osascript -e 'display notification "Done!" with title "Long-running shell command" sound name "Hero"' like you saw at 'https://stackoverflow.com/questions/40814932/is-there-a-way-to-bring-terminal-to-front-when-command-is-finished', to bring window to foreground, especially after popping a web page, and do something similar in firstlife-reward if it works:
 # - TODO^38: use mplayer in a loop to play something incessantly until you shut it up, optionally
