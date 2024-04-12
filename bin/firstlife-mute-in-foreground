@@ -33,7 +33,7 @@ echo
 echo "MUTING for $DURATION_IN_SECONDS seconds because: '$REASON'"
 echo
 
-# TODO^3?: kill any firstlife-single-alarm process trees, mplayers called by firstlife-status, etc. How best to keep
+# TODO^3?: kill any firstlife-single-alarm process trees, mplayers called by firstlife-status, etc.  How best to keep
 # track of them all?
 
 # write pid in mute file

@@ -2,7 +2,7 @@
 
 # This script watches the power level of this machine and gets your attention if necessary.
 
-# TODO^62?: consider whether this should be integrated into firstlife-status or kept separate, or if there should be a way to do both (right now I'm leaning towards the first option, integrate)
+# TODO^80?: consider whether this should be integrated into firstlife-status or kept separate, or if there should be a way to do both (right now I'm leaning towards the first option, integrate)
 # - TODO^120: which means I should move this over and take it out of crontab soon, so it stops popping up so much
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1

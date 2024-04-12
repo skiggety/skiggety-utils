@@ -5,13 +5,15 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
+debug_here
 firstlife-preempt-same-script
 
+firstlife-wait-for-user
 # TODO^3: IF YOU CAN SEE THIS, VOTE for a TODO, this is also your opportunity to try to correct issues you know # about.
 $EDITOR $0 # TODO^2: DELETE when this is done needing some specific attention
 firstlife_exit_if_needed
 
-# TODO^6: subject to configuration if you have a max times per day number set, exit this script early if you already have the reward logged for this script enough times today.  In other words, only allow this script to run twice a day
+# TODO^9: subject to configuration if you have a max times per day number set, exit this script early if you already have the reward logged for this script enough times today.  In other words, only allow this script to run twice a day
 
 # TODO^16: limit how many times a day this script runs
 firstlife-alarm "Hooray! Time to practice your musical instrument!"
