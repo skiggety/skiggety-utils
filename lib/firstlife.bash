@@ -1,7 +1,8 @@
 FIRSTLIFE_DIR=${FIRSTLIFE_DIR:-"$HOME/firstlife"}
 export FIRSTLIFE_DIR
 
-# TODO: when this is in it's own repo this will not be based on skiggety-utils:
+# TODO^13: when this is in it's own repo this will not be based on skiggety-utils:
+# TODO^19: Also we are going to have to define it in a bash include file because it'll be used to find this file
 FIRSTLIFE_CODE_DIR="$SKIGGETY_UTILS_DIR"
 export FIRSTLIFE_CODE_DIR
 
@@ -16,6 +17,8 @@ export FIRSTLIFE_MARKER_DIR
 
 FIRSTLIFE_ISOTODAY=${FIRSTLIFE_ISOTODAY:-"$(isotoday)"}
 export FIRSTLIFE_ISOTODAY
+
+WISEASS_MODE=true # because of course it does # TODO: move to firstlife config
 
 # Including the date in mute file names so they only work for one day even if they get left around by accident:
 FIRSTLIFE_MUTE_FILE_PREFIX="$FIRSTLIFE_MARKER_DIR/.firstlife_currently_muted_on.${FIRSTLIFE_ISOTODAY}.by_pid."
