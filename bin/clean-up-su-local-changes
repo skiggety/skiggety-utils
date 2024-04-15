@@ -6,7 +6,7 @@
 
 cd $SKIGGETY_UTILS_DIR
 
-# TODO^10: script extract: 'git-clean-up-local-changes':
+# EASY TODO^15: script extract: 'git-clean-up-local-changes':
 if git-no-unpushed-changes && git-no-uncommitted-changes; then
     exit 0
 else
