@@ -34,7 +34,7 @@ if [ -f $FIRSTLIFE_CODE_TODO_REPORT ]; then
 fi
 
 echo
-echo_divider_with_text "=" 'Your main TODO list frim the "vital" program:'
+echo_divider_with_text "=" 'Your main TODO list from the "vital" program:'
 today_todo --non-interactive | abbreviate -l 13 # TODO: vital --report | abbreviate -l 13
 
 reward_status="$(firstlife-reward -n)"

@@ -27,6 +27,7 @@ firstlife-iterate-on-vital-tag -n 2 'URGENT' || firstlife-pomodoro --time-in-min
 for i in $(seq 10); do firstlife-reward "looked at URGENT stuff ($i/10x rewards)"; done # 10x rewards
 firstlife_exit_if_needed
 
+# TODO^31: test that we make it here regularly:
 firstlife-check-snail-mail || accumulate_error 'ignored physical mail'
 firstlife_exit_if_needed
 

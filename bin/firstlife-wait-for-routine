@@ -22,7 +22,11 @@ while ! has_routine_succeeded_today $WHICH_ROUTINE;do
     # TODO^49: function extract to firstlife.bash:
     for blank_line_i in $(seq $(tput lines));do echo; done # push everything to the bottom of the terminal
 
-    echo "Waiting another $i seconds for you to finish '$WHICH_ROUTINE' (successfully)."
+    # TODO: do something similar in firstlife-wait-for-user:
+    banner -w 40 "Waiting for $WHICH_ROUTINE" | slow-cat # TODO: script extract: "slow-banner"
+
+    echo "Waiting another $i seconds for you to finish '$WHICH_ROUTINE' (successfully for $FIRSTLIFE_ISOTODAY)."
     sleep-verbose $i
     i=$(( $i + 1))
 done
+oop

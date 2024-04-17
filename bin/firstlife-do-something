@@ -15,7 +15,7 @@ fi
 
 # TODO^7: accept an optianal tag for vital, like (on a separate line----------------------------------------------)
 # "URGENT", "NOW", or "FUN".  Pick randomly from vital tasks with the tag, weighted towards the ones with the most
-# votes, and ask the user to get it done or at least put in a pomodoro's worth of time. Maybe pass a '--random' option
+# votes, and ask the user to get it done or at least put in a pomodoro's worth of time.  Maybe pass a '--random' option
 # to 'firstlife-iterate-on-vital' or 'firstlife-iterate-on-vital-tag'
 
 vital-list-by-tag $TAG
