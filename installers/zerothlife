@@ -23,16 +23,23 @@ class ZerothLifeInstaller
     Dir.exist?(install_dir)
   end
 
+  def install!
+    git_clone_latest('https://github.com/skiggety/zerothlife', install_dir)
+    git_safe_pull(install_dir)
+  end
+
   def apparently_configured?
     false # TODO: check for bash include script
   end
 
-  # TODO: Only if you have access: TODO: how about some way to get updates, other than relying on firstlife itself? When
-  # should this script do a git-safe-pull?
+  def configure!
+    git_pull(install_dir)
 
-  def install!
-    git_clone_latest('https://github.com/skiggety/zerothlife', install_dir)
-    # TODO^115: (IN_PROGRESS, NOW) and add the new repo's bin dir to your path
+    # TODO^127: (IN_PROGRESS, NOW) add the new repo's bin dir to your path by copying and allowing the user to modify, a
+    # bash include script. skiggety-utils should include it if it exists, and firstlife/zerothlife, should
+    # firslife-delegate you to do it
+
+    # TODO^114: after install is implemented, call 'firstlife-setup'
   end
 
 end
