@@ -10,7 +10,8 @@
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-# TODO^2: only do git stuff if it's a git repository
+# TODO^11: only do git stuff if it's a git repository:
+# - EASY TODO^10: git-dir-is-repo && git-dashboard
 
 git_stash_list="$(git stash list)"
 if [ "$git_stash_list" != "" ]; then

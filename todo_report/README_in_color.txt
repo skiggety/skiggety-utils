@@ -1,5 +1,5 @@
 ==== TODOs, ascending, so you know what's likely to change next. Do not edit, run 'generate_todo_report' to generate. ====
-( showing last 8 lines out of 840 for 'todo': )
+( showing last 8 lines out of 842 for 'todo': )
 ./lib/include_in_bashrc.bash:15:# [1m[31mTODO^118[0m[0m: (IN_PROGRESS, NOW): fold in zerothlife config:
 ./bin/firstlife-battery-status:6:# - [1m[31mTODO^120[0m[0m: which means I should move this over and take it out of crontab soon, so it stops popping up so much
 ./bin/crontab-verbose:20:    # [1m[31mTODO^121[0m[0m: also open example files, if available (so 'firstlife' can suggest an example crontab file)

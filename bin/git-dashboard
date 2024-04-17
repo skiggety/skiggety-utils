@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# This script shows a bunch of information relevant to the git repository including status and logs, concisely.
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+exit_with_error "TODO^59: IMPLEMENT just the git part of default_dashboard"
