@@ -4,4 +4,5 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
+# TODO^10: cd $FIRSTLIFE_CODE_DIR && clean-up-local-git-changes
 clean-up-su-local-changes #TODO^24: IMPLEMENT for real, with firstlife in another repo"

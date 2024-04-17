@@ -10,6 +10,10 @@
 # TODO^19: this should should display what's waiting and since when
 # - TODO^20: do I need to take a message input from $* or $@ ?
 
-read -n 1 -s -r -p "Press any key to continue"
+message="Press any key to continue"
+if $WISEASS_MODE; then
+    message="Press the 'any' key to continue, if you can find it."
+fi
+read -n 1 -s -r -p "$message"
 debug_here
 exit 0

@@ -56,6 +56,7 @@ function firstlife_exit_if_needed {
 }
 
 # after we make sure common tasks only run once, we could do this, like what ../*firstlife-status scripts do with $FIRSTLIFE_MARKER_DIR/.review-firstlife-status_PID
+# TODO: is this used?:
 function exit_if_this_script_is_running_elsewhere {
     debug_here
     latest_script_pid='0'
@@ -152,6 +153,7 @@ function use_and_maintain_inner_routine_based_on_template {
     fi
 
     echo "...starting '$nickname' routine..."
+    # FUN EASY TODO: slow-banner "...starting '$nickname' routine..."
     $INNER_ROUTINE_SCRIPT \
         && firstlife-reward "completed $INNER_ROUTINE_SCRIPT" \
         || accumulate_error "inner $nickname routine '$INNER_ROUTINE_SCRIPT' FAILED"
