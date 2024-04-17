@@ -40,7 +40,7 @@ function main {
     git-log-recent
 
     echo
-    shellask "Please test 'ci' on another machine" || \
+    shellask "Please test 'ci' on another machine if you can" || \
         exit_with_error "Didn't test"
 
     echo

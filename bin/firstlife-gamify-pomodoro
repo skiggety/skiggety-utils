@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# This script helps you get started on a task, and ultimately do a pomodoro's worth of work on it.
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+firstlife-gamify "Work on '$*' up to 25 total minutes" || \
+    exit_with_error "TODO^122: IMPLEMENT" # Call firstlife-gamify with a new argument to limit the total time, so you can do a pomodoros worth of work a few minutes at a time to make it easier to get started.

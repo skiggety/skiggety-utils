@@ -12,7 +12,7 @@ export EDITOR
 # ./PWD_BIN comes before $SKIGGETY_UTILS_DIR/bin so that you can override scripts like "dashboard"
 export PATH="$PATH:./PWD_BIN:$SKIGGETY_UTILS_DIR/bin:$HOME/bin"
 
-# TODO^116: (IN_PROGRESS, NOW): fold in zerothlife config:
+# TODO^118: (IN_PROGRESS, NOW): fold in zerothlife config:
 # EASY TODO^114: should firstlife/bin/ be in the path before skiggety_utils so you can override firstlife code?
 
 # this weird way of getting the git branch works even when not in a git repo:
