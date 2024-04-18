@@ -14,6 +14,7 @@ bin/default_dashboard || accumulate_error "default_dashboard FAILED"
 
 # show todo's:
 uncommitted_todos="$(git diff | grep '^+.*TODO' | grep -v 'IGNORE_TODO')"
+uncommitted_todos="$uncommitted_todos$(rg TODO $(git status -s | grep '^?' | awk '{print $2}') | grep -v "IGNORE_TODO" | sort)" # get the ones in uncommitted files too
 uncommitted_todos_count="$(echo "$uncommitted_todos" | wc -l)"
 uncommitted_todos_count="$(( $uncommitted_todos_count ))"
 if [ $uncommitted_todos_count -gt 0 ]; then
