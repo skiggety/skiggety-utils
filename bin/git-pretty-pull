@@ -8,3 +8,4 @@ echo "getting the latest skiggety-utils by running 'git pull':"
 git pull || exit_with_error "could not pull latest changes from git"
 
 git-log-recent
+exit 0 # log failing shouldn't fail the pull
