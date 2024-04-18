@@ -13,6 +13,8 @@ bin/default_dashboard || accumulate_error "default_dashboard FAILED"
 # screen....:
 
 # show todo's:
+echo_divider_with_text "=" "uncommitted TODO's" # IGNORE_TODO
+git diff | grep '^+.*TODO' | grep -v 'IGNORE_TODO'
 if [ -f ./todo_report/README_in_color.txt ]; then
     cat ./todo_report/README_in_color.txt
 else

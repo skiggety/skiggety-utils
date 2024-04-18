@@ -1,5 +1,4 @@
 ---- IN_PROGRESS: --------------------------------------------------------------
-./bin/clean-up-firstlife-local-changes:6:. $FIRSTLIFE_CODE_DIR/lib/firstlife.bash || exit_with_error "could not source firstlife.bash" # TODO: (TESTING [01;31m[KIN_PROGRESS[m[K)
 ./lib/skiggety-utils.bash:212:# TODO: (TESTING [01;31m[KIN_PROGRESS[m[K):
 ./bin/firstlife-reminder-countdown:15:    # TODO^3: ([01;31m[KIN_PROGRESS[m[K) don't use "-m" for minutes, it's too confusing since git and other skiggety utils use it to pass a message:
 ./bin/templates/firstlife-morning.routine.TEMPLATE:10:# TODO^50: ([01;31m[KIN_PROGRESS[m[K) see what else I can do to keep more focus on the morning routine until it's done
