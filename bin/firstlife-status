@@ -17,6 +17,12 @@ done
 # TODO^43: function extract to firstlife.bash:
 for blank_line_i in $(seq $(tput lines));do echo; done # push everything to the bottom of the terminal
 
+echo_divider_with_text "...  " "KPI detail:"
+pushd ~/firstlife/log
+    rg "starting to focus" | sort
+    rg "looked at URGENT" | grep "1/10x" | sort
+popd
+
 MINUTES_OF_INACTIVITY_ALLOWED=12 # TODO^4: make configurable and tune the number
 debug_eval MINUTES_OF_INACTIVITY_ALLOWED
 debug_here "(...but right now MINUTES_OF_INACTIVITY_ALLOWED is still hardcoded)"
