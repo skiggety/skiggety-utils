@@ -27,12 +27,18 @@ FALLBACK_ON_TODAY_TODO=true
 SHOULD_ADD_TASK=false
 SHOULD_ALTER_VOTE=false
 VOTECOUNT=""
+INTERACTIVE=true
+LEBGACY_INTERACTIVE_FLAG=""
 while [[ "$1" == -* ]]; do
     # TODO^96: and make an alias to help add todo's quick:
     if [ "$1" == '-a' -o "$1" == '--add' ]; then
         shift
         FALLBACK_ON_TODAY_TODO=false # TODO: DELETE once we are no longer reliant on old implementation
         SHOULD_ADD_TASK=true
+    elif [ "$1" == '-n' -o "$1" == '--non-interactive' ]; then
+        INTERACTIVE=false
+        LEBGACY_INTERACTIVE_FLAG="-n"
+        shift
     elif [ "$1" == '-v' -o "$1" == '--vote' ]; then
         shift
         VOTECOUNT="$1"
@@ -61,6 +67,4 @@ if $SHOULD_ALTER_VOTE; then
 fi
 
 # TODO^2: DELETE once we are no longer reliant on old implementation:
-if $FALLBACK_ON_TODAY_TODO; then
-    today_todo
-fi
+today_todo $LEBGACY_INTERACTIVE_FLAG
