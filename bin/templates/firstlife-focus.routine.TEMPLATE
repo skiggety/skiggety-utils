@@ -15,7 +15,7 @@ firstlife_exit_if_needed
 
 firstlife-delegate --limit-n-times-per-x 3 day 'Caffeinate yourself (if you need to)'
 
-# TODO^105: (POINT, META, TESTing IN_PROGRESS) aim to get to this point, by, say, 10AM.  Iterate.
+# TODO^105: (POINT, META, TESTing IN_PROGRESS NOW) aim to get to this point, by, say, 10AM.  Iterate.
 firstlife-reward "starting to focus, (hopefully by 10AM)"
 
 # TODO^10: EXTRACT and REUSE this approach that includes the headings:

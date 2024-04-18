@@ -12,8 +12,12 @@ export EDITOR
 # ./PWD_BIN comes before $SKIGGETY_UTILS_DIR/bin so that you can override scripts like "dashboard"
 export PATH="$PATH:./PWD_BIN:$SKIGGETY_UTILS_DIR/bin:$HOME/bin"
 
-# TODO^118: (IN_PROGRESS, NOW): fold in zerothlife config:
-# EASY TODO^114: should firstlife/bin/ be in the path before skiggety_utils so you can override firstlife code?
+ZEROTHLIFE_CONFIG_INCLUDE="$ZEROTHLIFE_DIR/config/include_in_bashrc.bash"
+if [ -d "$ZEROTHLIFE_DIR" ]; then
+    if [ -f $ZEROTHLIFE_CONFIG_INCLUDE ]; then
+        . $ZEROTHLIFE_CONFIG_INCLUDE
+    fi
+fi
 
 # this weird way of getting the git branch works even when not in a git repo:
 # TODO: extract the part that shows the git branch?:

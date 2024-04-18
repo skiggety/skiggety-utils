@@ -29,17 +29,31 @@ class ZerothLifeInstaller
   end
 
   def apparently_configured?
-    false # TODO: check for bash include script
+    false # TODO: check for template bash include script as least as new as template
   end
 
   def configure!
     git_pull(install_dir)
 
-    # TODO^127: (IN_PROGRESS, NOW) add the new repo's bin dir to your path by copying and allowing the user to modify, a
-    # bash include script. skiggety-utils should include it if it exists, and firstlife/zerothlife, should
-    # firslife-delegate you to do it
+    if $interactive
 
-    # TODO^114: after install is implemented, call 'firstlife-setup'
+      # Add the new repo's bin dir to your path by copying and allowing the user to modify, a bash include script.
+      # skiggety-utils should include it if it exists:
+      delegate_diff_to_user(user_shell_config_path, template_shell_config_path) || \
+        raise('User did not configure zerothlife bash include.')
+
+      assert_system('zerothlife-setup')
+    else
+      raise_interactive_only_configuration
+    end
+  end
+
+  def user_shell_config_path
+    @user_shell_config_path ||= File.expand_path("#{install_dir}/config/include_in_bashrc.bash")
+  end
+
+  def template_shell_config_path
+    self_config_path('include_in_bashrc.template.bash')
   end
 
 end

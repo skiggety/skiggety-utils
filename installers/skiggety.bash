@@ -61,8 +61,14 @@ function main {
         SKIGGETY_UTILS_DIR="${SKIGGETY_UTILS_DIR/$HOME/\$HOME}"
         ESCAPED_SKIGGETY_UTILS_DIR="$(echo $SKIGGETY_UTILS_DIR | sed 's/\//\\\//g')"
 
+        ZEROTHLIFE_DIR="$(cd "$SKIGGETY_UTILS_DIR";cd ..;pwd)/zerothlife"
+        ZEROTHLIFE_DIR="${ZEROTHLIFE_DIR/$HOME/\$HOME}"
+        debug_eval ZEROTHLIFE_DIR
+        ESCAPED_ZEROTHLIFE_DIR="$(echo $ZEROTHLIFE_DIR | sed 's/\//\\\//g')"
+        debug_eval ESCAPED_ZEROTHLIFE_DIR
+
         echo >> $TMP_BASHRC
-        sed "s/\$HARDCODED_SKIGGETY_UTILS_DIR/$ESCAPED_SKIGGETY_UTILS_DIR/g"< "$NEW_BASHRC_SECTION" >> $TMP_BASHRC
+        sed "s/\$HARDCODED_SKIGGETY_UTILS_DIR/$ESCAPED_SKIGGETY_UTILS_DIR/g"< "$NEW_BASHRC_SECTION" | sed "s/\$HARDCODED_ZEROTHLIFE_DIR/$ESCAPED_ZEROTHLIFE_DIR/g" >> $TMP_BASHRC
         . $TMP_BASHRC
 
         if $interactive; then

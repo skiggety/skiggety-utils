@@ -1,0 +1,1 @@
+export PATH="$ZEROTHLIFE_DIR/local_bin:$PATH:$ZEROTHLIFE_DIR/bin"

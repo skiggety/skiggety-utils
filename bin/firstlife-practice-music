@@ -13,14 +13,13 @@ firstlife-wait-for-user
 $EDITOR $0 # TODO^2: DELETE when this is done needing some specific attention
 firstlife_exit_if_needed
 
-# TODO^9: subject to configuration if you have a max times per day number set, exit this script early if you already have the reward logged for this script enough times today.  In other words, only allow this script to run twice a day
+# TODO^19: subject to configuration if you have a max times per day number set, exit this script early if you already have the reward logged for this script enough times today.  In other words, only allow this script to run twice a day
 
-# TODO^16: limit how many times a day this script runs
 firstlife-alarm "Hooray! Time to practice your musical instrument!"
 firstlife_exit_if_needed
 shellask "Are you ready to practice your musical instrument?" || exit_with_error "Decided not to practice music"
 
-# TODO^31: organize this script with several short pomodoros, maybe randomly selct between different options, or
+# TODO^40: organize this script with several short pomodoros, maybe randomly selct between different options, or
 # alternate, or make different routines, maybe even use many short pomodoros without breaks for small steps..
 
 # CAPTURE INSPIRATION
@@ -34,7 +33,7 @@ firstlife-delegate 'Did you play anything original & interesting? write it down 
 firstlife_exit_if_needed
 
 # USE PRACTICE DECK
-# TODO^4: find or invent an excercise you can do on your instrument (maybe make this a card instead of a todo)
+# TODO^13: find or invent an excercise you can do on your instrument (maybe make this a card instead of a todo)
 # - TODO: try out the exercise
 # - TODO^2: write down the exercise on a single notecard and add it to your practice deck
 # TODO^13: shuffle your practice deck and deal yourself two more cards, and do those two exercises
@@ -43,7 +42,7 @@ firstlife_exit_if_needed
 firstlife_exit_if_needed
 
 # BAND PREPAREDNESS
-# TODO^8: spend a few minutes preparing for your next band practice
+# TODO^26: spend a few minutes preparing for your next band practice
 firstlife_exit_if_needed
 
 # TODO^9: also put your next album playlist in config and prompt user to use it
