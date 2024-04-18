@@ -12,6 +12,8 @@
 require 'fileutils'
 require_relative 'user_delegation'
 
+# rubocop:disable Metrics/ModuleLength (TODO?)
+
 module InstallableSkiggetyUtil
 
   include UserDelegation
@@ -277,11 +279,16 @@ module InstallableSkiggetyUtil
       raise "FAILED to upgrade or install cask #{package_name} with homebrew"
   end
 
-  def git_clone_latest(repo, dir)
-    assert_system("git clone #{repo} #{dir}") unless Dir.exist?(dir)
+  def git_pull(dir)
     Dir.chdir(dir) do
       assert_system('git pretty-pull')
     end
   end
 
+  def git_clone_latest(repo, dir)
+    assert_system("git clone #{repo} #{dir}") unless Dir.exist?(dir)
+    git_pull(dir)
+  end
+
 end
+# rubocop:enable Metrics/ModuleLength

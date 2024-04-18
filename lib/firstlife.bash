@@ -44,15 +44,12 @@ function is_still_today {
     exit_with_error 'should never get here'
 }
 
+# TODO: function firstlife-preempt-same-command kinda like firstlife-preempt-same-script but the arguments have to match
+# too.
+
 function firstlife-preempt-same-script {
     debug_here
     echo $$ > $FIRSTLIFE_THIS_SCRIPT_PID_FILE
-}
-
-# TODO^113: use firstlife_exit_if_needed liberally instead of exit_if_day_is_over (all over the codebase)
-function firstlife_exit_if_needed {
-    exit_if_day_is_over
-    exit_if_this_script_is_running_elsewhere
 }
 
 # after we make sure common tasks only run once, we could do this, like what ../*firstlife-status scripts do with $FIRSTLIFE_MARKER_DIR/.review-firstlife-status_PID
@@ -84,6 +81,12 @@ function is_another_day {
     else
         return 0
     fi
+}
+
+# TODO^113: use firstlife_exit_if_needed liberally instead of exit_if_day_is_over (all over the codebase)
+function firstlife_exit_if_needed {
+    exit_if_day_is_over
+    exit_if_this_script_is_running_elsewhere
 }
 
 # TODO^100: DEBUG false positives on morning routine, in other words this thinks it has finished when it hasn't:
