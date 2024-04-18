@@ -4,6 +4,12 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $FIRSTLIFE_CODE_DIR/lib/firstlife.bash || exit_with_error "could not source firstlife.bash"
-# TODO: for when we move firstlife.bash over: . $ZEROTHLIFE_CODE_DIR/lib/zerothlife.bash || exit_with_error "could not source zerothlife.bash"
+# TODO^89: for when we move firstlife.bash over: . $ZEROTHLIFE_CODE_DIR/lib/zerothlife.bash || exit_with_error "could not source zerothlife.bash"
 
-cd $FIRSTLIFE_CODE_DIR && git-clean-up-local-changes
+cd $FIRSTLIFE_CODE_DIR && git-clean-up-local-changes || exit_with_error "did not clean up changes in the repo that firstlife is in"
+cd $ZEROTHLIFE_CODE_DIR && git-clean-up-local-changes || exit_with_error "did not clean up changes in zerothlife repo"
+
+cd $SKIGGETY_UTILS_DIR
+if git status -s | grep firstlife || git status -s | grep zerothlife; then
+    clean-up-su-local-changes || exit_with_error "did not clean up firstlife changes in skiggety-utils repo"
+fi
