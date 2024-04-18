@@ -4,12 +4,4 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-cd $SKIGGETY_UTILS_DIR
-
-# EASY TODO^24: script extract: 'git-clean-up-local-changes':
-if git-no-unpushed-changes && git-no-uncommitted-changes; then
-    exit 0
-else
-    dashboard
-    firstlife-delegate --with-reward 'Commit something, probably using "ci && git ready && yup" or "cgry" for short.'
-fi
+cd $SKIGGETY_UTILS_DIR && git-clean-up-local-changes

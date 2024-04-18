@@ -1,11 +1,6 @@
 FIRSTLIFE_DIR=${FIRSTLIFE_DIR:-"$HOME/firstlife"}
 export FIRSTLIFE_DIR
 
-# TODO^13: when this is in it's own repo this will not be based on skiggety-utils:
-# TODO^19: Also we are going to have to define it in a bash include file because it'll be used to find this file
-FIRSTLIFE_CODE_DIR="$SKIGGETY_UTILS_DIR"
-export FIRSTLIFE_CODE_DIR
-
 FIRSTLIFE_BIN=${FIRSTLIFE_BIN:-"$FIRSTLIFE_DIR/bin"}
 export FIRSTLIFE_BIN
 
