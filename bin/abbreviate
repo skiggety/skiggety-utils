@@ -8,20 +8,27 @@
 
 DIVIDER=false
 PROMPT_LINES='3' # TODO: better implementation, not sure how to get $PS1 from parent process
-MAX_SCREEN_LINES="$(( $(tput lines) - $PROMPT_LINES ))" # default to a screenful, allowing room for prompt
+MAX_SCREEN_LINES="$(( $(tput lines) - $PROMPT_LINES ))" # default to a screenful, allowing room for prompt # TODO: if it's not in a terminal, maybe default to using AUTO_SCALE
 MAX_LINES="$(( $MAX_SCREEN_LINES - 1 ))" # because the explanation takes up 1 line
+AUTO_SCALE=false
 while [[ "$1" == -* ]]; do
-    if [ "$1" == '-n' ]; then
+    if [ "$1" == '-a' -o "$1" -o "$1" == '--auto-scale' ]; then
+        AUTO_SCALE=true
         shift
-        MAX_LINES="$1"
-        MAX_SCREEN_LINES="$(( $MAX_LINES + 1 ))" # because the explanation takes up 1 line
-        shift
-    # TODO: elif [ "$1" == '--headlines' ]; then # show a few lines with "head" at the top, still use the right total amount of space on screen
     elif [ "$1" == '-l' ]; then
         shift
         MAX_SCREEN_LINES="$1"
         MAX_LINES="$(( $MAX_SCREEN_LINES - 1 ))" # because the explanation takes up 1 line
+        AUTO_SCALE=false
         shift
+    elif [ "$1" == '-n' ]; then
+        shift
+        MAX_SCREEN_LINES="$1"
+        MAX_LINES="$1"
+        MAX_SCREEN_LINES="$(( $MAX_LINES + 1 ))" # because the explanation takes up 1 line
+        AUTO_SCALE=false
+        shift
+    # TODO: elif [ "$1" == '--headlines' ]; then # show a few lines with "head" at the top, still use the right total amount of space on screen
     elif [ "$1" == '-t' -o "$1" == '--title' ]; then
         shift
         TITLE="$1"
@@ -39,6 +46,11 @@ if [ "$INPUT" == '' ];then
     INPUT_LINES='0'
 else
     INPUT_LINES="$(( 0 + $(echo "$INPUT" | wc -l) ))"
+fi
+
+if $AUTO_SCALE; then
+    MAX_LINES="$( echo "sqrt($INPUT_LINES) + 3" | bc )"
+    MAX_SCREEN_LINES="$(( $MAX_LINES + 1 ))" # because the explanation takes up 1 line
 fi
 
 if [ $INPUT_LINES -gt $MAX_SCREEN_LINES ]; then

@@ -2,7 +2,7 @@
 
 # Self, program thyself.  This script gamifies life to help get everyday stuff done, and it's just a prototype.
 
-# TODO^198: (IN_PROGRESS) can I alias 'y' and 'n'?
+# TODO^197: can I alias 'y' and 'n'?
 
 # TODO^15: figure out uniform short flags for '--time-in-minutes', '--time-in-seconds', and '--message'. '-m' and '-t', aren't enough, so consider '-s' too, maybe. figure it out and make it uniform.
 

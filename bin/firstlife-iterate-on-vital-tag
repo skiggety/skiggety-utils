@@ -7,6 +7,7 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
+# EASY TODO^11: TEST
 # EASY TODO^10: take an option to use pomodoros for each item, for much increased focus
 
 LIMIT=""

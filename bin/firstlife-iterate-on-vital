@@ -2,7 +2,8 @@
 
 # This script prompts you to work on things from your 'vital' todo list
 
-# TODO: IMPLEMENT 'vital --iterate' instead of this script
+# TODO^2: IMPLEMENT 'vital --iterate' instead of this script
+# TODO: TEST
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 

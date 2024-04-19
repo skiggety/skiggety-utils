@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# This script iterates through other scripts that themselves help you iterate on your tasks.
+
+exit_with_error "TODO: IMPLEMENT"

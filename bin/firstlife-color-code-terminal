@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# This script helps get a terminal's color changed to help the user keep track of many terminals with different urgencies and purposes
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+# TODO^41: (IN_PROGRESS) USE widely
+# TODO^32: IMPLEMENT
