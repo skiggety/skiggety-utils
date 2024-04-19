@@ -17,6 +17,7 @@ uncommitted_todos="$(git diff | grep '^+.*TODO' | grep -v 'IGNORE_TODO')"
 uncommitted_todos="$uncommitted_todos$(rg TODO $(git status -s | grep '^?' | awk '{print $2}') | grep -v "IGNORE_TODO" | sort)" # get the ones in uncommitted files too
 uncommitted_todos_count="$(echo "$uncommitted_todos" | wc -l)"
 uncommitted_todos_count="$(( $uncommitted_todos_count ))"
+uncommitted_todos="$(echo "$uncommitted_todos" | abbreviate -n 5 )" # AFTER getting the linecount
 if [ $uncommitted_todos_count -gt 0 ]; then
     echo_divider_with_text "=" "${RED}$uncommitted_todos_count uncommitted TODO's:${no_color}" # IGNORE_TODO
     echo "$uncommitted_todos"
