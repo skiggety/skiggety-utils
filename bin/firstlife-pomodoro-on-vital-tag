@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# This script gets you to do a pomodoro on a given tag.  If you put it in cron, it encourages you to spend a certain
+# amount of time in a certain area.
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+
+# TODO^39: IMPLEMENT for real
+vital-list-by-tag $1
+shellask "do a pomodoro on vital tag '$*' and implement this for real sometime $(echo_here)" || exit_with_error "TODO^32: IMPLEMENT for real"
