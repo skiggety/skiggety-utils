@@ -40,6 +40,9 @@ dashboard
 clean-up-su-local-changes
 vimfirst clean-up-firstlife-local-changes
 
+firstlife-delegate "label something in your apartment, since you have a labelmaker and all"
+firstlife_exit_if_needed
+
 firstlife_exit_if_needed
 
 $EDITOR $0

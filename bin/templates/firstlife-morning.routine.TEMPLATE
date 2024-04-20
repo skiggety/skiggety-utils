@@ -39,8 +39,7 @@ firstlife_exit_if_needed
 
 # TODO^113: We need a way to only do a section of code once per day, kind of like using 'firstlife-delegate --limit-n-times-per-x 1 day', but something we can put around 'firstlife-break'
 firstlife-break -t 150
-
-firstlife_exit_if_needed # TODO^38: exit if another instance has taken over at the same time? (this would allow you to schedule the morning routine multiple times to be extra sure, but avoid it actually doubling up on all the tasks
+firstlife_exit_if_needed
 
 # TODO^72: make sure this only gets asked perhaps once a week:
 # TODO^21: mention and help with alarmy and cron:
