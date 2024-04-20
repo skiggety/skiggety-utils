@@ -2,7 +2,7 @@
 ./lib/skiggety-utils.bash:212:# TODO: (TESTING [01;31m[KIN_PROGRESS[m[K):
 ./bin/firstlife-reminder-countdown:15:    # TODO^3: ([01;31m[KIN_PROGRESS[m[K) don't use "-m" for minutes, it's too confusing since git and other skiggety utils use it to pass a message:
 ./bin/templates/firstlife-morning.routine.TEMPLATE:10:# TODO^50: ([01;31m[KIN_PROGRESS[m[K) see what else I can do to keep more focus on the morning routine until it's done
-./bin/firstlife-color-code-terminal:7:# TODO^59: ([01;31m[KIN_PROGRESS[m[K) USE widely
+./bin/firstlife-color-code-terminal:7:# TODO^64: ([01;31m[KIN_PROGRESS[m[K) USE widely
 ./bin/templates/firstlife-focus.routine.TEMPLATE:18:# TODO^106: (POINT, META, TESTing [01;31m[KIN_PROGRESS[m[K) aim to get to this point, by, say, 10AM.  Iterate.
 ./README-firstlife.md:9:  - TODO^119: ([01;31m[KIN_PROGRESS[m[K, NOW) move firstlife to 'zerothlife' repo and rename all mentions of 'firstlife' either to 'zerothlife' or 'zl'
 ---- TODOs for right NOW: ------------------------------------------------------
