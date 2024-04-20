@@ -10,6 +10,8 @@
 
 # TODO^2?: take a '-m <message>' option to display a custom message
 
+trap "exit 0" INT # seems to be necessary to cancel the alarm cleanly
+
 PRINT_NEWLINE=true
 SHOW_COUNTDOWN=false
 while [[ "$1" == -* ]]; do
@@ -33,7 +35,7 @@ function main {
             banner -w $(( ( 11 - $delay_remaining ) * 10 )) $delay_remaining
         fi
         echo -ne "  sleeping for $delay_remaining/$delay seconds\033[0K\r"
-        sleep 1
+        sleep 1 || exit_with_error "$(basename $0) stopped"
         : $((delay_remaining--))
     done
     echo -ne "  DONE! ($(basename $0) slept for $delay seconds)\033[0K\r"
