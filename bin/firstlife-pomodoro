@@ -83,7 +83,7 @@ echo '===='
 echo '=='
 echo;echo;
 
-firstlife-mute-in-foreground --time-in-seconds $SLEEP_FOR "POMODORO: $@" || exit_with_error "ended pomodoro early for: $*"
+firstlife-mute-in-foreground --with-countdown --time-in-seconds $SLEEP_FOR "POMODORO: $@" || exit_with_error "ended pomodoro early for: $*"
 if $WITH_ALARMS; then
     firstlife-alarm "OK, wrap it up! Pomodoro for '$@' is over now."
 fi
