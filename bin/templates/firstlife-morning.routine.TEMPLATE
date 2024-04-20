@@ -27,7 +27,7 @@ firstlife-delegate 'Put your phone on the charger'
 firstlife_exit_if_needed
 
 firstlife-mute --time-in-seconds 360 "Coffee making"
-firstlife-delegate --limit-n-times-per-x 1 day 'Make coffee'
+firstlife-delegate --limit-n-times-per-x 2 day 'Make coffee if you want'
 firstlife_exit_if_needed
 
 firstlife-mute --time-in-seconds 45 "taking medications"
@@ -55,7 +55,9 @@ SCOTTS_MEDITATION_PLAYLIST='https://www.youtube.com/playlist?list=PLbyyOcHfeHIqC
 open "$SCOTTS_MEDITATION_PLAYLIST" 2>/dev/null &
 # TODO^2: mute firstlife for the duration.  (When exactly to start it? use a 5-minute pomodoro?):
 firstlife-mute --time-in-seconds 315 "Meditation"
-firstlife-delegate --limit-n-times-per-x 1 day '5-minute meditation' # TODO^81: --with-timer 330 (and use timers widely)
+# TODO^81: --with-timer 330 (and use timers widely):
+firstlife-delegate --limit-n-times-per-x 1 day '5-minute meditation' || \
+firstlife-delegate --limit-n-times-per-x 1 day '30 second meditation?' # TODO^81: --with-timer 330 (and use timers widely)
 firstlife_exit_if_needed
 
 firstlife-mute --time-in-seconds 180 "planning your day in 'vital'"
@@ -75,6 +77,10 @@ firstlife_exit_if_needed
 firstlife-pomodoro --time-in-minutes 2 --without-break "Enjoy the distractions around you briefly to figure out which things are distracting before putting them away"
 firstlife-mute --time-in-seconds 30 'Put away any temptations or distractions'
 firstlife-delegate --limit-n-times-per-x 2 day 'Put away any temptations or distractions'
+firstlife_exit_if_needed
+
+firstlife-mute --time-in-seconds 360 "Coffee making"
+firstlife-delegate --limit-n-times-per-x 2 day 'Make coffee if you want'
 firstlife_exit_if_needed
 
 firstlife-mute --time-in-seconds 30 'Start up some podcasts'
@@ -113,7 +119,7 @@ firstlife-delegate --limit-n-times-per-x 1 day 'Finish your shower' || accumulat
 firstlife_exit_if_needed
 
 firstlife-mute --time-in-seconds 90 'Shave'
-firstlife-delegate --limit-n-times-per-x 1 2_days 'Shave' || accumulate_error 'did not shave'
+firstlife-delegate --limit-n-times-per-x 1 2_days 'Shave'
 firstlife_exit_if_needed
 
 firstlife-mute --time-in-seconds 60 'Deodorant'
@@ -141,7 +147,7 @@ firstlife-delegate --limit-n-times-per-x 1 day 'Get dressed' || accumulate_error
 firstlife_exit_if_needed
 
 firstlife-mute --time-in-seconds 360 "Coffee making"
-firstlife-delegate --limit-n-times-per-x 1 day 'Make coffee again if you want'
+firstlife-delegate --limit-n-times-per-x 2 day 'Make coffee if you want'
 firstlife_exit_if_needed
 
 firstlife-mute --time-in-seconds 10 'start music'
