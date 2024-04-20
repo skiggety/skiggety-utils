@@ -4,5 +4,17 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-# TODO^41: (IN_PROGRESS) USE widely
-# TODO^32: IMPLEMENT
+# TODO^59: (IN_PROGRESS) USE widely
+# TODO^41: IMPLEMENT
+
+TITLE='???'
+while [[ "$1" == -* ]]; do
+    if [ "$1" == '--for' ]; then
+        shift
+        TITLE="$1"
+        shift
+    fi
+done
+
+# TODO: maybe if Title wasn't specified, we could mention the name of the calling script:
+firstlife-delegate "Please change the color of this terminal to indicate the urgency of $newline    '$TITLE'" || exit 1
