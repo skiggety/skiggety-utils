@@ -16,14 +16,14 @@ bin/default_dashboard || accumulate_error "default_dashboard FAILED"
 ### Show Todo's:
 ###
 ################################################################################
-uncommitted_todos="$(git diff | grep '^+.*TODO' | grep -v 'IGNORE_TODO')"
-uncommitted_todos="$(rg TODO $(git status -s | grep '^?' | awk '{print $2}') | grep -v "IGNORE_TODO" | sort)$uncommitted_todos" # get the ones in uncommitted files too
-uncommitted_todos_count="$(echo "$uncommitted_todos" | wc -l)"
-uncommitted_todos_count="$(( $uncommitted_todos_count ))"
-uncommitted_todos="$(echo "$uncommitted_todos" | abbreviate --auto-scale )" # AFTER getting the linecount
-if [ $uncommitted_todos_count -gt 0 ]; then
-    echo_divider_with_text "=" "${RED}$uncommitted_todos_count uncommitted TODO's:${no_color}" # IGNORE_TODO
-    echo "$uncommitted_todos"
+unstaged_todos="$(git diff | grep '^+.*TODO' | grep -v 'IGNORE_TODO')"
+unstaged_todos="$(rg TODO $(git status -s | grep '^?' | awk '{print $2}') | grep -v "IGNORE_TODO" | sort)$unstaged_todos" # get the ones in unstaged files too
+unstaged_todos_count="$(echo "$unstaged_todos" | wc -l)"
+unstaged_todos_count="$(( $unstaged_todos_count ))"
+unstaged_todos="$(echo "$unstaged_todos" | abbreviate --auto-scale )" # AFTER getting the linecount
+if [ $unstaged_todos_count -gt 0 ]; then
+    echo_divider_with_text "=" "${RED}$unstaged_todos_count unstaged TODO's:${no_color}" # IGNORE_TODO
+    echo "$unstaged_todos"
 fi
 if [ -f ./todo_report/README_in_color.txt ]; then
     cat ./todo_report/README_in_color.txt
