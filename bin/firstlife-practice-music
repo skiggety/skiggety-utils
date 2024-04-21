@@ -42,7 +42,7 @@ firstlife_exit_if_needed
 firstlife_exit_if_needed
 
 # BAND PREPAREDNESS
-# TODO^26: spend a few minutes preparing for your next band practice
+# TODO^125: spend a few minutes preparing for your next band practice
 firstlife_exit_if_needed
 
 # TODO^9: also put your next album playlist in config and prompt user to use it

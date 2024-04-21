@@ -150,7 +150,9 @@ function use_and_maintain_inner_routine_based_on_template {
         exit_with_error "Inner $nickname routine not found $(echo_here) (neither '$PERSONAL_ROUTINE_SCRIPT' nor '$TEMPLATE_ROUTINE_SCRIPT' )"
     fi
 
-    firstlife-color-code-terminal --for "$nickname routine"
+    if [ "$nickname" != "wake" ]; then # TODO: UN-HACK
+        firstlife-color-code-terminal --for "$nickname routine"
+    fi
     echo "...starting '$nickname' routine..."
     # FUN EASY TODO: slow-banner "...starting '$nickname' routine..."
     $INNER_ROUTINE_SCRIPT \

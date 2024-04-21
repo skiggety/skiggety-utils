@@ -3,6 +3,7 @@
 # This script helps get a terminal's color changed to help the user keep track of many terminals with different urgencies and purposes
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
 # TODO^73: (IN_PROGRESS) USE widely
 
@@ -16,4 +17,4 @@ while [[ "$1" == -* ]]; do
 done
 
 # TODO: maybe if Title wasn't specified, we could mention the name of the calling script:
-firstlife-delegate "Please change the color of this terminal to indicate the urgency of $newline    '$TITLE'" || exit 1
+firstlife-delegate "Please change the color of this terminal to indicate the urgency of $newline    '$TITLE' (for $FIRSTLIFE_ISOTODAY)" || exit 1
