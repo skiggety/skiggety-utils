@@ -51,6 +51,11 @@ firstlife_exit_if_needed
 # - TODO^24: firstlife-delegate "Work on your solo album, going for as many songs as possible with good recordings and lead sheets in order
 firstlife_exit_if_needed
 
+# TODO^34: put music practice playlist link in config:
+if [ -n "$MUSIC_PRACTICE_PLAY_LINK" ]; then
+    open "$MUSIC_PRACTICE_PLAY_LINK" 2>/dev/null &
+fi
+
 firstlife-mute-in-foreground --time-in-seconds $(( 20 * 60 )) "Practice along with your playlist"
 firstlife-alarm "You have practiced enough for now, probably"
 firstlife-reward "practiced a musical instrument"
