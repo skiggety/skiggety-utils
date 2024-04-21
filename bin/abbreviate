@@ -12,7 +12,7 @@ MAX_SCREEN_LINES="$(( $(tput lines) - $PROMPT_LINES ))" # default to a screenful
 MAX_LINES="$(( $MAX_SCREEN_LINES - 1 ))" # because the explanation takes up 1 line
 AUTO_SCALE=false
 while [[ "$1" == -* ]]; do
-    if [ "$1" == '-a' -o "$1" == '--auto-scale' ]; then
+    if [ "$1" == '-a' -o "$1" == '--auto' -o "$1" == '--auto-scale' ]; then
         AUTO_SCALE=true
         shift
     elif [ "$1" == '-l' ]; then
