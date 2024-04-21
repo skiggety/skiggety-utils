@@ -84,13 +84,13 @@ function main {
     done
 
     if $interactive; then
-        tmp_sorted_list="/tmp/today_todo.$PPID.DELETE_ME.txt"
+        tmp_sorted_list="/tmp/today_todo.$$.sorted.TEMP.txt"
         todo --non-interactive --color never | grep 'TODO.today.txt:' | sed "s/^.\/${vital_todo_list_file_name}:[[:digit:]]*://" | tac > $tmp_sorted_list # IGNORE_TODO
         if ! [ -f "$vital_done_list_file_name" ]; then
             echo 'Done:' > $vital_done_list_file_name
             echo '----------------------------------------' >> $vital_done_list_file_name
         fi
-        files_to_open="$vital_todo_list_file_name $vital_done_list_file_name"
+        files_to_open="$vital_todo_list_file_name $vital_done_list_file_name $tmp_sorted_list"
 
         echo "- TODO: ..." >> "$vital_todo_list_file_path" # IGNORE_TODO
         vim -o $files_to_open '+/\.\.\.' # TODO^84: here and elsewhere, use $EDITOR, not vim
@@ -155,7 +155,7 @@ function main {
         if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
     fi
 
-    # TODO: function extract to do with other keywords
+    # TODO^23: function extract to do with other keywords:
     todo_now_output="$(echo "$todo_output" | grep --color=always '\(NOW\|EASY\)')"
     todo_now_count=$(( 0 + $(echo "$todo_now_output" | wc -l) ))
     if [ "$todo_now_output" != '' ]; then
@@ -171,6 +171,23 @@ function main {
         echo
         echo "-------- Found $todo_now_count todos to do right NOW (or tagged EASY)$only_showing:" | grep --color=always \\d
         echo "$todo_now_output" | tail -n $today_todo_now_max_count
+        if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
+    fi
+
+    # TODO^24: function extract to do with other keywords
+    today_todo_urgent_max_count=2
+    todo_urgent_output="$(echo "$todo_output" | grep --color=always 'URGENT')"
+    todo_urgent_count=$(( 0 + $(echo "$todo_urgent_output" | wc -l) ))
+    if [ "$todo_urgent_output" != '' ]; then
+        if (( $todo_urgent_count > $today_todo_urgent_max_count )); then
+            only_showing=", only showing $today_todo_urgent_max_count"
+        else
+            only_showing=''
+        fi
+
+        echo
+        echo "-------- Found $todo_urgent_count todos tagged 'URGENT'$only_showing:" | grep --color=always \\d
+        echo "$todo_urgent_output" | tail -n $today_todo_urgent_max_count
         if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
     fi
 
