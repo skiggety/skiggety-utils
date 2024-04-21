@@ -27,16 +27,24 @@ today_todo --non-interactive | grep --color=always '\(URGENT\|--------\|^$\)'
 firstlife-pomodoro 'most important URGENT stuff (use "firstlife-iterate-on-vital-tag -n 3 URGENT")' || accumulate_error 'skipped pomodoro for URGENT stuff'
 firstlife_exit_if_needed
 
+today_todo -n
+firstlife-pomodoro \
+    "Work on the things on your todo list (in 'vital'), at least roughly in order, keeping it organized as you go" \
+    || exit_with_eror "Come on, your todo list needs attention"
+firstlife_exit_if_needed
+
 # TODO^10: Measure myself on when I get here in a given day, and how many POINTs I'm earning per week:
 today_todo --non-interactive | grep --color=always '\(POINT\|--------\|^$\)'
 firstlife-pomodoro 'most important stuff worth POINTS (use "firstlife-iterate-on-vital-tag -n 3 POINT")' || accumulate_error 'skipped pomodoro worth POINTS'
 firstlife_exit_if_needed
 
-today_todo --non-interactive | grep --color=always '\(INCOME\|--------\|^$\)'
+vital-list-by-tag INCOME
+# today_todo --non-interactive | grep --color=always '\(INCOME\|--------\|^$\)'
 firstlife-pomodoro 'most important stuff tagged "INCOME (use "firstlife-iterate-on-vital-tag -n 3 INCOME")"' || accumulate_error 'skipped pomodoro for stuff tagged "INCOME"'
 firstlife_exit_if_needed
 
 vital-list-by-tag POINT
+# today_todo --non-interactive | grep --color=always '\(POINT\|--------\|^$\)'
 firstlife-pomodoro 'most important stuff worth POINTS (use "firstlife-iterate-on-vital-tag -n 3 POINT")' || accumulate_error 'skipped pomodoro worth POINTS'
 firstlife_exit_if_needed
 
