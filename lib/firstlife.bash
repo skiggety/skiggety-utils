@@ -160,10 +160,11 @@ function use_and_maintain_inner_routine_based_on_template {
         || accumulate_error "inner $nickname routine '$INNER_ROUTINE_SCRIPT' FAILED"
 
     # TODO^88: allow using vscode here:
-    if [ -f $PERSONAL_ROUTINE_SCRIPT ]; then # TODO^11: and if the files are different, otherwise probably not worth editing:
-        # TODO^3: Encourage editing more strongly if the template has been edited more recently than the local version
-        shellask "Want to tune up $(basename $PERSONAL_ROUTINE_SCRIPT) for next time?" \
-            && vimdiff -o $TEMPLATE_ROUTINE_SCRIPT $PERSONAL_ROUTINE_SCRIPT # TODO^2: GTVO (get the vim out)
+    if [ -f $PERSONAL_ROUTINE_SCRIPT ]; then
+        if ! cmp $TEMPLATE_ROUTINE_SCRIPT $PERSONAL_ROUTINE_SCRIPT; then
+            shellask "CHANGES FOUND! Want to tune up $(basename $PERSONAL_ROUTINE_SCRIPT) for next time?" \
+                && vimdiff -o $TEMPLATE_ROUTINE_SCRIPT $PERSONAL_ROUTINE_SCRIPT # TODO^2: GTVO (get the vim out)
+        fi
     else
         shellask "Would you like to start maintaining a local script for your $nickname routine?" \
             && mkdir -p $FIRSTLIFE_BIN \
