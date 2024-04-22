@@ -32,6 +32,7 @@ firstlife_exit_if_needed
 
 firstlife-mute --time-in-seconds 45 "taking medications"
 firstlife-delegate --limit-n-times-per-x 1 day 'Make sure you have taken any morning medications' || accumulate_error 'did not medicate'
+firstlife_exit_if_needed
 
 firstlife-mute --time-in-seconds 300 "Breakfast"
 firstlife-delegate --limit-n-times-per-x 1 day 'Break your fast' || accumulate_error 'skipped breakfast'

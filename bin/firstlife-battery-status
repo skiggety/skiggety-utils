@@ -2,12 +2,12 @@
 
 # This script watches the power level of this machine and gets your attention if necessary.
 
-# TODO^125?: consider whether this should be integrated into firstlife-status or kept separate, or if there should be a way to do both (right now I'm leaning towards the first option, integrate)
+# TODO^126?: consider whether this should be integrated into firstlife-status or kept separate, or if there should be a way to do both (right now I'm leaning towards the first option, integrate)
 # - TODO^120: which means I should move this over and take it out of crontab soon, so it stops popping up so much
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-shellask "TODO^99: VOTE for this to get IMPLEMENTed or work on it a bit ($(echo_here))" || exit_with_error "not even voting?" # TODO: DELETE once implementation exists
+shellask "TODO^108: VOTE for this to get IMPLEMENTed or work on it a bit ($(echo_here))" || exit_with_error "not even voting?" # TODO: DELETE once implementation exists
 
 # TODO: I think the general plan should be to have something to display that shows how much time is left on battery to
 # roughly 1 sig fig, so it changes more often when there is less time left until battery empty.  Then we should emit a
