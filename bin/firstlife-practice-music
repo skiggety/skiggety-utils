@@ -42,10 +42,10 @@ firstlife_exit_if_needed
 firstlife_exit_if_needed
 
 # BAND PREPAREDNESS
-# TODO^125: spend a few minutes preparing for your next band practice
+firstlife-pomodoro --time-in-minutes 10 "Prepare for your next band practice, making sure lead sheets are ready"
 firstlife_exit_if_needed
 
-# TODO^9: also put your next album playlist in config and prompt user to use it
+# TODO^31: also put your next album playlist in config and prompt user to use it
 # TODO^17: record anything new and original for your own, configurable, youtube playlist to draft out your next solo album
 # - TODO^30: pop open that playlist
 # - TODO^24: firstlife-delegate "Work on your solo album, going for as many songs as possible with good recordings and lead sheets in order
