@@ -29,7 +29,7 @@ firstlife-iterate-on-vital-tag -n 2 'URGENT' || \
     accumulate_error 'ignored URGENT tasks' # TODO: limit the total number that happens daily
 firstlife_exit_if_needed
 
-# TODO^31: test that we make it here regularly:
+# TODO^36: test that we make it here regularly:
 firstlife-check-snail-mail || accumulate_error 'ignored physical mail'
 firstlife_exit_if_needed
 

@@ -21,7 +21,7 @@ open "http://facebook.com" 2>/dev/null & # TODO: UN-HARDCODE
 firstlife-delegate --limit-n-times-per-x 1 day --with-reward "Wish people 'Happy Birthday!' (look at google calendar and facebook)."
 firstlife_exit_if_needed
 
-# TODO^31: test that we make it here regularly:
+# TODO^36: test that we make it here regularly:
 firstlife-check-snail-mail --with-reward || accumulate_error 'ignored snail mail'
 firstlife_exit_if_needed
 

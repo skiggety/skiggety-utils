@@ -5,10 +5,10 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $FIRSTLIFE_CODE_DIR/lib/firstlife.bash || exit_with_error "could not source firstlife.bash"
 
-# TODO^90: use liberally at the beginning of crontab lines or scripts that are usually used with cron
+# TODO^94: use liberally at the beginning of crontab lines or scripts that are usually used with cron
 
-# TODO^19: this should should display what's waiting and since when
-# - TODO^20: do I need to take a message input from $* or $@ ?
+# TODO^33: this should should display what's waiting and since when
+# - TODO^34: do I need to take a message input from $* or $@ ?
 
 message="Press any key to continue"
 if $WISEASS_MODE; then

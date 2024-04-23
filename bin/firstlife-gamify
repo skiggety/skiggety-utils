@@ -10,10 +10,9 @@ TITLE="$*"
 POMODORO_MINUTES=1
 while ! shellask "Is '$TITLE' done yet (or at least done enough for today)?"; do
     firstlife-pomodoro --with-alarms --time-in-minutes $POMODORO_MINUTES --without-break "Work on '$TITLE' for $POMODORO_MINUTES minutes" # TODO?: --without-reward and do rewards separately
-    BREAK_SECONDS=$(( ( $POMODORO_MINUTES * 20 ) + 60 ))
+    BREAK_SECONDS=$(( ( $POMODORO_MINUTES * 20 ) + 30 ))
     firstlife-break -t $BREAK_SECONDS
     exit_if_day_is_over
-    firstlife-alarm "Time to work on: $TITLE"
     POMODORO_MINUTES="$(( $POMODORO_MINUTES + 1 ))"
 done
 
