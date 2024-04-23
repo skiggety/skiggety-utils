@@ -5,7 +5,8 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
+# TODO^45: IMPLEMENT for real
 
-# TODO^40: IMPLEMENT for real
+firstlife-color-code-terminal --for "a pomodoro on vital tag '$*'"
 vital-list-by-tag $1
 shellask "do a pomodoro on vital tag '$*' and implement this for real sometime $(echo_here)" || exit_with_error "TODO^32: IMPLEMENT for real"
