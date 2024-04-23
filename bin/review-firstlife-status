@@ -7,7 +7,7 @@
 
 # TODO: make a template for setting up variables like BEDTIME after which firstlife-status should just fail and this script should exit
 
-cd $FIRSTLIFE_DIR
+cd $FIRSTLIFE_LOCAL_DIR
 
 # TODO: implement terminal sizing for other os'es:
 # TODO^4: set to preferences from config template:

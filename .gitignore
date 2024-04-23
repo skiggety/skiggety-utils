@@ -1,6 +1,7 @@
 # This is for if you want files to be ignored
 *.gitignored.*
 
+# Ignore vim swap files:
 .*.swp
 
 # ignore the mac finder droppings:

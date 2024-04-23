@@ -13,7 +13,7 @@ firstlife-preempt-same-script
 # - TODO^33: ..but first I should start using a local version
 #   - TODO^34: ..but first I should simplify readability a lot
 
-# TODO^2: use this to make sure we don't ask for the alarm too often: FIRSTLIFE_ALARM_MARKER_FILE="$FIRSTLIFE_DIR/markers/firstlife_outside_alarm_confirmed"
+# TODO^2: use this to make sure we don't ask for the alarm too often: FIRSTLIFE_ALARM_MARKER_FILE="$FIRSTLIFE_LOCAL_DIR/markers/firstlife_outside_alarm_confirmed"
 
 # TODO^12: figure out how to keep this stuff on a schedule:
 # - TODO^117: help user set up crontab with a sample file, maybe mention http://crontab.guru which can help generate crontab lines

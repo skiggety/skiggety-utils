@@ -1,19 +1,20 @@
-FIRSTLIFE_DIR=${FIRSTLIFE_DIR:-"$HOME/firstlife"}
-export FIRSTLIFE_DIR
+# TODO: DELETE THIS FILE AND USE zerothlife/lib/zerothlife.bash instead
+FIRSTLIFE_LOCAL_DIR=${FIRSTLIFE_LOCAL_DIR:-"$HOME/firstlife"}
+export FIRSTLIFE_LOCAL_DIR
 
-FIRSTLIFE_BIN=${FIRSTLIFE_BIN:-"$FIRSTLIFE_DIR/bin"}
-export FIRSTLIFE_BIN
+FIRSTLIFE_LOCAL_BIN=${FIRSTLIFE_LOCAL_BIN:-"$FIRSTLIFE_LOCAL_DIR/bin"}
+export FIRSTLIFE_LOCAL_BIN
 
-FIRSTLIFE_LOG_DIR=${FIRSTLIFE_LOG_DIR:-"$FIRSTLIFE_DIR/log"}
+FIRSTLIFE_LOG_DIR=${FIRSTLIFE_LOG_DIR:-"$FIRSTLIFE_LOCAL_DIR/log"}
 export FIRSTLIFE_LOG_DIR
 
-FIRSTLIFE_MARKER_DIR="$FIRSTLIFE_DIR/markers"
+FIRSTLIFE_MARKER_DIR="$FIRSTLIFE_LOCAL_DIR/markers"
 export FIRSTLIFE_MARKER_DIR
 
 FIRSTLIFE_ISOTODAY=${FIRSTLIFE_ISOTODAY:-"$(isotoday)"}
 export FIRSTLIFE_ISOTODAY
 
-WISEASS_MODE=true # because of course it does # TODO: move to firstlife config
+WISEASS_MODE=true # because of course it does
 
 # Including the date in mute file names so they only work for one day even if they get left around by accident:
 FIRSTLIFE_MUTE_FILE_PREFIX="$FIRSTLIFE_MARKER_DIR/.firstlife_currently_muted_on.${FIRSTLIFE_ISOTODAY}.by_pid."
@@ -117,7 +118,7 @@ function succeeded_today_marker_script {
 }
 
 function personal_inner_routine_script {
-    echo "$FIRSTLIFE_BIN/$(personal_inner_routine_script_name $1)"
+    echo "$FIRSTLIFE_LOCAL_BIN/$(personal_inner_routine_script_name $1)"
 }
 
 function personal_inner_routine_script_name {
@@ -167,7 +168,7 @@ function use_and_maintain_inner_routine_based_on_template {
         fi
     else
         shellask "Would you like to start maintaining a local script for your $nickname routine?" \
-            && mkdir -p $FIRSTLIFE_BIN \
+            && mkdir -p $FIRSTLIFE_LOCAL_BIN \
             && cp $TEMPLATE_ROUTINE_SCRIPT $PERSONAL_ROUTINE_SCRIPT \
             && chmod +x $PERSONAL_ROUTINE_SCRIPT \
             && shellask "Edit $PERSONAL_ROUTINE_SCRIPT as you like for next time"

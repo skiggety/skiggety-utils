@@ -209,7 +209,6 @@ function assert_equal {
     fi
 }
 
-# TODO: (TESTING IN_PROGRESS):
 function is_on_mac_os {
     uname -a | grep Darwin > /dev/null
 }
