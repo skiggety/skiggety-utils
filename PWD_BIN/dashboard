@@ -17,9 +17,21 @@ bin/default_dashboard || accumulate_error "default_dashboard FAILED"
 ###
 ################################################################################
 unstaged_todos="$(git diff | grep '^+.*TODO' | grep -v 'IGNORE_TODO')"
-unstaged_todos="$(rg TODO $(git status -s | grep '^?' | awk '{print $2}') | grep -v "IGNORE_TODO" | sort)$unstaged_todos" # get the ones in unstaged files too
+debug_here
+unstaged_files="$(git status -s | grep '^?')"
+debug_eval_here unstaged_files
+debug_here
+if [ -n "$unstaged_files" ]; then
+    debug_here
+    unstaged_todos="$(rg TODO $(echo "$unstaged_files" | awk '{print $2}') | grep -v "IGNORE_TODO" | sort)$unstaged_todos" # get the ones in unstaged files too
+    debug_here
+fi
+debug_eval_here unstaged_todos
 unstaged_todos_count="$(echo "$unstaged_todos" | wc -l)"
 unstaged_todos_count="$(( $unstaged_todos_count ))"
+if [ -z "$unstaged_todos" ]; then
+    unstaged_todos_count=0
+fi
 unstaged_todos="$(echo "$unstaged_todos" | abbreviate --auto-scale )" # AFTER getting the linecount
 if [ $unstaged_todos_count -gt 0 ]; then
     echo_divider_with_text "=" "${RED}$unstaged_todos_count unstaged TODO's:${no_color}" # IGNORE_TODO
