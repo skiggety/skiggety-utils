@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# This script should generate a line to use in a hostfile on another computer
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+echo $HOSTNAME
+ifconfig -a | grep inet
+exit_with_error "TODO: IMPLEMENT"
