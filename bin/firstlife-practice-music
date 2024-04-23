@@ -46,7 +46,7 @@ zerothlife_exit_if_needed
 zerothlife_exit_if_needed
 
 # BAND PREPAREDNESS
-firstlife-pomodoro --time-in-minutes 10 "Prepare for your next band practice, making sure lead sheets are ready"
+firstlife-pomodoro --time-in-minutes 10 --without-break "Prepare for your next band practice, making sure lead sheets are ready" || exit_with_error "Didn't prep for band practice"
 zerothlife_exit_if_needed
 
 # TODO^31: also put your next album playlist in config and prompt user to use it
@@ -60,7 +60,7 @@ zl-config-ensure MUSIC_PRACTICE_PLAY_LINK
 if [ -n "$MUSIC_PRACTICE_PLAY_LINK" ]; then
     open "$MUSIC_PRACTICE_PLAY_LINK" 2>/dev/null &
 fi
-firstlife-mute-in-foreground --time-in-seconds $(( 20 * 60 )) "Practice along with your playlist" || exit_with_error "didn't practice with playlist"
-firstlife-alarm "You have practiced enough for now, probably"
+firstlife-pomodoro --time-in-minutes 20 --without-break "Practice along with your playlist" || exit_with_error "didn't practice with playlist"
+
 firstlife-reward "practiced a musical instrument"
 zerothlife_exit_if_needed
