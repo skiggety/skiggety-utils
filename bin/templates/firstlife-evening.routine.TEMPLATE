@@ -7,9 +7,6 @@
 
 firstlife-preempt-same-script
 
-firstlife-wait-for-routine 'firstlife-work' # TODO: || exit_with_error "..."
-firstlife_exit_if_needed
-
 firstlife-wait-for-user # TODO?: || exit_with_error "..."
 firstlife_exit_if_needed
 

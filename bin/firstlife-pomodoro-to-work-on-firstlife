@@ -7,9 +7,6 @@
 
 firstlife-preempt-same-script
 
-firstlife-wait-for-routine 'firstlife-morning'
-firstlife_exit_if_needed
-
 firstlife-pomodoro --with-alarms --without-break "Work on firstlife, making sure to test and commit as you go, and following the todo list" || exit_with_error "Did not do firstlife pomodoro"
 while ! clean-up-firstlife-local-changes; do
     firstlife_exit_if_needed
