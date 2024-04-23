@@ -14,6 +14,11 @@ function main {
         fi
     done
 
+    if [ $(git status -s | wc -l) -eq 0 ];then
+        echo "No changes found, exiting $(basename $0) without error..."
+        exit 0
+    fi
+
     run-or-fail git add -p
 
     touch .gitignore # so 'review-dev' notices
