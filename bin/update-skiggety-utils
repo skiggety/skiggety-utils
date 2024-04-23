@@ -12,7 +12,7 @@ pushd $SKIGGETY_UTILS_DIR >/dev/null
 # These are generated, and can always be re-generated.  Ditching changes here avoids conflicts:
 git restore todo_report
 
-$SKIGGETY_UTILS_DIR/PWD_BIN/git-safe-pull || exit_with_error "git-safe-pull FALED"
+git-safe-pull || exit_with_error "git-safe-pull FALED"
 
 echo_divider_with_text "--==" "running: install-skiggety-utils '$@':"
 install-skiggety-utils "$@" || exit 1

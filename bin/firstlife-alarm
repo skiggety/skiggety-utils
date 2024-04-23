@@ -12,7 +12,7 @@
 SNOOZE_SECONDS=60 # TODO^2: make configurable
 export SNOOZE_SECONDS
 
-SNOOZE_BACKOFF_SECONDS=30 # TODO^3: make configurable
+SNOOZE_BACKOFF_SECONDS=30 # TODO^102: make configurable
 
 while firstlife-single-alarm "$*";do
     SNOOZE_SECONDS="$(( $SNOOZE_SECONDS + $SNOOZE_BACKOFF_SECONDS ))"

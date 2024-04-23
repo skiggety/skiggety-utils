@@ -7,7 +7,7 @@
 
 # TODO^41: since I'm using mute-in-foreground, I might need to unmute if the script gets killed (trap signal)
 
-# TODO^7: subject to configuration if you have a max times per day number set, exit this script early if you already have the reward logged for this script enough times today.
+# TODO^106: subject to configuration if you have a max times per day number set, exit this script early if you already have the reward logged for this script enough times today.
 # - TODO^6: similarly, maybe make it optional (ask user) after the first completion each day.
 
 HOW_MANY_THINGS_TO_PUT_AWAY_EVERY_DAY=30

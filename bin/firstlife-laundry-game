@@ -4,7 +4,7 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-LAUNDRIES_TO_FOLD=30 # TODO: make configurable, tune based on use
+LAUNDRIES_TO_FOLD=30 # TODO^100: make configurable, tune based on use
 
 if shellask "Do you have laundry to fold and/or put away?"; then
     for num in $(seq $LAUNDRIES_TO_FOLD);do

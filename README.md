@@ -153,7 +153,7 @@ These ideas don't have a code location, so they go here:
   - TODO^2: set up NAS
 - TODO^2: have a way to open the github webpage from inside a git repo from the command line. You can use "open <URL>" on a mac, for example, and scripts like what you use for automatic git pushing can use it to help you get PR's going fast.
 - TODO^2: mini-project: raspberry pi backup machine, and the software to run it.
-- TODO: systematized config (automate the configuration I always want anyway)
+- TODO^100: systematized config (automate the configuration I always want anyway)
     - TODO^2: hook up to google drive
 # TODO^7: set up bash tab completion ( see: https://apple.stackexchange.com/questions/55875/git-auto-complete-for-branches-at-the-command-line )
 - TODO: document usage of commands

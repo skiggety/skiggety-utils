@@ -19,7 +19,7 @@ firstlife-alarm "Hooray! Time to practice your musical instrument!"
 firstlife_exit_if_needed
 shellask "Are you ready to practice your musical instrument?" || exit_with_error "Decided not to practice music"
 
-# TODO^49: organize this script with several short pomodoros, maybe randomly selct between different options, or
+# TODO^58: organize this script with several short pomodoros, maybe randomly selct between different options, or
 # alternate, or make different routines, maybe even use many short pomodoros without breaks for small steps..
 
 # CAPTURE INSPIRATION
@@ -33,10 +33,11 @@ firstlife-delegate 'Did you play anything original & interesting? write it down 
 firstlife_exit_if_needed
 
 # USE PRACTICE DECK
-# TODO^13: find or invent an excercise you can do on your instrument (maybe make this a card instead of a todo)
+# TODO^22: find or invent an excercise you can do on your instrument (maybe make this a card instead of a todo)
+# (actually make this a card)
 # - TODO: try out the exercise
 # - TODO^2: write down the exercise on a single notecard and add it to your practice deck
-# TODO^13: shuffle your practice deck and deal yourself two more cards, and do those two exercises
+# TODO^35: shuffle your practice deck and deal yourself two more cards, and do those two exercises
 # TODO: any other ideas for practice exercises? You can add them to your deck now, if you want.
 # TODO^4: put away your practice deck
 firstlife_exit_if_needed

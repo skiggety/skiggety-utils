@@ -55,7 +55,7 @@ if shellask "Would you like to update skiggety-utils (including firstlife) now?"
 fi
 exit_if_day_is_over
 
-# EASY TODO^83: prompt user to back up ~/firstlife ( $FIRSTLIFE_DIR ) as part of setup/maintenance
+# EASY TODO^83: prompt user to back up ~/firstlife ( $FIRSTLIFE_LOCAL_DIR ) as part of setup/maintenance
 
 # TODO^21: exit_if_another_terminal_took_over
 # - TODO: ultimately, combine for exit_if_another_terminal_or_day_took_over_with_accumulated_errors
