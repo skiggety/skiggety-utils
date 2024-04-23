@@ -3,20 +3,23 @@
 # This script opens up a custom playlist of music to practice along with.
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
-. $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
+# TODO^101: (IN_PROGRESS) MOVE this script to zerothlife
+. $ZEROTHLIFE_CODE_DIR/lib/zerothlife.bash || exit_with_error "could not source zerothlife.bash"
 
 debug_here
-firstlife-preempt-same-script
+zerothlife-preempt-same-script
 
-firstlife-wait-for-user
-# TODO^3: IF YOU CAN SEE THIS, VOTE for a TODO, this is also your opportunity to try to correct issues you know # about.
-$EDITOR $0 # TODO^2: DELETE when this is done needing some specific attention
-firstlife_exit_if_needed
+zerothlife_exit_if_needed
+
+zerothlife-wait-for-user
+# TODO^12: IF YOU CAN SEE THIS, VOTE for a TODO, this is also your opportunity to try to correct issues you know # about.
+$EDITOR $0 # TODO^11: DELETE when this is done needing some specific attention
+zerothlife_exit_if_needed
 
 # TODO^19: subject to configuration if you have a max times per day number set, exit this script early if you already have the reward logged for this script enough times today.  In other words, only allow this script to run twice a day
 
 firstlife-alarm "Hooray! Time to practice your musical instrument!"
-firstlife_exit_if_needed
+zerothlife_exit_if_needed
 shellask "Are you ready to practice your musical instrument?" || exit_with_error "Decided not to practice music"
 
 # TODO^58: organize this script with several short pomodoros, maybe randomly selct between different options, or
@@ -25,12 +28,12 @@ shellask "Are you ready to practice your musical instrument?" || exit_with_error
 # CAPTURE INSPIRATION
 firstlife-mute --time-in-seconds 60
 firstlife-delegate 'Pick up your instrument and play something without thinking about it'
-firstlife_exit_if_needed
+zerothlife_exit_if_needed
 firstlife-mute --time-in-seconds 30
 firstlife-delegate 'Tune your instrument' || exit_with_error "Didn't tune"
 firstlife-mute --time-in-seconds 300
 firstlife-delegate 'Did you play anything original & interesting? write it down or record it if there is anything to record'
-firstlife_exit_if_needed
+zerothlife_exit_if_needed
 
 # USE PRACTICE DECK
 # TODO^22: find or invent an excercise you can do on your instrument (maybe make this a card instead of a todo)
@@ -40,24 +43,24 @@ firstlife_exit_if_needed
 # TODO^35: shuffle your practice deck and deal yourself two more cards, and do those two exercises
 # TODO: any other ideas for practice exercises? You can add them to your deck now, if you want.
 # TODO^4: put away your practice deck
-firstlife_exit_if_needed
+zerothlife_exit_if_needed
 
 # BAND PREPAREDNESS
 firstlife-pomodoro --time-in-minutes 10 "Prepare for your next band practice, making sure lead sheets are ready"
-firstlife_exit_if_needed
+zerothlife_exit_if_needed
 
 # TODO^31: also put your next album playlist in config and prompt user to use it
 # TODO^17: record anything new and original for your own, configurable, youtube playlist to draft out your next solo album
 # - TODO^30: pop open that playlist
 # - TODO^24: firstlife-delegate "Work on your solo album, going for as many songs as possible with good recordings and lead sheets in order
-firstlife_exit_if_needed
+zerothlife_exit_if_needed
 
-# TODO^43: put music practice playlist link in config:
+zl-config-ensure MUSIC_PRACTICE_PLAY_LINK
+. $ZEROTHLIFE_CONFIG
 if [ -n "$MUSIC_PRACTICE_PLAY_LINK" ]; then
     open "$MUSIC_PRACTICE_PLAY_LINK" 2>/dev/null &
 fi
-
-firstlife-mute-in-foreground --time-in-seconds $(( 20 * 60 )) "Practice along with your playlist"
+firstlife-mute-in-foreground --time-in-seconds $(( 20 * 60 )) "Practice along with your playlist" || exit_with_error "didn't practice with playlist"
 firstlife-alarm "You have practiced enough for now, probably"
 firstlife-reward "practiced a musical instrument"
-firstlife_exit_if_needed
+zerothlife_exit_if_needed
