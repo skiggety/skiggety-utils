@@ -14,5 +14,5 @@ shellask "TODO^117: VOTE for this to get IMPLEMENTed or work on it a bit ($(echo
 # special-purpose noise for low battery if we are within a certain amount of time from now until empty is projected
 
 # TODO: DELETE TEMPorary delegation when it's IMPLEMENTed for real:
-firstlife-delegate "Make sure you plug this device in if it needs it!" || \
+zl-delegate "Make sure you plug this device in if it needs it!" || \
     exit_with_error "TODO^19: IMPLEMENT (pattern after firstlife-status), and integrate into review-firstlife-status"

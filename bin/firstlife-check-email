@@ -17,6 +17,6 @@ done
 # EASY TODO^47: use this script widely
 
 open 'https://mail.google.com/mail/u/0/#inbox' 2>/dev/null & # TODO: UN-HARDCODE
-firstlife-delegate  --limit-n-times-per-x 10 day $WITH_REWARD_ARG 'take care of a few emails' || accumulate_error 'ignored email'
+zl-delegate  --limit-n-times-per-x 10 day $WITH_REWARD_ARG 'take care of a few emails' || accumulate_error 'ignored email'
 
 exit_with_any_accumulated_errors

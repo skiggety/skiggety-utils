@@ -54,7 +54,7 @@ BEHIND_SOUND_VOLUME='3' # TODO^6: put in local config with this default:
 while ! [ -f $BEHIND_SOUND ]; do
     mkdir -p "$(dirname $BEHIND_SOUND)"
     # TODO: do this in firstlife-setup:
-    firstlife-delegate "Please download an sound to let you know you are behind of your choice and put it at $ALARM_SOUND, e.g. \"wget <some-whip-cracking-sound> -O $BEHIND_SOUND\"" \
+    zl-delegate "Please download an sound to let you know you are behind of your choice and put it at $ALARM_SOUND, e.g. \"wget <some-whip-cracking-sound> -O $BEHIND_SOUND\"" \
         || exit_with_error "No sound to let you know you are behind available"
 done
 

@@ -32,9 +32,9 @@ ORIGINAL_IFS="$IFS"
 IFS=$'\n'
 read -rd '' -a tagged_todos_as_array <<<"$tagged_todos"
 for todo_line in ${tagged_todos_as_array[@]};do
-    # TODO: make a version of this script that uses: firstlife-delegate --limit-n-times-per-x 1 day:
-    # TODO: make a version of this script that uses: firstlife-delegate --limit-n-times-per-x 1 week:
-    firstlife-delegate --with-reward "Work on this task (and downvote or mark done using today_todo):${newline}${todo_line}" || \
+    # TODO: make a version of this script that uses: zl-delegate --limit-n-times-per-x 1 day:
+    # TODO: make a version of this script that uses: zl-delegate --limit-n-times-per-x 1 week:
+    zl-delegate --with-reward "Work on this task (and downvote or mark done using today_todo):${newline}${todo_line}" || \
         accumulate_error "Didn't work on todo: $todo_line"
     exit_if_day_is_over
 

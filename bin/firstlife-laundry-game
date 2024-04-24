@@ -11,7 +11,7 @@ if shellask "Do you have laundry to fold and/or put away?"; then
         sleep-verbose --with-countdown $(( ( $LAUNDRIES_TO_FOLD + 1 ) - $num ))
         firstlife-alarm "Time to fold your ${num}th piece of laundry!"
         firstlife-mute -t 10 "A quiet moment to fold your ${num}th piece of laundry"
-        firstlife-delegate --without-reward --limit-n-times-per-x 4 day "Fold and put away your ${num}th piece of laundry" || \
+        zl-delegate --without-reward --limit-n-times-per-x 4 day "Fold and put away your ${num}th piece of laundry" || \
             { shellask "Are you done putting laundry away?" && firstlife-reward "finished folding laundry" && exit 0; } || \
             exit_with_error "stopped folding"
         for nli in $(seq $(tput lines));do echo;done # TODO^3: maybe function extract as it wipes the screen and leaves the cursor at the bottom

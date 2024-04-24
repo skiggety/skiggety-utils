@@ -17,4 +17,4 @@ while [[ "$1" == -* ]]; do
 done
 
 # TODO: maybe if Title wasn't specified, we could mention the name of the calling script:
-firstlife-delegate "Please change the color of this terminal to indicate the urgency of $newline    '$TITLE' (for $FIRSTLIFE_ISOTODAY)" || exit 1
+zl-delegate "Please change the color of this terminal to indicate the urgency of $newline    '$TITLE' (for $FIRSTLIFE_ISOTODAY)" || exit 1

@@ -197,7 +197,7 @@ function handle-alarmy-photo-mission {
   echo '|----------------------------------------------------------|'
   echo '|----------------------------------------------------------|'
   echo '*==========================================================*'
-  firstlife-delegate --with-reward "take a photo of this screen to satisfy your alarmy mission" || return 1
+  zl-delegate --with-reward "take a photo of this screen to satisfy your alarmy mission" || return 1
   clear
   echo; echo
   echo 'You may now un-fullscreen and/or resize window as you please'

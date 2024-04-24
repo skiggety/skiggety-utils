@@ -21,7 +21,7 @@ firstlife_exit_if_needed
 # to do more?:
 
 today_todo -n | grep URGENT
-firstlife-delegate --limit-n-times-per-x 3 day "Run 'vital' to make sure items tagged 'URGENT' are tagged (including 'POINT') and sorted well enough to get on with it"
+zl-delegate --limit-n-times-per-x 3 day "Run 'vital' to make sure items tagged 'URGENT' are tagged (including 'POINT') and sorted well enough to get on with it"
 firstlife_exit_if_needed
 firstlife-iterate-on-vital-tag -n 2 'URGENT' || \
     firstlife-pomodoro --time-in-minutes 10 --without-break "work on URGENT tasks" && \
@@ -65,6 +65,6 @@ while shellask "Should you still be doing productive stuff on this beautiful day
     # TODO^2: exit loop if you've already done it twice
 done
 
-firstlife-delegate --limit-n-times-per-x 1 day "Check off your work habit in the habit tracker" # TODO: track internally?
+zl-delegate --limit-n-times-per-x 1 day "Check off your work habit in the habit tracker" # TODO: track internally?
 
 exit_with_any_accumulated_errors

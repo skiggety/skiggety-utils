@@ -18,5 +18,5 @@ while [[ "$1" == -* ]]; do
 done
 
 open 'https://www.google.com/calendar/render' 2>/dev/null & # TODO^2: UN-HARDCODE
-firstlife-delegate $WITH_REWARD_ARG "$MESSAGE" \
+zl-delegate $WITH_REWARD_ARG "$MESSAGE" \
     || exit_with_error "did not check calendar for the following purpose: $MESSAGE"
