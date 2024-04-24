@@ -12,7 +12,6 @@ firstlife-alarm "Time to tidy your vehicle!"
 while ! shellask "Are you feeling good about the state of your vehicle for now?";do
     exit_if_day_is_over
     firstlife-break -t $(( 60 * ( 5 + ( $TRY_COUNT * 2 ) ) ))
-    firstlife-alarm "Time to tidy your vehicle!"
     TRY_COUNT=$(( $TRY_COUNT + 1 ))
     firstlife-pomodoro --without-break --with-alarms --time-in-minutes $(( 4 + $TRY_COUNT))  "Tidy your vehicle"
 done
