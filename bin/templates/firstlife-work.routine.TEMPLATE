@@ -7,7 +7,7 @@
 
 firstlife-preempt-same-script
 
-firstlife-wait-for-routine 'firstlife-morning' # TODO: || exit_with_error "..."
+firstlife-wait-for-routine 'firstlife-daily' # TODO: || exit_with_error "..."
 firstlife_exit_if_needed
 
 function show_recently_done_todos {
