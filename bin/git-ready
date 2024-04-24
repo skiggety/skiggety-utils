@@ -14,6 +14,10 @@ function main {
         fi
     done
 
+    if [ -f PWD_BIN/generate ]; then
+        PWD_BIN/generate || exit_with_error "'generate' FAILED"
+    fi
+
     if [ $(git status -s | wc -l) -eq 0 ];then
         echo "No changes found, exiting $(basename $0) without error..."
         exit 0
