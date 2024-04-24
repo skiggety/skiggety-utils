@@ -48,6 +48,6 @@ sleep-verbose $WITH_COUNTDOWN $DURATION_IN_SECONDS
 
 # Un-mute at the end by deleting mute file if this is the last process to mute:
 if [ -f $FIRSTLIFE_MUTE_FILE ]; then
-    firstlife-log "End of mute period for process $MY_PID, deleting '$FIRSTLIFE_MUTE_FILE'."
+    zl-log "End of mute period for process $MY_PID, deleting '$FIRSTLIFE_MUTE_FILE'."
     rm -f $FIRSTLIFE_MUTE_FILE
 fi

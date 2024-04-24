@@ -33,7 +33,7 @@ if $ADD_REWARD; then
     if [ -z "$*" ]; then
         request='take 1 REWARD please'
     fi
-    firstlife-log --type reward "$request"
+    zl-log --type reward "$request"
 fi
 
 # show the linecount as your reward count for the day, watch it pile up!:
