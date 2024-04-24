@@ -49,10 +49,10 @@ if [ -f ./todo_report/todos_by_status.txt ]; then
     cat ./todo_report/todos_by_status.txt | abbreviate -n 8 # TODO^10: prefer the color version if you find it
 fi
 
-# TODO^2?: tell you what command to run to commit changes or whatever
+# TODO^3?: tell you what command to run to commit changes or whatever
 # TODO^2?: graph score over time (see program "progress")
 
-# TODO^10: maybe use this in 'vital' to keep your tag count under control:
+# TODO^19: maybe use this in 'vital' to keep your tag count under control:
 function limit-todo-with-keyword-count {
     MAX_COUNT="$1"
     KEYWORD="$2"

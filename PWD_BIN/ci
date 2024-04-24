@@ -31,7 +31,7 @@ dev && echo "dev SUCCEEDED" || accumulate_error "dev FAILED"
 
 # TODO^2: if there are git changes, complain that dev is not read-only
 
-git restore todo_report
+git-restore-generated-files
 
 # SKIGGETY_DEBUG=true # TODO: come up with a format like what I have but with a timestamp and author included, then save
 # the git log argument somewhere so I can use it in other git log commands like in git-pretty-pull, etc
