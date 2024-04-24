@@ -69,7 +69,7 @@ if [ $reward_score -gt 0 ]; then
     SECONDS_PER_REWARD_EXPLANATION="$SECONDS_PER_REWARD_EXPLANATION, with the last one at $LAST_REWARD_TIME"
 fi
 
-GAPS_PER_POINT="$(( ( $SECONDS_PER_REWARD / 30 ) - 1 ))"
+GAPS_PER_POINT="$(( ( 0$SECONDS_PER_REWARD / 30 ) - 1 ))"
 
 if [ $reward_score -gt 0 ]; then
     j=1
