@@ -93,7 +93,7 @@ for num in $(seq $passes_at_todo_list); do
         accumulate_error 'did not get tasks organized'
     firstlife_exit_if_needed
 
-    firstlife-check-calendar || accumulate_error 'did not check calendar'
+    zl-check-calendar || accumulate_error 'did not check calendar'
     firstlife_exit_if_needed
 
     # TODO^88: extract this bit that works on a few todos to firstlife-work-on-top-n-todos -n $MULTITASKING_CONSTANT
@@ -132,7 +132,7 @@ for num in $(seq $passes_at_todo_list); do
     zl-delegate 'Do one act of self care or something on the habit tracker' && firstlife-reward || accumulate_error 'missed a habit'
     firstlife_exit_if_needed
 
-    firstlife-check-calendar || accumulate_error 'did not check calendar'
+    zl-check-calendar || accumulate_error 'did not check calendar'
     firstlife_exit_if_needed
 
     firstlife-check-email --with-reward || accumulate_error 'ignored email'

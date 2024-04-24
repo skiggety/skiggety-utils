@@ -20,7 +20,7 @@ firstlife_preempt_same_script
 # - EASY TODO^42: build a timer into zl-delegate, keep stats on how long things take, just pairs of task names and times
 #   - TODO^41: then make the logs daily, graph the daily linecount
 
-firstlife-check-calendar || accumulate_error 'did not check calendar'
+zl-check-calendar || accumulate_error 'did not check calendar'
 firstlife_exit_if_needed
 
 zl-delegate 'Put your phone on the charger'
@@ -160,7 +160,7 @@ exit_with_any_accumulated_errors
 # TODO^23: make sure firstlife_exit_if_needed is aware of errors?
 
 firstlife-mute --time-in-seconds 120 'Look at calendar for today'
-firstlife-check-calendar -m 'Your calendar is about to come up. When it does, mark how long your morning routine took, and plan your day, OK?' \
+zl-check-calendar -m 'Your calendar is about to come up. When it does, mark how long your morning routine took, and plan your day, OK?' \
     || accumulate_error 'did not check calendar'
 
 exit_with_any_accumulated_errors

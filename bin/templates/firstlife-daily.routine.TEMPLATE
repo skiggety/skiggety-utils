@@ -16,7 +16,7 @@ firstlife_exit_if_needed
 firstlife-check-email --with-reward || accumulate_error 'ignored email' # TODO: this is important, TEST against getting to this point as a benchmark
 firstlife_exit_if_needed
 
-firstlife-check-calendar -m "check calendar for birthdays "
+zl-check-calendar -m "check calendar for birthdays "
 open "http://facebook.com" 2>/dev/null & # TODO: UN-HARDCODE
 zl-delegate --limit-n-times-per-x 1 day --with-reward "Wish people 'Happy Birthday!' (look at google calendar and facebook)."
 firstlife_exit_if_needed
