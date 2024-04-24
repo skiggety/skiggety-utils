@@ -127,7 +127,7 @@ firstlife-mute --time-in-seconds 60 'Deodorant'
 zl-delegate --limit-n-times-per-x 1 day 'apply deodorant' || accumulate_error 'did not apply deodorant'
 firstlife_exit_if_needed
 
-firstlife-mute --time-in-seconds 45 'Moutwash'
+firstlife-mute --time-in-seconds 45 'Mouthwash'
 zl-delegate --limit-n-times-per-x 1 day 'Use mouthwash'
 firstlife_exit_if_needed
 

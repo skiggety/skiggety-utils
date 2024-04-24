@@ -17,7 +17,8 @@ export FIRSTLIFE_ISOTODAY
 WISEASS_MODE=true # because of course it does
 
 # Including the date in mute file names so they only work for one day even if they get left around by accident:
-FIRSTLIFE_MUTE_FILE_PREFIX="$FIRSTLIFE_MARKER_DIR/.firstlife_currently_muted_on.${FIRSTLIFE_ISOTODAY}.by_pid."
+FIRSTLIFE_MUTE_FILE_PREFIX_PREFIX="$FIRSTLIFE_MARKER_DIR/.firstlife_currently_muted_on."
+FIRSTLIFE_MUTE_FILE_PREFIX="${FIRSTLIFE_MUTE_FILE_PREFIX_PREFIX}${FIRSTLIFE_ISOTODAY}.by_pid."
 export FIRSTLIFE_MUTE_FILE_PREFIX
 
 FIRSTLIFE_THIS_SCRIPT_PID_FILE="$FIRSTLIFE_MARKER_DIR/.current.$(basename $0).PID"
