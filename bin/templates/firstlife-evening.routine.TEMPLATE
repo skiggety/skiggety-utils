@@ -51,7 +51,7 @@ today_todo -n | grep --color=always '\(EVENING\|--------\|^$\)'
 firstlife-delegate --limit-n-times-per-x 1 day --with-reward "Work on something tagged 'EVENING' on your todo list"
 firstlife_exit_if_needed
 
-firstlife-practice-music
+zl-practice-music
 
 for tag in FUN EASY; do
     echo

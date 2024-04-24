@@ -25,7 +25,7 @@ firstlife_exit_if_needed
 firstlife-check-snail-mail --with-reward || accumulate_error 'ignored snail mail'
 firstlife_exit_if_needed
 
-firstlife-practice-music
+zl-practice-music
 firstlife_exit_if_needed
 
 # TODO^3: use a firstlife-reward category to track DAILY and WEEKLY tasks separately
