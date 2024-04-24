@@ -4,4 +4,51 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-exit_with_error "TODO^59: IMPLEMENT just the git part of default_dashboard"
+git_stash_list="$(git stash list)"
+if [ "$git_stash_list" != "" ]; then
+    echo_divider_with_text "-=" "git stash list"
+    echo "$git_stash_list"
+    echo_divider_with_text "-" "git stash show"
+    git -c color.ui=always --no-pager stash show
+    echo_divider_with_text "-" "git stash show -p | head -n 10"
+    git -c color.ui=always --no-pager stash show -p | head -n 10
+fi
+
+# TODO: why is this producing so much output lately, like in content manager, even when there have only been a few
+# commits in the feature branch?:
+echo_divider_with_text "-=" "git log: (most recent commit and un-pushed commits)"
+git -c color.ui=always --no-pager log --oneline --decorate=short origin/HEAD~~..HEAD -n 7
+
+unset GIT_EXTERNAL_DIFF # if call this from inside a git-vimdiff, we still want "git diff" to behave normally
+# echo_divider_with_text "-" "git diff of unstaged files:"
+# for next in $( git ls-files --others --exclude-standard ) ; do git -c color.ui=always --no-pager diff --no-index /dev/null $next; done | head -n 15  # git diff for files not checked in yet only?
+# TODO: this shows a more complete diff, including new files...do I want to use it instead?: for next in $( git ls-files --others --exclude-standard ) ; do git --no-pager diff --no-index /dev/null $next; done; # git diff
+DIFF_HEAD_LENGTH=22
+git_diff_output="$(git -c color.ui=always --no-pager diff -U1 | head -n $DIFF_HEAD_LENGTH)"
+if [ "$git_diff_output" != "" ]; then
+    echo_divider_with_text "-=" "git diff | head -n $DIFF_HEAD_LENGTH :"
+    echo "$git_diff_output"
+fi
+
+# TODO^4: make 'do not add' and 'do not commit' keywords consistent, maybe script extract 'git-warn-against-adding-keyword'
+DO_NOT_ADD="$(git diff --inter-hunk-context=1 | grep '^[+].*[X]XX')"
+DO_NOT_ADD="$(echo "$DO_NOT_ADD" | sed 's/\\$/\\\\/g')" # because a DO_NOT_ADD line with a trailing backslash can screw up the no_color
+if ! [ -z "$DO_NOT_ADD" ]; then
+    echo_divider_with_text '!' "DO NOT ADD (${RED}X""XX${no_color}) :"
+    echo_error "${newline}${DO_NOT_ADD}"
+fi
+
+echo_divider_with_text "-=" "git status:"
+GIT_STATUS="$(git -c color.ui=always --no-pager status -ss)"
+if [ "$GIT_STATUS" == "" ] ;then
+    GIT_STATUS_LINECOUNT=0
+else
+    GIT_STATUS_LINECOUNT="$(echo "$GIT_STATUS" | wc -l | awk '{print $1}')"
+    echo "$GIT_STATUS"
+fi
+echo "$GIT_STATUS_LINECOUNT files with changes on branch '$(git branch --show-current)'"
+# TODO^3: graph GIT_STATUS_LINECOUNT over time
+
+for keyword in 'DO_NOT''_COMMIT' 'XX''X' 'BREAD''CRUMB'; do
+    git-object-to-added-keyword "$keyword" || accumulate_error "'git-object-to-added-keyword $keyword' FAILED"
+done

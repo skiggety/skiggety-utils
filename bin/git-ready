@@ -28,6 +28,7 @@ function main {
     touch .gitignore # so 'review-dev' notices
 
     # EASY TODO^10: just exit 0 right here unless there are changes staged
+    git-dashboard
 
     shellask "Are your changes what you want? (use 'git diff --staged' (gds) or 'git vimdiff --staged' (gvds) )" || \
         exit_with_error "Prepare your changes the way you want and then try $(basename $0) again."
