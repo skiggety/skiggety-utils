@@ -43,4 +43,4 @@ zl-delegate --limit-n-times-per-x 10 week "check off cleaning habit in habit tra
 
 exit_if_day_is_over
 
-firstlife-break
+zl-break

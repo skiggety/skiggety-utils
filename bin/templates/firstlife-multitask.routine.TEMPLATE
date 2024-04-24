@@ -41,7 +41,7 @@ firstlife_exit_if_needed
 zl-delegate 'do one act of self care or something on the habit tracker' && firstlife-reward || accumulate_error 'missed a habit'
 firstlife_exit_if_needed
 
-firstlife-break -t 150
+zl-break -t 150
 
 pushd $VITAL_DIR >/dev/null
 # EASY TODO^84: EXTRACT, and REUSE:
@@ -122,7 +122,7 @@ for num in $(seq $passes_at_todo_list); do
         fi
         firstlife_exit_if_needed
 
-        firstlife-break -t 120
+        zl-break -t 120
 
         firstlife_exit_if_needed
     done
@@ -147,7 +147,7 @@ for num in $(seq $passes_at_todo_list); do
     fi
     firstlife_exit_if_needed
 
-    firstlife-break -t 240
+    zl-break -t 240
     firstlife_exit_if_needed
 
     zl-delegate 'Do one act of self care or something on the habit tracker' && firstlife-reward || accumulate_error 'missed a habit'
@@ -180,7 +180,7 @@ firstlife_exit_if_needed
 zl-delegate --limit-n-times-per-x 15 day "Close a 2-4 browser tabs unless they are reasonable already" && firstlife-reward || accumulate_error "Did not clean up browser tabs"
 firstlife_exit_if_needed
 
-firstlife-break
+zl-break
 firstlife_exit_if_needed
 
 for tag in FUN EASY;do vital-list-by-tag $tag | abbreviate -l 12 -d -t "vital-list-by-tag $tag";done

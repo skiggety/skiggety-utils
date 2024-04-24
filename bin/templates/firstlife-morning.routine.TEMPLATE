@@ -38,8 +38,8 @@ firstlife-mute --time-in-seconds 300 "Breakfast"
 zl-delegate --limit-n-times-per-x 1 day 'Break your fast' || accumulate_error 'skipped breakfast'
 firstlife_exit_if_needed
 
-# TODO^122: We need a way to only do a section of code once per day, kind of like using 'zl-delegate --limit-n-times-per-x 1 day', but something we can put around 'firstlife-break'
-firstlife-break -t 150
+# TODO^122: We need a way to only do a section of code once per day, kind of like using 'zl-delegate --limit-n-times-per-x 1 day', but something we can put around 'zl-break'
+zl-break -t 150
 firstlife_exit_if_needed
 
 # TODO^72: make sure this only gets asked perhaps once a week:
@@ -75,7 +75,7 @@ zl-delegate --limit-n-times-per-x 1 day 'Make sure your phone is at least 25% ch
 firstlife_exit_if_needed
 
 # TODO^122: We need a way to only do a section of code once per day, kind of like using 'zl-delegate --limit-n-times-per-x 1 day', but something we can put around paragraphs like this one:
-firstlife-break -t 30
+zl-break -t 30
 firstlife-mute --time-in-seconds 30 'Put away any temptations or distractions, whatever you found distracting during that break you just had'
 zl-delegate --limit-n-times-per-x 2 day 'Put away any temptations or distractions'
 firstlife_exit_if_needed

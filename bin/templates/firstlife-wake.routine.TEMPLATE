@@ -16,7 +16,7 @@ exit_if_day_is_over
 handle-alarmy-photo-mission || exit_with_error "failed to handle alarm" # for 'Alarmy'
 exit_if_day_is_over
 
-firstlife-break -t 180
+zl-break -t 180
 
 # call firstlife-morning again just in case it hasn't been done, since it only needs to be done once:
 firstlife-morning || accumulate_error 'Morning routine had errors'

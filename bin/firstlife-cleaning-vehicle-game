@@ -11,7 +11,7 @@ TRY_COUNT=0
 zl-alarm "Time to tidy your vehicle!"
 while ! shellask "Are you feeling good about the state of your vehicle for now?";do
     exit_if_day_is_over
-    firstlife-break -t $(( 60 * ( 5 + ( $TRY_COUNT * 2 ) ) ))
+    zl-break -t $(( 60 * ( 5 + ( $TRY_COUNT * 2 ) ) ))
     TRY_COUNT=$(( $TRY_COUNT + 1 ))
     zl-pomodoro --without-break --with-alarms --time-in-minutes $(( 4 + $TRY_COUNT))  "Tidy your vehicle"
 done
