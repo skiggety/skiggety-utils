@@ -16,4 +16,4 @@ while ! shellask "Is '$TITLE' done yet (or at least done enough for today)?"; do
     POMODORO_MINUTES="$(( $POMODORO_MINUTES + 1 ))"
 done
 
-firstlife-reward "Put in a decent amount of work on '$TITLE' for $FIRSTLIFE_ISOTODAY"
+zl-reward "Put in a decent amount of work on '$TITLE' for $FIRSTLIFE_ISOTODAY"

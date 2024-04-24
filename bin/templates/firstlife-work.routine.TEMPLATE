@@ -25,7 +25,7 @@ zl-delegate --limit-n-times-per-x 3 day "Run 'vital' to make sure items tagged '
 firstlife_exit_if_needed
 firstlife-iterate-on-vital-tag -n 2 'URGENT' || \
     zl-pomodoro --time-in-minutes 10 --without-break "work on URGENT tasks" && \
-    for i in $(seq 10); do firstlife-reward "looked at URGENT stuff ($i/10x rewards)"; done || \
+    for i in $(seq 10); do zl-reward "looked at URGENT stuff ($i/10x rewards)"; done || \
     accumulate_error 'ignored URGENT tasks' # TODO: limit the total number that happens daily
 firstlife_exit_if_needed
 

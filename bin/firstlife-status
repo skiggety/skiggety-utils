@@ -43,8 +43,8 @@ echo
 echo_divider_with_text "=" 'Your main TODO list from the "vital" program:'
 today_todo --non-interactive | abbreviate -l 13 # TODO: vital --report | abbreviate -l 13
 
-reward_status="$(firstlife-reward -n)"
-echo "$reward_status" | abbreviate -l 6 -t 'firstlife-reward -n'
+reward_status="$(zl-reward -n)"
+echo "$reward_status" | abbreviate -l 6 -t 'zl-reward -n'
 
 # EASY? FUN? TODO^52: zl-pomodoro -n # to show accumulating pomodoros like rewards for more motivation
 

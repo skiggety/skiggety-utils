@@ -23,7 +23,7 @@ for i in $(seq $HOW_MANY_THINGS_TO_PUT_AWAY_EVERY_DAY);do
     zl-delegate --limit-n-times-per-x 10 week --without-reward "Put away your ${i}th item." || exit_with_error "stopped tidying"
     for nli in $(seq $(tput lines));do echo;done # TODO^17: maybe function extract as it wipes the screen and leaves the cursor at the bottom
     if [ "$(( $i % 5 ))" -eq 0 ]; then
-        firstlife-reward "Put 5 things away (up to ${i} items)"
+        zl-reward "Put 5 things away (up to ${i} items)"
     fi
 done
 

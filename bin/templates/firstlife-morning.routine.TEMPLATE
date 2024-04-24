@@ -105,7 +105,7 @@ firstlife_exit_if_needed
 
 # TODO: you could be already doing this while walking:
 firstlife-mute --time-in-seconds 120 'Communication'
-zl-delegate --limit-n-times-per-x 5 day "Catch up on communicating with people" && firstlife-reward || accumulate_error "Did not communicate"
+zl-delegate --limit-n-times-per-x 5 day "Catch up on communicating with people" && zl-reward || accumulate_error "Did not communicate"
 firstlife_exit_if_needed
 
 # TODO^3: maybe make a 'delegate' function that calls both zl-delegate --with-reward and firstlife_exit_if_needed:
@@ -167,6 +167,6 @@ exit_with_any_accumulated_errors
 
 # TODO: do I want this here? do I want it in other high-level firstlife scripts?:
 echo "$(basename $0) succeeded!"
-firstlife-reward $(basename $0)
+zl-reward $(basename $0)
 
 exit 0

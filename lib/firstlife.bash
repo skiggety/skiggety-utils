@@ -157,7 +157,7 @@ function use_and_maintain_inner_routine_based_on_template {
     echo "...starting '$nickname' routine..."
     # FUN EASY TODO: slow-banner "...starting '$nickname' routine..."
     $INNER_ROUTINE_SCRIPT \
-        && firstlife-reward "completed $INNER_ROUTINE_SCRIPT" \
+        && zl-reward "completed $INNER_ROUTINE_SCRIPT" \
         || accumulate_error "inner $nickname routine '$INNER_ROUTINE_SCRIPT' FAILED"
 
     # TODO^88: allow using vscode here:

@@ -34,11 +34,11 @@ zl-delegate --with-reward 'Make sure various devices including this one are char
     || accumulate_error 'should have charged your devices' # TODO: don't ask more than once every 3 hours
 firstlife_exit_if_needed
 
-zl-delegate 'put away any temptations or distractions' && firstlife-reward || accumulate_error 'did not clear distractions'
+zl-delegate 'put away any temptations or distractions' && zl-reward || accumulate_error 'did not clear distractions'
 zl-delegate 'keep the tunes pumping (you can use "zl-music")' || accumulate_error 'did not DJ for yourself'
 firstlife_exit_if_needed
 
-zl-delegate 'do one act of self care or something on the habit tracker' && firstlife-reward || accumulate_error 'missed a habit'
+zl-delegate 'do one act of self care or something on the habit tracker' && zl-reward || accumulate_error 'missed a habit'
 firstlife_exit_if_needed
 
 zl-break -t 150
@@ -58,12 +58,12 @@ firstlife_exit_if_needed
 #### Today's Todo List #############################################################################
 for num in $(seq $passes_at_todo_list); do
 
-    zl-delegate --limit-n-times-per-x 15 day 'Handle 1 important item from from any paper lists (if any), possibly by putting it into today_todo' && firstlife-reward || accumulate_error 'ignored paper todo list'
+    zl-delegate --limit-n-times-per-x 15 day 'Handle 1 important item from from any paper lists (if any), possibly by putting it into today_todo' && zl-reward || accumulate_error 'ignored paper todo list'
     firstlife_exit_if_needed
 
     # TODO^14: only do this if you haven't yet cleared them all today yet:
     open 'https://www.google.com/calendar/render' # EASY TODO^87: script extract
-    zl-delegate --limit-n-times-per-x 10 day 'Take care of a calendar task, maybe by putting it into today_todo' && firstlife-reward || accumulate_error 'ignored paper todo list'
+    zl-delegate --limit-n-times-per-x 10 day 'Take care of a calendar task, maybe by putting it into today_todo' && zl-reward || accumulate_error 'ignored paper todo list'
     firstlife_exit_if_needed
 
     vital-list-by-tag NOW
@@ -106,7 +106,7 @@ for num in $(seq $passes_at_todo_list); do
     debug_here "echo \${todos_as_array} contains"
     for todo_line in ${todos_as_array[@]};do # EASY TODO^21: use pomodoro instead, for much increased focus
         zl-delegate --limit-n-times-per-x 3 day "Work on this task (and downvote or mark done using today_todo):${newline}${todo_line}" && \
-            firstlife-reward || \
+            zl-reward || \
             accumulate_error "Didn't work on todo: $todo_line"
         firstlife_exit_if_needed
 
@@ -129,7 +129,7 @@ for num in $(seq $passes_at_todo_list); do
     IFS="$ORIGINAL_IFS"
     popd > /dev/null
 
-    zl-delegate 'Do one act of self care or something on the habit tracker' && firstlife-reward || accumulate_error 'missed a habit'
+    zl-delegate 'Do one act of self care or something on the habit tracker' && zl-reward || accumulate_error 'missed a habit'
     firstlife_exit_if_needed
 
     zl-check-calendar || accumulate_error 'did not check calendar'
@@ -150,7 +150,7 @@ for num in $(seq $passes_at_todo_list); do
     zl-break -t 240
     firstlife_exit_if_needed
 
-    zl-delegate 'Do one act of self care or something on the habit tracker' && firstlife-reward || accumulate_error 'missed a habit'
+    zl-delegate 'Do one act of self care or something on the habit tracker' && zl-reward || accumulate_error 'missed a habit'
     firstlife_exit_if_needed
 
     # TODO^86: if you have not finished all dishes at least once today
@@ -167,17 +167,17 @@ done
 
 ################################################################################
 
-zl-delegate --limit-n-times-per-x 5 day "Catch up on communicating with people" && firstlife-reward || accumulate_error "Did not communicate"
+zl-delegate --limit-n-times-per-x 5 day "Catch up on communicating with people" && zl-reward || accumulate_error "Did not communicate"
 firstlife_exit_if_needed
 
 if $FIRSTLIFE_DEVELOPMENT_MODE; then
     pushd $SKIGGETY_UTILS_DIR
-    zl-delegate "Commit some code" && firstlife-reward || accumulate_error "Did not commit"
+    zl-delegate "Commit some code" && zl-reward || accumulate_error "Did not commit"
     popd
 fi
 firstlife_exit_if_needed
 
-zl-delegate --limit-n-times-per-x 15 day "Close a 2-4 browser tabs unless they are reasonable already" && firstlife-reward || accumulate_error "Did not clean up browser tabs"
+zl-delegate --limit-n-times-per-x 15 day "Close a 2-4 browser tabs unless they are reasonable already" && zl-reward || accumulate_error "Did not clean up browser tabs"
 firstlife_exit_if_needed
 
 zl-break
