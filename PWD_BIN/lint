@@ -1,19 +1,20 @@
 #!/usr/bin/env bash
 
-# TODO^18: make this read-only by default, split the write version into another script if necessary
-# - FUN TODO^33: I think the way to handle this is to support a '--fix', '-w', '-n' or '--ro' option, and suggest using
+# TODO^27: make this read-only by default, split the write version into another script if necessary
+# - FUN TODO^42: I think the way to handle this is to support a '--fix', '-w', '-n' or '--ro' option, and suggest using
 #                it in the error message if lint fails (look at command line options for different linters to see what's common
-# TODO^5: run shellcheck
+# TODO^14: run shellcheck
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
 echo_divider_with_text "O-=======-" "lint:"
 
-# TODO^8: if in write mode...
+# TODO^17: if in write mode...
 echo_divider_with_text "+-=======-" "collapse todo votes:"
 todo -wfq --non-interactive --exclude-dir .git || accumulate_error "could not write simplified TODO entries, todo exited with $?" # IGNORE_TODO
 
+# TODO: zerothlife should take care of this:
 if [ -d $HOME/firstlife ]; then
     pushd $HOME/firstlife > /dev/null
     echo_divider_with_text "+-=======-" "collapse todo votes in $PWD:"
