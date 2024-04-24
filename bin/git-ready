@@ -45,6 +45,8 @@ function main {
     echo
     hesitate-and-run-or-fail git push -u
 
+    touch .gitignore # so 'review-dev' notices
+
     echo
     git-log-recent
 
