@@ -20,4 +20,5 @@ fi
 
 echo $$ > $FIRSTLIFE_MARKER_DIR/.review-firstlife-status_PID
 
-firstlife-status && clear && review -u 5 -m 30 --while firstlife-status --while-review-pid-latest $$
+# TODO: -i --no-clear are temporary to catch a bug in the act:
+firstlife-status && clear && review -i --no-clear -u 5 -m 30 --while firstlife-status --while-review-pid-latest $$

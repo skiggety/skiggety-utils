@@ -3,7 +3,7 @@
 # This script opens up a custom playlist of music to practice along with.
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
-# TODO^102: (IN_PROGRESS) MOVE this script to zerothlife
+# TODO^120: (IN_PROGRESS, NOW) MOVE this script to zerothlife
 . $ZEROTHLIFE_CODE_DIR/lib/zerothlife.bash || exit_with_error "could not source zerothlife.bash"
 
 debug_here
