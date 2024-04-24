@@ -7,7 +7,7 @@
 
 firstlife_preempt_same_script
 
-firstlife-wait-for-user # TODO?: || exit_with_error "..."
+zl-wait-for-user # TODO?: || exit_with_error "..."
 firstlife_exit_if_needed
 
 function update_vital_graph {
