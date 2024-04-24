@@ -35,7 +35,7 @@ zl-delegate --with-reward 'Make sure various devices including this one are char
 firstlife_exit_if_needed
 
 zl-delegate 'put away any temptations or distractions' && firstlife-reward || accumulate_error 'did not clear distractions'
-zl-delegate 'keep the tunes pumping (you can use "firstlife-music")' || accumulate_error 'did not DJ for yourself'
+zl-delegate 'keep the tunes pumping (you can use "zl-music")' || accumulate_error 'did not DJ for yourself'
 firstlife_exit_if_needed
 
 zl-delegate 'do one act of self care or something on the habit tracker' && firstlife-reward || accumulate_error 'missed a habit'

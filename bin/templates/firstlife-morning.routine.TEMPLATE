@@ -152,7 +152,7 @@ zl-delegate --limit-n-times-per-x 2 day 'Make coffee if you want'
 firstlife_exit_if_needed
 
 firstlife-mute --time-in-seconds 10 'start music'
-zl-delegate 'Keep the tunes pumping (you can use "firstlife-music")'
+zl-delegate 'Keep the tunes pumping (you can use "zl-music")'
 firstlife_exit_if_needed
 
 exit_with_any_accumulated_errors
