@@ -9,7 +9,7 @@ LAUNDRIES_TO_FOLD=30 # TODO^100: make configurable, tune based on use
 if shellask "Do you have laundry to fold and/or put away?"; then
     for num in $(seq $LAUNDRIES_TO_FOLD);do
         sleep-verbose --with-countdown $(( ( $LAUNDRIES_TO_FOLD + 1 ) - $num ))
-        firstlife-alarm "Time to fold your ${num}th piece of laundry!"
+        zl-alarm "Time to fold your ${num}th piece of laundry!"
         firstlife-mute -t 10 "A quiet moment to fold your ${num}th piece of laundry"
         zl-delegate --without-reward --limit-n-times-per-x 4 day "Fold and put away your ${num}th piece of laundry" || \
             { shellask "Are you done putting laundry away?" && firstlife-reward "finished folding laundry" && exit 0; } || \

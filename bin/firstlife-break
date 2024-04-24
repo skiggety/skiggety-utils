@@ -23,4 +23,4 @@ firstlife-status
 shellask "Ready for a break? ($DURATION_IN_SECONDS seconds)" || exit 0
 # TODO^6: put something big and obvious on the screen, like with pomodoros
 firstlife-mute --time-in-seconds $DURATION_IN_SECONDS "Taking a ${DURATION_IN_SECONDS}-second break (with $(basename $0))"
-sleep-verbose --with-countdown $DURATION_IN_SECONDS && firstlife-alarm "Your break is now over."
+sleep-verbose --with-countdown $DURATION_IN_SECONDS && zl-alarm "Your break is now over."

@@ -7,4 +7,4 @@
 clear
 echo "Take a long break"
 firstlife-mute-in-foreground -t $(( 60 * 45)) "long break"
-firstlife-alarm "OK, time to get out of the house to get motivated and then do other things"
+zl-alarm "OK, time to get out of the house to get motivated and then do other things"

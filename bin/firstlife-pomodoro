@@ -46,7 +46,7 @@ done
 # TODO^92: wait for other pomodoros to be done, (use a mutex?)
 
 if $WITH_ALARMS; then
-    firstlife-alarm "Time for a pomodoro for '$@'!"
+    zl-alarm "Time for a pomodoro for '$@'!"
 fi
 
 if [ -z "$SLEEP_FOR_MINUTES" ]; then
@@ -85,7 +85,7 @@ echo;echo;
 
 firstlife-mute-in-foreground --with-countdown --time-in-seconds $SLEEP_FOR "POMODORO: $@" || exit_with_error "ended pomodoro early for: $*"
 if $WITH_ALARMS; then
-    firstlife-alarm "OK, wrap it up! Pomodoro for '$@' is over now."
+    zl-alarm "OK, wrap it up! Pomodoro for '$@' is over now."
 fi
 task_description="Finish the POMODORO: $@"
 firstlife-mute --time-in-seconds 60 "$task_description"
@@ -99,6 +99,6 @@ if $WITH_BREAK; then
     firstlife-break -t 300 # TODO: break length proportional to length of pomodoro by default?
 fi
 
-# redundant? TODO DELETE?: firstlife-alarm "This is the end of your post-pomodoro break.  Go do something!"
+# redundant? TODO DELETE?: zl-alarm "This is the end of your post-pomodoro break.  Go do something!"
 
 exit 0

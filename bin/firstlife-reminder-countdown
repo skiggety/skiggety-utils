@@ -43,7 +43,7 @@ while [ $MINUTES_LEFT -gt 0 ];do
 
     touch "$TIME_MARKER_FILE"
     debug_eval_here MINUTES_LEFT
-    firstlife-alarm "$MINUTES_LEFT minutes until '$TITLE' at $(date)"
+    zl-alarm "$MINUTES_LEFT minutes until '$TITLE' at $(date)"
     debug_eval_here MINUTES_LEFT
 
     # TODO: for linux:
@@ -65,7 +65,7 @@ while [ $MINUTES_LEFT -gt 0 ];do
     debug_eval_here MINUTES_LEFT
 done
 
-firstlife-alarm "Time for '$TITLE' NOW!"
+zl-alarm "Time for '$TITLE' NOW!"
 echo_divider_with_text "=" "Time for '$TITLE' NOW!"
 
 exit 0

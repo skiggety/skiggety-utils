@@ -111,11 +111,11 @@ firstlife_exit_if_needed
 # TODO^3: maybe make a 'delegate' function that calls both zl-delegate --with-reward and firstlife_exit_if_needed:
 
 firstlife-mute --time-in-seconds 30 'Get ready for the shower'
-firstlife-alarm 'Get ready for the shower'
+zl-alarm 'Get ready for the shower'
 zl-delegate 'Get ready for the shower'
 firstlife-mute-in-foreground --time-in-seconds $(( 12 * 60)) "Shower"
 firstlife-mute --time-in-seconds 30 'Finish your shower'
-firstlife-alarm 'Finish your shower'
+zl-alarm 'Finish your shower'
 zl-delegate --limit-n-times-per-x 1 day 'Finish your shower' || accumulate_error 'did not shower'
 firstlife_exit_if_needed
 

@@ -5,7 +5,7 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
-firstlife-alarm "firstlife wake up call ($FIRSTLIFE_ISOTODAY), please PAY ATTENTION!"
+zl-alarm "firstlife wake up call ($FIRSTLIFE_ISOTODAY), please PAY ATTENTION!"
 exit_if_day_is_over
 
 # Use your own morning playlist, here's mine for starters:

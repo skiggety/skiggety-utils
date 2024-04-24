@@ -8,7 +8,7 @@
 firstlife-wait-for-routine firstlife-morning
 
 TRY_COUNT=0
-firstlife-alarm "Time to tidy your vehicle!"
+zl-alarm "Time to tidy your vehicle!"
 while ! shellask "Are you feeling good about the state of your vehicle for now?";do
     exit_if_day_is_over
     firstlife-break -t $(( 60 * ( 5 + ( $TRY_COUNT * 2 ) ) ))
