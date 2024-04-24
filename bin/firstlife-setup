@@ -12,7 +12,7 @@ zl-delegate "set up your cron to call firstlife routines with 'crontab-verbose'"
 #  - EASY TODO:comments at the top of each section
 # - TODO^110: wake up routine
 # - TODO^110: morning routine
-#   - TODO: make sure firstlife-work-on-calendar gets called in here somewhere
+#   - TODO^111: make sure zl-work-on-calendar gets called in here somewhere
 # - TODO^110: evening routine
 # - TODO^110: productivity routines
 # - TODO^109: ...for the important stuff

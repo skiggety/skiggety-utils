@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-# This script prompts the user to work on their calendar
-
-. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
-
-firstlife-check-calendar --with-reward -m "Make a small improvement to your calendar"
