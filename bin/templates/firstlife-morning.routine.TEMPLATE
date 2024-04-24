@@ -26,15 +26,15 @@ firstlife_exit_if_needed
 zl-delegate 'Put your phone on the charger'
 firstlife_exit_if_needed
 
-firstlife-mute --time-in-seconds 360 "Coffee making"
+zl-mute --time-in-seconds 360 "Coffee making"
 zl-delegate --limit-n-times-per-x 2 day 'Make coffee if you want'
 firstlife_exit_if_needed
 
-firstlife-mute --time-in-seconds 45 "taking medications"
+zl-mute --time-in-seconds 45 "taking medications"
 zl-delegate --limit-n-times-per-x 1 day 'Make sure you have taken any morning medications' || accumulate_error 'did not medicate'
 firstlife_exit_if_needed
 
-firstlife-mute --time-in-seconds 300 "Breakfast"
+zl-mute --time-in-seconds 300 "Breakfast"
 zl-delegate --limit-n-times-per-x 1 day 'Break your fast' || accumulate_error 'skipped breakfast'
 firstlife_exit_if_needed
 
@@ -46,7 +46,7 @@ firstlife_exit_if_needed
 # TODO^21: mention and help with alarmy and cron:
 # EASY TODO^86: help user start firstlife (including morning routine) with cron like I did, automate ensuring a line in local crontab, and use 'crontab-verbose'? (FUN) help user set up crontab like I did (use crontab-verbose?) (to help test on metrigon)
 # TODO^91: move out of inner routine, and actually help user set up alarms and cron:
-firstlife-mute --time-in-seconds 30 "check phone alarm"
+zl-mute --time-in-seconds 30 "check phone alarm"
 zl-delegate --limit-n-times-per-x 2 week 'Make sure you have a phone alarm that ensures you log into this laptop in time for your cron job to fire (for tomorrow). There is one called "Alarmy" that can require a matching photo to what "firstlife-wake" will present in the morning.' || accumulate_error 'BASIC AUTOMATION PROBLEM: alarm not set' # TODO^67: (EASY) use 'zl-delegate' instead
 firstlife_exit_if_needed
 
@@ -54,19 +54,19 @@ firstlife_exit_if_needed
 SCOTTS_MEDITATION_PLAYLIST='https://www.youtube.com/playlist?list=PLbyyOcHfeHIqCKsHI62oWS6i4JQfdtcfd'
 open "$SCOTTS_MEDITATION_PLAYLIST" 2>/dev/null &
 # TODO^2: mute firstlife for the duration.  (When exactly to start it? use a 5-minute pomodoro?):
-firstlife-mute --time-in-seconds 315 "Meditation"
+zl-mute --time-in-seconds 315 "Meditation"
 # TODO^81: --with-timer 330 (and use timers widely):
 zl-delegate --limit-n-times-per-x 1 day '5-minute meditation' || \
 zl-delegate --limit-n-times-per-x 1 day '30 second meditation?' # TODO^81: --with-timer 330 (and use timers widely)
 firstlife_exit_if_needed
 
-firstlife-mute --time-in-seconds 180 "planning your day in 'vital'"
+zl-mute --time-in-seconds 180 "planning your day in 'vital'"
 zl-delegate --limit-n-times-per-x 1 day 'Take a moment to think about what you most want to get done soon and make sure it is in "vital", and tagged properly, and upvoted enough'
 firstlife_exit_if_needed
 
 # TODO: maybe start playlist after meditation instead of right at wake time?
 
-firstlife-mute --time-in-seconds 30 "review negative habits"
+zl-mute --time-in-seconds 30 "review negative habits"
 zl-delegate --limit-n-times-per-x 1 day "Review any habits you working on breaking ('negative' habits in the tracker)" \
     || accumulate_error 'did not work on breaking habits'
 firstlife_exit_if_needed
@@ -76,82 +76,82 @@ firstlife_exit_if_needed
 
 # TODO^122: We need a way to only do a section of code once per day, kind of like using 'zl-delegate --limit-n-times-per-x 1 day', but something we can put around paragraphs like this one:
 zl-break -t 30
-firstlife-mute --time-in-seconds 30 'Put away any temptations or distractions, whatever you found distracting during that break you just had'
+zl-mute --time-in-seconds 30 'Put away any temptations or distractions, whatever you found distracting during that break you just had'
 zl-delegate --limit-n-times-per-x 2 day 'Put away any temptations or distractions'
 firstlife_exit_if_needed
 
-firstlife-mute --time-in-seconds 360 "Coffee making"
+zl-mute --time-in-seconds 360 "Coffee making"
 zl-delegate --limit-n-times-per-x 2 day 'Make coffee if you want'
 firstlife_exit_if_needed
 
-firstlife-mute --time-in-seconds 30 'Start up some podcasts'
+zl-mute --time-in-seconds 30 'Start up some podcasts'
 zl-delegate --limit-n-times-per-x 1 day 'Start up some podcasts'
 firstlife_exit_if_needed
 
 # TODO^3: I could break out a 'firstlife-exercise' routine, and call it here as an attempt, and only later in the day expect it to succeed:
 # TODO^3: zl-delegate --with-reward --with-timer $(( 30 * 60 )) 'blah blah':
-firstlife-mute --time-in-seconds 120 'Put on exercise clothes (and make sure you have your housekey/earbuds, etc.)'
+zl-mute --time-in-seconds 120 'Put on exercise clothes (and make sure you have your housekey/earbuds, etc.)'
 zl-delegate --limit-n-times-per-x 1 day 'Put on exercise clothes (and make sure you have your housekey/earbuds, etc.)' \
-    && firstlife-mute --time-in-seconds $(( 30 * 60 )) "Exercise" \
+    && zl-mute --time-in-seconds $(( 30 * 60 )) "Exercise" \
     && zl-delegate --limit-n-times-per-x 1 day 'Exercise!' \
     || zl-delegate --limit-n-times-per-x 1 day 'Schedule exercise for later today' \
-    || { firstlife-unmute; accumulate_error 'did not exercise'; }
+    || { zl-unmute; accumulate_error 'did not exercise'; }
 firstlife_exit_if_needed
 
 # TODO: you could be already doing this while walking:
-firstlife-mute --time-in-seconds 60 'Update yesterday in the habit tracker'
+zl-mute --time-in-seconds 60 'Update yesterday in the habit tracker'
 zl-delegate --limit-n-times-per-x 1 day 'Update yesterday in the habit tracker' || accumulate_error 'did not update yesterday in the habit tracker'
 firstlife_exit_if_needed
 
 # TODO: you could be already doing this while walking:
-firstlife-mute --time-in-seconds 120 'Communication'
+zl-mute --time-in-seconds 120 'Communication'
 zl-delegate --limit-n-times-per-x 5 day "Catch up on communicating with people" && zl-reward || accumulate_error "Did not communicate"
 firstlife_exit_if_needed
 
 # TODO^3: maybe make a 'delegate' function that calls both zl-delegate --with-reward and firstlife_exit_if_needed:
 
-firstlife-mute --time-in-seconds 30 'Get ready for the shower'
+zl-mute --time-in-seconds 30 'Get ready for the shower'
 zl-alarm 'Get ready for the shower'
 zl-delegate 'Get ready for the shower'
-firstlife-mute-in-foreground --time-in-seconds $(( 12 * 60)) "Shower"
-firstlife-mute --time-in-seconds 30 'Finish your shower'
+zl-mute-in-foreground --time-in-seconds $(( 12 * 60)) "Shower"
+zl-mute --time-in-seconds 30 'Finish your shower'
 zl-alarm 'Finish your shower'
 zl-delegate --limit-n-times-per-x 1 day 'Finish your shower' || accumulate_error 'did not shower'
 firstlife_exit_if_needed
 
-firstlife-mute --time-in-seconds 90 'Shave'
+zl-mute --time-in-seconds 90 'Shave'
 zl-delegate --limit-n-times-per-x 1 2_days 'Shave'
 firstlife_exit_if_needed
 
-firstlife-mute --time-in-seconds 60 'Deodorant'
+zl-mute --time-in-seconds 60 'Deodorant'
 zl-delegate --limit-n-times-per-x 1 day 'apply deodorant' || accumulate_error 'did not apply deodorant'
 firstlife_exit_if_needed
 
-firstlife-mute --time-in-seconds 45 'Mouthwash'
+zl-mute --time-in-seconds 45 'Mouthwash'
 zl-delegate --limit-n-times-per-x 1 day 'Use mouthwash'
 firstlife_exit_if_needed
 
-firstlife-mute --time-in-seconds 60 'Floss'
+zl-mute --time-in-seconds 60 'Floss'
 zl-delegate --limit-n-times-per-x 1 day 'Floss'
 firstlife_exit_if_needed
 
-firstlife-mute --time-in-seconds 180 'Brush teeth'
+zl-mute --time-in-seconds 180 'Brush teeth'
 zl-delegate --limit-n-times-per-x 1 day 'Brush teeth' || accumulate_error 'did not brush teeth'
 firstlife_exit_if_needed
 
-firstlife-mute --time-in-seconds 30 'Check off morning habits in tracker'
+zl-mute --time-in-seconds 30 'Check off morning habits in tracker'
 zl-delegate --limit-n-times-per-x 1 day 'Finish morning habits in the habit tracker' || accumulate_error 'did not finish morning habits'
 firstlife_exit_if_needed
 
-firstlife-mute --time-in-seconds 120 'Get dressed'
+zl-mute --time-in-seconds 120 'Get dressed'
 zl-delegate --limit-n-times-per-x 1 day 'Get dressed' || accumulate_error 'did not get dressed'
 firstlife_exit_if_needed
 
-firstlife-mute --time-in-seconds 360 "Coffee making"
+zl-mute --time-in-seconds 360 "Coffee making"
 zl-delegate --limit-n-times-per-x 2 day 'Make coffee if you want'
 firstlife_exit_if_needed
 
-firstlife-mute --time-in-seconds 10 'start music'
+zl-mute --time-in-seconds 10 'start music'
 zl-delegate 'Keep the tunes pumping (you can use "zl-music")'
 firstlife_exit_if_needed
 
@@ -159,7 +159,7 @@ exit_with_any_accumulated_errors
 
 # TODO^23: make sure firstlife_exit_if_needed is aware of errors?
 
-firstlife-mute --time-in-seconds 120 'Look at calendar for today'
+zl-mute --time-in-seconds 120 'Look at calendar for today'
 zl-check-calendar -m 'Your calendar is about to come up. When it does, mark how long your morning routine took, and plan your day, OK?' \
     || accumulate_error 'did not check calendar'
 

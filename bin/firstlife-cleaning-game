@@ -16,10 +16,10 @@ HOW_MANY_THINGS_TO_WIPE_EVERY_DAY=4
 # TODO^2: (FUN) mix the cleaning in with the tidying? #: TIDIES_PER_CLEAN=6; if [ $(( $i % $TIDIES_PER_CLEAN )) -eq 0 ]; then blah blah
 for i in $(seq $HOW_MANY_THINGS_TO_PUT_AWAY_EVERY_DAY);do
     sleep-verbose $(( ( ( $HOW_MANY_THINGS_TO_PUT_AWAY_EVERY_DAY + 1 ) - ( $i ) ) * 3 ))
-    firstlife-mute-in-foreground -t 10 --with-countdown "A short mute in $(basename $0) before putting your ${i}th thing away."
+    zl-mute-in-foreground -t 10 --with-countdown "A short mute in $(basename $0) before putting your ${i}th thing away."
     exit_if_day_is_over
     zl-alarm "Time for tidying!"
-    firstlife-mute -t 5 "A quiet moment to put something away"
+    zl-mute -t 5 "A quiet moment to put something away"
     zl-delegate --limit-n-times-per-x 10 week --without-reward "Put away your ${i}th item." || exit_with_error "stopped tidying"
     for nli in $(seq $(tput lines));do echo;done # TODO^17: maybe function extract as it wipes the screen and leaves the cursor at the bottom
     if [ "$(( $i % 5 ))" -eq 0 ]; then
@@ -31,10 +31,10 @@ exit_if_day_is_over
 
 for i in $(seq $HOW_MANY_THINGS_TO_WIPE_EVERY_DAY);do
     sleep-verbose $(( ( ( $HOW_MANY_THINGS_TO_WIPE_EVERY_DAY + 1 ) - ( $i ) ) * 25 ))
-    firstlife-mute-in-foreground -t 10 --with-countdown "A short mute in $(basename $0) before cleaning your ${i}th dirty thing."
+    zl-mute-in-foreground -t 10 --with-countdown "A short mute in $(basename $0) before cleaning your ${i}th dirty thing."
     exit_if_day_is_over
     zl-alarm "Clean something dirty!"
-    firstlife-mute -t 30 "A quiet moment to clean something"
+    zl-mute -t 30 "A quiet moment to clean something"
     zl-delegate --limit-n-times-per-x 10 week --with-reward "Clean something dirty! (#${i})" || exit_with_error "stopped cleaning"
     for nli in $(seq $(tput lines));do echo;done # TODO^16: maybe function extract as it wipes the screen and leaves the cursor at the bottom
 done

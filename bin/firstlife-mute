@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-# This script mutes all firstlife sounds for a certain duration (in the background).
-
-. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
-
-firstlife-mute-in-foreground "$@" >/dev/null 2>&1 &

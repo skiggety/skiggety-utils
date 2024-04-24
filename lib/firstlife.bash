@@ -49,7 +49,7 @@ function firstlife_preempt_same_script {
     echo $$ > $FIRSTLIFE_THIS_SCRIPT_PID_FILE
 }
 
-# after we make sure common tasks only run once, we could do this, like what ../*firstlife-status scripts do with $FIRSTLIFE_MARKER_DIR/.review-firstlife-status_PID
+# after we make sure common tasks only run once, we could do this, like what ../*zl-status scripts do with $FIRSTLIFE_MARKER_DIR/.review-zl-status_PID
 # TODO: is this used?:
 function exit_if_this_script_is_running_elsewhere {
     debug_here

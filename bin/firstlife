@@ -18,7 +18,7 @@ firstlife-setup || accumulate_error "firstlife-setup FAILED"
 
 # TODO^93: TEST this in docker as a reluctant user starting from fish
 
-# TODO^5: replace many instances of 'sleep-verbose X' with 'firstlife-mute-in-foreground -t X REASON' to allow you to earn some  quiet sometimes
+# TODO^5: replace many instances of 'sleep-verbose X' with 'zl-mute-in-foreground -t X REASON' to allow you to earn some  quiet sometimes
 
 # Figure out $SKIGGETY_UTILS_DIR and export it if it's not set, in case skiggety-utils setup has not happened:
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"

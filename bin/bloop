@@ -5,7 +5,7 @@
 # using cron on a mac like I do.  Sometimes it catches a couple of keystrokes if it pops up when I'm typing and they can
 # unfortunately become part of the command, so a cron line like:
 #
-#     50 9 * * * osascript -e 'tell application "Terminal" to do script "bloo;review-firstlife-status;oop;exit"'
+#     50 9 * * * osascript -e 'tell application "Terminal" to do script "bloo;review-zl-status;oop;exit"'
 #
 # ...can be a little less likely to get tripped up than without 'bloo' and 'oop'.  And also you can make your computer
 # go 'bloop' whenever you want now, which I think is a thing computers are supposed to do ;-)

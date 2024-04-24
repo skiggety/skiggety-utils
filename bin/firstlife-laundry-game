@@ -10,7 +10,7 @@ if shellask "Do you have laundry to fold and/or put away?"; then
     for num in $(seq $LAUNDRIES_TO_FOLD);do
         sleep-verbose --with-countdown $(( ( $LAUNDRIES_TO_FOLD + 1 ) - $num ))
         zl-alarm "Time to fold your ${num}th piece of laundry!"
-        firstlife-mute -t 10 "A quiet moment to fold your ${num}th piece of laundry"
+        zl-mute -t 10 "A quiet moment to fold your ${num}th piece of laundry"
         zl-delegate --without-reward --limit-n-times-per-x 4 day "Fold and put away your ${num}th piece of laundry" || \
             { shellask "Are you done putting laundry away?" && zl-reward "finished folding laundry" && exit 0; } || \
             exit_with_error "stopped folding"
