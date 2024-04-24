@@ -3,7 +3,7 @@
 # This script opens up a custom playlist of music to practice along with.
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
-# TODO^101: (IN_PROGRESS) MOVE this script to zerothlife
+# TODO^102: (IN_PROGRESS) MOVE this script to zerothlife
 . $ZEROTHLIFE_CODE_DIR/lib/zerothlife.bash || exit_with_error "could not source zerothlife.bash"
 
 debug_here
@@ -22,7 +22,7 @@ firstlife-alarm "Hooray! Time to practice your musical instrument!"
 zerothlife_exit_if_needed
 shellask "Are you ready to practice your musical instrument?" || exit_with_error "Decided not to practice music"
 
-# TODO^67: organize this script with several short pomodoros, maybe randomly selct between different options, or
+# TODO^68: organize this script with several short pomodoros, maybe randomly selct between different options, or
 # alternate, or make different routines, maybe even use many short pomodoros without breaks for small steps..
 
 # CAPTURE INSPIRATION
