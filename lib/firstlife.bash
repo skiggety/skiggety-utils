@@ -40,10 +40,10 @@ function is_still_today {
     exit_with_error 'should never get here'
 }
 
-# TODO: function firstlife-preempt-same-command kinda like firstlife-preempt-same-script but the arguments have to match
+# TODO: function firstlife-preempt-same-command kinda like firstlife_preempt_same_script but the arguments have to match
 # too.
 
-function firstlife-preempt-same-script {
+function firstlife_preempt_same_script {
     debug_here
     echo $$ > $FIRSTLIFE_THIS_SCRIPT_PID_FILE
 }

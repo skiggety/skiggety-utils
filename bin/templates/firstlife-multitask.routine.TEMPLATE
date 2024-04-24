@@ -11,7 +11,7 @@
 . $SKIGGETY_UTILS_DIR/lib/today_todo.bash || exit_with_error 'could not include today_todo.bash'
 . $SKIGGETY_UTILS_DIR/lib/vital.bash || exit_with_error 'could not include vital.bash'
 
-firstlife-preempt-same-script
+firstlife_preempt_same_script
 
 firstlife-wait-for-routine 'firstlife-morning' # TODO: || exit_with_error "..."
 firstlife_exit_if_needed

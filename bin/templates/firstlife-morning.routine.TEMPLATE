@@ -5,7 +5,7 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
-firstlife-preempt-same-script
+firstlife_preempt_same_script
 
 # TODO^50: (IN_PROGRESS) see what else I can do to keep more focus on the morning routine until it's done
 
