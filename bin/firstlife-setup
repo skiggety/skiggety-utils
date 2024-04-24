@@ -18,7 +18,7 @@ zl-delegate "set up your cron to call firstlife routines with 'crontab-verbose'"
 # - TODO^109: ...for the important stuff
 # - TODO^2: ...and the fun stuff
 # - TODO^51: ...and the stuff in between
-# - TODO^71: run firstlife-pomodoro-to-work-on-firstlife (optionally if you have dev mode on)
+# - TODO^71: run zl-pomodoro-to-work-on-firstlife (optionally if you have dev mode on)
 # - TODO: a daily review of your progress graphs
 # - TODO: maybe a test line, to run 10 minutes from now and then be deleted, just to prove crontab works for you
 

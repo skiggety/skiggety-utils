@@ -78,7 +78,7 @@ zl-delegate "Charge phone so it's ready to wake you up in the morning" || accumu
 
 # TODO^37: separate out bedtime routine and cron them both
 
-firstlife-pomodoro --without-break "Read a book in bed."
+zl-pomodoro --without-break "Read a book in bed."
 zl-delegate "finish up all evening habits" || accumulate_error "failed to finish evening habits"
 firstlife_exit_if_needed
 

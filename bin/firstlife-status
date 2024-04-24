@@ -46,7 +46,7 @@ today_todo --non-interactive | abbreviate -l 13 # TODO: vital --report | abbrevi
 reward_status="$(firstlife-reward -n)"
 echo "$reward_status" | abbreviate -l 6 -t 'firstlife-reward -n'
 
-# EASY? FUN? TODO^52: firstlife-pomodoro -n # to show accumulating pomodoros like rewards for more motivation
+# EASY? FUN? TODO^52: zl-pomodoro -n # to show accumulating pomodoros like rewards for more motivation
 
 # - EASY TODO^11: can also use mute at will
 BEHIND_SOUND="$FIRSTLIFE_LOCAL_DIR/sounds/behind.mp3"

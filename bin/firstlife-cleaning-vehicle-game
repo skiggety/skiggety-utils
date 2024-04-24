@@ -13,5 +13,5 @@ while ! shellask "Are you feeling good about the state of your vehicle for now?"
     exit_if_day_is_over
     firstlife-break -t $(( 60 * ( 5 + ( $TRY_COUNT * 2 ) ) ))
     TRY_COUNT=$(( $TRY_COUNT + 1 ))
-    firstlife-pomodoro --without-break --with-alarms --time-in-minutes $(( 4 + $TRY_COUNT))  "Tidy your vehicle"
+    zl-pomodoro --without-break --with-alarms --time-in-minutes $(( 4 + $TRY_COUNT))  "Tidy your vehicle"
 done
