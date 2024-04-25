@@ -97,7 +97,7 @@ for num in $(seq $passes_at_todo_list); do
     firstlife_exit_if_needed
 
     # TODO^88: extract this bit that works on a few todos to firstlife-work-on-top-n-todos -n $MULTITASKING_CONSTANT
-    # - TODO^91: or better yet, EXTRACT to 'firstlife-iterate-on-vital'
+    # - TODO^91: or better yet, EXTRACT to 'zl-iterate-on-vital'
     pushd $VITAL_DIR > /dev/null
     todos="$($SKIGGETY_UTILS_DIR/bin/todo|grep '\(NOW\|EASY\)'|tail -n $FIRSTLIFE_MULTITASKING_COUNT|tac)" # lump "EASY" in with "NOW", might as well do easy stuff right away
     ORIGINAL_IFS="$IFS"

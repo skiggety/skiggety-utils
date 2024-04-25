@@ -10,7 +10,7 @@ firstlife_preempt_same_script
 firstlife-wait-for-routine 'firstlife-morning' # TODO: || exit_with_error "..."
 firstlife_exit_if_needed
 
-firstlife-iterate-on-vital-tag -n 2 'URGENT' || accumulate_error 'ignored URGENT tasks' # TODO^5: this is important, TEST against getting to this point as a benchmark
+zl-iterate-on-vital-tag -n 2 'URGENT' || accumulate_error 'ignored URGENT tasks' # TODO^5: this is important, TEST against getting to this point as a benchmark
 firstlife_exit_if_needed
 
 firstlife-check-email --with-reward || accumulate_error 'ignored email' # TODO: this is important, TEST against getting to this point as a benchmark
@@ -31,7 +31,7 @@ firstlife_exit_if_needed
 # TODO^3: use a zl-reward category to track DAILY and WEEKLY tasks separately
 # EASY TODO^20: use this for 'in progress' tasks WEEKLY:, with a limit of how many to work on at a time:
 # TODO^5: limit the total number that happens daily:
-firstlife-iterate-on-vital-tag -n 2 'DAILY' || accumulate_error 'ignored DAILY tasks' # TODO^4: this is important, TEST against getting to this point as a benchmark
+zl-iterate-on-vital-tag -n 2 'DAILY' || accumulate_error 'ignored DAILY tasks' # TODO^4: this is important, TEST against getting to this point as a benchmark
 firstlife_exit_if_needed
 
 exit_with_any_accumulated_errors

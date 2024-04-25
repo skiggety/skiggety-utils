@@ -20,11 +20,11 @@ zl-reward "starting to focus, (hopefully by 10AM)"
 
 # TODO^10: EXTRACT and REUSE this approach that includes the headings:
 today_todo --non-interactive | grep --color=always '\(NOW\|EASY\|--------\|^$\)'
-zl-pomodoro 'most important stuff tagged NOW or EASY (use "firstlife-iterate-on-vital-tag -n 3 EASY" or "firstlife-iterate-on-vital-tag -n 3 NOW")' || accumulate_error 'skipped pomodoro for NOW/EASY tasks'
+zl-pomodoro 'most important stuff tagged NOW or EASY (use "zl-iterate-on-vital-tag -n 3 EASY" or "zl-iterate-on-vital-tag -n 3 NOW")' || accumulate_error 'skipped pomodoro for NOW/EASY tasks'
 firstlife_exit_if_needed
 
 today_todo --non-interactive | grep --color=always '\(URGENT\|--------\|^$\)'
-zl-pomodoro 'most important URGENT stuff (use "firstlife-iterate-on-vital-tag -n 3 URGENT")' || accumulate_error 'skipped pomodoro for URGENT stuff'
+zl-pomodoro 'most important URGENT stuff (use "zl-iterate-on-vital-tag -n 3 URGENT")' || accumulate_error 'skipped pomodoro for URGENT stuff'
 firstlife_exit_if_needed
 
 today_todo -n
@@ -35,17 +35,17 @@ firstlife_exit_if_needed
 
 # TODO^10: Measure myself on when I get here in a given day, and how many POINTs I'm earning per week:
 today_todo --non-interactive | grep --color=always '\(POINT\|--------\|^$\)'
-zl-pomodoro 'most important stuff worth POINTS (use "firstlife-iterate-on-vital-tag -n 3 POINT")' || accumulate_error 'skipped pomodoro worth POINTS'
+zl-pomodoro 'most important stuff worth POINTS (use "zl-iterate-on-vital-tag -n 3 POINT")' || accumulate_error 'skipped pomodoro worth POINTS'
 firstlife_exit_if_needed
 
 vital-list-by-tag INCOME
 # today_todo --non-interactive | grep --color=always '\(INCOME\|--------\|^$\)'
-zl-pomodoro 'most important stuff tagged "INCOME (use "firstlife-iterate-on-vital-tag -n 3 INCOME")"' || accumulate_error 'skipped pomodoro for stuff tagged "INCOME"'
+zl-pomodoro 'most important stuff tagged "INCOME (use "zl-iterate-on-vital-tag -n 3 INCOME")"' || accumulate_error 'skipped pomodoro for stuff tagged "INCOME"'
 firstlife_exit_if_needed
 
 vital-list-by-tag POINT
 # today_todo --non-interactive | grep --color=always '\(POINT\|--------\|^$\)'
-zl-pomodoro 'most important stuff worth POINTS (use "firstlife-iterate-on-vital-tag -n 3 POINT")' || accumulate_error 'skipped pomodoro worth POINTS'
+zl-pomodoro 'most important stuff worth POINTS (use "zl-iterate-on-vital-tag -n 3 POINT")' || accumulate_error 'skipped pomodoro worth POINTS'
 firstlife_exit_if_needed
 
 today_todo --non-interactive
