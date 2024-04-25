@@ -153,7 +153,7 @@ function use_and_maintain_inner_routine_based_on_template {
     fi
 
     if [ "$nickname" != "wake" ]; then # TODO: UN-HACK
-        firstlife-color-code-terminal --for "$nickname routine"
+        zl-color-code-terminal --for "$nickname routine"
     fi
     echo "...starting '$nickname' routine..."
     # FUN EASY TODO: slow-banner "...starting '$nickname' routine..."
@@ -191,7 +191,7 @@ function handle-alarmy-photo-mission {
   echo '|------|  box, to satisfy your alarmy mission.    |--------|'
   echo '|------|                                          |--------|'
   echo '|------|  TO GET THIS IMAGE TO APPEAR, run:       |--------|'
-  echo '|------|      firstlife-wake                      |--------|'
+  echo '|------|      zl-wake                             |--------|'
   echo '|------|                                          |--------|'
   echo '|------|==========================================|--------|'
   echo '|----------------------------------------------------------|'

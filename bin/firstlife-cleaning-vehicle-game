@@ -5,7 +5,7 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error 'could not use common firstlife code'
 
-firstlife-wait-for-routine firstlife-morning
+zl-wait-for-routine zl-morning
 
 TRY_COUNT=0
 zl-alarm "Time to tidy your vehicle!"

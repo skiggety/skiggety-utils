@@ -6,6 +6,8 @@
 
 # TODO^15: Figure out uniform short flags for '--time-in-minutes', '--time-in-seconds', and '--message'.  '-m' and '-t', aren't enough, so consider '-s' too, maybe.  Figure it out and make it uniform.
 
+# EASY TODO^121: (IN_PROGRESS) high-level review of routines to balance the need for warm-up vs attempted overall efficiency
+
 # EASY TODO^20 crontab mutes for overnight, at least until 5am
 
 # FUN TODO^5: firstlife could make a habit of telling you what the routine is and recommending changing terminal colors
@@ -61,7 +63,7 @@ exit_if_day_is_over
 # - TODO: ultimately, combine for exit_if_another_terminal_or_day_took_over_with_accumulated_errors
 
 # # TODO^63: make this program aware of your productivity points, as in, keep going until you have enough:
-# firstlife-work || accumulate_error "firstlife-work had ERRORS"
+# zl-work || accumulate_error "zl-work had ERRORS"
 # exit_if_day_is_over
 
 exit_with_any_accumulated_errors
