@@ -1,5 +1,5 @@
 ==== TODOs, ascending, so you know what's likely to change next. Do not edit, run 'generate_todo_report' to generate. ====
-( showing last 8 lines out of 605 for 'todo': )
+( showing last 8 lines out of 601 for 'todo': )
 ./lib/firstlife.bash:83:# TODO^113: use firstlife_exit_if_needed liberally instead of exit_if_day_is_over (all over the codebase)
 ./installers/zerothlife:7:# - TODO^116: make this, and maybe all installers, optional.  We could use marker files to keep track of preferences
 ./bin/crontab-verbose:20:    # TODO^121: also open example files, if available (so 'firstlife' can suggest an example crontab file)
