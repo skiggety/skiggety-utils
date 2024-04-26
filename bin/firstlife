@@ -15,8 +15,8 @@
 
 # TODO: can I simplify the firstlife-related lines in ~/.crontab by extracting the boilerplate?
 
-firstlife-setup || accumulate_error "firstlife-setup FAILED"
-# TODO^113: everything after firstlife-setup should be moved elsewhere after firstlife-setup generates a sample crontab and guide you through setting it up to call the other routines
+zl-setup || accumulate_error "zl-setup FAILED"
+# TODO^113: everything after zl-setup should be moved elsewhere after zl-setup generates a sample crontab and guide you through setting it up to call the other routines
 
 # TODO^93: TEST this in docker as a reluctant user starting from fish
 

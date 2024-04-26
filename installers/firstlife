@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # TODO^93: TEST this script in docker as a reluctant user starting from fish
-# TODO^109: move all this logic to firstlife-setup!:
+# TODO^109: move all this logic to zl-setup!:
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
