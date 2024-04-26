@@ -4,7 +4,7 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-# TODO^2: use this script more widely
+# TODO^3: use this script more widely
 # TODO: DRY with zl-iterate
 
 # TODO: accept some sort of option for a duration, so we can set a timer and mute
