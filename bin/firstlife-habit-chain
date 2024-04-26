@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-# This script delegates many tasks to you in a row, one after the other, to train you in a 'chain' of habits that become
-# associated with one another.
-
-. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
-
-exit_with_error "EASY TODO^88: IMPLEMENT and use widely. It should take a list of strings and delegate them to you as tasks, accumulating rewards and errors""
