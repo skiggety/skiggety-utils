@@ -6,7 +6,7 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
 # TODO: implement --help option
-# TODO: implement option to only show current branch, maybe use it from shellask when debugging firstlife so you can see # where you are
+# TODO: implement option to only show current branch, maybe use it from shellask when debugging Zerothlife so you can see # where you are
 
 debug_here
 

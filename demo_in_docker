@@ -9,7 +9,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 SKIGGETY_UTILS_DIR="$THIS_DIR"
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-# TODO^86: make sure (for firstlife demo'ing) that we can get through enough of the demo_in_docker script with an alternate $EDITOR
+# TODO^86: make sure (for Zerothlife demo'ing) that we can get through enough of the demo_in_docker script with an alternate $EDITOR
 
 if [ -f /.in_docker_demo ]; then
     exit_with_error "You are already in the docker demo."

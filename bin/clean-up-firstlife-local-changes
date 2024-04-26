@@ -3,9 +3,6 @@
 # This script helps the user to make sure changes to firstlife get committed and pushed
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
-. $SKIGGETY_UTILS_DIR/lib/firstlife.bash || exit_with_error "could not source firstlife.bash"
-
-cd $FIRSTLIFE_CODE_DIR && git-clean-up-local-changes || exit_with_error "did not clean up changes in the repo that firstlife is in"
 
 cd $SKIGGETY_UTILS_DIR
 if git status -s | grep firstlife; then

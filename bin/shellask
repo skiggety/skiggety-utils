@@ -50,7 +50,7 @@ banner='########################################################################
 # TODO^2: can we do something to make the terminal tab blink?:
 
 
-# TODO: should I quiet this down, quiet optionally, what? maybe firstlife can alert and this should abstain?:
+# TODO: should I quiet this down, quiet optionally, what? maybe Zerothlife can alert and this should abstain?:
 tput bel # a.k.a. ding, bell (for searchability)
 
 # TODO?: debug_eval_here TASK_DESCRIPTION

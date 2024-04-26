@@ -3,8 +3,8 @@
 
 require_relative '../lib/installable_skiggety_util'
 
-# TODO^113: and devote some thought to dependencies between firstlife and skiggety-utils
-# - TODO^116: make this, and maybe all installers, optional.  We could use marker files to keep track of preferences
+# TODO^114: and devote some thought to dependencies between Zerothlife and skiggety-utils
+# - TODO^121: make this, and maybe all installers, optional.  We could use marker files to keep track of preferences
 
 class ZerothLifeInstaller
 

@@ -15,10 +15,10 @@ echo_divider_with_text "+-=======-" "collapse todo votes:"
 todo -wfq --non-interactive --exclude-dir .git || accumulate_error "could not write simplified TODO entries, todo exited with $?" # IGNORE_TODO
 
 # TODO: zerothlife should take care of this:
-if [ -d $HOME/firstlife ]; then
-    pushd $HOME/firstlife > /dev/null
+if [ -d $HOME/zerothlife ]; then
+    pushd $HOME/zerothlife > /dev/null
     echo_divider_with_text "+-=======-" "collapse todo votes in $PWD:"
-    $SKIGGETY_UTILS_DIR/bin/todo -wfq --exclude-dir log --non-interactive || accumulate_error "could not write simplified TODO entries for firstlife, todo exited with $?" # IGNORE_TODO
+    $SKIGGETY_UTILS_DIR/bin/todo -wfq --exclude-dir log --non-interactive || accumulate_error "could not write simplified TODO entries for Zerothlife, todo exited with $?" # IGNORE_TODO
     popd > /dev/null
 fi
 
