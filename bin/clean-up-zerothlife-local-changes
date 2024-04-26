@@ -5,6 +5,8 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $ZEROTHLIFE_CODE_DIR/lib/zerothlife.bash || exit_with_error "could not source zerothlife.bash"
 
+zl-wait-for-routine 'zl-morning'
+
 cd $ZEROTHLIFE_CODE_DIR && git-clean-up-local-changes || exit_with_error "did not clean up changes in zerothlife repo"
 
 cd $SKIGGETY_UTILS_DIR
