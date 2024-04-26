@@ -1,4 +1,4 @@
-ZEROTHLIFE_CODE_DIR="$HOME/code/zerothlife"
-export ZEROTHLIFE_CODE_DIR
+export PATH="$ZEROTHLIFE_DIR/bin:$ZEROTHLIFE_CODE_DIR/bin:$PATH"
 
-export PATH="$ZEROTHLIFE_DIR/local_bin:$PATH:$ZEROTHLIFE_DIR/bin"
+alias cdzl="cd $ZEROTHLIFE_DIR"
+alias cdzlc="cd $ZEROTHLIFE_CODE_DIR"

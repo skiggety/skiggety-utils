@@ -1,4 +1,5 @@
 ---- IN_PROGRESS: --------------------------------------------------------------
+./installers/skiggety.bash:64:        # TODO^60: ([01;31m[KIN_PROGRESS[m[K) also make sure Zerothlife takes care of it itself, asking the user to put it in their bashrc
 ./README-firstlife.md:9:  - TODO^119: ([01;31m[KIN_PROGRESS[m[K, NOW) move firstlife to 'zerothlife' repo and rename all mentions of 'firstlife' either to 'zerothlife' or 'zl'
 ./bin/firstlife:9:# EASY TODO^121: ([01;31m[KIN_PROGRESS[m[K) high-level review of routines to balance the need for warm-up vs attempted overall efficiency
 ---- TODOs for right NOW: ------------------------------------------------------
