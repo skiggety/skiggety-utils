@@ -123,7 +123,7 @@ So anyway, you don't really need to look at the full list, just a screen-full or
 
 These ideas don't have a code location, so they go here:
 
-  - TODO^137: (IN_PROGRESS, NOW) move 'firstlife' data (to do list) to private repo ("zerothlife")
+  - TODO^137: (IN_PROGRESS, NOW) merge PR, after moving 'firstlife' data (to do list) to private repo ("zerothlife")
   - TODO^125: move 'vital' data (to do list) to private repo (skiggety utils should help set up)
   - TODO^48: spin off kid-utils
   - TODO^21: ...rewrite todo in rust with parallelization (maybe with Kevin), but after [rust koans](https://github.com/crazymykl/rust-koans)

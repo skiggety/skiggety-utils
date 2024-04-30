@@ -1,5 +1,5 @@
 ---- IN_PROGRESS: --------------------------------------------------------------
 ./installers/skiggety.bash:64:        # TODO^60: ([01;31m[KIN_PROGRESS[m[K) also make sure Zerothlife takes care of it itself, asking the user to put it in their bashrc
-./README.md:126:  - TODO^137: ([01;31m[KIN_PROGRESS[m[K, NOW) move 'firstlife' data (to do list) to private repo ("zerothlife")
+./README.md:126:  - TODO^137: ([01;31m[KIN_PROGRESS[m[K, NOW) merge PR, after moving 'firstlife' data (to do list) to private repo ("zerothlife")
 ---- TODOs for right NOW: ------------------------------------------------------
-./README.md:126:  - TODO^137: (IN_PROGRESS, [01;31m[KNOW[m[K) move 'firstlife' data (to do list) to private repo ("zerothlife")
+./README.md:126:  - TODO^137: (IN_PROGRESS, [01;31m[KNOW[m[K) merge PR, after moving 'firstlife' data (to do list) to private repo ("zerothlife")

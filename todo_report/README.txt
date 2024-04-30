@@ -7,4 +7,4 @@
 ./bin/crontab-verbose:20:    # TODO^121: also open example files, if available (so Zerothlife can suggest an example crontab file)
 ./installers/zerothlife:7:# - TODO^121: make this, and maybe all installers, optional.  We could use marker files to keep track of preferences
 ./README.md:127:  - TODO^125: move 'vital' data (to do list) to private repo (skiggety utils should help set up)
-./README.md:126:  - TODO^137: (IN_PROGRESS, NOW) move 'firstlife' data (to do list) to private repo ("zerothlife")
+./README.md:126:  - TODO^137: (IN_PROGRESS, NOW) merge PR, after moving 'firstlife' data (to do list) to private repo ("zerothlife")
