@@ -33,7 +33,7 @@ while [[ "$1" == -* ]]; do
         shift
         TITLE="$1"
         shift
-    elif [ "$1" == '-d' ]; then
+    elif [ "$1" == '-d' -o "$1" == '--divider' ]; then
         DIVIDER=true
         shift
     fi
@@ -53,11 +53,15 @@ if $AUTO_SCALE; then
     MAX_SCREEN_LINES="$(( $MAX_LINES + 1 ))" # because the explanation takes up 1 line
 fi
 
-if [ $INPUT_LINES -gt $MAX_SCREEN_LINES ]; then
+if [ $INPUT_LINES -gt $MAX_SCREEN_LINES -o $DIVIDER ]; then
+    SHOWN_LINES="$MAX_LINES"
+    if [ $MAX_LINES -gt $INPUT_LINES ]; then
+        SHOWN_LINES="$INPUT_LINES"
+    fi
     if [ -z "$TITLE" ];then
-        explanation="( showing last $MAX_LINES lines out of $INPUT_LINES: )"
+        explanation="( showing last $SHOWN_LINES lines out of $INPUT_LINES: )"
     else
-        explanation="( showing last $MAX_LINES lines out of $INPUT_LINES for '$TITLE': )"
+        explanation="( showing last $SHOWN_LINES lines out of $INPUT_LINES for '$TITLE': )"
     fi
 
     if $DIVIDER; then
