@@ -70,7 +70,7 @@ if [ $INPUT_LINES -gt $MAX_SCREEN_LINES -o $DIVIDER ]; then
         echo "$explanation"
     fi
 
-    echo -e "$INPUT" | tail -n $MAX_LINES
+    echo "$INPUT" | tail -n $MAX_LINES
 else
-    echo -e "$INPUT"
+    echo "$INPUT"
 fi
