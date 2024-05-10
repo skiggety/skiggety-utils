@@ -19,11 +19,11 @@
 # because in some cases it's helpful to make a human decision a few times before you figure out how to teach^Wprogram
 # the computer.
 
+# TODO^44: create an alternative, 'yn_ask', for when you want to keep the ui simple, and use it widely
+
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 # including with THIS_DIR instead of SKIGGETY_UTILS_DIR so we can use it in demo_in_docker:
-. $THIS_DIR/../lib/skiggety-utils.bash || exit 1
-
-# TODO^13: create an alternative, 'yn_ask', for when you want to keep the ui simple, and use it widely
+. $THIS_DIR/../lib/skiggety-utils.bash || { echo "Could not source skiggety-utils.bash" >&2; exit 1; } # TODO: TEST and spread including this way
 
 # TODO^20: figure out why this script occasionally fails to set the prompt.  It seems to still get as far as producing a
 # reasonable looking DOUBLE_ESCAPED_TASK_DESCRIPTION, but doesn't actually set the prompt or the aliases:
@@ -43,7 +43,7 @@ ESCAPED_TASK_DESCRIPTION="$(echo "$TASK_DESCRIPTION" | sed 's/\(["\$]\)/\\\1/g')
 # Try running the following to see why this is necessary: shellask 'spend $0 on "stuff"'.
 DOUBLE_ESCAPED_TASK_DESCRIPTION="$(echo "$ESCAPED_TASK_DESCRIPTION" | sed 's/\(["\$]\)/\\\1/g')"
 # debug_eval_here DOUBLE_ESCAPED_TASK_DESCRIPTION
-banner='########################################################################'
+banner='################################################################################'
 
 # TODO^6: can we do something to bring the terminal to the foreground/front?:
 
