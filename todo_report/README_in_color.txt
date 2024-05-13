@@ -6,5 +6,5 @@
 ./installers/zerothlife:8:# [1m[31mTODO^114[0m[0m: and devote some thought to dependencies between Zerothlife and skiggety-utils
 ./bin/crontab-verbose:20:    # [1m[31mTODO^121[0m[0m: also open example files, if available (so Zerothlife can suggest an example crontab file)
 ./README.md:126:  - [1m[31mTODO^125[0m[0m: move 'vital' data (to do list) to private repo (skiggety utils should help set up)
-./installers/zerothlife:9:# - [1m[31mTODO^139[0m[0m: (IN_PROGRESS, NOW) make this, and maybe all installers, optional.  We could use marker files to keep track of
+./installers/zerothlife:9:# - [1m[31mTODO^139[0m[0m: (IN_PROGRESS, NOW) make this, and maybe all installers, optional.  We could use marker files to keep track
 [1m[33m./installers/zerothlife:6:# [1m[31mTODO^140[0m[1m[33m: (IN_PROGRESS, NOW) TEST this script[0m
