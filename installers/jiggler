@@ -7,7 +7,52 @@ class JigglerInstaller
 
   include InstallableSkiggetyUtil
 
-  raise 'TODO^2: IMPLEMENT'
+  def apparently_installed?
+    return true if in_docker_demo?
+
+    if on_mac_os?
+      Dir.exist?('/Applications/Jiggler.app')
+    else
+      true # not trying to support other os'es yet
+    end
+  end
+
+  def apparently_configured?
+    return true if in_docker_demo?
+
+    if on_mac_os?
+      ask_user 'Have you configured Jiggler to your liking yet?'
+    else
+      true # not trying to support other os'es yet
+    end
+  end
+
+  def install!
+    if on_mac_os?
+      if $interactive
+        delegate_download_and_install_to_user('http://www.sticksoftware.com/software/Jiggler.html', 'jiggler')
+      else
+        raise_interactive_only_install
+      end
+      # TODO?: else # other os'es might need an equivalent
+    end
+  end
+
+  def configure!
+    if on_mac_os?
+      if $interactive
+        assert_system("open '/Applications/Jiggler.app'")
+        delegate_to_user(
+          'Running Jiggler.app... please follow the prompts to make sure it is running and appears in your menu bar'
+        )
+        delegate_to_user 'Set up your jiggler preferences, accesible from the menu bar (the defaults are pretty good).'
+      else
+        raise_interactive_only_configuration
+      end
+    else
+      true # not trying to support other os'es yet
+    end
+  end
 
 end
 
