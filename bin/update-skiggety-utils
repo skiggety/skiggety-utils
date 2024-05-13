@@ -10,9 +10,9 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 pushd $SKIGGETY_UTILS_DIR >/dev/null
 
 # These are generated, and can always be re-generated.  Ditching changes here avoids conflicts:
-git restore todo_report
+git-restore-generated-files
 
-git-pretty-pull || exit_with_error "git-pretty-pull FALED"
+git-safe-pull || exit_with_error "git-safe-pull FALED"
 
 echo_divider_with_text "--==" "running: install-skiggety-utils '$@':"
 install-skiggety-utils "$@" || exit 1

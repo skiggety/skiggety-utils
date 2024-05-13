@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# This script is a placeholder for 'vital --list-by-tag' which would list all todos matching a given tag
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/vital.bash || exit_with_error 'could not include vital.bash'
+
+cd $VITAL_DIR
+$SKIGGETY_UTILS_DIR/bin/todo | grep "$1"

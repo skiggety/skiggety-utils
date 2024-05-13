@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-while sleep-verbose 30;do
+while sleep-verbose --with-countdown 30;do
     clear
     git pull | grep Already || { install-skiggety-utils && ./demo_in_docker ; }
     echo waiting to try again for update

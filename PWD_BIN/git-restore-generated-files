@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# This script restores all generated files, specific to this repo.
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+git restore todo_report

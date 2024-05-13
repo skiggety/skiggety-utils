@@ -8,15 +8,35 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 
 echo_divider_with_text "O-=======-" "'dashboard' for $(duh) :"
 
-# show diff with old mac files: # TODO^5: work on this diff:
-if ! [ -z "$SKIGGETY_UTILS_DONOR_DIR" ]; then
-    echo_divider_with_text "+-=======-" "diff summary for \"$SKIGGETY_UTILS_DONOR_DIR\":"
-    diff -rq --exclude=.DS_Store --exclude=.git $THIS_DIR/.. $SKIGGETY_UTILS_DONOR_DIR | grep -v "^Only in $THIS_DIR/.." | grep --color=always '\(differ\|Only\)' | abbreviate -n 5
-fi
-
 bin/default_dashboard || accumulate_error "default_dashboard FAILED"
+# Anything after this point better be more important than the output of default_dashboard since it could bump it off the
+# screen....:
 
-# show todo's:
+###
+### Show Todo's:
+###
+################################################################################
+unstaged_todos="$(git diff | grep '^+.*TODO' | grep -v 'IGNORE_TODO')"
+debug_here
+unstaged_files="$(git status -s | grep '^?')"
+debug_eval_here unstaged_files
+debug_here
+if [ -n "$unstaged_files" ]; then
+    debug_here
+    unstaged_todos="$(rg TODO $(echo "$unstaged_files" | awk '{print $2}') | grep -v "IGNORE_TODO" | sort)$unstaged_todos" # get the ones in unstaged files too
+    debug_here
+fi
+debug_eval_here unstaged_todos
+unstaged_todos_count="$(echo "$unstaged_todos" | wc -l)"
+unstaged_todos_count="$(( $unstaged_todos_count ))"
+if [ -z "$unstaged_todos" ]; then
+    unstaged_todos_count=0
+fi
+unstaged_todos="$(echo "$unstaged_todos" | abbreviate --auto-scale )" # AFTER getting the linecount
+if [ $unstaged_todos_count -gt 0 ]; then
+    echo_divider_with_text "=" "${RED}$unstaged_todos_count unstaged TODO's:${no_color}" # IGNORE_TODO
+    echo "$unstaged_todos"
+fi
 if [ -f ./todo_report/README_in_color.txt ]; then
     cat ./todo_report/README_in_color.txt
 else
@@ -24,11 +44,42 @@ else
     # purposely call whatever 'todo' is in the path in case you are overriding it with a 'PWD_BIN/todo' script:
     todo --color always | abbreviate -n 4 -t "TODO's" -d || exit_with_error "todo FAILED" # IGNORE_TODO
 fi
+if [ -f ./todo_report/todos_by_status.txt ]; then
+    echo_divider_with_text "=" "TODO's by status" # IGNORE_TODO
+    cat ./todo_report/todos_by_status.txt | abbreviate -n 8 # TODO^10: prefer the color version if you find it
+fi
 
-# TODO?: tell you what command to run to commit changes or whatever
-# TODO?: graph score over time (see program "progress")
+# TODO^3?: tell you what command to run to commit changes or whatever
+# TODO^2?: graph score over time (see program "progress")
 
-# More important than the output of default_dashboard:
+# TODO^19: maybe use this in 'vital' to keep your tag count under control:
+function limit-todo-with-keyword-count {
+    MAX_COUNT="$1"
+    KEYWORD="$2"
+
+    KEYWORD_USAGES="$(todo | grep $KEYWORD )"
+    KEYWORD_USAGE_COUNT=$(echo "$KEYWORD_USAGES" | wc -l | bc )
+
+    echo_debug "$KEYWORD_USAGE_COUNT todo's found marked '$KEYWORD'"
+    if [ "$KEYWORD_USAGE_COUNT" -gt "$MAX_COUNT" ]; then
+        EXCESS_COUNT="$(( $KEYWORD_USAGE_COUNT - $MAX_COUNT))"
+        echo
+        echo_error "$KEYWORD_USAGE_COUNT is ($EXCESS_COUNT) too many todo's marked '$KEYWORD' (the max is $MAX_COUNT):"
+
+        echo "---------------------------------------------------------"
+        echo "$KEYWORD_USAGES" | head -n $EXCESS_COUNT
+        echo_error "---- $KEYWORD LIMIT ---- (everything above here is excessive todo's marked '$KEYWORD')"
+        echo "$KEYWORD_USAGES" | tail -n $MAX_COUNT
+        echo "---------------------------------------------------------"
+
+        accumulate_error "$EXCESS_COUNT too many $KEYWORD todo's found, such as: $(echo "$KEYWORD_USAGES" | head -n 1)"
+    fi
+}
+
+limit-todo-with-keyword-count 7 'IN_''PROGRESS' # TODO^31: fine tune this number
+limit-todo-with-keyword-count 2 'N''OW'
+# TODO^5: maybe also make sure that lines that contain (all capitalized, not shown here so as not to tag this todo) 'todo' and 'now' also contain 'in_progress
 
 echo_divider_with_text "O-=======-" "END of 'dashboard' for $(duh) :"
+
 exit_with_any_accumulated_errors

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# This script generates anything that should get generated automatically for this repository
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+generate_todo_report || exit_with_error "'generate_todo_report' FAILED"

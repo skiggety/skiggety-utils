@@ -2,12 +2,17 @@
 
 # TODO^2: assert ruby version # puts "DEBUG: in #{name} installer, RUBY_VERSION is \"#{RUBY_VERSION}\"."
 
+# TODO^5: make certain installers skippable, like UHK and maybe ardour.  They'll ask you if you want it on this
+# computer, and just mark it done and skip it if not
+
 # TODO: mark more of these methods private
 
 # TODO: implement uninstall
 
 require 'fileutils'
 require_relative 'user_delegation'
+
+# rubocop:disable Metrics/ModuleLength (TODO?)
 
 module InstallableSkiggetyUtil
 
@@ -143,10 +148,13 @@ module InstallableSkiggetyUtil
     install_marker_file_name_prefix + installer_file_hash
   end
 
-  # TODO^5: consider changing the naming convention in the installers directory to avoid the
+  # TODO^46: consider changing the naming convention in the installers directory to avoid the
   # confusion of having an executable file called "vim", for example, that is actually only a way to
   # install vim.  This will require messing with these prefixes because the marker filenames rely on
   # them:
+  # - e.g.:
+  #   - installer-helpers/help-install-vim
+  #   - setup_bin/setup-vim
   def install_marker_file_name_prefix
     "#{File.basename(installer_file_path)}.installed_with_version."
   end
@@ -271,4 +279,16 @@ module InstallableSkiggetyUtil
       raise "FAILED to upgrade or install cask #{package_name} with homebrew"
   end
 
+  def git_pull(dir)
+    Dir.chdir(dir) do
+      assert_system('git pretty-pull')
+    end
+  end
+
+  def git_clone_latest(repo, dir)
+    assert_system("git clone #{repo} #{dir}") unless Dir.exist?(dir)
+    git_pull(dir)
+  end
+
 end
+# rubocop:enable Metrics/ModuleLength

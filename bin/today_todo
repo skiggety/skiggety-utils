@@ -3,19 +3,29 @@
 # This is how I trick myself into getting things done.  It basically helps organize and display a series of text files
 # containing a todo list with the usual keyword and voting (see 'todo' program).
 
-# TODO^12: have a way to postpone things to a certain date
-# TODO^6: RENAME? ("todo-today"?, "todoy")
-# TODO: flag to grep for and count a specific word, sort of like what I do for "NOW"
-# TODO: "-q" or "-n" flag to be quick, and skip the editor phase
-# TODO: how about a mode for the edit phase only?
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/today_todo.bash || exit_with_error 'could not include today_todo.bash'
+
+# TODO^6: replace this with 'vital'.  Move over all functionality and todo's
+
+# TODO^22: have a way to postpone things to a certain date
+# TODO^11: flag to grep for and count a specific word, sort of like what I do for the (capitalized) "now" keyword
 
 # TODO: this program needs to display some instructions so the user knows how to use it.
 # TODO: maybe during business hours, show results with "BUSINESS_HOURS" more prominently, and hide them otherwise
 
-# TODO^24: add a mode to quickly add a todo, ideally it would let you specify a votecount too
+# EASY FUN TODO^75: add a mode to quickly add a todo, ideally it would let you specify a votecount too
+# - TODO^30?: search for $1 and if it's not found, add one, if it is found, open the file searching for that string
+# TODO^20: add a mode to quickly upvote one particular thing, that would call "todo --vote 'substring of my todo line'"
+# - TODO^19: ..and another mode to vote for everything matching a string
+# - TODO^19: ..which means todo has to support voting from the command line, and voting for all, and today_todo will pass options through
+#   - TODO^17: .. e.g. "today_todo --upvote 'truck oil change'"
+#   - TODO^17: .. e.g. "today_todo --vote 99 'truck oil change'"
+#   - TODO^17: .. e.g. "today_todo --vote +2 'truck oil change'"
+#   - TODO^17: .. e.g. "today_todo --vote -1 'laundry'"
+#   - TODO^17: .. e.g. "today_todo --upvote-all 'META'"
+#   - TODO^17: .. e.g. "today_todo --vote-all +2 'META'"
 # TODO: report on tags and their frequency?
-# TODO^5: add a mode to quickly upvote one particular thing, that would call "todo --vote 'substring of my todo line'"
-. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
 USAGE='today_todo [options]
 
@@ -23,7 +33,11 @@ OPTIONS:
   -n or --non-interactive means to skip the editing part and just show the output immediately
   -h or -? or --help shows this message'
 
+today_todo_now_max_count=${today_todo_now_max_count:-4}
+
 function main {
+# TODO: take an option to pass all displayed output through 'grep --color=always <KEYWORD>' so you can just see for example, errands.
+
     for arg in "$@"; do
         shift
         case "$arg" in
@@ -40,7 +54,7 @@ function main {
     while getopts ":inhi?" opt; do
         case "$opt" in
             "i") interactive=true ;;
-            "n") interactive=false ;;
+            "n") interactive=false ;; # TODO: support/move to/in 'vital', (and also move this whole implementation)
             "h") echo "$USAGE"; exit ;;
             "?") echo "$USAGE"; exit ;;
             *) ;;
@@ -49,56 +63,74 @@ function main {
     # TODO: accept a keyword argument, e.g. "-k WOODSHOP".  When you open the editor it's already searching for it and
     # it prints much like CONFIRMING on the report.  Could accept multiple keyword arguments.
 
-    csv_date="$(date +'%m/%d/%Y %T')"
-    isotoday="$(isotoday)"
+    csv_datetime="$(date +'%m/%d/%Y %T')"
 
-    todo_list_file_name="TODO.$isotoday.txt" # IGNORE_TODO
-    todo_list_dir_path="$HOME/$(basename $0)" # TODO^61: (IN_PROGRESS, NOW) promote this to a login shell var, so skiggety utils can dump it's todo report there
+    mkdir -p "$VITAL_DIR"
+    cd "$VITAL_DIR"
 
-    mkdir -p "$todo_list_dir_path"
-    cd "$todo_list_dir_path"
+    # generate todo reports for external directories, including Zerothlife and skiggety_utils
+    # TODO: only put code todos in with main todos if you have configured Zerothlife to do so, and don't do this on secondary computers
+    for dir in $HOME/zerothlife $SKIGGETY_UTILS_DIR $HOME/code/zerothlife;do
+        if [ -d $dir ]; then
+            pushd $dir > /dev/null
+            todo_program='todo'
+            if [ -e './PWD_BIN/todo' ]; then
+                todo_program='./PWD_BIN/todo'
+            fi
+
+            $todo_program --non-interactive --color never --exclude-dir log > "${VITAL_DIR}/TODO.$(basename $dir).todo_report.txt"
+            popd > /dev/null
+        fi
+    done
 
     if $interactive; then
-        if [ -f "$todo_list_file_name" ]; then
-            files_to_open="$todo_list_file_name"
-        else
-            files_to_open="$todo_list_file_name ."
+        tmp_sorted_list="/tmp/today_todo.$$.sorted.TEMP.txt"
+        todo --non-interactive --color never | grep 'TODO.today.txt:' | sed "s/^.\/${vital_todo_list_file_name}:[[:digit:]]*://" | tac > $tmp_sorted_list # IGNORE_TODO
+        if ! [ -f "$vital_done_list_file_name" ]; then
+            echo 'Done:' > $vital_done_list_file_name
+            echo '----------------------------------------' >> $vital_done_list_file_name
         fi
-        echo "- TODO: ..." >> "$todo_list_file_name" # IGNORE_TODO
-        vim -o $files_to_open '+/\.\.\.' # TODO^6: here and elsewhere, use $EDITOR, not vim
+        files_to_open="$vital_todo_list_file_name $vital_done_list_file_name $tmp_sorted_list"
+
+        echo "- TODO: ..." >> "$vital_todo_list_file_path" # IGNORE_TODO
+        vim -o $files_to_open '+/\.\.\.' # TODO^84: here and elsewhere, use $EDITOR, not vim
     fi
 
-    # TODO: maybe automate the archiving, too?
+    # TODO^6: maybe automate the archiving, too?
     EXCLUDE_DIR_ARGS="--exclude-dir archive"
 
     echo "It's time to compact todo's in $0"
-    todo -wfq $EXCLUDE_DIR_ARGS
-    PAUSE_TO_READ=0
+    WRITE_FLAG=''
+    if $interactive; then
+        WRITE_FLAG='w'
+    fi
+    todo "-${WRITE_FLAG}fq" $EXCLUDE_DIR_ARGS
+    PAUSE_TO_READ=0 # TODO: set to 10 if passed '--slow' or '-s'
     if $interactive; then
         clear
     fi
 
-    # TODO: consider extracting the rest of this script to "today_todo_display", which can be overridden with PWD_BIN, or
+    # TODO^3: consider extracting the rest of this script to "today_todo_display", which can be overridden with PWD_BIN, or
     # alternatively we could do like 'todo' and use flags to turn editing and reporting on and off:
 
-    echo "Last few todos DONE:"
+    echo "-------- Last few todos DONE:"
     todo -k DONE $EXCLUDE_DIR_ARGS | tail -n 3 | grep --color=always DONE
     if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
 
     # TODO: -n 5 # TODO^2: todo should accept an option for the number of lines.  like "-n 3".  Maybe if we pass an
     # option in?:
-    todo_output="$(todo --color always $EXCLUDE_DIR_ARGS)"
+    todo_output="$(todo --color always $EXCLUDE_DIR_ARGS | cat -n )"
 
     todo_count=$(( 0 + $(echo "$todo_output" | wc -l) ))
     echo
-    echo "Found $todo_count todos, showing 10:"
+    echo "-------- Found $todo_count todos, showing 10:"
     echo "$todo_output" | tail -n 10 | grep --color=always TODO
     if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
 
     todo_prog_output="$(echo "$todo_output" | grep IN_PROGRESS)"
     todo_prog_count=$(( 0 + $(echo "$todo_prog_output" | wc -l) ))
     echo
-    echo "Found $todo_prog_count todos IN_PROGRESS:"
+    echo "-------- Found $todo_prog_count todos IN_PROGRESS:" # using dividers for things like this so I can do things like: today_todo -n | grep \(--------\|ERRAND\)
     echo "$todo_prog_output" | grep --color=always IN_PROGRESS
     if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
 
@@ -107,7 +139,7 @@ function main {
     # TODO^2: if it's around new years:
     display_grep_for_keyword NEW_YEARS_RESOLUTION "$todo_output"
 
-    # TODO^51: instead of NOW and LATER, tag things with MORNING, EVENING, WEEKEND, BUSINESS_HOURS, etc, and have today_todo watch the clock to know which to highlight
+    # TODO^51: instead of now and LATER, tag things with MORNING, EVENING, WEEKEND, BUSINESS_HOURS, etc, and have today_todo watch the clock to know which to highlight
     todo_later_output="$(echo "$todo_output" | grep --color=always LATER)"
     todo_later_count=$(( 0 + $(echo "$todo_later_output" | wc -l) ))
     if [ "$todo_later_output" != '' ]; then
@@ -118,17 +150,17 @@ function main {
         fi
 
         echo
-        echo "Found $todo_later_count todos to do LATER$only_showing:" | grep --color=always \\d
+        echo "-------- Found $todo_later_count todos to do LATER$only_showing:" | grep --color=always \\d
         echo "$todo_later_output" | tail -n 3
         if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
     fi
 
-
-    todo_now_output="$(echo "$todo_output" | grep --color=always NOW)"
+    # TODO^23: function extract to do with other keywords:
+    todo_now_output="$(echo "$todo_output" | grep --color=always '\(NOW\|EASY\)')"
     todo_now_count=$(( 0 + $(echo "$todo_now_output" | wc -l) ))
     if [ "$todo_now_output" != '' ]; then
-        if (( $todo_now_count > 3 )); then
-            only_showing=", only showing 3"
+        if (( $todo_now_count > $today_todo_now_max_count )); then
+            only_showing=", only showing $today_todo_now_max_count"
         else
             only_showing=''
         fi
@@ -137,20 +169,41 @@ function main {
         # TODO: maybe a cronjob to remind me to do that stuff on my lunch hour
 
         echo
-        echo "Found $todo_now_count todos to do right NOW$only_showing:" | grep --color=always \\d
-        echo "$todo_now_output" | tail -n 3
+        echo "-------- Found $todo_now_count todos to do right NOW (or tagged EASY)$only_showing:" | grep --color=always \\d
+        echo "$todo_now_output" | tail -n $today_todo_now_max_count
         if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
     fi
 
-    # TODO^4: add NOW count to this output?:
+    # TODO^24: function extract to do with other keywords
+    today_todo_urgent_max_count=2
+    todo_urgent_output="$(echo "$todo_output" | grep --color=always 'URGENT')"
+    todo_urgent_count=$(( 0 + $(echo "$todo_urgent_output" | wc -l) ))
+    if [ "$todo_urgent_output" != '' ]; then
+        if (( $todo_urgent_count > $today_todo_urgent_max_count )); then
+            only_showing=", only showing $today_todo_urgent_max_count"
+        else
+            only_showing=''
+        fi
+
+        echo
+        echo "-------- Found $todo_urgent_count todos tagged 'URGENT'$only_showing:" | grep --color=always \\d
+        echo "$todo_urgent_output" | tail -n $today_todo_urgent_max_count
+        if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
+    fi
+
+    # EASY TODO^8: add now count to this output?:
     echo "$(( $todo_count + $todo_prog_count )) combined score, $todo_prog_count todos IN_PROGRESS"
 
+    # EASY TODO^28: graph max votecount
+    # EASY TODO^24: graph "CONFIRMING" and Done
+    # EASY TODO^24: graph total anxiety score, total votecount of all todos
+    # generate graph:
     if $interactive; then
-        # TODO^7: graph how many are done each day
+        # TODO^8: graph how many are done each day
         if ! [ -f graph.csv ]; then
             echo "date,total todos,todos in progress,todos for later,todos for NOW,combined score" > graph.csv
         fi
-        echo "$csv_date,$todo_count,$todo_prog_count,$todo_later_count,$todo_now_count,$(( $todo_count + $todo_prog_count + $todo_later_count + $todo_now_count ))" >> graph.csv
+        echo "$csv_datetime,$todo_count,$todo_prog_count,$todo_later_count,$todo_now_count,$(( $todo_count + $todo_prog_count + $todo_later_count + $todo_now_count ))" >> graph.csv
     fi
 }
 
@@ -162,7 +215,7 @@ function display_grep_for_keyword {
     todo_keyword_count=$(( 0 + $(echo "$todo_keyword_output" | wc -l) ))
     if [ "$todo_keyword_output" != "" ]; then
         echo
-        echo "Found $todo_keyword_count todos with \"$KEYWORD\":" | grep --color=always \\d
+        echo "-------- Found $todo_keyword_count todos with \"$KEYWORD\":" | grep --color=always \\d
         echo "$todo_keyword_output"
     fi
 }

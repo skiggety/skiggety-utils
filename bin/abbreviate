@@ -7,16 +7,33 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
 DIVIDER=false
+PROMPT_LINES='3' # TODO: better implementation, not sure how to get $PS1 from parent process
+MAX_SCREEN_LINES="$(( $(tput lines) - $PROMPT_LINES ))" # default to a screenful, allowing room for prompt # TODO: if it's not in a terminal, maybe default to using AUTO_SCALE
+MAX_LINES="$(( $MAX_SCREEN_LINES - 1 ))" # because the explanation takes up 1 line
+AUTO_SCALE=false
 while [[ "$1" == -* ]]; do
-    if [ "$1" == '-n' ]; then
+    if [ "$1" == '-a' -o "$1" == '--auto' -o "$1" == '--auto-scale' ]; then
+        AUTO_SCALE=true
         shift
+    elif [ "$1" == '-l' ]; then
+        shift
+        MAX_SCREEN_LINES="$1"
+        MAX_LINES="$(( $MAX_SCREEN_LINES - 1 ))" # because the explanation takes up 1 line
+        AUTO_SCALE=false
+        shift
+    elif [ "$1" == '-n' ]; then
+        shift
+        MAX_SCREEN_LINES="$1"
         MAX_LINES="$1"
+        MAX_SCREEN_LINES="$(( $MAX_LINES + 1 ))" # because the explanation takes up 1 line
+        AUTO_SCALE=false
         shift
-    elif [ "$1" == '-t' ]; then
+    # TODO: elif [ "$1" == '--headlines' ]; then # show a few lines with "head" at the top, still use the right total amount of space on screen
+    elif [ "$1" == '-t' -o "$1" == '--title' ]; then
         shift
         TITLE="$1"
         shift
-    elif [ "$1" == '-d' ]; then
+    elif [ "$1" == '-d' -o "$1" == '--divider' ]; then
         DIVIDER=true
         shift
     fi
@@ -31,12 +48,20 @@ else
     INPUT_LINES="$(( 0 + $(echo "$INPUT" | wc -l) ))"
 fi
 
-if [ $INPUT_LINES -gt $MAX_LINES ]; then
-    LINES_TO_SHOW="$(( $MAX_LINES - 1 ))" # becasue the explanation takes up 1 line
+if $AUTO_SCALE; then
+    MAX_LINES="$( echo "sqrt($INPUT_LINES) + 3" | bc )"
+    MAX_SCREEN_LINES="$(( $MAX_LINES + 1 ))" # because the explanation takes up 1 line
+fi
+
+if [ $INPUT_LINES -gt $MAX_SCREEN_LINES -o $DIVIDER ]; then
+    SHOWN_LINES="$MAX_LINES"
+    if [ $MAX_LINES -gt $INPUT_LINES ]; then
+        SHOWN_LINES="$INPUT_LINES"
+    fi
     if [ -z "$TITLE" ];then
-        explanation="( showing last $LINES_TO_SHOW lines out of $INPUT_LINES: )"
+        explanation="( showing last $SHOWN_LINES lines out of $INPUT_LINES: )"
     else
-        explanation="( showing last $LINES_TO_SHOW lines out of $INPUT_LINES for '$TITLE': )"
+        explanation="( showing last $SHOWN_LINES lines out of $INPUT_LINES for '$TITLE': )"
     fi
 
     if $DIVIDER; then
@@ -45,7 +70,7 @@ if [ $INPUT_LINES -gt $MAX_LINES ]; then
         echo "$explanation"
     fi
 
-    echo -e "$INPUT" | tail -n $LINES_TO_SHOW
+    echo "$INPUT" | tail -n $MAX_LINES
 else
-    echo -e "$INPUT"
+    echo "$INPUT"
 fi

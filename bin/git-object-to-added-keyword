@@ -10,10 +10,12 @@ else
     keyword="$1"
 fi
 
-DO_NOT_COMMIT="$(git diff --staged --inter-hunk-context=1 | grep "^[+].*${keyword}")"
-if ! [ -z "$DO_NOT_COMMIT" ]; then
-    echo_divider_with_text "!" "${RED}DO NOT COMMIT${no_color} these git added files with (\"${RED}X""XX${no_color}\"):"
-    echo_error "$DO_NOT_COMMIT"
+do_not_commit="$(git diff --staged --inter-hunk-context=1 | grep "^[+].*${keyword}")"
+if ! [ -z "$do_not_commit" ]; then
+    echo_divider_with_text "!" "${RED}DO NOT COMMIT${no_color} these git added files with (\"${RED}${keyword}${no_color}\"):"
+    echo_error "FOUND in output of 'gid diff --staged':${newline}$do_not_commit:"
     # TODO: echoing the line number this is coming from is distracting:
-    exit_with_error "You have staged lines including '${keyword}'. fix with: git restore --staged <file>..."
+    echo_error "...see where the problem is by running 'pushd $PWD;git diff --staged | vim +/${keyword} -;popd'."
+    echo_error "...and maybe fix with: git restore --staged <file> once you figure out which file..."
+    exit_with_error "You have staged lines including '${keyword}'."
 fi

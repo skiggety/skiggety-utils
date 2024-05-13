@@ -34,7 +34,7 @@ for target in "$@";do
     destinations+=( "$destination" )
 
     # TODO^4: create $destination file from template if it doesn't exist and mark it executable.
-    # Use 'newbin', maybe with a mode that doesn't open the editor.
+    # - TODO^17: Use 'newbin', maybe with a mode that doesn't open the editor.
 
 done
 vim -o "${destinations[@]}"

@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+# This script opens a clean docker container running fish, where skiggety utils has not been installed.  It is intended
+# to help test Zerothlife
+
+THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
+SKIGGETY_UTILS_DIR="$(cd "$THIS_DIR/..";pwd)"
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+if ! ls installers/.markers/docker.configured_with_* installers/.markers/docker.installed_with_* 2>/dev/null; then
+    $SKIGGETY_UTILS_DIR/bin/shellask "Make sure Docker is installed and running in the background" || exit_with_error "You didn't set up Docker"
+fi
+
+cd $SKIGGETY_UTILS_DIR || exit_with_error "Could not find \$SKIGGETY_UTILS_DIR"
+
+echo 'Building docker image...'
+time docker build -f Dockerfile.clean.fish -t clean-fish-box --progress plain . || exit_with_error "docker build failed"
+echo '...done building docker image.'
+echo
+
+TMP_MARKER_DIR=/tmp/skiggety-utils-demo-installer-markers.pid_$$
+rm -rf "$TMP_MARKER_DIR"
+mkdir -p "$TMP_MARKER_DIR"
+touch "$TMP_MARKER_DIR/.keep"  #So it doesn't show as missing in docker
+
+CONTAINED_UTILS_DIR="/root/code/skiggety-utils"
+docker run --rm -it --entrypoint fish \
+    -v "${SKIGGETY_UTILS_DIR}:${CONTAINED_UTILS_DIR}" \
+    -v "${TMP_MARKER_DIR}:${CONTAINED_UTILS_DIR}/installers/.markers" \
+    clean-fish-box

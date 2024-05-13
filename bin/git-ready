@@ -8,24 +8,36 @@ function main {
         if [ "$1" == "-n" ]; then
             GIT_COMMIT_OPTIONS="$GIT_COMMIT_OPTIONS $1"
             shift
-        # TODO: -m "commit comment"
+        # TODO^2: -m "commit comment"
         else
             exit_with_error "option not supported: $1"
         fi
     done
 
+    if [ -f PWD_BIN/generate ]; then
+        PWD_BIN/generate || exit_with_error "'generate' FAILED"
+    fi
+
+    if [ $(git status -s | wc -l) -eq 0 ];then
+        echo "No changes found, exiting $(basename $0) without error..."
+        exit 0
+    fi
+
     run-or-fail git add -p
 
-    # TODO^4: just exit 0 right here unless there are changes staged
+    touch .gitignore # so 'review-dev' notices
 
-    shellask "Are your changes what you want? (use 'git diff --staged' or 'git vimdiff --staged')" || \
+    # EASY TODO^10: just exit 0 right here unless there are changes staged
+    git-dashboard
+
+    shellask "Are your changes what you want in '$(pwd)'? (use 'git diff --staged' (gds) or 'git vimdiff --staged' (gvds) )" || \
         exit_with_error "Prepare your changes the way you want and then try $(basename $0) again."
 
     echo
     run-or-fail git commit $GIT_COMMIT_OPTIONS
 
-    # TODO: just exit 0 right here unless there are changes staged (yes, we're checking again because the user might
-    # have changed something during shellask
+    # EASY TODO^10: just exit 0 right here unless there are changes staged (yes, we're checking again because the user might
+    # have changed something during shellask)
 
     # TODO^3: if the remote branch doesn't exist yet, we should skip trying git pull, since it will fail anyway
     echo
@@ -34,8 +46,14 @@ function main {
     echo
     hesitate-and-run-or-fail git push -u
 
+    touch .gitignore # so 'review-dev' notices
+
     echo
-    git -c color.ui=always --no-pager log --oneline --decorate=short origin/HEAD~~..HEAD -n 3
+    git-log-recent
+
+    echo
+    shellask "Please test 'ci' on another machine if you can" || \
+        exit_with_error "Didn't test"
 
     echo
     echo "...finished '$(basename "$0")'."
@@ -46,7 +64,7 @@ function run-or-fail {
    $@ || exit_with_error "Command \"$@\" FAILED"
 }
 
-# TODO^2: move/reuse?
+# TODO^5: move/reuse
 function hesitate-and-run-or-fail {
    hesitate-and-run $@ || exit_with_error "Command \"$@\" FAILED"
 }

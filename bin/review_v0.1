@@ -18,6 +18,8 @@
 # -RI " $" .'.  The grep will run repeatedly until you stop it, waiting a few seconds in between each run (this time
 # will adjust automatically.
 
+# TODO^3: work on messages in sleep-verbose and the sleep message at the bottom of 'review'
+
 # MULTIPLY_BY_DELAY has been dialed in based on real usage.  There is no magic number.  It should always be greater
 # than 0.  Make it bigger to save cpu, and smaller to make this program more responsive.  Now that we wake up on
 # filesystem changes, this can be a little bit larger than it once was:
@@ -65,6 +67,7 @@ class ReviewProgram
     @slept_already = 0
     @should_clear_screen = true
     @interactive = false
+    @should_listen = true
   end
 
   def run
@@ -121,17 +124,19 @@ class ReviewProgram
       end
 
       # The minimum delay is a soft minimum, where it always *tries* to wait, say, long enough for you to react, but
-      # then still wakes up when the filesystem has changes (because you made an edit). This could make a huge
+      # then still wakes up when the filesystem has changes (because you made an edit).  This could make a huge
       # difference in making review actually efficient to use in many circumstances, say a script that takes 60 seconds
-      # to run and 15-60 seconds to react to, like running tests and debugging in another window. You may want to also
+      # to run and 15-60 seconds to react to, like running tests and debugging in another window.  You may want to also
       # set a shorter uninterruptable delay to guarantee you always have a few seconds to react.
 
-      # TODO: have a flag that lets you specify which path on the filesystem to listen to.
-      # - TODO^2: Probably oughta have a flag to turn it off too.
+      # TODO^3: have a flag that lets you specify which path on the filesystem to listen to.
       # - TODO: Probably ought to then have a flag to set that multiplier.
 
       # TODO: --timeout <n>, or in other words kill commands after this many seconds..
       # TODO: should be able to specify min/max delay from the command line as hh:mm:ss if you want:
+      parser.on('--no-listen', 'do not listen to disk activity') do
+        @should_listen = false
+      end
       parser.on('-m', '--min-delay MINIMUM', 'specify minimum delay in seconds') do |min|
         @minimum_delay = min.to_i
       end
@@ -165,12 +170,16 @@ class ReviewProgram
 
   # avoid forcing the same version of ruby on programs that this may call (be careful not to pass rbenv-related
   # environment variables down).  Because it would be nice to be able to use "review dev" in other ruby projects
-  # sometimes, like at work. I'm keeping this around in case someone else uses rbenv, because I've moved to asdf.
+  # sometimes, like at work.  I'm keeping this around in case someone else uses rbenv, because I've moved to asdf.
   def cleanup_rbenv_influence
     rbenv_root_dir = ENV.fetch('RBENV_ROOT', nil)
-    ["#{rbenv_root_dir}/bin", "#{rbenv_root_dir}/shims"].each do |dir|
-      path_as_array = ENV.fetch('PATH').split(':')
-      ENV['PATH'] = "#{dir}:#{ENV.fetch('PATH')}" if path_as_array.include?(dir)
+    if rbenv_root_dir
+      ["#{rbenv_root_dir}/bin", "#{rbenv_root_dir}/shims"].each do |dir|
+        if File.directory?(dir)
+          path_as_array = ENV.fetch('PATH').split(':')
+          ENV['PATH'] = "#{dir}:#{ENV.fetch('PATH')}" if path_as_array.include?(dir)
+        end
+      end
     end
     ENV['RBENV_VERSION'] = nil
     ENV['RBENV_DIR'] = nil
@@ -234,10 +243,12 @@ class ReviewProgram
   # TODO^2: this needs to be switchable by command line
   # TODO: maybe skip files that are gitignored?:
   def start_wake_on_filesystem_change
-    listener = Listen.to('.') do |_modified, _added, _removed|
-      @wake_up_now = true if @wake_up_now == false
+    if @should_listen
+      listener = Listen.to('.') do |_modified, _added, _removed|
+        @wake_up_now = true if @wake_up_now == false
+      end
+      listener.start
     end
-    listener.start
   end
 
   def wakeable_sleep_verbose(delay)
@@ -250,12 +261,13 @@ class ReviewProgram
     @slept_already = 0
     while delay_remaining.positive? && (@wake_up_now == false || @slept_already < uninteruptable_minimum_delay)
       total_delay_summary = uninteruptable_minimum_delay == delay ? delay.to_s : "#{uninteruptable_minimum_delay}-#{delay}"
-      print " ...sleeping for #{delay_remaining}/#{total_delay_summary} seconds...\033[0K\r"
+      # TODO^2: show time as hh:mm:ss or something like that:
+      # EASY TODO^86: make sleep-verbose message look more like this?:
+      print "...sleeping for #{delay_remaining} out of #{total_delay_summary} seconds (already slept #{@slept_already})...\033[0K\r"
       sleep 1
       delay_remaining -= 1
       @slept_already += 1
     end
-    # TODO^2: show time as hh:mm:ss or something like that:
     print " ...slept for #{@slept_already}/#{delay} seconds#{running_message}." \
           "#{woke_up_message} at #{Time.now}\033[0K\r"
     true

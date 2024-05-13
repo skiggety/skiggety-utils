@@ -6,6 +6,7 @@ require_relative '../lib/installable_skiggety_util'
 # TODO^3: install and set up vimpager as your pager, but maybe not in this installer
 # TODO^2: install vim rake plugin with vim pathogen
 # TODO: maybe detect local vimrc changes
+# TODO^2: later, look at this and zerothlife installer and consider a bit of DRY
 
 class VimInstaller
 
@@ -70,14 +71,6 @@ class VimInstaller
 
   def bundle_dir
     "#{Dir.home}/.vim/bundle"
-  end
-
-  # TODO^3: maybe move to installable_skiggety_util.rb:
-  def git_clone_latest(repo, dir)
-    assert_system("git clone #{repo} #{dir}") unless Dir.exist?(dir)
-    Dir.chdir(dir) do
-      assert_system('git pretty-pull')
-    end
   end
 
   def configure!

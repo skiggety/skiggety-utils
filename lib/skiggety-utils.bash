@@ -156,7 +156,7 @@ function echo_error_here {
 }
 
 function echo_error {
-    echo -e "${RED}ERROR:${red} $*${no_color}" >&2
+    echo -e "${RED}ERROR:${red} ${*}${no_color}" >&2
 }
 
 function echo_divider_with_text {
@@ -207,4 +207,8 @@ function assert_equal {
         diff -u --label expected <(echo "$EXPECTED") --label received <(echo "$RECEIVED") >&2
         exit 1
     fi
+}
+
+function is_on_mac_os {
+    uname -a | grep Darwin > /dev/null
 }

@@ -9,7 +9,7 @@
 # are not random because humans are choosing to come up with arbitrary words out of their own head instead, which is
 # exactly the problem this program addresses.
 
-# TODO^5 Consider making a website that runs this script in the browswer, using https://opalrb.com/
+# TODO^7 Consider making a website that runs this script in the browser, using https://opalrb.com/
 
 # NOTE: If you like reading code top-down as I do, start reading outside the class at the end of the script, which will
 # quickly bring you back to CHBS#initialize and CHBS#report just a little ways below here.
@@ -21,8 +21,8 @@ class CHBS
   # TODO: consider a --dense (a.k.a. --troubador a.k.a. -d) mode to generate secure passwords in the traditional style
   # that doesn't need to be as long but is harder to remember.
 
-  # TODO: maybe accept a flag that makes this print one and only one passphrase, with no other output.  It could be used
-  # by other programs.
+  # TODO^3: maybe accept a '-1' flag (equivalent to '-n 1') that makes this print one and only one passphrase, with no
+  # other output.  It could be used by other programs, or by a user alias for when they only want one new password.
 
   # TODO^2: accept and pass through options for min/max words/characters/characters-per-word, plus whether it should
   # jam in extras for compliance
@@ -47,9 +47,12 @@ class CHBS
     result
   end
 
-  def initialize(max_word_length: 8, min_word_length: 4)
+  attr_reader :wordcount
+
+  def initialize(max_word_length: 9, min_word_length: 4)
     @max_word_length = max_word_length
     @min_word_length = min_word_length
+    @wordcount = 5 # TODO: UN-HARDCODE
   end
 
   def report
@@ -92,17 +95,13 @@ class CHBS
     Math.log(possible_passphrase_count, 2)
   end
 
-  # lol
+  # lol, seems like entropy works this way but I can't swear to it:
   def lost_entropy_when_user_inevitably_picks_the_weakest_passphrase_shown
     Math.log(passphrase_count, 2)
   end
 
-  private def wordcount
-    4 # TODO: UN-HARDCODE
-  end
-
   private def passphrase_count
-    10 # TODO: UN-HARDCODE
+    12 # TODO: UN-HARDCODE
   end
 
   private def possible_passphrase_count

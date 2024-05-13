@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-# TODO: ask-to-run could be a similar script, using shellask and used by today_todo & ./start
+# This script runs the command after a short hesitation, giving you a chance to cancel
+
+# TODO^4: use this more widely, especially in Zerothlife
+
+# TODO^4: ask-to-run could be a similar script, using shellask and used by today_todo & ./start to call # vital-iterate-on-tag commands, etc.
 
 echo "Running \"$@\" momentarily, press CTRL+C to stop..."
 sleep-verbose 2

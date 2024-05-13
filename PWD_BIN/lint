@@ -1,17 +1,26 @@
 #!/usr/bin/env bash
 
-# TODO^11: make this read-only by default, split the write version into another script if necessary
-#   TODO^10: I think the way to handle this is to support a '-w', '--fix', '-n' or '--ro' option
-#     TODO^6: '-n' seems good because the command to fix stuff is short, 'lint', and it's short for '--no-changes'
-# TODO^5: run shellcheck
+# TODO^27: make this read-only by default, split the write version into another script if necessary
+# - FUN TODO^42: I think the way to handle this is to support a '--fix', '-w', '-n' or '--ro' option, and suggest using
+#                it in the error message if lint fails (look at command line options for different linters to see what's common
+# TODO^14: run shellcheck
 
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
 echo_divider_with_text "O-=======-" "lint:"
 
+# TODO^17: if in write mode...
 echo_divider_with_text "+-=======-" "collapse todo votes:"
 todo -wfq --non-interactive --exclude-dir .git || accumulate_error "could not write simplified TODO entries, todo exited with $?" # IGNORE_TODO
+
+# TODO: zerothlife should take care of this:
+if [ -d $HOME/zerothlife ]; then
+    pushd $HOME/zerothlife > /dev/null
+    echo_divider_with_text "+-=======-" "collapse todo votes in $PWD:"
+    $SKIGGETY_UTILS_DIR/bin/todo -wfq --exclude-dir log --non-interactive || accumulate_error "could not write simplified TODO entries for Zerothlife, todo exited with $?" # IGNORE_TODO
+    popd > /dev/null
+fi
 
 echo_divider_with_text "+-=======-" "generate ./todo_report/README.txt:"
 generate_todo_report >/dev/null || accumulate_error 'could not generate todo report'
@@ -19,13 +28,13 @@ echo "The most important todo is currently:"
 tail -n 1 todo_report/README.txt
 
 echo_divider_with_text "+-=======-" "pylint:"
-# TODO^2: abbreviate output:
-# TODO^4 automatically scan all python files:
 # TODO^5: get in the habit of keeping everything clean and then use accumulate_error here:
+# TODO^4 automatically scan all python files:
+# TODO^3: abbreviate output:
 pylint --rcfile .pylintrc 'bin/todo_v0.4' lib/todo_line.py bin/silliness/demo_python_version_hack || warn_here 'TEMPORARILY IGNORING the fact that pylint reported ERRORS'
 
 echo_divider_with_text "+-=======-" "rubocop:"
-# TODO: call rupocop with -a OR -P depending on whether this script is in write mode or not (this script should have
+# TODO^2: call rupocop with -a OR -P depending on whether this script is in write mode or not (this script should have
 # that as a distinct mode like todo does)
 bundle exec rubocop -P --color || accumulate_error 'rubocop reported errors'
 

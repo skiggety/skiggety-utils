@@ -86,3 +86,8 @@ autocmd Filetype ruby set sw=2
 autocmd Filetype python set softtabstop=4
 autocmd Filetype python set sw=4
 autocmd Filetype python set textwidth=100
+
+augroup SAVING
+    autocmd!
+    autocmd BufWritePost * echo strftime('%c')
+augroup END

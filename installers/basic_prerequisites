@@ -77,10 +77,10 @@ function install_basic_prerequisites {
     fi
     for old_tool_version_manager in rbenv pyenv;do
         if which $old_tool_version_manager 2>/dev/null; then
-            exit_with_error: "$old_tool_version_manager is still installed. Please uninstall it and try again"
+            exit_with_error "$old_tool_version_manager is still installed. Please uninstall it and try again"
         fi
         if [ -d ~/.${old_tool_version_manager} ];then
-            exit_with_error: "Please remove '~/.${old_tool_version_manager}' directory before proceeding"
+            exit_with_error "Please remove '~/.${old_tool_version_manager}' directory before proceeding"
         fi
     done
 
@@ -102,7 +102,7 @@ function install_basic_prerequisites {
     install_nose2
     install_pylint
 
-    # TODO: install_rust
+    # EASY TODO^22: install_rust
 
     # set global tools versions:
     asdf global ruby 3.2.0
@@ -130,8 +130,9 @@ function install_homebrew {
 }
 
 # TODO: pare down the list for asdf (in Dockerfile too), as this list was really created as prerequisites for rbenv and
-# pyenv. asdf says it just needs curl and git, but the different plugins can have their own prerequisites which might be
-# similar to this list::
+# pyenv.  'asdf' says it just needs curl and git, but the different plugins can have their own prerequisites which might
+# be similar to this list::
+
 function install_asdf_prerequisites {
     debug_here "time for asdf prerequisites"
     if ! on_mac_os;then

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # TODO: consider #!/usr/bin/env python3 OR #!/usr/bin/env ruby
 
-# TODO^6: consider renaming or extracting to git-default-dashboard or git-dashboard considering what this script actually does
+# TODO^30: consider renaming or extracting to git-default-dashboard or git-dashboard considering what this script actually does
 
 # This script provides a general purpose status report that is sensitive to the current directory.  If you are in a git
 # repo for a coding project, it'll give you an idea of høw tests are doing, what's left to do/commit, etc.  It will
@@ -10,50 +10,9 @@
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-# TODO^2: only do git stuff if it's a git repository
+# TODO^11: only do git stuff if it's a git repository:
+# - EASY TODO^10: git-dir-is-repo && git-dashboard
 
-git_stash_list="$(git stash list)"
-if [ "$git_stash_list" != "" ]; then
-    echo_divider_with_text "-=" "git stash list"
-    echo "$git_stash_list"
-    echo_divider_with_text "-" "git stash show"
-    git stash show
-    echo_divider_with_text "-" "git stash show -p | head -n 10"
-    git -c color.ui=always stash show -p | head -n 10
-fi
+git-dashboard || accumulate_error "'git-dashboard' FAILED"
 
-# TODO: why is this producing so much output lately, like in content manager, even when there have only been a few
-# commits in the feature branch?:
-echo_divider_with_text "-=" "git log: (most recent commit and un-pushed commits)"
-git -c color.ui=always --no-pager log --oneline --decorate=short origin/HEAD~~..HEAD -n 7
-
-unset GIT_EXTERNAL_DIFF # if call this from inside a git-vimdiff, we still want "git diff" to behave normally
-# echo_divider_with_text "-" "git diff of unstaged files:"
-# for next in $( git ls-files --others --exclude-standard ) ; do git -c color.ui=always --no-pager diff --no-index /dev/null $next; done | head -n 15  # git diff for files not checked in yet only?
-# TODO: this shows a more complete diff, including new files...do I want to use it instead?: for next in $( git ls-files --others --exclude-standard ) ; do git --no-pager diff --no-index /dev/null $next; done; # git diff
-DIFF_HEAD_LENGTH=11
-git_diff_output="$(git -c color.ui=always --no-pager diff -U1 | head -n $DIFF_HEAD_LENGTH)"
-if [ "$git_diff_output" != "" ]; then
-    echo_divider_with_text "-=" "git diff | head -n $DIFF_HEAD_LENGTH :"
-    echo "$git_diff_output"
-fi
-
-DO_NOT_ADD="$(git diff --inter-hunk-context=1 | grep '^[+].*[X]XX')"
-if ! [ -z "$DO_NOT_ADD" ]; then
-    echo_divider_with_text '!' "DO NOT ADD (${RED}X""XX${no_color}) :"
-    echo_error "${newline}$DO_NOT_ADD"
-fi
-
-echo_divider_with_text "-=" "git status:"
-GIT_STATUS="$(git -c color.ui=always --no-pager status -ss)"
-if [ "$GIT_STATUS" == "" ] ;then
-    GIT_STATUS_LINECOUNT=0
-else
-    GIT_STATUS_LINECOUNT="$(echo "$GIT_STATUS" | wc -l | awk '{print $1}')"
-    echo "$GIT_STATUS"
-fi
-echo "$GIT_STATUS_LINECOUNT files with changes on branch '$(git branch --show-current)'"
-
-for keyword in 'XX''X' 'BREAD''CRUMB'; do
-    git-object-to-added-keyword "$keyword" || exit_with_error "'git-object-to-added-keyword $keyword' FAILED"
-done
+exit_with_any_accumulated_errors

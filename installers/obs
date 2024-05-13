@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative '../lib/installable_skiggety_util'
+
+class ObsInstaller
+
+  include InstallableSkiggetyUtil
+
+  def apparently_installed?
+    false # raise NotImplementedError, 'TODO^37: implement this for this OS'
+  end
+
+  def apparently_configured?
+    true
+  end
+
+  def install!
+    if on_mac_os?
+      brew_install_cask_latest 'OBS'
+    else
+      raise NotImplementedError, 'TODO: implement this for this OS'
+    end
+  end
+
+end
+
+ObsInstaller.run

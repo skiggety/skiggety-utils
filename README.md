@@ -52,11 +52,11 @@ For the safe docker demo:
       about ./PWD_BIN/todo instead of finding $SKIGGETY_UTILS_DIR/bin/todo. 'exec bash' is the workaround.
       uncommitted files in other git repos. This is also important so git-vimchanged can work properly when you add
       your own PWD_BIN with convenience scripts to another repo
-    - (?) How can I make this safer? (TODO^4: consider direnv: "https://direnv.net/docs/hook.html") Put ./users_safeword/../PWD_BIN" in the path instead? make everything in PWD a subcommand of some other command? Come up with some handy way to add/remove it from the path quickly (or add it temporarily)? I put skiggety-utils/PWD_BIN_FIREWALL in your path before ./PWD_BIN if I wanted to block certain things
+    - (?) How can I make this safer? (TODO^4: consider direnv: "https://direnv.net/docs/hook.html") and dotenv. Put ./users_safeword/../PWD_BIN" in the path instead? make everything in PWD a subcommand of some other command? Come up with some handy way to add/remove it from the path quickly (or add it temporarily)? I put skiggety-utils/PWD_BIN_FIREWALL in your path before ./PWD_BIN if I wanted to block certain things
 
   - This project uses and enables TODO's in code, ranked so that "TODO TODO" is equal to "TODO^2" and outranks "TODO". This way you can easily add a vote when something becomes and impediment or whatever, and the cream will rise to the top. The "todo" program is a key part of this and is shown in the "default_dashboard". You can also put "IGNORE_TODO" on the same line as "TODO" if you want to mention "TODO" without it being on the list (like this).
 
-## Thing you can run, a.k.a. Programs, scripts, and shortcuts you'll find in here:
+## Thing you can run, a.k.a: Programs, scripts, and shortcuts you'll find in here:
 
 - [chbs](bin/chbs) A password generator based on xkcd's memorable "correct horse battery staple" cartoon for the few
   passwords that must be remembered so they can get you into your computer or password manager.
@@ -65,6 +65,7 @@ For the safe docker demo:
   on to linting, then dashboard, etc. Good when combined with review as in 'review dev'. Prone to lots of change but I
   try to keep it fast, deterministic, and concise.
 - [duh](bin/duh) - Show Directory, Username, and Hostname (in scp format). Useful in prompts.
+- [abbreviate](bin/abbreviate) - A verbose alternative to tail, that displays a helpful method when output gets cut off
 - [dashboard](PWD_BIN/dashboard) A overrideable program that summarizes the overall status for one directory location.
 - [default_dashboard](bin/default_dashboard) - Show a bunch of useful information for the current directory, especially if it's a git project. Also can be called by calling 'dashboard' if you don't implement your own ./PWD_BIN/dashboard 
 - [devkit installer](installers/devkit) - Install just what's needed to work on these programs
@@ -116,42 +117,44 @@ everything you can, doing the things that come up often enough earn some votes. 
 that more explicit, and it turns out writing "TODO^0" <!-- IGNORE_TODO --> works just fine for those cases when you
 really want to make sure you remember not do it.
 
-So anyway, you don't really need to look a t the full list, just a screen-full or so.
+So anyway, you don't really need to look at the full list, just a screen-full or so.
 
-### Miscellaneous
+### Miscellaneous TODO items
 
 These ideas don't have a code location, so they go here:
 
-  - TODO^11: ...rewrite todo in rust with parallelization (with Kevin), but after [rust koans](https://github.com/crazymykl/rust-koans)
-- TODO^3: toy rails site, need a good idea, maybe it can help with information radiating?
+  - TODO^125: move 'vital' data (to do list) to private repo (skiggety utils should help set up)
+  - TODO^48: spin off kid-utils
+  - TODO^21: ...rewrite todo in rust with parallelization (maybe with Kevin), but after [rust koans](https://github.com/crazymykl/rust-koans)
 - TODO^6: some tools for setting up information radiators
+- TODO^3: toy rails site, need a good idea, maybe it can help with information radiating?
   - TODO^2: inforad (chrome extension?) information radiator
   - TODO: "playbot", a program that tunes in youtube livestreams, video meetings, watch later, podcasts and your personal dashboards, automatically. Great as an information radiator.
   - TODO: something to keep randomized youtube playlists playing without interruption for music and such
   - TODO: 'rod' would be a good name for a transparent screen locker. It would stand for "Read-Only Display"
 - TODO^4: output license summary in interactive programs (like you're supposed to)??
 - TODO^4: commit initial skigg-utils, to get to parity with what I already like to use
-- TODO^3: write a program to abbreviate output for use in the dashboard. You should be able to specify a maximum number of lines and pipe output through it, and it will do something like "head" or "tail" if necessary, but also display information about how many lines were removed/kept/found-in-total
-  - TODO^2: once we can abbreviate, maybe choose the linecounts for different things dynamically depending on the terminal size
-- TODO^4: consider supporting other shells:
+- TODO^9: consider supporting other shells:
+  - TODO^6: consider trying/supporting fish
   - TODO^4: consider supporting zsh
-  - TODO: consider trying/supporting fish
-- TODO^3: try some editable vim macros
+- TODO^5: use bash linter of some sort
 - TODO^4: set up a git hook system so you can add multiple scripts. For example, I'd like to block commits that include
+- TODO^3: try some editable vim macros
   "X X X" (without the spaces), irrespective of any other commit hooks. That hook might be shared by a team or
   individual to me, and I'd like to be able to support both kinds without conflicts. Look at
   https://github.com/pre-commit/pre-commit
+- TODO^4: music rotator thingy (Neighbor Shawn might beta test)
+- TODO^3: maybe skiggety-utils should help set up /Users/skiggety/PWD_BIN/dashboard from a template
 - TODO^2: automatically graph gmail progress outstanding messages, by writing a program that takes a url or gmail search string and monitors it. You can check in on the graph periodically to make sure you're on track.
   - TODO: find a tool that can show graphs of provided data on the command line
-- TODO^4: music rotator thingy (Neighbor Shawn might beta test)
 - TODO^2: collect data on email inbox, etc. and auto-generate graphs for the dashboard
   - TODO: set up router
     - TODO^2: help set up local dns
   - TODO^2: set up NAS
 - TODO^2: have a way to open the github webpage from inside a git repo from the command line. You can use "open <URL>" on a mac, for example, and scripts like what you use for automatic git pushing can use it to help you get PR's going fast.
-- TODO: systematized config (automate the configuration I always want anyway)
-    - TODO^2: hook up to google drive
 - TODO^2: mini-project: raspberry pi backup machine, and the software to run it.
+- TODO^100: systematized config (automate the configuration I always want anyway)
+    - TODO^2: hook up to google drive
 # TODO^7: set up bash tab completion ( see: https://apple.stackexchange.com/questions/55875/git-auto-complete-for-branches-at-the-command-line )
 - TODO: document usage of commands
 - TODO: help set up home data center?

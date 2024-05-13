@@ -61,8 +61,19 @@ function main {
         SKIGGETY_UTILS_DIR="${SKIGGETY_UTILS_DIR/$HOME/\$HOME}"
         ESCAPED_SKIGGETY_UTILS_DIR="$(echo $SKIGGETY_UTILS_DIR | sed 's/\//\\\//g')"
 
+        # TODO^60: (IN_PROGRESS) also make sure Zerothlife takes care of it itself, asking the user to put it in their bashrc
+        ZEROTHLIFE_DIR="\$HOME/zerothlife"
+        debug_eval ZEROTHLIFE_DIR
+        ESCAPED_ZEROTHLIFE_DIR="$(echo $ZEROTHLIFE_DIR | sed 's/\//\\\//g')"
+        debug_eval ESCAPED_ZEROTHLIFE_DIR
+
+        ZEROTHLIFE_CODE_DIR="\$HOME/code/zerothlife"
+        debug_eval ZEROTHLIFE_CODE_DIR
+        ESCAPED_ZEROTHLIFE_CODE_DIR="$(echo $ZEROTHLIFE_CODE_DIR | sed 's/\//\\\//g')"
+        debug_eval ESCAPED_ZEROTHLIFE_CODE_DIR
+
         echo >> $TMP_BASHRC
-        sed "s/\$HARDCODED_SKIGGETY_UTILS_DIR/$ESCAPED_SKIGGETY_UTILS_DIR/g"< "$NEW_BASHRC_SECTION" >> $TMP_BASHRC
+        sed "s/\$HARDCODED_SKIGGETY_UTILS_DIR/$ESCAPED_SKIGGETY_UTILS_DIR/g"< "$NEW_BASHRC_SECTION" | sed "s/\$HARDCODED_ZEROTHLIFE_DIR/$ESCAPED_ZEROTHLIFE_DIR/g" | sed "s/\$HARDCODED_ZEROTHLIFE_CODE_DIR/$ESCAPED_ZEROTHLIFE_CODE_DIR/g" >> $TMP_BASHRC
         . $TMP_BASHRC
 
         if $interactive; then

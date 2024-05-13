@@ -4,7 +4,8 @@ vimwhich "$1"
 
 while "$@"
 do
+    echo "Command '$@' SUCCEEDED, take a look'" && sleep-verbose 10
     vimwhich "$1"
-    echo "sleeping for 2 seconds, ctrl-c to quit"
-    sleep-verbose 2
+    echo "Sleeping for 3 seconds, CTRL+C to quit..." # TODO^19: TEST does CTRL+C actually work?
+    sleep-verbose 3
 done

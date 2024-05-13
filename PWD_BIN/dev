@@ -13,13 +13,9 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 
 echo_divider_with_text "#" "running 'dev':"
 
-unit-test && echo "unit-test SUCCEEDED" || exit_with_error "unit-test FAILED"
+# TODO^2?: wait a bit for other instances of "dev" to finish?
 
-lint && echo "lint SUCCEEDED" || exit_with_error "lint FAILED"
-
-dashboard || accumulate_error "dashboard FAILED"
-
-# TODO^2: ask Kevin to test if this generation is working for him and if it shows up in his 'todo' output:
+# TODO^3: ask Kevin to test if this generation is working for him and if it shows up in his 'todo' output:
 experiment_script="./PWD_BIN/experiment.gitignored.bash"
 if ! [ -f "$experiment_script" ]; then
     echo "#!$(which env) bash" > "$experiment_script"
@@ -32,8 +28,21 @@ if ! [ -f "$experiment_script" ]; then
 fi
 
 if [ -f "$experiment_script" ]; then
-    echo_divider_with_text "=" "running \"$experiment_script\" :"
-    $experiment_script || accumulate_error "experimental script \"$experiment_script\" FAILED"
+    echo_divider_with_text "=" "Running \"$experiment_script\" (1/2) ..."
+    $experiment_script || accumulate_error "experimental script \"$experiment_script\" 1st run FAILED"
+    echo_divider_with_text "=" "...DONE running \"$experiment_script\" (1/2)."
+fi
+
+unit-test && echo "unit-test SUCCEEDED" || exit_with_error "unit-test FAILED"
+
+lint && echo "lint SUCCEEDED" || exit_with_error "lint FAILED"
+
+dashboard || accumulate_error "dashboard FAILED"
+
+if [ -f "$experiment_script" ]; then
+    echo_divider_with_text "=" "Running \"$experiment_script\" (2/2) ..."
+    $experiment_script || exit_with_error "experimental script \"$experiment_script\" 2nd run FAILED"
+    echo_divider_with_text "=" "...DONE running \"$experiment_script\" (2/2)."
 fi
 
 echo_divider_with_text "#" "END of 'dev'."

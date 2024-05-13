@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# This script checks if all local changes have been committed to git.
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+if [ '' == "$(git status --porcelain=v1 2>/dev/null)" ]; then
+    debug_here "No uncommitted changes"
+    exit 0
+else
+    debug_here "Uncommitted changes found"
+    exit 1
+fi
