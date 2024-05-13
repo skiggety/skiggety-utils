@@ -27,7 +27,11 @@ class UltimateHackingKeyboardAgentInstaller
   end
 
   def install!
-    delegate_download_and_install_to_user('https://ultimatehackingkeyboard.com/start/agent', 'UHK Agent')
+    if $interactive
+      delegate_download_and_install_to_user('https://ultimatehackingkeyboard.com/start/agent', 'UHK Agent')
+    else
+      raise_interactive_only_install
+    end
   end
 
   def configure!

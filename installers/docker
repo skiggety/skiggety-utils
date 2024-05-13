@@ -26,7 +26,11 @@ class DockerInstaller
   end
 
   def install!
-    delegate_download_and_install_to_user('https://docs.docker.com/get-docker/', 'Docker')
+    if $interactive
+      delegate_download_and_install_to_user('https://docs.docker.com/get-docker/', 'Docker')
+    else
+      raise_interactive_only_install
+    end
   end
 
   def configure!

@@ -37,7 +37,11 @@ class SynergyInstaller
   end
 
   def install!
-    delegate_download_and_install_to_user('https://members.symless.com/download', 'Synergy')
+    if $interactive
+      delegate_download_and_install_to_user('https://members.symless.com/download', 'Synergy')
+    else
+      raise_interactive_only_install
+    end
   end
 
   def configure!
