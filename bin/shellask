@@ -30,7 +30,7 @@ THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 #     TODO: figure out roughly what % of the time it happens, maybe with a test harness that repeats and logs 1000 times
 #     or something, then you can test if changing certain things fixes across 1000 runs (or whatever the number is).
 
-SKIGGETY_DEBUG=true # TODO: DELETE once shellask sets the prompt reliably
+SKIGGETY_DEBUG=true # TODO^10: DELETE once shellask sets the prompt reliably
 
 echo_debug "shellask should ask you to: $*"
 echo_debug "==========================="

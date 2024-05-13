@@ -5,6 +5,6 @@
 ./installers/zerothlife:8:# TODO^114: and devote some thought to dependencies between Zerothlife and skiggety-utils
 ./bin/crontab-verbose:20:    # TODO^121: also open example files, if available (so Zerothlife can suggest an example crontab file)
 ./README.md:127:  - TODO^125: move 'vital' data (to do list) to private repo (skiggety utils should help set up)
-./README.md:126:  - TODO^137: (IN_PROGRESS, NOW) merge PR, after moving 'firstlife' data (to do list) to private repo ("zerothlife")
 ./installers/zerothlife:6:# TODO^138: (IN_PROGRESS) TEST this script
 ./installers/zerothlife:9:# - TODO^139: (IN_PROGRESS) make this, and maybe all installers, optional.  We could use marker files to keep track of
+./README.md:126:  - TODO^140: (IN_PROGRESS, NOW) merge PR, after moving 'firstlife' data (to do list) to private repo ("zerothlife")
