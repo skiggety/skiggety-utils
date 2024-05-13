@@ -3,7 +3,7 @@
 
 require_relative '../lib/installable_skiggety_util'
 
-# TODO^139: (IN_PROGRESS, NOW) TEST this script
+# TODO^140: (IN_PROGRESS, NOW) TEST this script
 
 # TODO^114: and devote some thought to dependencies between Zerothlife and skiggety-utils
 # - TODO^139: (IN_PROGRESS, NOW) make this, and maybe all installers, optional.  We could use marker files to keep track of
