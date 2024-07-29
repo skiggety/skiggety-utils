@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
+:qa
 
 # Call 'review crontab-verbose' to get the real benefit.  It'll watch for changes.
 
 # TODO^8: TEST this script on linux
-# - TODO^4: add some high level comments to make it easier to understand what's going on.
+# - TODO^5: add some high level comments to make it easier to understand what's going on.
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
@@ -16,9 +17,17 @@ function main {
 
     CONF="$HOME/.crontab"
     debug_eval_here CONF
+    CONF_EXAMPLES="$(ls $HOME/.crontab.*.example 2>/dev/null)"
+    debug_eval_here CONF_EXAMPLES
 
-    # TODO^121: also open example files, if available (so Zerothlife can suggest an example crontab file)
-    $EDITOR "$CONF" || exit_with_error "did not edit crontab"
+    debug_eval_here EDITOR
+    OTHER_EDITOR_ARGS="$CONF_EXAMPLES"
+    if [[ "$EDITOR" == 'vim' ]]; then
+        if [ -n "$OTHER_EDITOR_ARGS" ]; then
+            OTHER_EDITOR_ARGS="-do $OTHER_EDITOR_ARGS"
+        fi
+    fi
+    $EDITOR "$CONF" $OTHER_EDITOR_ARGS || exit_with_error "did not edit crontab"
     cat "$CONF"
 
     exit_if_marker_is_more_recent_than_other_files "$COMPLETED_MARKER" "$CONF"
