@@ -49,7 +49,7 @@ else
 fi
 
 if $AUTO_SCALE; then
-    MAX_LINES="$( echo "sqrt($INPUT_LINES) + 3" | bc )"
+    MAX_LINES="$( echo "sqrt($INPUT_LINES) + 4" | bc )"
     MAX_SCREEN_LINES="$(( $MAX_LINES + 1 ))" # because the explanation takes up 1 line
 fi
 
