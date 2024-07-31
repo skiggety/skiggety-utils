@@ -1,5 +1,5 @@
 ==== TODOs, ascending, so you know what's likely to change next. Do not edit, run 'generate_todo_report' to generate. ====
-( showing last 8 lines out of 546 for 'todo': )
+( showing last 8 lines out of 547 for 'todo': )
 ./bin/vital:33:    # [1m[31mTODO^96[0m[0m: and make an alias to help add todo's quick:
 ./README.md:156:- [1m[31mTODO^100[0m[0m: systematized config (automate the configuration I always want anyway)
 ./bin/review-vital:8:# [1m[31mTODO^105[0m[0m: IMPLEMENT"
