@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# This script magically takes care of spaced repetition for wrapping any learning task (e.g. with 'zl=delegate' or
+# 'zl-gamify' or some such
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+exit_with_error "TODO^100: IMPLEMENT"
