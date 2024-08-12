@@ -74,6 +74,7 @@ function main {
     use_installer_unsafe "$INSTALLERS_DIR/basic_prerequisites" $INSTALLER_ARGS || exit_with_error "failed to set up basic prerequisites for other installers to run"
     debug_here "reloading environment..."
     . ~/.bashrc # reload environment
+    exit_with_any_accumulated_errors
 
     debug_here "about to run rest of installers..."
     for installer in "$INSTALLERS_DIR"/*; do
