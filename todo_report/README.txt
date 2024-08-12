@@ -1,5 +1,5 @@
 ==== TODOs, ascending, so you know what's likely to change next. Do not edit, run 'generate_todo_report' to generate. ====
-( showing last 8 lines out of 551 for 'todo': )
+( showing last 8 lines out of 549 for 'todo': )
 ./README.md:156:- TODO^100: systematized config (automate the configuration I always want anyway)
 ./bin/zl-spaced:8:exit_with_error "TODO^100: IMPLEMENT"
 ./bin/review-vital:8:# TODO^105: IMPLEMENT"

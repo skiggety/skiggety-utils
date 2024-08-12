@@ -1,0 +1,41 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative '../lib/installable_skiggety_util'
+
+class GoogleDriveInstaller
+
+  include InstallableSkiggetyUtil
+
+  def apparently_installed?
+    if on_mac_os?
+      false # raise NotImplementedError, 'TODO^37: implement this for this OS'
+    else
+      raise NotImplementedError, 'TODO: implement this for this OS'
+    end
+  end
+
+  def apparently_configured?
+    if ask_user 'Is google drive for desktop configured the way you want and running in the background?'
+      mark_configured!
+    end
+  end
+
+  def install!
+    if on_mac_os?
+      if $interactive
+        delegate_download_and_install_to_user(
+          'https://www.google.com/drive/download/',
+          'Google Drive for desktop'
+        )
+      else
+        raise_interactive_only_install
+      end
+    else
+      raise NotImplementedError, 'TODO: implement this for this OS'
+    end
+  end
+
+end
+
+GoogleDriveInstaller.run
