@@ -2,7 +2,7 @@
 
 # This script shows a continually updated todo list report
 
-# TODO^3: gotta RENAME this and today_todo.  Underscores in the name are just too weird, especially when mixed with hyphens
+# TODO^12: (IN_PROGRESS, EASY) gotta RENAME this and today_todo.  Underscores in the name are just too weird, especially when mixed with hyphens
 
 . $SKIGGETY_UTILS_DIR/lib/today_todo.bash || exit_with_error 'could not include today_todo.bash'
 

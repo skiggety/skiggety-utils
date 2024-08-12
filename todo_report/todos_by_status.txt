@@ -1,5 +1,7 @@
 ---- IN_PROGRESS: --------------------------------------------------------------
+./bin/review-today_todo:5:# TODO^12: ([01;31m[KIN_PROGRESS[m[K, EASY) gotta RENAME this and today_todo.  Underscores in the name are just too weird, especially when mixed with hyphens
 ./installers/skiggety.bash:64:        # TODO^60: ([01;31m[KIN_PROGRESS[m[K) also make sure Zerothlife takes care of it itself, asking the user to put it in their bashrc
+./bin/review-vital:8:# TODO^107: ([01;31m[KIN_PROGRESS[m[K) get your vital data in it's own repo and/or google drive folder
 ./installers/zerothlife:6:# TODO^140: ([01;31m[KIN_PROGRESS[m[K, NOW) TEST this script
 ./installers/zerothlife:9:# - TODO^140: ([01;31m[KIN_PROGRESS[m[K) make this, and maybe all installers, optional.  We could use marker files to keep track
 ---- TODOs for right NOW: ------------------------------------------------------

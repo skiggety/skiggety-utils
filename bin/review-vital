@@ -5,10 +5,8 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/vital.bash || exit_with_error "could not include vital.bash"
 
-# TODO^105: IMPLEMENT"
-# - TODO^107: but first get your vital data in it's own repo"
+# TODO^107: (IN_PROGRESS) get your vital data in it's own repo and/or google drive folder
 
 cd $VITAL_DIR
 
-# TODO: review vital -n
-review today_todo -n || exit_with_error "Could not get a report using today_todo"
+review -u 5 vital --report || exit_with_error "Could not get a report using today_todo"

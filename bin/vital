@@ -15,9 +15,6 @@
 # TODO^14: IMPLEMENT this replacement for today_todo
 # - TODO^60: IMPLEMENT '--find <STRING>' to open EDITOR searching for a particular string
 # - TODO^11: IMPLEMENT '--edit' to edit the todo list
-# - TODO^20: IMPLEMENT '--report' to print a report, replacing 'today_todo -n'
-#   - TODO^12: IMPLEMENT: 'vital -n' to do the same thing
-#   - TODO^11: IMPLEMENT: 'vital --non-interactive' to do the same thing
 # - TODO^3: IMPLEMENT '--help' with something useful, especially to explain the 'vital --add --vote <n> <description>' syntax
 # - TODO: IMPLEMENT: make 'vital --edit --report' the default, replacing 'today_todo' (with no options)
 
@@ -28,16 +25,17 @@ SHOULD_ADD_TASK=false
 SHOULD_ALTER_VOTE=false
 VOTECOUNT=""
 INTERACTIVE=true
-LEBGACY_INTERACTIVE_FLAG=""
+LEGACY_INTERACTIVE_FLAG=""
 while [[ "$1" == -* ]]; do
     # TODO^96: and make an alias to help add todo's quick:
     if [ "$1" == '-a' -o "$1" == '--add' ]; then
         shift
         FALLBACK_ON_TODAY_TODO=false # TODO: DELETE once we are no longer reliant on old implementation
         SHOULD_ADD_TASK=true
-    elif [ "$1" == '-n' -o "$1" == '--non-interactive' ]; then
+    elif [ "$1" == '-n' -o "$1" == '--non-interactive' -o "$1" == '--report' ]; then
+        # TODO^29: do this without legacy implementation, replacing 'today_todo -n':
         INTERACTIVE=false
-        LEBGACY_INTERACTIVE_FLAG="-n"
+        LEGACY_INTERACTIVE_FLAG="-n"
         shift
     elif [ "$1" == '-v' -o "$1" == '--vote' ]; then
         shift
@@ -67,4 +65,4 @@ if $SHOULD_ALTER_VOTE; then
 fi
 
 # TODO^2: DELETE once we are no longer reliant on old implementation:
-today_todo $LEBGACY_INTERACTIVE_FLAG
+today_todo $LEGACY_INTERACTIVE_FLAG
