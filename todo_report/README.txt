@@ -1,7 +1,7 @@
 ==== TODOs, ascending, so you know what's likely to change next. Do not edit, run 'generate_todo_report' to generate. ====
-( showing last 8 lines out of 549 for 'todo': )
+( showing last 8 lines out of 548 for 'todo': )
+./bin/vital:33:    # TODO^96: and make an alias to help add todo's quick:
 ./README.md:156:- TODO^100: systematized config (automate the configuration I always want anyway)
-./bin/zl-spaced:8:exit_with_error "TODO^100: IMPLEMENT"
 ./bin/review-vital:8:# TODO^105: IMPLEMENT"
 ./bin/review-vital:9:# - TODO^107: but first get your vital data in it's own repo"
 ./installers/zerothlife:8:# TODO^114: and devote some thought to dependencies between Zerothlife and skiggety-utils
