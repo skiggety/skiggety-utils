@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-:qa
 
 # Call 'review crontab-verbose' to get the real benefit.  It'll watch for changes.
 
