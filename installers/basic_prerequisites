@@ -61,7 +61,7 @@ function main {
 
     # mark complete
     debug_here "marking $0 complete"
-    rm "$completed_markers_start_with"*
+    rm "$completed_markers_start_with"* 2> /dev/null
     touch "$completed_marker"
 }
 
