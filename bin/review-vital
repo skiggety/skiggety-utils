@@ -9,4 +9,4 @@
 
 cd $VITAL_DIR
 
-review -u 5 vital --report || exit_with_error "Could not get a report using today_todo"
+review -u 5 vital --report || exit_with_error "Could not get a report using vital"
