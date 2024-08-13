@@ -66,7 +66,8 @@ function main {
 }
 
 function install_basic_prerequisites {
-    install_homebrew
+    install_homebrew || exit_with_error "FAILED to install homebrew"
+    eval $(/opt/homebrew/bin/brew shellenv)
 
     # TODO^3: install latest bash and make sure other scripts are compatible...
 
@@ -88,6 +89,8 @@ function install_basic_prerequisites {
     install_asdf
 
     asdf plugin-add direnv
+    asdf plugin-update direnv
+    source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/bashrc"
     asdf direnv setup --shell bash --version latest
     asdf global direnv latest
 
@@ -165,7 +168,11 @@ function install_ruby {
     asdf plugin-add ruby
     asdf plugin-update ruby
 
-    asdf install ruby
+    if on_mac_os; then
+        homebrew_install_latest libyaml # workaround to psych not installing and blocking ruby install: https://github.com/asdf-vm/asdf-ruby/issues/386
+    fi
+
+    asdf install ruby || exit_with_error "'asdf install ruby' FAILED -- Could not install ruby"
 }
 
 function do_ruby_basics {
