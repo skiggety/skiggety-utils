@@ -28,6 +28,7 @@ class GoogleDriveInstaller
           'https://www.google.com/drive/download/',
           'Google Drive for desktop'
         )
+        mark_installed!
       else
         raise_interactive_only_install
       end

@@ -92,6 +92,7 @@ class TestInstallableSkiggetyUtil < Minitest::Test
       end
 
     end
+
     RawDummyInstaller.stub(:instance_method, fake_method) do
       assert_equal '/installers/dummy.rb', @raw_subject.installer_file_path
     end

@@ -5,8 +5,8 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/vital.bash || exit_with_error "could not include vital.bash"
 
-# TODO^107: (IN_PROGRESS, NOW) get your vital data in it's own repo and/or google drive folder
+# TODO^108: (IN_PROGRESS, NOW) get your vital data in it's own repo and/or google drive folder so it works on both laptops seamlessly
 
 cd $VITAL_DIR
 
-review -u 5 vital --report || exit_with_error "Could not get a report using vital"
+review -u 15 -m 45 vital --report || exit_with_error "Could not get a report using vital"

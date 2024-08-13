@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-export RBENV_VERSION='3.2.0' # might as well keep this in case anyone uses it with pyenv...
+export RBENV_VERSION='3.3.4' # might as well keep this in case anyone uses it with pyenv...
 ASDF_COMMAND_PREFIX=''
 if which asdf >/dev/null;then
     export DIRENV_LOG_FORMAT='' # Silence asdf direnv
-    ASDF_COMMAND_PREFIX='asdf direnv shell ruby 3.2.0 --'
+    ASDF_COMMAND_PREFIX='asdf direnv shell ruby 3.3.4 --'
 fi
 $ASDF_COMMAND_PREFIX "$SKIGGETY_UTILS_DIR/bin/review_v0.1" "$@"

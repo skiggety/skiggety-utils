@@ -42,7 +42,7 @@ class ZerothLifeInstaller
 
       # Add the new repo's bin dir to your path by copying and allowing the user to modify, a bash include script.
       # skiggety-utils should include it if it exists:
-      delegate_diff_to_user(user_shell_config_path, template_shell_config_path) || \
+      delegate_diff_to_user(user_shell_config_path, template_shell_config_path) ||
         raise('User did not configure zerothlife bash include.')
 
       assert_system('zerothlife-setup')

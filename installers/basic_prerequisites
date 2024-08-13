@@ -105,7 +105,7 @@ function install_basic_prerequisites {
     # EASY TODO^22: install_rust
 
     # set global tools versions:
-    asdf global ruby 3.2.0
+    asdf global ruby 3.3.4
     asdf global python 3.11.1
 }
 

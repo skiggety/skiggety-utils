@@ -34,7 +34,7 @@ ADD .tool-versions .tool-versions
 RUN ./bin/skiggety_env_exec asdf plugin-add direnv
 RUN ./bin/skiggety_env_exec asdf plugin-add ruby
 RUN echo "The next step might take a while the first time...."
-RUN ./bin/skiggety_env_exec asdf install ruby 3.2.0
+RUN ./bin/skiggety_env_exec asdf install ruby 3.3.4
 RUN ./bin/skiggety_env_exec asdf plugin-add python
 RUN echo "The next step might take a while the first time...."
 RUN ./bin/skiggety_env_exec asdf install python 3.11.1
