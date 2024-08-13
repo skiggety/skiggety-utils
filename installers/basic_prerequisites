@@ -75,6 +75,7 @@ function install_basic_prerequisites {
     if rvm --version 2>/dev/null; then
         shellask to uninstall rvm with rvm implode || exit_with_error "cannot proceed with rvm installed"
     fi
+
     for old_tool_version_manager in rbenv pyenv;do
         if which $old_tool_version_manager 2>/dev/null; then
             exit_with_error "$old_tool_version_manager is still installed. Please uninstall it and try again"
@@ -92,7 +93,6 @@ function install_basic_prerequisites {
 
     # ruby
     install_ruby
-
     do_ruby_basics
 
     debug_here "got tool version manager(s), time for ruby, python, and rust"
@@ -168,12 +168,6 @@ function install_ruby {
     asdf install ruby
 }
 
-function install_python {
-    asdf plugin-add python
-    asdf plugin-update python
-    asdf install python
-}
-
 function do_ruby_basics {
     if ! [ -f /.in_docker_demo ]; then
         debug_here "got ruby, time to try to fix bundler?"
@@ -185,6 +179,12 @@ function do_ruby_basics {
     bundle --version || exit_with_error "bundler is not working"
     debug_here "time for ruby_setup"
     $THIS_DIR/../PWD_BIN/ruby_setup || exit_with_error "FAILED to set up prerequisites for my ruby code, such as gems"
+}
+
+function install_python {
+    asdf plugin-add python
+    asdf plugin-update python
+    asdf install python
 }
 
 function update_pip {
