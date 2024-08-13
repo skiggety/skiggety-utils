@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# This script continuously shows your most important URGENT tasks using 'vital'
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/vital.bash || exit_with_error "could not include vital.bash"
+
+cd $VITAL_DIR
+
+# TODO: abbreviate --auto ?
+review -u 120 -m 300 -M 900 vital-list-by-tag URGENT || exit_with_error "Could not get a report of URGENT tasks using vital"

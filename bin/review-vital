@@ -5,7 +5,7 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/vital.bash || exit_with_error "could not include vital.bash"
 
-# TODO^107: (IN_PROGRESS) get your vital data in it's own repo and/or google drive folder
+# TODO^107: (IN_PROGRESS, NOW) get your vital data in it's own repo and/or google drive folder
 
 cd $VITAL_DIR
 
