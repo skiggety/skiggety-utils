@@ -119,7 +119,7 @@ function install_homebrew {
         else
             if $interactive;then
                 echo "You will need to type your password for sudo access..."
-                echo | bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" ||
+                bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" ||
                     exit_with_error "FAILED to install Homebrew, please check http://brew.sh"
             else
                 exit_with_error "must run $(basename $0) interactively to install Homebrew"
