@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# This script concisely reports on urgent todos
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+vital-list-by-tag URGENT | abbreviate --auto

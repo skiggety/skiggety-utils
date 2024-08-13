@@ -7,5 +7,4 @@
 
 cd $VITAL_DIR
 
-# TODO: abbreviate --auto ?
-review -u 120 -m 300 -M 900 vital-list-by-tag URGENT || exit_with_error "Could not get a report of URGENT tasks using vital"
+review -u 120 -m 300 -M 900 vital-report-urgent || exit_with_error "Could not get a report of URGENT tasks using vital"
