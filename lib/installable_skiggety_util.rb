@@ -279,6 +279,12 @@ module InstallableSkiggetyUtil
       raise "FAILED to upgrade or install cask #{package_name} with homebrew"
   end
 
+  def git_safe_pull(dir)
+    Dir.chdir(dir) do
+      assert_system('git safe-pull')
+    end
+  end
+
   def git_pull(dir)
     Dir.chdir(dir) do
       assert_system('git pretty-pull')
