@@ -20,6 +20,7 @@ class ArdourInstaller
   end
 
   def install!
+    call_peer_installer('chrome')
     if on_mac_os?
       if $interactive
         delegate_download_and_install_to_user(

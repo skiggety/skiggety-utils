@@ -3,7 +3,7 @@
 
 require_relative '../lib/installable_skiggety_util'
 
-class EvernoteInstaller
+class ChromeInstaller
 
   include InstallableSkiggetyUtil
 
@@ -12,8 +12,7 @@ class EvernoteInstaller
 
     if on_mac_os?
       # TODO: Checking the version would be a better approach if possible, I guess:
-      Dir.exist?('/Applications/Evernote.app') &&
-        ask_user('Are you able to open Evernote and confirm it is not telling you it needs an update?')
+      Dir.exist?('/Applications/Google Chrome.app')
     else
       raise NotImplementedError, 'TODO: implement this for this OS'
     end
@@ -22,22 +21,21 @@ class EvernoteInstaller
   def apparently_configured?
     return true if in_docker_demo?
 
-    ask_user 'Are you able to use Evernote?'
+    ask_user 'Are you signed in to Chrome, with your normal bookmarks and extensions?'
   end
 
   def install!
-    call_peer_installer('chrome')
     if $interactive
-      delegate_download_and_install_to_user('https://evernote.com/download', 'Evernote')
+      delegate_download_and_install_to_user('https://www.google.com/chrome/', 'Chrome')
     else
       raise_interactive_only_install
     end
   end
 
   def configure!
-    delegate_to_user 'Sign in to Evernote'
+    delegate_to_user 'Sign in to Chrome'
   end
 
 end
 
-EvernoteInstaller.run
+ChromeInstaller.run
