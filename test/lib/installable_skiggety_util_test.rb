@@ -69,7 +69,6 @@ class TestInstallableSkiggetyUtil < Minitest::Test
   # TODO: test config_tree_hash
   # TODO: test config_exist?
   # TODO: test config_dir_path
-  # TODO: test self_config_path(file_name)
 
   def test_installer_directory_path
     assert_equal '/installer_dir', @subject.installer_directory_path

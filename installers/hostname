@@ -51,6 +51,7 @@ class HostnameSetup
       if File.exist?(desired_hostname_file)
         puts "Found #{desired_hostname_file}"
       else
+        FileUtils.mkdir_p config_dir_path
         ask_user "Please put your desired hostname in #{desired_hostname_file}"
       end
     end
