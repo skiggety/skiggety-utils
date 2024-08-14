@@ -1,5 +1,5 @@
 ==== TODOs, ascending, so you know what's likely to change next. Do not edit, run 'generate_todo_report' to generate. ====
-( showing last 8 lines out of 544 for 'todo': )
+( showing last 8 lines out of 545 for 'todo': )
 ./installers/visual_studio_code:12:      raise NotImplementedError, 'TODO^86: implement this for this OS'
 ./bin/vital:30:    # TODO^96: and make an alias to help add todo's quick:
 ./README.md:156:- TODO^100: systematized config (automate the configuration I always want anyway)
