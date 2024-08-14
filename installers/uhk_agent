@@ -27,6 +27,7 @@ class UltimateHackingKeyboardAgentInstaller
   end
 
   def install!
+    call_peer_installer('chrome')
     if $interactive
       delegate_download_and_install_to_user('https://ultimatehackingkeyboard.com/start/agent', 'UHK Agent')
     else
