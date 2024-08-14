@@ -9,14 +9,15 @@ class GoogleDriveInstaller
 
   def apparently_installed?
     if on_mac_os?
-      false # raise NotImplementedError, 'TODO^37: implement this for this OS'
+      Dir.exist?('/Applications/Google Drive.app')
     else
       raise NotImplementedError, 'TODO: implement this for this OS'
     end
   end
 
   def apparently_configured?
-    if ask_user 'Is google drive for desktop configured the way you want and running in the background?'
+    if ask_user('Is google drive for desktop configured to sync "~/vital", "~/zerothlife", and "~/music_making", and ' \
+                'running in the background?')
       mark_configured!
     end
   end
