@@ -7,6 +7,8 @@
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
+# TODO: (IN_PROGRESS) use completion markers like the basic installer so I can stop re-running this
+
 function main {
     debug_here "Setting up $(basename $0)"
 
