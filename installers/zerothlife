@@ -27,7 +27,6 @@ class ZerothLifeInstaller
   end
 
   def install!
-    call_peer_installer('google_drive') # so your directory can already be sync'ed there
     git_clone_latest('https://github.com/skiggety/zerothlife', install_dir)
     git_safe_pull(install_dir)
   end

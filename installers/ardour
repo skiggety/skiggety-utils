@@ -24,7 +24,7 @@ class ArdourInstaller
     if on_mac_os?
       if $interactive
         delegate_download_and_install_to_user(
-          'https://community.ardour.org/download?platform=mac&architecture=x86_64&type=compiled',
+          'https://community.ardour.org/download?type=compiled',
           'Ardour'
         )
       else
