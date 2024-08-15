@@ -6,6 +6,7 @@
 # TODO^2: . $THIS_DIR/shelper.bash || exit 1
 
 red='\033[0;31m'
+blinky_red='\033[5;31m'
 RED='\033[1;31m'
 blinky_RED='\033[1;5;31m'
 green='\033[0;32m'
