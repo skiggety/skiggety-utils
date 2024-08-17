@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# This script adds a file from the path
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+git add -p `which $1`
+exit_with_error "TODO: IMPLEMENT for real, parse args, feed them to git, then do which on what's left"

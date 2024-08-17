@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# This script shows search results from vital, your todo list helper script
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+vital --report | grep $1
+exit_with_error "TODO: TEST THIS"
