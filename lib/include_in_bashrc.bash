@@ -52,6 +52,7 @@ alias gp='git pretty-pull'
 alias gat='git add-theirs'
 alias gr='git ready'
 alias cgry='ci && git ready && exit 0'
+alias gry='git ready && exit 0'
 
 alias cdsu="cd $SKIGGETY_UTILS_DIR"
 
