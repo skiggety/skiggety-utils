@@ -11,7 +11,9 @@ export EDITOR
 
 # ./PWD_BIN comes before $SKIGGETY_UTILS_DIR/bin so that you can override scripts like "dashboard"
 export PATH="$PATH:./PWD_BIN:$SKIGGETY_UTILS_DIR/bin:$HOME/bin"
-eval $(/opt/homebrew/bin/brew shellenv)
+if [ -f /opt/homebrew/bin/brew ]; then
+    eval $(/opt/homebrew/bin/brew shellenv)
+fi
 
 ZEROTHLIFE_CONFIG_INCLUDE="$ZEROTHLIFE_DIR/config/include_in_bashrc.bash"
 if [ -d "$ZEROTHLIFE_DIR" ]; then
