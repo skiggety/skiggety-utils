@@ -5,8 +5,10 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-git-restore-generated-files || echo_warning "Could not run 'git-restore-generated-files'.  Put a script by that name in PWD_BIN/ if you have generated files."
+git-restore-generated-files || accumulate_error "Could not run 'git-restore-generated-files'.  Put a script by that name in PWD_BIN/ if you have generated files."
 
 git-pretty-pull || exit_with_error "git-pretty-pull FALED"
 
 # TODO^2: ???: git restore --staged .
+
+exit_with_any_accumulated_errors
