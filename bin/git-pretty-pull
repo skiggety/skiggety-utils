@@ -4,7 +4,7 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash
 
-echo "getting the latest skiggety-utils by running 'git pull':"
+echo "getting the latest $(basename $(pwd)) by running 'git pull':"
 git pull || exit_with_error "could not pull latest changes from git"
 
 git-log-recent
