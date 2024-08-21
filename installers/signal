@@ -11,7 +11,7 @@ class SignalInstaller
     return true if in_docker_demo?
 
     if on_mac_os?
-      raise NotImplementedError, 'TODO^141: (IN_PROGRESS, NOW): IMPLEMENT this for this OS'
+      Dir.exist?('/Applications/Signal.app')
     else
       raise NotImplementedError, 'TODO: implement this for this OS'
     end
