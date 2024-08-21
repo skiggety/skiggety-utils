@@ -1,0 +1,41 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative '../lib/installable_skiggety_util'
+
+class SignalInstaller
+
+  include InstallableSkiggetyUtil
+
+  def apparently_installed?
+    return true if in_docker_demo?
+
+    if on_mac_os?
+      raise NotImplementedError, 'TODO^141: (IN_PROGRESS, NOW): IMPLEMENT this for this OS'
+    else
+      raise NotImplementedError, 'TODO: implement this for this OS'
+    end
+  end
+
+  def apparently_configured?
+    return true if in_docker_demo?
+
+    # TODO: ask user less stuff, but we still need a way to return true here when it's been done:
+    ask_user 'Is Signal set up OK?'
+  end
+
+  def install!
+    call_peer_installer('chrome')
+    if $interactive
+      delegate_download_and_install_to_user('https://signal.org/download/', 'Signal')
+    else
+      raise_interactive_only_install
+    end
+    mark_installed!
+  end
+
+  # TODO^141: (IN_PROGRESS, NOW) IMPLEMENT: ...
+
+end
+
+SignalInstaller.run

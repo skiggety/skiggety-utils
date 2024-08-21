@@ -33,6 +33,7 @@ class ArdourInstaller
     else
       raise NotImplementedError, 'TODO: implement this for this OS'
     end
+    mark_installed!
   end
 
 end

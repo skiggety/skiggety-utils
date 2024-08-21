@@ -5,6 +5,12 @@
 ./bin/review-vital:8:# TODO^108: ([01;31m[KIN_PROGRESS[m[K, NOW) get your vital data in it's own repo and/or google drive folder so it works on both laptops seamlessly
 ./installers/zerothlife:6:# TODO^140: ([01;31m[KIN_PROGRESS[m[K, NOW) TEST this script
 ./installers/zerothlife:9:# - TODO^140: ([01;31m[KIN_PROGRESS[m[K) make this, and maybe all installers, optional.  We could use marker files to keep track
+./installers/signal:14:      raise NotImplementedError, 'TODO^141: ([01;31m[KIN_PROGRESS[m[K, NOW): IMPLEMENT this for this OS'
+./installers/signal:37:  # TODO^141: ([01;31m[KIN_PROGRESS[m[K, NOW) IMPLEMENT: ...
+./bin/vital:12:# TODO^189: (URGENT, [01;31m[KIN_PROGRESS[m[K, NOW) vital must help you set up, connect, and use a private repo for vital data, then
 ---- TODOs for right NOW: ------------------------------------------------------
 ./bin/review-vital:8:# TODO^108: (IN_PROGRESS, [01;31m[KNOW[m[K) get your vital data in it's own repo and/or google drive folder so it works on both laptops seamlessly
 ./installers/zerothlife:6:# TODO^140: (IN_PROGRESS, [01;31m[KNOW[m[K) TEST this script
+./installers/signal:14:      raise NotImplementedError, 'TODO^141: (IN_PROGRESS, [01;31m[KNOW[m[K): IMPLEMENT this for this OS'
+./installers/signal:37:  # TODO^141: (IN_PROGRESS, [01;31m[KNOW[m[K) IMPLEMENT: ...
+./bin/vital:12:# TODO^189: (URGENT, IN_PROGRESS, [01;31m[KNOW[m[K) vital must help you set up, connect, and use a private repo for vital data, then
