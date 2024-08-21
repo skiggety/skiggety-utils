@@ -2,14 +2,12 @@
 ./installers/skiggety.bash:10:# TODO: ([01;31m[KIN_PROGRESS[m[K) use completion markers like the basic installer so I can stop re-running this
 ./bin/review-today_todo:5:# TODO^12: ([01;31m[KIN_PROGRESS[m[K, EASY) gotta RENAME this and today_todo.  Underscores in the name are just too weird, especially when mixed with hyphens
 ./installers/skiggety.bash:66:        # TODO^60: ([01;31m[KIN_PROGRESS[m[K) also make sure Zerothlife takes care of it itself, asking the user to put it in their bashrc
-./bin/review-vital:8:# TODO^108: ([01;31m[KIN_PROGRESS[m[K, NOW) get your vital data in it's own repo and/or google drive folder so it works on both laptops seamlessly
 ./installers/zerothlife:6:# TODO^140: ([01;31m[KIN_PROGRESS[m[K, NOW) TEST this script
 ./installers/zerothlife:9:# - TODO^140: ([01;31m[KIN_PROGRESS[m[K) make this, and maybe all installers, optional.  We could use marker files to keep track
 ./installers/signal:14:      raise NotImplementedError, 'TODO^141: ([01;31m[KIN_PROGRESS[m[K, NOW): IMPLEMENT this for this OS'
 ./installers/signal:37:  # TODO^141: ([01;31m[KIN_PROGRESS[m[K, NOW) IMPLEMENT: ...
 ./bin/vital:12:# TODO^189: (URGENT, [01;31m[KIN_PROGRESS[m[K, NOW) vital must help you set up, connect, and use a private repo for vital data, then
 ---- TODOs for right NOW: ------------------------------------------------------
-./bin/review-vital:8:# TODO^108: (IN_PROGRESS, [01;31m[KNOW[m[K) get your vital data in it's own repo and/or google drive folder so it works on both laptops seamlessly
 ./installers/zerothlife:6:# TODO^140: (IN_PROGRESS, [01;31m[KNOW[m[K) TEST this script
 ./installers/signal:14:      raise NotImplementedError, 'TODO^141: (IN_PROGRESS, [01;31m[KNOW[m[K): IMPLEMENT this for this OS'
 ./installers/signal:37:  # TODO^141: (IN_PROGRESS, [01;31m[KNOW[m[K) IMPLEMENT: ...

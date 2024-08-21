@@ -1,6 +1,6 @@
 ==== TODOs, ascending, so you know what's likely to change next. Do not edit, run 'generate_todo_report' to generate. ====
-( showing last 8 lines out of 552 for 'todo': )
-./bin/review-vital:8:# TODO^108: (IN_PROGRESS, NOW) get your vital data in it's own repo and/or google drive folder so it works on both laptops seamlessly
+( showing last 8 lines out of 551 for 'todo': )
+./README.md:156:- TODO^100: systematized config (automate the configuration I always want anyway)
 ./installers/zerothlife:8:# TODO^114: and devote some thought to dependencies between Zerothlife and skiggety-utils
 ./README.md:126:  - TODO^125: move 'vital' data (to do list) to private repo (skiggety utils should help set up)
 ./installers/zerothlife:6:# TODO^140: (IN_PROGRESS, NOW) TEST this script
