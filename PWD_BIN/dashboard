@@ -78,6 +78,11 @@ function limit-todo-with-keyword-count {
 
 limit-todo-with-keyword-count 7 'IN_''PROGRESS' # TODO^31: fine tune this number
 limit-todo-with-keyword-count 2 'N''OW'
+
+if rg 'zl''-'; then
+    accumulate_error 'FOUND calls to zl''-* scripts, dependencies cannot go that way!!'
+fi
+
 # TODO^5: maybe also make sure that lines that contain (all capitalized, not shown here so as not to tag this todo) 'todo' and 'now' also contain 'in_progress
 
 echo_divider_with_text "O-=======-" "END of 'dashboard' for $(duh) :"

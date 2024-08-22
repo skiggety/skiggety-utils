@@ -7,4 +7,4 @@
 ./installers/zerothlife:6:# [1m[31mTODO^140[0m[0m: (IN_PROGRESS, NOW) TEST this script
 ./installers/zerothlife:9:# - [1m[31mTODO^140[0m[0m: (IN_PROGRESS) make this, and maybe all installers, optional.  We could use marker files to keep track
 ./installers/signal:37:  # [1m[31mTODO^141[0m[0m: (IN_PROGRESS) IMPLEMENT: ...
-./bin/vital:52:# [1m[31mTODO^190[0m[0m: (URGENT, IN_PROGRESS, NOW) vital must help you set up, connect, and use a private repo for vital data, then
+[1m[33m./bin/vital:52:# [1m[31mTODO^190[0m[1m[33m: (URGENT, IN_PROGRESS, NOW) vital must help you set up, connect, and use a private repo for vital data, then[0m

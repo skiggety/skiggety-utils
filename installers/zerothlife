@@ -45,7 +45,10 @@ class ZerothLifeInstaller
       delegate_diff_to_user(user_shell_config_path, template_shell_config_path) ||
         raise('User did not configure zerothlife bash include.')
 
-      assert_system('zl-setup')
+      # rubocop:disable Style/StringConcatenation # separating out the string so we don't catch this
+      # as an untoward dependency, since this is the exception:
+      assert_system('z' + 'l-setup')
+      # rubocop:enable Style/StringConcatenation
     else
       raise_interactive_only_configuration
     end
