@@ -59,13 +59,13 @@ if $SHOULD_ADD_TASK; then
         FULL_TODO_LINE="- TODO: $TASK_DESCRIPTION"
     fi
     echo "$FULL_TODO_LINE" >> "$vital_todo_list_file_path" # IGNORE_TODO
-    # TODO^6: print somethint to confirm what was added
+    # TODO^7: print something to confirm what was added
 fi
 
 if $SHOULD_ALTER_VOTE; then
     FALLBACK_ON_TODAY_TODO=false # TODO: DELETE once we are no longer reliant on old implementation
-    exit_with_error "- TODO^39: IMPLEMENT '--vote' to vote on a todo matching TASK_DESCRIPTION"
-    #                  - TODO^38: and make an alias to help vote quick
+    exit_with_error "- TODO^44: IMPLEMENT '--vote' to vote on a todo matching TASK_DESCRIPTION"
+    #                  - EASY TODO^56: and make an alias to help vote quick
 fi
 
 # TODO^2: DELETE once we are no longer reliant on old implementation:

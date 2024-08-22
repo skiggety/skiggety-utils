@@ -7,7 +7,7 @@
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
-# TODO: (IN_PROGRESS) use completion markers like the basic installer so I can stop re-running this
+# TODO^41: (IN_PROGRESS) use completion markers like the basic installer so I can stop re-running this
 
 function main {
     debug_here "Setting up $(basename $0)"
@@ -63,7 +63,7 @@ function main {
         SKIGGETY_UTILS_DIR="${SKIGGETY_UTILS_DIR/$HOME/\$HOME}"
         ESCAPED_SKIGGETY_UTILS_DIR="$(echo $SKIGGETY_UTILS_DIR | sed 's/\//\\\//g')"
 
-        # TODO^60: (IN_PROGRESS) also make sure Zerothlife takes care of it itself, asking the user to put it in their bashrc
+        # TODO^69: (IN_PROGRESS) also make sure Zerothlife takes care of it itself, asking the user to put it in their bashrc
         ZEROTHLIFE_DIR="\$HOME/zerothlife"
         debug_eval ZEROTHLIFE_DIR
         ESCAPED_ZEROTHLIFE_DIR="$(echo $ZEROTHLIFE_DIR | sed 's/\//\\\//g')"
