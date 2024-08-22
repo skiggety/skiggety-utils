@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# This script is a todo list system
+# This script is a todo list system:
 echo '
 #
 #   V. - Vote-tracking

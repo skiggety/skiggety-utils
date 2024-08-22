@@ -1,5 +1,6 @@
 ---- IN_PROGRESS: --------------------------------------------------------------
 ./installers/skiggety.bash:10:# TODO: ([01;31m[KIN_PROGRESS[m[K) use completion markers like the basic installer so I can stop re-running this
+./PWD_BIN/dashboard:82:# TODO^10: ([01;31m[KIN_PROGRESS[m[K, NOW) decrease number, then DELETE when today_todo is gone:
 ./bin/today_todo:9:# TODO^21: ([01;31m[KIN_PROGRESS[m[K) gotta DELETE this script eventually, after moving all functionality to vital
 ./installers/skiggety.bash:66:        # TODO^60: ([01;31m[KIN_PROGRESS[m[K) also make sure Zerothlife takes care of it itself, asking the user to put it in their bashrc
 ./lib/today_todo.bash:3:# TODO^123: (EASY TESTING [01;31m[KIN_PROGRESS[m[K) phase this out in favor of 'vital' and 'vital.bash', basically delete this if it doesn't give me any problems after 2024-08-22
@@ -8,5 +9,6 @@
 ./installers/signal:37:  # TODO^141: ([01;31m[KIN_PROGRESS[m[K) IMPLEMENT: ...
 ./bin/vital:52:# TODO^190: (URGENT, [01;31m[KIN_PROGRESS[m[K, NOW) vital must help you set up, connect, and use a private repo for vital data, then
 ---- TODOs for right NOW: ------------------------------------------------------
+./PWD_BIN/dashboard:82:# TODO^10: (IN_PROGRESS, [01;31m[KNOW[m[K) decrease number, then DELETE when today_todo is gone:
 ./installers/zerothlife:6:# TODO^140: (IN_PROGRESS, [01;31m[KNOW[m[K) TEST this script
 ./bin/vital:52:# TODO^190: (URGENT, IN_PROGRESS, [01;31m[KNOW[m[K) vital must help you set up, connect, and use a private repo for vital data, then
