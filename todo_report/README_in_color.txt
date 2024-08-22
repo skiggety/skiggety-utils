@@ -1,7 +1,7 @@
 ==== TODOs, ascending, so you know what's likely to change next. Do not edit, run 'generate_todo_report' to generate. ====
-( showing last 8 lines out of 550 for 'todo': )
+( showing last 8 lines out of 549 for 'todo': )
+./README.md:156:- [1m[31mTODO^100[0m[0m: systematized config (automate the configuration I always want anyway)
 ./installers/zerothlife:8:# [1m[31mTODO^114[0m[0m: and devote some thought to dependencies between Zerothlife and skiggety-utils
-./bin/review-today_todo:5:# [1m[31mTODO^120[0m[0m: (IN_PROGRESS, EASY, NOW, and dont forget TESTING) gotta DELETE this, as soon as I make sure nothing is caling it....  Underscores in the name are just too weird, especially when mixed with hyphens
 ./lib/today_todo.bash:3:# [1m[31mTODO^123[0m[0m: (EASY TESTING IN_PROGRESS) phase this out in favor of 'vital' and 'vital.bash', basically delete this if it doesn't give me any problems after 2024-08-22
 ./README.md:126:  - [1m[31mTODO^125[0m[0m: move 'vital' data (to do list) to private repo (skiggety utils should help set up)
 ./installers/zerothlife:6:# [1m[31mTODO^140[0m[0m: (IN_PROGRESS, NOW) TEST this script
