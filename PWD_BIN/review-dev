@@ -3,4 +3,4 @@
 # This script continuously runs the 'dev' script/cycle
 # TODO: consider renaming this to template_review-dev or default something
 
-SKIGGETY_DIVIDER_LENGTH=121 review -u 45 -m 180 $* dev
+SKIGGETY_DIVIDER_LENGTH=121 review -u 30 -m 180 $* dev

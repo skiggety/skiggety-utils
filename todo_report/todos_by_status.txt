@@ -1,14 +1,14 @@
 ---- IN_PROGRESS: --------------------------------------------------------------
 ./installers/skiggety.bash:10:# TODO: ([01;31m[KIN_PROGRESS[m[K) use completion markers like the basic installer so I can stop re-running this
-./bin/review-today_todo:5:# TODO^21: ([01;31m[KIN_PROGRESS[m[K, EASY, NOW, and dont forget TESTING) gotta RENAME this and today_todo.  Underscores in the name are just too weird, especially when mixed with hyphens
+./bin/today_todo:9:# TODO^21: ([01;31m[KIN_PROGRESS[m[K) gotta DELETE this script eventually, after moving all functionality to vital
 ./installers/skiggety.bash:66:        # TODO^60: ([01;31m[KIN_PROGRESS[m[K) also make sure Zerothlife takes care of it itself, asking the user to put it in their bashrc
-./lib/today_todo.bash:3:# TODO^122: (EASY TESTING [01;31m[KIN_PROGRESS[m[K NOW) phase this out in favor of 'vital' and 'vital.bash'
+./bin/review-today_todo:5:# TODO^120: ([01;31m[KIN_PROGRESS[m[K, EASY, NOW, and dont forget TESTING) gotta DELETE this, as soon as I make sure nothing is caling it....  Underscores in the name are just too weird, especially when mixed with hyphens
+./lib/today_todo.bash:3:# TODO^123: (EASY TESTING [01;31m[KIN_PROGRESS[m[K) phase this out in favor of 'vital' and 'vital.bash', basically delete this if it doesn't give me any problems after 2024-08-22
 ./installers/zerothlife:6:# TODO^140: ([01;31m[KIN_PROGRESS[m[K, NOW) TEST this script
 ./installers/zerothlife:9:# - TODO^140: ([01;31m[KIN_PROGRESS[m[K) make this, and maybe all installers, optional.  We could use marker files to keep track
 ./installers/signal:37:  # TODO^141: ([01;31m[KIN_PROGRESS[m[K) IMPLEMENT: ...
 ./bin/vital:52:# TODO^190: (URGENT, [01;31m[KIN_PROGRESS[m[K, NOW) vital must help you set up, connect, and use a private repo for vital data, then
 ---- TODOs for right NOW: ------------------------------------------------------
-./bin/review-today_todo:5:# TODO^21: (IN_PROGRESS, EASY, [01;31m[KNOW[m[K, and dont forget TESTING) gotta RENAME this and today_todo.  Underscores in the name are just too weird, especially when mixed with hyphens
-./lib/today_todo.bash:3:# TODO^122: (EASY TESTING IN_PROGRESS [01;31m[KNOW[m[K) phase this out in favor of 'vital' and 'vital.bash'
+./bin/review-today_todo:5:# TODO^120: (IN_PROGRESS, EASY, [01;31m[KNOW[m[K, and dont forget TESTING) gotta DELETE this, as soon as I make sure nothing is caling it....  Underscores in the name are just too weird, especially when mixed with hyphens
 ./installers/zerothlife:6:# TODO^140: (IN_PROGRESS, [01;31m[KNOW[m[K) TEST this script
 ./bin/vital:52:# TODO^190: (URGENT, IN_PROGRESS, [01;31m[KNOW[m[K) vital must help you set up, connect, and use a private repo for vital data, then

@@ -6,7 +6,7 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/vital.bash || exit_with_error 'could not include vital.bash'
 
-# TODO^6: replace this with 'vital'.  Move over all functionality and todo's
+# TODO^21: (IN_PROGRESS) gotta DELETE this script eventually, after moving all functionality to vital
 
 # TODO^22: have a way to postpone things to a certain date
 # TODO^11: flag to grep for and count a specific word, sort of like what I do for the (capitalized) "now" keyword

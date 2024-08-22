@@ -5,4 +5,4 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
 git add -p `which $1`
-exit_with_error "TODO: IMPLEMENT for real, parse args, feed them to git, then do which on what's left"
+exit_with_error "TODO^2: IMPLEMENT for real, parse args, feed them to git, then do which on what's left"
