@@ -25,6 +25,10 @@ function celebrate {
     sleep 5
 }
 
+if ! git rev-parse; then
+    exit_with_error "$(pwd) is not a git repository"
+fi
+
 if git-no-unpushed-changes && git-no-uncommitted-changes; then
     celebrate
     exit 0
