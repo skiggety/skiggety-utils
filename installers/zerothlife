@@ -36,7 +36,7 @@ class ZerothLifeInstaller
   end
 
   def configure!
-    git_pull(install_dir)
+    git_safe_pull(install_dir)
 
     if $interactive
 
