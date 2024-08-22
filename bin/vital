@@ -1,16 +1,14 @@
 #!/usr/bin/env bash
 
 # This script is a todo list system
+echo '
 #
 #   V. - Vote-tracking
 #   I. - Integer-enabled
 #   T. - Todo-reporter
 #   A. - Anxiety-powered
 #   L. - List-maintainer
-#
-
-# TODO^189: (URGENT, IN_PROGRESS, NOW) vital must help you set up, connect, and use a private repo for vital data, then
-# make plans to clean up archives better
+#'
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/vital.bash || exit_with_error 'could not include vital.bash'
@@ -50,6 +48,9 @@ while [[ "$1" == -* ]]; do
 done
 TASK_DESCRIPTION="$1"
 shift
+
+# TODO^190: (URGENT, IN_PROGRESS, NOW) vital must help you set up, connect, and use a private repo for vital data, then
+# make plans to clean up archives better
 
 if $SHOULD_ADD_TASK; then
     SHOULD_ALTER_VOTE=false

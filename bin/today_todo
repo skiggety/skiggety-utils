@@ -4,7 +4,7 @@
 # containing a todo list with the usual keyword and voting (see 'todo' program).
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
-. $SKIGGETY_UTILS_DIR/lib/today_todo.bash || exit_with_error 'could not include today_todo.bash'
+. $SKIGGETY_UTILS_DIR/lib/vital.bash || exit_with_error 'could not include vital.bash'
 
 # TODO^6: replace this with 'vital'.  Move over all functionality and todo's
 
