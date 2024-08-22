@@ -4,9 +4,34 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
+function celebrate {
+    echo_divider ".  "
+    echo_divider ".   "
+    echo_divider ".    "
+    echo_divider ".     "
+    echo_divider ".      "
+    echo_divider ".       "
+    echo_divider ".        "
+    echo_divider_with_text ".         " "$(basename $(pwd)) has nothing outstanding!"
+    echo_divider ".        "
+    echo_divider ".       "
+    echo_divider ".      "
+    echo_divider ".     "
+    echo_divider ".    "
+    echo_divider ".   "
+    echo_divider ".  "
+    sleep 5
+}
+
 if git-no-unpushed-changes && git-no-uncommitted-changes; then
+    celebrate
     exit 0
 else
     dashboard
     zl-delegate --with-reward "Commit something, probably using 'cgry' or 'ci && git ready && yup'. (in $(pwd))"
+fi
+
+if git-no-unpushed-changes && git-no-uncommitted-changes; then
+    celebrate
+    exit 0
 fi
