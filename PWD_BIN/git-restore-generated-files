@@ -4,4 +4,5 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
+cd $SKIGGETY_UTILS_DIR
 git restore todo_report
