@@ -1,11 +1,20 @@
 ---- IN_PROGRESS: --------------------------------------------------------------
+./bin/today_todo:91:    # Open todo list file(s) up for editing (TODO [01;31m[KIN_PROGRESS[m[K function extract)
+./bin/today_todo:105:    # format/compact todos in todo list file(s) (TODO [01;31m[KIN_PROGRESS[m[K function extract)
+./bin/vital-put-vital-dir-in-a-repository:8:exit_with_error "TODO^10: ([01;31m[KIN_PROGRESS[m[K) IMPLEMENT"
 ./bin/today_todo:9:# TODO^21: ([01;31m[KIN_PROGRESS[m[K) gotta DELETE this script eventually, after moving all functionality to vital
 ./installers/skiggety.bash:10:# TODO^41: ([01;31m[KIN_PROGRESS[m[K) use completion markers like the basic installer so I can stop re-running this
 ./installers/skiggety.bash:66:        # TODO^69: ([01;31m[KIN_PROGRESS[m[K) also make sure Zerothlife takes care of it itself, asking the user to put it in their bashrc
 ./installers/zerothlife:6:# TODO^140: ([01;31m[KIN_PROGRESS[m[K, NOW) TEST this script
 ./installers/zerothlife:9:# - TODO^140: ([01;31m[KIN_PROGRESS[m[K) make this, and maybe all installers, optional.  We could use marker files to keep track
 ./installers/signal:37:  # TODO^141: ([01;31m[KIN_PROGRESS[m[K) IMPLEMENT: ...
+./bin/today_todo:74:    # TODO^190: ([01;31m[KIN_PROGRESS[m[K, NOW) also most of these paragraphs could be function extracted...:
 ./bin/vital:52:# TODO^190: (URGENT, [01;31m[KIN_PROGRESS[m[K, NOW) vital must help you set up, connect, and use a private repo for vital data, then
+./installers/vital:8:# TODO^190: (TESTING [01;31m[KIN_PROGRESS[m[K, NOW) this call to that other script thingy:
+./bin/today_todo:117:        # TODO^192: (TESTING [01;31m[KIN_PROGRESS[m[K NOW) here, or maybe in the actual 'vital' script, we need to commit/push changes
 ---- TODOs for right NOW: ------------------------------------------------------
 ./installers/zerothlife:6:# TODO^140: (IN_PROGRESS, [01;31m[KNOW[m[K) TEST this script
+./bin/today_todo:74:    # TODO^190: (IN_PROGRESS, [01;31m[KNOW[m[K) also most of these paragraphs could be function extracted...:
 ./bin/vital:52:# TODO^190: (URGENT, IN_PROGRESS, [01;31m[KNOW[m[K) vital must help you set up, connect, and use a private repo for vital data, then
+./installers/vital:8:# TODO^190: (TESTING IN_PROGRESS, [01;31m[KNOW[m[K) this call to that other script thingy:
+./bin/today_todo:117:        # TODO^192: (TESTING IN_PROGRESS [01;31m[KNOW[m[K) here, or maybe in the actual 'vital' script, we need to commit/push changes
