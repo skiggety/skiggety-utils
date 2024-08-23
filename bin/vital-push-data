@@ -4,4 +4,4 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-exit_with_error "TODO^19: (IN_PROGRESS) IMPLEMENT, make user do it manually if necessary at first"
+exit_with_error "TODO^20: (IN_PROGRESS) IMPLEMENT, make user do it manually if necessary at first"
