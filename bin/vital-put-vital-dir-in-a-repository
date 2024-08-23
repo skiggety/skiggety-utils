@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# This script helps you set up vital so that your $VITAL_DIR, where your data is stored, gets checked in as a repository
+# somewhere, so you have a backup and you can use it from multiple places
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+exit_with_error "TODO^19: (IN_PROGRESS) IMPLEMENT"

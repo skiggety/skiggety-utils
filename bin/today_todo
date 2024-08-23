@@ -67,8 +67,13 @@ function main {
 
     mkdir -p "$VITAL_DIR"
     cd "$VITAL_DIR"
+    if ! git rev-parse; then
+        accumulate_error "'$VITAL_DIR' is not a repo, please run: vital-put-vital-dir-in-a-repository"
+    fi
 
-    # generate todo reports for external directories, including Zerothlife and skiggety_utils
+    # TODO^190: (IN_PROGRESS, NOW) also most of these paragraphs could be function extracted...:
+
+    # generate todo reports for external directories, including Zerothlife and skiggety_utils, and (TODO), honestly, putting this here is a hack...maybe those external programs should generate something themselves...
     # TODO: only put code todos in with main todos if you have configured Zerothlife to do so, and don't do this on secondary computers
     for dir in $HOME/zerothlife $SKIGGETY_UTILS_DIR $HOME/code/zerothlife;do
         if [ -d $dir ]; then
@@ -83,6 +88,7 @@ function main {
         fi
     done
 
+    # Open todo list file(s) up for editing (TODO IN_PROGRESS function extract)
     if $interactive; then
         tmp_sorted_list="/tmp/today_todo.$$.sorted.TEMP.txt"
         todo --non-interactive --color never | grep 'TODO.today.txt:' | sed "s/^.\/${vital_todo_list_file_name}:[[:digit:]]*://" | tac > $tmp_sorted_list # IGNORE_TODO
@@ -96,17 +102,20 @@ function main {
         vim -o $files_to_open '+/\.\.\.' # TODO^84: here and elsewhere, use $EDITOR, not vim
     fi
 
-    # TODO^6: maybe automate the archiving, too?
-    EXCLUDE_DIR_ARGS="--exclude-dir archive"
-
+    # format/compact todos in todo list file(s) (TODO IN_PROGRESS function extract)
     echo "It's time to compact todo's in $0"
+    EXCLUDE_DIR_ARGS="--exclude-dir archive"
+    # TODO^6: maybe automate the archiving, too?
     WRITE_FLAG=''
     if $interactive; then
         WRITE_FLAG='w'
     fi
     todo "-${WRITE_FLAG}fq" $EXCLUDE_DIR_ARGS
     PAUSE_TO_READ=0 # TODO: set to 10 if passed '--slow' or '-s'
+
     if $interactive; then
+        # TODO^192: (TESTING IN_PROGRESS NOW) here, or maybe in the actual 'vital' script, we need to commit/push changes
+        vital-push-data
         clear
     fi
 
@@ -221,3 +230,5 @@ function display_grep_for_keyword {
 }
 
 main "$@"
+
+exit_with_any_accumulated_errors

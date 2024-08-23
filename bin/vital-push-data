@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# This script ensures that your vital 'vital' data gets pushed to the cloud
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+exit_with_error "TODO^19: (IN_PROGRESS) IMPLEMENT, make user do it manually if necessary at first"
