@@ -54,6 +54,8 @@ alias gr='git ready'
 alias cgry='ci && git ready && exit 0'
 alias gry='git ready && exit 0'
 
+alias exut='echo spelling;sleep-verbose 5;exit'
+
 alias cdsu="cd $SKIGGETY_UTILS_DIR"
 
 # TODO: use more stuff from older bashrc files I've used
