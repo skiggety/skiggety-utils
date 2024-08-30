@@ -79,6 +79,8 @@ function main {
         fi
     fi
 
+    git safe-pull
+
     # TODO^191: (IN_PROGRESS, NOW) also most of these paragraphs could be function extracted...:
 
     # generate todo reports for external directories, including Zerothlife and skiggety_utils, and (TODO^41), honestly, putting this here is a hack...maybe those external programs should generate something themselves...
@@ -122,8 +124,7 @@ function main {
     PAUSE_TO_READ=0 # TODO: set to 10 if passed '--slow' or '-s'
 
     if $interactive; then
-        # TODO^192: (TESTING IN_PROGRESS NOW) test this bit on metrigon:
-        # TODO^191: (TESTING IN_PROGRESS NOW) test this bit on tinhat:
+        # TODO^192: (TESTING IN_PROGRESS NOW) test this bit on tinhat:
         vital-push-data || accumulate_error "vital-push-data FAILED"
         clear
     else

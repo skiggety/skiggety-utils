@@ -23,6 +23,14 @@ if ! git rev-parse; then
         shellask "Please follow the instructions on github to 'create a new repository on the command line'." || exit_with_error 'did not push data up'
     fi
 
+    if ! git rev-parse; then
+        cd ..
+        mv $VITAL_DIR $VITAL_DIR.tmp
+        shellask "git clone <REPO> $VITAL_DIR" || exit_with_error "FAILED to git clone repository"
+        cd $VITAL_DIR
+        shellask "Am I supposed to git clone or something?, esp on tinhat, cleanup $(echo_here)" || exit_with_error "TODO"
+        shellask "Get anything you want out of ${VITAL_DIR}.tmp, then delete it" || exit_with_error "Left ${VITAL_DIR}.tmp"
+    fi
 fi
 
 git-set-matching-origin || exit_with_error 'git-set-matching-origin FAILED'
