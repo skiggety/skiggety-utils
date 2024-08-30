@@ -186,8 +186,8 @@ function main {
         if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
     fi
 
-    # TODO^24: function extract to do with other keywords
-    today_todo_urgent_max_count=2
+    today_todo_urgent_max_count=4
+    # TODO^51: (IN_PROGRESS) function extract to do with other keywords
     todo_urgent_output="$(echo "$todo_output" | grep --color=always 'URGENT')"
     todo_urgent_count=$(( 0 + $(echo "$todo_urgent_output" | wc -l) ))
     if [ "$todo_urgent_output" != '' ]; then
