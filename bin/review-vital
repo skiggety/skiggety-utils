@@ -6,4 +6,4 @@
 . $SKIGGETY_UTILS_DIR/lib/vital.bash || exit_with_error 'could not include vital.bash'
 
 cd $VITAL_DIR # so 'review' watches the right part of the disk:
-review -u 15 -m 120 vital --report || exit_with_error "Could not get a report using vital"
+review -u 12 -m 120 vital --report || exit_with_error "Could not get a report using vital"
