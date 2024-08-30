@@ -1,5 +1,5 @@
 ==== TODOs, ascending, so you know what's likely to change next. Do not edit, run 'generate_todo_report' to generate. ====
-( showing last 8 lines out of 558 for 'todo': )
+( showing last 8 lines out of 562 for 'todo': )
 ./installers/zerothlife:6:# [1m[31mTODO^140[0m[0m: (IN_PROGRESS, NOW) TEST this script
 ./installers/zerothlife:9:# - [1m[31mTODO^140[0m[0m: (IN_PROGRESS) make this, and maybe all installers, optional.  We could use marker files to keep track
 ./installers/signal:37:  # [1m[31mTODO^141[0m[0m: (IN_PROGRESS) IMPLEMENT: ...
