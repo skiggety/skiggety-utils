@@ -67,10 +67,16 @@ function main {
 
     mkdir -p "$VITAL_DIR"
     cd "$VITAL_DIR"
-    if ! git rev-parse; then
-        # TODO^191: (IN_PROGRESS, NOW) get this working in a meaningful way, and coordinate with the bit that keeps
-        # changes checked in....:
-        accumulate_error "'$VITAL_DIR' is not a repo, please run: vital-put-vital-dir-in-a-repository"
+
+    if $interactive; then
+        if ! git rev-parse; then
+            vital-put-vital-dir-in-a-repository || \
+                accumulate_error "'$VITAL_DIR' is not a repo, please run: vital-put-vital-dir-in-a-repository"
+        fi
+    else
+        if ! git rev-parse; then
+            accumulate_error "'$VITAL_DIR' is not a repo, please run: vital-put-vital-dir-in-a-repository"
+        fi
     fi
 
     # TODO^191: (IN_PROGRESS, NOW) also most of these paragraphs could be function extracted...:
@@ -116,10 +122,13 @@ function main {
     PAUSE_TO_READ=0 # TODO: set to 10 if passed '--slow' or '-s'
 
     if $interactive; then
-        # TODO^194: (TESTING IN_PROGRESS NOW) here, or maybe in the actual 'vital' script, we need to commit/push changes
-        vital-push-data
+        # TODO^192: (TESTING IN_PROGRESS NOW) test this bit on metrigon:
+        # TODO^191: (TESTING IN_PROGRESS NOW) test this bit on tinhat:
+        vital-push-data || accumulate_error "vital-push-data FAILED"
         clear
-    # else # TODO: show any outstanding changes
+    else
+        # TODO^56: TESTING (IN_PROGRESS) show any outstanding changes:
+        git status -s
     fi
 
     # TODO^3: consider extracting the rest of this script to "today_todo_display", which can be overridden with PWD_BIN, or
@@ -142,8 +151,8 @@ function main {
     todo_prog_output="$(echo "$todo_output" | grep IN_PROGRESS)"
     todo_prog_count=$(( 0 + $(echo "$todo_prog_output" | wc -l) ))
     echo
-    echo "-------- Found $todo_prog_count todos IN_PROGRESS:" # using dividers for things like this so I can do things like: today_todo -n | grep \(--------\|ERRAND\)
-    echo "$todo_prog_output" | grep --color=always IN_PROGRESS
+    echo "-------- Found $todo_prog_count todos IN_PROGRESS, showing 15:" # using dividers for things like this so I can do things like: today_todo -n | grep \(--------\|ERRAND\)
+    echo "$todo_prog_output" | tail -n 15 |  grep --color=always IN_PROGRESS
     if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
 
     display_grep_for_keyword CONFIRMING "$todo_output"

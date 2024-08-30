@@ -1,4 +1,6 @@
 # This is for if you want files to be ignored
+# ===========================================
+
 *.gitignored.*
 
 # Ignore vim swap files:
@@ -6,6 +8,7 @@
 
 # ignore the mac finder droppings:
 .DS_Store
+
 .byebug_history
 
 /installers/.markers/*.installed_with_version.*

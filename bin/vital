@@ -49,9 +49,6 @@ done
 TASK_DESCRIPTION="$1"
 shift
 
-# TODO^190: (URGENT, IN_PROGRESS, NOW) vital must help you set up, connect, and use a private repo for vital data, then
-# make plans to clean up archives better
-
 if $SHOULD_ADD_TASK; then
     SHOULD_ALTER_VOTE=false
     FULL_TODO_LINE="- TODO^$VOTECOUNT: $TASK_DESCRIPTION"
@@ -67,6 +64,9 @@ if $SHOULD_ALTER_VOTE; then
     exit_with_error "- TODO^44: IMPLEMENT '--vote' to vote on a todo matching TASK_DESCRIPTION"
     #                  - EASY TODO^56: and make an alias to help vote quick
 fi
+
+# TODO^190: (URGENT, IN_PROGRESS, NOW) vital must help you set up, connect, and use a private repo for vital data, then
+# make plans to clean up archives better
 
 # TODO^2: DELETE once we are no longer reliant on old implementation:
 today_todo $LEGACY_INTERACTIVE_FLAG

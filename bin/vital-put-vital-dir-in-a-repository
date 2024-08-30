@@ -4,5 +4,38 @@
 # somewhere, so you have a backup and you can use it from multiple places
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/vital.bash || exit_with_error 'could not include vital.bash'
 
-exit_with_error "TODO^19: (IN_PROGRESS) IMPLEMENT"
+pushd "$VITAL_DIR" > /dev/null
+
+if ! git rev-parse; then
+
+    shellask "move some files to archive/ if necessary"
+
+    VITAL_BACKUP_DIR="${VITAL_DIR}.bak"
+    cp -a "$VITAL_DIR" "$VITAL_BACKUP_DIR"
+
+    if ! shellask "Do you already have a github repository for your changes?"; then
+        shellask "Please make a github repository and keep a web browser open so you can refer to it" || exit_with_error 'No origin repository'
+    fi
+
+    if ! shellask "Does your github repository already have your data in it?"; then
+        shellask "Please follow the instructions on github to 'create a new repository on the command line'." || exit_with_error 'did not push data up'
+    fi
+
+fi
+
+git-set-matching-origin || exit_with_error 'git-set-matching-origin FAILED'
+vital-push-data # first attempt, no error checking
+
+mkdir -p './PWD_BIN'
+RESTORE_SCRIPT='./PWD_BIN/git-restore-generated-files'
+if ! [ -f "$RESTORE_SCRIPT" ]; then
+    shebang env bash > "$RESTORE_SCRIPT"
+    chmod +x "$RESTORE_SCRIPT"
+    git add "$RESTORE_SCRIPT"
+fi
+git safe-pull
+vital-push-data || exit_with_error "vital-push-data FAILED"
+
+popd > /dev/null

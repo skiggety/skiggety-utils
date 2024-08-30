@@ -3,5 +3,24 @@
 # This script ensures that your vital 'vital' data gets pushed to the cloud
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/vital.bash || exit_with_error 'could not include vital.bash'
 
-exit_with_error "TODO^20: (IN_PROGRESS) IMPLEMENT, make user do it manually if necessary at first"
+pushd "$VITAL_DIR" > /dev/null
+
+if [ $(git status -s | wc -l) -eq 0 ];then
+    echo "No changes found, exiting $(basename $0) without error..."
+    exit 0
+fi
+
+git add "$vital_todo_list_file_path"
+git add "$vital_done_list_file_name"
+git add TODO.*.todo_report.txt
+git add 'graph.csv'
+git add 'archive/'
+git add *.TEMP.*
+
+git commit -m "$(basename $0) committing automatically from $(hostname) at $(date)" || exit_with_error "commit FAILED"
+git safe-pull || exit_with_error "FAILED to git pull"
+git push -u || exit_with_error "FAILED to push"
+
+popd > /dev/null
