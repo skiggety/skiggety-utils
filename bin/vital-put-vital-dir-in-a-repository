@@ -43,6 +43,7 @@ RESTORE_SCRIPT='./PWD_BIN/git-restore-generated-files'
 if ! [ -f "$RESTORE_SCRIPT" ]; then
     shebang env bash > "$RESTORE_SCRIPT"
     chmod +x "$RESTORE_SCRIPT"
+    echo git restore graph.csv >> "$RESTORE_SCRIPT"
     git add "$RESTORE_SCRIPT"
 fi
 git safe-pull
