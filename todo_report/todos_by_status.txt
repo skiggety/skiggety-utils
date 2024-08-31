@@ -5,16 +5,13 @@
 ./installers/skiggety.bash:10:# TODO^41: ([01;31m[KIN_PROGRESS[m[K) use completion markers like the basic installer so I can stop re-running this
 ./bin/today_todo:193:    # TODO^51: ([01;31m[KIN_PROGRESS[m[K) function extract to do with other keywords
 ./installers/skiggety.bash:66:        # TODO^69: ([01;31m[KIN_PROGRESS[m[K) also make sure Zerothlife takes care of it itself, asking the user to put it in their bashrc
-./bin/today_todo:228:        # TODO^94: (TESTING [01;31m[KIN_PROGRESS[m[K NOW) show any outstanding changes:
 ./installers/zerothlife:6:# TODO^140: ([01;31m[KIN_PROGRESS[m[K, NOW) TEST this script
 ./installers/zerothlife:9:# - TODO^140: ([01;31m[KIN_PROGRESS[m[K) make this, and maybe all installers, optional.  We could use marker files to keep track
 ./installers/signal:37:  # TODO^141: ([01;31m[KIN_PROGRESS[m[K) IMPLEMENT: ...
+./bin/vital:68:# TODO^184: ([01;31m[KIN_PROGRESS[m[K) make plans to clean up archives better
 ./bin/today_todo:86:    # TODO^191: ([01;31m[KIN_PROGRESS[m[K, NOW) also most of these paragraphs could be function extracted...:
-./installers/vital:8:# TODO^191: (TESTING [01;31m[KIN_PROGRESS[m[K, NOW) this call to that other script thingy:
-./bin/vital:68:# TODO^194: (URGENT, [01;31m[KIN_PROGRESS[m[K, NOW) vital must help you set up, connect, and use a private repo for vital data across multiple machines, then
+./bin/today_todo:236:    # TODO^192: ([01;31m[KIN_PROGRESS[m[K NOW) show any outstanding commits...
 ---- TODOs for right NOW: ------------------------------------------------------
-./bin/today_todo:228:        # TODO^94: (TESTING IN_PROGRESS [01;31m[KNOW[m[K) show any outstanding changes:
 ./installers/zerothlife:6:# TODO^140: (IN_PROGRESS, [01;31m[KNOW[m[K) TEST this script
 ./bin/today_todo:86:    # TODO^191: (IN_PROGRESS, [01;31m[KNOW[m[K) also most of these paragraphs could be function extracted...:
-./installers/vital:8:# TODO^191: (TESTING IN_PROGRESS, [01;31m[KNOW[m[K) this call to that other script thingy:
-./bin/vital:68:# TODO^194: (URGENT, IN_PROGRESS, [01;31m[KNOW[m[K) vital must help you set up, connect, and use a private repo for vital data across multiple machines, then
+./bin/today_todo:236:    # TODO^192: (IN_PROGRESS [01;31m[KNOW[m[K) show any outstanding commits...

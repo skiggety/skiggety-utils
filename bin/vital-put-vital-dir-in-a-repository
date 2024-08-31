@@ -44,8 +44,6 @@ if ! [ -f "$RESTORE_SCRIPT" ]; then
     echo >> "$RESTORE_SCRIPT"
     echo 'git restore graph.csv' >> "$RESTORE_SCRIPT"
     echo 'git restore --staged graph.csv' >> "$RESTORE_SCRIPT"
-    echo 'git restore *todo_report.csv' >> "$RESTORE_SCRIPT"
-    echo 'git restore --staged *todo_report.csv' >> "$RESTORE_SCRIPT"
     echo 'exit 0' >> "$RESTORE_SCRIPT"
     git add "$RESTORE_SCRIPT"
 fi

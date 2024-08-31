@@ -14,10 +14,11 @@ fi
 
 git add "$vital_todo_list_file_path"
 git add "$vital_done_list_file_name"
-git add TODO.*.todo_report.txt
 git add 'graph.csv'
 git add 'archive/'
 git add *.TEMP.*
+
+git add -p
 
 git commit -m "$(basename $0) committing automatically from $(hostname) at $(date)" || exit_with_error "commit FAILED"
 git safe-pull || exit_with_error "FAILED to git pull"

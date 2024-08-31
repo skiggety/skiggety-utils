@@ -95,7 +95,7 @@ function main {
                 todo_program='./PWD_BIN/todo'
             fi
 
-            $todo_program --non-interactive --color never --exclude-dir log > "${VITAL_DIR}/TODO.$(basename $dir).todo_report.txt"
+            $todo_program --non-interactive --color never --exclude-dir log > "${VITAL_DIR}/TODO.$(basename $dir).generated_todo_addendum.txt"
             popd > /dev/null
         fi
     done
@@ -224,14 +224,16 @@ function main {
     if $interactive; then
         vital-push-data || shellask "resolve issues in this directory and maybe (TODO) edit $(echo_here)" || accumulate_error "vital-push-data FAILED"
         clear
-    else
-        # TODO^94: (TESTING IN_PROGRESS NOW) show any outstanding changes:
+    fi
+
+    if ! [ $(git status -s | wc -l) -eq 0 ];then
         echo_divider_with_text '=' 'git --no-pager diff'
         git --no-pager diff
         echo_divider_with_text '=' 'git status -s'
         git status -s
     fi
 
+    # TODO^192: (IN_PROGRESS NOW) show any outstanding commits...
 }
 
 function display_grep_for_keyword {

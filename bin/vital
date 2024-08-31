@@ -65,8 +65,7 @@ if $SHOULD_ALTER_VOTE; then
     #                  - EASY TODO^56: and make an alias to help vote quick
 fi
 
-# TODO^194: (URGENT, IN_PROGRESS, NOW) vital must help you set up, connect, and use a private repo for vital data across multiple machines, then
-# make plans to clean up archives better
+# TODO^184: (IN_PROGRESS) make plans to clean up archives better
 
 # TODO^2: DELETE once we are no longer reliant on old implementation:
 today_todo $LEGACY_INTERACTIVE_FLAG
