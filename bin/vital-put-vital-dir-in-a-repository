@@ -34,22 +34,24 @@ if ! git rev-parse; then
 fi
 
 git-set-matching-origin || exit_with_error 'git-set-matching-origin FAILED'
-shellask "MAKE SURE you don't lose local changes or blindly commit local changes..use git status, esp on tinhat, cleanup $(echo_here)" || exit_with_error "TODO"
 vital-push-data # first attempt, no error checking
-shellask "MAKE SURE you don't lose local changes or blindly commit local changes..use git status, esp on tinhat, cleanup $(echo_here)" || exit_with_error "TODO"
 
 mkdir -p './PWD_BIN'
 RESTORE_SCRIPT='./PWD_BIN/git-restore-generated-files'
 if ! [ -f "$RESTORE_SCRIPT" ]; then
     shebang env bash > "$RESTORE_SCRIPT"
     chmod +x "$RESTORE_SCRIPT"
-    echo git restore graph.csv >> "$RESTORE_SCRIPT"
+    echo >> "$RESTORE_SCRIPT"
+    echo 'git restore graph.csv' >> "$RESTORE_SCRIPT"
+    echo 'git restore --staged graph.csv' >> "$RESTORE_SCRIPT"
+    echo 'git restore *todo_report.csv' >> "$RESTORE_SCRIPT"
+    echo 'git restore --staged *todo_report.csv' >> "$RESTORE_SCRIPT"
+    echo 'exit 0' >> "$RESTORE_SCRIPT"
     git add "$RESTORE_SCRIPT"
 fi
-git safe-pull
+git safe-pull || echo "It might be ok that the first try at pulling failed"
 
-shellask "MAKE SURE you don't lose local changes or blindly commit local changes..use git status, esp on tinhat, cleanup $(echo_here)" || exit_with_error "TODO"
-shellask "do you need to bring other changes in from the backup, or delete the backup? esp on tinhat, cleanup $(echo_here)" || exit_with_error "TODO"
-vital-push-data || exit_with_error "vital-push-data FAILED"
+shellask "Do you need to bring other changes in from the backup, or delete the backup? esp on tinhat, cleanup $(echo_here)"
+vital-push-data || shellask "resolve issues in this directory and maybe (TODO) edit $(echo_here)" || accumulate_error "vital-push-data FAILED"
 
 popd > /dev/null

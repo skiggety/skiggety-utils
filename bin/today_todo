@@ -79,7 +79,9 @@ function main {
         fi
     fi
 
-    git safe-pull
+    if $interactive && git rev-parse; then
+        git safe-pull || { shellask "resolve any issues in this local repo"; exit_with_error 'git safe-pull FAILED'; }
+    fi
 
     # TODO^191: (IN_PROGRESS, NOW) also most of these paragraphs could be function extracted...:
 
@@ -122,15 +124,6 @@ function main {
     fi
     todo "-${WRITE_FLAG}fq" $EXCLUDE_DIR_ARGS
     PAUSE_TO_READ=0 # TODO: set to 10 if passed '--slow' or '-s'
-
-    if $interactive; then
-        # TODO^192: (TESTING IN_PROGRESS NOW) test this bit on tinhat:
-        vital-push-data || accumulate_error "vital-push-data FAILED"
-        clear
-    else
-        # TODO^56: TESTING (IN_PROGRESS) show any outstanding changes:
-        git status -s
-    fi
 
     # TODO^3: consider extracting the rest of this script to "today_todo_display", which can be overridden with PWD_BIN, or
     # alternatively we could do like 'todo' and use flags to turn editing and reporting on and off:
@@ -227,6 +220,18 @@ function main {
         fi
         echo "$csv_datetime,$todo_count,$todo_prog_count,$todo_later_count,$todo_now_count,$(( $todo_count + $todo_prog_count + $todo_later_count + $todo_now_count ))" >> graph.csv
     fi
+
+    if $interactive; then
+        vital-push-data || shellask "resolve issues in this directory and maybe (TODO) edit $(echo_here)" || accumulate_error "vital-push-data FAILED"
+        clear
+    else
+        # TODO^94: (TESTING IN_PROGRESS NOW) show any outstanding changes:
+        echo_divider_with_text '=' 'git --no-pager diff'
+        git --no-pager diff
+        echo_divider_with_text '=' 'git status -s'
+        git status -s
+    fi
+
 }
 
 function display_grep_for_keyword {
