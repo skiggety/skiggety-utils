@@ -6,7 +6,6 @@
 # if it doesn't find the right script?
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
-SKIGGETY_DEBUG=true
 
 if [ "$1" == "$(basename $1)" ];then
     new_file="$SKIGGETY_UTILS_DIR/bin/$1"
