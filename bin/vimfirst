@@ -1,10 +1,17 @@
 #!/usr/bin/env bash
 
+# Edit a script with vim first, before running it...
+
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
 if [ -z "$*" ];then
     exit_with_error "Missing arguments. Please provide the name of a script (and, optionally, its own arguments) in your path you would like to edit and then run."
 fi
 
-vimwhich "$1"
+if ! which "$1" && shellask "'$1' was not found--Do you want to create a new script by that name?"; then
+    newbin "$1" || exit_with_error 'newbin FAILED'
+else
+    vimwhich "$1"
+fi
+
 "$@"
