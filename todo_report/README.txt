@@ -1,10 +1,10 @@
 ==== TODOs, ascending, so you know what's likely to change next. Do not edit, run 'generate_todo_report' to generate. ====
-( showing last 8 lines out of 558 for 'todo': )
-./installers/zerothlife:8:# TODO^114: and devote some thought to dependencies between Zerothlife and skiggety-utils
-./README.md:126:  - TODO^125: move 'vital' data (to do list) to private repo (skiggety utils should help set up)
-./installers/zerothlife:6:# TODO^140: (IN_PROGRESS, NOW) TEST this script
+( showing last 8 lines out of 562 for 'todo': )
 ./installers/zerothlife:9:# - TODO^140: (IN_PROGRESS) make this, and maybe all installers, optional.  We could use marker files to keep track
 ./installers/signal:37:  # TODO^141: (IN_PROGRESS) IMPLEMENT: ...
 ./bin/vital:68:# TODO^184: (IN_PROGRESS) make plans to clean up archives better
 ./bin/today_todo:86:    # TODO^191: (IN_PROGRESS, NOW) also most of these paragraphs could be function extracted...:
 ./bin/today_todo:236:    git -c color.ui=always --no-pager log --oneline --decorate=short --branches --not --remotes # TODO^192: (TESTING IN_PROGRESS)
+./bin/vimfirst:7:# TODO^200: '--while' and '--until' options get it looping like vimfirst-while and vimfirst-until
+./bin/vimfirst-until:3:# TODO^200: this should be a special mode of vimfirst, so it shares code, just another way of using a --while flag
+./bin/vimfirst-while:3:# TODO^200: this should be a special mode of vimfirst, so it shares code, just another way of using a --until flag

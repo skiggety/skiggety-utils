@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
+# TODO^200: this should be a special mode of vimfirst, so it shares code, just another way of using a --until flag
+
 vimwhich "$1"
 
 while "$@"
 do
     echo "Command '$@' SUCCEEDED, take a look'" && sleep-verbose 10
     vimwhich "$1"
-    echo "Sleeping for 3 seconds, CTRL+C to quit..." # TODO^19: TEST does CTRL+C actually work?
-    sleep-verbose 3
+    echo "Sleeping for 5 seconds, CTRL+C to quit..." # TODO^19: TEST does CTRL+C actually work?
+    sleep-verbose 5 || exit_with_error "User quit..."
 done

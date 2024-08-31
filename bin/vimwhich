@@ -22,6 +22,7 @@ for target in "$@";do
     destination="$(which $target)"
 
     if [ -z "$destination" ]; then
+        # TODO^45: (IN_PROGRESS) this should share code with newbin, or call newbin in a mode where it doesn't open the editor, it just dumped a new script in $HOME/ instead of a bin dir, which wansn't too good.
         destination_dir="$(dirname $target 2>/dev/null)"
         if [ -z "$destination_dir" ]; then
             destination_dir="$DEFAULT_SCRIPT_LOCATION"

@@ -4,6 +4,8 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
+# TODO^200: '--while' and '--until' options get it looping like vimfirst-while and vimfirst-until
+
 if [ -z "$*" ];then
     exit_with_error "Missing arguments. Please provide the name of a script (and, optionally, its own arguments) in your path you would like to edit and then run."
 fi
