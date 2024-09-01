@@ -167,7 +167,7 @@ function echo_divider_with_text {
     text="$2"
     echo_divider_without_newline "$pattern"
     echo -ne "\r" # TODO^4: cut this bs out and do it properly, in some places this looks like a newline
-    echo_pattern_n_length "$pattern" 4
+    echo_pattern_n_length_without_newline "$pattern" 4
     echo -e " $text "
 }
 
@@ -187,10 +187,10 @@ export SKIGGETY_DIVIDER_LENGTH="${SKIGGETY_DIVIDER_LENGTH:-$calc_columns}"
 
 function echo_divider_without_newline {
     pattern="$1"
-    echo_pattern_n_length "$pattern" "$SKIGGETY_DIVIDER_LENGTH"
+    echo_pattern_n_length_without_newline "$pattern" "$SKIGGETY_DIVIDER_LENGTH"
 }
 
-function echo_pattern_n_length {
+function echo_pattern_n_length_without_newline {
     pattern="$1"
     n="$2"
     pattern_length="${#pattern}"
