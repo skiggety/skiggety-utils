@@ -4,13 +4,20 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-# TODO^200: '--while' and '--until' options get it looping like vimfirst-while and vimfirst-until
+# TODO^168: '--while' and '--until' options get it looping like vimfirst-while and vimfirst-until
+
+while [[ "$1" == -* ]]; do
+    if [ "$1" == "--debug" ]; then # TODO^30 # : This seems like a good pattern to repeat.
+        SKIGGETY_DEBUG=true
+        shift
+    fi
+done
 
 if [ -z "$*" ];then
     exit_with_error "Missing arguments. Please provide the name of a script (and, optionally, its own arguments) in your path you would like to edit and then run."
 fi
 
-if ! which "$1" && shellask "'$1' was not found--Do you want to create a new script by that name?"; then
+if ! which "$1" > /dev/null && shellask "'$1' was not found--Do you want to create a new script by that name?"; then
     newbin "$1" || exit_with_error 'newbin FAILED'
 else
     vimwhich "$1"
