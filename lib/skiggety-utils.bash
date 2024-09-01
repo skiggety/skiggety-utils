@@ -200,6 +200,13 @@ function echo_pattern_n_length {
     echo -n "${pattern:0:$remainder}"
 }
 
+function echo_pattern_n_times {
+    pattern="$1"
+    n="$2"
+    for ((i=1;i<=$n; i++)); do echo -n "$pattern"; done
+    echo
+}
+
 function assert_equal {
     EXPECTED="$1"
     RECEIVED="$2"
