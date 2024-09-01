@@ -4,7 +4,7 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-# TODO^168: '--while' and '--until' options get it looping like vimfirst-while and vimfirst-until
+# TODO^169: '--while' and '--until' options get it looping like vimfirst-while and vimfirst-until
 
 while [[ "$1" == -* ]]; do
     if [ "$1" == "--debug" ]; then # TODO^30 # : This seems like a good pattern to repeat.

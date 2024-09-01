@@ -2,7 +2,7 @@
 ( showing last 8 lines out of 563 for 'todo': )
 ./installers/zerothlife:9:# - TODO^140: (IN_PROGRESS) make this, and maybe all installers, optional.  We could use marker files to keep track
 ./installers/signal:37:  # TODO^141: (IN_PROGRESS) IMPLEMENT: ...
-./bin/vimfirst:7:# TODO^168: '--while' and '--until' options get it looping like vimfirst-while and vimfirst-until
+./bin/vimfirst:7:# TODO^169: '--while' and '--until' options get it looping like vimfirst-while and vimfirst-until
 ./bin/vital:68:# TODO^184: (IN_PROGRESS) make plans to clean up archives better
 ./bin/today_todo:86:    # TODO^191: (IN_PROGRESS, NOW) also most of these paragraphs could be function extracted...:
 ./bin/today_todo:236:    git -c color.ui=always --no-pager log --oneline --decorate=short --branches --not --remotes # TODO^192: (TESTING IN_PROGRESS)
