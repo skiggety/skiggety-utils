@@ -52,8 +52,7 @@ function main {
     git-log-recent
 
     echo
-    shellask "Please test 'ci' on another machine if it seems worthwhile" || \
-        exit_with_error "Didn't test"
+    shellask "Please test 'ci' on another machine if it seems worthwhile"
 
     echo
     echo "...finished '$(basename "$0")'."
