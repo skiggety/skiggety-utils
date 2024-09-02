@@ -11,9 +11,15 @@ PROMPT_LINES='3' # TODO: better implementation, not sure how to get $PS1 from pa
 MAX_SCREEN_LINES="$(( $(tput lines) - $PROMPT_LINES ))" # default to a screenful, allowing room for prompt # TODO: if it's not in a terminal, maybe default to using AUTO_SCALE
 MAX_LINES="$(( $MAX_SCREEN_LINES - 1 ))" # because the explanation takes up 1 line
 AUTO_SCALE=false
+AUTO_SCALE_MIN_LINES="4"
 while [[ "$1" == -* ]]; do
     if [ "$1" == '-a' -o "$1" == '--auto' -o "$1" == '--auto-scale' ]; then
         AUTO_SCALE=true
+        shift
+    elif [ "$1" == '--auto-min-scale' ]; then
+        AUTO_SCALE=true
+        shift
+        AUTO_SCALE_MIN_LINES="$1"
         shift
     elif [ "$1" == '-l' ]; then
         shift
@@ -49,13 +55,13 @@ else
 fi
 
 if $AUTO_SCALE; then
-    MAX_LINES="$( echo "sqrt($INPUT_LINES) + 4" | bc )"
+    MAX_LINES="$( echo "sqrt($INPUT_LINES) + $AUTO_SCALE_MIN_LINES - 1" | bc )"
     MAX_SCREEN_LINES="$(( $MAX_LINES + 1 ))" # because the explanation takes up 1 line
 fi
 
 if [ $INPUT_LINES -gt $MAX_SCREEN_LINES -o $DIVIDER ]; then
     SHOWN_LINES="$MAX_LINES"
-    if [ $MAX_LINES -gt $INPUT_LINES ]; then
+    if [ "$MAX_LINES" -gt "$INPUT_LINES" ]; then
         SHOWN_LINES="$INPUT_LINES"
     fi
     if [ -z "$TITLE" ];then
