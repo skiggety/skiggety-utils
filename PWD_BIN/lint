@@ -8,6 +8,19 @@
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $THIS_DIR/../lib/skiggety-utils.bash || exit 1
 
+FIX='false'
+while [[ "$1" == -* ]]; do
+    if [ "$1" == '--fix' ]; then
+        FIX='true'
+        shift
+    fi
+done
+
+if $FIX; then
+    echo_divider_with_text "- !! ------" "rubocop can fix some stuff for you:"
+    bundle exec rubocop -A --color
+fi
+
 echo_divider_with_text "O-=======-" "lint:"
 
 # TODO^17: if in write mode...
@@ -36,6 +49,6 @@ pylint --rcfile .pylintrc 'bin/todo_v0.4' lib/todo_line.py bin/silliness/demo_py
 echo_divider_with_text "+-=======-" "rubocop:"
 # TODO^2: call rupocop with -a OR -P depending on whether this script is in write mode or not (this script should have
 # that as a distinct mode like todo does)
-bundle exec rubocop -P --color || accumulate_error 'rubocop reported errors'
+bundle exec rubocop -P --color || accumulate_error 'rubocop reported errors, please run "lint --fix"'
 
 exit_with_any_accumulated_errors
