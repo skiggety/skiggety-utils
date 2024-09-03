@@ -1,8 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# NOTE: using https://github.com/rxhanson/Rectangle because Spectacle is going
-# to be unmaintained: https://github.com/eczarny/spectacle#important-note
+# NOTE: using https://github.com/rxhanson/Rectangle
 
 require_relative '../lib/installable_skiggety_util'
 

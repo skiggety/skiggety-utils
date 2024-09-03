@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative '../lib/installable_skiggety_util'
+
+class FortuneInstaller
+
+  include InstallableSkiggetyUtil
+
+  def apparently_installed?
+    if on_mac_os?
+      !!system('fortune > /dev/null')
+    else
+      true # skip other os'es for now
+    end
+  end
+
+  def apparently_configured?
+    true # nothing to configure, I think..
+  end
+
+  def install!
+    if on_mac_os?
+      brew_install_latest 'fortune'
+    else
+      raise NotImplementedError, 'TODO: implement this for this OS'
+    end
+  end
+
+end
+
+FortuneInstaller.run
