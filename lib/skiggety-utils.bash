@@ -1,6 +1,8 @@
 # WARNING: Changes to this file will make ./demo_in_docker very slow to start on the next run.
 # Hesitate to commit!
 
+# TODO^181: do this in shell, not here: zl-delegate "TODO: IMPLEMENT something HERE ( $(echo_here) )" && exit_with_error "needs implementation" # TODO: (IN_PROGRESS) this is the beginning of something like interactive_dev_here
+
 # TODO^2: extract & include shelper.bash which checks bash version, and provides utility functions.
 # Figure out how to distribute it as a shell library:
 # TODO^2: . $THIS_DIR/shelper.bash || exit 1
