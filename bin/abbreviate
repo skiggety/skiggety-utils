@@ -64,19 +64,21 @@ if [ $INPUT_LINES -gt $MAX_SCREEN_LINES -o $DIVIDER ]; then
     if [ "$MAX_LINES" -gt "$INPUT_LINES" ]; then
         SHOWN_LINES="$INPUT_LINES"
     fi
-    explanation="( showing "
+    explanation="Showing "
     if [ "$SHOWN_LINES" -eq "$INPUT_LINES" ]; then
         explanation="${explanation}${INPUT_LINES} lines of output"
     else
         explanation="${explanation}last $SHOWN_LINES lines out of $INPUT_LINES"
     fi
-    if [ -n "$TITLE" ];then
+    if [ -n "$TITLE" ]; then
         explanation="${explanation} for '$TITLE'"
     fi
-    explanation="${explanation}: )"
+    explanation="${explanation}:"
 
     if $DIVIDER && [ "$SHOWN_LINES" -ne "$INPUT_LINES" ]; then
         echo_divider_with_text '^' "$explanation"
+    elif [ -n "$TITLE" ]; then
+        echo_divider_with_text '=' "$explanation"
     else
         echo "$explanation"
     fi
