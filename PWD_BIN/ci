@@ -38,4 +38,6 @@ git-restore-generated-files
 echo_debug git log oneline:
 git-log-recent
 
+sleep 30 # minumum delay so even if it's in a loop, you dont pester the git server too often
+
 exit_with_any_accumulated_errors
