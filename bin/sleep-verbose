@@ -30,7 +30,7 @@ function main {
     delay_remaining="$delay"
 
     while [ "$delay_remaining" -gt 0 ]; do
-        if $SHOW_COUNTDOWN && [ $delay_remaining -le 60 ]; then
+        if $SHOW_COUNTDOWN && [ $delay_remaining -le 30 ] && [ $delay -gt $(( $delay_remaining + 5 )) ]; then
             for nli in $(seq $(tput lines));do echo;done # TODO^3: maybe function extract as it wipes the screen and leaves the cursor at the bottom
             banner -w $(( 77 - $delay_remaining )) $delay_remaining
         fi
