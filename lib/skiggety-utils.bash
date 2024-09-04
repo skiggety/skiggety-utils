@@ -173,7 +173,7 @@ function echo_divider_with_text {
     echo_divider_without_newline "$pattern"
     echo -ne "\r" # TODO^4: cut this bs out and do it properly, in some places this looks like a newline
     echo_pattern_n_length_without_newline "$pattern" 4
-    echo -e " $text "
+    echo -e " $text $pattern" # WARNING HACK putting pattern in here one more time to avoid a trailing space
 }
 
 function echo_divider {
