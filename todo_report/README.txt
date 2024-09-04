@@ -1,8 +1,8 @@
 ==== TODOs, ascending, so you know what's likely to change next. Do not edit, run 'generate_todo_report' to generate. ====
-( showing last 8 lines out of 565 for 'todo': )
+( showing last 8 lines out of 568 for 'todo': )
 ./installers/signal:37:  # TODO^141: (IN_PROGRESS) IMPLEMENT: ...
 ./bin/vimfirst:7:# TODO^169: '--while' and '--until' options get it looping like vimfirst-while and vimfirst-until
-./lib/skiggety-utils.bash:4:# TODO^181: do this in shell, not here: zl-delegate "TODO: IMPLEMENT something HERE ( $(echo_here) )" && exit_with_error "needs implementation" # TODO: (IN_PROGRESS) this is the beginning of something like interactive_dev_here
+./lib/skiggety-utils.bash:123:# TODO^181: TESTING IN_PROGRESS NOW:
 ./bin/vital:68:# TODO^184: (IN_PROGRESS) make plans to clean up archives better
 ./bin/today_todo:86:    # TODO^191: (IN_PROGRESS, NOW) also most of these paragraphs could be function extracted...:
 ./bin/today_todo:236:    git -c color.ui=always --no-pager log --oneline --decorate=short --branches --not --remotes # TODO^192: (TESTING IN_PROGRESS)
