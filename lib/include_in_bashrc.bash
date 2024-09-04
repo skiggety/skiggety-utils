@@ -63,7 +63,7 @@ alias cdsu="cd $SKIGGETY_UTILS_DIR"
 # TODO^2: TEST on linux:
 # This is nice if you suddenly realize you need to copy some information off the screen, or if you want to keep a
 # window/tab open with the same visual settings
-trap 'if [ "login" == "$(ps -o comm= $PPID)" ];then echo;zl-battery-status;echo;echo "================================================================================";for i in $(seq 15 1);do echo -n "~";for j in $(seq $i);do echo -n " ~ ~";done;echo;done;echo "~";echo;fortune;echo;echo "(Holding this shell open for a moment just in case you need to capture anything)";echo;sleep-verbose 15;oop;fi' EXIT
+trap 'if [ "login" == "$(ps -o comm= $PPID)" ];then echo;zl-battery-status;echo;echo "================================================================================";for i in $(seq 14 1);do echo -n "~";for j in $(seq $i);do echo -n " ~ ~";done;echo;done;echo "~";echo;fortune | sed "s/^/        /";echo;echo;echo "(Holding this shell open for a moment just in case you need to capture anything)";echo;sleep-verbose 15;oop;fi' EXIT
 
 # asdf stuff (should be at the bottom of this file):
 . "$HOME/.asdf/asdf.sh"
