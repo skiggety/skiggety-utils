@@ -36,7 +36,7 @@ if git-no-unpushed-changes && git-no-uncommitted-changes; then
 else
     dashboard
     git safe-pull
-    shellask "Commit something, probably using 'cgry' or 'ci && git ready && yup'. (in $(pwd))"
+    shellask "Commit something, probably using 'cgry' or 'ci && git ready && yup'. (in $(pwd))" || exit_with_error "did not commit"
 fi
 
 if git-no-unpushed-changes && git-no-uncommitted-changes; then
