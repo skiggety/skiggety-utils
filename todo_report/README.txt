@@ -1,10 +1,10 @@
 ==== TODOs, ascending, so you know what's likely to change next. Do not edit, run 'generate_todo_report' to generate. ====
-( showing last 8 lines out of 568 for 'todo': )
+( showing last 8 lines out of 569 for 'todo': )
 ./installers/signal:37:  # TODO^141: (IN_PROGRESS) IMPLEMENT: ...
 ./bin/vimfirst:7:# TODO^169: '--while' and '--until' options get it looping like vimfirst-while and vimfirst-until
 ./lib/skiggety-utils.bash:123:# TODO^181: TESTING IN_PROGRESS NOW:
 ./bin/vital:68:# TODO^184: (IN_PROGRESS) make plans to clean up archives better
-./bin/today_todo:86:    # TODO^191: (IN_PROGRESS, NOW) also most of these paragraphs could be function extracted...:
-./bin/today_todo:238:    git -c color.ui=always --no-pager log --oneline --decorate=short --branches --not --remotes # TODO^192: (TESTING IN_PROGRESS)
+./bin/today_todo:239:    git -c color.ui=always --no-pager log --oneline --decorate=short --branches --not --remotes # TODO^192: (TESTING IN_PROGRESS)
+./bin/today_todo:86:    # TODO^196: (IN_PROGRESS, NOW) also most of these paragraphs could be function extracted...:
 ./bin/vimfirst-until:3:# TODO^200: this should be a special mode of vimfirst, so it shares code, just another way of using a --while flag
 ./bin/vimfirst-while:3:# TODO^200: this should be a special mode of vimfirst, so it shares code, just another way of using a --until flag
