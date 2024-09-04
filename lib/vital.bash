@@ -3,6 +3,14 @@
 VITAL_DIR=${VITAL_DIR:-"$HOME/vital"}
 export VITAL_DIR
 
+VITAL_REPORTS_DIR="${VITAL_DIR}/reports"
+mkdir -p "$VITAL_REPORTS_DIR"
+export VITAL_REPORTS_DIR
+
+VITAL_REPORTS_ARCHIVE_DIR="${VITAL_REPORTS_DIR}/archive"
+mkdir -p "$VITAL_REPORTS_ARCHIVE_DIR"
+export VITAL_REPORTS_ARCHIVE_DIR
+
 isotoday="$(isotoday)"
 export isotoday
 
