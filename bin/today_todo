@@ -83,7 +83,7 @@ function main {
         git safe-pull || { shellask "resolve any issues in this local repo"; exit_with_error 'git safe-pull FAILED'; }
     fi
 
-    # TODO^191: (IN_PROGRESS, NOW) also most of these paragraphs could be function extracted...:
+    # TODO^196: (IN_PROGRESS, NOW) also most of these paragraphs could be function extracted...:
 
     # generate todo reports for external directories, including Zerothlife and skiggety_utils, and (TODO^41), honestly, putting this here is a hack...maybe those external programs should generate something themselves...
     # TODO: only put code todos in with main todos if you have configured Zerothlife to do so, and don't do this on secondary computers
@@ -222,7 +222,8 @@ function main {
     fi
 
     if $interactive; then
-        vital-push-data || shellask "resolve issues in this directory and maybe (TODO) edit $(echo_here)" || accumulate_error "vital-push-data FAILED"
+        # TODO: maybe push data even when non interactive sometimes, or just cron it on its own??
+        vital-push-data || shellask "resolve issues in this directory and maybe (TODO^2) edit $(echo_here)" || accumulate_error "vital-push-data FAILED"
         clear
     fi
 

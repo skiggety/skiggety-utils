@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+. $SKIGGETY_UTILS_DIR/lib/vital.bash || exit_with_error 'could not include vital.bash'
+
+cd $VITAL_DIR
+
+# NOTE: this must be the very last thing in the script, so that the exit code passes through:
+$SKIGGETY_UTILS_DIR/bin/todo --exclude-dir .git \
+                             --exclude-dir reports \
+                             $*
