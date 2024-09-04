@@ -69,3 +69,4 @@ function hesitate-and-run-or-fail {
 }
 
 main "$@"
+exit 0
