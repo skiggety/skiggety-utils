@@ -3,12 +3,12 @@
 
 require_relative '../lib/installable_skiggety_util'
 
-class FortuneInstaller
+class AhaInstaller
 
   include InstallableSkiggetyUtil
 
   def apparently_installed?
-    !!system('fortune > /dev/null')
+    !!system('aha --version > /dev/null') # TODO: function extract tolibrary...just seeing if basic command works
   end
 
   def apparently_configured?
@@ -17,7 +17,8 @@ class FortuneInstaller
 
   def install!
     if on_mac_os?
-      brew_install_latest 'fortune'
+      # assert_system('brew tap masukomi/homebrew-apps') # TODO: function extract brew tap??
+      brew_install_latest 'aha'
     else
       raise NotImplementedError, 'TODO: implement this for this OS'
     end
@@ -25,4 +26,4 @@ class FortuneInstaller
 
 end
 
-FortuneInstaller.run
+AhaInstaller.run

@@ -16,6 +16,7 @@ git add "$vital_todo_list_file_path"
 git add "$vital_done_list_file_name"
 git add 'graph.csv'
 git add 'archive/'
+git add "$VITAL_REPORTS_DIR"
 git add *.TEMP.*
 
 git add -p
