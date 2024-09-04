@@ -12,6 +12,8 @@ if [ $(git status -s | wc -l) -eq 0 ];then
     exit 0
 fi
 
+cp $SKIGGETY_UTILS_DIR/bin/vital-todo $VITAL_DIR/PWD_BIN/todo
+git add $VITAL_DIR/PWD_BIN/todo
 git add "$vital_todo_list_file_path"
 git add "$vital_done_list_file_name"
 git add 'graph.csv'
