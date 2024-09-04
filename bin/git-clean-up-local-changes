@@ -5,24 +5,25 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
 function celebrate {
-    echo_divider ".  "
-    echo_divider ".   "
-    echo_divider ".    "
-    echo_divider ".     "
-    echo_divider ".      "
-    echo_divider ".       "
-    echo_divider ".        "
-    echo_divider ".         "
-    echo_divider_with_text ".          " "$(basename $(pwd)) has no changes or commits outstanding!"
-    echo_divider ".         "
-    echo_divider ".        "
-    echo_divider ".       "
-    echo_divider ".      "
-    echo_divider ".     "
-    echo_divider ".    "
-    echo_divider ".   "
-    echo_divider ".  "
-    sleep 5
+    {
+        echo_divider ".  "
+        echo_divider ".   "
+        echo_divider ".    "
+        echo_divider ".     "
+        echo_divider ".      "
+        echo_divider ".       "
+        echo_divider ".        "
+        echo_divider ".         "
+        echo_divider_with_text ".          " "$(basename $(pwd)) has no changes or commits outstanding!"
+        echo_divider ".         "
+        echo_divider ".        "
+        echo_divider ".       "
+        echo_divider ".      "
+        echo_divider ".     "
+        echo_divider ".    "
+        echo_divider ".   "
+        echo_divider ".  "
+    } | slow-cat
 }
 
 if ! git rev-parse; then
