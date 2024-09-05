@@ -21,7 +21,7 @@ git add 'archive/'
 git add "$VITAL_REPORTS_DIR"
 git add *.TEMP.*
 
-git add -p
+git add .  # TODO?: in an interactive mode, I might do 'git add -p' instead...
 
 git commit -m "$(basename $0) committing automatically from $(hostname) at $(date)" || exit_with_error "commit FAILED"
 git safe-pull || exit_with_error "FAILED to git pull"
