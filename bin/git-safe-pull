@@ -5,6 +5,8 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
+echo_divider_with_text '-' "Running '$(basename $0)' as $(duh) :"
+
 git-restore-generated-files || accumulate_error "Could not run 'git-restore-generated-files'. Make sure you have a script by that name in PWD_BIN/, that should restore any generated files."
 
 git-pretty-pull || exit_with_error "git-pretty-pull FALED"
