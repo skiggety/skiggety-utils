@@ -5,6 +5,6 @@
 ./lib/skiggety-utils.bash:123:# TODO^181: TESTING IN_PROGRESS NOW:
 ./bin/vital:68:# TODO^184: (IN_PROGRESS) make plans to clean up archives better
 ./bin/today_todo:239:    git -c color.ui=always --no-pager log --oneline --decorate=short --branches --not --remotes # TODO^192: (TESTING IN_PROGRESS)
-./bin/today_todo:86:    # TODO^196: (IN_PROGRESS, NOW) also most of these paragraphs could be function extracted...:
+./bin/today_todo:86:    # TODO^196: (IN_PROGRESS) also most of these paragraphs could be function extracted...:
 ./bin/vimfirst-until:3:# TODO^200: this should be a special mode of vimfirst, so it shares code, just another way of using a --while flag
 ./bin/vimfirst-while:3:# TODO^200: this should be a special mode of vimfirst, so it shares code, just another way of using a --until flag
