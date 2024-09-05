@@ -103,7 +103,7 @@ function main {
     # Open todo list file(s) up for editing (TODO IN_PROGRESS function extract)
     if $interactive; then
         tmp_sorted_list="/tmp/today_todo.$$.sorted.TEMP.txt"
-        todo --non-interactive --color never | grep 'TODO.today.txt:' | sed "s/^.\/${vital_todo_list_file_name}:[[:digit:]]*://" | tac > $tmp_sorted_list # IGNORE_TODO
+        vital-todo --non-interactive --color never | grep 'TODO.today.txt:' | sed "s/^.\/${vital_todo_list_file_name}:[[:digit:]]*://" | tac > $tmp_sorted_list # IGNORE_TODO
         if ! [ -f "$vital_done_list_file_name" ]; then
             echo 'Done:' > $vital_done_list_file_name
             echo '----------------------------------------' >> $vital_done_list_file_name
@@ -122,19 +122,19 @@ function main {
     if $interactive; then
         WRITE_FLAG='w'
     fi
-    todo "-${WRITE_FLAG}fq" $EXCLUDE_DIR_ARGS
+    vital-todo "-${WRITE_FLAG}fq" $EXCLUDE_DIR_ARGS
     PAUSE_TO_READ=0 # TODO: set to 10 if passed '--slow' or '-s'
 
     # TODO^3: consider extracting the rest of this script to "today_todo_display", which can be overridden with PWD_BIN, or
     # alternatively we could do like 'todo' and use flags to turn editing and reporting on and off:
 
     echo "-------- Last few todos DONE:"
-    todo -k DONE $EXCLUDE_DIR_ARGS | tail -n 3 | grep --color=always DONE
+    vital-todo -k DONE $EXCLUDE_DIR_ARGS | tail -n 3 | grep --color=always DONE
     if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
 
     # TODO: -n 5 # TODO^2: todo should accept an option for the number of lines.  like "-n 3".  Maybe if we pass an
     # option in?:
-    todo_output="$(todo --color always $EXCLUDE_DIR_ARGS | cat -n )"
+    todo_output="$(vital-todo --color always $EXCLUDE_DIR_ARGS | cat -n )" # TODO: (DEBUG IN_PROGRESS) which todo are you calling
 
     todo_count=$(( 0 + $(echo "$todo_output" | wc -l) ))
     echo
