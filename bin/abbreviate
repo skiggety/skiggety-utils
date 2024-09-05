@@ -59,6 +59,10 @@ if $AUTO_SCALE; then
     MAX_SCREEN_LINES="$(( $MAX_LINES + 1 ))" # because the explanation takes up 1 line
 fi
 
+if [ -n "$TITLE" ]; then
+    echo_divider_with_text '=' "$TITLE (shown by $(basename $0))"
+fi
+
 if [ $INPUT_LINES -gt $MAX_SCREEN_LINES -o $DIVIDER ]; then
     SHOWN_LINES="$MAX_LINES"
     if [ "$MAX_LINES" -gt "$INPUT_LINES" ]; then
@@ -77,8 +81,6 @@ if [ $INPUT_LINES -gt $MAX_SCREEN_LINES -o $DIVIDER ]; then
 
     if $DIVIDER && [ "$SHOWN_LINES" -ne "$INPUT_LINES" ]; then
         echo_divider_with_text '^' "$explanation"
-    elif [ -n "$TITLE" ]; then
-        echo_divider_with_text '=' "$explanation"
     else
         echo "$explanation"
     fi
