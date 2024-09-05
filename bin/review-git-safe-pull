@@ -5,7 +5,5 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
 clear
-duh
-
 export SKIGGETY_DIVIDER_LENGTH="$(tput cols)"
 review --no-listen -m 151 -M 1500 git safe-pull
