@@ -1,5 +1,5 @@
 ==== TODOs, ascending, so you know what's likely to change next.  Do not edit, run 'generate_todo_report' to generate. ====
-================================================================================================================================= Showing last 8 lines out of 571 for 'todo': =
+============================================================================================================================= Showing last 8 lines out of 571 for 'todo': =
 ./installers/signal:37:  # [1m[31mTODO^141[0m[0m: (IN_PROGRESS) IMPLEMENT: ...
 ./bin/vimfirst:7:# [1m[31mTODO^169[0m[0m: '--while' and '--until' options get it looping like vimfirst-while and vimfirst-until
 ./lib/skiggety-utils.bash:123:# [1m[31mTODO^181[0m[0m: TESTING IN_PROGRESS NOW:
