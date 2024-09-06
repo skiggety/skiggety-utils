@@ -71,16 +71,19 @@ fi
 
 if [ -n "$TITLE" ]; then
     TITLE_IN_PRACTICE="$TITLE"
+
     if ! [ $INPUT_LINES -gt $MAX_SCREEN_LINES -a $DIVIDER ]; then
         TITLE_IN_PRACTICE="$TITLE_IN_PRACTICE ('$(basename $0)' $explanation)"
     else
         TITLE_IN_PRACTICE="$TITLE_IN_PRACTICE (shown by '$(basename $0)')"
     fi
+
     if $DIVIDER; then
         echo_divider_with_text '-' "$TITLE_IN_PRACTICE"
     else
         echo "$TITLE_IN_PRACTICE"
     fi
+
 fi
 
 if [ $INPUT_LINES -gt $MAX_SCREEN_LINES ]; then
@@ -91,6 +94,6 @@ if [ $INPUT_LINES -gt $MAX_SCREEN_LINES ]; then
     fi
 
     echo "$INPUT" | tail -n $MAX_LINES
-else
+elif [ -n "$INPUT" ]; then
     echo "$INPUT"
 fi
