@@ -9,9 +9,10 @@ class LocalBackupSetterUpper
 
   def apparently_installed?
     if on_mac_os?
-      program_version_option_output_matches?('tmutil', / 4\.0\.0 /) # TODO^2: how to keep these updated over time? I think it will kind of take care of itself...
-      # TODO^2: how should I keep tabs on new versions of software, in general?  Some automated way to watch for it and
-      # decide if I want it?  maybe all installers expect a stanndardized method to check for updates?
+      program_version_option_output_matches?('tmutil', / 4\.0\.0 /)
+      # TODO^2?: how should I keep tabs on new versions of software, in general?  Will it take care of itself, or do I
+      # need Some automated way to watch for it and decide if I want it?  maybe all installers expect a stanndardized
+      # method to check for updates?
     elsif on_linux_os?
       true # TODO: IMPLEMENT
     else
@@ -26,7 +27,7 @@ class LocalBackupSetterUpper
       ## ??? ## (backup_done_indicator =~ /Percent = 1;/).is_a?(Numeric).to_s
       ## ??? ## puts 'DEBUG: TODO^10: ...finish this thought: ' + backup_done_indicator
       # TODO^80?: Perhaps make this bit more slick and automatic so I can DELETE this line:
-      return ask_user 'Is time machine set up and working?'
+      ask_user 'Is time machine set up and working?'
     elsif on_linux_os?
       true # TODO: IMPLEMENT
     else
