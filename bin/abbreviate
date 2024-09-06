@@ -59,30 +59,35 @@ if $AUTO_SCALE; then
     MAX_SCREEN_LINES="$(( $MAX_LINES + 1 ))" # because the explanation takes up 1 line
 fi
 
-if [ -n "$TITLE" ]; then
-    echo_divider_with_text '=' "$TITLE (shown by $(basename $0))"
+SHOWN_LINES="$MAX_LINES"
+if [ "$MAX_LINES" -gt "$INPUT_LINES" ]; then
+    SHOWN_LINES="$INPUT_LINES"
 fi
 
-if [ $INPUT_LINES -gt $MAX_SCREEN_LINES -o $DIVIDER ]; then
-    SHOWN_LINES="$MAX_LINES"
-    if [ "$MAX_LINES" -gt "$INPUT_LINES" ]; then
-        SHOWN_LINES="$INPUT_LINES"
-    fi
-    explanation="Showing "
-    if [ "$SHOWN_LINES" -eq "$INPUT_LINES" ]; then
-        explanation="${explanation}${INPUT_LINES} lines of output"
-    else
-        explanation="${explanation}last $SHOWN_LINES lines out of $INPUT_LINES"
-    fi
-    if [ -n "$TITLE" ]; then
-        explanation="${explanation} for '$TITLE'"
-    fi
-    explanation="${explanation}:"
+explanation="showing last $SHOWN_LINES lines out of $INPUT_LINES"
+if [ "$SHOWN_LINES" -eq "$INPUT_LINES" ]; then
+    explanation="showing ${INPUT_LINES} lines of output"
+fi
 
-    if $DIVIDER && [ "$SHOWN_LINES" -ne "$INPUT_LINES" ]; then
-        echo_divider_with_text '^' "$explanation"
+if [ -n "$TITLE" ]; then
+    TITLE_IN_PRACTICE="$TITLE"
+    if ! [ $INPUT_LINES -gt $MAX_SCREEN_LINES -a $DIVIDER ]; then
+        TITLE_IN_PRACTICE="$TITLE_IN_PRACTICE ('$(basename $0)' $explanation)"
     else
-        echo "$explanation"
+        TITLE_IN_PRACTICE="$TITLE_IN_PRACTICE (shown by '$(basename $0)')"
+    fi
+    if $DIVIDER; then
+        echo_divider_with_text '-' "$TITLE_IN_PRACTICE"
+    else
+        echo "$TITLE_IN_PRACTICE"
+    fi
+fi
+
+if [ $INPUT_LINES -gt $MAX_SCREEN_LINES ]; then
+    if $DIVIDER; then
+        echo_divider_with_text '^' "${explanation}:"
+    else
+        echo "${explanation}:"
     fi
 
     echo "$INPUT" | tail -n $MAX_LINES

@@ -30,8 +30,8 @@ debug_eval todos_now
 todo_by_status_whole="${todos_in_progress_header}${newline}${todos_in_progress}${newline}${todos_now_header}${newline}${todos_now}"
 debug_eval todo_by_status_whole
 
-todo_report_body="$(echo "$todo_report_whole" | abbreviate -n $TODO_REPORT_LINES -t 'todo' )"
-todo_report_body_in_color="$(echo "$todo_report_whole_in_color" | abbreviate -n $TODO_REPORT_LINES -t 'todo' )"
+todo_report_body="$(echo "$todo_report_whole" | abbreviate -d -n $TODO_REPORT_LINES -t 'todo' )"
+todo_report_body_in_color="$(echo "$todo_report_whole_in_color" | abbreviate -d -n $TODO_REPORT_LINES -t 'todo' )"
 
 # TODO^3: graph this over time, also maybe total votecount and how many votes the topvoted todo has:
 todo_report_linecount=$(echo "$todo_report_whole" | wc -l | sed 's/^[ \t]*//')
