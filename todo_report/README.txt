@@ -1,6 +1,6 @@
 ==== TODOs, ascending, so you know what's likely to change next.  Do not edit, run 'generate_todo_report' to generate. ====
------------------------------------------------------------------------------------------------------------------------------ todo (shown by 'abbreviate') -
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ showing last 8 lines out of 574: ^
+--------------------------------------------------------------------------------------------------------------------------------- todo (shown by 'abbreviate') -
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ showing last 8 lines out of 574: ^
 ./bin/vimfirst:7:# TODO^169: '--while' and '--until' options get it looping like vimfirst-while and vimfirst-until
 ./lib/skiggety-utils.bash:127:# TODO^181: TESTING IN_PROGRESS NOW:
 ./bin/vital:68:# TODO^184: (IN_PROGRESS) make plans to clean up archives better
