@@ -7,6 +7,7 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
+# TODO?: maybe you could configure in which bin directory new scripts end up
 if [ "$1" == "$(basename $1)" ];then
     new_file="$SKIGGETY_UTILS_DIR/bin/$1"
 else
