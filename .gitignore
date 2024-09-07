@@ -1,6 +1,7 @@
 # This is for if you want files to be ignored
 # ===========================================
 
+# Nice generic way to get your file ignored, just name it accordingly:
 *.gitignored.*
 
 # Ignore vim swap files:
