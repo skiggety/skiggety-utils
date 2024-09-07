@@ -66,7 +66,7 @@ fi
 
 explanation="showing last $SHOWN_LINES lines out of $INPUT_LINES"
 if [ "$SHOWN_LINES" -eq "$INPUT_LINES" ]; then
-    explanation="showing ${INPUT_LINES} lines of output"
+    explanation="showing ${INPUT_LINES} lines of output" # DEBUG: it's showing all 3, claiming it's only two for completed routines right now (EASY TODO^190 IN_PROGRESS NOW)
 fi
 
 if [ -n "$TITLE" ]; then
