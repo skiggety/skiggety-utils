@@ -26,6 +26,7 @@ function celebrate {
         echo_divider ". "
         echo_divider "."
     } | slow-cat
+    echo 'Feel free to enjoy that for 3 seconds:';sleep-verbose 3
 }
 
 if ! git rev-parse; then
