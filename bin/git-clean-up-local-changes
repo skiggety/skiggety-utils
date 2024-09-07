@@ -23,6 +23,8 @@ function celebrate {
         echo_divider ".    "
         echo_divider ".   "
         echo_divider ".  "
+        echo_divider ". "
+        echo_divider "."
     } | slow-cat
 }
 
@@ -31,14 +33,16 @@ if ! git rev-parse; then
 fi
 
 if git-no-unpushed-changes && git-no-uncommitted-changes; then
-    echo "The repo is clean, nothing to do...: $(duh)"
-    sleep-verbose 3
+    echo_divider '.'
+    echo_divider_with_text '. ' "The repo is clean, nothing to do...: $(duh)"
+    sleep 1
 else
     git safe-pull
     generate
     if git-no-unpushed-changes && git-no-uncommitted-changes; then
-        echo "After an update & generate, the repo is actually clean, nothing to do...: $(duh)"
-        sleep-verbose 3
+        echo_divider '.'
+        echo_divider_with_text '. ' "After an update & generate, the repo is actually clean, nothing to do...: $(duh)"
+        sleep 1
     else
         dashboard
         shellask "Commit something, probably using 'cgry' or 'ci && git ready && yup'. (in $(pwd))" || exit_with_error "did not commit"
