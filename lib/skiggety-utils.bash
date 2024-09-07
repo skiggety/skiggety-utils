@@ -124,9 +124,10 @@ function debug_here {
     echo_debug "$* $(echo_callsite)"
 }
 
-# TODO^181: TESTING IN_PROGRESS NOW:
 function interactive_develop_here {
-    shellask "Do you want to EDIT CODE to $* at $(echo_callsite) ?" && $EDITOR $(echo_callsite | sed 's/:\d*//' )&& exit_with_error "IMPLEMENTATION was not done yet at $(echo_callsite), please try again"
+    # TODO^182: TESTING IN_PROGRESS NOW:
+    shellask "$0: Do you want to EDIT CODE near $(echo_callsite) now because '$*'?" && vim -o $(echo_callsite | sed 's/at //' | sed 's/:\d*/ +/' )
+    shellask "Do you want to 'exit_with_error' now?" && exit_with_error "IMPLEMENTATION was not done yet $(echo_callsite), please try again"
 }
 
 function debug_eval {
