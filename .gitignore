@@ -5,7 +5,7 @@
 *.gitignored.*
 
 # Ignore vim swap files:
-.*.swp
+.*.sw[nop]
 
 # ignore the mac finder droppings:
 .DS_Store
