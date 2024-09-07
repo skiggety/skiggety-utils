@@ -8,15 +8,12 @@
 ./bin/vital-todo:9:# TODO^51: EASY [01;31m[KIN_PROGRESS[m[K exclude that .tmp driveupload thingy:
 ./bin/vimwhich:25:        # TODO^54: ([01;31m[KIN_PROGRESS[m[K) this should share code with newbin, or call newbin in a mode where it doesn't open the editor, it just dumped a new script in $HOME/ instead of a bin dir, which wasn't too good.
 ./installers/skiggety.bash:66:        # TODO^69: ([01;31m[KIN_PROGRESS[m[K) also make sure Zerothlife takes care of it itself, asking the user to put it in their bashrc
-./installers/zerothlife:6:# TODO^140: ([01;31m[KIN_PROGRESS[m[K, NOW) TEST this script
-./installers/zerothlife:9:# - TODO^140: ([01;31m[KIN_PROGRESS[m[K) make this, and maybe all installers, optional.  We could use marker files to keep track
-./installers/signal:37:  # TODO^141: ([01;31m[KIN_PROGRESS[m[K) IMPLEMENT: ...
-./lib/skiggety-utils.bash:127:# TODO^181: TESTING [01;31m[KIN_PROGRESS[m[K NOW:
+./installers/zerothlife:7:# - TODO^140: ([01;31m[KIN_PROGRESS[m[K) make this, and maybe all installers, optional.  We could use marker files to keep track
+./installers/signal:37:  # TODO^150: ([01;31m[KIN_PROGRESS[m[K) IMPLEMENT: ...
+./lib/skiggety-utils.bash:128:    # TODO^182: TESTING [01;31m[KIN_PROGRESS[m[K NOW:
 ./bin/vital:68:# TODO^184: ([01;31m[KIN_PROGRESS[m[K) make plans to clean up archives better
 ./bin/abbreviate:66:    explanation="showing ${INPUT_LINES} lines of output" # DEBUG: it's showing all 3, claiming it's only two for completed routines right now (EASY TODO^190 [01;31m[KIN_PROGRESS[m[K NOW)
-./bin/today_todo:239:    git -c color.ui=always --no-pager log --oneline --decorate=short --branches --not --remotes # TODO^192: (TESTING [01;31m[KIN_PROGRESS[m[K)
-./bin/today_todo:86:    # TODO^196: ([01;31m[KIN_PROGRESS[m[K) also most of these paragraphs could be function extracted...:
+./bin/today_todo:86:    # TODO^195: ([01;31m[KIN_PROGRESS[m[K) also most of these paragraphs could be function extracted...:
 ---- TODOs for right NOW: ------------------------------------------------------
-./installers/zerothlife:6:# TODO^140: (IN_PROGRESS, [01;31m[KNOW[m[K) TEST this script
-./lib/skiggety-utils.bash:127:# TODO^181: TESTING IN_PROGRESS [01;31m[KNOW[m[K:
+./lib/skiggety-utils.bash:128:    # TODO^182: TESTING IN_PROGRESS [01;31m[KNOW[m[K:
 ./bin/abbreviate:66:    explanation="showing ${INPUT_LINES} lines of output" # DEBUG: it's showing all 3, claiming it's only two for completed routines right now (EASY TODO^190 IN_PROGRESS [01;31m[KNOW[m[K)

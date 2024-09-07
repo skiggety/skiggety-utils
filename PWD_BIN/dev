@@ -39,6 +39,13 @@ lint && echo "lint SUCCEEDED" || exit_with_error "lint FAILED"
 
 dashboard || accumulate_error "dashboard FAILED"
 
+if ls $SKIGGETY_UTILS_DIR/bin/zl-*; then
+    if [ -d $ZEROTHLIFE_CODE_DIR ]; then
+        echo_divider_with_text "!!!-----" "moving scripts: 'mv $SKIGGETY_UTILS_DIR/bin/zl-* $ZEROTHLIFE_CODE_DIR/bin/'"
+        mv $SKIGGETY_UTILS_DIR/bin/zl-* $ZEROTHLIFE_CODE_DIR/bin/
+    fi
+fi
+
 if [ -f "$experiment_script" ]; then
     echo_divider_with_text "=" "Running \"$experiment_script\" (2/2) ..."
     $experiment_script || exit_with_error "experimental script \"$experiment_script\" 2nd run FAILED"
