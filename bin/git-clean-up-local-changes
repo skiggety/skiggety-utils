@@ -31,7 +31,7 @@ if ! git rev-parse; then
 fi
 
 if git-no-unpushed-changes && git-no-uncommitted-changes; then
-    echo
+    echo "The repo is clean, nothing to do...: $(duh)"
 else
     dashboard
     git safe-pull
@@ -41,4 +41,5 @@ fi
 if git-no-unpushed-changes && git-no-uncommitted-changes; then
     celebrate
 fi
+
 exit 0
