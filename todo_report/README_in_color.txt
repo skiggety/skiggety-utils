@@ -1,8 +1,8 @@
 ==== TODOs, ascending, so you know what's likely to change next.  Do not edit, run 'generate_todo_report' to generate. ====
---------------------------------------------------------------------------------------------------------------------------------- todo (shown by 'abbreviate') -
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ showing last 8 lines out of 574: ^
+----------------------------------------------------------------------------------------------------------------------------- todo (shown by 'abbreviate') -
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ showing last 8 lines out of 574: ^
 ./bin/vimfirst:7:# [1m[31mTODO^169[0m[0m: '--while' and '--until' options get it looping like vimfirst-while and vimfirst-until
-./lib/skiggety-utils.bash:123:# [1m[31mTODO^181[0m[0m: TESTING IN_PROGRESS NOW:
+./lib/skiggety-utils.bash:127:# [1m[31mTODO^181[0m[0m: TESTING IN_PROGRESS NOW:
 ./bin/vital:68:# [1m[31mTODO^184[0m[0m: (IN_PROGRESS) make plans to clean up archives better
 ./bin/abbreviate:66:    explanation="showing ${INPUT_LINES} lines of output" # DEBUG: it's showing all 3, claiming it's only two for completed routines right now (EASY [1m[31mTODO^190[0m[0m IN_PROGRESS NOW)
 ./bin/today_todo:239:    git -c color.ui=always --no-pager log --oneline --decorate=short --branches --not --remotes # [1m[31mTODO^192[0m[0m: (TESTING IN_PROGRESS)
