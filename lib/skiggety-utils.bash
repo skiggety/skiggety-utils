@@ -17,10 +17,17 @@ yellow='\033[0;33m'
 blinky_yellow='\033[0;5;33m'
 YELLOW='\033[1;33m'
 blinky_YELLOW='\033[1;5;33m'
+usually_too_dark_blue='\033[0;34m'
+# TODO?: USUALLY_TOO_DARK_BLUE='\033[1;34m'
+magenta='\033[0;35m'
+MAGENTA='\033[1;35m'
 cyan='\033[0;36m'
 CYAN='\033[1;36m'
 blinky_CYAN='\033[1;5;36m'
 no_color='\033[0m'
+# TODO?: random_color="$()" # random (not-bright) color
+# TODO?: random_COLOR="$()" # random bright color
+# TODO?: random_CoLoR="$()" # random color, could be bright
 
 newline='
 '

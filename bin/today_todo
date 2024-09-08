@@ -207,7 +207,7 @@ function main {
     fi
 
     # EASY TODO^8: add now count to this output?:
-    echo "$(( $todo_count + $todo_prog_count )) combined score, $todo_prog_count todos IN_PROGRESS"
+    echo_divider_with_text '=' "$(basename $0): $(( $todo_count + $todo_prog_count )) combined score, $todo_prog_count todos IN_PROGRESS"
 
     # EASY TODO^28: graph max votecount
     # EASY TODO^24: graph "CONFIRMING" and Done

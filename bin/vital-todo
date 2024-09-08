@@ -6,7 +6,8 @@
 cd $VITAL_DIR
 
 # NOTE: this must be the very last thing in the script, so that the exit code passes through:
-# TODO^51: EASY IN_PROGRESS exclude that .tmp driveupload thingy:
+# TODO^51: TESTING IN_PROGRESS exclude that .tmp driveupload thingy:
 $SKIGGETY_UTILS_DIR/bin/todo --exclude-dir .git \
+                             --exclude-dir .tmp.driveupload \
                              --exclude-dir reports \
                              $*

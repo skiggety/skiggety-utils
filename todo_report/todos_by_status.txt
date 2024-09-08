@@ -5,15 +5,15 @@
 ./bin/today_todo:9:# TODO^22: ([01;31m[KIN_PROGRESS[m[K) gotta DELETE this script eventually, after moving all functionality to vital
 ./installers/skiggety.bash:10:# TODO^41: ([01;31m[KIN_PROGRESS[m[K) use completion markers like the basic installer so I can stop re-running this
 ./bin/today_todo:193:    # TODO^51: ([01;31m[KIN_PROGRESS[m[K) function extract to do with other keywords
-./bin/vital-todo:9:# TODO^51: EASY [01;31m[KIN_PROGRESS[m[K exclude that .tmp driveupload thingy:
+./bin/vital-todo:9:# TODO^51: TESTING [01;31m[KIN_PROGRESS[m[K exclude that .tmp driveupload thingy:
 ./bin/vimwhich:25:        # TODO^54: ([01;31m[KIN_PROGRESS[m[K) this should share code with newbin, or call newbin in a mode where it doesn't open the editor, it just dumped a new script in $HOME/ instead of a bin dir, which wasn't too good.
 ./installers/skiggety.bash:66:        # TODO^69: ([01;31m[KIN_PROGRESS[m[K) also make sure Zerothlife takes care of it itself, asking the user to put it in their bashrc
 ./installers/zerothlife:7:# - TODO^140: ([01;31m[KIN_PROGRESS[m[K) make this, and maybe all installers, optional.  We could use marker files to keep track
 ./installers/signal:37:  # TODO^150: ([01;31m[KIN_PROGRESS[m[K) IMPLEMENT: ...
-./lib/skiggety-utils.bash:128:    # TODO^182: TESTING [01;31m[KIN_PROGRESS[m[K NOW:
+./lib/skiggety-utils.bash:135:    # TODO^182: TESTING [01;31m[KIN_PROGRESS[m[K NOW:
 ./bin/vital:68:# TODO^184: ([01;31m[KIN_PROGRESS[m[K) make plans to clean up archives better
 ./bin/abbreviate:66:    explanation="showing ${INPUT_LINES} lines of output" # DEBUG: it's showing all 3, claiming it's only two for completed routines right now (EASY TODO^190 [01;31m[KIN_PROGRESS[m[K NOW)
 ./bin/today_todo:86:    # TODO^195: ([01;31m[KIN_PROGRESS[m[K) also most of these paragraphs could be function extracted...:
 ---- TODOs for right NOW: ------------------------------------------------------
-./lib/skiggety-utils.bash:128:    # TODO^182: TESTING IN_PROGRESS [01;31m[KNOW[m[K:
+./lib/skiggety-utils.bash:135:    # TODO^182: TESTING IN_PROGRESS [01;31m[KNOW[m[K:
 ./bin/abbreviate:66:    explanation="showing ${INPUT_LINES} lines of output" # DEBUG: it's showing all 3, claiming it's only two for completed routines right now (EASY TODO^190 IN_PROGRESS [01;31m[KNOW[m[K)
