@@ -6,4 +6,4 @@
 
 clear
 export SKIGGETY_DIVIDER_LENGTH="$(tput cols)"
-review --no-listen -m 151 -M 1500 git safe-pull
+review --no-listen --no-clear -m 151 -M 1500 git safe-pull
