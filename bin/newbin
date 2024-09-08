@@ -32,14 +32,15 @@ if ! [ -f $new_file ]; then
     # TODO: frozen string literal thingy if ruby
 
     if [ "$shebang_args" == "env bash" ];then
-        # TODO: copy a template file:
+        # EASY TODO^10: copy a template file instead of writing it out here...:
         debug_here
         echo >> $new_file
         echo '# This script (...TODO, describe your script here, and DO_NOT''_COMMIT until then.)' >> $new_file # IGNORE_TODO
         echo >> $new_file
         echo ". \$SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1" >> $new_file
         echo >> $new_file
-        echo "exit_with_error \"TODO: IMPLEMENT\"" >> $new_file # IGNORE_TODO
+        echo "interactive_develop_here 'Code something up probably?'" >> $new_file
+        echo "exit_with_error \"TODO: IMPLEMENT and TEST this script\"" >> $new_file # IGNORE_TODO
     fi
 fi
 

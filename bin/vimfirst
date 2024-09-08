@@ -17,8 +17,12 @@ if [ -z "$*" ];then
     exit_with_error "Missing arguments. Please provide the name of a script (and, optionally, its own arguments) in your path you would like to edit and then run."
 fi
 
-if ! which "$1" > /dev/null && shellask "'$1' was not found--Do you want to create a new script by that name?"; then
-    newbin "$1" || exit_with_error 'newbin FAILED'
+if ! which "$1" > /dev/null; then
+    if shellask "'$1' was not found--Do you want to create a new script by that name?"; then
+        newbin "$1" || exit_with_error 'newbin FAILED'
+    else
+        exit_with_error "'$1' is not in your \$PATH"
+    fi
 else
     vimwhich "$1"
 fi
