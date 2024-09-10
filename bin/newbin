@@ -28,6 +28,7 @@ fi
 if ! [ -f $new_file ]; then
     debug_eval_here shebang_args
     shebang $shebang_args > $new_file
+    # TODO^131: (IN_PROGRESS) I think this script, newbin, should move scripts to zerothlife when appropriate, not some dashboard running async, this chmod is not the only thing that has gotten screwed up:
     chmod +x $new_file
 
     # TODO: frozen string literal thingy if ruby
