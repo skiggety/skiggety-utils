@@ -14,6 +14,8 @@
 # NOTE: If you like reading code top-down as I do, start reading outside the class at the end of the script, which will
 # quickly bring you back to CHBS#initialize and CHBS#report just a little ways below here.
 
+# EASY FUN TODO^100: pop open the comic?
+
 require 'securerandom'
 
 class CHBS
