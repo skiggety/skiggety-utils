@@ -10,8 +10,12 @@ alias zgy="zl-gamify && echo y && exit 0"
 alias ziggy="zl-gamify && echo y && exit 0"
 
 alias fzgy="zl-fork-gamify && echo y && exit 0"
-alias effin_ziggy="zl-fork-gamify && echo y && exit 0"
+alias effin-ziggy="zl-fork-gamify && echo y && exit 0"
 
 alias zaggy="zl-gamify --urgent && echo y && exit 0"
 alias omg-ziggy="zl-gamify --urgent && echo y && exit 0"
 alias zuggy="zl-gamify --urgent && echo y && exit 0"
+
+alias effin-zaggy="zl-fork-gamify --urgent && echo y && exit 0"
+alias omg-effin-ziggy="zl-fork-gamify --urgent && echo y && exit 0"
+alias effin-zuggy="zl-fork-gamify --urgent && echo y && exit 0"

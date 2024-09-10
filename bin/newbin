@@ -7,7 +7,8 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-# TODO?: maybe you could configure in which bin directory new scripts end up
+# TODO^10?: maybe you could configure in which bin directory new scripts end up in, or at least do an EASY HACK to throw zl-* in the right place
+
 if [ "$1" == "$(basename $1)" ];then
     new_file="$SKIGGETY_UTILS_DIR/bin/$1"
 else
@@ -31,7 +32,7 @@ if ! [ -f $new_file ]; then
 
     # TODO: frozen string literal thingy if ruby
 
-    if [ "$shebang_args" == "env bash" ];then
+    if [ "$shebang_args" == 'env bash' ];then
         # EASY TODO^10: copy a template file instead of writing it out here...:
         debug_here
         echo >> $new_file
