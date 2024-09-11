@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+export SKIGGETY_DIVIDER_LENGTH='120'
+
 # TODO: specify to abbreviate in terms of how many todo's to show (3) instead of how many lines to take up on the
 # screen:
 TODO_REPORT_LINES=8 # IGNORE_TODO
