@@ -39,7 +39,7 @@ if ! [ -z "$DO_NOT_ADD" ]; then
 fi
 
 echo_divider_with_text "-=" "git status:"
-GIT_STATUS="$(git -c color.ui=always --no-pager status -ss)"
+GIT_STATUS="$(git mystatus)"
 if [ "$GIT_STATUS" == "" ] ;then
     GIT_STATUS_LINECOUNT=0
 else
