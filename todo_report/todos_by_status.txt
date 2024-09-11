@@ -13,8 +13,6 @@
 ./installers/signal:37:  # TODO^150: ([01;31m[KIN_PROGRESS[m[K) IMPLEMENT: ...
 ./lib/skiggety-utils.bash:135:    # TODO^181: TESTING [01;31m[KIN_PROGRESS[m[K NOW:
 ./bin/vital:68:# TODO^184: ([01;31m[KIN_PROGRESS[m[K) make plans to clean up archives better
-./bin/abbreviate:66:    explanation="showing ${INPUT_LINES} lines of output" # DEBUG: it's showing all 3, claiming it's only two for completed routines right now (EASY TODO^190 [01;31m[KIN_PROGRESS[m[K NOW)
 ./bin/today_todo:86:    # TODO^195: ([01;31m[KIN_PROGRESS[m[K) also most of these paragraphs could be function extracted...:
 ---- TODOs for right NOW: ------------------------------------------------------
 ./lib/skiggety-utils.bash:135:    # TODO^181: TESTING IN_PROGRESS [01;31m[KNOW[m[K:
-./bin/abbreviate:66:    explanation="showing ${INPUT_LINES} lines of output" # DEBUG: it's showing all 3, claiming it's only two for completed routines right now (EASY TODO^190 IN_PROGRESS [01;31m[KNOW[m[K)
