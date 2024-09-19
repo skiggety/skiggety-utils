@@ -56,6 +56,7 @@ alias gry='git ready && exit 0'
 
 alias exut='echo spelling;sleep-verbose 5;exit'
 alias exir='echo spelling;sleep-verbose 5;exit'
+alias eit='echo spelling;sleep-verbose 5;exit'
 
 alias cdsu="cd $SKIGGETY_UTILS_DIR"
 
