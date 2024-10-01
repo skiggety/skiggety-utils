@@ -1,1 +1,38 @@
-# TODO: IMPLEMENT
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative '../lib/installable_skiggety_util'
+
+class DiscordInstaller
+
+  include InstallableSkiggetyUtil
+
+  def apparently_installed?
+    return true if in_docker_demo?
+
+    if on_mac_os?
+      # TODO: Checking the version would be a better approach if possible, I guess:
+      Dir.exist?('/Applications/Discord.app')
+    else
+      raise NotImplementedError, 'TODO: implement this for this OS'
+    end
+  end
+
+  def install!
+    call_peer_installer('chrome')
+    if $interactive
+      delegate_download_and_install_to_user('https://discord.com/download', 'Discord')
+    else
+      raise_interactive_only_install
+    end
+  end
+
+  def apparently_configured?
+    return true if in_docker_demo?
+
+    ask_user 'Is Discord working the way you want?'
+  end
+
+end
+
+DiscordInstaller.run

@@ -1,6 +1,6 @@
 ==== TODOs, ascending, so you know what's likely to change next.  Do not edit, run 'generate_todo_report' to generate. ====
 ---------------------------------------------------------------------------------------------------------------------------- todo (shown by 'abbreviate') -
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ showing last 8 lines out of 578: ^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ showing last 8 lines out of 579: ^
 ./bin/newbin:31:    # [1m[31mTODO^131[0m[0m: (IN_PROGRESS) I think this script, newbin, should move scripts to zerothlife when appropriate, not some dashboard running async, this chmod is not the only thing that has gotten screwed up:
 ./installers/zerothlife:7:# - [1m[31mTODO^140[0m[0m: (IN_PROGRESS) make this, and maybe all installers, optional.  We could use marker files to keep track
 ./installers/signal:37:  # [1m[31mTODO^150[0m[0m: (IN_PROGRESS) IMPLEMENT: ...
