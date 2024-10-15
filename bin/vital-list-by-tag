@@ -6,4 +6,8 @@
 . $SKIGGETY_UTILS_DIR/lib/vital.bash || exit_with_error 'could not include vital.bash'
 
 cd $VITAL_DIR
-vital-todo | grep --color=always "$1"
+if [ "$1" == 'LATER' ]; then
+    vital-todo | grep --color=always "$1"
+else
+    vital-todo | grep -v 'LATER' | grep --color=always "$1"
+fi

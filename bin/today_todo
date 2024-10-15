@@ -191,7 +191,7 @@ function main {
 
     today_todo_urgent_max_count=4
     # TODO^51: (IN_PROGRESS) function extract to do with other keywords
-    todo_urgent_output="$(echo "$todo_output" | grep --color=always 'URGENT')"
+    todo_urgent_output="$(echo "$todo_output" | grep --color=always 'URGENT' | grep -v 'LATER' )"
     todo_urgent_count=$(( 0 + $(echo "$todo_urgent_output" | wc -l) ))
     if [ "$todo_urgent_output" != '' ]; then
         if (( $todo_urgent_count > $today_todo_urgent_max_count )); then
@@ -201,7 +201,7 @@ function main {
         fi
 
         echo
-        echo "-------- Found $todo_urgent_count todos tagged 'URGENT'$only_showing:" | grep --color=always \\d
+        echo "-------- Found $todo_urgent_count todos tagged 'URGENT', excluding 'LATER'$only_showing:" | grep --color=always \\d
         echo "$todo_urgent_output" | tail -n $today_todo_urgent_max_count
         if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
     fi
