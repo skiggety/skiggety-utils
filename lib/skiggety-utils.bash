@@ -238,3 +238,38 @@ function assert_equal {
 function is_on_mac_os {
     uname -a | grep Darwin > /dev/null
 }
+
+# TODO^103: (TESTING IN_PROGRESS NOW) use seconds_as_hms more widely:
+function seconds_as_hms {
+    TOTAL_SECONDS="$1"
+
+    SECONDS="$(( $TOTAL_SECONDS % 60 ))"
+    debug_eval_here SECONDS
+    MINUTES="$(( ( $TOTAL_SECONDS / 60 ) % 60 ))"
+    debug_eval_here MINUTES
+    HOURS="$(( $TOTAL_SECONDS / 3600 ))"
+    debug_eval_here HOURS
+
+    HMS_UNITS="s"
+    debug_eval_here HMS_UNITS
+    HMS_NUM="$( printf '%02d\n' $SECONDS )"
+    debug_eval_here HMS_NUM
+
+    if [ $MINUTES -gt 0 ]; then
+        HMS_UNITS="m:$HMS_UNITS"
+        debug_eval_here HMS_UNITS
+        HMS_NUM="$( printf '%02d\n' $MINUTES ):$HMS_NUM"
+        debug_eval_here HMS_NUM
+        if [ $HOURS -gt 0 ]; then
+            HMS_UNITS="h:$HMS_UNITS"
+            debug_eval_here HMS_UNITS
+            HMS_NUM="$HOURS:$HMS_NUM"
+            debug_eval_here HMS_NUM
+        fi
+    fi
+
+    HMS="$HMS_NUM $HMS_UNITS"
+    debug_eval_here HMS
+
+    echo "$HMS"
+}

@@ -34,7 +34,7 @@ function main {
             for nli in $(seq $(tput lines));do echo;done # TODO^3: maybe function extract as it wipes the screen and leaves the cursor at the bottom
             banner -w $(( 77 - $delay_remaining )) $delay_remaining
         fi
-        echo -ne "  sleeping for $delay_remaining/$delay seconds\033[0K\r"
+        echo -ne "  sleeping for $(seconds_as_hms $delay_remaining) (out of $(seconds_as_hms $delay))\033[0K\r"
         sleep 1 || exit_with_error "$(basename $0) stopped"
         : $((delay_remaining--))
     done
