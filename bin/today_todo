@@ -149,10 +149,10 @@ function main {
     echo "$todo_prog_output" | tail -n 15 |  grep --color=always IN_PROGRESS
     if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
 
-    display_grep_for_keyword CONFIRMING "$todo_output"
-
-    # TODO^2: if it's around new years:
+    # TODO^3: Think of a neat way to display this periodically and get it out of the way:
     display_grep_for_keyword NEW_YEARS_RESOLUTION "$todo_output"
+
+    display_grep_for_keyword CONFIRMING "$todo_output"
 
     # TODO^51: instead of now and LATER, tag things with MORNING, EVENING, WEEKEND, BUSINESS_HOURS, etc, and have today_todo watch the clock to know which to highlight
     todo_later_output="$(echo "$todo_output" | grep --color=always LATER)"
