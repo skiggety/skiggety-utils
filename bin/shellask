@@ -34,7 +34,8 @@ reset_debug="$SKIGGETY_DEBUG"
 SKIGGETY_DEBUG='true' # TODO^10: DELETE once shellask sets the prompt reliably
 
 echo_debug "shellask should ask you to: $*"
-echo_debug "==========================="
+echo_debug "======================= ( try typing '. y' or '. n' if the prompt doesnt work ) ======================="
+
 # debug_here "\$\* is: '$*'"
 TASK_DESCRIPTION="$*"
 # debug_eval_here TASK_DESCRIPTION

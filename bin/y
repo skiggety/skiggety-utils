@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# This script exits with 0, for when the alias unpredictably fails..yeah, it's a hack.  There is also 'n', 'yup', and 'nope
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+exit 0
