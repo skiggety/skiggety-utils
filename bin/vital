@@ -13,6 +13,10 @@ echo '
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/vital.bash || exit_with_error 'could not include vital.bash'
 
+# TODO^190: vital should work offline
+# TODO^181: the thing that keeps an up-to-date version showing should probably git pull occasionally
+# TODO^131: manual update-only mode
+
 # TODO^14: IMPLEMENT this replacement for today_todo
 # - TODO^60: IMPLEMENT '--find <STRING>' to open EDITOR searching for a particular string
 # - TODO^11: IMPLEMENT '--edit' to edit the todo list
