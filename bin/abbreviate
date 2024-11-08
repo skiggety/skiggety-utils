@@ -63,7 +63,7 @@ fi
 
 explanation="showing last $SHOWN_LINES lines out of $INPUT_LINES"
 if [ "$SHOWN_LINES" -eq "$INPUT_LINES" ]; then
-    explanation="showing ${INPUT_LINES} lines of output"
+    explanation="showing all ${INPUT_LINES} lines of output"
 fi
 
 if [ -n "$TITLE" ]; then
