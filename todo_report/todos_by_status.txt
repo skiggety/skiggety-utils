@@ -14,6 +14,7 @@
 ./installers/signal:37:  # TODO^150: ([01;31m[KIN_PROGRESS[m[K) IMPLEMENT: ...
 ./bin/today_todo:86:    # TODO^185: ([01;31m[KIN_PROGRESS[m[K) also most of these paragraphs could be function extracted...:
 ./bin/vital:72:# TODO^189: ([01;31m[KIN_PROGRESS[m[K, NOW) make plans to clean up archives better
+./bin/today_todo:194:    # TODO^281: ([01;31m[KIN_PROGRESS[m[K), if something is URGENT and EASY, separate it out further:
 ---- TODOs for right NOW: ------------------------------------------------------
 ./lib/skiggety-utils.bash:242:# TODO^103: (TESTING IN_PROGRESS [01;31m[KNOW[m[K) use seconds_as_hms more widely:
 ./bin/vital:72:# TODO^189: (IN_PROGRESS, [01;31m[KNOW[m[K) make plans to clean up archives better

@@ -191,6 +191,7 @@ function main {
 
     today_todo_urgent_max_count=4
     # TODO^51: (IN_PROGRESS) function extract to do with other keywords
+    # TODO^281: (IN_PROGRESS), if something is URGENT and EASY, separate it out further:
     todo_urgent_output="$(echo "$todo_output" | grep --color=always 'URGENT' | grep -v 'LATER' )"
     todo_urgent_count=$(( 0 + $(echo "$todo_urgent_output" | wc -l) ))
     if [ "$todo_urgent_output" != '' ]; then
