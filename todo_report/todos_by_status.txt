@@ -19,7 +19,6 @@
 ./bin/git-ready:57:    run-or-fail git dashboard # TODO^332 [01;31m[KIN_PROGRESS[m[K TESTING NOW trying to use this for its exit value
 ./bin/git-ready:71:exit 0 # TESTING [01;31m[KIN_PROGRESS[m[K NOW TODO^335: only exit 0 if there is nothing to commit
 ---- TODOs for right NOW: ------------------------------------------------------
-./bin/git-ready:21:    git-no-uncommitted-or-unpushed-changes && echo "No changes found in $(pwd), $(basename $0) exiting early without error  __TODO_TESTING_[01;31m[KNOW[m[K__ $(echo_here) __TODO_TESTING_[01;31m[KNOW[m[K__ ." && exit 0
 ./bin/git-ready:27:    git-no-uncommitted-or-unpushed-changes && echo "No changes found in $(pwd), $(basename $0) exiting early without error  __TODO_TESTING_[01;31m[KNOW[m[K__ $(echo_here) __TODO_TESTING_[01;31m[KNOW[m[K__ ." && exit 0
 ./bin/git-ready:36:    git-no-uncommitted-or-unpushed-changes && echo "No changes found in $(pwd), $(basename $0) exiting early without error  __TODO_TESTING_[01;31m[KNOW[m[K__ $(echo_here) __TODO_TESTING_[01;31m[KNOW[m[K__ ." && exit 0
 ./lib/skiggety-utils.bash:242:# TODO^103: (TESTING IN_PROGRESS [01;31m[KNOW[m[K) use seconds_as_hms more widely:
