@@ -1,6 +1,6 @@
 ---- IN_PROGRESS: --------------------------------------------------------------
-./bin/review_v0.1:101:        raise "Interrupted (TODO: DEBUG [01;31m[KIN_PROGRESS[m[K for non-interactive)"
-./bin/review_v0.1:103:        raise "Interrupted (TODO: DEBUG [01;31m[KIN_PROGRESS[m[K for non-interactive)"
+./bin/review_v0.1:274:        puts "Error: Interrupted (TODO: DEBUG [01;31m[KIN_PROGRESS[m[K for non-interactive)"
+./bin/review_v0.1:277:        puts "Error: Interrupted (TODO: DEBUG [01;31m[KIN_PROGRESS[m[K for non-interactive)"
 ./bin/today_todo:103:    # Open todo list file(s) up for editing (TODO [01;31m[KIN_PROGRESS[m[K function extract)
 ./bin/today_todo:117:    # format/compact todos in todo list file(s) (TODO [01;31m[KIN_PROGRESS[m[K function extract)
 ./bin/today_todo:137:    todo_output="$(vital-todo --color always $EXCLUDE_DIR_ARGS | cat -n )" # TODO: (DEBUG [01;31m[KIN_PROGRESS[m[K) which todo are you calling
