@@ -18,16 +18,15 @@ function main {
         PWD_BIN/generate || exit_with_error "'generate' FAILED"
     fi
 
-    if [ $(git status -s | wc -l) -eq 0 ];then
-        echo "No changes found, exiting $(basename $0) without error..."
-        exit 0
-    fi
+    # EASY TODO^333: Just exit 0 right here unless there are changes staged (yes, we're checking again because the user
+    # might have changed something during shellask)
+    git-no-uncommitted-or-unpushed-changes && echo "No changes found in $(pwd), $(basename $0) exiting early without error." && exit 0 # TODO^332 IN_PROGRESS TESTING NOW
 
     run-or-fail git add -p
 
     touch .gitignore # so 'review-dev' notices
 
-    # EASY TODO^10: just exit 0 right here unless there are changes staged
+    # EASY TODO^11: just exit 0 right here unless there are changes staged
     git-dashboard
 
     shellask "Are your changes what you want in '$(pwd)'? (use 'git diff --staged' (gds) or 'git vimdiff --staged' (gvds) )" || \
@@ -36,7 +35,7 @@ function main {
     echo
     git commit $GIT_COMMIT_OPTIONS # Don't check exit value, commits fail if there is nothing to commit!
 
-    # EASY TODO^332: Just exit 0 right here unless there are changes staged (yes, we're checking again because the user
+    # EASY TODO^333: Just exit 0 right here unless there are changes staged (yes, we're checking again because the user
     # might have changed something during shellask)
     git-no-uncommitted-or-unpushed-changes && echo "No changes in $(pwd), $(basename $0) exiting early." && exit 0 # TODO^332 IN_PROGRESS TESTING NOW
 
