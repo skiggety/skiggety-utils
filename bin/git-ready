@@ -18,13 +18,13 @@ function main {
         PWD_BIN/generate || exit_with_error "'generate' FAILED"
     fi
 
-    git-no-uncommitted-or-unpushed-changes && echo "No changes found in $(pwd), $(basename $0) exiting early without error$(echo_here) ." && exit 0
+    git-no-uncommitted-or-unpushed-changes && echo "No changes found in $(pwd), $(basename $0) exiting early without error ($(echo_here) ) ." && exit 0
 
     run-or-fail git add -p
 
     touch .gitignore # so 'review-dev' notices
 
-    git-no-uncommitted-or-unpushed-changes && echo "No changes found in $(pwd), $(basename $0) exiting early without error  __TODO_TESTING_NOW__ $(echo_here) __TODO_TESTING_NOW__ ." && exit 0
+    git-no-uncommitted-or-unpushed-changes && echo "No changes found in $(pwd), $(basename $0) exiting early without error ($(echo_here) ) ." && exit 0
     git-dashboard
 
     shellask "Are your changes what you want in '$(pwd)'? (use 'git diff --staged' (gds) or 'git vimdiff --staged' (gvds) )" || \
@@ -33,7 +33,7 @@ function main {
     echo
     git commit $GIT_COMMIT_OPTIONS # Don't check exit value, commits fail if there is nothing to commit!
 
-    git-no-uncommitted-or-unpushed-changes && echo "No changes found in $(pwd), $(basename $0) exiting early without error  __TODO_TESTING_NOW__ $(echo_here) __TODO_TESTING_NOW__ ." && exit 0
+    git-no-uncommitted-or-unpushed-changes && echo "No changes found in $(pwd), $(basename $0) exiting early without error ($(echo_here) ) ." && exit 0
 
     # TODO^3: if the remote branch doesn't exist yet, we should skip trying git pull, since it will fail anyway
     echo
