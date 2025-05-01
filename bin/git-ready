@@ -70,7 +70,7 @@ function hesitate-and-run-or-fail {
 }
 
 function exit_if_no_git_changes {
-    git-no-uncommitted-or-unpushed-changes && echo && echo_divider "=" && echo && echo "No changes found in $(pwd), $(basename $0) exiting without error ($(echo_callsite) ) ." && echo && exit 0
+    git-no-uncommitted-or-unpushed-changes && echo && echo_divider "=" && echo && echo "No changes found in $(pwd), $(basename $0) exiting without error ( $(echo_callsite) ) ." && echo && exit 0
 }
 
 main "$@"
