@@ -18,11 +18,12 @@ function complain_about_keyword_usage {
         fi
     done
     keyword="$1"
+    suggested="$2"
 
-    rg -n $keyword $rg_glob_args --color=always | sort | abbreviate --auto -t "-------- change these mentions of '$keyword' to 'vital': --------"
+    rg -n $keyword $rg_glob_args --color=always | sort | abbreviate --auto -t "-------- change these mentions of '$keyword' to '$suggested': --------"
 }
 
-complain_about_keyword_usage today_todo # EASY TODO^43: clean up legacy today_todo usage
+complain_about_keyword_usage today_todo vital # EASY TODO^44: clean up legacy today_todo usage
 
 # show unstaged stuff:
 unstaged_todos="$(git diff | grep '^+.*TODO' | grep -v 'IGNORE_TODO')"
@@ -98,7 +99,7 @@ function limit-todo-with-keyword-count {
 limit-todo-with-keyword-count 7 'IN_''PROGRESS' # TODO^31: fine tune this number
 limit-todo-with-keyword-count 2 'N''OW'
 
-complain_about_keyword_usage -g '!installers/zerothlife*' 'zl''-' || accumulate_error "You might be depending on zerothlife by accident"
+complain_about_keyword_usage -g '!installers/zerothlife*' 'zl''-' ' ...another location... '  || accumulate_error "You might be depending on zerothlife by accident"
 
 # TODO^5: maybe also make sure that lines that contain (all capitalized, not shown here so as not to tag this todo) 'todo' and 'now' also contain 'in_progress
 
