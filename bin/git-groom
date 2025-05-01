@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# This script helps you take one pass to groom your git changes
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+git vimchanged
+git vimdiff
+git add -p
+git vimdiff --staged
+git dashboard
