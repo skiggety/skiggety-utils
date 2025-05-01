@@ -36,8 +36,9 @@ function main {
     echo
     git commit $GIT_COMMIT_OPTIONS # Don't check exit value, commits fail if there is nothing to commit!
 
-    # EASY TODO^10: just exit 0 right here unless there are changes staged (yes, we're checking again because the user might
-    # have changed something during shellask)
+    # EASY TODO^332: Just exit 0 right here unless there are changes staged (yes, we're checking again because the user
+    # might have changed something during shellask)
+    git-no-uncommitted-or-unpushed-changes && echo "No changes in $(pwd), $(basename $0) exiting early." && exit 0 # TODO^332 IN_PROGRESS TESTING NOW
 
     # TODO^3: if the remote branch doesn't exist yet, we should skip trying git pull, since it will fail anyway
     echo
