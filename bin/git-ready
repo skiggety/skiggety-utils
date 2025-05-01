@@ -56,6 +56,9 @@ function main {
 
     echo
     echo "...finished '$(basename "$0")'."
+
+    echo
+    run-or-fail git dashboard # TODO^332 IN_PROGRESS TESTING NOW trying to use this for its exit value
 }
 
 # TODO^2: move/reuse?
@@ -69,4 +72,4 @@ function hesitate-and-run-or-fail {
 }
 
 main "$@"
-exit 0
+exit 0 # TESTING IN_PROGRESS NOW TODO^335: only exit 0 if there is nothing to commit
