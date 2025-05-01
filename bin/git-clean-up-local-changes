@@ -46,7 +46,7 @@ else
         sleep 1
     else
         dashboard
-        shellask "Commit something, probably using 'cgry' or 'ci && git ready && yup'. (in $(pwd))" || exit_with_error "did not commit"
+        shellask "Commit something, probably using 'cgry' or 'ci && git ready; yup'. (in $(pwd))" || exit_with_error "did not commit"
     fi
 fi
 
