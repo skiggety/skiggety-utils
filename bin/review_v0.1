@@ -270,7 +270,13 @@ class ReviewProgram
         @slept_already += 1
       end
     rescue Interrupt
-      raise "Interrupted"
+      if @interactive
+        puts "Error: Interrupted (TODO: DEBUG IN_PROGRESS for non-interactive)"
+        abort
+      else
+        puts "Error: Interrupted (TODO: DEBUG IN_PROGRESS for non-interactive)"
+        abort
+      end
     end
     print " ...slept for #{@slept_already}/#{delay} seconds#{running_message}." \
           "#{woke_up_message} at #{Time.now}\033[0K\r"
