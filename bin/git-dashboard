@@ -52,3 +52,7 @@ echo "$GIT_STATUS_LINECOUNT files with changes on branch '$(git branch --show-cu
 for keyword in 'DO_NOT''_COMMIT' 'XX''X' 'BREAD''CRUMB'; do
     git-object-to-added-keyword "$keyword" || accumulate_error "'git-object-to-added-keyword $keyword' FAILED"
 done
+
+# only exit 0 if there are no unpushed or uncommitted changes:
+git-no-uncommitted-or-unpushed-changes || exit 1
+exit 0

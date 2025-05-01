@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# This script checks if all local changes have been committed to git. # TODO^332: TESTING NOW IN_PROGRESS
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+bin/git-no-unpushed-changes || accumulate_error "Found unpushed changes."
+bin/git-no-uncommitted-changes || accumulate_error "Found un-committed changes."
+exit_with_any_accumulated_errors

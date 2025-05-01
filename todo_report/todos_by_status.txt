@@ -15,6 +15,10 @@
 ./bin/today_todo:86:    # TODO^185: ([01;31m[KIN_PROGRESS[m[K) also most of these paragraphs could be function extracted...:
 ./bin/vital:72:# TODO^189: ([01;31m[KIN_PROGRESS[m[K, NOW) make plans to clean up archives better
 ./bin/today_todo:194:    # TODO^281: ([01;31m[KIN_PROGRESS[m[K), if something is URGENT and EASY, separate it out further:
+./bin/git-no-uncommitted-or-unpushed-changes:3:# This script checks if all local changes have been committed to git. # TODO^332: TESTING NOW [01;31m[KIN_PROGRESS[m[K
+./bin/git-ready:61:    run-or-fail git dashboard # TODO^332 [01;31m[KIN_PROGRESS[m[K TESTING NOW trying to use this for its exit value
 ---- TODOs for right NOW: ------------------------------------------------------
 ./lib/skiggety-utils.bash:242:# TODO^103: (TESTING IN_PROGRESS [01;31m[KNOW[m[K) use seconds_as_hms more widely:
 ./bin/vital:72:# TODO^189: (IN_PROGRESS, [01;31m[KNOW[m[K) make plans to clean up archives better
+./bin/git-no-uncommitted-or-unpushed-changes:3:# This script checks if all local changes have been committed to git. # TODO^332: TESTING [01;31m[KNOW[m[K IN_PROGRESS
+./bin/git-ready:61:    run-or-fail git dashboard # TODO^332 IN_PROGRESS TESTING [01;31m[KNOW[m[K trying to use this for its exit value
