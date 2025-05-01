@@ -33,6 +33,8 @@ function main {
     echo
     git commit $GIT_COMMIT_OPTIONS # Don't check exit value, commits fail if there is nothing to commit!
 
+    echo_divider "="
+    echo
     git-no-uncommitted-or-unpushed-changes && echo "No changes found in $(pwd), $(basename $0) exiting early without error ($(echo_here) ) ." && exit 0
 
     # TODO^3: if the remote branch doesn't exist yet, we should skip trying git pull, since it will fail anyway
