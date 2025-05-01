@@ -5,5 +5,7 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/vital.bash || exit_with_error 'could not include vital.bash'
 
+exit_if_n_times_this_already_running 1 $0
+
 cd $VITAL_DIR # so 'review' watches the right part of the disk:
 review -u 15 -m 120 vital --report || exit_with_error "Could not get a report using vital"

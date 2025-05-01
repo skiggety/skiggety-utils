@@ -90,6 +90,20 @@ function exit_if_any_accumulated_errors {
     fi
 }
 
+function exit_if_n_times_this_already_running {
+    threshold="$(( $1 + 1 ))" # +1 to allow for self
+    target="$2"
+    OTHER_SCRIPT_PSLINES="$( pstree | grep -v grep | grep --color=always "$target" )"
+    if [ $( echo "$OTHER_SCRIPT_PSLINES" | wc -l ) -gt "$threshold" ]; then
+        echo
+        echo "It seems like there are a bunch of these running already:"
+        echo "$OTHER_SCRIPT_PSLINES"
+        echo '    ...exiting..'
+        sleep-verbose 5
+        exit_with_error "It seems like there are a bunch of these running already, exiting.."
+    fi
+}
+
 function exit_with_accumulated_errors {
     echo_divider_with_text "!" "EXITING \"$(basename $0)\" because of ${red}$accumulated_error_count previously shown ${RED}ERRORS${no_color}"
     exit $accumulated_error_count
