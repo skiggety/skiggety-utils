@@ -80,4 +80,4 @@ echo_divider "="
 git dashboard
 echo_divider "="
 echo
-exit_with_error "There are still outstanding changes at $(pwd)" # TESTING IN_PROGRESS NOW TODO^336: only exit 0 if there is nothing to commit
+exit_with_error "There are still outstanding changes at $(pwd)" # TESTING IN_PROGRESS NOW TODO TODO TODO^336: only exit 0 if there is nothing to commit

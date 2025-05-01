@@ -16,9 +16,9 @@
 ./bin/vital:72:# TODO^189: ([01;31m[KIN_PROGRESS[m[K, NOW) make plans to clean up archives better
 ./bin/today_todo:194:    # TODO^281: ([01;31m[KIN_PROGRESS[m[K), if something is URGENT and EASY, separate it out further:
 ./bin/git-no-uncommitted-or-unpushed-changes:3:# This script checks if all local changes have been committed to git. # TODO^332: TESTING NOW [01;31m[KIN_PROGRESS[m[K
-./bin/git-ready:83:exit_with_error "There are still outstanding changes at $(pwd)" # TESTING [01;31m[KIN_PROGRESS[m[K NOW TODO^336: only exit 0 if there is nothing to commit
+./bin/git-ready:83:exit_with_error "There are still outstanding changes at $(pwd)" # TESTING [01;31m[KIN_PROGRESS[m[K NOW TODO^338: only exit 0 if there is nothing to commit
 ---- TODOs for right NOW: ------------------------------------------------------
 ./lib/skiggety-utils.bash:242:# TODO^103: (TESTING IN_PROGRESS [01;31m[KNOW[m[K) use seconds_as_hms more widely:
 ./bin/vital:72:# TODO^189: (IN_PROGRESS, [01;31m[KNOW[m[K) make plans to clean up archives better
 ./bin/git-no-uncommitted-or-unpushed-changes:3:# This script checks if all local changes have been committed to git. # TODO^332: TESTING [01;31m[KNOW[m[K IN_PROGRESS
-./bin/git-ready:83:exit_with_error "There are still outstanding changes at $(pwd)" # TESTING IN_PROGRESS [01;31m[KNOW[m[K TODO^336: only exit 0 if there is nothing to commit
+./bin/git-ready:83:exit_with_error "There are still outstanding changes at $(pwd)" # TESTING IN_PROGRESS [01;31m[KNOW[m[K TODO^338: only exit 0 if there is nothing to commit
