@@ -18,13 +18,13 @@ function main {
         PWD_BIN/generate || exit_with_error "'generate' FAILED"
     fi
 
-    git-no-uncommitted-or-unpushed-changes && echo "No changes found in $(pwd), $(basename $0) exiting early without error ($(echo_here) ) ." && exit 0
+    exit_if_no_git_changes
 
     run-or-fail git add -p
 
     touch .gitignore # so 'review-dev' notices
 
-    git-no-uncommitted-or-unpushed-changes && echo "No changes found in $(pwd), $(basename $0) exiting early without error ($(echo_here) ) ." && exit 0
+    exit_if_no_git_changes
     git-dashboard
 
     shellask "Are your changes what you want in '$(pwd)'? (use 'git diff --staged' (gds) or 'git vimdiff --staged' (gvds) )" || \
@@ -33,9 +33,7 @@ function main {
     echo
     git commit $GIT_COMMIT_OPTIONS # Don't check exit value, commits fail if there is nothing to commit!
 
-    echo_divider "="
-    echo
-    git-no-uncommitted-or-unpushed-changes && echo "No changes found in $(pwd), $(basename $0) exiting early without error ($(echo_here) ) ." && exit 0
+    exit_if_no_git_changes
 
     # TODO^3: if the remote branch doesn't exist yet, we should skip trying git pull, since it will fail anyway
     echo
@@ -56,10 +54,10 @@ function main {
     echo "...finished '$(basename "$0")'."
 
     echo
-    run-or-fail git dashboard # TODO^332 IN_PROGRESS TESTING NOW trying to use this for its exit value
+    run-or-fail git dashboard
 
     echo
-    git-no-uncommitted-or-unpushed-changes && echo "No changes found in $(pwd), $(basename $0) exiting without error ($(echo_here) ) ." && exit 0
+    exit_if_no_git_changes
 }
 
 # TODO^2: move/reuse?
@@ -70,6 +68,10 @@ function run-or-fail {
 # TODO^5: move/reuse
 function hesitate-and-run-or-fail {
    hesitate-and-run $@ || exit_with_error "Command \"$@\" FAILED"
+}
+
+function exit_if_no_git_changes {
+    git-no-uncommitted-or-unpushed-changes && echo && echo_divider "=" && echo && echo "No changes found in $(pwd), $(basename $0) exiting without error ($(echo_callsite) ) ." && exit 0
 }
 
 main "$@"
