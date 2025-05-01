@@ -55,6 +55,9 @@ function main {
 
     echo
     run-or-fail git dashboard # TODO^332 IN_PROGRESS TESTING NOW trying to use this for its exit value
+
+    echo
+    git-no-uncommitted-or-unpushed-changes && echo "No changes found in $(pwd), $(basename $0) exiting without error ($(echo_here) ) ." && exit 0
 }
 
 # TODO^2: move/reuse?

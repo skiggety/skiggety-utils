@@ -8,4 +8,4 @@
 ./bin/today_todo:194:    # [1m[31mTODO^281[0m[0m: (IN_PROGRESS), if something is URGENT and EASY, separate it out further:
 ./bin/git-no-uncommitted-or-unpushed-changes:3:# This script checks if all local changes have been committed to git. # [1m[31mTODO^332[0m[0m: TESTING NOW IN_PROGRESS
 ./bin/git-ready:57:    run-or-fail git dashboard # [1m[31mTODO^332[0m[0m IN_PROGRESS TESTING NOW trying to use this for its exit value
-[1m[33m./bin/git-ready:71:exit 0 # TESTING IN_PROGRESS NOW [1m[31mTODO^335[0m[1m[33m: only exit 0 if there is nothing to commit[0m
+[1m[33m./bin/git-ready:74:exit 0 # TESTING IN_PROGRESS NOW [1m[31mTODO^335[0m[1m[33m: only exit 0 if there is nothing to commit[0m
