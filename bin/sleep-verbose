@@ -27,6 +27,8 @@ done
 function main {
     delay="$1"
 
+    # TODO^236 IN_PROGRESS: if $delay is a clock time, sleep until that time
+
     delay_remaining="$delay"
 
     while [ "$delay_remaining" -gt 0 ]; do
@@ -35,7 +37,7 @@ function main {
             banner -w $(( 77 - $delay_remaining )) $delay_remaining
         fi
         echo -ne "  sleeping for $(seconds_as_hms $delay_remaining) (out of $(seconds_as_hms $delay))\033[0K\r"
-        sleep 1 || exit_with_error "$(basename $0) stopped"
+        sleep 1 || exit_with_error "$(basename $0) stopped" # TODO^226 IN_PROGRESS: sleep longer than a second if there is still a long time to go
         : $((delay_remaining--))
     done
     echo -ne "  DONE! ($(basename $0) slept for $delay seconds)\033[0K\r"

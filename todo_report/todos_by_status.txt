@@ -1,4 +1,6 @@
 ---- IN_PROGRESS: --------------------------------------------------------------
+./bin/review_v0.1:101:        raise "Interrupted (TODO: DEBUG [01;31m[KIN_PROGRESS[m[K for non-interactive)"
+./bin/review_v0.1:103:        raise "Interrupted (TODO: DEBUG [01;31m[KIN_PROGRESS[m[K for non-interactive)"
 ./bin/today_todo:103:    # Open todo list file(s) up for editing (TODO [01;31m[KIN_PROGRESS[m[K function extract)
 ./bin/today_todo:117:    # format/compact todos in todo list file(s) (TODO [01;31m[KIN_PROGRESS[m[K function extract)
 ./bin/today_todo:137:    todo_output="$(vital-todo --color always $EXCLUDE_DIR_ARGS | cat -n )" # TODO: (DEBUG [01;31m[KIN_PROGRESS[m[K) which todo are you calling
@@ -8,13 +10,15 @@
 ./bin/vital-todo:9:# TODO^51: TESTING [01;31m[KIN_PROGRESS[m[K exclude that .tmp driveupload thingy:
 ./bin/vimwhich:25:        # TODO^54: ([01;31m[KIN_PROGRESS[m[K) this should share code with newbin, or call newbin in a mode where it doesn't open the editor, it just dumped a new script in $HOME/ instead of a bin dir, which wasn't too good.
 ./installers/skiggety.bash:66:        # TODO^69: ([01;31m[KIN_PROGRESS[m[K) also make sure Zerothlife takes care of it itself, asking the user to put it in their bashrc
-./lib/skiggety-utils.bash:256:# TODO^103: (TESTING [01;31m[KIN_PROGRESS[m[K NOW) use seconds_as_hms more widely:
+./lib/skiggety-utils.bash:242:# TODO^103: (TESTING [01;31m[KIN_PROGRESS[m[K NOW) use seconds_as_hms more widely:
 ./bin/newbin:31:    # TODO^131: ([01;31m[KIN_PROGRESS[m[K) I think this script, newbin, should move scripts to zerothlife when appropriate, not some dashboard running async, this chmod is not the only thing that has gotten screwed up:
 ./installers/zerothlife:7:# - TODO^140: ([01;31m[KIN_PROGRESS[m[K) make this, and maybe all installers, optional.  We could use marker files to keep track
 ./installers/signal:37:  # TODO^150: ([01;31m[KIN_PROGRESS[m[K) IMPLEMENT: ...
 ./bin/today_todo:86:    # TODO^185: ([01;31m[KIN_PROGRESS[m[K) also most of these paragraphs could be function extracted...:
 ./bin/vital:72:# TODO^189: ([01;31m[KIN_PROGRESS[m[K, NOW) make plans to clean up archives better
+./bin/sleep-verbose:40:        sleep 1 || exit_with_error "$(basename $0) stopped" # TODO^226 [01;31m[KIN_PROGRESS[m[K: sleep longer than a second if there is still a long time to go
+./bin/sleep-verbose:30:    # TODO^236 [01;31m[KIN_PROGRESS[m[K: if $delay is a clock time, sleep until that time
 ./bin/today_todo:194:    # TODO^281: ([01;31m[KIN_PROGRESS[m[K), if something is URGENT and EASY, separate it out further:
 ---- TODOs for right NOW: ------------------------------------------------------
-./lib/skiggety-utils.bash:256:# TODO^103: (TESTING IN_PROGRESS [01;31m[KNOW[m[K) use seconds_as_hms more widely:
+./lib/skiggety-utils.bash:242:# TODO^103: (TESTING IN_PROGRESS [01;31m[KNOW[m[K) use seconds_as_hms more widely:
 ./bin/vital:72:# TODO^189: (IN_PROGRESS, [01;31m[KNOW[m[K) make plans to clean up archives better
