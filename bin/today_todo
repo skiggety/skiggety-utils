@@ -224,7 +224,7 @@ function main {
 
     if $interactive; then
         # TODO: maybe push data even when non interactive sometimes, or just cron it on its own??
-        vital-push-data || shellask "resolve issues in this directory and maybe (TODO^2) edit $(echo_here)" || accumulate_error "vital-push-data FAILED"
+        vital-push-data >/dev/null 2>/dev/null || shellask "resolve issues in this directory and maybe (TODO^2) edit $(echo_here)" || accumulate_error "vital-push-data FAILED"
     fi
 
     if ! [ $(git status -s | wc -l) -eq 0 ];then
