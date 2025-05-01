@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# This script checks if all local changes have been committed to git. # TODO^332: TESTING NOW IN_PROGRESS
+# This script checks if all local changes have been committed to git.
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
