@@ -22,7 +22,7 @@ function main {
 
     run-or-fail git add -p
 
-    touch .gitignore # so 'review-dev' notices
+    touch .gitignore # so 'review-dev' notices # TODO: touch the one in the repo root dir?
 
     exit_if_no_git_changes
     git-dashboard
