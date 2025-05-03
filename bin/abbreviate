@@ -37,6 +37,11 @@ while [[ "$1" == -* ]]; do
         shift
         TITLE="$1"
         shift
+    elif [ "$1" == '--rainbow' ]; then
+        shift
+        SKIGGETY_DEBUG=true # TODO^21: DELETE
+        debug_here "TODO^36: rainbow-ify output (vote for me)"
+        SKIGGETY_DEBUG=false # TODO^21: DELETE
     elif [ "$1" == '-d' -o "$1" == '--divider' ]; then
         DIVIDER=true
         shift
