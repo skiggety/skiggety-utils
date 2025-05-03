@@ -4,7 +4,7 @@
 ./bin/today_todo:103:    # Open todo list file(s) up for editing (TODO [01;31m[KIN_PROGRESS[m[K function extract)
 ./bin/today_todo:117:    # format/compact todos in todo list file(s) (TODO [01;31m[KIN_PROGRESS[m[K function extract)
 ./bin/today_todo:137:    todo_output="$(vital-todo --color always $EXCLUDE_DIR_ARGS | cat -n )" # TODO: (DEBUG [01;31m[KIN_PROGRESS[m[K) which todo are you calling
-./installers/zerothlife.config/include_in_bashrc.template.bash:15:# TODO [01;31m[KIN_PROGRESS[m[K: TEST:
+./installers/zerothlife.config/include_in_bashrc.template.bash:15:# TODO^10 [01;31m[KIN_PROGRESS[m[K: TEST:
 ./bin/today_todo:9:# TODO^22: ([01;31m[KIN_PROGRESS[m[K) gotta DELETE this script eventually, after moving all functionality to vital
 ./installers/skiggety.bash:10:# TODO^41: ([01;31m[KIN_PROGRESS[m[K) use completion markers like the basic installer so I can stop re-running this
 ./bin/today_todo:193:    # TODO^51: ([01;31m[KIN_PROGRESS[m[K) function extract to do with other keywords
