@@ -20,7 +20,7 @@ echo '
 # TODO^14: IMPLEMENT this replacement for today_todo
 # - TODO^60: IMPLEMENT '--find <STRING>' to open EDITOR searching for a particular string
 # - TODO^11: IMPLEMENT '--edit' to edit the todo list
-# - TODO^3: IMPLEMENT '--help' with something useful, especially to explain the 'vital --add --vote <n> <description>' syntax
+# - TODO^93: IMPLEMENT '--help' with something useful, especially to explain the 'vital --add --vote <n> <description>' syntax
 # - TODO: IMPLEMENT: make 'vital --edit --report' the default, replacing 'today_todo' (with no options)
 
 # TODO: DELETE once we are no longer reliant on old implementation:
@@ -32,7 +32,8 @@ VOTECOUNT=""
 INTERACTIVE=true
 LEGACY_INTERACTIVE_FLAG=""
 while [[ "$1" == -* ]]; do
-    # TODO^96: and make an alias to help add todo's quick:
+    # TODO^105: and make an alias to help add todo's quick:
+    # TODO^114: and make an alias to help find todo's quick:
     if [ "$1" == '-a' -o "$1" == '--add' ]; then
         shift
         FALLBACK_ON_TODAY_TODO=false # TODO: DELETE once we are no longer reliant on old implementation

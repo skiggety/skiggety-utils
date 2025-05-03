@@ -4,6 +4,7 @@
 ./bin/today_todo:103:    # Open todo list file(s) up for editing (TODO [01;31m[KIN_PROGRESS[m[K function extract)
 ./bin/today_todo:117:    # format/compact todos in todo list file(s) (TODO [01;31m[KIN_PROGRESS[m[K function extract)
 ./bin/today_todo:137:    todo_output="$(vital-todo --color always $EXCLUDE_DIR_ARGS | cat -n )" # TODO: (DEBUG [01;31m[KIN_PROGRESS[m[K) which todo are you calling
+./installers/zerothlife.config/include_in_bashrc.template.bash:15:# TODO [01;31m[KIN_PROGRESS[m[K: TEST:
 ./bin/today_todo:9:# TODO^22: ([01;31m[KIN_PROGRESS[m[K) gotta DELETE this script eventually, after moving all functionality to vital
 ./installers/skiggety.bash:10:# TODO^41: ([01;31m[KIN_PROGRESS[m[K) use completion markers like the basic installer so I can stop re-running this
 ./bin/today_todo:193:    # TODO^51: ([01;31m[KIN_PROGRESS[m[K) function extract to do with other keywords
@@ -15,10 +16,10 @@
 ./installers/zerothlife:7:# - TODO^140: ([01;31m[KIN_PROGRESS[m[K) make this, and maybe all installers, optional.  We could use marker files to keep track
 ./installers/signal:37:  # TODO^150: ([01;31m[KIN_PROGRESS[m[K) IMPLEMENT: ...
 ./bin/today_todo:86:    # TODO^185: ([01;31m[KIN_PROGRESS[m[K) also most of these paragraphs could be function extracted...:
-./bin/vital:72:# TODO^189: ([01;31m[KIN_PROGRESS[m[K, NOW) make plans to clean up archives better
+./bin/vital:73:# TODO^189: ([01;31m[KIN_PROGRESS[m[K, NOW) make plans to clean up archives better
 ./bin/sleep-verbose:40:        sleep 1 || exit_with_error "$(basename $0) stopped" # TODO^226 [01;31m[KIN_PROGRESS[m[K: sleep longer than a second if there is still a long time to go
 ./bin/sleep-verbose:30:    # TODO^236 [01;31m[KIN_PROGRESS[m[K: if $delay is a clock time, sleep until that time
 ./bin/today_todo:194:    # TODO^281: ([01;31m[KIN_PROGRESS[m[K), if something is URGENT and EASY, separate it out further:
 ---- TODOs for right NOW: ------------------------------------------------------
 ./lib/skiggety-utils.bash:256:# TODO^103: (TESTING IN_PROGRESS [01;31m[KNOW[m[K) use seconds_as_hms more widely:
-./bin/vital:72:# TODO^189: (IN_PROGRESS, [01;31m[KNOW[m[K) make plans to clean up archives better
+./bin/vital:73:# TODO^189: (IN_PROGRESS, [01;31m[KNOW[m[K) make plans to clean up archives better
