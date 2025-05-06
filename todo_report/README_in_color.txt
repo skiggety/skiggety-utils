@@ -8,4 +8,4 @@
 ./bin/vimfirst-until:3:# [1m[31mTODO^200[0m[0m: this should be a special mode of vimfirst, so it shares code, just another way of using a --while flag
 ./bin/vimfirst-while:3:# [1m[31mTODO^200[0m[0m: this should be a special mode of vimfirst, so it shares code, just another way of using a --until flag
 ./bin/sleep-verbose:40:        sleep 1 || exit_with_error "$(basename $0) stopped" # [1m[31mTODO^226[0m[0m IN_PROGRESS: sleep longer than a second if there is still a long time to go
-[1m[33m./bin/sleep-verbose:30:    # [1m[31mTODO^236[0m[1m[33m IN_PROGRESS: if $delay is a clock time, sleep until that time[0m
+./bin/sleep-verbose:30:    # [1m[31mTODO^236[0m[0m IN_PROGRESS: if $delay is a clock time, sleep until that time
