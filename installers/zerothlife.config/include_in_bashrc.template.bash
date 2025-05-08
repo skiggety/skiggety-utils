@@ -5,7 +5,7 @@ alias cdzlc="cd $ZEROTHLIFE_CODE_DIR"
 
 alias inaminute="sleep-verbose 60 && echo y && exit 0"
 
-alias forkit="zl-fork-delegate  && echo y && exit 0"
+alias forkit="zl-fork-delegate && echo y && exit 0"
 alias effit="zl-fork-delegate && echo y && exit 0"
 
 alias zgy="zl-gamify && echo y && exit 0"
