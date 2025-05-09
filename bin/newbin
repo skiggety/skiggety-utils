@@ -49,3 +49,4 @@ if ! [ -f $new_file ]; then
 fi
 
 $EDITOR $new_file
+chmod +x $new_file
