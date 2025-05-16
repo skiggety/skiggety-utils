@@ -43,10 +43,10 @@ function limit-todo-with-keyword-count {
         echo -ne "${YELLOW}"
         echo_divider '-'
         echo -ne "${yellow}"
-        echo "$KEYWORD_USAGES" | head -n $EXCESS_COUNT
+        echo "$KEYWORD_USAGES" | head -n $EXCESS_COUNT | abbreviate -d --auto-min-scale 3
         echo -ne "${no_color}"
         echo_error "---- $KEYWORD LIMIT ---- (everything above here is excessive todo's marked '$KEYWORD')"
-        echo "$KEYWORD_USAGES" | tail -n $MAX_COUNT | grep --color=always -E NOW
+        echo "$KEYWORD_USAGES" | tail -n $MAX_COUNT | grep --color=always -E "${KEYWORD}"
         echo -ne "${YELLOW}"
         echo_divider '='
         echo -ne "${no_color}"
