@@ -43,7 +43,6 @@
 ./installers/github_copilot:21:    # TODO^338: (FUN [01;31m[KIN_PROGRESS[m[K NOW) set up github copilot for Visual Studio Code using skiggety-utils
 ./PWD_BIN/dashboard:55:# TODO^371 URGENT [01;31m[KIN_PROGRESS[m[K NOW: extract some stuff to $SKIGGETY_UTILS_DIR/PWD_BIN/todo-report kinda like zerothlife:
 ./installers/github_copilot:20:    # TODO^386: (FUN [01;31m[KIN_PROGRESS[m[K NOW) set up github copilot for nvim using skiggety-utils
-./bin/review-todo-report:7:SKIGGETY_DIVIDER_LENGTH=120 review -u 20 -m 120 $* $SKIGGETY_UTILS_DIR/PWD_BIN/todo-report # TODO^409 TESTING [01;31m[KIN_PROGRESS[m[K NOW
 ---- TODOs for right NOW: ------------------------------------------------------
 ./lib/skiggety-utils.bash:256:# TODO^103: (TESTING IN_PROGRESS [01;31m[KNOW[m[K) use seconds_as_hms more widely:
 ./bin/sleep-verbose:8:# TODO^232 IN_PROGRESS [01;31m[KNOW[m[K: synchronize this to the clock...the logic takes time too, so over time, this script ends up taking 3% or 4% too long...
@@ -57,4 +56,3 @@
 ./installers/github_copilot:21:    # TODO^338: (FUN IN_PROGRESS [01;31m[KNOW[m[K) set up github copilot for Visual Studio Code using skiggety-utils
 ./PWD_BIN/dashboard:55:# TODO^371 URGENT IN_PROGRESS [01;31m[KNOW[m[K: extract some stuff to $SKIGGETY_UTILS_DIR/PWD_BIN/todo-report kinda like zerothlife:
 ./installers/github_copilot:20:    # TODO^386: (FUN IN_PROGRESS [01;31m[KNOW[m[K) set up github copilot for nvim using skiggety-utils
-./bin/review-todo-report:7:SKIGGETY_DIVIDER_LENGTH=120 review -u 20 -m 120 $* $SKIGGETY_UTILS_DIR/PWD_BIN/todo-report # TODO^409 TESTING IN_PROGRESS [01;31m[KNOW[m[K
