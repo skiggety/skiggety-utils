@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# This script quickly prompts you to do one task per word of arguments, See also, zl-chant
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+while zl-shellask "Want to keep going with '$(basename $0) $*'?"; do # TODO^61 IN_PROGRESS: while there are errors (better start with a default error)
+    # TODO^60 IN_PROGRESS: wipe out accumulated errors
+    for word in "$@"; do
+        zl-delegate --limit-n-times-per-x 1 today "Do something about '$word' for '$(basename $0)'." # TODO^62 IN_PROGRESS: || accumulate errors
+    done
+done
+
+# TODO^61 IN_PROGRESS: exit with accumulated errors

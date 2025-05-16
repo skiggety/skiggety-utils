@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# This script quickly pops up an interactive reminder based on a list of single words, for example, running:
+#     'zl-chant food barkeeping bazillion_other_things bat_around_some_ideas' will pop open a window to remind you of
+#     those four things
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+zl-fork zl-quicklist "$@"
