@@ -52,7 +52,6 @@ bin/default_dashboard || accumulate_error "default_dashboard FAILED"
 # Anything after this point better be more important than the output of default_dashboard since it could bump it off the
 # screen....:
 
-# TODO^371 URGENT IN_PROGRESS NOW: extract some stuff to $SKIGGETY_UTILS_DIR/PWD_BIN/todo-report kinda like zerothlife:
 $SKIGGETY_UTILS_DIR/PWD_BIN/todo-report || accumulate_error 'todo-report errored'
 
 complain_about_keyword_usage -g '!installers/zerothlife*' 'zl''-' ' ...another location... '  || accumulate_error "You might be depending on zerothlife by accident"

@@ -15,6 +15,12 @@ module UserDelegation
       shellask("Make suggested edits, using an alternative or a command like '#{vimdiff_command}'.")
   end
 
+  def ask_user_yn(question_text)
+    # TODO^5?: real implementation at some point (what was the intent? asking yes or no questions only? presenting it
+    # differently?:
+    shellask(question_text)
+  end
+
   def shellask(request_text)
     if $interactive
       request = request_text.shellescape
@@ -22,10 +28,6 @@ module UserDelegation
     else
       raise "Cannot ask user to do the following without being in interactive mode: '#{request_text}'"
     end
-  end
-
-  def ask_user_yn(question_text)
-    shellask(question_text) # TODO: real implementation at some point
   end
 
   # TODO^2: maybe shellask isn't always the best way to ask the user a question.  Change calls to this to call the
