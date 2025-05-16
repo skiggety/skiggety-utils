@@ -69,7 +69,6 @@ function install_basic_prerequisites {
     install_homebrew || exit_with_error "FAILED to install homebrew"
     eval $(/opt/homebrew/bin/brew shellenv)
 
-    # TODO^192 IN_PROGRESS NOW: install latest bash and make sure other scripts are compatible...
     homebrew_install_latest bash
 
     install_asdf_prerequisites
@@ -155,7 +154,7 @@ function install_asdf_prerequisites {
     fi
 }
 
-# TODO^271 IN_PROGRESS: upgrade to asdf 0.16.0 or later ( open 'https://asdf-vm.com/guide/upgrading-to-v0-16#breaking-changes' )
+# TODO^276 IN_PROGRESS: upgrade to asdf 0.16.0 or later ( open 'https://asdf-vm.com/guide/upgrading-to-v0-16#breaking-changes' )
 function install_asdf {
     debug_here "asdf:"
     echo "Installing asdf"

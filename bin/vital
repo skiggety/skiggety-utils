@@ -70,7 +70,7 @@ if $SHOULD_ALTER_VOTE; then
     #                  - EASY TODO^56: and make an alias to help vote quick
 fi
 
-# TODO^189: (IN_PROGRESS, NOW) make plans to clean up archives better
+# TODO^189: (IN_PROGRESS) make plans to clean up archives better
 
 # TODO^2: DELETE once we are no longer reliant on old implementation:
 today_todo $LEGACY_INTERACTIVE_FLAG

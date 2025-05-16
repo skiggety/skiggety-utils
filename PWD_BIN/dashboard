@@ -52,52 +52,8 @@ bin/default_dashboard || accumulate_error "default_dashboard FAILED"
 # Anything after this point better be more important than the output of default_dashboard since it could bump it off the
 # screen....:
 
-###
-### Show Todo's:
-###
-################################################################################
-
-if [ -f ./todo_report/README_in_color.txt ]; then
-    cat ./todo_report/README_in_color.txt
-else
-    echo_divider_with_text "=" "TODO's" # IGNORE_TODO
-    # purposely call whatever 'todo' is in the path in case you are overriding it with a 'PWD_BIN/todo' script:
-    todo --color always | abbreviate -n 4 -t "TODO's" -d || exit_with_error "todo FAILED" # IGNORE_TODO
-fi
-if [ -f ./todo_report/todos_by_status.txt ]; then
-    echo_divider_with_text "=" "TODO's by status" # IGNORE_TODO
-    cat ./todo_report/todos_by_status.txt | abbreviate -n 8 # TODO^10: prefer the color version if you find it
-fi
-
-# TODO^3?: tell you what command to run to commit changes or whatever
-# TODO^2?: graph score over time (see program "progress")
-
-# TODO^19: maybe use this in 'vital' to keep your tag count under control:
-function limit-todo-with-keyword-count {
-    MAX_COUNT="$1"
-    KEYWORD="$2"
-
-    KEYWORD_USAGES="$(todo | grep $KEYWORD )"
-    KEYWORD_USAGE_COUNT=$(echo "$KEYWORD_USAGES" | wc -l | bc )
-
-    echo_debug "$KEYWORD_USAGE_COUNT todo's found marked '$KEYWORD'"
-    if [ "$KEYWORD_USAGE_COUNT" -gt "$MAX_COUNT" ]; then
-        EXCESS_COUNT="$(( $KEYWORD_USAGE_COUNT - $MAX_COUNT))"
-        echo
-        echo_error "$KEYWORD_USAGE_COUNT is ($EXCESS_COUNT) too many todo's marked '$KEYWORD' (the max is $MAX_COUNT):"
-
-        echo "---------------------------------------------------------"
-        echo "$KEYWORD_USAGES" | head -n $EXCESS_COUNT
-        echo_error "---- $KEYWORD LIMIT ---- (everything above here is excessive todo's marked '$KEYWORD')"
-        echo "$KEYWORD_USAGES" | tail -n $MAX_COUNT
-        echo "---------------------------------------------------------"
-
-        accumulate_error "$EXCESS_COUNT too many $KEYWORD todo's found, such as: $(echo "$KEYWORD_USAGES" | head -n 1)"
-    fi
-}
-
-limit-todo-with-keyword-count 7 'IN_''PROGRESS' # TODO^31: fine tune this number
-limit-todo-with-keyword-count 2 'N''OW'
+# TODO^371 URGENT IN_PROGRESS NOW: extract some stuff to $SKIGGETY_UTILS_DIR/PWD_BIN/todo-report kinda like zerothlife:
+$SKIGGETY_UTILS_DIR/PWD_BIN/todo-report || accumulate_error 'todo-report errored'
 
 complain_about_keyword_usage -g '!installers/zerothlife*' 'zl''-' ' ...another location... '  || accumulate_error "You might be depending on zerothlife by accident"
 
