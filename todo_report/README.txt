@@ -6,6 +6,6 @@
 ./bin/sleep-verbose:30:    # TODO^236 IN_PROGRESS: if $delay is a clock time, sleep until that time
 ./bin/sleep-verbose:8:# TODO^262 IN_PROGRESS: synchronize this to the clock...the logic takes time too, so over time, this script ends up taking 3% or 4% too long...
 ./installers/basic_prerequisites:157:# TODO^276 IN_PROGRESS: upgrade to asdf 0.16.0 or later ( open 'https://asdf-vm.com/guide/upgrading-to-v0-16#breaking-changes' )
-./installers/github_copilot:21:    # TODO^343: (FUN IN_PROGRESS) set up github copilot for Visual Studio Code using skiggety-utils
-./installers/github_copilot:20:    # TODO^386: (FUN IN_PROGRESS NOW) set up github copilot for nvim using skiggety-utils
-./installers/astronvim:31:    # TODO^387 IN_PROGRESS NOW: TEST/IMPLEMENT...
+./installers/github_copilot:20:    # TODO^336: (FUN IN_PROGRESS NOW) set up github copilot for nvim using skiggety-utils
+./installers/astronvim:31:    # TODO^337 IN_PROGRESS NOW: TEST/IMPLEMENT...
+./installers/github_copilot:21:    # TODO^387: (FUN IN_PROGRESS) set up github copilot for Visual Studio Code using skiggety-utils

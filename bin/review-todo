@@ -4,5 +4,9 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-SKIGGETY_DIVIDER_LENGTH=120 review -u 20 -m 120 $* todo-abbreviated
-# TODO^221: In another script: SKIGGETY_DIVIDER_LENGTH=120 review -u 20 -m 120 $* $SKIGGETY_UTILS_DIR/PWD_BIN/todo-report
+program='todo'
+if which todo-abbreviated; then
+    program='todo-abbreviated'
+fi
+
+SKIGGETY_DIVIDER_LENGTH=120 review -u 20 -m 120 $* "$program"
