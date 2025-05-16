@@ -189,7 +189,7 @@ function echo_error_here {
 }
 
 function echo_error {
-    echo -e "${RED}ERROR:${red} ${*}${no_color}" >&2
+    echo -e "${RED}ERROR${red}:${RED} ${*}${no_color}" >&2
 }
 
 function echo_divider_with_text {
