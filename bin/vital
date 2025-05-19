@@ -52,6 +52,7 @@ while [[ "$1" == -* ]]; do
     # TODO^3: help option
 done
 TASK_DESCRIPTION="$1"
+REMAINING_ARGS_AS_STRING="$*"
 shift
 
 if $SHOULD_ADD_TASK; then
@@ -73,4 +74,4 @@ fi
 # TODO^189: (IN_PROGRESS) make plans to clean up archives better
 
 # TODO^2: DELETE once we are no longer reliant on old implementation:
-today_todo $LEGACY_INTERACTIVE_FLAG
+today_todo $LEGACY_INTERACTIVE_FLAG $REMAINING_ARGS_AS_STRING # extra args for search

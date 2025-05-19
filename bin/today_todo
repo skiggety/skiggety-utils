@@ -60,6 +60,7 @@ function main {
             *) ;;
         esac
     done
+    REMAINING_ARGS_AS_STRING="$*" # for search type stuff
     # TODO: accept a keyword argument, e.g. "-k WOODSHOP".  When you open the editor it's already searching for it and
     # it prints much like CONFIRMING on the report.  Could accept multiple keyword arguments.
 
@@ -110,8 +111,8 @@ function main {
         fi
         files_to_open="$vital_todo_list_file_name $vital_done_list_file_name $tmp_sorted_list"
 
-        echo "- TODO: ..." >> "$vital_todo_list_file_path" # IGNORE_TODO
-        vim -o $files_to_open '+/\.\.\.' # TODO^84: here and elsewhere, use $EDITOR, not vim
+        debug_eval REMAINING_ARGS_AS_STRING
+        vim -o $files_to_open "+/${REMAINING_ARGS_AS_STRING}" # TODO^86: here and elsewhere, use $EDITOR, not vim  # extra args for search
     fi
 
     # format/compact todos in todo list file(s) (TODO IN_PROGRESS function extract)
@@ -223,6 +224,7 @@ function main {
         if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
     fi
 
+    # TODO^100 IN_PROGRESS show 'XX''X' tasks
 
     # EASY TODO^8: add now count to this output?:
     echo_divider_with_text '=' "$(basename $0): $(( $todo_count + $todo_prog_count )) combined score, $todo_prog_count todos IN_PROGRESS"
