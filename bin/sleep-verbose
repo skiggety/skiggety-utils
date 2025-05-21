@@ -5,7 +5,6 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-# TODO^262 IN_PROGRESS: synchronize this to the clock...the logic takes time too, so over time, this script ends up taking 3% or 4% too long...
 # TODO^2?: integrate into a banner
 
 # TODO^2?: take a '-m <message>' option to display a custom message
@@ -27,7 +26,8 @@ done
 function main {
     delay="$1"
 
-    # TODO^236 IN_PROGRESS: if $delay is a clock time, sleep until that time
+    # TODO^262: synchronize this to the clock...the logic takes time too, so over time, this script ends up taking 3% or 4% too long...
+    # - TODO^266 IN_PROGRESS: if $delay is a clock time, sleep until that time
 
     delay_remaining="$delay"
 
@@ -37,7 +37,7 @@ function main {
             banner -w $(( 77 - $delay_remaining )) $delay_remaining
         fi
         echo -ne "  sleeping for $(seconds_as_hms $delay_remaining) (out of $(seconds_as_hms $delay))\033[0K\r"
-        sleep 1 || exit_with_error "$(basename $0) stopped" # TODO^226 IN_PROGRESS: sleep longer than a second if there is still a long time to go
+        sleep 1 || exit_with_error "$(basename $0) stopped" # TODO^226: sleep longer than a second if there is still a long time to go
         : $((delay_remaining--))
     done
     echo -ne "  DONE! ($(basename $0) slept for $delay seconds)\033[0K\r"

@@ -1,39 +1,26 @@
 ---- IN_PROGRESS: --------------------------------------------------------------
 ./bin/review_v0.1:274:        puts "Error: Interrupted (TODO: DEBUG [01;31m[KIN_PROGRESS[m[K for non-interactive)"
 ./bin/review_v0.1:277:        puts "Error: Interrupted (TODO: DEBUG [01;31m[KIN_PROGRESS[m[K for non-interactive)"
-./bin/today_todo:104:    # Open todo list file(s) up for editing (TODO [01;31m[KIN_PROGRESS[m[K function extract)
-./bin/today_todo:120:    # format/compact todos in todo list file(s) (TODO [01;31m[KIN_PROGRESS[m[K function extract)
-./bin/today_todo:140:    todo_output="$(vital-todo --color always $EXCLUDE_DIR_ARGS | cat -n )" # TODO: (DEBUG [01;31m[KIN_PROGRESS[m[K) which todo are you calling
+./bin/today_todo:105:    # Open todo list file(s) up for editing (TODO [01;31m[KIN_PROGRESS[m[K function extract)
+./bin/today_todo:121:    # format/compact todos in todo list file(s) (TODO [01;31m[KIN_PROGRESS[m[K function extract)
+./bin/today_todo:141:    todo_output="$(vital-todo --color always $EXCLUDE_DIR_ARGS | cat -n )" # TODO: (DEBUG [01;31m[KIN_PROGRESS[m[K) which todo are you calling
 ./bin/today_todo:9:# TODO^22: ([01;31m[KIN_PROGRESS[m[K) gotta DELETE this script eventually, after moving all functionality to vital
-./installers/skiggety.bash:10:# TODO^41: ([01;31m[KIN_PROGRESS[m[K) use completion markers like the basic installer so I can stop re-running this
-./bin/today_todo:196:    # TODO^51: ([01;31m[KIN_PROGRESS[m[K) function extract to do with other keywords
+./bin/today_todo:197:    # TODO^51: ([01;31m[KIN_PROGRESS[m[K) function extract to do with other keywords
 ./bin/vital-todo:9:# TODO^51: TESTING [01;31m[KIN_PROGRESS[m[K exclude that .tmp driveupload thingy:
 ./bin/vimwhich:25:        # TODO^54: ([01;31m[KIN_PROGRESS[m[K) this should share code with newbin, or call newbin in a mode where it doesn't open the editor, it just dumped a new script in $HOME/ instead of a bin dir, which wasn't too good.
 ./installers/skiggety.bash:66:        # TODO^69: ([01;31m[KIN_PROGRESS[m[K) also make sure Zerothlife takes care of it itself, asking the user to put it in their bashrc
-./installers/astronvim:12:    #  ask_user 'Is astronvim installed? (TODO^91 [01;31m[KIN_PROGRESS[m[K: IMPLEMENT for real)'
-./installers/astronvim:17:    ask_user 'Is astronvim configured the way you want? (TODO^91 [01;31m[KIN_PROGRESS[m[K: IMPLEMENT for real)'
-./installers/nvim:18:    ask_user 'Is nvim configured the way you want? (TODO^91 [01;31m[KIN_PROGRESS[m[K: IMPLEMENT for real)'
-./bin/today_todo:229:    # TODO^100 [01;31m[KIN_PROGRESS[m[K show 'XX''X' tasks
+./bin/today_todo:230:    # TODO^100 [01;31m[KIN_PROGRESS[m[K show 'XX''X' tasks
 ./installers/github_copilot:11:    ask_user 'Is github copilot installed? (TODO^100 [01;31m[KIN_PROGRESS[m[K: IMPLEMENT for real)'
 ./installers/github_copilot:15:    ask_user 'Is github copilot configured the way you want? (TODO^100 [01;31m[KIN_PROGRESS[m[K: IMPLEMENT for real)'
 ./lib/skiggety-utils.bash:256:# TODO^103: (TESTING [01;31m[KIN_PROGRESS[m[K NOW) use seconds_as_hms more widely:
 ./bin/newbin:31:    # TODO^131: ([01;31m[KIN_PROGRESS[m[K) I think this script, newbin, should move scripts to zerothlife when appropriate, not some dashboard running async, this chmod is not the only thing that has gotten screwed up:
-./installers/zerothlife:7:# - TODO^140: ([01;31m[KIN_PROGRESS[m[K) make this, and maybe all installers, optional.  We could use marker files to keep track
-./installers/signal:37:  # TODO^150: ([01;31m[KIN_PROGRESS[m[K) IMPLEMENT: ...
-./installers/astronvim:13:    # TODO^181 [01;31m[KIN_PROGRESS[m[K or grep install_dir for astronvim?
-./bin/today_todo:87:    # TODO^185: ([01;31m[KIN_PROGRESS[m[K) also most of these paragraphs could be function extracted...:
-./bin/vital:74:# TODO^189: ([01;31m[KIN_PROGRESS[m[K) make plans to clean up archives better
-./PWD_BIN/todo-report:7:# TODO^211 [01;31m[KIN_PROGRESS[m[K: diff and dedupe with zerothlife version, maybe make one configurable version
+./installers/zerothlife:7:# - TODO^149: ([01;31m[KIN_PROGRESS[m[K) make this, and maybe all installers, optional.  We could use marker files to keep track
+./bin/today_todo:88:    # TODO^185: ([01;31m[KIN_PROGRESS[m[K) also most of these paragraphs could be function extracted...:
 ./PWD_BIN/todo-report:58:limit-todo-with-keyword-count 7 'IN_''PROGRESS' # TODO^213 [01;31m[KIN_PROGRESS[m[K: fine tune this number
-./PWD_BIN/todo-report:59:limit-todo-with-keyword-count 3 'N''OW' # TODO^214 [01;31m[KIN_PROGRESS[m[K: fine tune this number
-./bin/sleep-verbose:40:        sleep 1 || exit_with_error "$(basename $0) stopped" # TODO^226 [01;31m[KIN_PROGRESS[m[K: sleep longer than a second if there is still a long time to go
-./bin/sleep-verbose:30:    # TODO^236 [01;31m[KIN_PROGRESS[m[K: if $delay is a clock time, sleep until that time
-./bin/sleep-verbose:8:# TODO^262 [01;31m[KIN_PROGRESS[m[K: synchronize this to the clock...the logic takes time too, so over time, this script ends up taking 3% or 4% too long...
+./bin/sleep-verbose:30:    # - TODO^266 [01;31m[KIN_PROGRESS[m[K: if $delay is a clock time, sleep until that time
 ./installers/basic_prerequisites:157:# TODO^276 [01;31m[KIN_PROGRESS[m[K: upgrade to asdf 0.16.0 or later ( open 'https://asdf-vm.com/guide/upgrading-to-v0-16#breaking-changes' )
-./installers/astronvim:31:    # TODO^337 [01;31m[KIN_PROGRESS[m[K NOW: TEST/IMPLEMENT...
-./installers/github_copilot:20:    # TODO^345: (FUN [01;31m[KIN_PROGRESS[m[K NOW) set up github copilot for nvim using skiggety-utils
-./installers/github_copilot:21:    # TODO^396: (FUN [01;31m[KIN_PROGRESS[m[K) set up github copilot for Visual Studio Code using skiggety-utils
+./installers/github_copilot:20:    # TODO^345: (FUN [01;31m[KIN_PROGRESS[m[K) set up github copilot for nvim using skiggety-utils
+./installers/github_copilot:21:    # TODO^396: (FUN [01;31m[KIN_PROGRESS[m[K NOW) set up github copilot for Visual Studio Code using skiggety-utils
 ---- TODOs for right NOW: ------------------------------------------------------
 ./lib/skiggety-utils.bash:256:# TODO^103: (TESTING IN_PROGRESS [01;31m[KNOW[m[K) use seconds_as_hms more widely:
-./installers/astronvim:31:    # TODO^337 IN_PROGRESS [01;31m[KNOW[m[K: TEST/IMPLEMENT...
-./installers/github_copilot:20:    # TODO^345: (FUN IN_PROGRESS [01;31m[KNOW[m[K) set up github copilot for nvim using skiggety-utils
+./installers/github_copilot:21:    # TODO^396: (FUN IN_PROGRESS [01;31m[KNOW[m[K) set up github copilot for Visual Studio Code using skiggety-utils

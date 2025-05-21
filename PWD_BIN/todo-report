@@ -4,7 +4,7 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-# TODO^211 IN_PROGRESS: diff and dedupe with zerothlife version, maybe make one configurable version
+# TODO^212: diff and dedupe with zerothlife version, maybe make one configurable version
 
 ###
 ### Show Todo's:
@@ -56,4 +56,4 @@ function limit-todo-with-keyword-count {
 }
 
 limit-todo-with-keyword-count 7 'IN_''PROGRESS' # TODO^213 IN_PROGRESS: fine tune this number
-limit-todo-with-keyword-count 3 'N''OW' # TODO^214 IN_PROGRESS: fine tune this number
+limit-todo-with-keyword-count 3 'N''OW
