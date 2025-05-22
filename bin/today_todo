@@ -81,7 +81,7 @@ function main {
     fi
 
     if $interactive && git rev-parse; then
-        git safe-pull || { shellask "resolve any issues in this local repo"; exit_with_error 'git safe-pull FAILED'; }
+        git safe-pull || { shellask "resolve any issues in this local repo"; }
     fi
 
     # TODO^185: (IN_PROGRESS) also most of these paragraphs could be function extracted...:

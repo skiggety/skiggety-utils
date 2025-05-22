@@ -10,17 +10,16 @@
 ./bin/vimwhich:25:        # TODO^54: ([01;31m[KIN_PROGRESS[m[K) this should share code with newbin, or call newbin in a mode where it doesn't open the editor, it just dumped a new script in $HOME/ instead of a bin dir, which wasn't too good.
 ./installers/skiggety.bash:66:        # TODO^69: ([01;31m[KIN_PROGRESS[m[K) also make sure Zerothlife takes care of it itself, asking the user to put it in their bashrc
 ./bin/today_todo:230:    # TODO^100 [01;31m[KIN_PROGRESS[m[K show 'XX''X' tasks
-./installers/github_copilot:11:    ask_user 'Is github copilot installed? (TODO^100 [01;31m[KIN_PROGRESS[m[K: IMPLEMENT for real)'
-./installers/github_copilot:15:    ask_user 'Is github copilot configured the way you want? (TODO^100 [01;31m[KIN_PROGRESS[m[K: IMPLEMENT for real)'
 ./lib/skiggety-utils.bash:256:# TODO^103: (TESTING [01;31m[KIN_PROGRESS[m[K NOW) use seconds_as_hms more widely:
 ./bin/newbin:31:    # TODO^131: ([01;31m[KIN_PROGRESS[m[K) I think this script, newbin, should move scripts to zerothlife when appropriate, not some dashboard running async, this chmod is not the only thing that has gotten screwed up:
-./installers/zerothlife:7:# - TODO^149: ([01;31m[KIN_PROGRESS[m[K) make this, and maybe all installers, optional.  We could use marker files to keep track
 ./bin/today_todo:88:    # TODO^185: ([01;31m[KIN_PROGRESS[m[K) also most of these paragraphs could be function extracted...:
 ./PWD_BIN/todo-report:58:limit-todo-with-keyword-count 7 'IN_''PROGRESS' # TODO^213 [01;31m[KIN_PROGRESS[m[K: fine tune this number
+./installers/zerothlife:7:# - TODO^239: ([01;31m[KIN_PROGRESS[m[K) make this, and maybe all installers, optional.  We could use marker files to keep track
 ./bin/sleep-verbose:30:    # - TODO^266 [01;31m[KIN_PROGRESS[m[K: if $delay is a clock time, sleep until that time
 ./installers/basic_prerequisites:157:# TODO^276 [01;31m[KIN_PROGRESS[m[K: upgrade to asdf 0.16.0 or later ( open 'https://asdf-vm.com/guide/upgrading-to-v0-16#breaking-changes' )
-./installers/github_copilot:20:    # TODO^345: (FUN [01;31m[KIN_PROGRESS[m[K) set up github copilot for nvim using skiggety-utils
-./installers/github_copilot:21:    # TODO^396: (FUN [01;31m[KIN_PROGRESS[m[K NOW) set up github copilot for Visual Studio Code using skiggety-utils
+./installers/github_copilot:15:    ask_user 'Is github copilot configured the way you want? (TODO^300 [01;31m[KIN_PROGRESS[m[K: IMPLEMENT for real)'
+./installers/visual_studio_code:12:      ask_user 'Is visual studio code installed? (TODO^301 [01;31m[KIN_PROGRESS[m[K: IMPLEMENT for real)'
+./installers/github_copilot:22:    # TODO^396: (FUN [01;31m[KIN_PROGRESS[m[K NOW) set up github copilot for Visual Studio Code using skiggety-utils
 ---- TODOs for right NOW: ------------------------------------------------------
 ./lib/skiggety-utils.bash:256:# TODO^103: (TESTING IN_PROGRESS [01;31m[KNOW[m[K) use seconds_as_hms more widely:
-./installers/github_copilot:21:    # TODO^396: (FUN IN_PROGRESS [01;31m[KNOW[m[K) set up github copilot for Visual Studio Code using skiggety-utils
+./installers/github_copilot:22:    # TODO^396: (FUN IN_PROGRESS [01;31m[KNOW[m[K) set up github copilot for Visual Studio Code using skiggety-utils
