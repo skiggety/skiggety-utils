@@ -55,6 +55,9 @@ alias gr='git ready'
 alias cgry='ci && git ready; exit 0'
 alias gry='git ready; exit 0'
 
+alias puff='zl-fork zl-puff'
+alias puffy='zl-fork zl-puff; exit 0'
+
 alias exut='echo spelling;sleep-verbose 5;exit'
 alias exiy='echo spelling;sleep-verbose 5;exit'
 alias exir='echo spelling;sleep-verbose 5;exit'
