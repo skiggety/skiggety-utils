@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative '../lib/installable_skiggety_util'
+
+class GithubcopilotInstaller
+
+  include InstallableSkiggetyUtil
+
+  def apparently_installed?
+    ask_user 'Is github copilot installed?'
+  end
+
+  def apparently_configured?
+    ask_user 'Is github copilot configured the way you want?'
+  end
+
+  def install!
+    # TODO?: call_peer_installer('astronvim')
+    # TODO?: set up github copilot for nvim using skiggety-utils
+    call_peer_installer('visual_studio_code')
+    if $interactive
+      delegate_download_and_install_to_user(
+        'https://github.com/copilot',
+        'Github Copilot for Visual Studio Code'
+      )
+    else
+      raise_interactive_only_install
+    end
+  end
+
+  def configure!
+    delegate_to_user 'Restart extensions in Visual Studio Code if needed'
+    delegate_to_user 'set github.copilot.nextEditSuggestions.enabled as mentioned at "https://code.visualstudio.com/docs/copilot/ai-powered-suggestions".'
+  end
+
+end
+
+GithubcopilotInstaller.run

@@ -17,8 +17,5 @@
 ./installers/zerothlife:7:# - TODO^239: ([01;31m[KIN_PROGRESS[m[K) make this, and maybe all installers, optional.  We could use marker files to keep track
 ./bin/sleep-verbose:30:    # - TODO^266 [01;31m[KIN_PROGRESS[m[K: if $delay is a clock time, sleep until that time
 ./installers/basic_prerequisites:157:# TODO^276 [01;31m[KIN_PROGRESS[m[K: upgrade to asdf 0.16.0 or later ( open 'https://asdf-vm.com/guide/upgrading-to-v0-16#breaking-changes' )
-./installers/github_copilot:15:    ask_user 'Is github copilot configured the way you want? (TODO^300 [01;31m[KIN_PROGRESS[m[K: IMPLEMENT for real)'
-./installers/github_copilot:22:    # TODO^396: (FUN [01;31m[KIN_PROGRESS[m[K NOW) set up github copilot for Visual Studio Code using skiggety-utils
 ---- TODOs for right NOW: ------------------------------------------------------
 ./lib/skiggety-utils.bash:256:# TODO^103: (TESTING IN_PROGRESS [01;31m[KNOW[m[K) use seconds_as_hms more widely:
-./installers/github_copilot:22:    # TODO^396: (FUN IN_PROGRESS [01;31m[KNOW[m[K) set up github copilot for Visual Studio Code using skiggety-utils
