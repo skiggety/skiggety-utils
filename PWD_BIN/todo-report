@@ -56,4 +56,4 @@ function limit-todo-with-keyword-count {
 }
 
 limit-todo-with-keyword-count 7 'IN_''PROGRESS' # TODO^213 IN_PROGRESS: fine tune this number
-limit-todo-with-keyword-count 3 'N''OW
+limit-todo-with-keyword-count 3 'N''OW'
