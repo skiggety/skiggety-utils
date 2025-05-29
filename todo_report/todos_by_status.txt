@@ -1,18 +1,18 @@
 ---- IN_PROGRESS: --------------------------------------------------------------
 ./bin/review_v0.1:274:        puts "Error: Interrupted (TODO: DEBUG [01;31m[KIN_PROGRESS[m[K for non-interactive)"
 ./bin/review_v0.1:277:        puts "Error: Interrupted (TODO: DEBUG [01;31m[KIN_PROGRESS[m[K for non-interactive)"
-./bin/today_todo:105:    # Open todo list file(s) up for editing (TODO [01;31m[KIN_PROGRESS[m[K function extract)
-./bin/today_todo:121:    # format/compact todos in todo list file(s) (TODO [01;31m[KIN_PROGRESS[m[K function extract)
-./bin/today_todo:141:    todo_output="$(vital-todo --color always $EXCLUDE_DIR_ARGS | cat -n )" # TODO: (DEBUG [01;31m[KIN_PROGRESS[m[K) which todo are you calling
+./bin/today_todo:104:    # Open todo list file(s) up for editing (TODO [01;31m[KIN_PROGRESS[m[K function extract)
+./bin/today_todo:120:    # format/compact todos in todo list file(s) (TODO [01;31m[KIN_PROGRESS[m[K function extract)
+./bin/today_todo:140:    todo_output="$(vital-todo --color always $EXCLUDE_DIR_ARGS | cat -n )" # TODO: (DEBUG [01;31m[KIN_PROGRESS[m[K) which todo are you calling
 ./bin/today_todo:9:# TODO^22: ([01;31m[KIN_PROGRESS[m[K) gotta DELETE this script eventually, after moving all functionality to vital
-./bin/today_todo:197:    # TODO^51: ([01;31m[KIN_PROGRESS[m[K) function extract to do with other keywords
+./bin/today_todo:196:    # TODO^51: ([01;31m[KIN_PROGRESS[m[K) function extract to do with other keywords
 ./bin/vital-todo:9:# TODO^51: TESTING [01;31m[KIN_PROGRESS[m[K exclude that .tmp driveupload thingy:
 ./bin/vimwhich:25:        # TODO^54: ([01;31m[KIN_PROGRESS[m[K) this should share code with newbin, or call newbin in a mode where it doesn't open the editor, it just dumped a new script in $HOME/ instead of a bin dir, which wasn't too good.
 ./installers/skiggety.bash:66:        # TODO^69: ([01;31m[KIN_PROGRESS[m[K) also make sure Zerothlife takes care of it itself, asking the user to put it in their bashrc
-./bin/today_todo:230:    # TODO^100 [01;31m[KIN_PROGRESS[m[K show 'XX''X' tasks
+./bin/today_todo:229:    # TODO^100 [01;31m[KIN_PROGRESS[m[K show 'XX''X' tasks
 ./lib/skiggety-utils.bash:256:# TODO^103: (TESTING [01;31m[KIN_PROGRESS[m[K NOW) use seconds_as_hms more widely:
 ./bin/newbin:31:    # TODO^131: ([01;31m[KIN_PROGRESS[m[K) I think this script, newbin, should move scripts to zerothlife when appropriate, not some dashboard running async, this chmod is not the only thing that has gotten screwed up:
-./bin/today_todo:88:    # TODO^185: ([01;31m[KIN_PROGRESS[m[K) also most of these paragraphs could be function extracted...:
+./bin/today_todo:87:    # TODO^185: ([01;31m[KIN_PROGRESS[m[K) also most of these paragraphs could be function extracted...:
 ./PWD_BIN/todo-report:58:limit-todo-with-keyword-count 7 'IN_''PROGRESS' # TODO^213 [01;31m[KIN_PROGRESS[m[K: fine tune this number
 ./installers/zerothlife:7:# - TODO^239: ([01;31m[KIN_PROGRESS[m[K) make this, and maybe all installers, optional.  We could use marker files to keep track
 ./bin/sleep-verbose:30:    # - TODO^266 [01;31m[KIN_PROGRESS[m[K: if $delay is a clock time, sleep until that time
