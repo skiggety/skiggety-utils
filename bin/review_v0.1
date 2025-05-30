@@ -318,6 +318,10 @@ class ReviewProgram
     @minimum_delay || DEFAULT_MINIMUM_DELAY
   end
 
+  def pwd
+    @pwd || `basename $(pwd)`.chomp
+  end
+
   def uninteruptable_minimum_delay
     @uninteruptable_minimum_delay || DEFAULT_UNINTERUPTABLE_MINIMUM_DELAY
   end
@@ -325,7 +329,7 @@ class ReviewProgram
   # TODO^2: cleanup timestamp formatting:
   # Now, in color!
   def show_footer(command)
-    system("echo_divider_with_text \"#\" \"\\\"#{command}\\\" exited with #{red_unless_zero(@exit_val)} after " \
+    system("echo_divider_with_text \"#\" \"\\\"#{command}\\\" in '#{pwd}' exited with #{red_unless_zero(@exit_val)} after " \
            "#{ran_in_seconds} seconds, having started at " + rotate_rainbow(@last_start_timestamp) + '"')
   end
 
