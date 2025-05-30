@@ -264,7 +264,7 @@ class ReviewProgram
         total_delay_summary = uninteruptable_minimum_delay == delay ? delay.to_s : "#{[@slept_already, uninteruptable_minimum_delay].max}-#{delay}"
         # TODO^2: show time as hh:mm:ss or something like that:
         # EASY TODO^86: make sleep-verbose message look more like this?:
-        print "...sleeping for #{delay_remaining} out of #{total_delay_summary} seconds (already slept #{@slept_already})...\033[0K\r"
+        print '...sleeping'.green.bold + " for #{delay_remaining} out of #{total_delay_summary} seconds (already slept #{@slept_already})...\033[0K\r"
         sleep 1
         delay_remaining -= 1
         @slept_already += 1
@@ -278,7 +278,7 @@ class ReviewProgram
         abort
       end
     end
-    print " ...slept for #{@slept_already}/#{delay} seconds#{running_message}." \
+    print "#{running_message}, after sleeping for #{@slept_already}/#{delay} seconds." \
           "#{woke_up_message} at #{Time.now}\033[0K\r"
     true
   end
@@ -288,7 +288,7 @@ class ReviewProgram
   end
 
   def running_message
-    @interactive ? '' : ', RUNNING again'
+    @interactive ? '' : 'RUNNING'.red.bold + ' again'
   end
 
   def calc_change_detected
