@@ -21,7 +21,7 @@ class VisualStudioCodeInstaller
 
   def configure!
     system("open 'https://code.visualstudio.com/docs/setup/mac'")
-    delegate_to_user "configure the path with VS code as it says at https://code.visualstudio.com/docs/setup/mac"
+    delegate_to_user 'configure the path with VS code as it says at https://code.visualstudio.com/docs/setup/mac'
   end
 
   def install!

@@ -3,6 +3,12 @@ export PATH="$ZEROTHLIFE_DIR/bin:$ZEROTHLIFE_CODE_DIR/bin:$PATH"
 alias cdzl="cd $ZEROTHLIFE_DIR"
 alias cdzlc="cd $ZEROTHLIFE_CODE_DIR"
 
+alias brush='zl-fork zl-groom-terminal-window-locations --multiple 50'
+alias brushy='zl-fork zl-groom-terminal-window-locations --multiple 50;exit 0'
+
+alias splash='zl-fork zl-groom-terminal-window-locations --multiple 1'
+alias splashy='zl-fork zl-groom-terminal-window-locations --multiple 1;exit 0'
+
 alias inaminute="sleep-verbose 60 && echo y && exit 0"
 
 alias forkit="zl-fork-delegate && echo y && exit 0"
