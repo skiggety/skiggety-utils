@@ -1,0 +1,41 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative '../lib/installable_skiggety_util'
+
+class AstronvimInstaller
+
+  include InstallableSkiggetyUtil
+
+  def apparently_installed?
+    File.exist? "#{install_dir}/README.md"
+    #  ask_user 'Is astronvim installed? (TODO^91 IMPLEMENT for real)'
+    # TODO^181 or grep install_dir for astronvim?
+  end
+
+  def apparently_configured?
+    ask_user 'Is astronvim configured the way you want? (TODO^91 IMPLEMENT for real)'
+  end
+
+  def install_dir
+    @install_dir ||= "#{Dir.home}/.config/nvim"
+  end
+
+  def install!
+    call_peer_installer('nvim')
+    unless Dir.exist?(install_dir)
+      assert_system("git clone --depth 1 https://github.com/AstroNvim/template #{install_dir}")
+    end
+    assert_system("rm -rf #{install_dir}/.git")
+    system('if which zl-fork; then zl-fork nvim;fi')
+    # TODO^267: TEST/IMPLEMENT...
+  end
+
+  def configure!
+    assert_system("nvim --cmd ':source #{config_dir_path}/setup_astronvim.nvim'")
+    # TODO: IMPLEMENT
+  end
+
+end
+
+AstronvimInstaller.run
