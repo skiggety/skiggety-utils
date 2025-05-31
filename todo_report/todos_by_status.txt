@@ -17,5 +17,6 @@
 ./installers/zerothlife:7:# - TODO^239: ([01;31m[KIN_PROGRESS[m[K) make this, and maybe all installers, optional.  We could use marker files to keep track
 ./bin/sleep-verbose:30:    # - TODO^266 [01;31m[KIN_PROGRESS[m[K: if $delay is a clock time, sleep until that time
 ./installers/basic_prerequisites:157:# TODO^276 [01;31m[KIN_PROGRESS[m[K: upgrade to asdf 0.16.0 or later ( open 'https://asdf-vm.com/guide/upgrading-to-v0-16#breaking-changes' )
+./lib/include_in_bashrc.bash:78:# ([01;31m[KIN_PROGRESS[m[K) TODO^401: DELETE???: . "$HOME/.asdf/completions/asdf.bash"
 ---- TODOs for right NOW: ------------------------------------------------------
 ./lib/skiggety-utils.bash:256:# TODO^103: (TESTING IN_PROGRESS [01;31m[KNOW[m[K) use seconds_as_hms more widely:

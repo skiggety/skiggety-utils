@@ -75,7 +75,7 @@ trap 'if [ "login" == "$(ps -o comm= $PPID)" ];then echo;zl-battery-status;echo;
 
 # asdf stuff (should be at the bottom of this file):
 . "$HOME/.asdf/asdf.sh"
-. "$HOME/.asdf/completions/asdf.bash"
+# (IN_PROGRESS) TODO^401: DELETE???: . "$HOME/.asdf/completions/asdf.bash"
 if asdf current | grep '^direnv' >/dev/null; then
     . "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/bashrc"
 fi
