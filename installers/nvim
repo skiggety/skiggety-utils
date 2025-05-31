@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative '../lib/installable_skiggety_util'
+
+class NeovimInstaller
+
+  include InstallableSkiggetyUtil
+
+  def apparently_installed?
+    program_version_option_output_matches?('nvim', /v0\.11\.1 /)
+  end
+
+  # Err on the side of returning false...if these files don't match perfectly
+  # the user will have a chance to make sure it's set up right:
+  def apparently_configured?
+    ask_user 'Is nvim configured the way you want? (TODO^91: IMPLEMENT for real)'
+  end
+
+  def install!
+    brew_install_latest 'neovim' if !in_docker_demo? && on_mac_os?
+
+    mark_installed!
+  end
+
+  # TODO: ... def configure!
+  # TODO: ...   # TODO: open 'https://dineshpandiyan.com/blog/install-neovim-macos'
+  # TODO: ... end
+
+end
+
+NeovimInstaller.run
