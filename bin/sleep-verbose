@@ -26,7 +26,7 @@ done
 function main {
     delay="$1"
 
-    # TODO^262: synchronize this to the clock...the logic takes time too, so over time, this script ends up taking 3% or 4% too long...
+    # TODO^562 IN_PROGRESS: synchronize this to the clock...the logic takes time too, so over time, this script ends up taking 3% or 4% too long...
     # - TODO^266 IN_PROGRESS: if $delay is a clock time, sleep until that time
 
     delay_remaining="$delay"

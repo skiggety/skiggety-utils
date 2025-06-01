@@ -113,7 +113,12 @@ function main {
 
         echo "- TODO: ..." >> "$vital_todo_list_file_path" # IGNORE_TODO
         debug_eval REMAINING_ARGS_AS_STRING
-        vim -o $files_to_open "+/\(${REMAINING_ARGS_AS_STRING}\|\.\.\.\)" # TODO^86: here and elsewhere, use $EDITOR, not vim  # extra args for search # TODO^84: here and elsewhere, use $EDITOR, not vim
+
+        if [ -n "${REMAINING_ARGS_AS_STRING}" ]; then
+            vim -o $files_to_open "+/\(${REMAINING_ARGS_AS_STRING}\|\.\.\.\)" # TODO^86: here and elsewhere, use $EDITOR, not vim  # extra args for search # TODO^84: here and elsewhere, use $EDITOR, not vim
+        else
+            vim -o $files_to_open "+/\(\.\.\.\)" # TODO^86: here and elsewhere, use $EDITOR, not vim  # extra args for search # TODO^84: here and elsewhere, use $EDITOR, not vim
+        fi
     fi
 
     # format/compact todos in todo list file(s) (TODO IN_PROGRESS function extract)
