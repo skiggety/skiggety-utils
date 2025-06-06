@@ -24,23 +24,27 @@ while [[ "$1" == -* ]]; do
 done
 
 function main {
-    delay="$1"
+    TARGET_SLEEP_SECONDS="${1:-1}"
+    if [ -z "$TARGET_SLEEP_SECONDS" ] || ! [[ "$TARGET_SLEEP_SECONDS" =~ ^[0-9]+$ ]]; then
+        echo "Usage: $0 <target_sleep_seconds>"
+        exit 1
+    fi
 
-    # TODO^562 IN_PROGRESS NOW: synchronize this to the clock...the logic takes time too, so over time, this script ends up taking 3% or 4% too long...
-    # - TODO^266 IN_PROGRESS: if $delay is a clock time, sleep until that time
+    START_TIME=$(date +%s)
+    END_TIME=$(( $(date +%s) + TARGET_SLEEP_SECONDS ))
+    echo -ne "  sleeping for $(seconds_as_hms $TARGET_SLEEP_SECONDS)\033[0K\r"
 
-    delay_remaining="$delay"
-
-    while [ "$delay_remaining" -gt 0 ]; do
-        if $SHOW_COUNTDOWN && [ $delay_remaining -le 30 ] && [ $delay -gt $(( $delay_remaining + 5 )) ]; then
-            for nli in $(seq $(tput lines));do echo;done # TODO^3: maybe function extract as it wipes the screen and leaves the cursor at the bottom
-            banner -w $(( 77 - $delay_remaining )) $delay_remaining
+    REMAINING_SLEEP=$((END_TIME - $(date +%s)))
+    while [ $REMAINING_SLEEP -gt 0 ]; do
+        if $SHOW_COUNTDOWN && [ $REMAINING_SLEEP -le 30 ] && [ $TARGET_SLEEP_SECONDS -gt $(( REMAINING_SLEEP + 5 )) ]; then
+            for nli in $(seq $(tput lines)); do echo; done # Clear the screen
+            banner -w $(( 77 - REMAINING_SLEEP )) "$REMAINING_SLEEP"
         fi
-        echo -ne "  sleeping for $(seconds_as_hms $delay_remaining) (out of $(seconds_as_hms $delay))\033[0K\r"
-        sleep 1 || exit_with_error "$(basename $0) stopped" # TODO^226: sleep longer than a second if there is still a long time to go
-        : $((delay_remaining--))
+        echo -ne "  sleeping for more yet: $(seconds_as_hms $REMAINING_SLEEP) (out of $(seconds_as_hms $TARGET_SLEEP_SECONDS))\033[0K\r"
+        sleep $(( ($REMAINING_SLEEP / 120 ) + 1 )) || exit_with_error "$(basename $0) stopped" # Sleep longer than a second if there is still a long time to go
+        REMAINING_SLEEP=$((END_TIME - $(date +%s)))
     done
-    echo -ne "  DONE! ($(basename $0) slept for $delay seconds)\033[0K\r"
+    echo -ne "  DONE! ($(basename $0) slept for $delay seconds as of $(date) )\033[0K\r"
 
     if $PRINT_NEWLINE; then
         echo
