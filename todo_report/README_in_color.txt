@@ -8,4 +8,4 @@
 ./installers/astronvim:31:    # [1m[31mTODO^267[0m[0m: TEST/IMPLEMENT...
 ./installers/basic_prerequisites:157:# [1m[31mTODO^276[0m[0m IN_PROGRESS: upgrade to asdf 0.16.0 or later ( open 'https://asdf-vm.com/guide/upgrading-to-v0-16#breaking-changes' )
 ./lib/include_in_bashrc.bash:78:# (IN_PROGRESS) [1m[31mTODO^401[0m[0m: DELETE???: . "$HOME/.asdf/completions/asdf.bash"
-[1m[33m./bin/sleep-verbose:29:    # [1m[31mTODO^562[0m[1m[33m IN_PROGRESS: synchronize this to the clock...the logic takes time too, so over time, this script ends up taking 3% or 4% too long...[0m
+[1m[33m./bin/sleep-verbose:29:    # [1m[31mTODO^562[0m[1m[33m IN_PROGRESS NOW: synchronize this to the clock...the logic takes time too, so over time, this script ends up taking 3% or 4% too long...[0m
