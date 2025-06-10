@@ -21,6 +21,7 @@ alias fzgy="zl-fork-gamify && echo y && exit 0"
 alias effin-ziggy="zl-fork-gamify && echo y && exit 0"
 
 alias zippy="zl-gamify --semi-urgent && echo y && exit 0"
+alias effin-zippy="zl-fork-gamify --semi-urgent && echo y && exit 0"
 
 alias zaggy="zl-gamify --urgent && echo y && exit 0"
 alias omg-ziggy="zl-gamify --urgent && echo y && exit 0"
