@@ -40,7 +40,7 @@ function main {
             for nli in $(seq $(tput lines)); do echo; done # Clear the screen
             banner -w $(( 77 - REMAINING_SLEEP )) "$REMAINING_SLEEP"
         fi
-        echo -ne "  [ the computer is ] sleeping for more yet: $(seconds_as_hms $REMAINING_SLEEP) (out of $(seconds_as_hms $TARGET_SLEEP_SECONDS))\033[0K\r"
+        echo -ne "  [ this process is ] sleeping for more yet: $(seconds_as_hms $REMAINING_SLEEP) (out of $(seconds_as_hms $TARGET_SLEEP_SECONDS))\033[0K\r"
         sleep $(( ($REMAINING_SLEEP / 120 ) + 1 )) || exit_with_error "$(basename $0) stopped" # Sleep longer than a second if there is still a long time to go
         REMAINING_SLEEP=$((END_TIME - $(date +%s)))
     done
