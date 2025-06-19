@@ -44,7 +44,7 @@ function main {
         sleep $(( ($REMAINING_SLEEP / 120 ) + 1 )) || exit_with_error "$(basename $0) stopped" # Sleep longer than a second if there is still a long time to go
         REMAINING_SLEEP=$((END_TIME - $(date +%s)))
     done
-    echo -ne "  DONE! ($(basename $0) slept for $delay seconds as of $(date) )\033[0K\r"
+    echo -ne "  DONE! ($(basename $0) slept for $TARGET_SLEEP_SECONDS seconds as of $(date) )\033[0K\r"
 
     if $PRINT_NEWLINE; then
         echo
