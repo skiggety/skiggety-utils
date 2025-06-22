@@ -7,5 +7,5 @@
 ./PWD_BIN/todo-report:58:limit-todo-with-keyword-count 7 'IN_''PROGRESS' # TODO^213 IN_PROGRESS: fine tune this number
 ./installers/zerothlife:7:# - TODO^239: (IN_PROGRESS) make this, and maybe all installers, optional.  We could use marker files to keep track
 ./installers/astronvim:31:    # TODO^267: TEST/IMPLEMENT...
-./installers/basic_prerequisites:157:# TODO^276 IN_PROGRESS: upgrade to asdf 0.16.0 or later ( open 'https://asdf-vm.com/guide/upgrading-to-v0-16#breaking-changes' )
+./installers/basic_prerequisites:157:# TODO^294 IN_PROGRESS NOW: upgrade to asdf 0.16.0 or later ( open 'https://asdf-vm.com/guide/upgrading-to-v0-16#breaking-changes' )
 ./lib/include_in_bashrc.bash:78:# (IN_PROGRESS) TODO^401: DELETE???: . "$HOME/.asdf/completions/asdf.bash"
