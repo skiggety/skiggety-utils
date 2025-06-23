@@ -269,17 +269,17 @@ function seconds_as_hms {
     HMS_NUM="$( printf '%02d\n' $SECONDS )"
     debug_eval_here HMS_NUM
 
-    if [ $MINUTES -gt 0 ]; then
+    if [ $MINUTES -gt 0 ] || [ $HOURS -gt 0 ]; then
         HMS_UNITS="m:$HMS_UNITS"
         debug_eval_here HMS_UNITS
         HMS_NUM="$( printf '%02d\n' $MINUTES ):$HMS_NUM"
         debug_eval_here HMS_NUM
-        if [ $HOURS -gt 0 ]; then
-            HMS_UNITS="h:$HMS_UNITS"
-            debug_eval_here HMS_UNITS
-            HMS_NUM="$HOURS:$HMS_NUM"
-            debug_eval_here HMS_NUM
-        fi
+    fi
+    if [ $HOURS -gt 0 ]; then
+        HMS_UNITS="h:$HMS_UNITS"
+        debug_eval_here HMS_UNITS
+        HMS_NUM="$HOURS:$HMS_NUM"
+        debug_eval_here HMS_NUM
     fi
 
     HMS="$HMS_NUM $HMS_UNITS"

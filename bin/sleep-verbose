@@ -36,7 +36,7 @@ function main {
 
     REMAINING_SLEEP=$((END_TIME - $(date +%s)))
     while [ $REMAINING_SLEEP -gt 0 ]; do
-        if $SHOW_COUNTDOWN && [ $REMAINING_SLEEP -le 30 ] && [ $TARGET_SLEEP_SECONDS -gt $(( REMAINING_SLEEP + 5 )) ]; then
+        if $SHOW_COUNTDOWN && [ $REMAINING_SLEEP -le 30 ] && [ $TARGET_SLEEP_SECONDS -gt $(( REMAINING_SLEEP + 2 )) ]; then
             for nli in $(seq $(tput lines)); do echo; done # Clear the screen
             banner -w $(( 77 - REMAINING_SLEEP )) "$REMAINING_SLEEP"
         fi
