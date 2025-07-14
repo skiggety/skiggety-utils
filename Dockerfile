@@ -25,6 +25,7 @@ WORKDIR "$SKIGGETY_UTILS_DIR"
 ENV PATH="${PATH}:./PWD_BIN:$SKIGGETY_UTILS_DIR/bin"
 
 # optimizations, stuff to do before runnining installers/basic_prerequisites so it doesn't have to work as hard:
+# TODO^294 IN_PROGRESS NOW: upgrade?:
 RUN git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.2
 RUN apt install -y bundler
 ADD ./bin/skiggety_env_exec ./bin/skiggety_env_exec

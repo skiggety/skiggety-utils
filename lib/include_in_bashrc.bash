@@ -73,9 +73,10 @@ alias cdsu="cd $SKIGGETY_UTILS_DIR"
 # window/tab open with the same visual settings
 trap 'if [ "login" == "$(ps -o comm= $PPID)" ];then echo;zl-battery-status;echo;echo "================================================================================";for i in $(seq 12 1);do echo -n "~";for j in $(seq $i);do echo -n " ~ ~";done;echo;done;echo "~";echo;fortune | sed "s/^/~       /";echo;echo;echo "(Holding this shell open for a moment just in case you need to capture anything)";echo;sleep-verbose 6;oop;fi' EXIT
 
+# TODO^294 IN_PROGRESS NOW: upgrade asdf--does this need a change?:
 # asdf stuff (should be at the bottom of this file):
 . "$HOME/.asdf/asdf.sh"
-# (IN_PROGRESS) TODO^401: DELETE???: . "$HOME/.asdf/completions/asdf.bash"
+# (IN_PROGRESS) TODO^294: DELETE???: . "$HOME/.asdf/completions/asdf.bash"
 if asdf current | grep '^direnv' >/dev/null; then
     . "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/bashrc"
 fi

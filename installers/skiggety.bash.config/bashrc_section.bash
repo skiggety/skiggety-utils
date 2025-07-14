@@ -18,4 +18,5 @@ source $ZEROTHLIFE_CODE_DIR/config/include_in_bashrc.bash                       
 export SKIGGETY_DEBUG=${SKIGGETY_DEBUG:-false}                                                     # FROM_SKIGGETY_UTILS
 export SKIGGETY_BLINKY_DEBUG=${SKIGGETY_DEBUG:-false} # help you see 'DEBUG'                       # FROM_SKIGGETY_UTILS
 # export PATH="${PATH}:${SKIGGETY_UTILS_DIR}/bin/silliness" # very optional                        # FROM_SKIGGETY_UTILS
+# TODO^294 IN_PROGRESS NOW: upgrade asdf--does this need a change?:
 source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/bashrc"                                      # FROM_SKIGGETY_UTILS

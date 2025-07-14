@@ -19,6 +19,7 @@ class TodoInstaller
 
   def install!
     call_peer_installer('basic_prerequisites')
+    # TODO^294 IN_PROGRESS NOW: upgrade asdf--does this need a change?:
     system('skiggety_env_exec asdf direnv shell python 3.11.1 -- pip install colorama') ||
       raise('pip install colorama failed')
     mark_installed! # TODO: DELETE once we implement apparently_installed? for real

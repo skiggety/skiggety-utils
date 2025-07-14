@@ -15,8 +15,16 @@
 ./bin/today_todo:87:    # TODO^185: ([01;31m[KIN_PROGRESS[m[K) also most of these paragraphs could be function extracted...:
 ./PWD_BIN/todo-report:58:limit-todo-with-keyword-count 7 'IN_''PROGRESS' # TODO^213 [01;31m[KIN_PROGRESS[m[K: fine tune this number
 ./installers/zerothlife:7:# - TODO^239: ([01;31m[KIN_PROGRESS[m[K) make this, and maybe all installers, optional.  We could use marker files to keep track
-./installers/basic_prerequisites:157:# TODO^294 [01;31m[KIN_PROGRESS[m[K NOW: upgrade to asdf 0.16.0 or later ( open 'https://asdf-vm.com/guide/upgrading-to-v0-16#breaking-changes' )
-./lib/include_in_bashrc.bash:78:# ([01;31m[KIN_PROGRESS[m[K) TODO^401: DELETE???: . "$HOME/.asdf/completions/asdf.bash"
+./Dockerfile:28:# TODO^294 [01;31m[KIN_PROGRESS[m[K NOW: upgrade?:
+./installers/skiggety.bash.config/bashrc_section.bash:21:# TODO^294 [01;31m[KIN_PROGRESS[m[K NOW: upgrade asdf--does this need a change?:
+./installers/todo:22:    # TODO^294 [01;31m[KIN_PROGRESS[m[K NOW: upgrade asdf--does this need a change?:
+./lib/include_in_bashrc.bash:76:# TODO^294 [01;31m[KIN_PROGRESS[m[K NOW: upgrade asdf--does this need a change?:
+./lib/include_in_bashrc.bash:79:# ([01;31m[KIN_PROGRESS[m[K) TODO^294: DELETE???: . "$HOME/.asdf/completions/asdf.bash"
+./installers/basic_prerequisites:157:# TODO^295 [01;31m[KIN_PROGRESS[m[K NOW: upgrade to asdf 0.16.0 or later ( open 'https://asdf-vm.com/guide/upgrading-to-v0-16#breaking-changes' )
 ---- TODOs for right NOW: ------------------------------------------------------
 ./lib/skiggety-utils.bash:256:# TODO^103: (TESTING IN_PROGRESS [01;31m[KNOW[m[K) use seconds_as_hms more widely:
-./installers/basic_prerequisites:157:# TODO^294 IN_PROGRESS [01;31m[KNOW[m[K: upgrade to asdf 0.16.0 or later ( open 'https://asdf-vm.com/guide/upgrading-to-v0-16#breaking-changes' )
+./Dockerfile:28:# TODO^294 IN_PROGRESS [01;31m[KNOW[m[K: upgrade?:
+./installers/skiggety.bash.config/bashrc_section.bash:21:# TODO^294 IN_PROGRESS [01;31m[KNOW[m[K: upgrade asdf--does this need a change?:
+./installers/todo:22:    # TODO^294 IN_PROGRESS [01;31m[KNOW[m[K: upgrade asdf--does this need a change?:
+./lib/include_in_bashrc.bash:76:# TODO^294 IN_PROGRESS [01;31m[KNOW[m[K: upgrade asdf--does this need a change?:
+./installers/basic_prerequisites:157:# TODO^295 IN_PROGRESS [01;31m[KNOW[m[K: upgrade to asdf 0.16.0 or later ( open 'https://asdf-vm.com/guide/upgrading-to-v0-16#breaking-changes' )
