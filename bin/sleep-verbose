@@ -17,7 +17,7 @@ while [[ "$1" == -* ]]; do
     if [ "$1" == "-n" ];then
         PRINT_NEWLINE=false
         shift
-    elif [ "$1" == "--with-countdown" ]; then
+    elif [ "$1" == "--vv" ] || [ "$1" == "--very-verbose" ] || [ "$1" == "--with-countdown" ]; then
         SHOW_COUNTDOWN=true
         shift
     fi
