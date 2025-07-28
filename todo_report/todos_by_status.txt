@@ -11,7 +11,7 @@
 ./installers/skiggety.bash:66:        # TODO^69: ([01;31m[KIN_PROGRESS[m[K) also make sure Zerothlife takes care of it itself, asking the user to put it in their bashrc
 ./bin/today_todo:233:    # TODO^100 [01;31m[KIN_PROGRESS[m[K show 'XX''X' tasks
 ./lib/skiggety-utils.bash:256:# TODO^103: (TESTING [01;31m[KIN_PROGRESS[m[K NOW) use seconds_as_hms more widely:
-./bin/newbin:31:    # TODO^131: ([01;31m[KIN_PROGRESS[m[K) I think this script, newbin, should move scripts to zerothlife when appropriate, not some dashboard running async, this chmod is not the only thing that has gotten screwed up:
+./bin/newbin:35:    # TODO^131: ([01;31m[KIN_PROGRESS[m[K) I think this script, newbin, should move scripts to zerothlife when appropriate, not some dashboard running async, this chmod is not the only thing that has gotten screwed up:
 ./bin/today_todo:87:    # TODO^185: ([01;31m[KIN_PROGRESS[m[K) also most of these paragraphs could be function extracted...:
 ./PWD_BIN/todo-report:58:limit-todo-with-keyword-count 7 'IN_''PROGRESS' # TODO^213 [01;31m[KIN_PROGRESS[m[K: fine tune this number
 ./installers/zerothlife:7:# - TODO^239: ([01;31m[KIN_PROGRESS[m[K) make this, and maybe all installers, optional.  We could use marker files to keep track
