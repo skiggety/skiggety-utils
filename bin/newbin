@@ -10,7 +10,11 @@
 # TODO^10?: maybe you could configure in which bin directory new scripts end up in, or at least do an EASY HACK to throw zl-* in the right place
 
 if [ "$1" == "$(basename $1)" ];then
-    new_file="$SKIGGETY_UTILS_DIR/bin/$1"
+    if which "$1" > /dev/null; then
+        new_file="$(which "$1")"
+    else
+        new_file="$SKIGGETY_UTILS_DIR/bin/$1"
+    fi
 else
     new_file="$1"
 fi
