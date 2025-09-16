@@ -10,9 +10,12 @@
 THIS_DIR="$(cd "$(dirname $BASH_SOURCE)";pwd)"
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-# TODO^11: only do git stuff if it's a git repository:
-# - EASY TODO^13: git-dir-is-repo && git-dashboard
+TOP_LEVEL_DIVIDER="O-=======-"
+echo_divider_with_text "$TOP_LEVEL_DIVIDER" "Running '$(basename $0)' for $(duh) :"
 
+# TODO^11: only do git stuff if it's a git repository:
+# - EASY TODO^103: git-dir-is-repo && git-dashboard
 git-dashboard || accumulate_error "'git-dashboard' FAILED"
 
+echo_divider_with_text "$TOP_LEVEL_DIVIDER" "END of '$(basename $0)' for $(duh) ."
 exit_with_any_accumulated_errors
