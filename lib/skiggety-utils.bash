@@ -95,7 +95,7 @@ function exit_if_n_times_this_already_running {
     debug_eval_here threshold
     target="$2"
     debug_eval_here target
-    OTHER_SCRIPT_PSLINES="$( pstree | grep -v grep | grep --color=always "$target" )"
+    OTHER_SCRIPT_PSLINES="$( pstree | grep -v grep | grep --color=always "${target}\( \|$\)" )"
     debug_eval_here OTHER_SCRIPT_PSLINES
     if [ $( echo "$OTHER_SCRIPT_PSLINES" | wc -l ) -gt "$threshold" ]; then
         debug_here
@@ -106,6 +106,7 @@ function exit_if_n_times_this_already_running {
         sleep-verbose 5
         exit_with_error "It seems like there are a bunch of these running already, exiting.."
     fi
+    return 0
 }
 
 function exit_with_accumulated_errors {
