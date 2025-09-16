@@ -17,6 +17,9 @@ while [[ "$1" == -* ]]; do
     if [ "$1" == "-n" ];then
         PRINT_NEWLINE=false
         shift
+    elif [ "$1" == "--debug" ]; then
+        SKIGGETY_DEBUG=true
+        shift
     elif [ "$1" == "--vv" ] || [ "$1" == "--very-verbose" ] || [ "$1" == "--with-countdown" ]; then
         SHOW_COUNTDOWN=true
         shift
@@ -25,11 +28,28 @@ done
 
 function main {
     TARGET_SLEEP_SECONDS="${1:-1}"
+    TARGET_SLEEP_SECONDS_FULL="$TARGET_SLEEP_SECONDS"
+    TARGET_SLEEP_EXTRA_DECIMAL="0"
     if [ -z "$TARGET_SLEEP_SECONDS" ] || ! [[ "$TARGET_SLEEP_SECONDS" =~ ^[0-9]+$ ]]; then
-        echo "Usage: $0 <target_sleep_seconds>"
-        exit 1
+        # get rid of decimals, maybe sleep quickly to stay honest:
+        # TODO^10: refactor, this one is silly:
+        if [[ "$TARGET_SLEEP_SECONDS" =~ ^[0-9]*\.[0-9]+$ ]]; then
+            TARGET_SLEEP_EXTRA_DECIMAL="0.$(echo "$TARGET_SLEEP_SECONDS" | cut -d. -f2)" # get the decimal part
+            debug_eval TARGET_SLEEP_EXTRA_DECIMAL
+            TARGET_SLEEP_SECONDS="$(echo "$TARGET_SLEEP_SECONDS" | cut -d. -f1)" # truncate to integer
+            debug_eval TARGET_SLEEP_SECONDS
+        else
+            echo "Error: invalid target sleep time '$TARGET_SLEEP_SECONDS' (must be a positive integer)" >&2
+            echo "Usage: $0 <target_sleep_seconds>"
+            exit 1
+        fi
     fi
 
+    debug_here "sleeping for $TARGET_SLEEP_SECONDS_FULL seconds (integer part: '$TARGET_SLEEP_SECONDS', decimal part: '$TARGET_SLEEP_EXTRA_DECIMAL')"
+    debug_here "  ..first the decimal part: '$TARGET_SLEEP_EXTRA_DECIMAL'"
+    sleep $TARGET_SLEEP_EXTRA_DECIMAL || echo_error "FAILED to sleep for the decimal portion of '$TARGET_SLEEP_SECONDS_FULL'."
+
+    debug_here "  ..and now, the whole seconds part: '$TARGET_SLEEP_SECONDS'"
     START_TIME=$(date +%s)
     END_TIME=$(( $(date +%s) + TARGET_SLEEP_SECONDS ))
     echo -ne "  [ this process is ] sleeping for $(seconds_as_hms $TARGET_SLEEP_SECONDS)\033[0K\r"
