@@ -1,6 +1,6 @@
 ---- IN_PROGRESS: --------------------------------------------------------------
-./bin/review_v0.1:274:        puts "Error: Interrupted (TODO: DEBUG [01;31m[KIN_PROGRESS[m[K for non-interactive)"
-./bin/review_v0.1:277:        puts "Error: Interrupted (TODO: DEBUG [01;31m[KIN_PROGRESS[m[K for non-interactive)"
+./bin/review_v0.1:276:        puts "Error: Interrupted (TODO: DEBUG [01;31m[KIN_PROGRESS[m[K for non-interactive)"
+./bin/review_v0.1:279:        puts "Error: Interrupted (TODO: DEBUG [01;31m[KIN_PROGRESS[m[K for non-interactive)"
 ./bin/today_todo:104:    # Open todo list file(s) up for editing (TODO [01;31m[KIN_PROGRESS[m[K function extract)
 ./bin/today_todo:124:    # format/compact todos in todo list file(s) (TODO [01;31m[KIN_PROGRESS[m[K function extract)
 ./bin/today_todo:144:    todo_output="$(vital-todo --color always $EXCLUDE_DIR_ARGS | cat -n )" # TODO: (DEBUG [01;31m[KIN_PROGRESS[m[K) which todo are you calling
@@ -9,10 +9,10 @@
 ./bin/vital-todo:9:# TODO^51: TESTING [01;31m[KIN_PROGRESS[m[K exclude that .tmp driveupload thingy:
 ./bin/vimwhich:25:        # TODO^54: ([01;31m[KIN_PROGRESS[m[K) this should share code with newbin, or call newbin in a mode where it doesn't open the editor, it just dumped a new script in $HOME/ instead of a bin dir, which wasn't too good.
 ./installers/skiggety.bash:66:        # TODO^69: ([01;31m[KIN_PROGRESS[m[K) also make sure Zerothlife takes care of it itself, asking the user to put it in their bashrc
-./bin/today_todo:233:    # TODO^100 [01;31m[KIN_PROGRESS[m[K show 'XX''X' tasks
-./lib/skiggety-utils.bash:261:# TODO^103: (TESTING [01;31m[KIN_PROGRESS[m[K NOW) use seconds_as_hms more widely:
+./lib/skiggety-utils.bash:265:# TODO^103: (TESTING [01;31m[KIN_PROGRESS[m[K NOW) use seconds_as_hms more widely:
 ./bin/newbin:35:    # TODO^131: ([01;31m[KIN_PROGRESS[m[K) I think this script, newbin, should move scripts to zerothlife when appropriate, not some dashboard running async, this chmod is not the only thing that has gotten screwed up:
 ./bin/today_todo:87:    # TODO^185: ([01;31m[KIN_PROGRESS[m[K) also most of these paragraphs could be function extracted...:
+./bin/today_todo:233:    # TODO^190 [01;31m[KIN_PROGRESS[m[K NOW EASY: show 'XX''X' tasks
 ./PWD_BIN/todo-report:58:limit-todo-with-keyword-count 7 'IN_''PROGRESS' # TODO^213 [01;31m[KIN_PROGRESS[m[K: fine tune this number
 ./installers/zerothlife:7:# - TODO^239: ([01;31m[KIN_PROGRESS[m[K) make this, and maybe all installers, optional.  We could use marker files to keep track
 ./Dockerfile:28:# TODO^294 [01;31m[KIN_PROGRESS[m[K NOW: upgrade?:
@@ -21,8 +21,10 @@
 ./lib/include_in_bashrc.bash:76:# TODO^294 [01;31m[KIN_PROGRESS[m[K NOW: upgrade asdf--does this need a change?:
 ./lib/include_in_bashrc.bash:79:# ([01;31m[KIN_PROGRESS[m[K) TODO^294: DELETE???: . "$HOME/.asdf/completions/asdf.bash"
 ./installers/basic_prerequisites:157:# TODO^295 [01;31m[KIN_PROGRESS[m[K NOW: upgrade to asdf 0.16.0 or later ( open 'https://asdf-vm.com/guide/upgrading-to-v0-16#breaking-changes' )
+./bin/review_v0.1:4:# TODO^709 [01;31m[KIN_PROGRESS[m[K?: PAUSE the cycle when user has been inactive for more than SOME_DAMN_SETTING by default, to save resources..
 ---- TODOs for right NOW: ------------------------------------------------------
-./lib/skiggety-utils.bash:261:# TODO^103: (TESTING IN_PROGRESS [01;31m[KNOW[m[K) use seconds_as_hms more widely:
+./lib/skiggety-utils.bash:265:# TODO^103: (TESTING IN_PROGRESS [01;31m[KNOW[m[K) use seconds_as_hms more widely:
+./bin/today_todo:233:    # TODO^190 IN_PROGRESS [01;31m[KNOW[m[K EASY: show 'XX''X' tasks
 ./Dockerfile:28:# TODO^294 IN_PROGRESS [01;31m[KNOW[m[K: upgrade?:
 ./installers/skiggety.bash.config/bashrc_section.bash:21:# TODO^294 IN_PROGRESS [01;31m[KNOW[m[K: upgrade asdf--does this need a change?:
 ./installers/todo:22:    # TODO^294 IN_PROGRESS [01;31m[KNOW[m[K: upgrade asdf--does this need a change?:
