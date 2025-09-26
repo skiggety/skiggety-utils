@@ -213,9 +213,9 @@ function main {
         if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
     fi
 
-    # If something is URGENT and EASY, separate it out further:
+    # If something is URGENT and (EASY or CONFIRMING), separate it out further:
     today_todo_easy_urgent_max_count=5
-    todo_easy_urgent_output="$(echo "$todo_output" | grep --color=always 'URGENT' | grep --color=always 'EASY' | grep -v 'LATER' )"
+    todo_easy_urgent_output="$(echo "$todo_output" | grep --color=always 'URGENT' | grep --color=always '\(EASY\|CONFIRM\)' | grep -v 'LATER' )"
     todo_easy_urgent_count=$(( 0 + $(echo "$todo_easy_urgent_output" | wc -l) ))
     if [ "$todo_easy_urgent_output" != '' ]; then
         if (( $todo_easy_urgent_count > $today_todo_easy_urgent_max_count )); then
@@ -225,12 +225,12 @@ function main {
         fi
 
         echo
-        echo "-------- Found $todo_easy_urgent_count todos tagged 'URGENT' and 'EASY', excluding 'LATER' $only_showing:" | grep --color=always \\d
+        echo "-------- Found $todo_easy_urgent_count todos tagged 'URGENT' and 'EASY' or 'CONFIRMING', excluding 'LATER' $only_showing:" | grep --color=always \\d
         echo "$todo_easy_urgent_output" | tail -n $today_todo_easy_urgent_max_count
         if $interactive; then sleep-verbose $PAUSE_TO_READ;fi
     fi
 
-    # TODO^100 IN_PROGRESS show 'XX''X' tasks
+    # TODO^190 IN_PROGRESS NOW EASY: show 'XX''X' tasks
 
     # EASY TODO^8: add now count to this output?:
     echo_divider_with_text '=' "$(basename $0): $(( $todo_count + $todo_prog_count )) combined score, $todo_prog_count todos IN_PROGRESS"
