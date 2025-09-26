@@ -44,6 +44,10 @@ function echo_callsite {
     echo "at ${BASH_SOURCE[2]}:${BASH_LINENO[1]}"
 }
 
+function echo_callsite_file {
+    echo "${BASH_SOURCE[2]}"
+}
+
 function echo_parent_callsite {
     echo "at ${BASH_SOURCE[3]}:${BASH_LINENO[2]}"
 }

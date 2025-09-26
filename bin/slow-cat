@@ -6,6 +6,6 @@
 
 IFS=''
 cat $1 | while read -e line; do
-  sleep 0.012
+  sleep 0.015
   echo "$line"
 done

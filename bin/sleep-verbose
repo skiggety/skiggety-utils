@@ -11,14 +11,23 @@
 
 trap "exit 1" INT # seems to be necessary to cancel the alarm cleanly
 
+DELETE_TEXT_AFTER=false
+END_TIME=''
 PRINT_NEWLINE=true
 SHOW_COUNTDOWN=false
 while [[ "$1" == -* ]]; do
-    if [ "$1" == "-n" ];then
+    if [ "$1" == "--until-epoch-time" ];then
+        shift
+        END_TIME="$1"
+        shift
+    elif [ "$1" == "-n" ];then
         PRINT_NEWLINE=false
         shift
     elif [ "$1" == "--debug" ]; then
         SKIGGETY_DEBUG=true
+        shift
+    elif [ "$1" == "--delete-text-after" ]; then
+        DELETE_TEXT_AFTER=true
         shift
     elif [ "$1" == "--vv" ] || [ "$1" == "--very-verbose" ] || [ "$1" == "--with-countdown" ]; then
         SHOW_COUNTDOWN=true
@@ -27,34 +36,39 @@ while [[ "$1" == -* ]]; do
 done
 
 function main {
-    TARGET_SLEEP_SECONDS="${1:-1}"
-    TARGET_SLEEP_SECONDS_FULL="$TARGET_SLEEP_SECONDS"
-    TARGET_SLEEP_EXTRA_DECIMAL="0"
-    if [ -z "$TARGET_SLEEP_SECONDS" ] || ! [[ "$TARGET_SLEEP_SECONDS" =~ ^[0-9]+$ ]]; then
-        # get rid of decimals, maybe sleep quickly to stay honest:
-        # TODO^10: refactor, this one is silly:
-        if [[ "$TARGET_SLEEP_SECONDS" =~ ^[0-9]*\.[0-9]+$ ]]; then
-            TARGET_SLEEP_EXTRA_DECIMAL="0.$(echo "$TARGET_SLEEP_SECONDS" | cut -d. -f2)" # get the decimal part
-            debug_eval TARGET_SLEEP_EXTRA_DECIMAL
-            TARGET_SLEEP_SECONDS="$(echo "$TARGET_SLEEP_SECONDS" | cut -d. -f1)" # truncate to integer
-            debug_eval TARGET_SLEEP_SECONDS
-        else
-            echo "Error: invalid target sleep time '$TARGET_SLEEP_SECONDS' (must be a positive integer)" >&2
-            echo "Usage: $0 <target_sleep_seconds>"
-            exit 1
-        fi
-    fi
-
-    debug_here "sleeping for $TARGET_SLEEP_SECONDS_FULL seconds (integer part: '$TARGET_SLEEP_SECONDS', decimal part: '$TARGET_SLEEP_EXTRA_DECIMAL')"
-    debug_here "  ..first the decimal part: '$TARGET_SLEEP_EXTRA_DECIMAL'"
-    sleep $TARGET_SLEEP_EXTRA_DECIMAL || echo_error "FAILED to sleep for the decimal portion of '$TARGET_SLEEP_SECONDS_FULL'."
-
-    debug_here "  ..and now, the whole seconds part: '$TARGET_SLEEP_SECONDS'"
     START_TIME=$(date +%s)
-    END_TIME=$(( $(date +%s) + TARGET_SLEEP_SECONDS ))
-    echo -ne "  [ this process is ] sleeping for $(seconds_as_hms $TARGET_SLEEP_SECONDS)\033[0K\r"
 
-    REMAINING_SLEEP=$((END_TIME - $(date +%s)))
+    if [ -z "$END_TIME" ];then
+        TARGET_SLEEP_SECONDS="${1:-1}"
+        TARGET_SLEEP_SECONDS_FULL="$TARGET_SLEEP_SECONDS"
+        TARGET_SLEEP_EXTRA_DECIMAL="0"
+        if [ -z "$TARGET_SLEEP_SECONDS" ] || ! [[ "$TARGET_SLEEP_SECONDS" =~ ^[0-9]+$ ]]; then
+            # get rid of decimals, maybe sleep quickly to stay honest:
+            # TODO^10: refactor, this one is silly:
+            if [[ "$TARGET_SLEEP_SECONDS" =~ ^[0-9]*\.[0-9]+$ ]]; then
+                TARGET_SLEEP_EXTRA_DECIMAL="0.$(echo "$TARGET_SLEEP_SECONDS" | cut -d. -f2)" # get the decimal part
+                debug_eval TARGET_SLEEP_EXTRA_DECIMAL
+                TARGET_SLEEP_SECONDS="$(echo "$TARGET_SLEEP_SECONDS" | cut -d. -f1)" # truncate to integer
+                debug_eval TARGET_SLEEP_SECONDS
+            else
+                echo "Error: invalid target sleep time '$TARGET_SLEEP_SECONDS' (must be a positive integer)" >&2
+                echo "Usage: $0 <target_sleep_seconds>"
+                exit 1
+            fi
+        fi
+        debug_here "sleeping for $TARGET_SLEEP_SECONDS_FULL seconds (integer part: '$TARGET_SLEEP_SECONDS', decimal part: '$TARGET_SLEEP_EXTRA_DECIMAL')"
+        debug_here "  ..first the decimal part: '$TARGET_SLEEP_EXTRA_DECIMAL'"
+        sleep $TARGET_SLEEP_EXTRA_DECIMAL || echo_error "FAILED to sleep for the decimal portion of '$TARGET_SLEEP_SECONDS_FULL'."
+
+        END_TIME=$(( $(date +%s) + TARGET_SLEEP_SECONDS ))
+    else
+        TARGET_SLEEP_SECONDS=$(( $END_TIME - $START_TIME ))
+    fi
+    debug_here "  ..and now, the whole seconds part: '$TARGET_SLEEP_SECONDS'"
+    echo -ne "  [ this process is ] sleeping for $(seconds_as_hms $TARGET_SLEEP_SECONDS) (until epoch time $END_TIME)\033[0K\r"
+
+
+    REMAINING_SLEEP=$(( $END_TIME - $(date +%s)))
     while [ $REMAINING_SLEEP -gt 0 ]; do
         if $SHOW_COUNTDOWN && [ $REMAINING_SLEEP -le 30 ] && [ $TARGET_SLEEP_SECONDS -gt $(( REMAINING_SLEEP + 2 )) ]; then
             for nli in $(seq $(tput lines)); do echo; done # Clear the screen
@@ -62,9 +76,13 @@ function main {
         fi
         echo -ne "  [ this process is ] sleeping for more yet: $(seconds_as_hms $REMAINING_SLEEP) (out of $(seconds_as_hms $TARGET_SLEEP_SECONDS))\033[0K\r"
         sleep $(( ($REMAINING_SLEEP / 120 ) + 1 )) || exit_with_error "$(basename $0) stopped" # Sleep longer than a second if there is still a long time to go
-        REMAINING_SLEEP=$((END_TIME - $(date +%s)))
+        REMAINING_SLEEP=$(( $END_TIME - $(date +%s)))
     done
-    echo -ne "  DONE! ($(basename $0) slept for $TARGET_SLEEP_SECONDS seconds as of $(date) )\033[0K\r"
+    if $DELETE_TEXT_AFTER;then
+        echo -ne "                                                                                \033[0K\r"
+    else
+        echo -ne "  DONE! ($(basename $0) slept for $TARGET_SLEEP_SECONDS seconds as of $(date) )\033[0K\r"
+    fi
 
     if $PRINT_NEWLINE; then
         echo
