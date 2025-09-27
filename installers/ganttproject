@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+
+require_relative '../lib/installable_skiggety_util'
+
+class RectangleInstaller
+
+  include InstallableSkiggetyUtil
+
+  # TODO: mixin some homebrew cask boilerplate
+
+  def apparently_installed?
+    false # raise 'TODO: IMPLEMENT'
+  end
+
+  def apparently_configured?
+    raise 'TODO: IMPLEMENT'
+  end
+
+  def install!
+    if on_mac_os?
+      brew_install_cask_latest 'ganttproject'
+    else
+      raise NotImplementedError, 'TODO: implement this for this OS'
+    end
+  end
+
+end
+
+RectangleInstaller.run
