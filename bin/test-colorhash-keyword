@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# This script tests the 'colorhash-keyword' script
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+for keyword in 'TO''DO' \
+    URGENT \
+    IN_PROGRESS \
+    NOW \
+    TESTING \
+    TODAY \
+    POINT \
+    RANDOM \
+    FINANCIAL \
+    MAINTENANCE \
+    DAILY \
+;do
+    colorhash-keyword $keyword
+done

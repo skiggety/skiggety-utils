@@ -1,0 +1,113 @@
+#!/usr/bin/env bash
+
+# This script should accept a keyword, and colorize it consistently and uniquely
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+KEYWORD="$1"
+
+# get a sha256 hash of the keyword as an integer:
+KEYWORD_HASH=$(echo -n "$KEYWORD" | sha256sum | awk '{print $1}')
+KEYWORD_HASH_INT=$((0x${KEYWORD_HASH:0:8}))
+
+offset=$KEYWORD_HASH_INT
+
+# BLUE:
+f_b=$(( $offset % 6 ))
+debug_eval_here f_b
+offset=$(( $offset / 6 ))
+debug_eval_here offset
+if [ "$f_b" -eq 0 ]; then
+    b_b=$(( 2 + ( $offset % 4 ) ))
+    debug_eval_here b_b
+    offset=$(( $offset / 4 ))
+    debug_eval_here offset
+elif [ "$f_b" -ge 1 -a "$f_b" -le 4 ]; then
+    b_b=$(( $offset % 3 ))
+    if [ "$b_b" -eq "$(( $f_b - 1 ))" ]; then
+        b_b=$(( $b_b + 3 ))
+    elif [ "$b_b" -eq "$f_b" ]; then
+        b_b=$(( $b_b + 2 ))
+    elif [ "$b_b" -eq "$(( $f_b + 1 ))" ]; then
+        b_b=$(( $b_b + 1))
+    fi
+    debug_eval_here b_b
+    offset=$(( $offset / 3 ))
+elif [ "$f_b" -eq 5 ]; then
+    b_b=$(( $offset % 4))
+    debug_eval_here b_b
+    offset=$(( $offset / 4 ))
+else
+    b_b=0
+fi
+
+# GREEN:
+offset=$(( $offset / 6 ))
+debug_eval_here offset
+f_g=$(( $offset % 6 ))
+debug_eval_here f_g
+if [ "$f_g" -eq 0 ]; then
+    b_g=$(( 2 + ( $offset % 4 ) ))
+    debug_eval_here b_g
+    offset=$(( $offset / 4 ))
+elif [ "$f_g" -ge 1 -a "$f_g" -le 4 ]; then
+    b_g=$(( $offset % 3 ))
+    if [ "$b_g" -eq "$(( $f_g - 1 ))" ]; then
+        b_g=$(( $b_g + 3 ))
+    elif [ "$b_g" -eq "$f_g" ]; then
+        b_g=$(( $b_g + 2 ))
+    elif [ "$b_g" -eq "$(( $f_g + 1 ))" ]; then
+        b_g=$(( $b_g + 1))
+    fi
+    debug_eval_here b_g
+    offset=$(( $offset / 3 ))
+elif [ "$f_g" -eq 5 ]; then
+    b_g=$(( $offset % 4))
+    debug_eval_here b_g
+    offset=$(( $offset / 4 ))
+else
+    b_g=0
+fi
+debug_eval_here b_g
+
+# RED:
+debug_eval_here offset
+f_r=$(( $offset % 6 ))
+debug_eval_here f_r
+offset=$(( $offset / 6 ))
+debug_eval_here offset
+if [ "$f_r" -eq 0 ]; then
+    b_r=$(( 2 + ( $offset % 4 ) ))
+    debug_eval_here b_r
+    offset=$(( $offset / 4 ))
+elif [ "$f_r" -ge 1 -a "$f_r" -le 4 ]; then
+    b_r=$(( $offset % 3 ))
+    if [ "$b_r" -eq "$(( $f_r - 1 ))" ]; then
+        b_r=$(( $b_r + 3 ))
+    elif [ "$b_r" -eq "$f_r" ]; then
+        b_r=$(( $b_r + 2 ))
+    elif [ "$b_r" -eq "$(( $f_r + 1 ))" ]; then
+        b_r=$(( $b_r + 1))
+    fi
+    debug_eval_here b_r
+    offset=$(( $offset / 3 ))
+elif [ "$f_r" -eq 5 ]; then
+    b_r=$(( $offset % 4))
+    debug_eval_here b_r
+    offset=$(( $offset / 4 ))
+else
+    b_r=0
+fi
+debug_eval_here b_r
+
+f_code=$(( ( f_r * 36 ) + ( f_g * 6 ) + f_b + 16))
+debug_eval_here f_code
+b_code=$(( ( b_r * 36 ) + ( b_g * 6 ) + b_b + 16))
+debug_eval_here b_code
+
+color_code="\e[1;38;5;${f_code};48;5;${b_code}m"
+debug_eval_here color_code
+
+echo -en "${color_code}"
+echo -n "$KEYWORD"
+echo -e "${no_color}"
