@@ -12,35 +12,6 @@ KEYWORD_HASH_INT=$((0x${KEYWORD_HASH:0:8}))
 
 offset=$KEYWORD_HASH_INT
 
-# BLUE:
-f_b=$(( $offset % 6 ))
-debug_eval_here f_b
-offset=$(( $offset / 6 ))
-debug_eval_here offset
-if [ "$f_b" -eq 0 ]; then
-    b_b=$(( 2 + ( $offset % 4 ) ))
-    debug_eval_here b_b
-    offset=$(( $offset / 4 ))
-    debug_eval_here offset
-elif [ "$f_b" -ge 1 -a "$f_b" -le 4 ]; then
-    b_b=$(( $offset % 3 ))
-    if [ "$b_b" -eq "$(( $f_b - 1 ))" ]; then
-        b_b=$(( $b_b + 3 ))
-    elif [ "$b_b" -eq "$f_b" ]; then
-        b_b=$(( $b_b + 2 ))
-    elif [ "$b_b" -eq "$(( $f_b + 1 ))" ]; then
-        b_b=$(( $b_b + 1))
-    fi
-    debug_eval_here b_b
-    offset=$(( $offset / 3 ))
-elif [ "$f_b" -eq 5 ]; then
-    b_b=$(( $offset % 4))
-    debug_eval_here b_b
-    offset=$(( $offset / 4 ))
-else
-    b_b=0
-fi
-
 # GREEN:
 offset=$(( $offset / 6 ))
 debug_eval_here offset
@@ -69,6 +40,35 @@ else
     b_g=0
 fi
 debug_eval_here b_g
+
+# BLUE:
+f_b=$(( $offset % 6 ))
+debug_eval_here f_b
+offset=$(( $offset / 6 ))
+debug_eval_here offset
+if [ "$f_b" -eq 0 ]; then
+    b_b=$(( 2 + ( $offset % 4 ) ))
+    debug_eval_here b_b
+    offset=$(( $offset / 4 ))
+    debug_eval_here offset
+elif [ "$f_b" -ge 1 -a "$f_b" -le 4 ]; then
+    b_b=$(( $offset % 3 ))
+    if [ "$b_b" -eq "$(( $f_b - 1 ))" ]; then
+        b_b=$(( $b_b + 3 ))
+    elif [ "$b_b" -eq "$f_b" ]; then
+        b_b=$(( $b_b + 2 ))
+    elif [ "$b_b" -eq "$(( $f_b + 1 ))" ]; then
+        b_b=$(( $b_b + 1))
+    fi
+    debug_eval_here b_b
+    offset=$(( $offset / 3 ))
+elif [ "$f_b" -eq 5 ]; then
+    b_b=$(( $offset % 4))
+    debug_eval_here b_b
+    offset=$(( $offset / 4 ))
+else
+    b_b=0
+fi
 
 # RED:
 debug_eval_here offset
