@@ -2,8 +2,8 @@
 ---------------------------------------------------------------------------------------------------------------------------- todo (shown by 'abbreviate') -
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ showing last 8 lines out of 614: ^
 ./installers/todo:22:    # [1m[31mTODO^294[0m[0m IN_PROGRESS NOW: upgrade asdf--does this need a change?:
-./lib/include_in_bashrc.bash:76:# [1m[31mTODO^294[0m[0m IN_PROGRESS NOW: upgrade asdf--does this need a change?:
-./lib/include_in_bashrc.bash:79:# (IN_PROGRESS) [1m[31mTODO^294[0m[0m: DELETE???: . "$HOME/.asdf/completions/asdf.bash"
+./lib/include_in_bashrc.bash:77:# [1m[31mTODO^294[0m[0m IN_PROGRESS NOW: upgrade asdf--does this need a change?:
+./lib/include_in_bashrc.bash:80:# (IN_PROGRESS) [1m[31mTODO^294[0m[0m: DELETE???: . "$HOME/.asdf/completions/asdf.bash"
 ./installers/basic_prerequisites:157:# [1m[31mTODO^295[0m[0m IN_PROGRESS NOW: upgrade to asdf 0.16.0 or later ( open 'https://asdf-vm.com/guide/upgrading-to-v0-16#breaking-changes' )
 ./bin/todo_v0.4:4:# [1m[31mTODO^401[0m[0m: why isn't this printing any output since I updated asdf and python?
 ./bin/abbreviate:42:        debug_here "[1m[31mTODO^446[0m[0m: rainbow-ify output (vote for me)"

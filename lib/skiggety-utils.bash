@@ -25,6 +25,7 @@ cyan='\033[0;36m'
 CYAN='\033[1;36m'
 blinky_CYAN='\033[1;5;36m'
 no_color='\033[0m'
+alt_no_color='\033[m'
 # TODO?: random_color="$()" # random (not-bright) color
 # TODO?: random_COLOR="$()" # random bright color
 # TODO?: random_CoLoR="$()" # random color, could be bright
