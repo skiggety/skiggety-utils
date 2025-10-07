@@ -4,6 +4,9 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-git add -N `which $1`
-git add -p `which $1`
-# TODO^2: IMPLEMENT for real, parse args, feed them to git, then do which on what's left"
+# TODO^21: IMPLEMENT for real, parse args, feed them to git, then do which on what's left"
+
+target="$(which $1)"
+cd "$(dirname $target)"
+git add -N $target
+git add -p $target
