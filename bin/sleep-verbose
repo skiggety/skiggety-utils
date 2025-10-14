@@ -32,6 +32,9 @@ while [[ "$1" == -* ]]; do
     elif [ "$1" == "--vv" ] || [ "$1" == "--very-verbose" ] || [ "$1" == "--with-countdown" ]; then
         SHOW_COUNTDOWN=true
         shift
+    elif [ "$1" == "--hourglass" ]; then
+        HOURGLASS_MODE=true # TODO^51 IN_PROGRESS: this should show some sort of alternate visual...print a lot of dots I think..Do something easy
+        shift
     fi
 done
 

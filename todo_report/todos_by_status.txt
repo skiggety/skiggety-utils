@@ -5,6 +5,7 @@
 ./bin/today_todo:124:    # format/compact todos in todo list file(s) (TODO [01;31m[KIN_PROGRESS[m[K function extract)
 ./bin/today_todo:144:    todo_output="$(vital-todo --color always $EXCLUDE_DIR_ARGS | cat -n )" # TODO: (DEBUG [01;31m[KIN_PROGRESS[m[K) which todo are you calling
 ./bin/today_todo:9:# TODO^22: ([01;31m[KIN_PROGRESS[m[K) gotta DELETE this script eventually, after moving all functionality to vital
+./bin/sleep-verbose:36:        HOURGLASS_MODE=true # TODO^51 [01;31m[KIN_PROGRESS[m[K: this should show some sort of alternate visual...print a lot of dots I think..Do something easy
 ./bin/today_todo:200:    # TODO^51: ([01;31m[KIN_PROGRESS[m[K) function extract to do with other keywords
 ./bin/vital-todo:9:# TODO^51: TESTING [01;31m[KIN_PROGRESS[m[K exclude that .tmp driveupload thingy:
 ./bin/vimwhich:25:        # TODO^54: ([01;31m[KIN_PROGRESS[m[K) this should share code with newbin, or call newbin in a mode where it doesn't open the editor, it just dumped a new script in $HOME/ instead of a bin dir, which wasn't too good.
