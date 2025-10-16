@@ -5,9 +5,11 @@
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/vital.bash || exit_with_error 'could not include vital.bash'
 
+# TODO^141?: accept multiple tags?
+
 cd $VITAL_DIR
 if [ "$1" == 'LATER' ]; then
-    vital-todo | grep --color=always "$1"
+    vital-todo | grep "$1" | highlight-unique 2>/dev/null
 else
-    vital-todo | grep -v 'LATER' | grep --color=always "$1"
+    vital-todo | grep -v 'LATER' | grep "$1" | highlight-unique 2>/dev/null
 fi

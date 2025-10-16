@@ -13,7 +13,7 @@ echo '
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/vital.bash || exit_with_error 'could not include vital.bash'
 
-# TODO^539: use colorhash-keyword to colorize the keywords!!
+# TODO^1009: (EASY FUN IN_PROGRESS NOW) use colorhash-keyword to colorize the keywords!!
 # TODO^190: vital should work offline
 # TODO^181: the thing that keeps an up-to-date version showing should probably git pull occasionally
 # TODO^131: manual update-only mode

@@ -4,7 +4,14 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
+# How many of the 6 brightness shades for each of rgb do you want to use for each of rgb and each of
+# foreground/background? It should be a number 2 - 6, higher numbers give more possibilities, lower numbers ensure there
+# is enough contrast:
+RANGE_FROM_6="${RANGE_FROM_6:-3}"
+BUMP_FROM_6="$(( 6 - $RANGE_FROM_6 ))"
+
 KEYWORD="$1"
+debug_eval_here KEYWORD
 
 # get a sha256 hash of the keyword as an integer:
 KEYWORD_HASH=$(echo -n "$KEYWORD" | sha256sum | awk '{print $1}')
@@ -12,93 +19,44 @@ KEYWORD_HASH_INT=$((0x${KEYWORD_HASH:0:8}))
 
 offset=$KEYWORD_HASH_INT
 
-# GREEN:
-offset=$(( $offset / 6 ))
-debug_eval_here offset
-f_g=$(( $offset % 6 ))
-debug_eval_here f_g
-if [ "$f_g" -eq 0 ]; then
-    b_g=$(( 2 + ( $offset % 4 ) ))
-    debug_eval_here b_g
-    offset=$(( $offset / 4 ))
-elif [ "$f_g" -ge 1 -a "$f_g" -le 4 ]; then
-    b_g=$(( $offset % 3 ))
-    if [ "$b_g" -eq "$(( $f_g - 1 ))" ]; then
-        b_g=$(( $b_g + 3 ))
-    elif [ "$b_g" -eq "$f_g" ]; then
-        b_g=$(( $b_g + 2 ))
-    elif [ "$b_g" -eq "$(( $f_g + 1 ))" ]; then
-        b_g=$(( $b_g + 1))
-    fi
-    debug_eval_here b_g
-    offset=$(( $offset / 3 ))
-elif [ "$f_g" -eq 5 ]; then
-    b_g=$(( $offset % 4))
-    debug_eval_here b_g
-    offset=$(( $offset / 4 ))
-else
-    b_g=0
+light_foreground='false'
+if [ "$(( ( $offset 1 ) % 2 ))" -eq '0' ]; then
+    light_foreground='true'
 fi
-debug_eval_here b_g
+offset=$(( $offset / 2 ))
+
+# GREEN:
+b_g=$(( $offset % $RANGE_FROM_6 ))
+offset=$(( $offset / $RANGE_FROM_6 ))
+f_g=$(( $offset % $RANGE_FROM_6 ))
+offset=$(( $offset / $RANGE_FROM_6 ))
+if $light_foreground; then
+    f_g=$(( $f_g + $BUMP_FROM_6 ))
+else
+    b_g=$(( $b_g + $BUMP_FROM_6 ))
+fi
 
 # BLUE:
-f_b=$(( $offset % 6 ))
-debug_eval_here f_b
-offset=$(( $offset / 6 ))
-debug_eval_here offset
-if [ "$f_b" -eq 0 ]; then
-    b_b=$(( 2 + ( $offset % 4 ) ))
-    debug_eval_here b_b
-    offset=$(( $offset / 4 ))
-    debug_eval_here offset
-elif [ "$f_b" -ge 1 -a "$f_b" -le 4 ]; then
-    b_b=$(( $offset % 3 ))
-    if [ "$b_b" -eq "$(( $f_b - 1 ))" ]; then
-        b_b=$(( $b_b + 3 ))
-    elif [ "$b_b" -eq "$f_b" ]; then
-        b_b=$(( $b_b + 2 ))
-    elif [ "$b_b" -eq "$(( $f_b + 1 ))" ]; then
-        b_b=$(( $b_b + 1))
-    fi
-    debug_eval_here b_b
-    offset=$(( $offset / 3 ))
-elif [ "$f_b" -eq 5 ]; then
-    b_b=$(( $offset % 4))
-    debug_eval_here b_b
-    offset=$(( $offset / 4 ))
+b_b=$(( $offset % $RANGE_FROM_6 ))
+offset=$(( $offset / $RANGE_FROM_6 ))
+f_b=$(( $offset % $RANGE_FROM_6 ))
+offset=$(( $offset / $RANGE_FROM_6 ))
+if $light_foreground; then
+    f_b=$(( $f_b + $BUMP_FROM_6 ))
 else
-    b_b=0
+    b_b=$(( $b_b + $BUMP_FROM_6 ))
 fi
 
 # RED:
-debug_eval_here offset
-f_r=$(( $offset % 6 ))
-debug_eval_here f_r
-offset=$(( $offset / 6 ))
-debug_eval_here offset
-if [ "$f_r" -eq 0 ]; then
-    b_r=$(( 2 + ( $offset % 4 ) ))
-    debug_eval_here b_r
-    offset=$(( $offset / 4 ))
-elif [ "$f_r" -ge 1 -a "$f_r" -le 4 ]; then
-    b_r=$(( $offset % 3 ))
-    if [ "$b_r" -eq "$(( $f_r - 1 ))" ]; then
-        b_r=$(( $b_r + 3 ))
-    elif [ "$b_r" -eq "$f_r" ]; then
-        b_r=$(( $b_r + 2 ))
-    elif [ "$b_r" -eq "$(( $f_r + 1 ))" ]; then
-        b_r=$(( $b_r + 1))
-    fi
-    debug_eval_here b_r
-    offset=$(( $offset / 3 ))
-elif [ "$f_r" -eq 5 ]; then
-    b_r=$(( $offset % 4))
-    debug_eval_here b_r
-    offset=$(( $offset / 4 ))
+b_r=$(( $offset % $RANGE_FROM_6 ))
+offset=$(( $offset / $RANGE_FROM_6 ))
+f_r=$(( $offset % $RANGE_FROM_6 ))
+offset=$(( $offset / $RANGE_FROM_6 ))
+if $light_foreground; then
+    f_r=$(( $f_r + $BUMP_FROM_6 ))
 else
-    b_r=0
+    b_r=$(( $b_r + $BUMP_FROM_6 ))
 fi
-debug_eval_here b_r
 
 f_code=$(( ( f_r * 36 ) + ( f_g * 6 ) + f_b + 16))
 debug_eval_here f_code
