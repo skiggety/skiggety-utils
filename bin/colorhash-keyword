@@ -20,7 +20,7 @@ KEYWORD_HASH_INT=$((0x${KEYWORD_HASH:0:8}))
 offset=$KEYWORD_HASH_INT
 
 light_foreground='false'
-if [ "$(( ( $offset 1 ) % 2 ))" -eq '0' ]; then
+if [ "$(( $offset % 2 ))" -eq '0' ]; then
     light_foreground='true'
 fi
 offset=$(( $offset / 2 ))

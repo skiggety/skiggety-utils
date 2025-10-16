@@ -9,7 +9,7 @@
 
 cd $VITAL_DIR
 if [ "$1" == 'LATER' ]; then
-    vital-todo | grep "$1" | highlight-unique 2>/dev/null
+    vital-todo | grep "$1" | highlight-ALLCAPS 2>/dev/null
 else
-    vital-todo | grep -v 'LATER' | grep "$1" | highlight-unique 2>/dev/null
+    vital-todo | grep -v 'LATER' | grep "$1" | highlight-ALLCAPS 2>/dev/null
 fi

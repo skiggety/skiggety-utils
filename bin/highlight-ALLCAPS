@@ -1,11 +1,12 @@
 #!/usr/bin/env ruby
 
 # pass every line of STDIN through a regex using colorhash-keyword before outputting it to STDOUT
-# usage: cat file | bin/highlight-unique 'PATTERN'
+# usage: cat file | bin/highlight-ALLCAPS
 
 # EASY TODO^141 RENAME?: color-code-keywords
 
+pattern = '\b[A-Z][A-Z_]+\b'
+
 ARGF.each do |line|
-  pattern = ARGV[0] || '\b[A-Z][A-Z_]+\b'
   puts line.gsub(/(#{pattern})/) { `colorhash-keyword #{$1}`.chomp }
 end

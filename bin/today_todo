@@ -135,7 +135,7 @@ function main {
     # TODO^3: consider extracting the rest of this script to "today_todo_display", which can be overridden with PWD_BIN, or
     # alternatively we could do like 'todo' and use flags to turn editing and reporting on and off:
 
-    # TODO^1013 IN_PROGRESS NOW: integrate highlight-unique, without the asdf errors: | highlight-unique
+    # TODO^1013 IN_PROGRESS NOW: integrate highlight-ALLCAPS, without the asdf errors: | highlight-ALLCAPS
     # - TODO^1014 IN_PROGRESS NOW EASY: script extract a bunch of this to vital-report-nocolor and vital-report:
 
     echo "-------- Last few todos DONE:"
