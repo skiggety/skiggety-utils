@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# This script helps you sift through your diff in cass you want to use 'git add' selectively
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+for searchword in $@;do
+    git --no-pager diff | \
+        grep -A 2 -B 2 "\\($searchword\\|+++\\)" | \
+        highlight-words $@ '\+\+\+' | \
+        grep -B 15 -A 5 $searchword
+done

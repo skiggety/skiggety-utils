@@ -10,7 +10,7 @@
 ./bin/vital-todo:9:# TODO^51: TESTING [01;31m[KIN_PROGRESS[m[K exclude that .tmp driveupload thingy:
 ./bin/vimwhich:25:        # TODO^54: ([01;31m[KIN_PROGRESS[m[K) this should share code with newbin, or call newbin in a mode where it doesn't open the editor, it just dumped a new script in $HOME/ instead of a bin dir, which wasn't too good.
 ./installers/skiggety.bash:66:        # TODO^69: ([01;31m[KIN_PROGRESS[m[K) also make sure Zerothlife takes care of it itself, asking the user to put it in their bashrc
-./lib/skiggety-utils.bash:274:# TODO^103: (TESTING [01;31m[KIN_PROGRESS[m[K NOW) use seconds_as_hms more widely:
+./lib/skiggety-utils.bash:273:# TODO^103: (TESTING [01;31m[KIN_PROGRESS[m[K NOW) use seconds_as_hms more widely:
 ./bin/today_todo:87:    # TODO^185: ([01;31m[KIN_PROGRESS[m[K) also most of these paragraphs could be function extracted...:
 ./bin/today_todo:236:    # TODO^190 [01;31m[KIN_PROGRESS[m[K NOW EASY: show 'XX''X' tasks
 ./PWD_BIN/todo-report:58:limit-todo-with-keyword-count 7 'IN_''PROGRESS' # TODO^213 [01;31m[KIN_PROGRESS[m[K: fine tune this number
@@ -26,7 +26,7 @@
 ./bin/today_todo:138:    # TODO^1013 [01;31m[KIN_PROGRESS[m[K NOW: integrate highlight-ALLCAPS, without the asdf errors: | highlight-ALLCAPS
 ./bin/today_todo:139:    # - TODO^1014 [01;31m[KIN_PROGRESS[m[K NOW EASY: script extract a bunch of this to vital-report-nocolor and vital-report:
 ---- TODOs for right NOW: ------------------------------------------------------
-./lib/skiggety-utils.bash:274:# TODO^103: (TESTING IN_PROGRESS [01;31m[KNOW[m[K) use seconds_as_hms more widely:
+./lib/skiggety-utils.bash:273:# TODO^103: (TESTING IN_PROGRESS [01;31m[KNOW[m[K) use seconds_as_hms more widely:
 ./bin/today_todo:236:    # TODO^190 IN_PROGRESS [01;31m[KNOW[m[K EASY: show 'XX''X' tasks
 ./Dockerfile:28:# TODO^294 IN_PROGRESS [01;31m[KNOW[m[K: upgrade?:
 ./installers/skiggety.bash.config/bashrc_section.bash:21:# TODO^294 IN_PROGRESS [01;31m[KNOW[m[K: upgrade asdf--does this need a change?:
