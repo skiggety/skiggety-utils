@@ -53,6 +53,13 @@ function echo_parent_callsite {
     echo "at ${BASH_SOURCE[3]}:${BASH_LINENO[2]}"
 }
 
+# TODO^601 IN_PROGRESS: use more widely at least where we are doing similar things in this file:
+function program_is_running {
+    local target
+    target="$1"
+    ps -x | grep -v '\d*:\d\d\.\d\d grep ' | grep --color=always "\d*:\d\d\.\d\d \(bash \)\?[^ ]*${target}"
+}
+
 function exit_with_error {
     echo -e "exiting $(basename $0) on ${RED}ERROR:${red} $* ( $(echo_callsite) )${no_color}" >&2
     exit 1
@@ -100,7 +107,7 @@ function exit_if_n_times_this_already_running {
     debug_eval_here threshold
     target="$2"
     debug_eval_here target
-    OTHER_SCRIPT_PSLINES="$( pstree | grep -v grep | grep --color=always "${target}\( \|$\)" )"
+    OTHER_SCRIPT_PSLINES="$( program_is_running "${target}" )"
     debug_eval_here OTHER_SCRIPT_PSLINES
     if [ $( echo "$OTHER_SCRIPT_PSLINES" | wc -l ) -gt "$threshold" ]; then
         debug_here

@@ -7,5 +7,5 @@
 ./bin/abbreviate:42:        debug_here "[1m[31mTODO^446[0m[0m: rainbow-ify output (vote for me)"
 ./bin/review_v0.1:4:# [1m[31mTODO^709[0m[0m IN_PROGRESS?: PAUSE the cycle when user has been inactive for more than SOME_DAMN_SETTING by default, to save resources..
 ./bin/vital:16:# [1m[31mTODO^1009[0m[0m: (EASY FUN IN_PROGRESS NOW) use colorhash-keyword to colorize the keywords!!
-./bin/today_todo:138:    # [1m[31mTODO^1013[0m[0m IN_PROGRESS NOW: integrate highlight-unique, without the asdf errors: | highlight-unique
+./bin/today_todo:138:    # [1m[31mTODO^1013[0m[0m IN_PROGRESS NOW: integrate highlight-ALLCAPS, without the asdf errors: | highlight-ALLCAPS
 [1m[33m./bin/today_todo:139:    # - [1m[31mTODO^1014[0m[1m[33m IN_PROGRESS NOW EASY: script extract a bunch of this to vital-report-nocolor and vital-report:[0m

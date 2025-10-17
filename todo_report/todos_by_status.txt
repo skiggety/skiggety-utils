@@ -23,7 +23,7 @@
 ./installers/basic_prerequisites:163:# TODO^295 [01;31m[KIN_PROGRESS[m[K NOW: upgrade to asdf 0.16.0 or later ( open 'https://asdf-vm.com/guide/upgrading-to-v0-16#breaking-changes' )
 ./bin/review_v0.1:4:# TODO^709 [01;31m[KIN_PROGRESS[m[K?: PAUSE the cycle when user has been inactive for more than SOME_DAMN_SETTING by default, to save resources..
 ./bin/vital:16:# TODO^1009: (EASY FUN [01;31m[KIN_PROGRESS[m[K NOW) use colorhash-keyword to colorize the keywords!!
-./bin/today_todo:138:    # TODO^1013 [01;31m[KIN_PROGRESS[m[K NOW: integrate highlight-unique, without the asdf errors: | highlight-unique
+./bin/today_todo:138:    # TODO^1013 [01;31m[KIN_PROGRESS[m[K NOW: integrate highlight-ALLCAPS, without the asdf errors: | highlight-ALLCAPS
 ./bin/today_todo:139:    # - TODO^1014 [01;31m[KIN_PROGRESS[m[K NOW EASY: script extract a bunch of this to vital-report-nocolor and vital-report:
 ---- TODOs for right NOW: ------------------------------------------------------
 ./lib/skiggety-utils.bash:274:# TODO^103: (TESTING IN_PROGRESS [01;31m[KNOW[m[K) use seconds_as_hms more widely:
@@ -34,5 +34,5 @@
 ./lib/include_in_bashrc.bash:78:# TODO^294 IN_PROGRESS [01;31m[KNOW[m[K: upgrade asdf--does this need a change?:
 ./installers/basic_prerequisites:163:# TODO^295 IN_PROGRESS [01;31m[KNOW[m[K: upgrade to asdf 0.16.0 or later ( open 'https://asdf-vm.com/guide/upgrading-to-v0-16#breaking-changes' )
 ./bin/vital:16:# TODO^1009: (EASY FUN IN_PROGRESS [01;31m[KNOW[m[K) use colorhash-keyword to colorize the keywords!!
-./bin/today_todo:138:    # TODO^1013 IN_PROGRESS [01;31m[KNOW[m[K: integrate highlight-unique, without the asdf errors: | highlight-unique
+./bin/today_todo:138:    # TODO^1013 IN_PROGRESS [01;31m[KNOW[m[K: integrate highlight-ALLCAPS, without the asdf errors: | highlight-ALLCAPS
 ./bin/today_todo:139:    # - TODO^1014 IN_PROGRESS [01;31m[KNOW[m[K EASY: script extract a bunch of this to vital-report-nocolor and vital-report:
