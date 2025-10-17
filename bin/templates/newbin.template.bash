@@ -4,7 +4,7 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-interactive_develop_here 'TODO XXoooX: IMPLEMENT this script'
-exit_with_error 'TODO XXoooX: TEST this script'
+interactive_develop_here 'TODO XXoooX: IMPLEMENT this script (COPPIPASTA)'
+exit_with_error 'TODO XXoooX: TEST this script (COPPIPASTA)'
 
-pushd $ZEROTHLIFE_CODE_DIR;git add -N $0;popd # XXoooX
+pushd $(dirname $0);git add -N $0;popd # XXoooX (COPPIPASTA)
