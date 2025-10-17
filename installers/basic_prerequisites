@@ -67,6 +67,7 @@ function main {
 
 function install_basic_prerequisites {
     install_homebrew || exit_with_error "FAILED to install homebrew"
+    update_homebrew_packages || exit_with_error "FAILED to update homebrew packages"
     eval $(/opt/homebrew/bin/brew shellenv)
 
     homebrew_install_latest bash
@@ -130,6 +131,10 @@ function install_homebrew {
         fi
         # TO-NOT-DO: brew upgrade # to just update everything in homebrew
     fi
+}
+
+function update_homebrew_packages {
+    brew upgrade
 }
 
 # TODO: pare down the list for asdf (in Dockerfile too), as this list was really created as prerequisites for rbenv and
