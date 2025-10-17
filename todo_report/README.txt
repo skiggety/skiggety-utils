@@ -1,7 +1,7 @@
 ==== TODOs, ascending, so you know what's likely to change next.  Do not edit, run 'generate_todo_report' to generate. ====
 ---------------------------------------------------------------------------------------------------------------------------- todo (shown by 'abbreviate') -
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ showing last 8 lines out of 621: ^
-./bin/highlight-words:8:# TODO^341: consider alternate option, optionally: pattern="\\b(#{ARGV.join('|')})\\b" # words?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ showing last 8 lines out of 622: ^
+./bin/highlight-words:9:# TODO^341: consider alternate option, optionally: pattern="\\b(#{ARGV.join('|')})\\b" # words?
 ./bin/todo_v0.4:4:# TODO^401: why isn't this printing any output since I updated asdf and python?
 ./bin/abbreviate:42:        debug_here "TODO^446: rainbow-ify output (vote for me)"
 ./bin/review_v0.1:4:# TODO^709 IN_PROGRESS?: PAUSE the cycle when user has been inactive for more than SOME_DAMN_SETTING by default, to save resources..

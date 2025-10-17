@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 # pass every line of STDIN through a regex using colorhash-keyword before outputting it to STDOUT
 # usage: cat file | bin/highlight-ALLCAPS
@@ -8,5 +9,5 @@
 pattern = '\b[A-Z][A-Z_]+\b'
 
 ARGF.each do |line|
-  puts line.gsub(/(#{pattern})/) { `colorhash-keyword #{$1}`.chomp }
+  puts line.gsub(/(#{pattern})/){ `colorhash-keyword #{Regexp.last_match(1)}`.chomp }
 end
