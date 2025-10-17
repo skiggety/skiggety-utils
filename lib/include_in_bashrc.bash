@@ -51,6 +51,7 @@ alias gvcs="git vimchanged --staged"
 alias gpnb='git push-new-branch'
 alias gp='git pretty-pull'
 alias gat='git add-theirs'
+alias gaw='git addwhich'
 alias gr='git ready'
 alias cgry='ci && git ready; exit 0'
 alias gry='git ready; exit 0'
