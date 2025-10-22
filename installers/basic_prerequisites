@@ -72,6 +72,7 @@ function install_basic_prerequisites {
 
     homebrew_install_latest bash
 
+    # TODO^601: upgrade or replace asdf...consider 'mise' or 'rtx'
     install_asdf_prerequisites
 
     if rvm --version 2>/dev/null; then

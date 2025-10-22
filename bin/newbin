@@ -13,6 +13,7 @@ if [ "$1" == "$(basename $1)" ];then
     if which "$1" > /dev/null; then
         new_file="$(which "$1")"
     else
+        # TODO^903: ( IN_PROGRESS NOW ) OVERRIDABLE NEWBIN_DEST_DIR for zl-newbin
         new_file="$SKIGGETY_UTILS_DIR/bin/$1"
     fi
 else
@@ -36,6 +37,8 @@ if ! [ -f $new_file ]; then
 
     if [ "$shebang_args" == 'env bash' ];then
         debug_here
+        # TODO^902: ( IN_PROGRESS NOW ) OVERRIDABLE NEWBIN_TEMPLATE_DIR for zl-newbin
+        # TODO^301: ( IN_PROGRESS NOW ) OVERRIDABLE NEWBIN_TEMPLATE_EXTENSION
         TEMPLATE="$SKIGGETY_UTILS_DIR/bin/templates/newbin.template.bash"
         sed 's/ooo//g' "$TEMPLATE" > $new_file
         debug_here
