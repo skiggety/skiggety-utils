@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# This script restarts chrome
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+osascript -e 'tell application "Google Chrome" to open location "chrome://restart"'
