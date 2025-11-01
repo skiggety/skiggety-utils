@@ -37,7 +37,7 @@ if ! [ -f $new_file ]; then
 
     if [ "$shebang_args" == 'env bash' ];then
         debug_here
-        # TODO^902: ( IN_PROGRESS NOW ) OVERRIDABLE NEWBIN_TEMPLATE_DIR for zl-newbin
+        # TODO^1292: ( IN_PROGRESS NOW ) OVERRIDABLE NEWBIN_TEMPLATE_DIR for zl-newbin
         # TODO^301: ( IN_PROGRESS NOW ) OVERRIDABLE NEWBIN_TEMPLATE_EXTENSION
         TEMPLATE="$SKIGGETY_UTILS_DIR/bin/templates/newbin.template.bash"
         sed 's/ooo//g' "$TEMPLATE" > $new_file

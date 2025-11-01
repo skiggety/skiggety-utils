@@ -7,6 +7,8 @@ require_relative '../lib/installable_skiggety_util'
 # TODO^2: install vim rake plugin with vim pathogen
 # TODO: maybe detect local vimrc changes
 # TODO^2: later, look at this and zerothlife installer and consider a bit of DRY
+# TODO^41: bone up on vimscript fundamentals: # https://subscription.packtpub.com/book/data/9781789341096/8/ch08lvl1sec57/how-to-execute-vimscript`
+# TODO^46: look into github copilot for vim: https://github.com/github/copilot.vim
 
 class VimInstaller
 

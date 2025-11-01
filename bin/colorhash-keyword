@@ -58,6 +58,7 @@ else
     b_r=$(( $b_r + $BUMP_FROM_6 ))
 fi
 
+# TODO^491: script extract the part about turning three numbers 0-5 into an rgb background and/or foreground color
 f_code=$(( ( f_r * 36 ) + ( f_g * 6 ) + f_b + 16))
 debug_eval_here f_code
 b_code=$(( ( b_r * 36 ) + ( b_g * 6 ) + b_b + 16))
