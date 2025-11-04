@@ -9,7 +9,11 @@ alias cdzlc="cd $ZEROTHLIFE_CODE_DIR"
 alias devall='zl-popup-all-code-dev'
 alias dev_all='zl-popup-all-code-dev'
 
+alias zf='zl-fork'
 alias zlf='zl-fork'
+
+alias zlr='brush_fully;zl-procrastinate 1'
+alias zl-remind-me-later='brush_fully;zl-procrastinate 1'
 
 alias metapuff='vw zl-puff;puff'
 alias metapuffy='vw zl-puff;puffy'
