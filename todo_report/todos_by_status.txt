@@ -21,13 +21,11 @@
 ./lib/include_in_bashrc.bash:78:# TODO^294 [01;31m[KIN_PROGRESS[m[K NOW: upgrade asdf--does this need a change?:
 ./lib/include_in_bashrc.bash:81:# ([01;31m[KIN_PROGRESS[m[K) TODO^294: DELETE???: . "$HOME/.asdf/completions/asdf.bash"
 ./installers/basic_prerequisites:163:# TODO^295 [01;31m[KIN_PROGRESS[m[K NOW: upgrade to asdf 0.16.0 or later ( open 'https://asdf-vm.com/guide/upgrading-to-v0-16#breaking-changes' )
-./bin/newbin:75:        # TODO^301: ( [01;31m[KIN_PROGRESS[m[K NOW ) OVERRIDABLE NEWBIN_TEMPLATE_EXTENSION
+./bin/newbin:70:        # TODO^301: ( [01;31m[KIN_PROGRESS[m[K NOW ) OVERRIDABLE NEWBIN_TEMPLATE_EXTENSION
 ./bin/review_v0.1:4:# TODO^709 [01;31m[KIN_PROGRESS[m[K?: PAUSE the cycle when user has been inactive for more than SOME_DAMN_SETTING by default, to save resources..
 ./bin/vital:16:# TODO^1009: (EASY FUN [01;31m[KIN_PROGRESS[m[K NOW) use colorhash-keyword to colorize the keywords!!
 ./bin/today_todo:138:    # TODO^1013 [01;31m[KIN_PROGRESS[m[K NOW: integrate highlight-ALLCAPS, without the asdf errors: | highlight-ALLCAPS
 ./bin/today_todo:139:    # - TODO^1014 [01;31m[KIN_PROGRESS[m[K NOW EASY: script extract a bunch of this to vital-report-nocolor and vital-report:
-./bin/newbin:74:        # TODO^1292: ( [01;31m[KIN_PROGRESS[m[K NOW ) OVERRIDABLE NEWBIN_TEMPLATE_DIR for zl-newbin
-./bin/newbin:26:# TODO^1484: ( TESTING [01;31m[KIN_PROGRESS[m[K NOW ) OVERRIDABLE NEWBIN_DEST_DIR for zl-newbin (in terms of # DEFAULT_DESTINATION_DIR?)
 ---- TODOs for right NOW: ------------------------------------------------------
 ./lib/skiggety-utils.bash:273:# TODO^103: (TESTING IN_PROGRESS [01;31m[KNOW[m[K) use seconds_as_hms more widely:
 ./bin/today_todo:236:    # TODO^190 IN_PROGRESS [01;31m[KNOW[m[K EASY: show 'XX''X' tasks
@@ -36,9 +34,7 @@
 ./installers/todo:22:    # TODO^294 IN_PROGRESS [01;31m[KNOW[m[K: upgrade asdf--does this need a change?:
 ./lib/include_in_bashrc.bash:78:# TODO^294 IN_PROGRESS [01;31m[KNOW[m[K: upgrade asdf--does this need a change?:
 ./installers/basic_prerequisites:163:# TODO^295 IN_PROGRESS [01;31m[KNOW[m[K: upgrade to asdf 0.16.0 or later ( open 'https://asdf-vm.com/guide/upgrading-to-v0-16#breaking-changes' )
-./bin/newbin:75:        # TODO^301: ( IN_PROGRESS [01;31m[KNOW[m[K ) OVERRIDABLE NEWBIN_TEMPLATE_EXTENSION
+./bin/newbin:70:        # TODO^301: ( IN_PROGRESS [01;31m[KNOW[m[K ) OVERRIDABLE NEWBIN_TEMPLATE_EXTENSION
 ./bin/vital:16:# TODO^1009: (EASY FUN IN_PROGRESS [01;31m[KNOW[m[K) use colorhash-keyword to colorize the keywords!!
 ./bin/today_todo:138:    # TODO^1013 IN_PROGRESS [01;31m[KNOW[m[K: integrate highlight-ALLCAPS, without the asdf errors: | highlight-ALLCAPS
 ./bin/today_todo:139:    # - TODO^1014 IN_PROGRESS [01;31m[KNOW[m[K EASY: script extract a bunch of this to vital-report-nocolor and vital-report:
-./bin/newbin:74:        # TODO^1292: ( IN_PROGRESS [01;31m[KNOW[m[K ) OVERRIDABLE NEWBIN_TEMPLATE_DIR for zl-newbin
-./bin/newbin:26:# TODO^1484: ( TESTING IN_PROGRESS [01;31m[KNOW[m[K ) OVERRIDABLE NEWBIN_DEST_DIR for zl-newbin (in terms of # DEFAULT_DESTINATION_DIR?)

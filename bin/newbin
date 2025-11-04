@@ -7,17 +7,46 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-# TODO^10?: maybe you could configure in which bin directory new scripts end up in, or at least do an EASY HACK to throw zl-* in the right place
+# overridable TEMPLATE_SOURCE_DIR for zl-newbin:
+TEMPLATE_SOURCE_DIR="$SKIGGETY_UTILS_DIR/bin/templates"
+debug_eval_here TEMPLATE_SOURCE_DIR
+DESTINATION_DIR="$SKIGGETY_UTILS_DIR/bin"
+while [[ "$1" == -* ]]; do
+    if [ "$1" == '-d' ] || [ "$1" == '--destination-dir' ]; then
+        shift
+        DESTINATION_DIR="$1"
+        shift
+    elif [ "$1" == '--source-dir' ] || [ "$1" == '--template-source-dir' ]; then
+        shift
+        TEMPLATE_SOURCE_DIR="$1"
+        debug_eval_here TEMPLATE_SOURCE_DIR
+        shift
+    fi
+done
+debug_eval_here TEMPLATE_SOURCE_DIR
 
-if [ "$1" == "$(basename $1)" ];then
-    if which "$1" > /dev/null; then
-        new_file="$(which "$1")"
+new_file=''
+if [ "$1" == "$(basename $1)" ];then # if no destination path is specified
+    INTENDED_new_file="$DESTINATION_DIR/$(basename $1)"
+    ANY_EXISTING="$(which "$1")"
+    if [ -z "$ANY_EXISTING" ];then
+        # overridable DESTINATION_DIR for zl-newbin's sake:
+        new_file="$INTENDED_new_file"
+    elif [ "$ANY_EXISTING" == "$INTENDED_new_file" ]; then
+        new_file="$INTENDED_new_file"
     else
-        # TODO^903: ( IN_PROGRESS NOW ) OVERRIDABLE NEWBIN_DEST_DIR for zl-newbin
-        new_file="$SKIGGETY_UTILS_DIR/bin/$1"
+        exit_with_error "$INTENDED_new_file was specified but $ANY_EXISTING was found."
     fi
 else
-    new_file="$1"
+    SPECIFIED_new_file="$1"
+    INTENDED_new_file="$SPECIFIED_new_file"
+    if [ -n "$DESTINATION_DIR" ]; then
+        INTENDED_new_file="$DESTINATION_DIR/$(basename $1)"
+    fi
+    if [ "$SPECIFIED_new_file" != "$INTENDED_new_file" ]; then
+        exit_with_error "specified destination file $SPECIFIED_new_file conflicts with specified destination dir $DESTINATION_DIR"
+    fi
+    new_file="$SPECIFIED_new_file"
 fi
 debug_eval new_file
 shift
@@ -37,9 +66,12 @@ if ! [ -f $new_file ]; then
 
     if [ "$shebang_args" == 'env bash' ];then
         debug_here
-        # TODO^1292: ( IN_PROGRESS NOW ) OVERRIDABLE NEWBIN_TEMPLATE_DIR for zl-newbin
+
         # TODO^301: ( IN_PROGRESS NOW ) OVERRIDABLE NEWBIN_TEMPLATE_EXTENSION
-        TEMPLATE="$SKIGGETY_UTILS_DIR/bin/templates/newbin.template.bash"
+        TEMPLATE="$TEMPLATE_SOURCE_DIR/newbin.template.bash"
+        if ! ls $TEMPLATE;then
+            exit_with_error "template not found: '$TEMPLATE'"
+        fi
         sed 's/ooo//g' "$TEMPLATE" > $new_file
         debug_here
     fi
