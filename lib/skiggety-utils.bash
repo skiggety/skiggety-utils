@@ -53,7 +53,7 @@ function echo_parent_callsite {
     echo "at ${BASH_SOURCE[3]}:${BASH_LINENO[2]}"
 }
 
-# TODO^764: use more widely at least where we are doing similar things in this file:
+# TODO^1364 (IN_PROGRESS) : use more widely at least where we are doing similar things in this file:
 function program_is_running {
     local target
     target="$1"
@@ -172,12 +172,15 @@ function debug_eval {
 }
 
 function debug_eval_here {
-    echo_debug "$(echo_eval $*)" "$(echo_callsite)"
+    main_message="$(echo_eval $*)" || echo_error_here "debug_eval_here FAILED at $(echo_callsite)"
+    callsite_message="$(echo_callsite)" || echo_error_here "debug_eval_here FAILED at $(echo_callsite)"
+    echo_debug "$main_message" "$callsite_message" || echo_error_here "debug_eval_here FAILED at $(echo_callsite)"
 }
 
 function echo_eval {
     if [[ $# -ne 1 ]]; then
-        echo_error_here 'echo_eval nothing to evaluate'
+        echo_error_here "echo_eval nothing to evaluate at $(echo_callsite)"
+        return 1
     elif is_array_name $1; then
         local expr="\$(printf \"'%s' \" \"\${$1[@]}\")" # based on "https://stackoverflow.com/a/12985353/1735179"
         eval local val=$expr
