@@ -6,7 +6,8 @@
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
-DIVIDER=false
+RAINBOW='false'
+DIVIDER='false'
 PROMPT_LINES='3' # TODO: better implementation, not sure how to get $PS1 from parent process
 # TODO: if it's not in a terminal, maybe default to using AUTO_SCALE:
 MAX_SCREEN_LINES="$(( $(tput lines) - $PROMPT_LINES ))" # default to a screenful, allowing room for prompt
@@ -38,8 +39,8 @@ while [[ "$1" == -* ]]; do
         TITLE="$1"
         shift
     elif [ "$1" == '--rainbow' ]; then
+        RAINBOW='true'
         shift
-        debug_here "TODO^446: rainbow-ify output (vote for me)"
     elif [ "$1" == '-d' -o "$1" == '--divider' ]; then
         DIVIDER=true
         shift
@@ -84,6 +85,19 @@ if [ -n "$TITLE" ]; then
         echo "$TITLE_IN_PRACTICE"
     fi
 
+fi
+
+# EASY TODO^300: script extract to 'colorhash-each-line' or something:
+function rainbowify {
+    while IFS= read -r line; do
+        echo -n "$( colorhash-keyword "$line" )"
+        echo -en "${no_color}"
+        echo
+    done <<< "$1"
+}
+
+if $RAINBOW; then
+    INPUT="$( rainbowify "$INPUT" )"
 fi
 
 if [ $INPUT_LINES -gt $MAX_LINES ]; then
