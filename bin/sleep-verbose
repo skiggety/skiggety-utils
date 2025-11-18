@@ -68,7 +68,10 @@ function main {
         TARGET_SLEEP_SECONDS=$(( $END_TIME - $START_TIME ))
     fi
     debug_here "  ..and now, the whole seconds part: '$TARGET_SLEEP_SECONDS'"
-    echo -ne "  [ this process is ] sleeping for $(seconds_as_hms $TARGET_SLEEP_SECONDS) (until epoch time $END_TIME)\033[0K\r"
+    debug_eval_here TARGET_SLEEP_SECONDS
+    TARGET_SLEEP_HMS="$( seconds_as_hms $TARGET_SLEEP_SECONDS )"
+    debug_eval_here TARGET_SLEEP_HMS
+    echo -ne "  [ this process is ] sleeping for $TARGET_SLEEP_HMS (until epoch time $END_TIME)\033[0K\r"
 
 
     REMAINING_SLEEP=$(( $END_TIME - $(date +%s)))
@@ -78,7 +81,7 @@ function main {
             banner -w $(( 57 - REMAINING_SLEEP )) "$REMAINING_SLEEP"
         fi
         echo -ne "  [ this process is ] sleeping for more yet: $(seconds_as_hms $REMAINING_SLEEP) (out of $(seconds_as_hms $TARGET_SLEEP_SECONDS))\033[0K\r"
-        sleep $(( ($REMAINING_SLEEP / 120 ) + 1 )) || exit_with_error "$(basename $0) stopped" # Sleep longer than a second if there is still a long time to go
+        sleep $(( ($REMAINING_SLEEP / 45 ) + 1 )) || exit_with_error "$(basename $0) stopped" # Sleep longer than a second if there is still a long time to go
         REMAINING_SLEEP=$(( $END_TIME - $(date +%s)))
     done
     if $DELETE_TEXT_AFTER;then
