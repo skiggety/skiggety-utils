@@ -60,6 +60,7 @@ alias puff='zl-fork zl-puff'
 alias puffy='zl-fork zl-puff; exit 0'
 
 alias eit='echo spelling;sleep-verbose 5;exit'
+alias ext='echo spelling;sleep-verbose 5;exit'
 alias exut='echo spelling;sleep-verbose 5;exit'
 alias exiy='echo spelling;sleep-verbose 5;exit'
 alias exir='echo spelling;sleep-verbose 5;exit'

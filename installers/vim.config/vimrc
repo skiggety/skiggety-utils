@@ -45,6 +45,7 @@ map <Leader>rb :Dispatch bin/rspec %<CR>
 
 " fzf.vim:
 " most of this fzf section is from https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko :
+" TODO^91: DEBUG: fzf seems not to be installed??
 set rtp+=/usr/local/opt/fzf "TODO: make this cross-platform, this is just where fzf gets installed with brew on mac
 nnoremap <Leader>f :Rg<CR>
 nnoremap <silent> <Leader>k :Rg <C-R><C-W><CR>

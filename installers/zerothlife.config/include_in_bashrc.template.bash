@@ -12,18 +12,30 @@ alias dev_all='zl-popup-all-code-dev'
 alias zf='zl-fork'
 alias zlf='zl-fork'
 
-alias zlr='brush_fully;zl-procrastinate 1'
-alias zl-remind-me-later='brush_fully;zl-procrastinate 1'
+alias zfp='zl-fork zl-pause'
+alias zap='zl-fork zl-pause'
+
+alias zfd='zl-fork-delegate'
+alias zlfd='zl-fork-delegate'
+
+alias zr='zl-brush-fully;zl-procrastinate 1'
+alias zlr='zl-brush-fully;zl-procrastinate 1'
+alias zl-remind-me-later='zl-brush-fully;zl-procrastinate 1'
 
 alias metapuff='vw zl-puff;puff'
 alias metapuffy='vw zl-puff;puffy'
 
+alias thin-the-herd='zl-kill --quartermate --force zl-stress-test-screen-occupier'
+alias small_nudge='NUDGE=1 zl-groom-terminal-window-locations --multiple 1'
 alias nudge='NUDGE=8 zl-groom-terminal-window-locations --multiple 1'
 alias big_nudge='NUDGE=20 zl-groom-terminal-window-locations --multiple 15'
-alias brush='zl-fork "zl-size-terminal -n 8;sleep-verbose --vv 5;zl-groom-terminal-window-locations --multiple 10;sleep 5"'
+alias wipe='thin-the-herd;small_nudge'
+
+alias brush='zl-groom-terminal-window-locations'
 alias brushy='zl-fork "zl-size-terminal -n 8;sleep-verbose --vv 5;zl-groom-terminal-window-locations --multiple 10";exit 0'
 alias brushalot='zl-fork "zl-size-terminal -n 8;zl-groom-terminal-window-locations --multiple 100"'
-alias brush_fully='num=1;while zl-groom-terminal-window-locations --multiple $num | grep --color=always Moved;do sleep $num;echo "--------------------------------------------------------------------------------";num="$(( num + 1 ))";done;zl-groom-terminal-window-locations --multiple $num'
+alias brush_fully='zl-brush-fully'
+alias zfbf='zl-fork zl-brush-fully'
 
 alias zl-ballast-windows='for num in 1 2 3;do zl-fork in_five_minutes ;done'
 

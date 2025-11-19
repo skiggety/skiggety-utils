@@ -10,7 +10,7 @@
 ./bin/vital-todo:9:# TODO^51: TESTING [01;31m[KIN_PROGRESS[m[K exclude that .tmp driveupload thingy:
 ./bin/vimwhich:25:        # TODO^54: ([01;31m[KIN_PROGRESS[m[K) this should share code with newbin, or call newbin in a mode where it doesn't open the editor, it just dumped a new script in $HOME/ instead of a bin dir, which wasn't too good.
 ./installers/skiggety.bash:66:        # TODO^69: ([01;31m[KIN_PROGRESS[m[K) also make sure Zerothlife takes care of it itself, asking the user to put it in their bashrc
-./lib/skiggety-utils.bash:276:# TODO^103: (TESTING [01;31m[KIN_PROGRESS[m[K NOW) use seconds_as_hms more widely:
+./lib/skiggety-utils.bash:303:# TODO^103: (TESTING [01;31m[KIN_PROGRESS[m[K NOW) use seconds_as_hms more widely:
 ./bin/today_todo:87:    # TODO^185: ([01;31m[KIN_PROGRESS[m[K) also most of these paragraphs could be function extracted...:
 ./bin/today_todo:236:    # TODO^190 [01;31m[KIN_PROGRESS[m[K NOW EASY: show 'XX''X' tasks
 ./PWD_BIN/todo-report:58:limit-todo-with-keyword-count 7 'IN_''PROGRESS' # TODO^213 [01;31m[KIN_PROGRESS[m[K: fine tune this number
@@ -18,22 +18,22 @@
 ./Dockerfile:28:# TODO^294 [01;31m[KIN_PROGRESS[m[K NOW: upgrade?:
 ./installers/skiggety.bash.config/bashrc_section.bash:21:# TODO^294 [01;31m[KIN_PROGRESS[m[K NOW: upgrade asdf--does this need a change?:
 ./installers/todo:22:    # TODO^294 [01;31m[KIN_PROGRESS[m[K NOW: upgrade asdf--does this need a change?:
-./lib/include_in_bashrc.bash:78:# TODO^294 [01;31m[KIN_PROGRESS[m[K NOW: upgrade asdf--does this need a change?:
-./lib/include_in_bashrc.bash:81:# ([01;31m[KIN_PROGRESS[m[K) TODO^294: DELETE???: . "$HOME/.asdf/completions/asdf.bash"
+./lib/include_in_bashrc.bash:79:# TODO^294 [01;31m[KIN_PROGRESS[m[K NOW: upgrade asdf--does this need a change?:
+./lib/include_in_bashrc.bash:82:# ([01;31m[KIN_PROGRESS[m[K) TODO^294: DELETE???: . "$HOME/.asdf/completions/asdf.bash"
 ./installers/basic_prerequisites:163:# TODO^295 [01;31m[KIN_PROGRESS[m[K NOW: upgrade to asdf 0.16.0 or later ( open 'https://asdf-vm.com/guide/upgrading-to-v0-16#breaking-changes' )
 ./bin/newbin:70:        # TODO^301: ( [01;31m[KIN_PROGRESS[m[K NOW ) OVERRIDABLE NEWBIN_TEMPLATE_EXTENSION
 ./bin/review_v0.1:4:# TODO^709 [01;31m[KIN_PROGRESS[m[K?: PAUSE the cycle when user has been inactive for more than SOME_DAMN_SETTING by default, to save resources..
 ./bin/vital:16:# TODO^1009: (EASY FUN [01;31m[KIN_PROGRESS[m[K NOW) use colorhash-keyword to colorize the keywords!!
 ./bin/today_todo:138:    # TODO^1013 [01;31m[KIN_PROGRESS[m[K NOW: integrate highlight-ALLCAPS, without the asdf errors: | highlight-ALLCAPS
 ./bin/today_todo:139:    # - TODO^1014 [01;31m[KIN_PROGRESS[m[K NOW EASY: script extract a bunch of this to vital-report-nocolor and vital-report:
-./lib/skiggety-utils.bash:56:# TODO^1364 ([01;31m[KIN_PROGRESS[m[K) : use more widely at least where we are doing similar things in this file:
+./lib/skiggety-utils.bash:83:# TODO^1364 ([01;31m[KIN_PROGRESS[m[K) : use more widely at least where we are doing similar things in this file:
 ---- TODOs for right NOW: ------------------------------------------------------
-./lib/skiggety-utils.bash:276:# TODO^103: (TESTING IN_PROGRESS [01;31m[KNOW[m[K) use seconds_as_hms more widely:
+./lib/skiggety-utils.bash:303:# TODO^103: (TESTING IN_PROGRESS [01;31m[KNOW[m[K) use seconds_as_hms more widely:
 ./bin/today_todo:236:    # TODO^190 IN_PROGRESS [01;31m[KNOW[m[K EASY: show 'XX''X' tasks
 ./Dockerfile:28:# TODO^294 IN_PROGRESS [01;31m[KNOW[m[K: upgrade?:
 ./installers/skiggety.bash.config/bashrc_section.bash:21:# TODO^294 IN_PROGRESS [01;31m[KNOW[m[K: upgrade asdf--does this need a change?:
 ./installers/todo:22:    # TODO^294 IN_PROGRESS [01;31m[KNOW[m[K: upgrade asdf--does this need a change?:
-./lib/include_in_bashrc.bash:78:# TODO^294 IN_PROGRESS [01;31m[KNOW[m[K: upgrade asdf--does this need a change?:
+./lib/include_in_bashrc.bash:79:# TODO^294 IN_PROGRESS [01;31m[KNOW[m[K: upgrade asdf--does this need a change?:
 ./installers/basic_prerequisites:163:# TODO^295 IN_PROGRESS [01;31m[KNOW[m[K: upgrade to asdf 0.16.0 or later ( open 'https://asdf-vm.com/guide/upgrading-to-v0-16#breaking-changes' )
 ./bin/newbin:70:        # TODO^301: ( IN_PROGRESS [01;31m[KNOW[m[K ) OVERRIDABLE NEWBIN_TEMPLATE_EXTENSION
 ./bin/vital:16:# TODO^1009: (EASY FUN IN_PROGRESS [01;31m[KNOW[m[K) use colorhash-keyword to colorize the keywords!!
