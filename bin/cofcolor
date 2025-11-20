@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+# change these to change which color goes with which note/number
+f_offset=2 # 9 makes C red, which feels right....it will be red in the background with a b_offset of zero...but maybe manipulating it for a red background would be good?. FWIW, 4 makes a red F, and 2 makes a red G
+
+b_offset="7" # 5 and 7 are pretty and subtle, and makes sure each note name is a slightly different hue than the background, so each one occupied wider 'hue space" and they are more distinct from eachother. 10 and 2 are pretty close to the same effect
+
+
+index="$(( ( $1 + $f_offset) % 12 ))"
+b_index="$(( ( $index + $b_offset) % 12 ))"
+
+fof_semi=5 # could be 5 or 7
+index="$(( ( $index * $fof_semi ) % 12 ))"
+b_index="$(( ( $b_index * $fof_semi ) % 12 ))"
+CODE="${no_color}"
+
+f_codes=(511 531 551 351     151 153 155 135     115 315 515 513)
+
+b_codes=(200 210 220 120     020 021 022 012     002 102 202 201)
+
+CODE="$( rgb6_fb ${f_codes[$index]} ${b_codes[$b_index]} )"
+
+echo -e "$CODE"
