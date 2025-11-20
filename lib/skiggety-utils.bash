@@ -302,7 +302,20 @@ function is_on_mac_os {
 
 # TODO^103: (TESTING IN_PROGRESS NOW) use seconds_as_hms more widely:
 function seconds_as_hms {
+    local TOTAL_SECONDS
     TOTAL_SECONDS="$1"
+
+    if [ -z "$TOTAL_SECONDS" ]; then
+        # this means zero, basically, I guess
+        echo
+        return 0
+    elif [ "$TOTAL_SECONDS" -lt '0' ]; then
+        echo_error "seconds_as_hms got '$TOTAL_SECONDS', but it should be more than 0 (called from $(echo_callsite))"
+        return 1
+    elif ! [[ "$TOTAL_SECONDS" =~ ^[0-9]+$ ]]; then
+        echo_error "seconds_as_hms got '$TOTAL_SECONDS', but it should be a non-negative integer (called from $(echo_callsite))"
+        return 1
+    fi
 
     SECONDS="$(( $TOTAL_SECONDS % 60 ))"
     debug_eval_here SECONDS
