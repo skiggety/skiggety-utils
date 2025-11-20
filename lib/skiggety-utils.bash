@@ -26,9 +26,36 @@ CYAN='\033[1;36m'
 blinky_CYAN='\033[1;5;36m'
 no_color='\033[0m'
 alt_no_color='\033[m'
+no_color_fore='\033[39m'
 # TODO?: random_color="$()" # random (not-bright) color
 # TODO?: random_COLOR="$()" # random bright color
 # TODO?: random_CoLoR="$()" # random color, could be bright
+
+function rgb6_code {
+    input="$1"
+    debug_eval_here input
+    echo "$(( ( ${input:0:1} * 36 ) + ( ${input:1:1} * 6 ) + ${input:2:1} + 16))"
+}
+
+function rgb6_background {
+    rgb6_b="$1"
+    debug_eval_here rgb6_b
+}
+
+function rgb6_foreground {
+    rgb6_f="$1"
+    debug_eval_here rgb6_f
+    echo "\e[1;38;5;$(rgb6_code $rgb6_f);m"
+    echo "\e[1;38;5;$(rgb6_code $rgb6_f);48;5;$(rgb6_code $rgb6_b)m"
+}
+
+function rgb6_fb {
+    rgb6_f="$1"
+    debug_eval_here rgb6_f
+    rgb6_b="$2"
+    debug_eval_here rgb6_b
+    echo "\e[1;38;5;$(rgb6_code $rgb6_f);48;5;$(rgb6_code $rgb6_b)m"
+}
 
 newline='
 '
