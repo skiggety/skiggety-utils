@@ -2,14 +2,14 @@
 
 # The purpose of this script is to limit the length of output of something, so you could pipe something through this
 # script and it would just pass it through if it's not too long, or print an explanation of how many lines were omitted
-# and run tail otherwise.  TODO^4: # Maybe could RENAME it to 'tailmax', 'tail-verbose', or something?
+# and run tail otherwise.  TODO^5: # Maybe could RENAME it to 'tailmax', 'tail-verbose', or something?
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
 RAINBOW='false'
 DIVIDER='false'
-PROMPT_LINES='3' # TODO: better implementation, not sure how to get $PS1 from parent process
-# TODO: if it's not in a terminal, maybe default to using AUTO_SCALE:
+PROMPT_LINES='3' # TODO^2: better implementation, not sure how to get $PS1 from parent process
+# TODO^2: if it's not in a terminal, maybe default to using AUTO_SCALE:
 MAX_SCREEN_LINES="$(( $(tput lines) - $PROMPT_LINES ))" # default to a screenful, allowing room for prompt
 MAX_LINES="$(( $MAX_SCREEN_LINES - 1 ))" # because the explanation takes up 1 line
 AUTO_SCALE=false
@@ -33,7 +33,7 @@ while [[ "$1" == -* ]]; do
         MAX_LINES="$1"
         AUTO_SCALE=false
         shift
-    # TODO: elif [ "$1" == '--headlines' ]; then # show a few lines with "head" at the top, still use the right total amount of space on screen
+    # TODO^2: elif [ "$1" == '--headlines' ]; then # show a few lines with "head" at the top, still use the right total amount of space on screen
     elif [ "$1" == '-t' -o "$1" == '--title' ]; then
         shift
         TITLE="$1"
@@ -45,7 +45,7 @@ while [[ "$1" == -* ]]; do
         DIVIDER=true
         shift
     fi
-    # TODO: help option should explain that -n tells it how many lines of screen space to use, including the explanation
+    # TODO^2: help option should explain that -n tells it how many lines of screen space to use, including the explanation
     # if necessary.
 done
 
@@ -87,7 +87,7 @@ if [ -n "$TITLE" ]; then
 
 fi
 
-# EASY TODO^300: script extract to 'colorhash-each-line' or something:
+# EASY TODO^1450: script extract to 'colorhash-each-line' or something:
 function rainbowify {
     while IFS= read -r line; do
         echo -n "$( colorhash-keyword "$line" )"
