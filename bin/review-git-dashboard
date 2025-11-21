@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# This script keeps a git dashboard on display for the current directory
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+review -u 15 -m 60 git dashboard
