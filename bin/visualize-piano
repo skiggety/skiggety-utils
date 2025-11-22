@@ -1,17 +1,27 @@
 #!/usr/bin/env bash
 
+# This script shows the notes on a piano keyboard
+
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 
+ADD_MIXED_ACCIDENTALS='false'
 ADD_ALL_SHARPS='false'
 ADD_ALL_FLATS='false'
 
 while [[ "$1" == -* ]]; do
     if [ "$1" == '--add-flats' ]; then
+        ADD_MIXED_ACCIDENTALS='false'
         ADD_ALL_FLATS='true'
         ADD_ALL_SHARPS='false'
         shift
     elif [ "$1" == '--add-sharps' ]; then
+        ADD_MIXED_ACCIDENTALS='false'
         ADD_ALL_SHARPS='true'
+        ADD_ALL_FLATS='false'
+        shift
+    elif [ "$1" == '--add-mixed-accidentals' ]; then
+        ADD_MIXED_ACCIDENTALS='true'
+        ADD_ALL_SHARPS='false'
         ADD_ALL_FLATS='false'
         shift
     else
@@ -20,7 +30,7 @@ while [[ "$1" == -* ]]; do
 done
 
 A="$(cofcolor 0)A ${no_color}"
-B="$(cofcolor 1)B ${no_color}"
+B="$(cofcolor 2)B ${no_color}"
 C="$(cofcolor 3)C ${no_color}"
 D="$(cofcolor 5)D ${no_color}"
 E="$(cofcolor 7)E ${no_color}"
@@ -31,17 +41,23 @@ FLAT=$'\U266d'
 SHARP=$'\U266f'
 
 if $ADD_ALL_SHARPS; then
+    Bb="$(cofcolor 1)A$SHARP${no_color}|"
     Cs="$(cofcolor 4)C$SHARP${no_color}|"
     Eb="$(cofcolor 6)D$SHARP${no_color}|"
     Fs="$(cofcolor 9)F$SHARP${no_color}|"
     Ab="$(cofcolor 11)G$SHARP${no_color}|"
-    Bb="$(cofcolor 1)A$SHARP${no_color}|"
 elif $ADD_ALL_FLATS; then
+    Bb="$(cofcolor 1)B$FLAT${no_color}|"
     Cs="$(cofcolor 4)D$FLAT${no_color}|"
-    Eb="$(cofcolor 6)F$FLAT${no_color}|"
+    Eb="$(cofcolor 6)E$FLAT${no_color}|"
     Fs="$(cofcolor 9)G$FLAT${no_color}|"
     Ab="$(cofcolor 11)A$FLAT${no_color}|"
+elif $ADD_MIXED_ACCIDENTALS; then
     Bb="$(cofcolor 1)B$FLAT${no_color}|"
+    Cs="$(cofcolor 4)C$SHARP${no_color}|"
+    Eb="$(cofcolor 6)E$FLAT${no_color}|"
+    Fs="$(cofcolor 9)F$SHARP${no_color}|"
+    Ab="$(cofcolor 11)A$FLAT${no_color}|"
 else
     Cs="  |"
     Eb="  |"

@@ -15,7 +15,8 @@ G="$(cofcolor 10)G${no_color} "
 FLAT=$'\U266d'
 SHARP=$'\U266f'
 
-Db="$(cofcolor 4)D$FLAT${no_color} "
+Cs="$(cofcolor 4)D$FLAT${no_color} "
+# Cs="$(cofcolor 4)C$SHARP${no_color} "
 Fs="$(cofcolor 9)F$SHARP${no_color} "
 Eb="$(cofcolor 6)E$FLAT${no_color} "
 Ab="$(cofcolor 11)A$FLAT${no_color} "
@@ -35,6 +36,6 @@ echo -e "
    $Ab \\ '.           .' /   $E
         '. '-.___ _.-' .'
           '-._______.-'
-        $Db             $B
+        $Cs             $B
                 $Fs
 "
