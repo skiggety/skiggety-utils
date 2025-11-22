@@ -27,6 +27,7 @@
 ./bin/today_todo:138:    # TODO^1013 [01;31m[KIN_PROGRESS[m[K NOW: integrate highlight-ALLCAPS, without the asdf errors: | highlight-ALLCAPS
 ./bin/today_todo:139:    # - TODO^1014 [01;31m[KIN_PROGRESS[m[K NOW EASY: script extract a bunch of this to vital-report-nocolor and vital-report:
 ./lib/skiggety-utils.bash:83:# TODO^1364 ([01;31m[KIN_PROGRESS[m[K) : use more widely at least where we are doing similar things in this file:
+./bin/vital:47:    elif [ "$1" == '-v' -o "$1" == '--vote' ]; then # [01;31m[KIN_PROGRESS[m[K TODO^1551: DOES THIS WORK!!! I need to use it!!
 ---- TODOs for right NOW: ------------------------------------------------------
 ./lib/skiggety-utils.bash:303:# TODO^103: (TESTING IN_PROGRESS [01;31m[KNOW[m[K) use seconds_as_hms more widely:
 ./bin/today_todo:236:    # TODO^190 IN_PROGRESS [01;31m[KNOW[m[K EASY: show 'XX''X' tasks
