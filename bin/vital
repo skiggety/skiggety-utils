@@ -44,7 +44,7 @@ while [[ "$1" == -* ]]; do
         INTERACTIVE=false
         LEGACY_INTERACTIVE_FLAG="-n"
         shift
-    elif [ "$1" == '-v' -o "$1" == '--vote' ]; then
+    elif [ "$1" == '-v' -o "$1" == '--vote' ]; then # IN_PROGRESS TODO^1551: DOES THIS WORK!!! I need to use it!!
         shift
         VOTECOUNT="$1"
         SHOULD_ALTER_VOTE=true
