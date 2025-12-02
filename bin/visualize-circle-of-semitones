@@ -1,24 +1,24 @@
 #!/usr/bin/env bash
 
-# This script shows the circle of fifths
+# This script shows the circle of semitones
 
 . $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
 . $SKIGGETY_UTILS_DIR/lib/music_visuals.bash || exit 1
 
 echo -e "
                 $C
-        $F   _______    $G
+        $B   _______    $Cs
           .-' _____ '-.
         .' .-'     '-. '.
    $Bb / .'           '. \\   $D
       / /               \\ \\
      | |                 | |
- $Eb | |                 | |   $A
+ $A  | |                 | |   $Eb
      | |                 | |
       \\ \\               / /
    $Ab \\ '.           .' /   $E
         '. '-.___ _.-' .'
           '-._______.-'
-        $Cs             $B
+        $G              $F
                 $Fs
 "

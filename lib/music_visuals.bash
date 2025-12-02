@@ -1,0 +1,19 @@
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+A="$(cofcolor 0)A${no_color} "
+B="$(cofcolor 2)B${no_color} "
+C="$(cofcolor 3)C${no_color} "
+D="$(cofcolor 5)D${no_color} "
+E="$(cofcolor 7)E${no_color} "
+F="$(cofcolor 8)F${no_color} "
+G="$(cofcolor 10)G${no_color} "
+
+FLAT=$'\U266d'
+SHARP=$'\U266f'
+
+Cs="$(cofcolor 4)D$FLAT${no_color} "
+# Cs="$(cofcolor 4)C$SHARP${no_color} "
+Fs="$(cofcolor 9)F$SHARP${no_color} "
+Eb="$(cofcolor 6)E$FLAT${no_color} "
+Ab="$(cofcolor 11)A$FLAT${no_color} "
+Bb="$(cofcolor 1)B$FLAT${no_color} "
