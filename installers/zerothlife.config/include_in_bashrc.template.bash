@@ -27,7 +27,8 @@ alias metapuffy='vw zl-puff;puffy'
 
 alias thin-the-herd='zl-kill --quartermate --force zl-stress-test-screen-occupier'
 alias small_nudge='NUDGE=1 zl-groom-terminal-window-locations --multiple 1'
-alias nudge='NUDGE=8 zl-groom-terminal-window-locations --multiple 1'
+alias reverse_nudge='NUDGE="-12" zl-groom-terminal-window-locations --multiple 1'
+alias nudge='NUDGE=12 zl-groom-terminal-window-locations --multiple 1'
 alias big_nudge='NUDGE=20 zl-groom-terminal-window-locations --multiple 15'
 alias wipe='thin-the-herd;small_nudge'
 
@@ -42,6 +43,10 @@ alias zl-ballast-windows='for num in 1 2 3;do zl-fork in_five_minutes ;done'
 alias splash='zl-fork zl-groom-terminal-window-locations --multiple 1'
 alias splashy='zl-fork zl-groom-terminal-window-locations --multiple 1;exit 0'
 
+alias amoment="sleep-verbose 20"
+alias a_moment="sleep-verbose 20"
+alias inamoment="sleep-verbose 20 && exit 0"
+alias in_a_moment="sleep-verbose 20 && exit 0"
 alias inaminute="sleep-verbose 60 && echo y && exit 0"
 alias in_a_minute="sleep-verbose 60 && echo y && exit 0"
 alias in_five_minutes="sleep-verbose 300 && echo y && exit 0"
