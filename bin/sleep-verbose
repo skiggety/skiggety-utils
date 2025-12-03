@@ -15,6 +15,7 @@ DELETE_TEXT_AFTER=false
 END_TIME=''
 PRINT_NEWLINE=true
 SHOW_COUNTDOWN=false
+PREFIX=''
 while [[ "$1" == -* ]]; do
     if [ "$1" == "--until-epoch-time" ];then
         shift
@@ -22,6 +23,10 @@ while [[ "$1" == -* ]]; do
         shift
     elif [ "$1" == "-n" ];then
         PRINT_NEWLINE=false
+        shift
+    elif [ "$1" == "--prefix" ]; then
+        shift
+        PREFIX="$1"
         shift
     elif [ "$1" == "--debug" ]; then
         SKIGGETY_DEBUG=true
@@ -71,8 +76,7 @@ function main {
     debug_eval_here TARGET_SLEEP_SECONDS
     TARGET_SLEEP_HMS="$( seconds_as_hms $TARGET_SLEEP_SECONDS )"
     debug_eval_here TARGET_SLEEP_HMS
-    echo -ne "  [ this process is ] sleeping for $TARGET_SLEEP_HMS (until epoch time $END_TIME)\033[0K\r"
-
+    echo -ne " ${PREFIX} [ this process is ] sleeping for $TARGET_SLEEP_HMS (until epoch time $END_TIME)\033[0K\r"
 
     REMAINING_SLEEP=$(( $END_TIME - $(date +%s)))
     while [ $REMAINING_SLEEP -gt 0 ]; do
@@ -80,14 +84,14 @@ function main {
             for nli in $(seq $(tput lines)); do echo; done # Clear the screen
             banner -w $(( 57 - REMAINING_SLEEP )) "$REMAINING_SLEEP"
         fi
-        echo -ne "  [ this process is ] sleeping for more yet: $(seconds_as_hms $REMAINING_SLEEP) (out of $(seconds_as_hms $TARGET_SLEEP_SECONDS))\033[0K\r"
+        echo -ne " ${PREFIX} [ this process is ] sleeping for more yet: $(seconds_as_hms $REMAINING_SLEEP) (out of $(seconds_as_hms $TARGET_SLEEP_SECONDS))\033[0K\r"
         sleep $(( ($REMAINING_SLEEP / 45 ) + 1 )) || exit_with_error "$(basename $0) stopped" # Sleep longer than a second if there is still a long time to go
         REMAINING_SLEEP=$(( $END_TIME - $(date +%s)))
     done
     if $DELETE_TEXT_AFTER;then
         echo -ne "                                                                                \033[0K\r"
     else
-        echo -ne "  DONE! ($(basename $0) slept for $TARGET_SLEEP_SECONDS seconds as of $(date) )\033[0K\r"
+        echo -ne " ${PREFIX} DONE! ($(basename $0) slept for $TARGET_SLEEP_SECONDS seconds as of $(date) )\033[0K\r"
     fi
 
     if $PRINT_NEWLINE; then
