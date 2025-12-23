@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# This script opens the legendary groove pizza, since it's so often useful.
+
+. $SKIGGETY_UTILS_DIR/lib/skiggety-utils.bash || exit 1
+
+open 'https://apps.musedlab.org/groovepizza/?museid=sz9AD_Qs9&'
